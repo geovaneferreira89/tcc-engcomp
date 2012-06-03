@@ -57,6 +57,7 @@ namespace thread_chart
                     prb.Series.Add("sinal_1");
                     prb.Series["sinal_1"].Color = Color.Red;
                     prb.Series["sinal_1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                    prb.Legends.Clear();
                 }
 
             }

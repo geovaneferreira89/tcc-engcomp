@@ -7,3 +7,12 @@
 \\psf\home\documents\visual studio 2010\Projects\grafico_teste\grafico_teste\obj\x86\Debug\GenerateResource.write.1.tlog
 \\psf\home\documents\visual studio 2010\Projects\grafico_teste\grafico_teste\obj\x86\Debug\grafico_teste.exe
 \\psf\home\documents\visual studio 2010\Projects\grafico_teste\grafico_teste\obj\x86\Debug\grafico_teste.pdb
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.exe
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.pdb
+C:\tcc-engcomp\grafico_teste\bin\Debug\grafico_teste.exe
+C:\tcc-engcomp\grafico_teste\bin\Debug\grafico_teste.pdb
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.Form1.resources
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.Properties.Resources.resources
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\GenerateResource.write.1.tlog

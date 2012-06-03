@@ -29,44 +29,83 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
+            this.btn_Suspender = new System.Windows.Forms.Button();
+            this.lbl_x = new System.Windows.Forms.Label();
+            this.lbl_Y = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
             // 
+            this.chart1.BackColor = System.Drawing.Color.LightGray;
+            this.chart1.BackSecondaryColor = System.Drawing.Color.White;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(125, 0);
             this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.IsVisibleInLegend = false;
+            series1.LegendText = "test";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(743, 461);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 19);
+            this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(82, 30);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Ligar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_Suspender
+            // 
+            this.btn_Suspender.Location = new System.Drawing.Point(12, 48);
+            this.btn_Suspender.Name = "btn_Suspender";
+            this.btn_Suspender.Size = new System.Drawing.Size(82, 30);
+            this.btn_Suspender.TabIndex = 2;
+            this.btn_Suspender.Text = "Suspender";
+            this.btn_Suspender.UseVisualStyleBackColor = true;
+            this.btn_Suspender.Visible = false;
+            this.btn_Suspender.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lbl_x
+            // 
+            this.lbl_x.AutoSize = true;
+            this.lbl_x.Location = new System.Drawing.Point(12, 409);
+            this.lbl_x.Name = "lbl_x";
+            this.lbl_x.Size = new System.Drawing.Size(20, 13);
+            this.lbl_x.TabIndex = 3;
+            this.lbl_x.Text = "X: ";
+            // 
+            // lbl_Y
+            // 
+            this.lbl_Y.AutoSize = true;
+            this.lbl_Y.Location = new System.Drawing.Point(12, 433);
+            this.lbl_Y.Name = "lbl_Y";
+            this.lbl_Y.Size = new System.Drawing.Size(17, 13);
+            this.lbl_Y.TabIndex = 4;
+            this.lbl_Y.Text = "Y:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(869, 461);
+            this.Controls.Add(this.lbl_Y);
+            this.Controls.Add(this.lbl_x);
+            this.Controls.Add(this.btn_Suspender);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chart1);
             this.Name = "Form1";
@@ -74,6 +113,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -81,6 +121,9 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Suspender;
+        private System.Windows.Forms.Label lbl_x;
+        private System.Windows.Forms.Label lbl_Y;
     }
 }
 
