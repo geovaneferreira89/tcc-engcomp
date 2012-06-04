@@ -31,7 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLigar = new System.Windows.Forms.Button();
             this.btn_Suspender = new System.Windows.Forms.Button();
             this.lbl_x = new System.Windows.Forms.Label();
             this.lbl_Y = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.chart1.BackSecondaryColor = System.Drawing.Color.White;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Enabled = false;
             this.chart1.Location = new System.Drawing.Point(125, 0);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
@@ -56,17 +57,18 @@
             this.chart1.Size = new System.Drawing.Size(743, 461);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
+            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Mover);
             // 
-            // button1
+            // btnLigar
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Ligar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLigar.Location = new System.Drawing.Point(12, 12);
+            this.btnLigar.Name = "btnLigar";
+            this.btnLigar.Size = new System.Drawing.Size(82, 30);
+            this.btnLigar.TabIndex = 1;
+            this.btnLigar.Text = "Ligar";
+            this.btnLigar.UseVisualStyleBackColor = true;
+            this.btnLigar.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_Suspender
             // 
@@ -106,7 +108,7 @@
             this.Controls.Add(this.lbl_Y);
             this.Controls.Add(this.lbl_x);
             this.Controls.Add(this.btn_Suspender);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLigar);
             this.Controls.Add(this.chart1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -120,7 +122,7 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLigar;
         private System.Windows.Forms.Button btn_Suspender;
         private System.Windows.Forms.Label lbl_x;
         private System.Windows.Forms.Label lbl_Y;

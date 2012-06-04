@@ -28,7 +28,8 @@ namespace thread_chart
                 while(i < 100)
                 {
                     Plotar(i, Math.Sin(i),1);
-                    i = (i + 0.3);
+                    //i = (i + 0.3);
+                    i++;
                     Thread.Sleep(50);
                 }
         }
