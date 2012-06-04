@@ -21,7 +21,7 @@ namespace grafico_teste
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
-        private int __numeroDeCanais = 20;
+        private int __numeroDeCanais = 3;
         public Form1()
         {
             InitializeComponent();
@@ -190,6 +190,9 @@ namespace grafico_teste
                 for (int i = 0; i < numeroDeCanais; i++)
                 {
                   chart1.ChartAreas.Add("canal" + i);
+                  chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
+                  chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
+                  chart1.ChartAreas[i].BackColor = Color.WhiteSmoke;
                 }
                 
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais);
