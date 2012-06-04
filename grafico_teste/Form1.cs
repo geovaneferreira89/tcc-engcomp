@@ -21,12 +21,11 @@ namespace grafico_teste
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
+        private int __numeroDeCanais = 20;
         public Form1()
         {
             InitializeComponent();
         }
-        //-----------------------------------------------------------------
-        
         //-----------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -56,10 +55,8 @@ namespace grafico_teste
               chart1.ChartAreas["area"].AxisX.Maximum = 100;*/
             if (suspender == 0)
             {
-                chart1.Enabled = true;
-                atualiza_sinal objCliente = new atualiza_sinal(chart1);
-                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-                ThreadChart.Start();
+                chart1.Enabled = true; 
+                ChartInicializarThreads(__numeroDeCanais);
                 btn_Suspender.Enabled = true;
                 btn_novoProjeto.Enabled = false;
                 btn_Resume.Enabled = false;
@@ -90,7 +87,7 @@ namespace grafico_teste
                         VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
                         cursor_vertical.AnchorDataPoint = chart1.Series[0].Points[1];
                         
-                        cursor_vertical.Height = 82.5;
+                        cursor_vertical.Height = 87.3;
                         cursor_vertical.LineColor = Color.Orange;
                         cursor_vertical.LineWidth = 2;
                         cursor_vertical.AnchorX = x_Pos;
@@ -187,10 +184,18 @@ namespace grafico_teste
             else
                 mostrarCursores = 0;
         }
-
-     
-
-
+        //-----------------------------------------------------------------
+        private void ChartInicializarThreads(int numeroDeCanais)
+        {
+                for (int i = 0; i < numeroDeCanais; i++)
+                {
+                  chart1.ChartAreas.Add("canal" + i);
+                }
+                
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais);
+                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+                ThreadChart.Start();
+        }
         //-----------------------------------------------------------------
 
     }
