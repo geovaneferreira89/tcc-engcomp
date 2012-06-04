@@ -71,7 +71,7 @@
             this.gbx_Chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbx_Chart.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.gbx_Chart.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gbx_Chart.Controls.Add(this.chart1);
             this.gbx_Chart.Location = new System.Drawing.Point(12, 52);
             this.gbx_Chart.Name = "gbx_Chart";
@@ -84,7 +84,7 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.chart1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.chart1.BackSecondaryColor = System.Drawing.Color.White;
             this.chart1.Enabled = false;
             this.chart1.Location = new System.Drawing.Point(6, 19);
@@ -170,7 +170,7 @@
             // 
             // tool_ControlesProjeto
             // 
-            this.tool_ControlesProjeto.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tool_ControlesProjeto.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tool_ControlesProjeto.Dock = System.Windows.Forms.DockStyle.None;
             this.tool_ControlesProjeto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_Resume,
@@ -179,7 +179,7 @@
             this.btnZoomMenos,
             this.btnAbortar,
             this.btn_MarcarPadrões});
-            this.tool_ControlesProjeto.Location = new System.Drawing.Point(199, 24);
+            this.tool_ControlesProjeto.Location = new System.Drawing.Point(208, 24);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.tool_ControlesProjeto.Size = new System.Drawing.Size(150, 25);
@@ -220,6 +220,7 @@
             // 
             // btnZoomMenos
             // 
+            this.btnZoomMenos.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnZoomMenos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnZoomMenos.Enabled = false;
             this.btnZoomMenos.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomMenos.Image")));
@@ -251,7 +252,7 @@
             // 
             // tool_ControlesGerais
             // 
-            this.tool_ControlesGerais.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tool_ControlesGerais.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tool_ControlesGerais.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tool_ControlesGerais.CanOverflow = false;
             this.tool_ControlesGerais.Dock = System.Windows.Forms.DockStyle.None;
@@ -366,7 +367,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(696, 419);
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);
