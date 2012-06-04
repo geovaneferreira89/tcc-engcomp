@@ -40,17 +40,14 @@ namespace grafico_teste
             atualiza_sinal objCliente = new atualiza_sinal(chart1);
             ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
             ThreadChart.Start();
-            btn_Suspender.Visible = true;
-            btnLigar.Visible = false;
+            btn_Suspender.Enabled = true;
+            btnLigar.Enabled = false;
+            btn_Resume.Enabled = false;
         }
         //-----------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (suspender != 0)
-            {
-                ThreadChart.Resume();
-            }
-            ThreadChart.Abort();
+            encerrar_sistema( );
         }
         //-----------------------------------------------------------------
         private void button2_Click(object sender, EventArgs e)
@@ -60,13 +57,19 @@ namespace grafico_teste
             {
                 ThreadChart.Suspend();
                 suspender = 1;
-                btn_Suspender.Text = "Retormar";
+                btn_Suspender.Enabled = false;
+                btn_Resume.Enabled = true;
             }
-            else
+        }
+        //-----------------------------------------------------------------
+        private void btn_Resume_Click(object sender, EventArgs e)
+        {
+            if (suspender == 1)
             {
                 ThreadChart.Resume();
                 suspender = 0;
-                btn_Suspender.Text = "Suspender";
+                btn_Suspender.Enabled = true;
+                btn_Resume.Enabled = false;
             }
         }
         //-----------------------------------------------------------------
@@ -81,19 +84,29 @@ namespace grafico_teste
                 //linha fixa
                 VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
                 cursor_vertical.AnchorDataPoint = chart1.Series[0].Points[2];
-                cursor_vertical.Height = 81;
+                cursor_vertical.Height = 81.5;
                
                 cursor_vertical.LineColor = Color.Blue;
                 cursor_vertical.LineWidth = 2;
                 cursor_vertical.AnchorX = x_Pos;
                 chart1.Annotations.Add(cursor_vertical);
+
+                //nao sei pq tem uma falha em um pedaço.. logo isto é POG!
+                VerticalLineAnnotation cursor_vertical_aux = new VerticalLineAnnotation();
+                cursor_vertical_aux.AnchorDataPoint = chart1.Series[0].Points[2];
+                cursor_vertical_aux.Height = -4;
+
+                cursor_vertical_aux.LineColor = Color.Blue;
+                cursor_vertical_aux.LineWidth = 2;
+                cursor_vertical_aux.AnchorX = x_Pos;
+                chart1.Annotations.Add(cursor_vertical_aux);
 	            
                 //Anotação "flag"
                 
                 TextAnnotation annotation = new TextAnnotation();
                 annotation.AnchorDataPoint = chart1.Series[0].Points[2];
                 annotation.AnchorX =  x_Pos ;
-                annotation.AnchorY = y_Pos; 
+                annotation.AnchorY = chart1.ChartAreas[0].AxisY.Maximum; 
             
                 annotation.Text = "Flag 1";
                 annotation.ForeColor = Color.DarkBlue;
@@ -109,7 +122,8 @@ namespace grafico_teste
                 chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
 
                 double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+                //double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+                double y = chart1.ChartAreas[0].AxisY.Maximum;
 
                 //// Set range selection color, specifying transparency of 120
                 //chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
@@ -136,10 +150,27 @@ namespace grafico_teste
         {
                 double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                 double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
-                lbl_x.Text = x.ToString();
-                lbl_Y.Text = y.ToString();
+                lbl_x.Text = "X: " + Math.Round(x,4).ToString();
+                lbl_Y.Text = "Y: " + Math.Round(y,4).ToString();
                 if(numCursor < 2)
                     chart1.ChartAreas[0].CursorX.SetCursorPosition(x);
         }
+        //-----------------------------------------------------------------
+        private void encerrar_sistema()
+        {
+
+            if (suspender != 0)
+            {
+                ThreadChart.Resume();
+            }
+            ThreadChart.Abort();
+        }
+        //-----------------------------------------------------------------
+        private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            encerrar_sistema();
+        }
+        //-----------------------------------------------------------------
+
     }
 }
