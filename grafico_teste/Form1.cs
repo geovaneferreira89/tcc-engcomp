@@ -21,7 +21,7 @@ namespace grafico_teste
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
-        private int __numeroDeCanais = 3;
+        private int __numeroDeCanais = 22;
         public Form1()
         {
             InitializeComponent();
@@ -86,9 +86,9 @@ namespace grafico_teste
                         //linha fixa
                         VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
                         cursor_vertical.AnchorDataPoint = chart1.Series[0].Points[1];
-                        
-                        cursor_vertical.Height = 87.3;
-                        cursor_vertical.LineColor = Color.Orange;
+
+                        cursor_vertical.Height = 3;
+                        cursor_vertical.LineColor = Color.Chocolate;
                         cursor_vertical.LineWidth = 2;
                         cursor_vertical.AnchorX = x_Pos;
                         cursor_vertical.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
@@ -96,17 +96,14 @@ namespace grafico_teste
 
                         
                         //Anotação "flag"
-                
-                        TextAnnotation annotation = new TextAnnotation();
-                        annotation.AnchorDataPoint = chart1.Series[0].Points[2];
-                        annotation.AnchorX =  x_Pos ;
-                        annotation.AnchorY = chart1.ChartAreas[0].AxisY.Maximum; 
-            
-                        annotation.Text = "Flag 1";
-                        annotation.ForeColor = Color.DarkBlue;
-                
-                        annotation.Font = new Font("Arial", 9);
-                        chart1.Annotations.Add(annotation);
+                        //TextAnnotation annotation = new TextAnnotation();
+                        //annotation.AnchorDataPoint = chart1.Series[0].Points[2];
+                        //annotation.AnchorX =  x_Pos ;
+                        //annotation.AnchorY = chart1.ChartAreas[0].AxisY.Maximum; 
+                        //annotation.Text = "Flag 1";
+                        //annotation.ForeColor = Color.DarkBlue;
+                        //annotation.Font = new Font("Arial", 9);
+                        //chart1.Annotations.Add(annotation);
                 
                         numCursor++;
                     }
@@ -121,22 +118,24 @@ namespace grafico_teste
                         //double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
                         double y = chart1.ChartAreas[0].AxisY.Maximum;
 
-                        //// Set range selection color, specifying transparency of 120
-                        //chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
-                        //chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
-                        //chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
-                        //chart1.ChartAreas[0].CursorX.SetSelectionPosition(x_Pos, chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X));
+                        chart1.Annotations.Clear();
 
-                        TextAnnotation annotation = new TextAnnotation();
-                        annotation.AnchorDataPoint = chart1.Series[0].Points[2];
-                        annotation.AnchorX = x;
-                        annotation.AnchorY = y;
+                        // Set range selection color, specifying transparency of 120
+                        chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
+                        chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
+                        chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+                        chart1.ChartAreas[0].CursorX.SetSelectionPosition(x_Pos, chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X));
 
-                        annotation.Text = "Flag 2";
-                        annotation.ForeColor = Color.Green;
-                        annotation.Font = new Font("Arial", 9);
-
-                        chart1.Annotations.Add(annotation);
+                        //Anotação "flag"
+                        //TextAnnotation annotation = new TextAnnotation();
+                        //annotation.AnchorDataPoint = chart1.Series[0].Points[2];
+                        //annotation.AnchorX = x;
+                        //annotation.AnchorY = y;
+                        //annotation.Text = "Flag 2";
+                        //annotation.ForeColor = Color.Green;
+                        //annotation.Font = new Font("Arial", 9);
+                        //chart1.Annotations.Add(annotation);
+                 
                         numCursor++;//CLICAR + VEZES SEM EFEITO
                     }
             }
@@ -147,8 +146,11 @@ namespace grafico_teste
         {
                 double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                 double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
-                lbl_x.Text = "X: " + Math.Round(x,4).ToString();
-                lbl_Y.Text = "Y: " + Math.Round(y,4).ToString();
+                lbl_x.Text = "Valor X: " + Math.Round(x,4).ToString();
+                lbl_Y.Text = "Valor Y: " + Math.Round(y,4).ToString();
+                lbl_mouseX.Text = "Mouse X: " + e.X;
+                lbl_mouseY.Text = "Mouse Y: " + e.Y;
+
                 if(numCursor < 2)
                     chart1.ChartAreas[0].CursorX.SetCursorPosition(x);
         }
@@ -189,12 +191,19 @@ namespace grafico_teste
         {
                 for (int i = 0; i < numeroDeCanais; i++)
                 {
+                    //propriedades de cada sinal
                   chart1.ChartAreas.Add("canal" + i);
                   chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                   chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
                   chart1.ChartAreas[i].BackColor = Color.WhiteSmoke;
+                  chart1.ChartAreas[i].Position.X = 1;
+                  chart1.ChartAreas[i].Position.Y = i*(4)+3;
+                  chart1.ChartAreas[i].Position.Height = 3;
+                  chart1.ChartAreas[i].Position.Width = 100;
+
+                    
                 }
-                
+
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
