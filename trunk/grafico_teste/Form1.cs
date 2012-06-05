@@ -200,11 +200,9 @@ namespace grafico_teste
                   chart1.ChartAreas[i].Position.Y = i*(4)+3;
                   chart1.ChartAreas[i].Position.Height = 3;
                   chart1.ChartAreas[i].Position.Width = 100;
-
-                    
                 }
 
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais);
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
         }
