@@ -13,16 +13,16 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace grafico_teste
 {
-    public partial class Form1 : Form
+    public partial class FormPrincipal : Form
     {
         delegate void SetTextCallback(double x, double y);
         private Thread ThreadChart;
-        private int suspender = 0;
+        private int ThreadChart_status = 0; // 0 - Desabilitada, 1 - Rodando, 2 - Pausada
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
         private int __numeroDeCanais = 22;
-        public Form1()
+        public FormPrincipal()
         {
             InitializeComponent();
         }
@@ -32,28 +32,34 @@ namespace grafico_teste
             encerrar_sistema( );
         }
         //-----------------------------------------------------------------
-        private void button2_Click(object sender, EventArgs e)
+        private void encerrar_sistema()
         {
-            
-            if (suspender == 0)
+            if (ThreadChart_status == 1)
+            {
+                ThreadChart.Abort();
+            }
+            if (ThreadChart_status == 2)
+            {
+                ThreadChart.Resume();
+                ThreadChart.Abort();
+            }
+        }
+        //-----------------------------------------------------------------
+        private void btn_Suspender_Click(object sender, EventArgs e)
+        {
+            if (ThreadChart_status == 1)
             {
                 ThreadChart.Suspend();
-                suspender = 1;
+                ThreadChart_status = 1;
                 btn_Suspender.Enabled = false;
                 btn_Resume.Enabled = true;
+                ThreadChart_status = 2;
             }
         }
         //-----------------------------------------------------------------
         private void btn_Resume_Click(object sender, EventArgs e)
         {
-               /*
-               * //esse codigo faz limitar o gráfico. 
-               * chart1.ChartAreas.Add("area");
-              chart1.ChartAreas["area"].AxisX.Minimum = 0;
-              chart1.ChartAreas["area"].AxisX.Maximum = 50;
-              chart1.ChartAreas["area"].AxisY.Minimum = 0;
-              chart1.ChartAreas["area"].AxisX.Maximum = 100;*/
-            if (suspender == 0)
+            if (ThreadChart_status == 0)
             {
                 chart1.Enabled = true; 
                 ChartInicializarThreads(__numeroDeCanais);
@@ -61,12 +67,13 @@ namespace grafico_teste
                 btn_novoProjeto.Enabled = false;
                 btn_Resume.Enabled = false;
                 btn_MarcarPadrões.Enabled = true;
+                ThreadChart_status = 1;
             }
 
-            if (suspender == 1)
+            if (ThreadChart_status == 2)
             {
                 ThreadChart.Resume();
-                suspender = 0;
+                ThreadChart_status = 1;
                 btn_Suspender.Enabled = true;
                 btn_Resume.Enabled = false;
             }
@@ -93,17 +100,6 @@ namespace grafico_teste
                         cursor_vertical.AnchorX = x_Pos;
                         cursor_vertical.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
                         chart1.Annotations.Add(cursor_vertical);
-
-                        
-                        //Anotação "flag"
-                        //TextAnnotation annotation = new TextAnnotation();
-                        //annotation.AnchorDataPoint = chart1.Series[0].Points[2];
-                        //annotation.AnchorX =  x_Pos ;
-                        //annotation.AnchorY = chart1.ChartAreas[0].AxisY.Maximum; 
-                        //annotation.Text = "Flag 1";
-                        //annotation.ForeColor = Color.DarkBlue;
-                        //annotation.Font = new Font("Arial", 9);
-                        //chart1.Annotations.Add(annotation);
                 
                         numCursor++;
                     }
@@ -114,10 +110,6 @@ namespace grafico_teste
                         chart1.ChartAreas[0].CursorX.LineWidth = 2;
                         chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
 
-                        double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                        //double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
-                        double y = chart1.ChartAreas[0].AxisY.Maximum;
-
                         chart1.Annotations.Clear();
 
                         // Set range selection color, specifying transparency of 120
@@ -125,16 +117,6 @@ namespace grafico_teste
                         chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
                         chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
                         chart1.ChartAreas[0].CursorX.SetSelectionPosition(x_Pos, chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X));
-
-                        //Anotação "flag"
-                        //TextAnnotation annotation = new TextAnnotation();
-                        //annotation.AnchorDataPoint = chart1.Series[0].Points[2];
-                        //annotation.AnchorX = x;
-                        //annotation.AnchorY = y;
-                        //annotation.Text = "Flag 2";
-                        //annotation.ForeColor = Color.Green;
-                        //annotation.Font = new Font("Arial", 9);
-                        //chart1.Annotations.Add(annotation);
                  
                         numCursor++;//CLICAR + VEZES SEM EFEITO
                     }
@@ -154,29 +136,20 @@ namespace grafico_teste
                 if(numCursor < 2)
                     chart1.ChartAreas[0].CursorX.SetCursorPosition(x);
         }
-        //-----------------------------------------------------------------
-        private void encerrar_sistema()
-        {
-
-            if (suspender != 0)
-            {
-                ThreadChart.Resume();
-                ThreadChart.Abort();
-            }
-        }
-        //-----------------------------------------------------------------
+       //-------------------------------------------------------
         private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
         {
             encerrar_sistema();
         }
-
+        //-----------------------------------------------------------------
         private void btn_novoProjeto_Click(object sender, EventArgs e)
         {
             btn_Resume.Enabled = true;
+            btn_help.Enabled = true;
            // MessageBox.Show("Projeto EXEMPLO \nCriado com sucesso!", "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
         }
-
+        //-----------------------------------------------------------------
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
             if (mostrarCursores == 0)
@@ -212,7 +185,8 @@ namespace grafico_teste
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
         }
-        //-----------------------------------------------------------------
+
+      
 
     }
 }
