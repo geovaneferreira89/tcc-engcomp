@@ -13,14 +13,18 @@ namespace thread_chart
     public class atualiza_sinal
     {
         private Control _Grafico = null;
-        private int _NumCanais = 1;
+        private Control _BarraDeProgresso = null;
+        private int _NumCanais = 0;
         private delegate void AtualizaChart(double x, double y, int caso, int _VarchartArea_);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
+        private System.Windows.Forms.ProgressBar prgbar = null;
+
         //-------------------------------------------------------------
-        public atualiza_sinal(Control Controle, int NumCanais)
+        public atualiza_sinal(Control Controle,int NumCanais)
         {
             _Grafico = Controle;
             _NumCanais = NumCanais;
+          //  _BarraDeProgresso = BarraDeProgresso;
         }
         //-------------------------------------------------------------
         public void Inicializa()
@@ -29,11 +33,18 @@ namespace thread_chart
                     {
                         Plotar(0, 0, 2, i);
                         double j = 0;
-                        while (j < 10)
+                        while (j < 20)
                         {
-                            Plotar(j, Math.Sin(j), 1, i);
+                            if(i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
+                                Plotar(j, Math.Sin(j), 1, i);
+                            if(i == 1 || i == 4 || i == 7 || i == 10|| i == 13 || i == 16 || i == 19|| i == 22)
+                                Plotar(j, Math.Cos(j), 1, i);
+                            if(i == 2 || i == 5 || i == 8|| i == 11 || i == 14 || i == 17 || i == 20|| i == 23)
+                                Plotar(j, Math.Tan(j), 1, i);
+                        
+
                             j += 0.3;
-                             Thread.Sleep(50);
+                            Thread.Sleep(1);
                         }
                 }
         }

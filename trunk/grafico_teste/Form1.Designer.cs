@@ -34,6 +34,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,8 @@
             this.btnMostrarChart = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progress_bar = new System.Windows.Forms.ToolStripProgressBar();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -100,7 +103,10 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbl_x,
-            this.lbl_Y});
+            this.lbl_Y,
+            this.lbl_mouseX,
+            this.lbl_mouseY,
+            this.progress_bar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 397);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(696, 22);
@@ -119,6 +125,13 @@
             this.lbl_Y.Name = "lbl_Y";
             this.lbl_Y.Size = new System.Drawing.Size(17, 17);
             this.lbl_Y.Text = "Y:";
+            // 
+            // lbl_mouseX
+            // 
+            this.lbl_mouseX.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbl_mouseX.Name = "lbl_mouseX";
+            this.lbl_mouseX.Size = new System.Drawing.Size(59, 17);
+            this.lbl_mouseX.Text = "Mouse X: ";
             // 
             // menuStrip1
             // 
@@ -363,6 +376,19 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "He&lp";
             // 
+            // lbl_mouseY
+            // 
+            this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbl_mouseY.Name = "lbl_mouseY";
+            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
+            this.lbl_mouseY.Text = "Mouse Y:";
+            // 
+            // progress_bar
+            // 
+            this.progress_bar.Enabled = false;
+            this.progress_bar.Name = "progress_bar";
+            this.progress_bar.Size = new System.Drawing.Size(200, 16);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,6 +451,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private System.Windows.Forms.ToolStripStatusLabel lbl_mouseX;
+        private System.Windows.Forms.ToolStripStatusLabel lbl_mouseY;
+        private System.Windows.Forms.ToolStripProgressBar progress_bar;
     }
 }
 
