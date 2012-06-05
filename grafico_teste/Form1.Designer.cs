@@ -31,10 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gbx_Chart = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.Box_Status = new System.Windows.Forms.StatusStrip();
             this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,11 +60,10 @@
             this.btnMostrarChart = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
-            this.progress_bar = new System.Windows.Forms.ToolStripProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.statusStrip1.SuspendLayout();
+            this.Box_Status.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tool_ControlesProjeto.SuspendLayout();
             this.tool_ControlesGerais.SuspendLayout();
@@ -99,19 +99,18 @@
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Mover);
             // 
-            // statusStrip1
+            // Box_Status
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Box_Status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbl_x,
             this.lbl_Y,
             this.lbl_mouseX,
-            this.lbl_mouseY,
-            this.progress_bar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 397);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(696, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
+            this.lbl_mouseY});
+            this.Box_Status.Location = new System.Drawing.Point(0, 397);
+            this.Box_Status.Name = "Box_Status";
+            this.Box_Status.Size = new System.Drawing.Size(696, 22);
+            this.Box_Status.TabIndex = 7;
+            this.Box_Status.Text = "statusStrip1";
             // 
             // lbl_x
             // 
@@ -132,6 +131,13 @@
             this.lbl_mouseX.Name = "lbl_mouseX";
             this.lbl_mouseX.Size = new System.Drawing.Size(59, 17);
             this.lbl_mouseX.Text = "Mouse X: ";
+            // 
+            // lbl_mouseY
+            // 
+            this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbl_mouseY.Name = "lbl_mouseY";
+            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
+            this.lbl_mouseY.Text = "Mouse Y:";
             // 
             // menuStrip1
             // 
@@ -376,18 +382,13 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "He&lp";
             // 
-            // lbl_mouseY
+            // progressBar
             // 
-            this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_mouseY.Name = "lbl_mouseY";
-            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
-            this.lbl_mouseY.Text = "Mouse Y:";
-            // 
-            // progress_bar
-            // 
-            this.progress_bar.Enabled = false;
-            this.progress_bar.Name = "progress_bar";
-            this.progress_bar.Size = new System.Drawing.Size(200, 16);
+            this.progressBar.Location = new System.Drawing.Point(357, 31);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(327, 15);
+            this.progressBar.TabIndex = 11;
+            this.progressBar.Visible = false;
             // 
             // Form1
             // 
@@ -395,9 +396,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(696, 419);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.Box_Status);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.gbx_Chart);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -407,8 +409,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.gbx_Chart.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.Box_Status.ResumeLayout(false);
+            this.Box_Status.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tool_ControlesProjeto.ResumeLayout(false);
@@ -424,7 +426,7 @@
 
         private System.Windows.Forms.GroupBox gbx_Chart;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip Box_Status;
         private System.Windows.Forms.ToolStripStatusLabel lbl_x;
         private System.Windows.Forms.ToolStripStatusLabel lbl_Y;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -453,7 +455,7 @@
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseX;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseY;
-        private System.Windows.Forms.ToolStripProgressBar progress_bar;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
