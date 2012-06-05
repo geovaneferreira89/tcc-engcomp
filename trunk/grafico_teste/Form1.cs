@@ -182,9 +182,15 @@ namespace grafico_teste
             if (mostrarCursores == 0)
             {
                 mostrarCursores = 1;
+                lbl_ferramentaAtiva.ForeColor = Color.Green;
+                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Marcar Padrões";
             }
             else
+            {
                 mostrarCursores = 0;
+                lbl_ferramentaAtiva.ForeColor = Color.Red;
+                lbl_ferramentaAtiva.Text = "Nenhuma ferramenta ativa.";
+            }
         }
         //-----------------------------------------------------------------
         private void ChartInicializarThreads(int numeroDeCanais)
