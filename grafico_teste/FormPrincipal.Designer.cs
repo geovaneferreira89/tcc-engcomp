@@ -1,6 +1,6 @@
 ﻿namespace grafico_teste
 {
-    partial class Form1
+    partial class FormPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.gbx_Chart = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Box_Status = new System.Windows.Forms.StatusStrip();
-            this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,18 +48,16 @@
             this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.btnZoomMais = new System.Windows.Forms.ToolStripButton();
             this.btnZoomMenos = new System.Windows.Forms.ToolStripButton();
-            this.btnAbortar = new System.Windows.Forms.ToolStripButton();
             this.btn_MarcarPadrões = new System.Windows.Forms.ToolStripButton();
             this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip();
             this.btn_novoProjeto = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.btn_Importar = new System.Windows.Forms.ToolStripButton();
-            this.btn_FecharArquivo = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.btn_help = new System.Windows.Forms.ToolStripButton();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -113,20 +111,12 @@
             this.Box_Status.TabIndex = 7;
             this.Box_Status.Text = "statusStrip1";
             // 
-            // lbl_x
+            // lbl_ferramentaAtiva
             // 
-            this.lbl_x.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbl_x.Name = "lbl_x";
-            this.lbl_x.Size = new System.Drawing.Size(17, 17);
-            this.lbl_x.Text = "X:";
-            // 
-            // lbl_Y
-            // 
-            this.lbl_Y.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_Y.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbl_Y.Name = "lbl_Y";
-            this.lbl_Y.Size = new System.Drawing.Size(17, 17);
-            this.lbl_Y.Text = "Y:";
+            this.lbl_ferramentaAtiva.ForeColor = System.Drawing.Color.Brown;
+            this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
+            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(189, 17);
+            this.lbl_ferramentaAtiva.Text = "Nenhuma Ferramenta Selecionada";
             // 
             // lbl_mouseX
             // 
@@ -142,12 +132,20 @@
             this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
             this.lbl_mouseY.Text = "Mouse Y:";
             // 
-            // lbl_ferramentaAtiva
+            // lbl_x
             // 
-            this.lbl_ferramentaAtiva.ForeColor = System.Drawing.Color.Brown;
-            this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
-            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(189, 17);
-            this.lbl_ferramentaAtiva.Text = "Nenhuma Ferramenta Selecionada";
+            this.lbl_x.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lbl_x.Name = "lbl_x";
+            this.lbl_x.Size = new System.Drawing.Size(17, 17);
+            this.lbl_x.Text = "X:";
+            // 
+            // lbl_Y
+            // 
+            this.lbl_Y.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_Y.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lbl_Y.Name = "lbl_Y";
+            this.lbl_Y.Size = new System.Drawing.Size(17, 17);
+            this.lbl_Y.Text = "Y:";
             // 
             // menuStrip1
             // 
@@ -208,12 +206,11 @@
             this.btn_Suspender,
             this.btnZoomMais,
             this.btnZoomMenos,
-            this.btnAbortar,
             this.btn_MarcarPadrões});
-            this.tool_ControlesProjeto.Location = new System.Drawing.Point(220, 24);
+            this.tool_ControlesProjeto.Location = new System.Drawing.Point(192, 24);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(202, 31);
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(174, 31);
             this.tool_ControlesProjeto.TabIndex = 9;
             this.tool_ControlesProjeto.Text = "toolStrip1";
             // 
@@ -225,7 +222,7 @@
             this.btn_Resume.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Resume.Name = "btn_Resume";
             this.btn_Resume.Size = new System.Drawing.Size(28, 28);
-            this.btn_Resume.Text = "toolStripButton1";
+            this.btn_Resume.Text = "Iniciar aquisição de sinal";
             this.btn_Resume.Click += new System.EventHandler(this.btn_Resume_Click);
             // 
             // btn_Suspender
@@ -236,8 +233,8 @@
             this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Suspender.Name = "btn_Suspender";
             this.btn_Suspender.Size = new System.Drawing.Size(28, 28);
-            this.btn_Suspender.Text = "toolStripButton1";
-            this.btn_Suspender.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Suspender.Text = "Pausar Aquisição de Sinal";
+            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click);
             // 
             // btnZoomMais
             // 
@@ -247,7 +244,7 @@
             this.btnZoomMais.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnZoomMais.Name = "btnZoomMais";
             this.btnZoomMais.Size = new System.Drawing.Size(28, 28);
-            this.btnZoomMais.Text = "toolStripButton5";
+            this.btnZoomMais.Text = "Zoom +";
             // 
             // btnZoomMenos
             // 
@@ -258,17 +255,7 @@
             this.btnZoomMenos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnZoomMenos.Name = "btnZoomMenos";
             this.btnZoomMenos.Size = new System.Drawing.Size(28, 28);
-            this.btnZoomMenos.Text = "toolStripButton6";
-            // 
-            // btnAbortar
-            // 
-            this.btnAbortar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAbortar.Enabled = false;
-            this.btnAbortar.Image = ((System.Drawing.Image)(resources.GetObject("btnAbortar.Image")));
-            this.btnAbortar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAbortar.Name = "btnAbortar";
-            this.btnAbortar.Size = new System.Drawing.Size(28, 28);
-            this.btnAbortar.Text = "toolStripButton8";
+            this.btnZoomMenos.Text = "Zoom -";
             // 
             // btn_MarcarPadrões
             // 
@@ -278,7 +265,7 @@
             this.btn_MarcarPadrões.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_MarcarPadrões.Name = "btn_MarcarPadrões";
             this.btn_MarcarPadrões.Size = new System.Drawing.Size(28, 28);
-            this.btn_MarcarPadrões.Text = "toolStripButton9";
+            this.btn_MarcarPadrões.Text = "Definir Conjunto de Padrões";
             this.btn_MarcarPadrões.Click += new System.EventHandler(this.btn_MarcarPadrões_Click);
             // 
             // tool_ControlesGerais
@@ -292,16 +279,15 @@
             this.btn_novoProjeto,
             this.openToolStripButton,
             this.btn_Importar,
-            this.btn_FecharArquivo,
             this.saveToolStripButton,
             this.printToolStripButton,
             this.toolStripSeparator1,
             this.toolStripSeparator,
-            this.helpToolStripButton});
+            this.btn_help});
             this.tool_ControlesGerais.Location = new System.Drawing.Point(0, 24);
             this.tool_ControlesGerais.Name = "tool_ControlesGerais";
             this.tool_ControlesGerais.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tool_ControlesGerais.Size = new System.Drawing.Size(220, 31);
+            this.tool_ControlesGerais.Size = new System.Drawing.Size(192, 31);
             this.tool_ControlesGerais.TabIndex = 10;
             this.tool_ControlesGerais.Text = "toolStrip2";
             // 
@@ -312,7 +298,7 @@
             this.btn_novoProjeto.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_novoProjeto.Name = "btn_novoProjeto";
             this.btn_novoProjeto.Size = new System.Drawing.Size(28, 28);
-            this.btn_novoProjeto.Text = "&New";
+            this.btn_novoProjeto.Text = "Novo projeto";
             this.btn_novoProjeto.Click += new System.EventHandler(this.btn_novoProjeto_Click);
             // 
             // openToolStripButton
@@ -323,7 +309,7 @@
             this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Text = "Abrir Projeto";
             // 
             // btn_Importar
             // 
@@ -333,17 +319,7 @@
             this.btn_Importar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Importar.Name = "btn_Importar";
             this.btn_Importar.Size = new System.Drawing.Size(28, 28);
-            this.btn_Importar.Text = "toolStripButton2";
-            // 
-            // btn_FecharArquivo
-            // 
-            this.btn_FecharArquivo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_FecharArquivo.Enabled = false;
-            this.btn_FecharArquivo.Image = ((System.Drawing.Image)(resources.GetObject("btn_FecharArquivo.Image")));
-            this.btn_FecharArquivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_FecharArquivo.Name = "btn_FecharArquivo";
-            this.btn_FecharArquivo.Size = new System.Drawing.Size(28, 28);
-            this.btn_FecharArquivo.Text = "toolStripButton7";
+            this.btn_Importar.Text = "Importar Arquivo";
             // 
             // saveToolStripButton
             // 
@@ -353,7 +329,7 @@
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Text = "Salvar Projeto";
             // 
             // printToolStripButton
             // 
@@ -363,7 +339,7 @@
             this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripButton.Name = "printToolStripButton";
             this.printToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.printToolStripButton.Text = "&Print";
+            this.printToolStripButton.Text = "Imprimir";
             // 
             // toolStripSeparator1
             // 
@@ -375,25 +351,25 @@
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(6, 31);
             // 
-            // helpToolStripButton
+            // btn_help
             // 
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Enabled = false;
-            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
-            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.helpToolStripButton.Text = "He&lp";
+            this.btn_help.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_help.Enabled = false;
+            this.btn_help.Image = ((System.Drawing.Image)(resources.GetObject("btn_help.Image")));
+            this.btn_help.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_help.Name = "btn_help";
+            this.btn_help.Size = new System.Drawing.Size(28, 28);
+            this.btn_help.Text = "Sobre";
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(444, 31);
+            this.progressBar.Location = new System.Drawing.Point(472, 31);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(327, 15);
             this.progressBar.TabIndex = 11;
             this.progressBar.Visible = false;
             // 
-            // Form1
+            // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -406,7 +382,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.gbx_Chart);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "FormPrincipal";
             this.Text = "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -441,24 +417,22 @@
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btn_Suspender;
         private System.Windows.Forms.ToolStripButton btn_Resume;
-        private System.Windows.Forms.ToolStrip tool_ControlesGerais;
         private System.Windows.Forms.ToolStripButton btnZoomMais;
         private System.Windows.Forms.ToolStripButton btnZoomMenos;
-        private System.Windows.Forms.ToolStripButton btnAbortar;
         private System.Windows.Forms.ToolStripButton btn_MarcarPadrões;
         private System.Windows.Forms.ToolStripButton btn_Importar;
-        private System.Windows.Forms.ToolStripButton btn_FecharArquivo;
         private System.Windows.Forms.ToolStripButton btn_novoProjeto;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripButton printToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private System.Windows.Forms.ToolStripButton btn_help;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseX;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseY;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel lbl_ferramentaAtiva;
+        public System.Windows.Forms.ToolStrip tool_ControlesGerais;
     }
 }
 
