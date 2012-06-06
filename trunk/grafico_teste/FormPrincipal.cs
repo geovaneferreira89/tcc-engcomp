@@ -27,7 +27,7 @@ namespace grafico_teste
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
-
+        private int _ZOOM_ = 0; // 0 -desativado, 1 +ZOOm, 2 -ZOMM  
         public FormPrincipal()
         {
             InitializeComponent();
@@ -90,7 +90,6 @@ namespace grafico_teste
         //-----------------------------------------------------------------
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
-            
             if(mostrarCursores != 0)
             {
 
@@ -130,6 +129,29 @@ namespace grafico_teste
                         numCursor++;//CLICAR + VEZES SEM EFEITO
                     }
             }
+            if (_ZOOM_ != 0)
+            {
+                if (_ZOOM_ == 1)
+                {//ZOOM +
+                    chart1.ChartAreas[0].AxisX.ScaleView.Position = 2;
+                    chart1.ChartAreas[0].CursorX.AutoScroll = true;
+                    chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+                    double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                    chart1.ChartAreas[0].AxisX.ScaleView.Zoom(x, 10);
+                    chart1.ChartAreas[0].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+
+                    // set scrollbar small change to blockSize (e.g. 100)
+                    chart1.ChartAreas[0].AxisX.ScaleView.SmallScrollSize = 10;
+
+                }
+                else
+                {//ZOOM -
+                    chart1.ChartAreas[0].AxisX.ScaleView.Position = 2;
+                    chart1.ChartAreas[0].CursorX.AutoScroll = true;
+                    chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+                    chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+                }
+              }
          
         }
         //-----------------------------------------------------------------
@@ -165,14 +187,12 @@ namespace grafico_teste
             if (mostrarCursores == 0)
             {
                 mostrarCursores = 1;
-                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
-                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Marcar Padrões";
+                AtualizaFerramentaAtiva("Marcar Padrões", 1);
             }
             else
             {
                 mostrarCursores = 0;
-                lbl_ferramentaAtiva.ForeColor = Color.Brown;
-                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Nenhuma";
+                AtualizaFerramentaAtiva("", 0);
             }
         }
         //-----------------------------------------------------------------
@@ -196,8 +216,23 @@ namespace grafico_teste
                 ThreadChart.Start();
         }
         //-----------------------------------------------------------------
+        private void AtualizaFerramentaAtiva(string ferramenta, int opcao)
+        {
+            if (opcao == 0)
+            {
+                lbl_ferramentaAtiva.ForeColor = Color.Brown;
+                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Nenhuma";
+            }
+            if (opcao == 1)
+            {
+                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
+                lbl_ferramentaAtiva.Text = "Ferramenta ativa: "+ ferramenta;
+            }
+
+        }
+        //-----------------------------------------------------------------
         //################################################################
-        //             .VERIFICA ESTADO DAS THREAD EXISTENTES.
+        //            .VERIFICA ESTADO DAS THREAD EXISTENTES.
         //################################################################
         //----------------------------------------------------------------
         private void FuncStatusThreads()
@@ -224,16 +259,36 @@ namespace grafico_teste
         //----------------------------------------------------------------
         private void btnZoomMais_Click(object sender, EventArgs e)
         {
-            lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
-            lbl_ferramentaAtiva.Text = "Ferramenta Ativa: ZOOM +";
-            Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMais.cur");  
-        }
+            if (_ZOOM_ == 0 || _ZOOM_ == 2)
+            {   
+                AtualizaFerramentaAtiva("ZOOM +", 1);
+                Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMais.cur");
+                _ZOOM_ = 1;
+            }
+            else
+            {
+                _ZOOM_ = 0;
+                AtualizaFerramentaAtiva("", 0);
+                Cursor = Cursors.Default;
+            }
+
+        }   
         //----------------------------------------------------------------
         private void btnZoomMenos_Click(object sender, EventArgs e)
         {
-            lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
-            lbl_ferramentaAtiva.Text = "Ferramenta Ativa: ZOOM -";
-            Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMenos.cur");  
+            if (_ZOOM_ == 1)
+            {
+                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
+                AtualizaFerramentaAtiva("ZOOM -", 1);
+                Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMenos.cur");
+                _ZOOM_ = 2;
+            }
+            else
+            {
+                _ZOOM_ = 0;
+                AtualizaFerramentaAtiva("", 0);
+                Cursor = Cursors.Default;
+            }
         }
         //----------------------------------------------------------------
     }

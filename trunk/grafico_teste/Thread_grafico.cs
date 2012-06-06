@@ -162,8 +162,8 @@ namespace thread_chart
                 }
                 if (caso == 1)
                 {
-                    StatusProjeto.Items["lbl_ferramentaAtiva"].ForeColor = Color.Brown;
-                    StatusProjeto.Items["lbl_ferramentaAtiva"].Text = "Ferramenta ativa: Nenhuma";
+                    StatusProjeto.Items["lbl_ferramentaAtiva"].ForeColor = Color.Green;
+                    StatusProjeto.Items["lbl_ferramentaAtiva"].Text = "Sinais Importados.";
                 }
             }
         }
