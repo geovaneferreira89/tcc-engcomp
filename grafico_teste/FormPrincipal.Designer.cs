@@ -115,8 +115,8 @@
             // 
             this.lbl_ferramentaAtiva.ForeColor = System.Drawing.Color.Brown;
             this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
-            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(189, 17);
-            this.lbl_ferramentaAtiva.Text = "Nenhuma Ferramenta Selecionada";
+            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(192, 17);
+            this.lbl_ferramentaAtiva.Text = "Ferramenta Selecionada: Nenhuma";
             // 
             // lbl_mouseX
             // 
@@ -210,7 +210,7 @@
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(192, 24);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(174, 31);
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(143, 31);
             this.tool_ControlesProjeto.TabIndex = 9;
             this.tool_ControlesProjeto.Text = "toolStrip1";
             // 

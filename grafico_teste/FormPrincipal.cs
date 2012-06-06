@@ -165,14 +165,14 @@ namespace grafico_teste
             if (mostrarCursores == 0)
             {
                 mostrarCursores = 1;
-                lbl_ferramentaAtiva.ForeColor = Color.Green;
+                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
                 lbl_ferramentaAtiva.Text = "Ferramenta ativa: Marcar Padrões";
             }
             else
             {
                 mostrarCursores = 0;
                 lbl_ferramentaAtiva.ForeColor = Color.Brown;
-                lbl_ferramentaAtiva.Text = "Nenhuma ferramenta ativa.";
+                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Nenhuma";
             }
         }
         //-----------------------------------------------------------------
@@ -190,12 +190,10 @@ namespace grafico_teste
                   chart1.ChartAreas[i].Position.Height = 3;
                   chart1.ChartAreas[i].Position.Width = 100;
                 }
-
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar);
+                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
-                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
-                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Imporando sinais";
         }
         //-----------------------------------------------------------------
         //################################################################
