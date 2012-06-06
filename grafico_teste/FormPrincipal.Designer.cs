@@ -76,7 +76,7 @@
             this.gbx_Chart.Controls.Add(this.chart1);
             this.gbx_Chart.Location = new System.Drawing.Point(12, 52);
             this.gbx_Chart.Name = "gbx_Chart";
-            this.gbx_Chart.Size = new System.Drawing.Size(683, 242);
+            this.gbx_Chart.Size = new System.Drawing.Size(740, 220);
             this.gbx_Chart.TabIndex = 5;
             this.gbx_Chart.TabStop = false;
             // 
@@ -91,7 +91,7 @@
             this.chart1.Location = new System.Drawing.Point(6, 19);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(658, 204);
+            this.chart1.Size = new System.Drawing.Size(715, 182);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -101,13 +101,13 @@
             // 
             this.Box_Status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbl_ferramentaAtiva,
-            this.lbl_mouseX,
-            this.lbl_mouseY,
             this.lbl_x,
-            this.lbl_Y});
-            this.Box_Status.Location = new System.Drawing.Point(0, 315);
+            this.lbl_Y,
+            this.lbl_mouseX,
+            this.lbl_mouseY});
+            this.Box_Status.Location = new System.Drawing.Point(0, 293);
             this.Box_Status.Name = "Box_Status";
-            this.Box_Status.Size = new System.Drawing.Size(707, 22);
+            this.Box_Status.Size = new System.Drawing.Size(764, 22);
             this.Box_Status.TabIndex = 7;
             this.Box_Status.Text = "statusStrip1";
             // 
@@ -155,7 +155,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(707, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(764, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -366,7 +366,7 @@
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(360, 319);
+            this.progressBar.Location = new System.Drawing.Point(417, 297);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(327, 14);
             this.progressBar.TabIndex = 11;
@@ -377,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(707, 337);
+            this.ClientSize = new System.Drawing.Size(764, 315);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);
