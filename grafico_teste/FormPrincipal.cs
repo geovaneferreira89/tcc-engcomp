@@ -10,18 +10,24 @@ using thread_chart;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace grafico_teste
 {
     public partial class FormPrincipal : Form
     {
-        delegate void SetTextCallback(double x, double y);
-        private Thread ThreadChart;
+        //verifação de status das threads do sistema
+        private Thread StatusThreads;
         private int ThreadChart_status = 0; // 0 - Desabilitada, 1 - Rodando, 2 - Pausada
+        //Plotar sinais na tela
+        private Thread ThreadChart;
+        private int __numeroDeCanais = 22;
+        //---
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
-        private int __numeroDeCanais = 22;
+
         public FormPrincipal()
         {
             InitializeComponent();
@@ -63,11 +69,14 @@ namespace grafico_teste
             {
                 chart1.Enabled = true; 
                 ChartInicializarThreads(__numeroDeCanais);
+                FuncStatusThreads();
                 btn_Suspender.Enabled = true;
                 btn_novoProjeto.Enabled = false;
                 btn_Resume.Enabled = false;
                 btn_MarcarPadrões.Enabled = true;
                 ThreadChart_status = 1;
+                btnZoomMais.Enabled = true;
+                btnZoomMenos.Enabled = true;
             }
 
             if (ThreadChart_status == 2)
@@ -152,6 +161,7 @@ namespace grafico_teste
         //-----------------------------------------------------------------
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.Default;
             if (mostrarCursores == 0)
             {
                 mostrarCursores = 1;
@@ -161,7 +171,7 @@ namespace grafico_teste
             else
             {
                 mostrarCursores = 0;
-                lbl_ferramentaAtiva.ForeColor = Color.Red;
+                lbl_ferramentaAtiva.ForeColor = Color.Brown;
                 lbl_ferramentaAtiva.Text = "Nenhuma ferramenta ativa.";
             }
         }
@@ -184,9 +194,49 @@ namespace grafico_teste
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
+                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
+                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Imporando sinais";
         }
-
-      
-
+        //-----------------------------------------------------------------
+        //################################################################
+        //             .VERIFICA ESTADO DAS THREAD EXISTENTES.
+        //################################################################
+        //----------------------------------------------------------------
+        private void FuncStatusThreads()
+        {
+            StatusThreads = new Thread(new ThreadStart(VerificaStatusThreads));
+            StatusThreads.Start();
+        }
+        //----------------------------------------------------------------
+        private void VerificaStatusThreads( )
+        {
+            while (true)
+            {
+                if (ThreadChart.IsAlive == false)
+                {
+                    //btn_Suspender.Enabled = false;
+                    StatusThreads.Abort();
+                    ThreadChart.Abort();
+                }
+                Thread.Sleep(1000);
+            }
+        }
+        //----------------------------------------------------------------
+        //                              ZOOM
+        //----------------------------------------------------------------
+        private void btnZoomMais_Click(object sender, EventArgs e)
+        {
+            lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
+            lbl_ferramentaAtiva.Text = "Ferramenta Ativa: ZOOM +";
+            Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMais.cur");  
+        }
+        //----------------------------------------------------------------
+        private void btnZoomMenos_Click(object sender, EventArgs e)
+        {
+            lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
+            lbl_ferramentaAtiva.Text = "Ferramenta Ativa: ZOOM -";
+            Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMenos.cur");  
+        }
+        //----------------------------------------------------------------
     }
 }

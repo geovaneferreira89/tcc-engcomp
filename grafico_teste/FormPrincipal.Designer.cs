@@ -76,7 +76,7 @@
             this.gbx_Chart.Controls.Add(this.chart1);
             this.gbx_Chart.Location = new System.Drawing.Point(12, 52);
             this.gbx_Chart.Name = "gbx_Chart";
-            this.gbx_Chart.Size = new System.Drawing.Size(787, 380);
+            this.gbx_Chart.Size = new System.Drawing.Size(683, 242);
             this.gbx_Chart.TabIndex = 5;
             this.gbx_Chart.TabStop = false;
             // 
@@ -91,7 +91,7 @@
             this.chart1.Location = new System.Drawing.Point(6, 19);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(762, 342);
+            this.chart1.Size = new System.Drawing.Size(658, 204);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -105,9 +105,9 @@
             this.lbl_mouseY,
             this.lbl_x,
             this.lbl_Y});
-            this.Box_Status.Location = new System.Drawing.Point(0, 453);
+            this.Box_Status.Location = new System.Drawing.Point(0, 315);
             this.Box_Status.Name = "Box_Status";
-            this.Box_Status.Size = new System.Drawing.Size(811, 22);
+            this.Box_Status.Size = new System.Drawing.Size(707, 22);
             this.Box_Status.TabIndex = 7;
             this.Box_Status.Text = "statusStrip1";
             // 
@@ -155,7 +155,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(811, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(707, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -245,6 +245,7 @@
             this.btnZoomMais.Name = "btnZoomMais";
             this.btnZoomMais.Size = new System.Drawing.Size(28, 28);
             this.btnZoomMais.Text = "Zoom +";
+            this.btnZoomMais.Click += new System.EventHandler(this.btnZoomMais_Click);
             // 
             // btnZoomMenos
             // 
@@ -256,6 +257,7 @@
             this.btnZoomMenos.Name = "btnZoomMenos";
             this.btnZoomMenos.Size = new System.Drawing.Size(28, 28);
             this.btnZoomMenos.Text = "Zoom -";
+            this.btnZoomMenos.Click += new System.EventHandler(this.btnZoomMenos_Click);
             // 
             // btn_MarcarPadrões
             // 
@@ -363,9 +365,10 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(472, 31);
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(360, 319);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(327, 15);
+            this.progressBar.Size = new System.Drawing.Size(327, 14);
             this.progressBar.TabIndex = 11;
             this.progressBar.Visible = false;
             // 
@@ -374,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(811, 475);
+            this.ClientSize = new System.Drawing.Size(707, 337);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);
