@@ -12,26 +12,27 @@ namespace thread_chart
 {
     public class atualiza_sinal
     {
+        //Controles Chart--------------------------------------------------------------------------------------------------------
         private Control _Grafico = null;
-        private Control _BarraDeProgresso = null;
-        private int _NumCanais = 0;
         private delegate void AtualizaChart(double x, double y, int caso, int _VarchartArea_, string Cor);
-        private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
+        //Controles Progress Bar-------------------------------------------------------------------------------------------------
+        private Control _BarraDeProgresso = null;
+        private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.ProgressBar prgbar = null;
-        // Controles Projeto
+        // Controles Projeto------------------------------------------------------------------------------------------------------
         private Control _ControleProjeto = null;
         private System.Windows.Forms.ToolStrip ControleProjeto = null;
         private delegate void AtualizaControleProjeto(string caso);
-        //Status do Projeto 
+        //Status do Projeto-------------------------------------------------------------------------------------------------------
         private Control _StatusProjeto = null;
         private System.Windows.Forms.StatusStrip StatusProjeto = null;
         private delegate void AtualizaStatusProjeto(string SMS, int caso);
-        //amostras sinal de teste
+        //amostras sinal de teste-------------------------------------------------------------------------------------------------
         private int num_de_voltas = 20;
         private double num_de_amostras = 0.5;
-
-        //-------------------------------------------------------------
+        private int _NumCanais = 0;
+        //-----------------------------------------------------------------------------------------------------------------
         public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto)
         {
             _Grafico = Controle;
@@ -40,7 +41,7 @@ namespace thread_chart
             _ControleProjeto = __ControleProjeto;
             _StatusProjeto = __StatusProjeto;
         }
-        //-------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------
         public void Inicializa()
         {
             for (int i = 0; i < _NumCanais; i++)
@@ -75,7 +76,7 @@ namespace thread_chart
             FuncAtualizaStatusProjeto("...terminou", 1);
             FuncAtualizaControleProjeto("Des_btn_Suspender");
         }
-        //-------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------
         private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor)
         {
             if (_Grafico.InvokeRequired)
@@ -102,7 +103,7 @@ namespace thread_chart
                 }
             }
         }
-        //-------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------
         private void load_progress_bar(int valor, int caso)
         {
 
@@ -129,7 +130,7 @@ namespace thread_chart
                     prgbar.Visible = false;
             }
         }
-        //-------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------
         private void FuncAtualizaControleProjeto(string caso)
         {
             if (_ControleProjeto.InvokeRequired)
@@ -145,7 +146,7 @@ namespace thread_chart
                 }
             }
         }
-        //-------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------
         private void FuncAtualizaStatusProjeto(string SMS, int caso)
         {
             if (_StatusProjeto.InvokeRequired)
@@ -167,6 +168,6 @@ namespace thread_chart
                 }
             }
         }
-        //-------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------
     }
 }

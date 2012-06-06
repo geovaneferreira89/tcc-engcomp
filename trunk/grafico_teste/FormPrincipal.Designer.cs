@@ -33,10 +33,10 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Box_Status = new System.Windows.Forms.StatusStrip();
             this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +76,7 @@
             this.gbx_Chart.Controls.Add(this.chart1);
             this.gbx_Chart.Location = new System.Drawing.Point(12, 52);
             this.gbx_Chart.Name = "gbx_Chart";
-            this.gbx_Chart.Size = new System.Drawing.Size(740, 220);
+            this.gbx_Chart.Size = new System.Drawing.Size(740, 222);
             this.gbx_Chart.TabIndex = 5;
             this.gbx_Chart.TabStop = false;
             // 
@@ -91,7 +91,7 @@
             this.chart1.Location = new System.Drawing.Point(6, 19);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(715, 182);
+            this.chart1.Size = new System.Drawing.Size(715, 184);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -105,7 +105,7 @@
             this.lbl_Y,
             this.lbl_mouseX,
             this.lbl_mouseY});
-            this.Box_Status.Location = new System.Drawing.Point(0, 293);
+            this.Box_Status.Location = new System.Drawing.Point(0, 295);
             this.Box_Status.Name = "Box_Status";
             this.Box_Status.Size = new System.Drawing.Size(764, 22);
             this.Box_Status.TabIndex = 7;
@@ -117,20 +117,6 @@
             this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
             this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(192, 17);
             this.lbl_ferramentaAtiva.Text = "Ferramenta Selecionada: Nenhuma";
-            // 
-            // lbl_mouseX
-            // 
-            this.lbl_mouseX.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_mouseX.Name = "lbl_mouseX";
-            this.lbl_mouseX.Size = new System.Drawing.Size(59, 17);
-            this.lbl_mouseX.Text = "Mouse X: ";
-            // 
-            // lbl_mouseY
-            // 
-            this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_mouseY.Name = "lbl_mouseY";
-            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
-            this.lbl_mouseY.Text = "Mouse Y:";
             // 
             // lbl_x
             // 
@@ -146,6 +132,20 @@
             this.lbl_Y.Name = "lbl_Y";
             this.lbl_Y.Size = new System.Drawing.Size(17, 17);
             this.lbl_Y.Text = "Y:";
+            // 
+            // lbl_mouseX
+            // 
+            this.lbl_mouseX.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbl_mouseX.Name = "lbl_mouseX";
+            this.lbl_mouseX.Size = new System.Drawing.Size(59, 17);
+            this.lbl_mouseX.Text = "Mouse X: ";
+            // 
+            // lbl_mouseY
+            // 
+            this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbl_mouseY.Name = "lbl_mouseY";
+            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
+            this.lbl_mouseY.Text = "Mouse Y:";
             // 
             // menuStrip1
             // 
@@ -366,7 +366,7 @@
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(417, 297);
+            this.progressBar.Location = new System.Drawing.Point(417, 299);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(327, 14);
             this.progressBar.TabIndex = 11;
@@ -377,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(764, 315);
+            this.ClientSize = new System.Drawing.Size(764, 317);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);

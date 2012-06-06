@@ -17,27 +17,29 @@ namespace grafico_teste
 {
     public partial class FormPrincipal : Form
     {
-        //verifação de status das threads do sistema
+        //verifação de status das threads do sistema---------------------------------------
         private Thread StatusThreads;
         private int ThreadChart_status = 0; // 0 - Desabilitada, 1 - Rodando, 2 - Pausada
-        //Plotar sinais na tela
+        //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
         private int __numeroDeCanais = 22;
-        //---
+        //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
-        private int _ZOOM_ = 0; // 0 -desativado, 1 +ZOOm, 2 -ZOMM  
+        private int _ZOOM_ = 0; // 0 -desativado, 1 +ZOOm, 2 -ZOMM 
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public FormPrincipal()
         {
             InitializeComponent();
         }
-        //-----------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             encerrar_sistema( );
         }
-        //-----------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void encerrar_sistema()
         {
             if (ThreadChart_status == 1)
@@ -50,7 +52,7 @@ namespace grafico_teste
                 ThreadChart.Abort();
             }
         }
-        //-----------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btn_Suspender_Click(object sender, EventArgs e)
         {
             if (ThreadChart_status == 1)
@@ -62,7 +64,7 @@ namespace grafico_teste
                 ThreadChart_status = 2;
             }
         }
-        //-----------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btn_Resume_Click(object sender, EventArgs e)
         {
             if (ThreadChart_status == 0)
@@ -87,7 +89,7 @@ namespace grafico_teste
                 btn_Resume.Enabled = false;
             }
         }
-        //-----------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
             if(mostrarCursores != 0)
@@ -154,7 +156,7 @@ namespace grafico_teste
               }
          
         }
-        //-----------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
                 double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
@@ -167,12 +169,12 @@ namespace grafico_teste
                 if(numCursor < 2)
                     chart1.ChartAreas[0].CursorX.SetCursorPosition(x);
         }
-       //-------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
         private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
         {
             encerrar_sistema();
         }
-        //-----------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------
         private void btn_novoProjeto_Click(object sender, EventArgs e)
         {
             btn_Resume.Enabled = true;
@@ -180,7 +182,7 @@ namespace grafico_teste
            // MessageBox.Show("Projeto EXEMPLO \nCriado com sucesso!", "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
         }
-        //-----------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
@@ -195,7 +197,7 @@ namespace grafico_teste
                 AtualizaFerramentaAtiva("", 0);
             }
         }
-        //-----------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------
         private void ChartInicializarThreads(int numeroDeCanais)
         {
                 for (int i = 0; i < numeroDeCanais; i++)
@@ -215,7 +217,7 @@ namespace grafico_teste
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
         }
-        //-----------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------
         private void AtualizaFerramentaAtiva(string ferramenta, int opcao)
         {
             if (opcao == 0)
@@ -230,37 +232,13 @@ namespace grafico_teste
             }
 
         }
-        //-----------------------------------------------------------------
-        //################################################################
-        //            .VERIFICA ESTADO DAS THREAD EXISTENTES.
-        //################################################################
-        //----------------------------------------------------------------
-        private void FuncStatusThreads()
-        {
-            StatusThreads = new Thread(new ThreadStart(VerificaStatusThreads));
-            StatusThreads.Start();
-        }
-        //----------------------------------------------------------------
-        private void VerificaStatusThreads( )
-        {
-            while (true)
-            {
-                if (ThreadChart.IsAlive == false)
-                {
-                    //btn_Suspender.Enabled = false;
-                    StatusThreads.Abort();
-                    ThreadChart.Abort();
-                }
-                Thread.Sleep(1000);
-            }
-        }
-        //----------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
         //                              ZOOM
-        //----------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
         private void btnZoomMais_Click(object sender, EventArgs e)
         {
             if (_ZOOM_ == 0 || _ZOOM_ == 2)
-            {   
+            {
                 AtualizaFerramentaAtiva("ZOOM +", 1);
                 Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMais.cur");
                 _ZOOM_ = 1;
@@ -272,8 +250,8 @@ namespace grafico_teste
                 Cursor = Cursors.Default;
             }
 
-        }   
-        //----------------------------------------------------------------
+        }
+        //--------------------------------------------------------------------------------------------------------------------
         private void btnZoomMenos_Click(object sender, EventArgs e)
         {
             if (_ZOOM_ == 1)
@@ -290,6 +268,31 @@ namespace grafico_teste
                 Cursor = Cursors.Default;
             }
         }
-        //----------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------
+        //                   ################################################################
+        //                                .VERIFICA ESTADO DAS THREAD EXISTENTES.
+        //                   ################################################################
+        //---------------------------------------------------------------------------------------------------------------------
+        private void FuncStatusThreads()
+        {
+            StatusThreads = new Thread(new ThreadStart(VerificaStatusThreads));
+            StatusThreads.Start();
+        }
+        //--------------------------------------------------------------------------------------------------------------------
+        private void VerificaStatusThreads( )
+        {
+            while (true)
+            {
+                if (ThreadChart.IsAlive == false)
+                {
+                    //btn_Suspender.Enabled = false;
+                    ThreadChart.Abort();
+                    StatusThreads.Abort();
+                }
+                Thread.Sleep(1000);
+            }
+        }
+        //--------------------------------------------------------------------------------------------------------------------
+       
     }
 }
