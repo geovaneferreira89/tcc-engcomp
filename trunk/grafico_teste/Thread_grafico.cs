@@ -19,15 +19,26 @@ namespace thread_chart
         private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private System.Windows.Forms.ProgressBar prgbar = null;
+        // Controles Projeto
+        private Control _ControleProjeto = null;
+        private System.Windows.Forms.ToolStrip ControleProjeto = null;
+        private delegate void AtualizaControleProjeto(string caso);
+        //Status do Projeto 
+        private Control _StatusProjeto = null;
+        private System.Windows.Forms.StatusStrip StatusProjeto = null;
+        private delegate void AtualizaStatusProjeto(string SMS, int caso);
+        //amostras sinal de teste
         private int num_de_voltas = 20;
         private double num_de_amostras = 0.5;
 
         //-------------------------------------------------------------
-        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso)
+        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto)
         {
             _Grafico = Controle;
             _NumCanais = NumCanais;
             _BarraDeProgresso = BarraDeProgresso;
+            _ControleProjeto = __ControleProjeto;
+            _StatusProjeto = __StatusProjeto;
         }
         //-------------------------------------------------------------
         public void Inicializa()
@@ -36,6 +47,7 @@ namespace thread_chart
             {
                 Plotar(0, 0, 2, i, " ");
                 load_progress_bar(0, 2);
+                FuncAtualizaStatusProjeto("...Iniciou", 0);
                 double j = 0;
                 int inc = 0;
                 while (j < num_de_voltas)
@@ -60,7 +72,8 @@ namespace thread_chart
                 
             }
             load_progress_bar(0, 3);
-            
+            FuncAtualizaStatusProjeto("...terminou", 1);
+            FuncAtualizaControleProjeto("Des_btn_Suspender");
         }
         //-------------------------------------------------------------
         private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor)
@@ -117,6 +130,43 @@ namespace thread_chart
             }
         }
         //-------------------------------------------------------------
-
+        private void FuncAtualizaControleProjeto(string caso)
+        {
+            if (_ControleProjeto.InvokeRequired)
+            {
+                _ControleProjeto.BeginInvoke(new AtualizaControleProjeto(FuncAtualizaControleProjeto), new Object[] { caso });
+            }
+            else
+            {
+                if (caso == "Des_btn_Suspender")
+                {
+                    ControleProjeto = _ControleProjeto as System.Windows.Forms.ToolStrip;
+                    ControleProjeto.Items["btn_Suspender"].Enabled = false;
+                }
+            }
+        }
+        //-------------------------------------------------------------
+        private void FuncAtualizaStatusProjeto(string SMS, int caso)
+        {
+            if (_StatusProjeto.InvokeRequired)
+            {
+                _StatusProjeto.BeginInvoke(new AtualizaStatusProjeto(FuncAtualizaStatusProjeto), new Object[] { SMS, caso });
+            }
+            else
+            {
+                if (caso == 0)
+                {
+                    StatusProjeto = _StatusProjeto as System.Windows.Forms.StatusStrip;
+                    StatusProjeto.Items["lbl_ferramentaAtiva"].ForeColor = Color.MediumSeaGreen;
+                    StatusProjeto.Items["lbl_ferramentaAtiva"].Text = "Ferramenta ativa: Imporando sinais";
+                }
+                if (caso == 1)
+                {
+                    StatusProjeto.Items["lbl_ferramentaAtiva"].ForeColor = Color.Brown;
+                    StatusProjeto.Items["lbl_ferramentaAtiva"].Text = "Ferramenta ativa: Nenhuma";
+                }
+            }
+        }
+        //-------------------------------------------------------------
     }
 }
