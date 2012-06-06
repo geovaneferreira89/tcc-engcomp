@@ -19,8 +19,8 @@ namespace thread_chart
         private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private System.Windows.Forms.ProgressBar prgbar = null;
-        private int num_de_voltas = 10;
-        private double num_de_amostras = 0.3;
+        private int num_de_voltas = 20;
+        private double num_de_amostras = 0.5;
 
         //-------------------------------------------------------------
         public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso)
@@ -57,7 +57,10 @@ namespace thread_chart
                     Thread.Sleep(1);
                 }
                 load_progress_bar(inc, 1);
+                
             }
+            load_progress_bar(0, 3);
+            
         }
         //-------------------------------------------------------------
         private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor)
@@ -109,6 +112,8 @@ namespace thread_chart
                     prgbar.Visible = true;
                     prgbar.Maximum = num_de_voltas * _NumCanais;
                 }
+                if(caso == 3)
+                    prgbar.Visible = false;
             }
         }
         //-------------------------------------------------------------
