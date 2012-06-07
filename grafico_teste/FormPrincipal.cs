@@ -94,7 +94,6 @@ namespace grafico_teste
         {
             if(mostrarCursores != 0)
             {
-
                     if (numCursor == 0)
                     {
                         x_Pos = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
@@ -159,15 +158,17 @@ namespace grafico_teste
         //---------------------------------------------------------------------------------------------------------------------
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
+            for(int i = 0; i < chart1.ChartAreas.Count; i++)
+            {
                 double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                 double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
                 lbl_x.Text = "Valor X: " + Math.Round(x,4).ToString();
                 lbl_Y.Text = "Valor Y: " + Math.Round(y,4).ToString();
                 lbl_mouseX.Text = "Mouse X: " + e.X;
                 lbl_mouseY.Text = "Mouse Y: " + e.Y;
-
-                if(numCursor < 2)
+                 if(numCursor < 2)
                     chart1.ChartAreas[0].CursorX.SetCursorPosition(x);
+            }
         }
         //--------------------------------------------------------------------------------------------------------------------
         private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,71 +184,36 @@ namespace grafico_teste
                 
         }
         //---------------------------------------------------------------------------------------------------------------------
+        //                                              ##   Definir Padrões ##
+        //---------------------------------------------------------------------------------------------------------------------
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.Default;
             if (mostrarCursores == 0)
             {
+                AtualizaFerramentaAtiva("", 0);
                 mostrarCursores = 1;
                 AtualizaFerramentaAtiva("Marcar Padrões", 1);
             }
             else
             {
-                mostrarCursores = 0;
                 AtualizaFerramentaAtiva("", 0);
             }
         }
-        //---------------------------------------------------------------------------------------------------------------------
-        private void ChartInicializarThreads(int numeroDeCanais)
-        {
-                for (int i = 0; i < numeroDeCanais; i++)
-                {
-                    //propriedades de cada sinal
-                  chart1.ChartAreas.Add("canal" + i);
-                  chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
-                  chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                  chart1.ChartAreas[i].BackColor = Color.WhiteSmoke;
-                  chart1.ChartAreas[i].Position.X = 1;
-                  chart1.ChartAreas[i].Position.Y = i*(4)+3;
-                  chart1.ChartAreas[i].Position.Height = 3;
-                  chart1.ChartAreas[i].Position.Width = 100;
-                }
-                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status);
-                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-                ThreadChart.Start();
-        }
-        //---------------------------------------------------------------------------------------------------------------------
-        private void AtualizaFerramentaAtiva(string ferramenta, int opcao)
-        {
-            if (opcao == 0)
-            {
-                lbl_ferramentaAtiva.ForeColor = Color.Brown;
-                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Nenhuma";
-            }
-            if (opcao == 1)
-            {
-                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
-                lbl_ferramentaAtiva.Text = "Ferramenta ativa: "+ ferramenta;
-            }
-
-        }
         //--------------------------------------------------------------------------------------------------------------------
-        //                              ZOOM
+        //                                                    ##  ZOOM ##
         //--------------------------------------------------------------------------------------------------------------------
         private void btnZoomMais_Click(object sender, EventArgs e)
         {
             if (_ZOOM_ == 0 || _ZOOM_ == 2)
             {
+                AtualizaFerramentaAtiva("", 0);
                 AtualizaFerramentaAtiva("ZOOM +", 1);
                 Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMais.cur");
                 _ZOOM_ = 1;
             }
             else
             {
-                _ZOOM_ = 0;
                 AtualizaFerramentaAtiva("", 0);
-                Cursor = Cursors.Default;
             }
 
         }
@@ -256,17 +222,57 @@ namespace grafico_teste
         {
             if (_ZOOM_ == 1)
             {
-                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
+                AtualizaFerramentaAtiva("", 0);
                 AtualizaFerramentaAtiva("ZOOM -", 1);
                 Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMenos.cur");
                 _ZOOM_ = 2;
             }
             else
             {
-                _ZOOM_ = 0;
                 AtualizaFerramentaAtiva("", 0);
-                Cursor = Cursors.Default;
             }
+        }
+        //---------------------------------------------------------------------------------------------------------------------
+        //                                        ->   Ferramenta ativa <-
+        //---------------------------------------------------------------------------------------------------------------------
+        private void AtualizaFerramentaAtiva(string ferramenta, int opcao)
+        {
+            if (opcao == 0)
+            {
+                lbl_ferramentaAtiva.ForeColor = Color.Brown;
+                lbl_ferramentaAtiva.Text = "Ferramenta ativa: Nenhuma";
+                Cursor = Cursors.Default;
+                _ZOOM_ = 0;
+                mostrarCursores = 0;
+            }
+            if (opcao == 1)
+            {
+                lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
+                lbl_ferramentaAtiva.Text = "Ferramenta ativa: " + ferramenta;
+            }
+
+        }
+        //---------------------------------------------------------------------------------------------------------------------
+        //                          -> Inicializa Thread responsalvel pela aquisição do sinal. <-
+        //---------------------------------------------------------------------------------------------------------------------
+        private void ChartInicializarThreads(int numeroDeCanais)
+        {
+            for (int i = 0; i < numeroDeCanais; i++)
+            {
+                //propriedades de cada sinal
+                chart1.ChartAreas.Add("canal" + i);
+                chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
+                chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
+                chart1.ChartAreas[i].BackColor = Color.WhiteSmoke;
+                chart1.ChartAreas[i].Position.X = 1;
+                chart1.ChartAreas[i].Position.Y = i * (4) + 3;
+                chart1.ChartAreas[i].Position.Height = 3;
+                chart1.ChartAreas[i].Position.Width = 100;
+            }
+            //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+            atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status);
+            ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+            ThreadChart.Start();
         }
         //---------------------------------------------------------------------------------------------------------------------
         //                   ################################################################
