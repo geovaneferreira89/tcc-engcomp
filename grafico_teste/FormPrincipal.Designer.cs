@@ -59,6 +59,8 @@
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.btn_help = new System.Windows.Forms.ToolStripButton();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.saveFileExplorer = new System.Windows.Forms.SaveFileDialog();
+            this.openFileExplorer = new System.Windows.Forms.OpenFileDialog();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Box_Status.SuspendLayout();
@@ -76,7 +78,7 @@
             this.gbx_Chart.Controls.Add(this.chart1);
             this.gbx_Chart.Location = new System.Drawing.Point(12, 52);
             this.gbx_Chart.Name = "gbx_Chart";
-            this.gbx_Chart.Size = new System.Drawing.Size(740, 222);
+            this.gbx_Chart.Size = new System.Drawing.Size(690, 268);
             this.gbx_Chart.TabIndex = 5;
             this.gbx_Chart.TabStop = false;
             // 
@@ -91,7 +93,7 @@
             this.chart1.Location = new System.Drawing.Point(6, 19);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(715, 184);
+            this.chart1.Size = new System.Drawing.Size(665, 230);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -105,9 +107,9 @@
             this.lbl_Y,
             this.lbl_mouseX,
             this.lbl_mouseY});
-            this.Box_Status.Location = new System.Drawing.Point(0, 295);
+            this.Box_Status.Location = new System.Drawing.Point(0, 341);
             this.Box_Status.Name = "Box_Status";
-            this.Box_Status.Size = new System.Drawing.Size(764, 22);
+            this.Box_Status.Size = new System.Drawing.Size(714, 22);
             this.Box_Status.TabIndex = 7;
             this.Box_Status.Text = "statusStrip1";
             // 
@@ -155,7 +157,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(764, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(714, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -306,22 +308,22 @@
             // openToolStripButton
             // 
             this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Enabled = false;
             this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
             this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(28, 28);
             this.openToolStripButton.Text = "Abrir Projeto";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
             // 
             // btn_Importar
             // 
             this.btn_Importar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Importar.Enabled = false;
             this.btn_Importar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Importar.Image")));
             this.btn_Importar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Importar.Name = "btn_Importar";
             this.btn_Importar.Size = new System.Drawing.Size(28, 28);
             this.btn_Importar.Text = "Importar Arquivo";
+            this.btn_Importar.Click += new System.EventHandler(this.btn_Importar_Click);
             // 
             // saveToolStripButton
             // 
@@ -332,6 +334,7 @@
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(28, 28);
             this.saveToolStripButton.Text = "Salvar Projeto";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
             // printToolStripButton
             // 
@@ -366,18 +369,27 @@
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(417, 299);
+            this.progressBar.Location = new System.Drawing.Point(367, 345);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(327, 14);
             this.progressBar.TabIndex = 11;
             this.progressBar.Visible = false;
+            // 
+            // saveFileExplorer
+            // 
+            this.saveFileExplorer.CreatePrompt = true;
+            this.saveFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*rpb";
+            // 
+            // openFileExplorer
+            // 
+            this.openFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*.rpb|Todos os arquivos  (*.*)|*.*\"";
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(764, 317);
+            this.ClientSize = new System.Drawing.Size(714, 363);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);
@@ -436,6 +448,8 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel lbl_ferramentaAtiva;
         public System.Windows.Forms.ToolStrip tool_ControlesGerais;
+        private System.Windows.Forms.SaveFileDialog saveFileExplorer;
+        private System.Windows.Forms.OpenFileDialog openFileExplorer;
     }
 }
 

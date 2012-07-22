@@ -22,24 +22,31 @@ namespace grafico_teste
         private int ThreadChart_status = 0; // 0 - Desabilitada, 1 - Rodando, 2 - Pausada
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
-        private int __numeroDeCanais = 22;
+        private int __numeroDeCanais = 2;
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
         private int _ZOOM_ = 0; // 0 -desativado, 1 +ZOOm, 2 -ZOMM 
-
-        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private String nomeProject = "Sem nome";
+        //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
             InitializeComponent();
         }
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             encerrar_sistema( );
         }
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //#########################################################################################
+        //-----------------------------------------------------------------------------------------
+        //                                 Gerencia de Projetos
+        //-----------------------------------------------------------------------------------------
+        //#########################################################################################
+        /*
+         *Verifica estado do sistema, caso esteja em execução aborta as operações. 
+         */
         private void encerrar_sistema()
         {
             if (ThreadChart_status == 1)
@@ -52,7 +59,56 @@ namespace grafico_teste
                 ThreadChart.Abort();
             }
         }
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
+        // Ferramenta de importar sinais EEG de outro programa
+        private void btn_Importar_Click(object sender, EventArgs e)
+        {
+            AtualizaFerramentaAtiva("Importar sinais não implentado!", 2);
+        }
+        //------------------------------------------------------------------------------------------
+        //Salva Projeto em que está sendo executado
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            saveFileExplorer.ShowDialog();
+            nomeProject = saveFileExplorer.FileName;
+            if (nomeProject != null)
+            {
+                string Dados_Saida; //= {"[NumDeCanais = X]","[Canal 1 = XXXXXXXX]","[Canal 2 = YYYYYY]"};
+                Dados_Saida = "[NumDeCanais = " + __numeroDeCanais + "]";
+                System.IO.StreamWriter file = new System.IO.StreamWriter(nomeProject+".rpb", true);
+                file.WriteLine(Dados_Saida);
+                for(int i=0; i<__numeroDeCanais;i++)
+                {
+                    Dados_Saida = " ";
+                    file.WriteLine(Dados_Saida);
+                    Dados_Saida = "[Canal " + i + "]";
+                    file.WriteLine(Dados_Saida);
+                    Dados_Saida = "[Num de Pontos = " + chart1.Series[i].Points.Count + "]";
+                    file.WriteLine(Dados_Saida);
+                   for (int j = 0; j < chart1.Series[i].Points.Count; j++)
+                    {
+                        Dados_Saida = ""+chart1.Series[i].Points[j];
+                        file.WriteLine(Dados_Saida);
+                    }
+                }
+                file.Close();
+                MessageBox.Show("Projeto:\n" + nomeProject + "\n\nSalvado com sucesso!",
+                   "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                           MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }   
+        }
+        //------------------------------------------------------------------------------------------
+        //Abre projeto.
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            openFileExplorer.ShowDialog( );
+            AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 
+        }
+        //##########################################################################################
+        //------------------------------------------------------------------------------------------
+        //                             Ferramentas ao Tratamento do sinal EEG
+        //------------------------------------------------------------------------------------------
+        //##########################################################################################
         private void btn_Suspender_Click(object sender, EventArgs e)
         {
             if (ThreadChart_status == 1)
@@ -64,7 +120,7 @@ namespace grafico_teste
                 ThreadChart_status = 2;
             }
         }
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void btn_Resume_Click(object sender, EventArgs e)
         {
             if (ThreadChart_status == 0)
@@ -89,7 +145,7 @@ namespace grafico_teste
                 btn_Resume.Enabled = false;
             }
         }
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
             if(mostrarCursores != 0)
@@ -155,7 +211,7 @@ namespace grafico_teste
               }
          
         }
-        //---------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
             for(int i = 0; i < chart1.ChartAreas.Count; i++)
@@ -170,22 +226,25 @@ namespace grafico_teste
                     chart1.ChartAreas[0].CursorX.SetCursorPosition(x);
             }
         }
-        //--------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
         {
             encerrar_sistema();
         }
-        //---------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void btn_novoProjeto_Click(object sender, EventArgs e)
         {
             btn_Resume.Enabled = true;
             btn_help.Enabled = true;
-           // MessageBox.Show("Projeto EXEMPLO \nCriado com sucesso!", "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            saveToolStripButton.Enabled = true;
+            MessageBox.Show("Projeto " + nomeProject + "\nCriado", 
+                    "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
         }
-        //---------------------------------------------------------------------------------------------------------------------
-        //                                              ##   Definir Padrões ##
-        //---------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
+        //                               ##   Definir Padrões ##
+        //------------------------------------------------------------------------------------------
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
             if (mostrarCursores == 0)
@@ -199,9 +258,9 @@ namespace grafico_teste
                 AtualizaFerramentaAtiva("", 0);
             }
         }
-        //--------------------------------------------------------------------------------------------------------------------
-        //                                                    ##  ZOOM ##
-        //--------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
+        //                                    ##  ZOOM ##
+        //------------------------------------------------------------------------------------------
         private void btnZoomMais_Click(object sender, EventArgs e)
         {
             if (_ZOOM_ == 0 || _ZOOM_ == 2)
@@ -217,7 +276,7 @@ namespace grafico_teste
             }
 
         }
-        //--------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void btnZoomMenos_Click(object sender, EventArgs e)
         {
             if (_ZOOM_ == 1)
@@ -232,9 +291,9 @@ namespace grafico_teste
                 AtualizaFerramentaAtiva("", 0);
             }
         }
-        //---------------------------------------------------------------------------------------------------------------------
-        //                                        ->   Ferramenta ativa <-
-        //---------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
+        //                              ->   Ferramenta ativa <-
+        //------------------------------------------------------------------------------------------
         private void AtualizaFerramentaAtiva(string ferramenta, int opcao)
         {
             if (opcao == 0)
@@ -250,11 +309,16 @@ namespace grafico_teste
                 lbl_ferramentaAtiva.ForeColor = Color.MediumSeaGreen;
                 lbl_ferramentaAtiva.Text = "Ferramenta ativa: " + ferramenta;
             }
+            if (opcao == 2)
+            {
+                lbl_ferramentaAtiva.ForeColor = Color.Red;
+                lbl_ferramentaAtiva.Text = ferramenta;
+            }
 
         }
-        //---------------------------------------------------------------------------------------------------------------------
-        //                          -> Inicializa Thread responsalvel pela aquisição do sinal. <-
-        //---------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
+        //           -> Inicializa Thread responsalvel pela aquisição do sinal. <-
+        //------------------------------------------------------------------------------------------
         private void ChartInicializarThreads(int numeroDeCanais)
         {
             for (int i = 0; i < numeroDeCanais; i++)
@@ -270,21 +334,22 @@ namespace grafico_teste
                 chart1.ChartAreas[i].Position.Width = 100;
             }
             //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-            atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status);
+            atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais,
+                                            progressBar, tool_ControlesProjeto, Box_Status, "Sinal Teste");
             ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
             ThreadChart.Start();
         }
-        //---------------------------------------------------------------------------------------------------------------------
-        //                   ################################################################
-        //                                .VERIFICA ESTADO DAS THREAD EXISTENTES.
-        //                   ################################################################
-        //---------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
+        //            ################################################################
+        //                           .VERIFICA ESTADO DAS THREAD EXISTENTES.
+        //            ################################################################
+        //------------------------------------------------------------------------------------------
         private void FuncStatusThreads()
         {
             StatusThreads = new Thread(new ThreadStart(VerificaStatusThreads));
             StatusThreads.Start();
         }
-        //--------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void VerificaStatusThreads( )
         {
             while (true)
@@ -298,7 +363,7 @@ namespace grafico_teste
                 Thread.Sleep(1000);
             }
         }
-        //--------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
        
     }
 }
