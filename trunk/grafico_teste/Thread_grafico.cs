@@ -32,49 +32,69 @@ namespace thread_chart
         private int num_de_voltas = 20;
         private double num_de_amostras = 0.5;
         private int _NumCanais = 0;
+        //Controles sobre o sinal a exibir----------------------------------------------------------------------------------------
+        private string OpcaoSinal;
         //-----------------------------------------------------------------------------------------------------------------
-        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto)
+        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal)
         {
             _Grafico = Controle;
             _NumCanais = NumCanais;
             _BarraDeProgresso = BarraDeProgresso;
             _ControleProjeto = __ControleProjeto;
             _StatusProjeto = __StatusProjeto;
+            OpcaoSinal = _OpcaoSinal;
         }
         //-----------------------------------------------------------------------------------------------------------------
         public void Inicializa()
         {
-            for (int i = 0; i < _NumCanais; i++)
+            switch (OpcaoSinal) //Gerar Sinal Aleatorio
             {
-                Plotar(0, 0, 2, i, " ");
-                load_progress_bar(0, 2);
-                FuncAtualizaStatusProjeto("...Iniciou", 0);
-                double j = 0;
-                int inc = 0;
-                while (j < num_de_voltas)
+                case("Sinal Teste"):
                 {
-                    if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
+                    for (int i = 0; i < _NumCanais; i++)
                     {
-                        Plotar(j, Math.Sin(j), 1, i, "YellowGreen");
+                        Plotar(0, 0, 2, i, " ");
+                        load_progress_bar(0, 2);
+                        FuncAtualizaStatusProjeto("...Iniciou", 0);
+                        double j = 0;
+                        int inc = 0;
+                        while (j < num_de_voltas)
+                        {
+                            if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
+                            {
+                                Plotar(j, Math.Sin(j), 1, i, "YellowGreen");
+                            }
+                            if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
+                            {
+                                Plotar(j, Math.Cos(j), 1, i, "Blue");
+                            }
+                            if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
+                            {
+                                Plotar(j, Math.Tan(j), 1, i, "Green");
+                            }
+                            inc++;
+                            j += num_de_amostras;
+                            Thread.Sleep(1);
+                        }
+                        load_progress_bar(inc, 1);
+
                     }
-                    if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
-                    {
-                        Plotar(j, Math.Cos(j), 1, i, "Blue");
-                    }
-                    if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
-                    {
-                        Plotar(j, Math.Tan(j), 1, i, "Green");
-                    }
-                    inc++;
-                    j += num_de_amostras;
-                    Thread.Sleep(1);
+                    load_progress_bar(0, 3);
+                    FuncAtualizaStatusProjeto("...terminou", 1);
+                    FuncAtualizaControleProjeto("Des_btn_Suspender");
+                    break;
+                } //Fim Case Gerar sinal
+                case("Carregar Projeto"):
+                {
+                    break;
                 }
-                load_progress_bar(inc, 1);
-                
-            }
-            load_progress_bar(0, 3);
-            FuncAtualizaStatusProjeto("...terminou", 1);
-            FuncAtualizaControleProjeto("Des_btn_Suspender");
+                case("Importar Projeto .edf"):
+                {
+                    break;
+                }
+
+            }//Fim switch
+
         }
         //-----------------------------------------------------------------------------------------------------------------
         private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor)
