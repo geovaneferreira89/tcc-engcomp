@@ -29,9 +29,13 @@ namespace grafico_teste
         private double x_Pos, y_Pos;
         private int _ZOOM_ = 0; // 0 -desativado, 1 +ZOOm, 2 -ZOMM 
         private String nomeProject = "Sem nome";
+        private string status_projeto = "Projeto_NOVO";
+        //Geren Arquivos------------------------------------------
+        private GerenArquivos Arquivos;
         //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
+            Arquivos = new GerenArquivos();
             InitializeComponent();
         }
         //-----------------------------------------------------------------------------------------
@@ -64,6 +68,7 @@ namespace grafico_teste
         private void btn_Importar_Click(object sender, EventArgs e)
         {
             AtualizaFerramentaAtiva("Importar sinais não implentado!", 2);
+            //status_projeto = "Projeto_EDF";
         }
         //------------------------------------------------------------------------------------------
         //Salva Projeto em que está sendo executado
@@ -73,28 +78,7 @@ namespace grafico_teste
             nomeProject = saveFileExplorer.FileName;
             if (nomeProject != null)
             {
-                string Dados_Saida; //= {"[NumDeCanais = X]","[Canal 1 = XXXXXXXX]","[Canal 2 = YYYYYY]"};
-                Dados_Saida = "[NumDeCanais = " + __numeroDeCanais + "]";
-                System.IO.StreamWriter file = new System.IO.StreamWriter(nomeProject+".rpb", true);
-                file.WriteLine(Dados_Saida);
-                for(int i=0; i<__numeroDeCanais;i++)
-                {
-                    Dados_Saida = " ";
-                    file.WriteLine(Dados_Saida);
-                    Dados_Saida = "[Canal " + i + "]";
-                    file.WriteLine(Dados_Saida);
-                    Dados_Saida = "[Num de Pontos = " + chart1.Series[i].Points.Count + "]";
-                    file.WriteLine(Dados_Saida);
-                   for (int j = 0; j < chart1.Series[i].Points.Count; j++)
-                    {
-                        Dados_Saida = ""+chart1.Series[i].Points[j];
-                        file.WriteLine(Dados_Saida);
-                    }
-                }
-                file.Close();
-                MessageBox.Show("Projeto:\n" + nomeProject + "\n\nSalvado com sucesso!",
-                   "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
-                           MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Arquivos.Salva_Projeto(nomeProject + ".rpb", __numeroDeCanais, chart1);
             }   
         }
         //------------------------------------------------------------------------------------------
@@ -102,6 +86,12 @@ namespace grafico_teste
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
             openFileExplorer.ShowDialog( );
+            nomeProject = openFileExplorer.FileName;
+            if (nomeProject != null)
+            {
+                Arquivos.Abrir_Projeto(nomeProject + ".rpb");
+            }
+            status_projeto = "Projeto_RPB";
             AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 
         }
         //##########################################################################################
@@ -240,6 +230,7 @@ namespace grafico_teste
             MessageBox.Show("Projeto " + nomeProject + "\nCriado", 
                     "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+            status_projeto = "Projeto_NOVO";
                 
         }
         //------------------------------------------------------------------------------------------
@@ -333,11 +324,28 @@ namespace grafico_teste
                 chart1.ChartAreas[i].Position.Height = 3;
                 chart1.ChartAreas[i].Position.Width = 100;
             }
-            //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-            atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais,
-                                            progressBar, tool_ControlesProjeto, Box_Status, "Sinal Teste");
-            ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-            ThreadChart.Start();
+            if (status_projeto == "Projeto_NOVO")
+            {
+                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto);
+                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+                ThreadChart.Start();
+            }
+            if (status_projeto == "Projeto_RPB")
+            {
+                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto);
+                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+                ThreadChart.Start();
+            }
+            if (status_projeto == "Projeto_EDF")
+            {
+                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto);
+                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+                ThreadChart.Start();
+            }
+            
         }
         //------------------------------------------------------------------------------------------
         //            ################################################################

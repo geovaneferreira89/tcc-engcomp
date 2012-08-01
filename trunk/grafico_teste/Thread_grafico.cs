@@ -37,19 +37,19 @@ namespace thread_chart
         //-----------------------------------------------------------------------------------------------------------------
         public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal)
         {
-            _Grafico = Controle;
-            _NumCanais = NumCanais;
+            _Grafico          = Controle;
+            _NumCanais        = NumCanais;
             _BarraDeProgresso = BarraDeProgresso;
-            _ControleProjeto = __ControleProjeto;
-            _StatusProjeto = __StatusProjeto;
-            OpcaoSinal = _OpcaoSinal;
+            _ControleProjeto  = __ControleProjeto;
+            _StatusProjeto    = __StatusProjeto;
+            OpcaoSinal        = _OpcaoSinal;
         }
         //-----------------------------------------------------------------------------------------------------------------
         public void Inicializa()
         {
             switch (OpcaoSinal) //Gerar Sinal Aleatorio
             {
-                case("Sinal Teste"):
+                case ("Projeto_NOVO"):
                 {
                     for (int i = 0; i < _NumCanais; i++)
                     {
@@ -84,11 +84,11 @@ namespace thread_chart
                     FuncAtualizaControleProjeto("Des_btn_Suspender");
                     break;
                 } //Fim Case Gerar sinal
-                case("Carregar Projeto"):
+                case ("Projeto_RPB"):
                 {
                     break;
                 }
-                case("Importar Projeto .edf"):
+                case("Projeto_EDF"):
                 {
                     break;
                 }
