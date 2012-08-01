@@ -89,7 +89,11 @@ namespace grafico_teste
             nomeProject = openFileExplorer.FileName;
             if (nomeProject != null)
             {
-                Arquivos.Abrir_Projeto(nomeProject + ".rpb");
+                __numeroDeCanais = Arquivos.Abrir_Projeto(nomeProject);
+                if (__numeroDeCanais != 0)
+                {
+                    //fazer
+                }
             }
             status_projeto = "Projeto_RPB";
             AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 

@@ -40,9 +40,17 @@ namespace grafico_teste
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //Abrir Projeto  --------------------------------------------------------------------
-        public void Abrir_Projeto(string diretorio)
+        public int Abrir_Projeto(string diretorio)
         {
             fileR = new System.IO.StreamReader(diretorio);
+            string dados;
+            dados = fileR.ReadLine();
+            dados = dados.Substring(15);
+            dados = dados.Substring(0, dados.Length - 1);
+            MessageBox.Show("Projeto:\n" + diretorio + "\n\n"+dados,
+               "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return Convert.ToInt32(dados);
         }
         //Abrir Projeto EDF  -----------------------------------------------------------------
         public void Abrir_Projeto_EDF(string diretorio)
