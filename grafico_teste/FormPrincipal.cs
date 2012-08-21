@@ -144,10 +144,12 @@ namespace grafico_teste
         {
             if(mostrarCursores != 0)
             {
+                    int Area = retoronaNumChartArea(e);
                     if (numCursor == 0)
                     {
-                        x_Pos = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                        y_Pos = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+                       
+                        x_Pos = chart1.ChartAreas[Area].AxisX.PixelPositionToValue(e.X);
+                        y_Pos = chart1.ChartAreas[Area].AxisY.PixelPositionToValue(e.Y);
 
                         //linha fixa
                         VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
@@ -157,50 +159,51 @@ namespace grafico_teste
                         cursor_vertical.LineColor = Color.Chocolate;
                         cursor_vertical.LineWidth = 2;
                         cursor_vertical.AnchorX = x_Pos;
-                        cursor_vertical.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
+                        cursor_vertical.AnchorY = chart1.ChartAreas[Area].AxisY.Maximum;
                         chart1.Annotations.Add(cursor_vertical);
                 
                         numCursor++;
                     }
                     else if (numCursor == 1)
                     {
-                        chart1.ChartAreas[0].CursorX.AxisType = AxisType.Secondary;
-                        chart1.ChartAreas[0].CursorX.LineColor = Color.Chocolate;
-                        chart1.ChartAreas[0].CursorX.LineWidth = 2;
-                        chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
+                        chart1.ChartAreas[Area].CursorX.AxisType = AxisType.Secondary;
+                        chart1.ChartAreas[Area].CursorX.LineColor = Color.Chocolate;
+                        chart1.ChartAreas[Area].CursorX.LineWidth = 2;
+                        chart1.ChartAreas[Area].CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
 
                         chart1.Annotations.Clear();
 
                         // Set range selection color, specifying transparency of 120
-                        chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
-                        chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
-                        chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
-                        chart1.ChartAreas[0].CursorX.SetSelectionPosition(x_Pos, chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X));
+                        chart1.ChartAreas[Area].CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
+                        chart1.ChartAreas[Area].CursorX.IsUserEnabled = true;
+                        chart1.ChartAreas[Area].CursorX.IsUserSelectionEnabled = true;
+                        chart1.ChartAreas[Area].CursorX.SetSelectionPosition(x_Pos, chart1.ChartAreas[Area].AxisX.PixelPositionToValue(e.X));
                  
-                        numCursor++;//CLICAR + VEZES SEM EFEITO
+                        numCursor = 0;//CLICAR + VEZES SEM EFEITO
                     }
             }
             if (_ZOOM_ != 0)
             {
+                int Area = retoronaNumChartArea(e);
                 if (_ZOOM_ == 1)
                 {//ZOOM +
-                    chart1.ChartAreas[0].AxisX.ScaleView.Position = 2;
-                    chart1.ChartAreas[0].CursorX.AutoScroll = true;
-                    chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-                    double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                    chart1.ChartAreas[0].AxisX.ScaleView.Zoom(x, 10);
-                    chart1.ChartAreas[0].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+                    chart1.ChartAreas[Area].AxisX.ScaleView.Position = 2;
+                    chart1.ChartAreas[Area].CursorX.AutoScroll = true;
+                    chart1.ChartAreas[Area].AxisX.ScaleView.Zoomable = true;
+                    double x = chart1.ChartAreas[Area].AxisX.PixelPositionToValue(e.X);
+                    chart1.ChartAreas[Area].AxisX.ScaleView.Zoom(x, 10);
+                    chart1.ChartAreas[Area].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
 
                     // set scrollbar small change to blockSize (e.g. 100)
-                    chart1.ChartAreas[0].AxisX.ScaleView.SmallScrollSize = 10;
+                    chart1.ChartAreas[Area].AxisX.ScaleView.SmallScrollSize = 10;
 
                 }
                 else
                 {//ZOOM -
-                    chart1.ChartAreas[0].AxisX.ScaleView.Position = 2;
-                    chart1.ChartAreas[0].CursorX.AutoScroll = true;
-                    chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-                    chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+                    chart1.ChartAreas[Area].AxisX.ScaleView.Position = 2;
+                    chart1.ChartAreas[Area].CursorX.AutoScroll = true;
+                    chart1.ChartAreas[Area].AxisX.ScaleView.Zoomable = true;
+                    chart1.ChartAreas[Area].AxisX.ScaleView.ZoomReset();
                 }
               }
          
@@ -211,40 +214,69 @@ namespace grafico_teste
         {
           
                 double x, y;
-                int chartNUM = 0;
-                if (e.Y <= 49)
-                    chartNUM = 0;
-                else if (50 <= e.Y && e.Y < 77 && 2 <= __numeroDeCanais)
-                    chartNUM = 1;
-                else if (78 <= e.Y && e.Y < 110 && 3 <= __numeroDeCanais)
-                    chartNUM = 2;
-                else if (111 <= e.Y && e.Y < 143 && 4 <= __numeroDeCanais)
-                    chartNUM = 3;
-                else if (144 <= e.Y && e.Y < 171 && 5 <= __numeroDeCanais)
-                    chartNUM = 4;
-                else if (172 <= e.Y && e.Y < 204 && 6 <= __numeroDeCanais)
-                    chartNUM = 6;
-                else if (205 <= e.Y && e.Y < 232 && 7 <= __numeroDeCanais)
-                    chartNUM = 7;
-                else if (233 <= e.Y && e.Y < 265 && 8 <= __numeroDeCanais)
-                    chartNUM = 8;
-                else if (266 <= e.Y && e.Y < 293 && 9 <= __numeroDeCanais)
-                    chartNUM = 9;
-                else if (294 <= e.Y && e.Y < 326 && 10 <= __numeroDeCanais)
-                    chartNUM = 10;
-                else if (327 <= e.Y && e.Y < 354 && 11 <= __numeroDeCanais) // continuar diferença de 60
-                    chartNUM = 11;
-
+                int chartNUM = retoronaNumChartArea(e);
+           
                 x = chart1.ChartAreas[chartNUM].AxisX.PixelPositionToValue(e.X);
                 y = chart1.ChartAreas[chartNUM].AxisY.PixelPositionToValue(e.Y);
                 lbl_x.Text = "Valor X: " + Math.Round(x, 4).ToString();
                 lbl_Y.Text = "Valor Y: " + Math.Round(y, 4).ToString();
                 //  if (numCursor < 2)
-                chart1.ChartAreas[chartNUM].CursorX.SetCursorPosition(x);
+                //chart1.ChartAreas[chartNUM].CursorX.SetCursorPosition(x);
                 lbl_mouseX.Text = "Mouse X: " + e.X;
                 lbl_mouseY.Text = "Mouse Y: " + e.Y;
                 
   
+        }
+        //------------------------------------------------------------------------------------------
+        // Chart Area onde o Mouse está!
+        private int retoronaNumChartArea(MouseEventArgs e)
+        {
+            if (e.Y <= 49)
+                return 0;
+            if (50 <= e.Y && e.Y <= 77 && 2 <= __numeroDeCanais)
+                return 1;
+            if (78 <= e.Y && e.Y <= 110 && 3 <= __numeroDeCanais)
+                return 2;
+            if (111 <= e.Y && e.Y <= 143 && 4 <= __numeroDeCanais)
+                return 3;
+            if (144 <= e.Y && e.Y <= 171 && 5 <= __numeroDeCanais)
+                return 4;
+            if (172 <= e.Y && e.Y <= 204 && 6 <= __numeroDeCanais)
+                return 5;
+            if (205 <= e.Y && e.Y <= 232 && 7 <= __numeroDeCanais)
+                return 6;
+            if (233 <= e.Y && e.Y <= 265 && 8 <= __numeroDeCanais)
+                return 7;
+            if (266 <= e.Y && e.Y <= 293 && 9 <= __numeroDeCanais)
+                return 8;
+            if (294 <= e.Y && e.Y <= 326 && 10 <= __numeroDeCanais)
+                return 9;
+            if (327 <= e.Y && e.Y <= 354 && 11 <= __numeroDeCanais) 
+                return 10;
+            if (354 <= e.Y && e.Y <= 387 && 12 <= __numeroDeCanais)
+                return 11;
+            if (388 <= e.Y && e.Y <  414 && 13 <= __numeroDeCanais)
+                return 12;
+            if (415 <= e.Y && e.Y <=  448 && 14 <= __numeroDeCanais)
+                return 13;
+            if (449 <= e.Y && e.Y <= 475 && 15 <= __numeroDeCanais)
+                return 14;
+            if (476 <= e.Y && e.Y <= 509 && 16 <= __numeroDeCanais)
+                return 15;
+            if (510 <= e.Y && e.Y <= 536 && 17 <= __numeroDeCanais)
+                return 16;
+            if (537 <= e.Y && e.Y <= 570 && 18 <= __numeroDeCanais)
+                return 17;
+            if (571 <= e.Y && e.Y <= 593 && 19 <= __numeroDeCanais)
+                return 18;
+            if (594 <= e.Y && e.Y <= 631 && 20 <= __numeroDeCanais)
+                return 19;
+            if (632 <= e.Y && e.Y <= 694 && 21 <= __numeroDeCanais)
+                return 20;
+            if (695 <= e.Y && 22 <= __numeroDeCanais)
+                return 21;
+
+            return 0;
         }
         //------------------------------------------------------------------------------------------
         private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
