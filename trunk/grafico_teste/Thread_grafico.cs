@@ -30,7 +30,7 @@ namespace thread_chart
         private delegate void AtualizaStatusProjeto(string SMS, int caso);
         //amostras sinal de teste-------------------------------------------------------------------------------------------------
         private int num_de_voltas = 20;
-        private double num_de_amostras = 0.5;
+        private double num_de_amostras = 0.2;
         private int _NumCanais = 0;
         //Controles sobre o sinal a exibir----------------------------------------------------------------------------------------
         private string OpcaoSinal;
@@ -74,7 +74,7 @@ namespace thread_chart
                             }
                             inc++;
                             j += num_de_amostras;
-                            Thread.Sleep(1);
+                            Thread.Sleep(0);
                         }
                         load_progress_bar(inc, 1);
 

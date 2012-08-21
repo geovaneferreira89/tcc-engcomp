@@ -22,7 +22,7 @@ namespace grafico_teste
         private int ThreadChart_status = 0; // 0 - Desabilitada, 1 - Rodando, 2 - Pausada
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
-        private int __numeroDeCanais = 2;
+        private int __numeroDeCanais = 22;
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
@@ -206,19 +206,45 @@ namespace grafico_teste
          
         }
         //------------------------------------------------------------------------------------------
+        // Mover Mouse
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-            for(int i = 0; i < chart1.ChartAreas.Count; i++)
-            {
-                double x = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                double y = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
-                lbl_x.Text = "Valor X: " + Math.Round(x,4).ToString();
-                lbl_Y.Text = "Valor Y: " + Math.Round(y,4).ToString();
+          
+                double x, y;
+                int chartNUM = 0;
+                if (e.Y <= 49)
+                    chartNUM = 0;
+                else if (50 <= e.Y && e.Y < 77 && 2 <= __numeroDeCanais)
+                    chartNUM = 1;
+                else if (78 <= e.Y && e.Y < 110 && 3 <= __numeroDeCanais)
+                    chartNUM = 2;
+                else if (111 <= e.Y && e.Y < 143 && 4 <= __numeroDeCanais)
+                    chartNUM = 3;
+                else if (144 <= e.Y && e.Y < 171 && 5 <= __numeroDeCanais)
+                    chartNUM = 4;
+                else if (172 <= e.Y && e.Y < 204 && 6 <= __numeroDeCanais)
+                    chartNUM = 6;
+                else if (205 <= e.Y && e.Y < 232 && 7 <= __numeroDeCanais)
+                    chartNUM = 7;
+                else if (233 <= e.Y && e.Y < 265 && 8 <= __numeroDeCanais)
+                    chartNUM = 8;
+                else if (266 <= e.Y && e.Y < 293 && 9 <= __numeroDeCanais)
+                    chartNUM = 9;
+                else if (294 <= e.Y && e.Y < 326 && 10 <= __numeroDeCanais)
+                    chartNUM = 10;
+                else if (327 <= e.Y && e.Y < 354 && 11 <= __numeroDeCanais) // continuar diferença de 60
+                    chartNUM = 11;
+
+                x = chart1.ChartAreas[chartNUM].AxisX.PixelPositionToValue(e.X);
+                y = chart1.ChartAreas[chartNUM].AxisY.PixelPositionToValue(e.Y);
+                lbl_x.Text = "Valor X: " + Math.Round(x, 4).ToString();
+                lbl_Y.Text = "Valor Y: " + Math.Round(y, 4).ToString();
+                //  if (numCursor < 2)
+                chart1.ChartAreas[chartNUM].CursorX.SetCursorPosition(x);
                 lbl_mouseX.Text = "Mouse X: " + e.X;
                 lbl_mouseY.Text = "Mouse Y: " + e.Y;
-                 if(numCursor < 2)
-                    chart1.ChartAreas[0].CursorX.SetCursorPosition(x);
-            }
+                
+  
         }
         //------------------------------------------------------------------------------------------
         private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
