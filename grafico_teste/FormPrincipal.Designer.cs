@@ -212,7 +212,7 @@
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(192, 24);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(143, 31);
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(174, 31);
             this.tool_ControlesProjeto.TabIndex = 9;
             this.tool_ControlesProjeto.Text = "toolStrip1";
             // 
