@@ -215,15 +215,15 @@ namespace grafico_teste
           
                 double x, y;
                 int chartNUM = retoronaNumChartArea(e);
-           
+             
                 x = chart1.ChartAreas[chartNUM].AxisX.PixelPositionToValue(e.X);
                 y = chart1.ChartAreas[chartNUM].AxisY.PixelPositionToValue(e.Y);
                 lbl_x.Text = "Valor X: " + Math.Round(x, 4).ToString();
                 lbl_Y.Text = "Valor Y: " + Math.Round(y, 4).ToString();
                 //  if (numCursor < 2)
                 //chart1.ChartAreas[chartNUM].CursorX.SetCursorPosition(x);
-                lbl_mouseX.Text = "Mouse X: " + e.X;
-                lbl_mouseY.Text = "Mouse Y: " + e.Y;
+                lbl_mouseX.Text = "Mouse X: " + e.Location.X;
+                lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
                 
   
         }
@@ -304,6 +304,7 @@ namespace grafico_teste
             {
                 AtualizaFerramentaAtiva("", 0);
                 mostrarCursores = 1;
+                Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorY.cur");
                 AtualizaFerramentaAtiva("Marcar Padrões", 1);
             }
             else
