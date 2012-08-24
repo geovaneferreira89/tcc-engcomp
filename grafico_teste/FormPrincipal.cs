@@ -13,6 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
 
+
 namespace grafico_teste
 {
     public partial class FormPrincipal : Form
@@ -32,6 +33,10 @@ namespace grafico_teste
         private string status_projeto = "Projeto_NOVO";
         //Geren Arquivos------------------------------------------
         private GerenArquivos Arquivos;
+
+        Point? prevPosition = null;
+        ToolTip tooltip = new ToolTip();
+      
         //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
@@ -212,25 +217,47 @@ namespace grafico_teste
         // Mover Mouse
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-          
-                double x, y;
-                int chartNUM = retoronaNumChartArea(e);
-             
-                x = chart1.ChartAreas[chartNUM].AxisX.PixelPositionToValue(e.X);
-                y = chart1.ChartAreas[chartNUM].AxisY.PixelPositionToValue(e.Y);
-                lbl_x.Text = "Valor X: " + Math.Round(x, 4).ToString();
-                lbl_Y.Text = "Valor Y: " + Math.Round(y, 4).ToString();
-                //  if (numCursor < 2)
-                //chart1.ChartAreas[chartNUM].CursorX.SetCursorPosition(x);
-                lbl_mouseX.Text = "Mouse X: " + e.Location.X;
-                lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
-                
-  
+            var pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+            tooltip.RemoveAll();
+            prevPosition = pos;
+            var results = chart1.HitTest(pos.X, pos.Y, false,
+                                            ChartElementType.DataPoint);
+            foreach (var result in results)
+            {
+                if (result.ChartElementType == ChartElementType.DataPoint)
+                {
+                    var prop = result.Object as DataPoint;
+                    if (prop != null)
+                    {
+                        var pointXPixel = result.ChartArea.AxisX.ValueToPixelPosition(prop.XValue);
+                        var pointYPixel = result.ChartArea.AxisY.ValueToPixelPosition(prop.YValues[0]);
+
+                        lbl_x.Text = "Valor X: " + prop.XValue;
+                        lbl_Y.Text = "Valor Y: " + prop.YValues[0];
+                        //Verificar isto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! está marcando somente no numero inteiro
+                        result.ChartArea.CursorX.SetCursorPosition(prop.XValue);
+
+
+                        // check if the cursor is really close to the point (2 pixels around the point)
+                        if (Math.Abs(pos.X - pointXPixel) < 2 && Math.Abs(pos.Y - pointYPixel) < 2)
+                        {
+                            tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1, pos.X, pos.Y - 15);
+
+
+                        }
+                    }
+                }
+            }
+            lbl_mouseX.Text = "Mouse X: " + e.Location.X;
+            lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
         //------------------------------------------------------------------------------------------
         // Chart Area onde o Mouse está!
         private int retoronaNumChartArea(MouseEventArgs e)
         {
+            //Substituir por codigo usado em mover mouse!!!!!!!!!!!!!!!!
             if (e.Y <= 49)
                 return 0;
             if (50 <= e.Y && e.Y <= 77 && 2 <= __numeroDeCanais)
