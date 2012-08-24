@@ -1,0 +1,8 @@
+C:\tcc-engcomp\grafico_teste\bin\Debug\grafico_teste.exe
+C:\tcc-engcomp\grafico_teste\bin\Debug\grafico_teste.pdb
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.FormPrincipal.resources
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.Properties.Resources.resources
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.exe
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.pdb
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
