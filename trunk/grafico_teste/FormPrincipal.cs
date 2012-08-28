@@ -31,6 +31,7 @@ namespace grafico_teste
         private int _ZOOM_ = 0; // 0 -desativado, 1 +ZOOm, 2 -ZOMM 
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
+        private bool MostrarCursorX = true;
         //Geren Arquivos------------------------------------------
         private GerenArquivos Arquivos;
 
@@ -108,6 +109,26 @@ namespace grafico_teste
         //                             Ferramentas ao Tratamento do sinal EEG
         //------------------------------------------------------------------------------------------
         //##########################################################################################
+        //Encerrar o sitema
+        private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            encerrar_sistema();
+        }
+        //------------------------------------------------------------------------------------------
+        //Criar novo projeto
+        private void btn_novoProjeto_Click(object sender, EventArgs e)
+        {
+            btn_Resume.Enabled = true;
+            btn_help.Enabled = true;
+            saveToolStripButton.Enabled = true;
+            MessageBox.Show("Projeto " + nomeProject + "\nCriado",
+                    "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            status_projeto = "Projeto_NOVO";
+
+        }
+        //------------------------------------------------------------------------------------------
+        //Supende o sistema
         private void btn_Suspender_Click(object sender, EventArgs e)
         {
             if (ThreadChart_status == 1)
@@ -120,6 +141,7 @@ namespace grafico_teste
             }
         }
         //------------------------------------------------------------------------------------------
+        //retorna o sistema
         private void btn_Resume_Click(object sender, EventArgs e)
         {
             if (ThreadChart_status == 0)
@@ -144,108 +166,66 @@ namespace grafico_teste
                 btn_Resume.Enabled = false;
             }
         }
-        //------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------
+        //Função responsavel por verificar qual ferramenta usar quando o mouse é clicado em cima dos sinais
         private void chart1_MouseMove(object sender, MouseEventArgs e)
-        {
+        {         
             if(mostrarCursores != 0)
             {
-                    int Area = retoronaNumChartArea(e);
-                    if (numCursor == 0)
-                    {
-                       
-                        x_Pos = chart1.ChartAreas[Area].AxisX.PixelPositionToValue(e.X);
-                        y_Pos = chart1.ChartAreas[Area].AxisY.PixelPositionToValue(e.Y);
-
-                        //linha fixa
-                        VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
-                        cursor_vertical.AnchorDataPoint = chart1.Series[0].Points[1];
-
-                        cursor_vertical.Height = 3;
-                        cursor_vertical.LineColor = Color.Chocolate;
-                        cursor_vertical.LineWidth = 2;
-                        cursor_vertical.AnchorX = x_Pos;
-                        cursor_vertical.AnchorY = chart1.ChartAreas[Area].AxisY.Maximum;
-                        chart1.Annotations.Add(cursor_vertical);
-                
-                        numCursor++;
-                    }
-                    else if (numCursor == 1)
-                    {
-                        chart1.ChartAreas[Area].CursorX.AxisType = AxisType.Secondary;
-                        chart1.ChartAreas[Area].CursorX.LineColor = Color.Chocolate;
-                        chart1.ChartAreas[Area].CursorX.LineWidth = 2;
-                        chart1.ChartAreas[Area].CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
-
-                        chart1.Annotations.Clear();
-
-                        // Set range selection color, specifying transparency of 120
-                        chart1.ChartAreas[Area].CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
-                        chart1.ChartAreas[Area].CursorX.IsUserEnabled = true;
-                        chart1.ChartAreas[Area].CursorX.IsUserSelectionEnabled = true;
-                        chart1.ChartAreas[Area].CursorX.SetSelectionPosition(x_Pos, chart1.ChartAreas[Area].AxisX.PixelPositionToValue(e.X));
-                 
-                        numCursor = 0;//CLICAR + VEZES SEM EFEITO
-                    }
-            }
+                MarcarSelecao(e);
+            }    
             if (_ZOOM_ != 0)
             {
-                int Area = retoronaNumChartArea(e);
-                if (_ZOOM_ == 1)
-                {//ZOOM +
-                    chart1.ChartAreas[Area].AxisX.ScaleView.Position = 2;
-                    chart1.ChartAreas[Area].CursorX.AutoScroll = true;
-                    chart1.ChartAreas[Area].AxisX.ScaleView.Zoomable = true;
-                    double x = chart1.ChartAreas[Area].AxisX.PixelPositionToValue(e.X);
-                    chart1.ChartAreas[Area].AxisX.ScaleView.Zoom(x, 10);
-                    chart1.ChartAreas[Area].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
-
-                    // set scrollbar small change to blockSize (e.g. 100)
-                    chart1.ChartAreas[Area].AxisX.ScaleView.SmallScrollSize = 10;
-
-                }
-                else
-                {//ZOOM -
-                    chart1.ChartAreas[Area].AxisX.ScaleView.Position = 2;
-                    chart1.ChartAreas[Area].CursorX.AutoScroll = true;
-                    chart1.ChartAreas[Area].AxisX.ScaleView.Zoomable = true;
-                    chart1.ChartAreas[Area].AxisX.ScaleView.ZoomReset();
-                }
-              }
+                ZOOM(e); 
+            }
          
         }
+        //-----------------------------------------------------------------------------------------
+        //Check box responsavel por Mostra o cursor no eixo X dos gráficos
+        private void check_MostrarCursorX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_MostrarCursorX.Checked == true)
+            {
+                MostrarCursorX = true;
+            }
+            else
+                MostrarCursorX = false;
+        }
         //------------------------------------------------------------------------------------------
-        // Mover Mouse
+        // Mostra o cursor no eixo X dos gráficos
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-            var pos = e.Location;
-            if (prevPosition.HasValue && pos == prevPosition.Value)
-                return;
-            tooltip.RemoveAll();
-            prevPosition = pos;
-            var results = chart1.HitTest(pos.X, pos.Y, false,
-                                            ChartElementType.DataPoint);
-            foreach (var result in results)
+            if (MostrarCursorX == true)
             {
-                if (result.ChartElementType == ChartElementType.DataPoint)
+                var pos = e.Location;
+                if (prevPosition.HasValue && pos == prevPosition.Value)
+                    return;
+                tooltip.RemoveAll();
+                prevPosition = pos;
+                var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
+                foreach (var result in results)
                 {
-                    var prop = result.Object as DataPoint;
-                    if (prop != null)
+                    if (result.ChartElementType == ChartElementType.DataPoint)
                     {
-                        var pointXPixel = result.ChartArea.AxisX.ValueToPixelPosition(prop.XValue);
-                        var pointYPixel = result.ChartArea.AxisY.ValueToPixelPosition(prop.YValues[0]);
-
-                        lbl_x.Text = "Valor X: " + prop.XValue;
-                        lbl_Y.Text = "Valor Y: " + prop.YValues[0];
-                        //Verificar isto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! está marcando somente no numero inteiro
-                        result.ChartArea.CursorX.SetCursorPosition(prop.XValue);
-
-
-                        // check if the cursor is really close to the point (2 pixels around the point)
-                        if (Math.Abs(pos.X - pointXPixel) < 2 && Math.Abs(pos.Y - pointYPixel) < 2)
+                        var prop = result.Object as DataPoint;
+                        if (prop != null)
                         {
-                            tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1, pos.X, pos.Y - 15);
+                            var pointXPixel = result.ChartArea.AxisX.ValueToPixelPosition(prop.XValue);
+                            var pointYPixel = result.ChartArea.AxisY.ValueToPixelPosition(prop.YValues[0]);
+
+                            lbl_x.Text = "Valor X: " + prop.XValue;
+                            lbl_Y.Text = "Valor Y: " + prop.YValues[0];
+                            //Verificar isto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! está marcando somente no numero inteiro
+                            result.ChartArea.CursorX.SetCursorPosition(prop.XValue);
 
 
+                            // check if the cursor is really close to the point (2 pixels around the point)
+                            if (Math.Abs(pos.X - pointXPixel) < 2 && Math.Abs(pos.Y - pointYPixel) < 2)
+                            {
+                                tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1, pos.X, pos.Y - 15);
+
+
+                            }
                         }
                     }
                 }
@@ -253,82 +233,17 @@ namespace grafico_teste
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
+        
+        //---------------------------------------------------------------------------------------
+        //                               ##   Definir Padrões  ##
         //------------------------------------------------------------------------------------------
-        // Chart Area onde o Mouse está!
-        private int retoronaNumChartArea(MouseEventArgs e)
-        {
-            //Substituir por codigo usado em mover mouse!!!!!!!!!!!!!!!!
-            if (e.Y <= 49)
-                return 0;
-            if (50 <= e.Y && e.Y <= 77 && 2 <= __numeroDeCanais)
-                return 1;
-            if (78 <= e.Y && e.Y <= 110 && 3 <= __numeroDeCanais)
-                return 2;
-            if (111 <= e.Y && e.Y <= 143 && 4 <= __numeroDeCanais)
-                return 3;
-            if (144 <= e.Y && e.Y <= 171 && 5 <= __numeroDeCanais)
-                return 4;
-            if (172 <= e.Y && e.Y <= 204 && 6 <= __numeroDeCanais)
-                return 5;
-            if (205 <= e.Y && e.Y <= 232 && 7 <= __numeroDeCanais)
-                return 6;
-            if (233 <= e.Y && e.Y <= 265 && 8 <= __numeroDeCanais)
-                return 7;
-            if (266 <= e.Y && e.Y <= 293 && 9 <= __numeroDeCanais)
-                return 8;
-            if (294 <= e.Y && e.Y <= 326 && 10 <= __numeroDeCanais)
-                return 9;
-            if (327 <= e.Y && e.Y <= 354 && 11 <= __numeroDeCanais) 
-                return 10;
-            if (354 <= e.Y && e.Y <= 387 && 12 <= __numeroDeCanais)
-                return 11;
-            if (388 <= e.Y && e.Y <  414 && 13 <= __numeroDeCanais)
-                return 12;
-            if (415 <= e.Y && e.Y <=  448 && 14 <= __numeroDeCanais)
-                return 13;
-            if (449 <= e.Y && e.Y <= 475 && 15 <= __numeroDeCanais)
-                return 14;
-            if (476 <= e.Y && e.Y <= 509 && 16 <= __numeroDeCanais)
-                return 15;
-            if (510 <= e.Y && e.Y <= 536 && 17 <= __numeroDeCanais)
-                return 16;
-            if (537 <= e.Y && e.Y <= 570 && 18 <= __numeroDeCanais)
-                return 17;
-            if (571 <= e.Y && e.Y <= 593 && 19 <= __numeroDeCanais)
-                return 18;
-            if (594 <= e.Y && e.Y <= 631 && 20 <= __numeroDeCanais)
-                return 19;
-            if (632 <= e.Y && e.Y <= 694 && 21 <= __numeroDeCanais)
-                return 20;
-            if (695 <= e.Y && 22 <= __numeroDeCanais)
-                return 21;
-
-            return 0;
-        }
-        //------------------------------------------------------------------------------------------
-        private void fecharToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            encerrar_sistema();
-        }
-        //------------------------------------------------------------------------------------------
-        private void btn_novoProjeto_Click(object sender, EventArgs e)
-        {
-            btn_Resume.Enabled = true;
-            btn_help.Enabled = true;
-            saveToolStripButton.Enabled = true;
-            MessageBox.Show("Projeto " + nomeProject + "\nCriado", 
-                    "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-            status_projeto = "Projeto_NOVO";
-                
-        }
-        //------------------------------------------------------------------------------------------
-        //                               ##   Definir Padrões ##
-        //------------------------------------------------------------------------------------------
+        //Botão Clicado
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
             if (mostrarCursores == 0)
             {
+                check_MostrarCursorX.Checked = false;
+                MostrarCursorX = false;
                 AtualizaFerramentaAtiva("", 0);
                 mostrarCursores = 1;
                 Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorY.cur");
@@ -340,12 +255,75 @@ namespace grafico_teste
             }
         }
         //------------------------------------------------------------------------------------------
+        //Defini uma seleção afim de ser um padrão. 
+        private void MarcarSelecao(MouseEventArgs e)
+        {
+            var pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+            tooltip.RemoveAll();
+            prevPosition = pos;
+            var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
+            foreach (var result in results)
+            {
+                if (result.ChartElementType == ChartElementType.DataPoint)
+                {
+                    var prop = result.Object as DataPoint;
+                    if (prop != null)
+                    {
+                        if (numCursor == 0)
+                        {
+
+                            x_Pos = prop.XValue;
+                            y_Pos = prop.YValues[0];
+
+                            //linha fixa
+                            VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
+                            cursor_vertical.AnchorDataPoint = chart1.Series[0].Points[1];
+
+                            cursor_vertical.Height = 3;
+                            cursor_vertical.LineColor = Color.Chocolate;
+                            cursor_vertical.LineWidth = 2;
+                            cursor_vertical.AnchorX = x_Pos;
+                            cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
+                            chart1.Annotations.Add(cursor_vertical);
+
+                            numCursor++;
+                        }
+                        //APOS O ELSE IF PERGUNTAR SE DESEJA REALMENTE MARCAR UM PADrÃO E TRATAR ISSO!!!
+
+                        else if (numCursor == 1)
+                        {
+                            result.ChartArea.CursorX.AxisType = AxisType.Secondary;
+                            result.ChartArea.CursorX.LineColor = Color.Chocolate;
+                            result.ChartArea.CursorX.LineWidth = 2;
+                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(pos.X, pos.Y), true);
+
+                            chart1.Annotations.Clear();
+
+                            // Set range selection color, specifying transparency of 120
+                            result.ChartArea.CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
+                            result.ChartArea.CursorX.IsUserEnabled = true;
+                            result.ChartArea.CursorX.IsUserSelectionEnabled = true;
+                            result.ChartArea.CursorX.SetSelectionPosition(x_Pos, prop.XValue);
+
+                            numCursor = 0;//CLICAR + VEZES SEM EFEITO
+                            //PADrões(); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        }
+                    }
+                }
+            }
+        }
+        //------------------------------------------------------------------------------------------
         //                                    ##  ZOOM ##
         //------------------------------------------------------------------------------------------
+        //Botão ZOOM +
         private void btnZoomMais_Click(object sender, EventArgs e)
         {
             if (_ZOOM_ == 0 || _ZOOM_ == 2)
             {
+                check_MostrarCursorX.Checked = false;
+                MostrarCursorX = false;
                 AtualizaFerramentaAtiva("", 0);
                 AtualizaFerramentaAtiva("ZOOM +", 1);
                 Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMais.cur");
@@ -358,6 +336,7 @@ namespace grafico_teste
 
         }
         //------------------------------------------------------------------------------------------
+        //Botão ZOOM -
         private void btnZoomMenos_Click(object sender, EventArgs e)
         {
             if (_ZOOM_ == 1)
@@ -371,6 +350,48 @@ namespace grafico_teste
             {
                 AtualizaFerramentaAtiva("", 0);
             }
+        }
+        //------------------------------------------------------------------------------------------
+        //Realiza o ZOOM
+        private void ZOOM(MouseEventArgs e)
+        {
+            var pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+            tooltip.RemoveAll();
+            prevPosition = pos;
+            var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
+            foreach (var result in results)
+            {
+                if (result.ChartElementType == ChartElementType.DataPoint)
+                {
+                    var prop = result.Object as DataPoint;
+                    if (prop != null)
+                    {
+                        if (_ZOOM_ == 1)
+                        {//ZOOM +
+                            result.ChartArea.AxisX.ScaleView.Position = 2;
+                            result.ChartArea.CursorX.AutoScroll = true;
+                            result.ChartArea.AxisX.ScaleView.Zoomable = true;
+                            double x = result.ChartArea.AxisX.PixelPositionToValue(pos.X);
+                            result.ChartArea.AxisX.ScaleView.Zoom(x, 10);
+                            result.ChartArea.AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+
+                            // set scrollbar small change to blockSize (e.g. 100)
+                            result.ChartArea.AxisX.ScaleView.SmallScrollSize = 10;
+
+                        }
+                        else
+                        {//ZOOM -
+                            result.ChartArea.AxisX.ScaleView.Position = 2;
+                            result.ChartArea.CursorX.AutoScroll = true;
+                            result.ChartArea.AxisX.ScaleView.Zoomable = true;
+                            result.ChartArea.AxisX.ScaleView.ZoomReset();
+                        }
+                    }
+                }
+            }
+
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
