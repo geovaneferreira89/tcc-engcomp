@@ -61,6 +61,7 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.saveFileExplorer = new System.Windows.Forms.SaveFileDialog();
             this.openFileExplorer = new System.Windows.Forms.OpenFileDialog();
+            this.check_MostrarCursorX = new System.Windows.Forms.CheckBox();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Box_Status.SuspendLayout();
@@ -384,6 +385,20 @@
             // 
             this.openFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*.rpb|Todos os arquivos  (*.*)|*.*\"";
             // 
+            // check_MostrarCursorX
+            // 
+            this.check_MostrarCursorX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.check_MostrarCursorX.AutoSize = true;
+            this.check_MostrarCursorX.Checked = true;
+            this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_MostrarCursorX.Location = new System.Drawing.Point(622, 34);
+            this.check_MostrarCursorX.Name = "check_MostrarCursorX";
+            this.check_MostrarCursorX.Size = new System.Drawing.Size(66, 17);
+            this.check_MostrarCursorX.TabIndex = 12;
+            this.check_MostrarCursorX.Text = "Cursor X";
+            this.check_MostrarCursorX.UseVisualStyleBackColor = true;
+            this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,6 +406,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(714, 363);
+            this.Controls.Add(this.check_MostrarCursorX);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);
@@ -452,6 +468,7 @@
         public System.Windows.Forms.ToolStrip tool_ControlesGerais;
         private System.Windows.Forms.SaveFileDialog saveFileExplorer;
         private System.Windows.Forms.OpenFileDialog openFileExplorer;
+        private System.Windows.Forms.CheckBox check_MostrarCursorX;
     }
 }
 
