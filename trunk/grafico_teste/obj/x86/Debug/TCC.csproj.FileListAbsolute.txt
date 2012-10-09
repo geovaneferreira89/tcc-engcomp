@@ -6,3 +6,6 @@ C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.exe
 C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.pdb
 C:\tcc-engcomp\grafico_teste\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
 C:\tcc-engcomp\grafico_teste\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
+C:\tcc-engcomp\grafico_teste\bin\Debug\EDF.dll
+C:\tcc-engcomp\grafico_teste\bin\Debug\EDF.pdb
+C:\tcc-engcomp\grafico_teste\obj\x86\Debug\grafico_teste.Carregar_EDF.resources

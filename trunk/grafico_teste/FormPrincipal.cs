@@ -70,11 +70,21 @@ namespace grafico_teste
             }
         }
         //------------------------------------------------------------------------------------------
-        // Ferramenta de importar sinais EEG de outro programa
+        // Ferramenta de importar sinais EEG de arquivo .EDF
         private void btn_Importar_Click(object sender, EventArgs e)
         {
-            AtualizaFerramentaAtiva("Importar sinais não implentado!", 2);
-            //status_projeto = "Projeto_EDF";
+            openFileExplorer.FilterIndex = 2;
+            
+            if (openFileExplorer.ShowDialog() == DialogResult.OK)
+            {
+                nomeProject = openFileExplorer.FileName;
+            }
+            openFileExplorer.Dispose();
+            Arquivos.Abrir_Projeto_EDF(nomeProject);
+            
+
+            status_projeto = "Projeto_EDF";
+            AtualizaFerramentaAtiva("Abrir arquivo .edf não implentado!", 2); 
         }
         //------------------------------------------------------------------------------------------
         //Salva Projeto em que está sendo executado
@@ -82,7 +92,7 @@ namespace grafico_teste
         {
             saveFileExplorer.ShowDialog();
             nomeProject = saveFileExplorer.FileName;
-            if (nomeProject != null)
+            if (saveFileExplorer.ShowDialog() == DialogResult.OK)
             {
                 Arquivos.Salva_Projeto(nomeProject + ".rpb", __numeroDeCanais, chart1);
             }   
@@ -91,9 +101,10 @@ namespace grafico_teste
         //Abre projeto.
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
+            openFileExplorer.FilterIndex = 1;
             openFileExplorer.ShowDialog( );
             nomeProject = openFileExplorer.FileName;
-            if (nomeProject != null)
+            if (openFileExplorer.ShowDialog() == DialogResult.OK)
             {
                 __numeroDeCanais = Arquivos.Abrir_Projeto(nomeProject);
                 if (__numeroDeCanais != 0)

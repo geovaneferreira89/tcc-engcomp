@@ -1,0 +1,20 @@
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\bin\Debug\EDFApplication.exe
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\bin\Debug\EDFApplication.pdb
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\bin\Debug\EDF.dll
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\bin\Debug\EDF.pdb
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.EDFAppWindow.resources
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.Properties.Resources.resources
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.csproj.GenerateResource.Cache
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.exe
+C:\Documents and Settings\Peter Gordon\My Documents\Visual Studio 2008\Projects\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.pdb
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.exe
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.pdb
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\bin\Debug\EDFApplication.exe
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\bin\Debug\EDFApplication.pdb
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\bin\Debug\EDF.dll
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\bin\Debug\EDF.pdb
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.csprojResolveAssemblyReference.cache
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.EDFAppWindow.resources
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.Properties.Resources.resources
+C:\tcc-engcomp\grafico_teste\EDF\trunk\EDFApplication\obj\Debug\EDFApplication.csproj.GenerateResource.Cache
