@@ -55,7 +55,8 @@ namespace grafico_teste
         //Abrir Projeto EDF  -----------------------------------------------------------------
         public void Abrir_Projeto_EDF(string diretorio)
         {
-
+            Carregar_EDF formEDF = new Carregar_EDF(diretorio);
+            formEDF.ShowDialog();
         }
     }
 }

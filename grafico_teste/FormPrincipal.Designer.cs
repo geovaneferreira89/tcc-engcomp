@@ -383,7 +383,8 @@
             // 
             // openFileExplorer
             // 
-            this.openFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*.rpb|Todos os arquivos  (*.*)|*.*\"";
+            this.openFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*.rpb|Arquivos EDF (*.edf)|*.edf|All files (*.*)|*.*\"" +
+    "";
             // 
             // check_MostrarCursorX
             // 
