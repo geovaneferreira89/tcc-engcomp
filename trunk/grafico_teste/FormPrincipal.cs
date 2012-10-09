@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
+using EDF;
 
 
 namespace grafico_teste
@@ -32,6 +33,10 @@ namespace grafico_teste
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
         private bool MostrarCursorX = true;
+
+        private string dirArquivo;
+        private EDFFile edfFileInput = null;
+        private EDFFile edfFileOutput = null;
         //Geren Arquivos------------------------------------------
         private GerenArquivos Arquivos;
 
@@ -73,47 +78,43 @@ namespace grafico_teste
         // Ferramenta de importar sinais EEG de arquivo .EDF
         private void btn_Importar_Click(object sender, EventArgs e)
         {
-            openFileExplorer.FilterIndex = 2;
-            
-            if (openFileExplorer.ShowDialog() == DialogResult.OK)
+                       
+            if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
-                nomeProject = openFileExplorer.FileName;
+                nomeProject = openFileEDF.FileName;
+                Arquivos.Abrir_Projeto_EDF(nomeProject, edfFileInput, edfFileOutput);
+                status_projeto = "Projeto_EDF";
+                AtualizaFerramentaAtiva("Abrir arquivo .edf não implentado!", 2); 
             }
-            openFileExplorer.Dispose();
-            Arquivos.Abrir_Projeto_EDF(nomeProject);
-            
-
-            status_projeto = "Projeto_EDF";
-            AtualizaFerramentaAtiva("Abrir arquivo .edf não implentado!", 2); 
+            openFileEDF.Dispose();
+     
         }
         //------------------------------------------------------------------------------------------
         //Salva Projeto em que está sendo executado
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            saveFileExplorer.ShowDialog();
-            nomeProject = saveFileExplorer.FileName;
             if (saveFileExplorer.ShowDialog() == DialogResult.OK)
             {
+                nomeProject = saveFileExplorer.FileName;
                 Arquivos.Salva_Projeto(nomeProject + ".rpb", __numeroDeCanais, chart1);
             }   
         }
         //------------------------------------------------------------------------------------------
         //Abre projeto.
         private void openToolStripButton_Click(object sender, EventArgs e)
-        {
-            openFileExplorer.FilterIndex = 1;
-            openFileExplorer.ShowDialog( );
-            nomeProject = openFileExplorer.FileName;
+        { 
             if (openFileExplorer.ShowDialog() == DialogResult.OK)
             {
+                nomeProject = openFileExplorer.FileName;
                 __numeroDeCanais = Arquivos.Abrir_Projeto(nomeProject);
                 if (__numeroDeCanais != 0)
                 {
                     //fazer
                 }
+                status_projeto = "Projeto_RPB";
+                AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 
             }
-            status_projeto = "Projeto_RPB";
-            AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 
+           
         }
         //##########################################################################################
         //------------------------------------------------------------------------------------------
