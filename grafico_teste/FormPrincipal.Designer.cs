@@ -62,6 +62,7 @@
             this.saveFileExplorer = new System.Windows.Forms.SaveFileDialog();
             this.openFileExplorer = new System.Windows.Forms.OpenFileDialog();
             this.check_MostrarCursorX = new System.Windows.Forms.CheckBox();
+            this.openFileEDF = new System.Windows.Forms.OpenFileDialog();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Box_Status.SuspendLayout();
@@ -292,7 +293,7 @@
             this.tool_ControlesGerais.Location = new System.Drawing.Point(0, 24);
             this.tool_ControlesGerais.Name = "tool_ControlesGerais";
             this.tool_ControlesGerais.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tool_ControlesGerais.Size = new System.Drawing.Size(192, 31);
+            this.tool_ControlesGerais.Size = new System.Drawing.Size(223, 31);
             this.tool_ControlesGerais.TabIndex = 10;
             this.tool_ControlesGerais.Text = "toolStrip2";
             // 
@@ -383,8 +384,7 @@
             // 
             // openFileExplorer
             // 
-            this.openFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*.rpb|Arquivos EDF (*.edf)|*.edf|All files (*.*)|*.*\"" +
-    "";
+            this.openFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*.rpb|All files (*.*)|*.*\"";
             // 
             // check_MostrarCursorX
             // 
@@ -399,6 +399,10 @@
             this.check_MostrarCursorX.Text = "Cursor X";
             this.check_MostrarCursorX.UseVisualStyleBackColor = true;
             this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
+            // 
+            // openFileEDF
+            // 
+            this.openFileEDF.Filter = "Arquivos EDF (*.edf)|*.edf|All files (*.*)|*.*\"";
             // 
             // FormPrincipal
             // 
@@ -470,6 +474,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileExplorer;
         private System.Windows.Forms.OpenFileDialog openFileExplorer;
         private System.Windows.Forms.CheckBox check_MostrarCursorX;
+        private System.Windows.Forms.OpenFileDialog openFileEDF;
     }
 }
 
