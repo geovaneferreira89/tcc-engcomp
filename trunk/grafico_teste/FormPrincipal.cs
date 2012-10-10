@@ -82,13 +82,21 @@ namespace grafico_teste
             if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
                 nomeProject = openFileEDF.FileName;
-                Arquivos.Abrir_Projeto_EDF(nomeProject, edfFileInput, edfFileOutput);
-                status_projeto = "Projeto_EDF";
-                AtualizaFerramentaAtiva("Abrir arquivo .edf não implentado!", 2); 
+                edfFileOutput = Arquivos.Abrir_Projeto_EDF(nomeProject);
+                if (edfFileOutput != null)
+                {
+                    status_projeto = "Projeto_EDF";
+                    AtualizaFerramentaAtiva("Abrir arquivo .edf em implementação!", 2);
+
+                    btn_Resume.Enabled = true;
+                    btn_help.Enabled = true;
+                    saveToolStripButton.Enabled = true;
+                }
+                else
+                    AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
             }
             openFileEDF.Dispose();
-     
-        }
+         }
         //------------------------------------------------------------------------------------------
         //Salva Projeto em que está sendo executado
         private void saveToolStripButton_Click(object sender, EventArgs e)
@@ -450,21 +458,21 @@ namespace grafico_teste
             if (status_projeto == "Projeto_NOVO")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto);
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
             }
             if (status_projeto == "Projeto_RPB")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto);
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
             }
             if (status_projeto == "Projeto_EDF")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto);
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
             }

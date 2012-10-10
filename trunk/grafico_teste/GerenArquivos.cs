@@ -12,8 +12,8 @@ namespace grafico_teste
         private System.Windows.Forms.DataVisualization.Charting.Chart chart = null;
         private System.IO.StreamWriter fileW;
         private System.IO.StreamReader fileR;
-        private EDFFile edfFileInput_;
-        private EDFFile edfFileOutput_;
+        private EDFFile edfFileInput;
+        private EDFFile edfFileOutput;
         //Salvar Projeto Como ----------------------------------------------------------------
         public void Salva_Projeto(string diretorio, int __numeroDeCanais, Control _Chart)
         {
@@ -56,36 +56,12 @@ namespace grafico_teste
             return Convert.ToInt32(dados);
         }
         //Abrir Projeto EDF  -----------------------------------------------------------------
-        public void Abrir_Projeto_EDF(string diretorio, EDFFile edfFileInput, EDFFile edfFileOutput)
+        public EDFFile Abrir_Projeto_EDF(string diretorio)
         {
-            Carregar_EDF formEDF = new Carregar_EDF(diretorio, edfFileInput, edfFileOutput);
+            Carregar_EDF formEDF = new Carregar_EDF(diretorio);
             formEDF.ShowDialog();
-
-            if (edfFileOutput != null)
-            {
-                fileW = new System.IO.StreamWriter("C:\\AAA.txt", true);
-                string Dados_Saida;
-
-                foreach (EDFSignal signal in edfFileOutput.Header.Signals)
-                {
-
-                    foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
-                    {
-                        float allDataRecordSamples = 0;
-                        foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
-                        {
-                            allDataRecordSamples += sample;
-                            fileW.WriteLine(sample);
-
-                        }
-                        float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
-                        dataRecord[signal.IndexNumberWithLabel] = new List<float>();
-                        dataRecord[signal.IndexNumberWithLabel].Add(avgDataRecordSample);
-                    }
-                    signal.NumberOfSamplesPerDataRecord = 1;
-                }
-                fileW.Close();
-            }
+            edfFileOutput = formEDF.edfFileOutput;
+            return edfFileOutput;
         }
     }
 }

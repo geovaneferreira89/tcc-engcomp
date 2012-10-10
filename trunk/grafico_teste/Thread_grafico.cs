@@ -7,6 +7,7 @@ using System.Threading;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using EDF;
 
 namespace thread_chart
 {
@@ -34,9 +35,13 @@ namespace thread_chart
         private int _NumCanais = 0;
         //Controles sobre o sinal a exibir----------------------------------------------------------------------------------------
         private string OpcaoSinal;
+        //Arquivos EDF----------------------------------------------------------------------------------------
+        private EDFFile edfFileInput;
+        private EDFFile edfFileOutput;
         //-----------------------------------------------------------------------------------------------------------------
-        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal)
+        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal, EDFFile __edfFileOutput)
         {
+            edfFileOutput = __edfFileOutput;
             _Grafico          = Controle;
             _NumCanais        = NumCanais;
             _BarraDeProgresso = BarraDeProgresso;
@@ -90,6 +95,31 @@ namespace thread_chart
                 }
                 case("Projeto_EDF"):
                 {
+
+                    if (edfFileOutput != null)
+                    {
+                        num_de_voltas = 0;
+                        Plotar(0, 0, 2, 1, " ");
+                        foreach (EDFSignal signal in edfFileOutput.Header.Signals)
+                        {
+
+                            foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
+                            {
+                                float allDataRecordSamples = 0;
+                                foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
+                                {
+                                    allDataRecordSamples += sample;
+                                    Plotar(num_de_voltas, sample, 1, 1, "Blue");
+                                    num_de_voltas++;
+                                }
+                                float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
+                                dataRecord[signal.IndexNumberWithLabel] = new List<float>();
+                                dataRecord[signal.IndexNumberWithLabel].Add(avgDataRecordSample);
+                            }
+                            signal.NumberOfSamplesPerDataRecord = 1;
+                        }
+                        
+                    }
                     break;
                 }
 

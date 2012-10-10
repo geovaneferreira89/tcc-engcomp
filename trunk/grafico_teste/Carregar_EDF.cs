@@ -13,13 +13,24 @@ namespace grafico_teste
 {
     public partial class Carregar_EDF : Form
     {
-        private string dirArquivo;
-        private EDFFile edfFileInput;
-        private EDFFile edfFileOutput;
-        private string initialDirectory = "C:\\";
+        private string dirArquivo;     
+        //private string initialDirectory = "C:\\";
         private System.IO.StreamWriter fileW;
+        
+        //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
+        public EDFFile edfFileOutput
+        {
+            get;
+            set;
+        }
 
-        public Carregar_EDF(string dirArquivo_, EDFFile edfFileInput, EDFFile edfFileOutput)
+        public EDFFile edfFileInput
+        {
+            get;
+            set;
+        }
+
+        public Carregar_EDF(string dirArquivo_)
         {
             dirArquivo = dirArquivo_;
             InitializeComponent();
@@ -70,8 +81,6 @@ namespace grafico_teste
             if (edfFileOutput != null)
             {
                 fileW = new System.IO.StreamWriter("C:\\AAA.txt", true);
-                string Dados_Saida;
-
                 foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                 {
 
@@ -96,7 +105,7 @@ namespace grafico_teste
 
         private void Carregar_EDF_FormClosed(object sender, FormClosedEventArgs e)
         {
-          
+            //AtributoAcessadoPorOutroForm = "o form foi fechado";
         }
     }
 }
