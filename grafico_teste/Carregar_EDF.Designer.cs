@@ -1,4 +1,4 @@
-﻿namespace grafico_teste
+﻿namespace AmbienteRPB
 {
     partial class Carregar_EDF
     {

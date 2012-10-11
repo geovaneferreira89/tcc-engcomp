@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using EDF;
 
-namespace grafico_teste
+namespace AmbienteRPB
 {
     class GerenArquivos
     {

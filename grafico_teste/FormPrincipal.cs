@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 using EDF;
 
 
-namespace grafico_teste
+namespace AmbienteRPB
 {
     public partial class FormPrincipal : Form
     {
