@@ -89,7 +89,7 @@ namespace AmbienteRPB
                     AtualizaFerramentaAtiva("Abrir arquivo .edf em implementação!", 2);
                     __numeroDeCanais = edfFileOutput.Header.Signals.Count;
                     btn_Resume.Enabled = true;
-                    btn_help.Enabled = true;
+                    //btn_help.Enabled = true;
                     saveToolStripButton.Enabled = true;
                     //edfFileOutput.
                 }
@@ -140,7 +140,7 @@ namespace AmbienteRPB
         private void btn_novoProjeto_Click(object sender, EventArgs e)
         {
             btn_Resume.Enabled = true;
-            btn_help.Enabled = true;
+            //btn_help.Enabled = true;
             saveToolStripButton.Enabled = true;
             MessageBox.Show("Projeto " + nomeProject + "\nCriado",
                     "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
@@ -502,6 +502,11 @@ namespace AmbienteRPB
                 }
                 Thread.Sleep(1000);
             }
+        }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
         //------------------------------------------------------------------------------------------
        
