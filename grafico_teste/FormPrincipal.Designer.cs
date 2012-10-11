@@ -63,6 +63,7 @@
             this.openFileExplorer = new System.Windows.Forms.OpenFileDialog();
             this.check_MostrarCursorX = new System.Windows.Forms.CheckBox();
             this.openFileEDF = new System.Windows.Forms.OpenFileDialog();
+            this.ScrollBar = new System.Windows.Forms.HScrollBar();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Box_Status.SuspendLayout();
@@ -293,7 +294,7 @@
             this.tool_ControlesGerais.Location = new System.Drawing.Point(0, 24);
             this.tool_ControlesGerais.Name = "tool_ControlesGerais";
             this.tool_ControlesGerais.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tool_ControlesGerais.Size = new System.Drawing.Size(223, 31);
+            this.tool_ControlesGerais.Size = new System.Drawing.Size(192, 31);
             this.tool_ControlesGerais.TabIndex = 10;
             this.tool_ControlesGerais.Text = "toolStrip2";
             // 
@@ -404,6 +405,15 @@
             // 
             this.openFileEDF.Filter = "Arquivos EDF (*.edf)|*.edf|All files (*.*)|*.*\"";
             // 
+            // ScrollBar
+            // 
+            this.ScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScrollBar.Location = new System.Drawing.Point(12, 321);
+            this.ScrollBar.Name = "ScrollBar";
+            this.ScrollBar.Size = new System.Drawing.Size(690, 20);
+            this.ScrollBar.TabIndex = 13;
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,6 +421,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(714, 363);
+            this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.check_MostrarCursorX);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesGerais);
@@ -475,6 +486,7 @@
         private System.Windows.Forms.OpenFileDialog openFileExplorer;
         private System.Windows.Forms.CheckBox check_MostrarCursorX;
         private System.Windows.Forms.OpenFileDialog openFileEDF;
+        private System.Windows.Forms.HScrollBar ScrollBar;
     }
 }
 

@@ -98,18 +98,18 @@ namespace thread_chart
 
                     if (edfFileOutput != null)
                     {
+                        int i = 0;
                         num_de_voltas = 0;
-                        Plotar(0, 0, 2, 1, " ");
                         foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                         {
-
+                            Plotar(0, 0, 2, i, " ");
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
                                 float allDataRecordSamples = 0;
                                 foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
                                 {
                                     allDataRecordSamples += sample;
-                                    Plotar(num_de_voltas, sample, 1, 1, "Blue");
+                                    Plotar(num_de_voltas, sample, 1, i, "Blue");
                                     num_de_voltas++;
                                 }
                                 float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
@@ -117,6 +117,7 @@ namespace thread_chart
                                 dataRecord[signal.IndexNumberWithLabel].Add(avgDataRecordSample);
                             }
                             signal.NumberOfSamplesPerDataRecord = 1;
+                            i++;
                         }
                         
                     }

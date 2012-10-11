@@ -78,9 +78,9 @@ namespace grafico_teste
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (edfFileOutput != null)
-            {
-                fileW = new System.IO.StreamWriter("C:\\AAA.txt", true);
+            /*if (edfFileOutput != null)
+            {//Imprime as amostras do sinal no arquivo
+                fileW = new System.IO.StreamWriter("C:\\AmostrasSinalEEG.txt", true);
                 foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                 {
 
@@ -100,7 +100,11 @@ namespace grafico_teste
                     signal.NumberOfSamplesPerDataRecord = 1;
                 }
                 fileW.Close();
-            }
+            }*/
+            MessageBox.Show("Projeto " + dirArquivo + "\nCarregado!\n\nPressione PLAY para exibir os sinais",
+                   "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
 
         private void Carregar_EDF_FormClosed(object sender, FormClosedEventArgs e)
