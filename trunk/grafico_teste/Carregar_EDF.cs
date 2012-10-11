@@ -56,8 +56,11 @@ namespace AmbienteRPB
             if (edfFileOutput == null)
                 initializeEDFOutput();
 
-            edfFileOutput.addSignal((EDFSignal)listBox1.SelectedItem, edfFileInput.retrieveSignalSampleValues((EDFSignal)listBox1.SelectedItem));
-            listBox2.Items.Add(listBox1.SelectedItem);
+            for (int i = 0; i < listBox1.SelectedItems.Count; i++)
+            {
+                edfFileOutput.addSignal((EDFSignal)listBox1.SelectedItems[i], edfFileInput.retrieveSignalSampleValues((EDFSignal)listBox1.SelectedItems[i]));
+                listBox2.Items.Add(listBox1.SelectedItems[i]);
+            }
         }
 
         private void initializeEDFOutput()
