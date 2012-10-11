@@ -429,7 +429,6 @@
             this.Controls.Add(this.Box_Status);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.gbx_Chart);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPrincipal";
             this.Text = "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos";
