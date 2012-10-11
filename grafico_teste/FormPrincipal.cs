@@ -24,7 +24,7 @@ namespace grafico_teste
         private int ThreadChart_status = 0; // 0 - Desabilitada, 1 - Rodando, 2 - Pausada
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
-        private int __numeroDeCanais = 22;
+        private int __numeroDeCanais = 2;
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
@@ -449,10 +449,12 @@ namespace grafico_teste
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].BackColor = Color.WhiteSmoke;
-                chart1.ChartAreas[i].Position.X = 1;
+                chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = i * (4) + 3;
                 chart1.ChartAreas[i].Position.Height = 3;
-                chart1.ChartAreas[i].Position.Width = 100;
+                chart1.ChartAreas[i].Position.Width = 95;
+               
+               
             }
             if (status_projeto == "Projeto_NOVO")
             {

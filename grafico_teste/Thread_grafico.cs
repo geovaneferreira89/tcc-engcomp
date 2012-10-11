@@ -15,7 +15,7 @@ namespace thread_chart
     {
         //Controles Chart--------------------------------------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(double x, double y, int caso, int _VarchartArea_, string Cor);
+        private delegate void AtualizaChart(double x, double y, int caso, int _VarchartArea_, string Cor, string nomeSerie);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         //Controles Progress Bar-------------------------------------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
@@ -36,7 +36,6 @@ namespace thread_chart
         //Controles sobre o sinal a exibir----------------------------------------------------------------------------------------
         private string OpcaoSinal;
         //Arquivos EDF----------------------------------------------------------------------------------------
-        private EDFFile edfFileInput;
         private EDFFile edfFileOutput;
         //-----------------------------------------------------------------------------------------------------------------
         public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal, EDFFile __edfFileOutput)
@@ -58,7 +57,7 @@ namespace thread_chart
                 {
                     for (int i = 0; i < _NumCanais; i++)
                     {
-                        Plotar(0, 0, 2, i, " ");
+                        Plotar(0, 0, 2, i, " ", " ");
                         load_progress_bar(0, 2);
                         FuncAtualizaStatusProjeto("...Iniciou", 0);
                         double j = 0;
@@ -67,15 +66,15 @@ namespace thread_chart
                         {
                             if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
                             {
-                                Plotar(j, Math.Sin(j), 1, i, "YellowGreen");
+                                Plotar(j, Math.Sin(j), 1, i, "YellowGreen", "Seno");
                             }
                             if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
                             {
-                                Plotar(j, Math.Cos(j), 1, i, "Blue");
+                                Plotar(j, Math.Cos(j), 1, i, "Blue", "Cosseno");
                             }
                             if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
                             {
-                                Plotar(j, Math.Tan(j), 1, i, "Green");
+                                Plotar(j, Math.Tan(j), 1, i, "Green", "Tangente");
                             }
                             inc++;
                             j += num_de_amostras;
@@ -102,14 +101,14 @@ namespace thread_chart
                         num_de_voltas = 0;
                         foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                         {
-                            Plotar(0, 0, 2, i, " ");
+                            Plotar(0, 0, 2, i, " ", " ");
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
                                 float allDataRecordSamples = 0;
                                 foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
                                 {
                                     allDataRecordSamples += sample;
-                                    Plotar(num_de_voltas, sample, 1, i, "Blue");
+                                    Plotar(num_de_voltas, sample, 1, i, "Blue", signal.Label.ToString().Substring(4));
                                     num_de_voltas++;
                                 }
                                 float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
@@ -128,11 +127,11 @@ namespace thread_chart
 
         }
         //-----------------------------------------------------------------------------------------------------------------
-        private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor)
+        private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor, string nomeSerie)
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { x, y, caso, _NumCanais_, Cor });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { x, y, caso, _NumCanais_, Cor, nomeSerie });
             }
             else
             {
@@ -142,6 +141,7 @@ namespace thread_chart
                     {
                         prb.Series["canal" + _NumCanais_].Color = Color.FromName(Cor);
                         prb.Series["canal" + _NumCanais_].Points.AddXY(x, y);
+                        prb.Titles[_NumCanais_].Text = nomeSerie;
                     }
                 }
                 if (caso == 2)
@@ -151,6 +151,26 @@ namespace thread_chart
                     prb.Series["canal" + _NumCanais_].ChartArea = "canal" + _NumCanais_;
                     prb.Series["canal" + _NumCanais_].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                     prb.Legends.Clear();
+                
+                    prb.Titles.Add("canal" + _NumCanais_);
+                    
+                    prb.Titles[_NumCanais_].DockedToChartArea = "canal" + _NumCanais_;
+                    prb.Titles[_NumCanais_].Position.Height = 3;
+                    prb.Titles[_NumCanais_].Position.Width = 40;
+                    prb.Titles[_NumCanais_].Alignment = ContentAlignment.MiddleLeft;
+                    prb.Titles[_NumCanais_].Position.X = 0;//prb.ChartAreas[_NumCanais_].Position.X;
+                    prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Y;
+                    /* 
+                     * chart1.Titles.Add("canal" + i);
+                chart1.Titles[i].Text = ("canal" + i);
+                chart1.Titles[i].DockedToChartArea = chart1.ChartAreas[i].Name;
+                
+                chart1.Titles[i].Position.Auto = false;
+                
+                chart1.Titles[i].Position.X = 1;
+                chart1.Titles[i].Position.Y = i * (4) + 3;
+                chart1.Titles[i].Position.Height = 2;
+                chart1.Titles[i].Position.Width = 2;*/
                 }
             }
         }
