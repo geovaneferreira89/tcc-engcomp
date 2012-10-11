@@ -87,10 +87,11 @@ namespace grafico_teste
                 {
                     status_projeto = "Projeto_EDF";
                     AtualizaFerramentaAtiva("Abrir arquivo .edf em implementação!", 2);
-
+                    __numeroDeCanais = edfFileOutput.Header.Signals.Count;
                     btn_Resume.Enabled = true;
                     btn_help.Enabled = true;
                     saveToolStripButton.Enabled = true;
+                    //edfFileOutput.
                 }
                 else
                     AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
@@ -375,43 +376,41 @@ namespace grafico_teste
         //Realiza o ZOOM
         private void ZOOM(MouseEventArgs e)
         {
-            var pos = e.Location;
-            if (prevPosition.HasValue && pos == prevPosition.Value)
-                return;
-            tooltip.RemoveAll();
-            prevPosition = pos;
-            var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
-            foreach (var result in results)
+            HitTestResult result = chart1.HitTest(e.X, e.Y);
+            if (result.ChartArea != null)
             {
-                if (result.ChartElementType == ChartElementType.DataPoint)
-                {
-                    var prop = result.Object as DataPoint;
-                    if (prop != null)
-                    {
-                        if (_ZOOM_ == 1)
-                        {//ZOOM +
-                            result.ChartArea.AxisX.ScaleView.Position = 2;
-                            result.ChartArea.CursorX.AutoScroll = true;
-                            result.ChartArea.AxisX.ScaleView.Zoomable = true;
-                            double x = result.ChartArea.AxisX.PixelPositionToValue(pos.X);
-                            result.ChartArea.AxisX.ScaleView.Zoom(x, 10);
-                            result.ChartArea.AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+                if (_ZOOM_ == 1)
+                {//ZOOM +
+                    result.ChartArea.AxisX.ScaleView.Position = 2;
+                   // result.ChartArea.CursorX.AutoScroll = true;
+                    result.ChartArea.AxisX.ScaleView.Zoomable = true;
+                    double x = result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                    result.ChartArea.AxisX.ScaleView.Zoom(x, x+10);
+                   // result.ChartArea.AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+                    result.ChartArea.AxisX.ScrollBar.Enabled = true;
+                    result.ChartArea.AxisX.ScrollBar.IsPositionedInside = true;
+                    result.ChartArea.AxisX.ScrollBar.Size = 15;
+                   //ver isso!!!     
+                    result.ChartArea.CursorX.IsUserEnabled = true;
+                    result.ChartArea.CursorX.Interval = 1;
+                    result.ChartArea.CursorX.IsUserSelectionEnabled = true;
+                    result.ChartArea.AxisX.ScrollBar.IsPositionedInside = true;
 
-                            // set scrollbar small change to blockSize (e.g. 100)
-                            result.ChartArea.AxisX.ScaleView.SmallScrollSize = 10;
+                    
+                    result.ChartArea.CursorX.IsUserEnabled = true;
 
-                        }
-                        else
-                        {//ZOOM -
-                            result.ChartArea.AxisX.ScaleView.Position = 2;
-                            result.ChartArea.CursorX.AutoScroll = true;
-                            result.ChartArea.AxisX.ScaleView.Zoomable = true;
-                            result.ChartArea.AxisX.ScaleView.ZoomReset();
-                        }
-                    }
+                    // set scrollbar small change to blockSize (e.g. 100)
+                    //result.ChartArea.AxisX.ScaleView.SmallScrollSize = 1;
+                }
+                else
+                {//ZOOM -
+                    result.ChartArea.AxisX.ScaleView.Position = 2;
+                    result.ChartArea.CursorX.AutoScroll = true;
+                    result.ChartArea.AxisX.ScaleView.Zoomable = true;
+                    result.ChartArea.AxisX.ScaleView.ZoomReset();
                 }
             }
-
+                    
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
