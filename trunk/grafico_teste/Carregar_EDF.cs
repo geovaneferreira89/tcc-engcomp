@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using EDF;
 
 
-namespace grafico_teste
+namespace AmbienteRPB
 {
     public partial class Carregar_EDF : Form
     {

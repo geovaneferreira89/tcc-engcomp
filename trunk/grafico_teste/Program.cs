@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace grafico_teste
+namespace AmbienteRPB
 {
     static class Program
     {
