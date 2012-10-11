@@ -284,8 +284,8 @@
             this.tool_ControlesGerais.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tool_ControlesGerais.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_novoProjeto,
-            this.openToolStripButton,
             this.btn_Importar,
+            this.openToolStripButton,
             this.saveToolStripButton,
             this.printToolStripButton,
             this.toolStripSeparator1,
