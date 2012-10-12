@@ -102,23 +102,32 @@ namespace thread_chart
                         foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                         {
                             Plotar(0, 0, 2, i, " ", " ");
+                            load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
+                            FuncAtualizaStatusProjeto("...Iniciou", 0);
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
-                                float allDataRecordSamples = 0;
+                                //float allDataRecordSamples = 0;
                                 foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
                                 {
-                                    allDataRecordSamples += sample;
+                                    //allDataRecordSamples += sample;
                                     Plotar(num_de_voltas, sample, 1, i, "Blue", signal.Label.ToString().Substring(4));
                                     num_de_voltas++;
+                                    //Thread.Sleep(0);
+                                    load_progress_bar(num_de_voltas, 1);
                                 }
-                                float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
-                                dataRecord[signal.IndexNumberWithLabel] = new List<float>();
-                                dataRecord[signal.IndexNumberWithLabel].Add(avgDataRecordSample);
+                               // num_de_voltas++;
+                              //  float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
+                              //  dataRecord[signal.IndexNumberWithLabel] = new List<float>();
+                              //  dataRecord[signal.IndexNumberWithLabel].Add(avgDataRecordSample);
                             }
                             signal.NumberOfSamplesPerDataRecord = 1;
                             i++;
                         }
-                        
+                        load_progress_bar(0, 3);
+                        Thread.Sleep(1);
+                        FuncAtualizaStatusProjeto("...terminou", 1);
+                        FuncAtualizaControleProjeto("Des_btn_Suspender");
+                        Thread.Sleep(0);
                     }
                     break;
                 }
@@ -160,17 +169,8 @@ namespace thread_chart
                     prb.Titles[_NumCanais_].Alignment = ContentAlignment.MiddleLeft;
                     prb.Titles[_NumCanais_].Position.X = 0;//prb.ChartAreas[_NumCanais_].Position.X;
                     prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Y;
-                    /* 
-                     * chart1.Titles.Add("canal" + i);
-                chart1.Titles[i].Text = ("canal" + i);
-                chart1.Titles[i].DockedToChartArea = chart1.ChartAreas[i].Name;
-                
-                chart1.Titles[i].Position.Auto = false;
-                
-                chart1.Titles[i].Position.X = 1;
-                chart1.Titles[i].Position.Y = i * (4) + 3;
-                chart1.Titles[i].Position.Height = 2;
-                chart1.Titles[i].Position.Width = 2;*/
+
+
                 }
             }
         }
@@ -188,14 +188,21 @@ namespace thread_chart
                 {
                     if (prgbar != null)
                     {
-                        prgbar.PerformStep();
+                       // prgbar.PerformStep();
+                        prgbar.Increment(1);
+                        //prgbar.Value = valor;
+                        //if(prgbar.Maximum <= prgbar.Value)
+                        //{
+                        //    prgbar.ResetText();
+                        //}
                     }
+                    
                 }
                 if (caso == 2)  
                 {
                     prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
                     prgbar.Visible = true;
-                    prgbar.Maximum = num_de_voltas * _NumCanais;
+                    prgbar.Maximum = valor * _NumCanais * 90;
                 }
                 if(caso == 3)
                     prgbar.Visible = false;
