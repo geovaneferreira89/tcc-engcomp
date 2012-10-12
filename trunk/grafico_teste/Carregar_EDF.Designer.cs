@@ -43,7 +43,7 @@
             this.button2.Location = new System.Drawing.Point(162, 104);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(41, 23);
-            this.button2.TabIndex = 13;
+            this.button2.TabIndex = 2;
             this.button2.Text = "<--";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -60,7 +60,7 @@
             this.button1.Location = new System.Drawing.Point(162, 48);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 23);
-            this.button1.TabIndex = 11;
+            this.button1.TabIndex = 2;
             this.button1.Text = "-->";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -88,7 +88,7 @@
             this.btn_OK_EDF.Location = new System.Drawing.Point(12, 307);
             this.btn_OK_EDF.Name = "btn_OK_EDF";
             this.btn_OK_EDF.Size = new System.Drawing.Size(63, 23);
-            this.btn_OK_EDF.TabIndex = 14;
+            this.btn_OK_EDF.TabIndex = 1;
             this.btn_OK_EDF.Text = "Carregar";
             this.btn_OK_EDF.UseVisualStyleBackColor = true;
             this.btn_OK_EDF.Click += new System.EventHandler(this.button3_Click);

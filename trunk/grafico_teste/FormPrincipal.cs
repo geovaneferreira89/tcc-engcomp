@@ -19,9 +19,7 @@ namespace AmbienteRPB
 {
     public partial class FormPrincipal : Form
     {
-        //verifação de status das threads do sistema---------------------------------------
-        private Thread StatusThreads;
-        private int ThreadChart_status = 0; // 0 - Desabilitada, 1 - Rodando, 2 - Pausada
+       
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
         private int __numeroDeCanais = 2;
@@ -64,13 +62,8 @@ namespace AmbienteRPB
          */
         private void encerrar_sistema()
         {
-            if (ThreadChart_status == 1)
+            if (ThreadChart.IsAlive == true)
             {
-                ThreadChart.Abort();
-            }
-            if (ThreadChart_status == 2)
-            {
-                ThreadChart.Resume();
                 ThreadChart.Abort();
             }
         }
@@ -86,12 +79,18 @@ namespace AmbienteRPB
                 if (edfFileOutput != null)
                 {
                     status_projeto = "Projeto_EDF";
-                    AtualizaFerramentaAtiva("Abrir arquivo .edf em implementação!", 2);
+                    AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1);
                     __numeroDeCanais = edfFileOutput.Header.Signals.Count;
-                    btn_Resume.Enabled = true;
-                    //btn_help.Enabled = true;
                     saveToolStripButton.Enabled = true;
-                    //edfFileOutput.
+                    ChartInicializarThreads(__numeroDeCanais);
+
+                    btn_novoProjeto.Enabled = false;
+                    btnZoomMais.Enabled = true;
+                    btnZoomMenos.Enabled = true;
+                    btn_MarcarPadrões.Enabled = true;
+
+                    btn_Importar.Enabled = false;
+                    btn_novoProjeto.Enabled = false;
                 }
                 else
                     AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
@@ -119,6 +118,8 @@ namespace AmbienteRPB
                 if (__numeroDeCanais != 0)
                 {
                     //fazer
+                    btn_Importar.Enabled = false;
+                    btn_novoProjeto.Enabled = false;
                 }
                 status_projeto = "Projeto_RPB";
                 AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 
@@ -139,7 +140,8 @@ namespace AmbienteRPB
         //Criar novo projeto
         private void btn_novoProjeto_Click(object sender, EventArgs e)
         {
-            btn_Resume.Enabled = true;
+            btn_Importar.Enabled = false;
+            btn_novoProjeto.Enabled = false;
             //btn_help.Enabled = true;
             saveToolStripButton.Enabled = true;
             MessageBox.Show("Projeto " + nomeProject + "\nCriado",
@@ -147,45 +149,25 @@ namespace AmbienteRPB
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             status_projeto = "Projeto_NOVO";
 
+            ChartInicializarThreads(__numeroDeCanais);
+           
+            btn_novoProjeto.Enabled = false;
+            btnZoomMais.Enabled = true;
+            btnZoomMenos.Enabled = true;
+            btn_MarcarPadrões.Enabled = true;
+
         }
         //------------------------------------------------------------------------------------------
         //Supende o sistema
         private void btn_Suspender_Click(object sender, EventArgs e)
         {
-            if (ThreadChart_status == 1)
-            {
-                ThreadChart.Suspend();
-                ThreadChart_status = 1;
-                btn_Suspender.Enabled = false;
-                btn_Resume.Enabled = true;
-                ThreadChart_status = 2;
-            }
+       
         }
         //------------------------------------------------------------------------------------------
         //retorna o sistema
         private void btn_Resume_Click(object sender, EventArgs e)
         {
-            if (ThreadChart_status == 0)
-            {
-                chart1.Enabled = true; 
-                ChartInicializarThreads(__numeroDeCanais);
-                FuncStatusThreads();
-                btn_Suspender.Enabled = true;
-                btn_novoProjeto.Enabled = false;
-                btn_Resume.Enabled = false;
-                btn_MarcarPadrões.Enabled = true;
-                ThreadChart_status = 1;
-                btnZoomMais.Enabled = true;
-                btnZoomMenos.Enabled = true;
-            }
-
-            if (ThreadChart_status == 2)
-            {
-                ThreadChart.Resume();
-                ThreadChart_status = 1;
-                btn_Suspender.Enabled = true;
-                btn_Resume.Enabled = false;
-            }
+         
         }
         //-----------------------------------------------------------------------------------------
         //Função responsavel por verificar qual ferramenta usar quando o mouse é clicado em cima dos sinais
@@ -456,6 +438,106 @@ namespace AmbienteRPB
                
                
             }
+            //adicionar linhas eixo Y
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation3 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation4 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation5 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation6 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation7 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation8 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+          
+
+            lineAnnotation1.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation2.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation3.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation4.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation5.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation6.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation7.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation8.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation9.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation10.LineColor = System.Drawing.Color.LightGray;
+      
+            lineAnnotation1.ToolTip = "1";
+            lineAnnotation2.ToolTip = "1";
+            lineAnnotation3.ToolTip = "1";
+            lineAnnotation4.ToolTip = "1";
+            lineAnnotation5.ToolTip = "1";
+            lineAnnotation6.ToolTip = "1";
+            lineAnnotation7.ToolTip = "1";
+            lineAnnotation8.ToolTip = "1";
+            lineAnnotation9.ToolTip = "1";
+            lineAnnotation10.ToolTip = "1";
+
+            lineAnnotation1.X = 4;
+            lineAnnotation2.X = 14.3;
+            lineAnnotation3.X = 24.6;
+            lineAnnotation4.X = 34.9;
+            lineAnnotation5.X = 45.2;
+            lineAnnotation6.X = 55.5;
+            lineAnnotation7.X = 65.8;
+            lineAnnotation8.X = 76.1;
+            lineAnnotation9.X = 87.4;
+            lineAnnotation10.X = 99;
+
+            lineAnnotation1.Width = 0;
+            lineAnnotation1.Y = 0;
+            lineAnnotation2.Width = 0;
+            lineAnnotation2.Y = 0;
+            lineAnnotation3.Width = 0;
+            lineAnnotation3.Y = 0;
+            lineAnnotation4.Width = 0;
+            lineAnnotation4.Y = 0;
+            lineAnnotation5.Width = 0;
+            lineAnnotation5.Y = 0;
+            lineAnnotation6.Width = 0;
+            lineAnnotation6.Y = 0;
+            lineAnnotation7.Width = 0;
+            lineAnnotation7.Y = 0;
+            lineAnnotation8.Width = 0;
+            lineAnnotation8.Y = 0;
+            lineAnnotation9.Width = 0;
+            lineAnnotation9.Y = 0;
+            lineAnnotation10.Width = 0;
+            lineAnnotation10.Y = 0;
+
+            lineAnnotation1.Height = 200;
+            lineAnnotation2.Height = 200;
+            lineAnnotation3.Height = 200;
+            lineAnnotation4.Height = 200;
+            lineAnnotation5.Height = 200;
+            lineAnnotation6.Height = 200;
+            lineAnnotation7.Height = 200;
+            lineAnnotation8.Height = 200;
+            lineAnnotation9.Height = 200;
+            lineAnnotation10.Height = 200;
+
+            lineAnnotation1.Name = "LineAnnotation1";
+            lineAnnotation2.Name = "LineAnnotation2";
+            lineAnnotation3.Name = "LineAnnotation3";
+            lineAnnotation4.Name = "LineAnnotation4";
+            lineAnnotation5.Name = "LineAnnotation5";
+            lineAnnotation6.Name = "LineAnnotation6";
+            lineAnnotation7.Name = "LineAnnotation7";
+            lineAnnotation8.Name = "LineAnnotation8";
+            lineAnnotation9.Name = "LineAnnotation9";
+            lineAnnotation10.Name = "LineAnnotation10";
+
+            chart1.Annotations.Add(lineAnnotation1);
+            chart1.Annotations.Add(lineAnnotation2);
+            chart1.Annotations.Add(lineAnnotation3);
+            chart1.Annotations.Add(lineAnnotation4);
+            chart1.Annotations.Add(lineAnnotation5);
+            chart1.Annotations.Add(lineAnnotation6);
+            chart1.Annotations.Add(lineAnnotation7);
+            chart1.Annotations.Add(lineAnnotation8);
+            chart1.Annotations.Add(lineAnnotation9);
+            chart1.Annotations.Add(lineAnnotation10);
+
             if (status_projeto == "Projeto_NOVO")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
@@ -478,30 +560,6 @@ namespace AmbienteRPB
                 ThreadChart.Start();
             }
             
-        }
-        //------------------------------------------------------------------------------------------
-        //            ################################################################
-        //                           .VERIFICA ESTADO DAS THREAD EXISTENTES.
-        //            ################################################################
-        //------------------------------------------------------------------------------------------
-        private void FuncStatusThreads()
-        {
-            StatusThreads = new Thread(new ThreadStart(VerificaStatusThreads));
-            StatusThreads.Start();
-        }
-        //------------------------------------------------------------------------------------------
-        private void VerificaStatusThreads( )
-        {
-            while (true)
-            {
-                if (ThreadChart.IsAlive == false)
-                {
-                    //btn_Suspender.Enabled = false;
-                    ThreadChart.Abort();
-                    StatusThreads.Abort();
-                }
-                Thread.Sleep(1000);
-            }
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)

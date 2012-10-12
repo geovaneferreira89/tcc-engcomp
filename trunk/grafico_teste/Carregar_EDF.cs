@@ -81,32 +81,11 @@ namespace AmbienteRPB
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*if (edfFileOutput != null)
-            {//Imprime as amostras do sinal no arquivo
-                fileW = new System.IO.StreamWriter("C:\\AmostrasSinalEEG.txt", true);
-                foreach (EDFSignal signal in edfFileOutput.Header.Signals)
-                {
-
-                    foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
-                    {
-                        float allDataRecordSamples = 0;
-                        foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
-                        {
-                            allDataRecordSamples += sample;
-                            fileW.WriteLine(sample);
-                            
-                        }
-                        float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
-                        dataRecord[signal.IndexNumberWithLabel] = new List<float>();
-                        dataRecord[signal.IndexNumberWithLabel].Add(avgDataRecordSample);
-                    }
-                    signal.NumberOfSamplesPerDataRecord = 1;
-                }
-                fileW.Close();
-            }*/
-            MessageBox.Show("Projeto " + dirArquivo + "\nCarregado!\n\nPressione PLAY para exibir os sinais",
-                   "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
-                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+           if (edfFileOutput == null)
+                MessageBox.Show("Nenhum canal selecionado",
+                  "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                      MessageBoxButtons.OK, MessageBoxIcon.Information);   
+                
             this.Close();
         }
 
