@@ -172,7 +172,8 @@ namespace AmbienteRPB
         //-----------------------------------------------------------------------------------------
         //Função responsavel por verificar qual ferramenta usar quando o mouse é clicado em cima dos sinais
         private void chart1_MouseMove(object sender, MouseEventArgs e)
-        {         
+        {
+           
             if(mostrarCursores != 0)
             {
                 MarcarSelecao(e);
@@ -198,39 +199,18 @@ namespace AmbienteRPB
         // Mostra o cursor no eixo X dos gráficos
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-            if (MostrarCursorX == true)
+           
+            HitTestResult result = chart1.HitTest(e.X, e.Y);
+            if (result.ChartArea != null)
             {
-                var pos = e.Location;
-                if (prevPosition.HasValue && pos == prevPosition.Value)
-                    return;
-                tooltip.RemoveAll();
-                prevPosition = pos;
-                var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
-                foreach (var result in results)
+                var pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                var pointYPixel = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
+                lbl_x.Text = "Valor X: " + pointXPixel;
+                lbl_Y.Text = "Valor Y: " + pointYPixel;
+                if (MostrarCursorX == true)
                 {
-                    if (result.ChartElementType == ChartElementType.DataPoint)
-                    {
-                        var prop = result.Object as DataPoint;
-                        if (prop != null)
-                        {
-                            var pointXPixel = result.ChartArea.AxisX.ValueToPixelPosition(prop.XValue);
-                            var pointYPixel = result.ChartArea.AxisY.ValueToPixelPosition(prop.YValues[0]);
-
-                            lbl_x.Text = "Valor X: " + prop.XValue;
-                            lbl_Y.Text = "Valor Y: " + prop.YValues[0];
-                            //Verificar isto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! está marcando somente no numero inteiro
-                            result.ChartArea.CursorX.SetCursorPosition(prop.XValue);
-
-
-                            // check if the cursor is really close to the point (2 pixels around the point)
-                            if (Math.Abs(pos.X - pointXPixel) < 2 && Math.Abs(pos.Y - pointYPixel) < 2)
-                            {
-                                tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1, pos.X, pos.Y - 15);
-
-
-                            }
-                        }
-                    }
+                //Mostra cursor X
+                result.ChartArea.CursorX.SetCursorPosition(pointXPixel);
                 }
             }
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
@@ -261,24 +241,14 @@ namespace AmbienteRPB
         //Defini uma seleção afim de ser um padrão. 
         private void MarcarSelecao(MouseEventArgs e)
         {
-            var pos = e.Location;
-            if (prevPosition.HasValue && pos == prevPosition.Value)
-                return;
-            tooltip.RemoveAll();
-            prevPosition = pos;
-            var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
-            foreach (var result in results)
-            {
-                if (result.ChartElementType == ChartElementType.DataPoint)
-                {
-                    var prop = result.Object as DataPoint;
-                    if (prop != null)
+                    HitTestResult result = chart1.HitTest(e.X, e.Y);
+                    if (result != null)
                     {
                         if (numCursor == 0)
                         {
 
-                            x_Pos = prop.XValue;
-                            y_Pos = prop.YValues[0];
+                            x_Pos = result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                            y_Pos = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
 
                             //linha fixa
                             VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
@@ -300,7 +270,7 @@ namespace AmbienteRPB
                             result.ChartArea.CursorX.AxisType = AxisType.Secondary;
                             result.ChartArea.CursorX.LineColor = Color.Chocolate;
                             result.ChartArea.CursorX.LineWidth = 2;
-                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(pos.X, pos.Y), true);
+                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
 
                             chart1.Annotations.Clear();
 
@@ -308,14 +278,13 @@ namespace AmbienteRPB
                             result.ChartArea.CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
                             result.ChartArea.CursorX.IsUserEnabled = true;
                             result.ChartArea.CursorX.IsUserSelectionEnabled = true;
-                            result.ChartArea.CursorX.SetSelectionPosition(x_Pos, prop.XValue);
+                            result.ChartArea.CursorX.SetSelectionPosition(x_Pos, e.X);
 
                             numCursor = 0;//CLICAR + VEZES SEM EFEITO
                             //PADrões(); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         }
                     }
-                }
-            }
+           
         }
         //------------------------------------------------------------------------------------------
         //                                    ##  ZOOM ##
@@ -474,6 +443,7 @@ namespace AmbienteRPB
             lineAnnotation10.ToolTip = "1";
 
             lineAnnotation1.X = 4;
+            //=]
             lineAnnotation2.X = 14.3;
             lineAnnotation3.X = 24.6;
             lineAnnotation4.X = 34.9;
@@ -537,13 +507,14 @@ namespace AmbienteRPB
             chart1.Annotations.Add(lineAnnotation8);
             chart1.Annotations.Add(lineAnnotation9);
             chart1.Annotations.Add(lineAnnotation10);
-
+        
             if (status_projeto == "Projeto_NOVO")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
+                chart1.Enabled = true;
             }
             if (status_projeto == "Projeto_RPB")
             {
@@ -551,6 +522,7 @@ namespace AmbienteRPB
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
+                chart1.Enabled = true;
             }
             if (status_projeto == "Projeto_EDF")
             {
@@ -558,6 +530,7 @@ namespace AmbienteRPB
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
+                chart1.Enabled = true;
             }
             
         }
