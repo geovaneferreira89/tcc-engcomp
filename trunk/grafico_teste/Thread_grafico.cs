@@ -106,25 +106,19 @@ namespace thread_chart
                             FuncAtualizaStatusProjeto("...Iniciou", 0);
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
-                                //float allDataRecordSamples = 0;
                                 foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
                                 {
-                                    //allDataRecordSamples += sample;
                                     Plotar(num_de_voltas, sample, 1, i, "Blue", signal.Label.ToString().Substring(4));
                                     num_de_voltas++;
-                                    //Thread.Sleep(0);
                                     load_progress_bar(num_de_voltas, 1);
                                 }
-                               // num_de_voltas++;
-                              //  float avgDataRecordSample = allDataRecordSamples; //(allDataRecordSamples / signal.NumberOfSamplesPerDataRecord);
-                              //  dataRecord[signal.IndexNumberWithLabel] = new List<float>();
-                              //  dataRecord[signal.IndexNumberWithLabel].Add(avgDataRecordSample);
+                          
                             }
                             signal.NumberOfSamplesPerDataRecord = 1;
                             i++;
                         }
                         load_progress_bar(0, 3);
-                        Thread.Sleep(1);
+                        Thread.Sleep(0);
                         FuncAtualizaStatusProjeto("...terminou", 1);
                         FuncAtualizaControleProjeto("Des_btn_Suspender");
                         Thread.Sleep(0);
@@ -133,7 +127,7 @@ namespace thread_chart
                 }
 
             }//Fim switch
-
+            
         }
         //-----------------------------------------------------------------------------------------------------------------
         private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor, string nomeSerie)
