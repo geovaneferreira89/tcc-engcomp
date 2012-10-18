@@ -27,7 +27,6 @@ namespace AmbienteRPB
         private int numCursor = 0;
         private int mostrarCursores = 0;
         private double x_Pos, y_Pos;
-        private int _ZOOM_ = 0; // 0 -desativado, 1 +ZOOm, 2 -ZOMM 
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
         private bool MostrarCursorX = true;
@@ -85,8 +84,6 @@ namespace AmbienteRPB
                     ChartInicializarThreads(__numeroDeCanais);
 
                     btn_novoProjeto.Enabled = false;
-                    btnZoomMais.Enabled = true;
-                    btnZoomMenos.Enabled = true;
                     btn_MarcarPadrões.Enabled = true;
 
                     btn_Importar.Enabled = false;
@@ -152,8 +149,6 @@ namespace AmbienteRPB
             ChartInicializarThreads(__numeroDeCanais);
            
             btn_novoProjeto.Enabled = false;
-            btnZoomMais.Enabled = true;
-            btnZoomMenos.Enabled = true;
             btn_MarcarPadrões.Enabled = true;
 
         }
@@ -173,16 +168,10 @@ namespace AmbienteRPB
         //Função responsavel por verificar qual ferramenta usar quando o mouse é clicado em cima dos sinais
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
-           
             if(mostrarCursores != 0)
             {
                 MarcarSelecao(e);
             }    
-            if (_ZOOM_ != 0)
-            {
-                ZOOM(e); 
-            }
-         
         }
         //-----------------------------------------------------------------------------------------
         //Check box responsavel por Mostra o cursor no eixo X dos gráficos
@@ -287,92 +276,6 @@ namespace AmbienteRPB
            
         }
         //------------------------------------------------------------------------------------------
-        //                                    ##  ZOOM ##
-        //------------------------------------------------------------------------------------------
-        //Botão ZOOM +
-        private void btnZoomMais_Click(object sender, EventArgs e)
-        {
-            if (_ZOOM_ == 0 || _ZOOM_ == 2)
-            {
-                check_MostrarCursorX.Checked = false;
-                MostrarCursorX = false;
-                AtualizaFerramentaAtiva("", 0);
-                AtualizaFerramentaAtiva("ZOOM +", 1);
-                Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMais.cur");
-                _ZOOM_ = 1;
-            }
-            else
-            {
-                AtualizaFerramentaAtiva("", 0);
-            }
-
-        }
-        //------------------------------------------------------------------------------------------
-        //Botão ZOOM -
-        private void btnZoomMenos_Click(object sender, EventArgs e)
-        {
-            if (_ZOOM_ == 1)
-            {
-                AtualizaFerramentaAtiva("", 0);
-                AtualizaFerramentaAtiva("ZOOM -", 1);
-                Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorZoomMenos.cur");
-                _ZOOM_ = 2;
-            }
-            else
-            {
-                AtualizaFerramentaAtiva("", 0);
-            }
-        }
-        //------------------------------------------------------------------------------------------
-        //Realiza o ZOOM
-        private void ZOOM(MouseEventArgs e)
-        {
-            HitTestResult result = chart1.HitTest(e.X, e.Y);
-            if (result.ChartArea != null)
-            {
-              /*  if (_ZOOM_ == 1)
-                {//ZOOM +
-                   // .ChartArea.ZoomScrollSettingsX.MinZoomRange = 0.1;
-                    result.ChartArea.AxisX.ScaleView.Position = 2;
-                   // result.ChartArea.CursorX.AutoScroll = true;
-                    result.ChartArea.AxisX.ScaleBreakStyle.BreakLineStyle = BreakLineStyle.Straight;
-
-
-                    result.ChartArea.AxisX.ScaleView.Zoomable = true;
-                    double x = result.ChartArea.AxisX.PixelPositionToValue(e.X);
-                    result.ChartArea.AxisX.ScaleView.Zoom(x, x+10);
-                   // result.ChartArea.AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
-                    result.ChartArea.AxisX.ScrollBar.Enabled = true;
-                    result.ChartArea.AxisX.ScrollBar.IsPositionedInside = true;
-                    result.ChartArea.AxisX.ScrollBar.Size = 15;
-                   //ver isso!!!     
-                    result.ChartArea.CursorX.IsUserEnabled = true;
-                    result.ChartArea.CursorX.Interval = 1;
-                    result.ChartArea.CursorX.IsUserSelectionEnabled = true;
-                    result.ChartArea.AxisX.ScrollBar.IsPositionedInside = true;
-
-                    
-                    result.ChartArea.CursorX.IsUserEnabled = true;
-
-                    // set scrollbar small change to blockSize (e.g. 100)
-                    //result.ChartArea.AxisX.ScaleView.SmallScrollSize = 1;
-                }
-                else
-                {//ZOOM -
-                    result.ChartArea.AxisX.ScaleView.Position = 2;
-                    result.ChartArea.CursorX.AutoScroll = true;
-                    result.ChartArea.AxisX.ScaleView.Zoomable = true;
-                    result.ChartArea.AxisX.ScaleView.ZoomReset();
-                }*/
-                result.ChartArea.AxisX.ScaleView.Scroll(1);
-        result.ChartArea.CursorX.IsUserEnabled = true;
-        result.ChartArea.CursorX.IsUserSelectionEnabled = true;
-        result.ChartArea.AxisX.ScaleView.Zoomable = true;
-        result.ChartArea.AxisX.ScrollBar.IsPositionedInside = true;
-            }
-                    
-        }
-        //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
         //------------------------------------------------------------------------------------------
         private void AtualizaFerramentaAtiva(string ferramenta, int opcao)
@@ -382,7 +285,6 @@ namespace AmbienteRPB
                 lbl_ferramentaAtiva.ForeColor = Color.Brown;
                 lbl_ferramentaAtiva.Text = "Ferramenta ativa: Nenhuma";
                 Cursor = Cursors.Default;
-                _ZOOM_ = 0;
                 mostrarCursores = 0;
             }
             if (opcao == 1)

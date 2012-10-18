@@ -52,8 +52,6 @@
             this.tool_ControlesProjeto = new System.Windows.Forms.ToolStrip();
             this.btn_Resume = new System.Windows.Forms.ToolStripButton();
             this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
-            this.btnZoomMais = new System.Windows.Forms.ToolStripButton();
-            this.btnZoomMenos = new System.Windows.Forms.ToolStripButton();
             this.btn_MarcarPadrões = new System.Windows.Forms.ToolStripButton();
             this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip();
             this.btn_novoProjeto = new System.Windows.Forms.ToolStripButton();
@@ -260,13 +258,11 @@
             this.tool_ControlesProjeto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_Resume,
             this.btn_Suspender,
-            this.btnZoomMais,
-            this.btnZoomMenos,
             this.btn_MarcarPadrões});
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(152, 24);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(143, 31);
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(118, 31);
             this.tool_ControlesProjeto.TabIndex = 9;
             this.tool_ControlesProjeto.Text = "toolStrip1";
             // 
@@ -291,29 +287,6 @@
             this.btn_Suspender.Size = new System.Drawing.Size(28, 28);
             this.btn_Suspender.Text = "Pausar Aquisição de Sinal";
             this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click);
-            // 
-            // btnZoomMais
-            // 
-            this.btnZoomMais.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnZoomMais.Enabled = false;
-            this.btnZoomMais.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomMais.Image")));
-            this.btnZoomMais.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnZoomMais.Name = "btnZoomMais";
-            this.btnZoomMais.Size = new System.Drawing.Size(28, 28);
-            this.btnZoomMais.Text = "Zoom +";
-            this.btnZoomMais.Click += new System.EventHandler(this.btnZoomMais_Click);
-            // 
-            // btnZoomMenos
-            // 
-            this.btnZoomMenos.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnZoomMenos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnZoomMenos.Enabled = false;
-            this.btnZoomMenos.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomMenos.Image")));
-            this.btnZoomMenos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnZoomMenos.Name = "btnZoomMenos";
-            this.btnZoomMenos.Size = new System.Drawing.Size(28, 28);
-            this.btnZoomMenos.Text = "Zoom -";
-            this.btnZoomMenos.Click += new System.EventHandler(this.btnZoomMenos_Click);
             // 
             // btn_MarcarPadrões
             // 
@@ -533,8 +506,6 @@
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btn_Suspender;
         private System.Windows.Forms.ToolStripButton btn_Resume;
-        private System.Windows.Forms.ToolStripButton btnZoomMais;
-        private System.Windows.Forms.ToolStripButton btnZoomMenos;
         private System.Windows.Forms.ToolStripButton btn_MarcarPadrões;
         private System.Windows.Forms.ToolStripButton btn_Importar;
         private System.Windows.Forms.ToolStripButton btn_novoProjeto;
