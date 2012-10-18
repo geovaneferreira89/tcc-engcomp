@@ -200,7 +200,7 @@ namespace AmbienteRPB
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
            
-            HitTestResult result = chart1.HitTest(e.X, e.Y);
+           /* HitTestResult result = chart1.HitTest(e.X, e.Y);
             if (result.ChartArea != null)
             {
                 var pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
@@ -212,7 +212,7 @@ namespace AmbienteRPB
                 //Mostra cursor X
                 result.ChartArea.CursorX.SetCursorPosition(pointXPixel);
                 }
-            }
+            }*/
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
@@ -330,10 +330,14 @@ namespace AmbienteRPB
             HitTestResult result = chart1.HitTest(e.X, e.Y);
             if (result.ChartArea != null)
             {
-                if (_ZOOM_ == 1)
+              /*  if (_ZOOM_ == 1)
                 {//ZOOM +
+                   // .ChartArea.ZoomScrollSettingsX.MinZoomRange = 0.1;
                     result.ChartArea.AxisX.ScaleView.Position = 2;
                    // result.ChartArea.CursorX.AutoScroll = true;
+                    result.ChartArea.AxisX.ScaleBreakStyle.BreakLineStyle = BreakLineStyle.Straight;
+
+
                     result.ChartArea.AxisX.ScaleView.Zoomable = true;
                     double x = result.ChartArea.AxisX.PixelPositionToValue(e.X);
                     result.ChartArea.AxisX.ScaleView.Zoom(x, x+10);
@@ -359,7 +363,12 @@ namespace AmbienteRPB
                     result.ChartArea.CursorX.AutoScroll = true;
                     result.ChartArea.AxisX.ScaleView.Zoomable = true;
                     result.ChartArea.AxisX.ScaleView.ZoomReset();
-                }
+                }*/
+                result.ChartArea.AxisX.ScaleView.Scroll(1);
+        result.ChartArea.CursorX.IsUserEnabled = true;
+        result.ChartArea.CursorX.IsUserSelectionEnabled = true;
+        result.ChartArea.AxisX.ScaleView.Zoomable = true;
+        result.ChartArea.AxisX.ScrollBar.IsPositionedInside = true;
             }
                     
         }
@@ -511,7 +520,7 @@ namespace AmbienteRPB
             if (status_projeto == "Projeto_NOVO")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
@@ -519,7 +528,7 @@ namespace AmbienteRPB
             if (status_projeto == "Projeto_RPB")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
@@ -527,7 +536,7 @@ namespace AmbienteRPB
             if (status_projeto == "Projeto_EDF")
             {
                 //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput);
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
@@ -538,6 +547,17 @@ namespace AmbienteRPB
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            for (int i = 0; i < __numeroDeCanais; i++)
+            {
+                chart1.ChartAreas[i].AxisX.ScaleView.Size = 10000; //VERIFICAR VALOR!
+                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
+                //scroll1.Value;
+                chart1.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
+            }
         }
         //------------------------------------------------------------------------------------------
        

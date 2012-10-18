@@ -438,10 +438,12 @@
             // 
             this.ScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScrollBar.Enabled = false;
             this.ScrollBar.Location = new System.Drawing.Point(7, 321);
             this.ScrollBar.Name = "ScrollBar";
             this.ScrollBar.Size = new System.Drawing.Size(698, 20);
             this.ScrollBar.TabIndex = 13;
+            this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
             // 
             // gbx_Escala
             // 

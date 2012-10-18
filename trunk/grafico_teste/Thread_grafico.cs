@@ -21,6 +21,7 @@ namespace thread_chart
         private Control _BarraDeProgresso = null;
         private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.ProgressBar prgbar = null;
+        private bool chave = true;
         // Controles Projeto------------------------------------------------------------------------------------------------------
         private Control _ControleProjeto = null;
         private System.Windows.Forms.ToolStrip ControleProjeto = null;
@@ -35,18 +36,23 @@ namespace thread_chart
         private int _NumCanais = 0;
         //Controles sobre o sinal a exibir----------------------------------------------------------------------------------------
         private string OpcaoSinal;
+        //Controles Scroll Bar ----------------------------------------------------------------------------------------
+        private Control _ScrollBar = null;
+        private delegate void ScrollBar_Propriedades(int num_volta);
+        private System.Windows.Forms.ScrollBar ScrollBar;
         //Arquivos EDF----------------------------------------------------------------------------------------
         private EDFFile edfFileOutput;
         //-----------------------------------------------------------------------------------------------------------------
-        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal, EDFFile __edfFileOutput)
+        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal, EDFFile __edfFileOutput, Control __ScrollBar)
         {
-            edfFileOutput = __edfFileOutput;
+            edfFileOutput     = __edfFileOutput;
             _Grafico          = Controle;
             _NumCanais        = NumCanais;
             _BarraDeProgresso = BarraDeProgresso;
             _ControleProjeto  = __ControleProjeto;
             _StatusProjeto    = __StatusProjeto;
             OpcaoSinal        = _OpcaoSinal;
+            _ScrollBar        = __ScrollBar;
         }
         //-----------------------------------------------------------------------------------------------------------------
         public void Inicializa()
@@ -117,11 +123,14 @@ namespace thread_chart
                             signal.NumberOfSamplesPerDataRecord = 1;
                             i++;
                         }
-                        load_progress_bar(0, 3);
-                        Thread.Sleep(0);
-                        FuncAtualizaStatusProjeto("...terminou", 1);
-                        FuncAtualizaControleProjeto("Des_btn_Suspender");
-                        Thread.Sleep(0);
+                        while (chave)
+                        {
+                            load_progress_bar(0, 3);
+                            FuncScrollBar_Propriedades(num_de_voltas);
+                            FuncAtualizaStatusProjeto("...terminou", 1);
+                            FuncAtualizaControleProjeto("Des_btn_Suspender");
+                            Thread.Sleep(10);
+                        }
                     }
                     break;
                 }
@@ -241,5 +250,21 @@ namespace thread_chart
             }
         }
         //-----------------------------------------------------------------------------------------------------------------
+        private void FuncScrollBar_Propriedades(int num_volta)
+        {
+            if (_ScrollBar.InvokeRequired)
+            {
+                _ScrollBar.BeginInvoke(new ScrollBar_Propriedades(FuncScrollBar_Propriedades), new Object[] {num_volta });
+            }
+            else
+            {
+                ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
+                ScrollBar.Maximum = num_volta;
+                ScrollBar.Enabled = true;
+                chave = false;
+            }
+        }
+        //-----------------------------------------------------------------------------------------------------------------
+
     }
 }
