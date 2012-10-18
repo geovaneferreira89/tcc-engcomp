@@ -30,14 +30,11 @@ namespace AmbienteRPB
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
         private bool MostrarCursorX = true;
-
-        private string dirArquivo;
-        private EDFFile edfFileInput = null;
         private EDFFile edfFileOutput = null;
+        private bool ThreadInicializada = false;
         //Geren Arquivos------------------------------------------
         private GerenArquivos Arquivos;
 
-        Point? prevPosition = null;
         ToolTip tooltip = new ToolTip();
       
         //-----------------------------------------------------------------------------------------
@@ -61,10 +58,10 @@ namespace AmbienteRPB
          */
         private void encerrar_sistema()
         {
-            if (ThreadChart.IsAlive == true)
+            /*if (ThreadChart.IsAlive == true && ThreadInicializada)
             {
                 ThreadChart.Abort();
-            }
+            }*/
         }
         //------------------------------------------------------------------------------------------
         // Ferramenta de importar sinais EEG de arquivo .EDF
@@ -425,6 +422,7 @@ namespace AmbienteRPB
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
+                ThreadInicializada = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
             }
@@ -434,6 +432,7 @@ namespace AmbienteRPB
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
+                ThreadInicializada = true;
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
@@ -444,6 +443,7 @@ namespace AmbienteRPB
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
+                ThreadInicializada = true;
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;

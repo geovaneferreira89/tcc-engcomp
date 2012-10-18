@@ -31,16 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.gbx_Chart = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.Box_Status = new System.Windows.Forms.StatusStrip();
-            this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.carregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +40,12 @@
             this.janelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Box_Status = new System.Windows.Forms.StatusStrip();
+            this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
             this.tool_ControlesProjeto = new System.Windows.Forms.ToolStrip();
             this.btn_Resume = new System.Windows.Forms.ToolStripButton();
             this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
@@ -70,8 +67,8 @@
             this.FrequenciaCombo = new System.Windows.Forms.ComboBox();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.Box_Status.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.Box_Status.SuspendLayout();
             this.tool_ControlesProjeto.SuspendLayout();
             this.tool_ControlesGerais.SuspendLayout();
             this.gbx_Escala.SuspendLayout();
@@ -84,9 +81,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbx_Chart.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.gbx_Chart.Controls.Add(this.chart1);
-            this.gbx_Chart.Location = new System.Drawing.Point(3, 52);
+            this.gbx_Chart.Controls.Add(this.menuStrip1);
+            this.gbx_Chart.Location = new System.Drawing.Point(3, 33);
             this.gbx_Chart.Name = "gbx_Chart";
-            this.gbx_Chart.Size = new System.Drawing.Size(703, 268);
+            this.gbx_Chart.Size = new System.Drawing.Size(703, 285);
             this.gbx_Chart.TabIndex = 5;
             this.gbx_Chart.TabStop = false;
             // 
@@ -99,14 +97,82 @@
             this.chart1.BackSecondaryColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.BorderlineColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.Enabled = false;
-            this.chart1.Location = new System.Drawing.Point(6, 10);
+            this.chart1.Location = new System.Drawing.Point(4, 9);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(692, 252);
+            this.chart1.Size = new System.Drawing.Size(694, 272);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_Mover);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configuraçõeToolStripMenuItem,
+            this.ferramentasToolStripMenuItem,
+            this.mapasToolStripMenuItem,
+            this.estatísticasToolStripMenuItem,
+            this.verToolStripMenuItem,
+            this.janelaToolStripMenuItem,
+            this.ajudaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(6, 238);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(453, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // configuraçõeToolStripMenuItem
+            // 
+            this.configuraçõeToolStripMenuItem.Name = "configuraçõeToolStripMenuItem";
+            this.configuraçõeToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.configuraçõeToolStripMenuItem.Text = "Configuraçõe ";
+            // 
+            // ferramentasToolStripMenuItem
+            // 
+            this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
+            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.ferramentasToolStripMenuItem.Text = "Ferramentas";
+            // 
+            // mapasToolStripMenuItem
+            // 
+            this.mapasToolStripMenuItem.Name = "mapasToolStripMenuItem";
+            this.mapasToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.mapasToolStripMenuItem.Text = "Mapas";
+            // 
+            // estatísticasToolStripMenuItem
+            // 
+            this.estatísticasToolStripMenuItem.Name = "estatísticasToolStripMenuItem";
+            this.estatísticasToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.estatísticasToolStripMenuItem.Text = "Estatísticas";
+            // 
+            // verToolStripMenuItem
+            // 
+            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
+            this.verToolStripMenuItem.Text = "Ver";
+            // 
+            // janelaToolStripMenuItem
+            // 
+            this.janelaToolStripMenuItem.Name = "janelaToolStripMenuItem";
+            this.janelaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.janelaToolStripMenuItem.Text = "Janela";
+            // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sobreToolStripMenuItem});
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            // 
+            // sobreToolStripMenuItem
+            // 
+            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.sobreToolStripMenuItem.Text = "Sobre";
             // 
             // Box_Status
             // 
@@ -159,96 +225,6 @@
             this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
             this.lbl_mouseY.Text = "Mouse Y:";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arquivoToolStripMenuItem,
-            this.configuraçõeToolStripMenuItem,
-            this.ferramentasToolStripMenuItem,
-            this.mapasToolStripMenuItem,
-            this.estatísticasToolStripMenuItem,
-            this.verToolStripMenuItem,
-            this.janelaToolStripMenuItem,
-            this.ajudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(711, 24);
-            this.menuStrip1.TabIndex = 8;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // arquivoToolStripMenuItem
-            // 
-            this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.carregarToolStripMenuItem,
-            this.fecharToolStripMenuItem});
-            this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
-            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.arquivoToolStripMenuItem.Text = "Arquivo";
-            // 
-            // carregarToolStripMenuItem
-            // 
-            this.carregarToolStripMenuItem.Name = "carregarToolStripMenuItem";
-            this.carregarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.carregarToolStripMenuItem.Text = "Carregar";
-            // 
-            // fecharToolStripMenuItem
-            // 
-            this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.fecharToolStripMenuItem.Text = "Fechar";
-            this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click);
-            // 
-            // configuraçõeToolStripMenuItem
-            // 
-            this.configuraçõeToolStripMenuItem.Name = "configuraçõeToolStripMenuItem";
-            this.configuraçõeToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.configuraçõeToolStripMenuItem.Text = "Configuraçõe ";
-            // 
-            // ferramentasToolStripMenuItem
-            // 
-            this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
-            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.ferramentasToolStripMenuItem.Text = "Ferramentas";
-            // 
-            // mapasToolStripMenuItem
-            // 
-            this.mapasToolStripMenuItem.Name = "mapasToolStripMenuItem";
-            this.mapasToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.mapasToolStripMenuItem.Text = "Mapas";
-            // 
-            // estatísticasToolStripMenuItem
-            // 
-            this.estatísticasToolStripMenuItem.Name = "estatísticasToolStripMenuItem";
-            this.estatísticasToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.estatísticasToolStripMenuItem.Text = "Estatísticas";
-            // 
-            // verToolStripMenuItem
-            // 
-            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
-            this.verToolStripMenuItem.Text = "Ver";
-            // 
-            // janelaToolStripMenuItem
-            // 
-            this.janelaToolStripMenuItem.Name = "janelaToolStripMenuItem";
-            this.janelaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.janelaToolStripMenuItem.Text = "Janela";
-            // 
-            // ajudaToolStripMenuItem
-            // 
-            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sobreToolStripMenuItem});
-            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.ajudaToolStripMenuItem.Text = "Ajuda";
-            // 
-            // sobreToolStripMenuItem
-            // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.sobreToolStripMenuItem.Text = "Sobre";
-            // 
             // tool_ControlesProjeto
             // 
             this.tool_ControlesProjeto.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -259,7 +235,7 @@
             this.btn_Resume,
             this.btn_Suspender,
             this.btn_MarcarPadrões});
-            this.tool_ControlesProjeto.Location = new System.Drawing.Point(152, 24);
+            this.tool_ControlesProjeto.Location = new System.Drawing.Point(152, 4);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tool_ControlesProjeto.Size = new System.Drawing.Size(87, 31);
@@ -313,7 +289,7 @@
             this.openToolStripButton,
             this.saveToolStripButton,
             this.printToolStripButton});
-            this.tool_ControlesGerais.Location = new System.Drawing.Point(0, 24);
+            this.tool_ControlesGerais.Location = new System.Drawing.Point(-3, 4);
             this.tool_ControlesGerais.Name = "tool_ControlesGerais";
             this.tool_ControlesGerais.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tool_ControlesGerais.Size = new System.Drawing.Size(152, 31);
@@ -393,8 +369,6 @@
             // 
             this.check_MostrarCursorX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.check_MostrarCursorX.AutoSize = true;
-            this.check_MostrarCursorX.Checked = true;
-            this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_MostrarCursorX.Location = new System.Drawing.Point(168, 12);
             this.check_MostrarCursorX.Name = "check_MostrarCursorX";
             this.check_MostrarCursorX.Size = new System.Drawing.Size(66, 17);
@@ -424,7 +398,7 @@
             this.gbx_Escala.Controls.Add(this.AmplitudeCombo);
             this.gbx_Escala.Controls.Add(this.FrequenciaCombo);
             this.gbx_Escala.Controls.Add(this.check_MostrarCursorX);
-            this.gbx_Escala.Location = new System.Drawing.Point(464, 20);
+            this.gbx_Escala.Location = new System.Drawing.Point(463, -1);
             this.gbx_Escala.Name = "gbx_Escala";
             this.gbx_Escala.Size = new System.Drawing.Size(242, 36);
             this.gbx_Escala.TabIndex = 14;
@@ -469,20 +443,21 @@
             this.Controls.Add(this.tool_ControlesGerais);
             this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.Box_Status);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.gbx_Chart);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPrincipal";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.gbx_Chart.ResumeLayout(false);
+            this.gbx_Chart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.Box_Status.ResumeLayout(false);
-            this.Box_Status.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.Box_Status.ResumeLayout(false);
+            this.Box_Status.PerformLayout();
             this.tool_ControlesProjeto.ResumeLayout(false);
             this.tool_ControlesProjeto.PerformLayout();
             this.tool_ControlesGerais.ResumeLayout(false);
@@ -502,10 +477,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lbl_x;
         private System.Windows.Forms.ToolStripStatusLabel lbl_Y;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem carregarToolStripMenuItem;
         private System.Windows.Forms.ToolStrip tool_ControlesProjeto;
-        private System.Windows.Forms.ToolStripMenuItem fecharToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btn_Suspender;
