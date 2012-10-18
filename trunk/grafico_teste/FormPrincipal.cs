@@ -22,7 +22,7 @@ namespace AmbienteRPB
        
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
-        private int __numeroDeCanais = 10;
+        private int __numeroDeCanais = 23;
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
@@ -200,7 +200,7 @@ namespace AmbienteRPB
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
            
-           /* HitTestResult result = chart1.HitTest(e.X, e.Y);
+            HitTestResult result = chart1.HitTest(e.X, e.Y);
             if (result.ChartArea != null)
             {
                 var pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
@@ -212,7 +212,7 @@ namespace AmbienteRPB
                 //Mostra cursor X
                 result.ChartArea.CursorX.SetCursorPosition(pointXPixel);
                 }
-            }*/
+            }
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
@@ -402,19 +402,18 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void ChartInicializarThreads(int numeroDeCanais)
         {
+            int Divisao = 100 / numeroDeCanais;
             for (int i = 0; i < numeroDeCanais; i++)
             {
                 //propriedades de cada sinal
                 chart1.ChartAreas.Add("canal" + i);
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-             //   chart1.ChartAreas[i].BackColor = Color.WhiteSmoke; //Cor de fundo nos canais... 
+                chart1.ChartAreas[i].BackColor = Color.Linen; //Cor de fundo nos canais... 
                 chart1.ChartAreas[i].Position.X = 4;
-                chart1.ChartAreas[i].Position.Y = i * 5;
-                chart1.ChartAreas[i].Position.Height = 5;
-                chart1.ChartAreas[i].Position.Width = 95;
-               
-               
+                chart1.ChartAreas[i].Position.Y = Divisao * i + 1;
+                chart1.ChartAreas[i].Position.Height = Divisao;
+                chart1.ChartAreas[i].Position.Width = 95;  
             }
             //adicionar linhas eixo Y
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
@@ -543,33 +542,18 @@ namespace AmbienteRPB
             }
             
         }
-
+        //------------------------------------------------------------------------------------------
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
 
         }
-
+        //------------------------------------------------------------------------------------------
         private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             for (int i = 0; i < __numeroDeCanais; i++)
             {
-              //  chart1.ChartAreas[i].AxisX.ScaleView.Size = 10000; //VERIFICAR VALOR!
-               // chart1.ChartAreas[1].CursorX.AutoScroll = true;
-               // chart1.ChartAreas[i].AxisX.ScaleView.Zoom(ScrollBar.Value,1000);
                 chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
-                AtualizaFerramentaAtiva(e.NewValue.ToString(), 2);
-                
-             //chart1.ChartAreas[0].AxisX.ScaleView.Size = ScrollBar.Value;
-             //chart1.ChartAreas[1].AxisX.ScaleView.Size = ScrollBar.Value;
-             //chart1.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
-             //   chart1.ChartAreas[i].AxisX.ScrollBar.Enabled = true;
-
-             ///   chart1.ChartAreas[i].AxisX.ScrollBar.IsPositionedInside = false;
-             ///   chart1.ChartAreas[i].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.All;
-                
-                //chart1.ChartAreas[i].AxisX.ScrollBar.
-
-           }
+            }
         }
         //------------------------------------------------------------------------------------------
        

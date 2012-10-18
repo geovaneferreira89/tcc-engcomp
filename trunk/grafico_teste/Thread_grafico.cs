@@ -176,11 +176,6 @@ namespace thread_chart
                     prb.Titles[_NumCanais_].Alignment = ContentAlignment.MiddleLeft;
                     prb.Titles[_NumCanais_].Position.X = 0;//prb.ChartAreas[_NumCanais_].Position.X;
                     prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Y;
-
-                 //   prb.ChartAreas[_NumCanais_].AxisX.ScaleView.Position = 0;
-                  //  prb.ChartAreas[_NumCanais_].AxisX.ScaleView.SmallScrollSize = 0;
-
-
                 }
             }
         }
@@ -198,15 +193,8 @@ namespace thread_chart
                 {
                     if (prgbar != null)
                     {
-                       // prgbar.PerformStep();
                         prgbar.Increment(1);
-                        //prgbar.Value = valor;
-                        //if(prgbar.Maximum <= prgbar.Value)
-                        //{
-                        //    prgbar.ResetText();
-                        //}
                     }
-                    
                 }
                 if (caso == 2)  
                 {
@@ -273,7 +261,7 @@ namespace thread_chart
                 {
                     if (OpcaoSinal == "Projeto_EDF")
                     {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = num_de_voltas / 50; //VERIFICAR VALOR!
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = num_de_voltas / 30; //VERIFICAR VALOR! "Frequencia"
                         ScrollBar.Maximum = num_de_voltas;
                     }
                     else
