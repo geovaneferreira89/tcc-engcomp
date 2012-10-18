@@ -73,7 +73,6 @@
       <DependentUpon>Carregar_EDF.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenArquivos.cs" />
-    <Compile Include="StatusThreads.cs" />
     <Compile Include="Thread_grafico.cs" />
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>

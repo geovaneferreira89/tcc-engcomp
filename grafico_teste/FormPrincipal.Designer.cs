@@ -476,6 +476,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(84, 21);
             this.comboBox1.TabIndex = 10;
+            this.comboBox1.Tag = "Frequencia";
             this.comboBox1.Text = "1,0 cm/s";
             // 
             // FormPrincipal
