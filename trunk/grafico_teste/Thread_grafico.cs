@@ -89,9 +89,13 @@ namespace thread_chart
                         load_progress_bar(inc, 1);
 
                     }
-                    load_progress_bar(0, 3);
-                    FuncAtualizaStatusProjeto("...terminou", 1);
-                    FuncAtualizaControleProjeto("Des_btn_Suspender");
+                    while (chave)
+                    {
+                        load_progress_bar(0, 3);
+                        FuncScrollBar_Propriedades(num_de_voltas);
+                        FuncAtualizaStatusProjeto("...terminou", 1);
+                        FuncAtualizaControleProjeto("Des_btn_Suspender");
+                    }
                     break;
                 } //Fim Case Gerar sinal
                 case ("Projeto_RPB"):
@@ -104,12 +108,13 @@ namespace thread_chart
                     if (edfFileOutput != null)
                     {
                         int i = 0;
-                        num_de_voltas = 0;
+                        
                         foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                         {
                             Plotar(0, 0, 2, i, " ", " ");
                             load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
                             FuncAtualizaStatusProjeto("...Iniciou", 0);
+                            num_de_voltas = 0;
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
                                 foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
@@ -129,7 +134,6 @@ namespace thread_chart
                             FuncScrollBar_Propriedades(num_de_voltas);
                             FuncAtualizaStatusProjeto("...terminou", 1);
                             FuncAtualizaControleProjeto("Des_btn_Suspender");
-                            Thread.Sleep(10);
                         }
                     }
                     break;
@@ -172,6 +176,9 @@ namespace thread_chart
                     prb.Titles[_NumCanais_].Alignment = ContentAlignment.MiddleLeft;
                     prb.Titles[_NumCanais_].Position.X = 0;//prb.ChartAreas[_NumCanais_].Position.X;
                     prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Y;
+
+                 //   prb.ChartAreas[_NumCanais_].AxisX.ScaleView.Position = 0;
+                  //  prb.ChartAreas[_NumCanais_].AxisX.ScaleView.SmallScrollSize = 0;
 
 
                 }
@@ -259,9 +266,24 @@ namespace thread_chart
             else
             {
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
-                ScrollBar.Maximum = num_volta;
+               
                 ScrollBar.Enabled = true;
                 chave = false;
+                for (int i = 0; i < _NumCanais; i++)
+                {
+                    if (OpcaoSinal == "Projeto_EDF")
+                    {
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = num_de_voltas / 50; //VERIFICAR VALOR!
+                        ScrollBar.Maximum = num_de_voltas;
+                    }
+                    else
+                    {
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = 3;
+                        ScrollBar.Maximum = num_de_voltas;
+                    }
+                    
+                    prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
+                }
             }
         }
         //-----------------------------------------------------------------------------------------------------------------

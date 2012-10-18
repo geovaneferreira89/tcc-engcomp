@@ -22,7 +22,7 @@ namespace AmbienteRPB
        
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
-        private int __numeroDeCanais = 2;
+        private int __numeroDeCanais = 10;
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
@@ -408,10 +408,10 @@ namespace AmbienteRPB
                 chart1.ChartAreas.Add("canal" + i);
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].BackColor = Color.WhiteSmoke;
+             //   chart1.ChartAreas[i].BackColor = Color.WhiteSmoke; //Cor de fundo nos canais... 
                 chart1.ChartAreas[i].Position.X = 4;
-                chart1.ChartAreas[i].Position.Y = i * (4) + 3;
-                chart1.ChartAreas[i].Position.Height = 3;
+                chart1.ChartAreas[i].Position.Y = i * 5;
+                chart1.ChartAreas[i].Position.Height = 5;
                 chart1.ChartAreas[i].Position.Width = 95;
                
                
@@ -553,11 +553,23 @@ namespace AmbienteRPB
         {
             for (int i = 0; i < __numeroDeCanais; i++)
             {
-                chart1.ChartAreas[i].AxisX.ScaleView.Size = 10000; //VERIFICAR VALOR!
+              //  chart1.ChartAreas[i].AxisX.ScaleView.Size = 10000; //VERIFICAR VALOR!
+               // chart1.ChartAreas[1].CursorX.AutoScroll = true;
+               // chart1.ChartAreas[i].AxisX.ScaleView.Zoom(ScrollBar.Value,1000);
                 chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
-                //scroll1.Value;
-                chart1.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
-            }
+                AtualizaFerramentaAtiva(e.NewValue.ToString(), 2);
+                
+             //chart1.ChartAreas[0].AxisX.ScaleView.Size = ScrollBar.Value;
+             //chart1.ChartAreas[1].AxisX.ScaleView.Size = ScrollBar.Value;
+             //chart1.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
+             //   chart1.ChartAreas[i].AxisX.ScrollBar.Enabled = true;
+
+             ///   chart1.ChartAreas[i].AxisX.ScrollBar.IsPositionedInside = false;
+             ///   chart1.ChartAreas[i].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.All;
+                
+                //chart1.ChartAreas[i].AxisX.ScrollBar.
+
+           }
         }
         //------------------------------------------------------------------------------------------
        
