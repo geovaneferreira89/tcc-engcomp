@@ -425,6 +425,8 @@ namespace AmbienteRPB
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
+                FrequenciaCombo.Enabled = true;
+                AmplitudeCombo.Enabled = true;
             }
             if (status_projeto == "Projeto_RPB")
             {
@@ -433,6 +435,8 @@ namespace AmbienteRPB
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
+                FrequenciaCombo.Enabled = true;
+                AmplitudeCombo.Enabled = true;
             }
             if (status_projeto == "Projeto_EDF")
             {
@@ -441,6 +445,8 @@ namespace AmbienteRPB
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
+                FrequenciaCombo.Enabled = true;
+                AmplitudeCombo.Enabled = true;
             }
             
         }
@@ -455,6 +461,25 @@ namespace AmbienteRPB
             for (int i = 0; i < __numeroDeCanais; i++)
             {
                 chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
+            }
+        }
+        //------------------------------------------------------------------------------------------
+        private void AmplitudeCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (AmplitudeCombo.Text != "")
+            {
+                for (int i = 0; i < __numeroDeCanais; i++)
+                    chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+            }
+        }
+        //------------------------------------------------------------------------------------------
+
+        private void FrequenciaCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (FrequenciaCombo.Text != "")
+            {
+                for (int i = 0; i < __numeroDeCanais; i++)
+                    chart1.ChartAreas[i].AxisX.ScaleView.Size = Convert.ToDouble(FrequenciaCombo.Text);
             }
         }
         //------------------------------------------------------------------------------------------
