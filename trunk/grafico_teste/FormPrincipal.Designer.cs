@@ -66,8 +66,8 @@
             this.openFileEDF = new System.Windows.Forms.OpenFileDialog();
             this.ScrollBar = new System.Windows.Forms.HScrollBar();
             this.gbx_Escala = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.AmplitudeCombo = new System.Windows.Forms.TextBox();
+            this.FrequenciaCombo = new System.Windows.Forms.ComboBox();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Box_Status.SuspendLayout();
@@ -262,7 +262,7 @@
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(152, 24);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(118, 31);
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(87, 31);
             this.tool_ControlesProjeto.TabIndex = 9;
             this.tool_ControlesProjeto.Text = "toolStrip1";
             // 
@@ -421,8 +421,8 @@
             // gbx_Escala
             // 
             this.gbx_Escala.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbx_Escala.Controls.Add(this.textBox1);
-            this.gbx_Escala.Controls.Add(this.comboBox1);
+            this.gbx_Escala.Controls.Add(this.AmplitudeCombo);
+            this.gbx_Escala.Controls.Add(this.FrequenciaCombo);
             this.gbx_Escala.Controls.Add(this.check_MostrarCursorX);
             this.gbx_Escala.Location = new System.Drawing.Point(464, 20);
             this.gbx_Escala.Name = "gbx_Escala";
@@ -430,27 +430,31 @@
             this.gbx_Escala.TabIndex = 14;
             this.gbx_Escala.TabStop = false;
             // 
-            // textBox1
+            // AmplitudeCombo
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(57, 20);
-            this.textBox1.TabIndex = 13;
-            this.textBox1.Text = "50 µ/V";
+            this.AmplitudeCombo.Enabled = false;
+            this.AmplitudeCombo.Location = new System.Drawing.Point(95, 10);
+            this.AmplitudeCombo.Name = "AmplitudeCombo";
+            this.AmplitudeCombo.Size = new System.Drawing.Size(57, 20);
+            this.AmplitudeCombo.TabIndex = 13;
+            this.AmplitudeCombo.Text = "50 µ/V";
+            this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
-            // comboBox1
+            // FrequenciaCombo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.FrequenciaCombo.Enabled = false;
+            this.FrequenciaCombo.FormattingEnabled = true;
+            this.FrequenciaCombo.Items.AddRange(new object[] {
             "1,0 cm/s",
             "2,0 cm/s",
             "3,0 cm/s"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(84, 21);
-            this.comboBox1.TabIndex = 10;
-            this.comboBox1.Tag = "Frequencia";
-            this.comboBox1.Text = "1,0 cm/s";
+            this.FrequenciaCombo.Location = new System.Drawing.Point(6, 10);
+            this.FrequenciaCombo.Name = "FrequenciaCombo";
+            this.FrequenciaCombo.Size = new System.Drawing.Size(84, 21);
+            this.FrequenciaCombo.TabIndex = 10;
+            this.FrequenciaCombo.Tag = "Frequencia";
+            this.FrequenciaCombo.Text = "1,0 cm/s";
+            this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
             // 
             // FormPrincipal
             // 
@@ -529,8 +533,8 @@
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem janelaToolStripMenuItem;
         private System.Windows.Forms.GroupBox gbx_Escala;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox AmplitudeCombo;
+        private System.Windows.Forms.ComboBox FrequenciaCombo;
     }
 }
 
