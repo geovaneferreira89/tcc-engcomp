@@ -8,6 +8,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using EDF;
+using System.Windows;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Runtime.InteropServices;
+
 
 namespace thread_chart
 {
@@ -22,6 +26,7 @@ namespace thread_chart
         private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.ProgressBar prgbar = null;
         private bool chave = true;
+        private int cont = 0;
         // Controles Projeto------------------------------------------------------------------------------------------------------
         private Control _ControleProjeto = null;
         private System.Windows.Forms.ToolStrip ControleProjeto = null;
@@ -115,6 +120,7 @@ namespace thread_chart
                             load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
                             FuncAtualizaStatusProjeto("...Iniciou", 0);
                             num_de_voltas = 0;
+                            Thread.Sleep(1);
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
                                 foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
@@ -122,25 +128,30 @@ namespace thread_chart
                                     Plotar(num_de_voltas, sample, 1, i, "Blue", signal.Label.ToString().Substring(4));
                                     num_de_voltas++;
                                     load_progress_bar(num_de_voltas, 1);
+                                    FuncScrollBar_Propriedades(num_de_voltas);
+                                   
                                 }
                           
                             }
                             signal.NumberOfSamplesPerDataRecord = 1;
                             i++;
                         }
-                        while (chave)
-                        {
-                            load_progress_bar(0, 3);
-                            FuncScrollBar_Propriedades(num_de_voltas);
-                            //FuncAtualizaStatusProjeto("...terminou", 1);
-                            //FuncAtualizaControleProjeto("Des_btn_Suspender");
-                        }
+                      
                     }
                     break;
                 }
 
-            }//Fim switch
-            
+            }
+            //Fim switch
+            //while (chave == false || cont < 10)
+            //{
+            ////    //load_progress_bar(0, 3);
+            //      FuncScrollBar_Propriedades(num_de_voltas);
+            ////    FuncAtualizaStatusProjeto("...terminou", 1);
+            ////    FuncAtualizaControleProjeto("Des_btn_Suspender");
+            ////    cont++;
+
+            //}
         }
         //-----------------------------------------------------------------------------------------------------------------
         private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor, string nomeSerie)
@@ -174,7 +185,7 @@ namespace thread_chart
                     prb.Titles[_NumCanais_].Position.Height = 3;
                     prb.Titles[_NumCanais_].Position.Width = 40;
                     prb.Titles[_NumCanais_].Alignment = ContentAlignment.MiddleLeft;
-                    prb.Titles[_NumCanais_].Position.X = 0;//prb.ChartAreas[_NumCanais_].Position.X;
+                    prb.Titles[_NumCanais_].Position.X = 0;
                     prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Y;
                 }
             }
