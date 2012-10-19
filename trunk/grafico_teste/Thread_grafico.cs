@@ -11,6 +11,7 @@ using EDF;
 using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 
 namespace thread_chart
@@ -109,17 +110,16 @@ namespace thread_chart
                 }
                 case("Projeto_EDF"):
                 {
-                    FuncAtualizaStatusProjeto("...Iniciou", 0);
+                    //FuncAtualizaStatusProjeto("...Iniciou", 0);
                     if (edfFileOutput != null)
                     {
                         int i = 0;
-                        
                         foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                         {
                             Plotar(0, 0, 2, i, " ", " ");
                             load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
                             num_de_voltas = 0;
-                            Thread.Sleep(1);
+                            //Thread.Sleep(1);
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
                                 foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
@@ -128,29 +128,16 @@ namespace thread_chart
                                     num_de_voltas++;
                                     load_progress_bar(num_de_voltas, 1);
                                     FuncScrollBar_Propriedades(num_de_voltas);
-                                   
                                 }
-                          
+
                             }
-                            signal.NumberOfSamplesPerDataRecord = 1;
                             i++;
                         }
-                      
-                    }
-                    if(num_de_voltas != 0)
-                         FuncAtualizaStatusProjeto("...terminou", 1);
+                            load_progress_bar(0, 3);
+                     }
                     break;
                 }
             }
-            //Fim switch
-            //while (chave == false || cont < 10)
-            //{
-            ////    //load_progress_bar(0, 3);
-            //      FuncScrollBar_Propriedades(num_de_voltas);
-             //       FuncAtualizaStatusProjeto("...terminou", 1);
-            ////    FuncAtualizaControleProjeto("Des_btn_Suspender");
-            ////    cont++;
-            //}
         }
         //-----------------------------------------------------------------------------------------------------------------
         private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor, string nomeSerie)
@@ -230,7 +217,7 @@ namespace thread_chart
                     ControleProjeto = _ControleProjeto as System.Windows.Forms.ToolStrip;
                     ControleProjeto.Items["btn_Suspender"].Enabled = false;
                 }
-            }
+           }
         }
         //-----------------------------------------------------------------------------------------------------------------
         private void FuncAtualizaStatusProjeto(string SMS, int caso)
