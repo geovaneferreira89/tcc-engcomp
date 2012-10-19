@@ -46,32 +46,31 @@
             this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tool_ControlesProjeto = new System.Windows.Forms.ToolStrip();
-            this.btn_Resume = new System.Windows.Forms.ToolStripButton();
-            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
-            this.btn_MarcarPadrões = new System.Windows.Forms.ToolStripButton();
-            this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip();
-            this.btn_novoProjeto = new System.Windows.Forms.ToolStripButton();
-            this.btn_Importar = new System.Windows.Forms.ToolStripButton();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.saveFileExplorer = new System.Windows.Forms.SaveFileDialog();
             this.openFileExplorer = new System.Windows.Forms.OpenFileDialog();
-            this.check_MostrarCursorX = new System.Windows.Forms.CheckBox();
             this.openFileEDF = new System.Windows.Forms.OpenFileDialog();
             this.ScrollBar = new System.Windows.Forms.HScrollBar();
-            this.gbx_Escala = new System.Windows.Forms.GroupBox();
-            this.AmplitudeCombo = new System.Windows.Forms.TextBox();
-            this.FrequenciaCombo = new System.Windows.Forms.ComboBox();
+            this.tool_ControlesProjeto = new System.Windows.Forms.ToolStrip();
+            this.btn_novoProjeto = new System.Windows.Forms.ToolStripButton();
+            this.btn_Importar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_MarcarPadroes = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
+            this.FrequenciaCombo = new System.Windows.Forms.ToolStripComboBox();
+            this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.Box_Status.SuspendLayout();
             this.tool_ControlesProjeto.SuspendLayout();
-            this.tool_ControlesGerais.SuspendLayout();
-            this.gbx_Escala.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbx_Chart
@@ -81,10 +80,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbx_Chart.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.gbx_Chart.Controls.Add(this.chart1);
-            this.gbx_Chart.Controls.Add(this.menuStrip1);
-            this.gbx_Chart.Location = new System.Drawing.Point(3, 33);
+            this.gbx_Chart.Location = new System.Drawing.Point(1, 21);
             this.gbx_Chart.Name = "gbx_Chart";
-            this.gbx_Chart.Size = new System.Drawing.Size(703, 285);
+            this.gbx_Chart.Size = new System.Drawing.Size(707, 297);
             this.gbx_Chart.TabIndex = 5;
             this.gbx_Chart.TabStop = false;
             // 
@@ -97,10 +95,10 @@
             this.chart1.BackSecondaryColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.BorderlineColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.Enabled = false;
-            this.chart1.Location = new System.Drawing.Point(4, 9);
+            this.chart1.Location = new System.Drawing.Point(3, 11);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(694, 272);
+            this.chart1.Size = new System.Drawing.Size(698, 280);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -118,9 +116,9 @@
             this.verToolStripMenuItem,
             this.janelaToolStripMenuItem,
             this.ajudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(6, 238);
+            this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(453, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(545, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -150,6 +148,8 @@
             // 
             // verToolStripMenuItem
             // 
+            this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.check_MostrarCursorX});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
             this.verToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
             this.verToolStripMenuItem.Text = "Ver";
@@ -225,132 +225,10 @@
             this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
             this.lbl_mouseY.Text = "Mouse Y:";
             // 
-            // tool_ControlesProjeto
-            // 
-            this.tool_ControlesProjeto.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tool_ControlesProjeto.Dock = System.Windows.Forms.DockStyle.None;
-            this.tool_ControlesProjeto.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tool_ControlesProjeto.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tool_ControlesProjeto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_Resume,
-            this.btn_Suspender,
-            this.btn_MarcarPadrões});
-            this.tool_ControlesProjeto.Location = new System.Drawing.Point(152, 4);
-            this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
-            this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(87, 31);
-            this.tool_ControlesProjeto.TabIndex = 9;
-            this.tool_ControlesProjeto.Text = "toolStrip1";
-            // 
-            // btn_Resume
-            // 
-            this.btn_Resume.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Resume.Enabled = false;
-            this.btn_Resume.Image = ((System.Drawing.Image)(resources.GetObject("btn_Resume.Image")));
-            this.btn_Resume.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Resume.Name = "btn_Resume";
-            this.btn_Resume.Size = new System.Drawing.Size(28, 28);
-            this.btn_Resume.Text = "Iniciar aquisição de sinal";
-            this.btn_Resume.Click += new System.EventHandler(this.btn_Resume_Click);
-            // 
-            // btn_Suspender
-            // 
-            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Suspender.Enabled = false;
-            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
-            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Suspender.Name = "btn_Suspender";
-            this.btn_Suspender.Size = new System.Drawing.Size(28, 28);
-            this.btn_Suspender.Text = "Pausar Aquisição de Sinal";
-            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click);
-            // 
-            // btn_MarcarPadrões
-            // 
-            this.btn_MarcarPadrões.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_MarcarPadrões.Enabled = false;
-            this.btn_MarcarPadrões.Image = ((System.Drawing.Image)(resources.GetObject("btn_MarcarPadrões.Image")));
-            this.btn_MarcarPadrões.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_MarcarPadrões.Name = "btn_MarcarPadrões";
-            this.btn_MarcarPadrões.Size = new System.Drawing.Size(28, 28);
-            this.btn_MarcarPadrões.Text = "Definir Conjunto de Padrões";
-            this.btn_MarcarPadrões.Click += new System.EventHandler(this.btn_MarcarPadrões_Click);
-            // 
-            // tool_ControlesGerais
-            // 
-            this.tool_ControlesGerais.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tool_ControlesGerais.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tool_ControlesGerais.CanOverflow = false;
-            this.tool_ControlesGerais.Dock = System.Windows.Forms.DockStyle.None;
-            this.tool_ControlesGerais.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tool_ControlesGerais.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tool_ControlesGerais.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_novoProjeto,
-            this.btn_Importar,
-            this.openToolStripButton,
-            this.saveToolStripButton,
-            this.printToolStripButton});
-            this.tool_ControlesGerais.Location = new System.Drawing.Point(-3, 4);
-            this.tool_ControlesGerais.Name = "tool_ControlesGerais";
-            this.tool_ControlesGerais.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tool_ControlesGerais.Size = new System.Drawing.Size(152, 31);
-            this.tool_ControlesGerais.TabIndex = 1;
-            this.tool_ControlesGerais.Text = "toolStrip2";
-            // 
-            // btn_novoProjeto
-            // 
-            this.btn_novoProjeto.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_novoProjeto.Image = ((System.Drawing.Image)(resources.GetObject("btn_novoProjeto.Image")));
-            this.btn_novoProjeto.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_novoProjeto.Name = "btn_novoProjeto";
-            this.btn_novoProjeto.Size = new System.Drawing.Size(28, 28);
-            this.btn_novoProjeto.Text = "Novo projeto";
-            this.btn_novoProjeto.Click += new System.EventHandler(this.btn_novoProjeto_Click);
-            // 
-            // btn_Importar
-            // 
-            this.btn_Importar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Importar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Importar.Image")));
-            this.btn_Importar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Importar.Name = "btn_Importar";
-            this.btn_Importar.Size = new System.Drawing.Size(28, 28);
-            this.btn_Importar.Text = "Importar Arquivo";
-            this.btn_Importar.Click += new System.EventHandler(this.btn_Importar_Click);
-            // 
-            // openToolStripButton
-            // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
-            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.openToolStripButton.Text = "Abrir Projeto";
-            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Enabled = false;
-            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.saveToolStripButton.Text = "Salvar Projeto";
-            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
-            // 
-            // printToolStripButton
-            // 
-            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.printToolStripButton.Enabled = false;
-            this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
-            this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.printToolStripButton.Text = "Imprimir";
-            // 
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(364, 345);
+            this.progressBar.Location = new System.Drawing.Point(363, 344);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(327, 14);
             this.progressBar.TabIndex = 11;
@@ -365,18 +243,6 @@
             // 
             this.openFileExplorer.Filter = "Arquivos de Projeto (*.rpb)|*.rpb|All files (*.*)|*.*\"";
             // 
-            // check_MostrarCursorX
-            // 
-            this.check_MostrarCursorX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.check_MostrarCursorX.AutoSize = true;
-            this.check_MostrarCursorX.Location = new System.Drawing.Point(168, 12);
-            this.check_MostrarCursorX.Name = "check_MostrarCursorX";
-            this.check_MostrarCursorX.Size = new System.Drawing.Size(66, 17);
-            this.check_MostrarCursorX.TabIndex = 12;
-            this.check_MostrarCursorX.Text = "Cursor X";
-            this.check_MostrarCursorX.UseVisualStyleBackColor = true;
-            this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
-            // 
             // openFileEDF
             // 
             this.openFileEDF.Filter = "Arquivos EDF (*.edf)|*.edf|All files (*.*)|*.*\"";
@@ -386,49 +252,137 @@
             this.ScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScrollBar.Enabled = false;
-            this.ScrollBar.Location = new System.Drawing.Point(7, 321);
+            this.ScrollBar.Location = new System.Drawing.Point(2, 321);
             this.ScrollBar.Name = "ScrollBar";
-            this.ScrollBar.Size = new System.Drawing.Size(698, 20);
+            this.ScrollBar.Size = new System.Drawing.Size(706, 20);
             this.ScrollBar.TabIndex = 13;
             this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
             // 
-            // gbx_Escala
+            // tool_ControlesProjeto
             // 
-            this.gbx_Escala.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbx_Escala.Controls.Add(this.AmplitudeCombo);
-            this.gbx_Escala.Controls.Add(this.FrequenciaCombo);
-            this.gbx_Escala.Controls.Add(this.check_MostrarCursorX);
-            this.gbx_Escala.Location = new System.Drawing.Point(463, -1);
-            this.gbx_Escala.Name = "gbx_Escala";
-            this.gbx_Escala.Size = new System.Drawing.Size(242, 36);
-            this.gbx_Escala.TabIndex = 14;
-            this.gbx_Escala.TabStop = false;
+            this.tool_ControlesProjeto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_novoProjeto,
+            this.btn_Importar,
+            this.toolStripSeparator1,
+            this.toolStripButton3,
+            this.btn_Suspender,
+            this.toolStripSeparator2,
+            this.btn_MarcarPadroes,
+            this.toolStripSeparator3,
+            this.toolStripLabel1,
+            this.FrequenciaCombo,
+            this.toolStripSeparator4,
+            this.toolStripLabel2,
+            this.AmplitudeCombo});
+            this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
+            this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(711, 25);
+            this.tool_ControlesProjeto.TabIndex = 15;
+            this.tool_ControlesProjeto.Text = "toolStrip1";
+            // 
+            // btn_novoProjeto
+            // 
+            this.btn_novoProjeto.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_novoProjeto.Image = ((System.Drawing.Image)(resources.GetObject("btn_novoProjeto.Image")));
+            this.btn_novoProjeto.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_novoProjeto.Name = "btn_novoProjeto";
+            this.btn_novoProjeto.Size = new System.Drawing.Size(23, 22);
+            this.btn_novoProjeto.Text = "Novo projeto";
+            this.btn_novoProjeto.Click += new System.EventHandler(this.btn_novoProjeto_Click);
+            // 
+            // btn_Importar
+            // 
+            this.btn_Importar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Importar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Importar.Image")));
+            this.btn_Importar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Importar.Name = "btn_Importar";
+            this.btn_Importar.Size = new System.Drawing.Size(23, 22);
+            this.btn_Importar.Text = "btn_Importar";
+            this.btn_Importar.Click += new System.EventHandler(this.btn_Importar_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Click += new System.EventHandler(this.btn_Resume_Click);
+            // 
+            // btn_Suspender
+            // 
+            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
+            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Suspender.Name = "btn_Suspender";
+            this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
+            this.btn_Suspender.Text = "btn_Suspender";
+            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btn_MarcarPadroes
+            // 
+            this.btn_MarcarPadroes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_MarcarPadroes.Image = ((System.Drawing.Image)(resources.GetObject("btn_MarcarPadroes.Image")));
+            this.btn_MarcarPadroes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_MarcarPadroes.Name = "btn_MarcarPadroes";
+            this.btn_MarcarPadroes.Size = new System.Drawing.Size(23, 22);
+            this.btn_MarcarPadroes.Text = "btn_MarcarPadrões";
+            this.btn_MarcarPadroes.ToolTipText = "Marcar Padroes";
+            this.btn_MarcarPadroes.Click += new System.EventHandler(this.btn_MarcarPadrões_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(33, 22);
+            this.toolStripLabel1.Text = "Freq.";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(36, 22);
+            this.toolStripLabel2.Text = "Amp.";
             // 
             // AmplitudeCombo
             // 
-            this.AmplitudeCombo.Enabled = false;
-            this.AmplitudeCombo.Location = new System.Drawing.Point(95, 10);
             this.AmplitudeCombo.Name = "AmplitudeCombo";
-            this.AmplitudeCombo.Size = new System.Drawing.Size(57, 20);
-            this.AmplitudeCombo.TabIndex = 13;
-            this.AmplitudeCombo.Text = "50 µ/V";
+            this.AmplitudeCombo.Size = new System.Drawing.Size(121, 25);
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
             // FrequenciaCombo
             // 
-            this.FrequenciaCombo.Enabled = false;
-            this.FrequenciaCombo.FormattingEnabled = true;
-            this.FrequenciaCombo.Items.AddRange(new object[] {
-            "1,0 cm/s",
-            "2,0 cm/s",
-            "3,0 cm/s"});
-            this.FrequenciaCombo.Location = new System.Drawing.Point(6, 10);
             this.FrequenciaCombo.Name = "FrequenciaCombo";
-            this.FrequenciaCombo.Size = new System.Drawing.Size(84, 21);
-            this.FrequenciaCombo.TabIndex = 10;
-            this.FrequenciaCombo.Tag = "Frequencia";
-            this.FrequenciaCombo.Text = "1,0 cm/s";
+            this.FrequenciaCombo.Size = new System.Drawing.Size(121, 25);
             this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
+            // 
+            // check_MostrarCursorX
+            // 
+            this.check_MostrarCursorX.Checked = true;
+            this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_MostrarCursorX.Name = "check_MostrarCursorX";
+            this.check_MostrarCursorX.Size = new System.Drawing.Size(152, 22);
+            this.check_MostrarCursorX.Text = "Canal X";
+            this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
             // 
             // FormPrincipal
             // 
@@ -437,13 +391,12 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(711, 363);
-            this.Controls.Add(this.gbx_Escala);
+            this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.tool_ControlesGerais);
-            this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.Box_Status);
             this.Controls.Add(this.gbx_Chart);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPrincipal";
             this.ShowIcon = false;
@@ -452,7 +405,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.gbx_Chart.ResumeLayout(false);
-            this.gbx_Chart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -460,10 +412,6 @@
             this.Box_Status.PerformLayout();
             this.tool_ControlesProjeto.ResumeLayout(false);
             this.tool_ControlesProjeto.PerformLayout();
-            this.tool_ControlesGerais.ResumeLayout(false);
-            this.tool_ControlesGerais.PerformLayout();
-            this.gbx_Escala.ResumeLayout(false);
-            this.gbx_Escala.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,25 +425,14 @@
         private System.Windows.Forms.ToolStripStatusLabel lbl_x;
         private System.Windows.Forms.ToolStripStatusLabel lbl_Y;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStrip tool_ControlesProjeto;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton btn_Suspender;
-        private System.Windows.Forms.ToolStripButton btn_Resume;
-        private System.Windows.Forms.ToolStripButton btn_MarcarPadrões;
-        private System.Windows.Forms.ToolStripButton btn_Importar;
-        private System.Windows.Forms.ToolStripButton btn_novoProjeto;
-        private System.Windows.Forms.ToolStripButton openToolStripButton;
-        private System.Windows.Forms.ToolStripButton saveToolStripButton;
-        private System.Windows.Forms.ToolStripButton printToolStripButton;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseX;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseY;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ToolStripStatusLabel lbl_ferramentaAtiva;
-        public System.Windows.Forms.ToolStrip tool_ControlesGerais;
         private System.Windows.Forms.SaveFileDialog saveFileExplorer;
         private System.Windows.Forms.OpenFileDialog openFileExplorer;
-        private System.Windows.Forms.CheckBox check_MostrarCursorX;
         private System.Windows.Forms.OpenFileDialog openFileEDF;
         private System.Windows.Forms.HScrollBar ScrollBar;
         private System.Windows.Forms.ToolStripMenuItem configuraçõeToolStripMenuItem;
@@ -504,9 +441,21 @@
         private System.Windows.Forms.ToolStripMenuItem estatísticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem janelaToolStripMenuItem;
-        private System.Windows.Forms.GroupBox gbx_Escala;
-        private System.Windows.Forms.TextBox AmplitudeCombo;
-        private System.Windows.Forms.ComboBox FrequenciaCombo;
+        private System.Windows.Forms.ToolStrip tool_ControlesProjeto;
+        private System.Windows.Forms.ToolStripButton btn_novoProjeto;
+        private System.Windows.Forms.ToolStripButton btn_Importar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton btn_Suspender;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btn_MarcarPadroes;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox FrequenciaCombo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripComboBox AmplitudeCombo;
+        private System.Windows.Forms.ToolStripMenuItem check_MostrarCursorX;
     }
 }
 

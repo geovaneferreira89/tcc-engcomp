@@ -132,8 +132,8 @@ namespace thread_chart
                         {
                             load_progress_bar(0, 3);
                             FuncScrollBar_Propriedades(num_de_voltas);
-                            FuncAtualizaStatusProjeto("...terminou", 1);
-                            FuncAtualizaControleProjeto("Des_btn_Suspender");
+                            //FuncAtualizaStatusProjeto("...terminou", 1);
+                            //FuncAtualizaControleProjeto("Des_btn_Suspender");
                         }
                     }
                     break;
@@ -254,9 +254,7 @@ namespace thread_chart
             else
             {
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
-               
                 ScrollBar.Enabled = true;
-                chave = false;
                 for (int i = 0; i < _NumCanais; i++)
                 {
                     if (OpcaoSinal == "Projeto_EDF")
@@ -269,9 +267,8 @@ namespace thread_chart
                         prb.ChartAreas[i].AxisX.ScaleView.Size = 3;
                         ScrollBar.Maximum = num_de_voltas;
                     }
-                    
-                    prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
                 }
+                chave = false;
             }
         }
         //-----------------------------------------------------------------------------------------------------------------
