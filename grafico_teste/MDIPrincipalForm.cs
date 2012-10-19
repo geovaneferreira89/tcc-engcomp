@@ -27,6 +27,7 @@ namespace AmbienteRPB
             else
                 childForm.Text = "Novo Projeto";
             childFormNumber++;
+
             childForm.Show();
         }
 
@@ -55,6 +56,7 @@ namespace AmbienteRPB
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+         
         }
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)

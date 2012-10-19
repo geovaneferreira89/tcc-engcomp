@@ -37,6 +37,7 @@
             this.mapasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
             this.janelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,11 +62,10 @@
             this.btn_MarcarPadroes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.FrequenciaCombo = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
-            this.FrequenciaCombo = new System.Windows.Forms.ToolStripComboBox();
-            this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -82,7 +82,7 @@
             this.gbx_Chart.Controls.Add(this.chart1);
             this.gbx_Chart.Location = new System.Drawing.Point(1, 21);
             this.gbx_Chart.Name = "gbx_Chart";
-            this.gbx_Chart.Size = new System.Drawing.Size(707, 297);
+            this.gbx_Chart.Size = new System.Drawing.Size(705, 328);
             this.gbx_Chart.TabIndex = 5;
             this.gbx_Chart.TabStop = false;
             // 
@@ -98,7 +98,7 @@
             this.chart1.Location = new System.Drawing.Point(3, 11);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(698, 280);
+            this.chart1.Size = new System.Drawing.Size(696, 311);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -118,7 +118,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(545, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(453, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -154,6 +154,15 @@
             this.verToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
             this.verToolStripMenuItem.Text = "Ver";
             // 
+            // check_MostrarCursorX
+            // 
+            this.check_MostrarCursorX.Checked = true;
+            this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_MostrarCursorX.Name = "check_MostrarCursorX";
+            this.check_MostrarCursorX.Size = new System.Drawing.Size(114, 22);
+            this.check_MostrarCursorX.Text = "Canal X";
+            this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
+            // 
             // janelaToolStripMenuItem
             // 
             this.janelaToolStripMenuItem.Name = "janelaToolStripMenuItem";
@@ -183,9 +192,9 @@
             this.lbl_Y,
             this.lbl_mouseX,
             this.lbl_mouseY});
-            this.Box_Status.Location = new System.Drawing.Point(0, 341);
+            this.Box_Status.Location = new System.Drawing.Point(0, 372);
             this.Box_Status.Name = "Box_Status";
-            this.Box_Status.Size = new System.Drawing.Size(711, 22);
+            this.Box_Status.Size = new System.Drawing.Size(709, 22);
             this.Box_Status.TabIndex = 7;
             this.Box_Status.Text = "statusStrip1";
             // 
@@ -228,7 +237,7 @@
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(363, 344);
+            this.progressBar.Location = new System.Drawing.Point(361, 375);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(327, 14);
             this.progressBar.TabIndex = 11;
@@ -252,9 +261,12 @@
             this.ScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScrollBar.Enabled = false;
-            this.ScrollBar.Location = new System.Drawing.Point(2, 321);
+            this.ScrollBar.LargeChange = 9000;
+            this.ScrollBar.Location = new System.Drawing.Point(2, 352);
+            this.ScrollBar.Maximum = 20000;
             this.ScrollBar.Name = "ScrollBar";
-            this.ScrollBar.Size = new System.Drawing.Size(706, 20);
+            this.ScrollBar.Size = new System.Drawing.Size(704, 20);
+            this.ScrollBar.SmallChange = 4000;
             this.ScrollBar.TabIndex = 13;
             this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
             // 
@@ -276,7 +288,7 @@
             this.AmplitudeCombo});
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(711, 25);
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(709, 25);
             this.tool_ControlesProjeto.TabIndex = 15;
             this.tool_ControlesProjeto.Text = "toolStrip1";
             // 
@@ -352,6 +364,12 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(33, 22);
             this.toolStripLabel1.Text = "Freq.";
             // 
+            // FrequenciaCombo
+            // 
+            this.FrequenciaCombo.Name = "FrequenciaCombo";
+            this.FrequenciaCombo.Size = new System.Drawing.Size(121, 25);
+            this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -369,28 +387,13 @@
             this.AmplitudeCombo.Size = new System.Drawing.Size(121, 25);
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
-            // FrequenciaCombo
-            // 
-            this.FrequenciaCombo.Name = "FrequenciaCombo";
-            this.FrequenciaCombo.Size = new System.Drawing.Size(121, 25);
-            this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
-            // 
-            // check_MostrarCursorX
-            // 
-            this.check_MostrarCursorX.Checked = true;
-            this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_MostrarCursorX.Name = "check_MostrarCursorX";
-            this.check_MostrarCursorX.Size = new System.Drawing.Size(152, 22);
-            this.check_MostrarCursorX.Text = "Canal X";
-            this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(711, 363);
+            this.ClientSize = new System.Drawing.Size(709, 394);
             this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.progressBar);
