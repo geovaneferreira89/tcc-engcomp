@@ -484,6 +484,22 @@ namespace AmbienteRPB
                     chart1.ChartAreas[i].AxisX.ScaleView.Size = Convert.ToDouble(FrequenciaCombo.Text);
             }
         }
+
+        private void informaçõesEDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nome Paciente:\n"+edfFileOutput.Header.PatientIdentification
+                +"\nData\n"+edfFileOutput.Header.StartDateEDF
+                    + "\nHora\n" + edfFileOutput.Header.StartTimeEDF
+                      + "\nDuração\n" + edfFileOutput.Header.DurationOfDataRecordInSeconds
+                        + "\nNumberOfBytes\n" + edfFileOutput.Header.NumberOfBytes
+                           + "\nNumberOfDataRecords\n" + edfFileOutput.Header.NumberOfDataRecords
+                             + "\nNumberOfSignalsInDataRecord\n" + edfFileOutput.Header.NumberOfSignalsInDataRecord
+                             + "\nVersion\n" + edfFileOutput.Header.Version
+
+
+                ,"Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         //------------------------------------------------------------------------------------------
        
     }

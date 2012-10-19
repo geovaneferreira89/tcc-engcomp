@@ -66,6 +66,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
+            this.informaçõesEDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -130,6 +131,8 @@
             // 
             // ferramentasToolStripMenuItem
             // 
+            this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informaçõesEDFToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
@@ -159,7 +162,7 @@
             this.check_MostrarCursorX.Checked = true;
             this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_MostrarCursorX.Name = "check_MostrarCursorX";
-            this.check_MostrarCursorX.Size = new System.Drawing.Size(114, 22);
+            this.check_MostrarCursorX.Size = new System.Drawing.Size(152, 22);
             this.check_MostrarCursorX.Text = "Canal X";
             this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
             // 
@@ -387,6 +390,13 @@
             this.AmplitudeCombo.Size = new System.Drawing.Size(121, 25);
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
+            // informaçõesEDFToolStripMenuItem
+            // 
+            this.informaçõesEDFToolStripMenuItem.Name = "informaçõesEDFToolStripMenuItem";
+            this.informaçõesEDFToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.informaçõesEDFToolStripMenuItem.Text = "Informações .EDF";
+            this.informaçõesEDFToolStripMenuItem.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,12 +404,12 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(709, 394);
-            this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.Box_Status);
-            this.Controls.Add(this.gbx_Chart);
+            this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.gbx_Chart);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPrincipal";
             this.ShowIcon = false;
@@ -459,6 +469,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripComboBox AmplitudeCombo;
         private System.Windows.Forms.ToolStripMenuItem check_MostrarCursorX;
+        private System.Windows.Forms.ToolStripMenuItem informaçõesEDFToolStripMenuItem;
     }
 }
 
