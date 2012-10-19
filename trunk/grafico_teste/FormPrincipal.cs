@@ -463,6 +463,7 @@ namespace AmbienteRPB
             {
                 chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
             }
+            progressBar.Enabled = false;
         }
         //------------------------------------------------------------------------------------------
         private void AmplitudeCombo_TextChanged(object sender, EventArgs e)

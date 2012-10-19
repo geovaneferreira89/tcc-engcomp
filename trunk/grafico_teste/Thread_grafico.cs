@@ -109,7 +109,7 @@ namespace thread_chart
                 }
                 case("Projeto_EDF"):
                 {
-
+                    FuncAtualizaStatusProjeto("...Iniciou", 0);
                     if (edfFileOutput != null)
                     {
                         int i = 0;
@@ -118,7 +118,6 @@ namespace thread_chart
                         {
                             Plotar(0, 0, 2, i, " ", " ");
                             load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
-                            FuncAtualizaStatusProjeto("...Iniciou", 0);
                             num_de_voltas = 0;
                             Thread.Sleep(1);
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
@@ -138,19 +137,19 @@ namespace thread_chart
                         }
                       
                     }
+                    if(num_de_voltas != 0)
+                         FuncAtualizaStatusProjeto("...terminou", 1);
                     break;
                 }
-
             }
             //Fim switch
             //while (chave == false || cont < 10)
             //{
             ////    //load_progress_bar(0, 3);
             //      FuncScrollBar_Propriedades(num_de_voltas);
-            ////    FuncAtualizaStatusProjeto("...terminou", 1);
+             //       FuncAtualizaStatusProjeto("...terminou", 1);
             ////    FuncAtualizaControleProjeto("Des_btn_Suspender");
             ////    cont++;
-
             //}
         }
         //-----------------------------------------------------------------------------------------------------------------
