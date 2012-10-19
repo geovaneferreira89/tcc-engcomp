@@ -22,7 +22,11 @@ namespace AmbienteRPB
         {
             FormPrincipal childForm = new FormPrincipal();
             childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
+            if (childFormNumber != 0)
+                childForm.Text = "Novo Projeto " + childFormNumber;
+            else
+                childForm.Text = "Novo Projeto";
+            childFormNumber++;
             childForm.Show();
         }
 

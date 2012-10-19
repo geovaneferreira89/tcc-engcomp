@@ -77,11 +77,11 @@ namespace AmbienteRPB
                     status_projeto = "Projeto_EDF";
                     AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1);
                     __numeroDeCanais = edfFileOutput.Header.Signals.Count;
-                    saveToolStripButton.Enabled = true;
+                    //saveToolStripButton.Enabled = true;
                     ChartInicializarThreads(__numeroDeCanais);
 
                     btn_novoProjeto.Enabled = false;
-                    btn_MarcarPadrões.Enabled = true;
+                    btn_MarcarPadroes.Enabled = true;
 
                     btn_Importar.Enabled = false;
                     btn_novoProjeto.Enabled = false;
@@ -137,7 +137,7 @@ namespace AmbienteRPB
             btn_Importar.Enabled = false;
             btn_novoProjeto.Enabled = false;
             //btn_help.Enabled = true;
-            saveToolStripButton.Enabled = true;
+            //saveToolStripButton.Enabled = true;
             MessageBox.Show("Projeto " + nomeProject + "\nCriado",
                     "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -146,7 +146,7 @@ namespace AmbienteRPB
             ChartInicializarThreads(__numeroDeCanais);
            
             btn_novoProjeto.Enabled = false;
-            btn_MarcarPadrões.Enabled = true;
+            btn_MarcarPadroes.Enabled = true;
 
         }
         //------------------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ namespace AmbienteRPB
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
            
-            HitTestResult result = chart1.HitTest(e.X, e.Y);
+           /* HitTestResult result = chart1.HitTest(e.X, e.Y);
             if (result.ChartArea != null)
             {
                 var pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
@@ -198,7 +198,7 @@ namespace AmbienteRPB
                 //Mostra cursor X
                 result.ChartArea.CursorX.SetCursorPosition(pointXPixel);
                 }
-            }
+            }*/
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
@@ -209,7 +209,7 @@ namespace AmbienteRPB
         //Botão Clicado
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
-            if (mostrarCursores == 0)
+           /* if (mostrarCursores == 0)
             {
                 check_MostrarCursorX.Checked = false;
                 MostrarCursorX = false;
@@ -221,12 +221,13 @@ namespace AmbienteRPB
             else
             {
                 AtualizaFerramentaAtiva("", 0);
-            }
+            }*/
         }
         //------------------------------------------------------------------------------------------
         //Defini uma seleção afim de ser um padrão. 
         private void MarcarSelecao(MouseEventArgs e)
         {
+            /*
                     HitTestResult result = chart1.HitTest(e.X, e.Y);
                     if (result != null)
                     {
@@ -269,7 +270,7 @@ namespace AmbienteRPB
                             numCursor = 0;//CLICAR + VEZES SEM EFEITO
                             //PADrões(); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         }
-                    }
+                    }*/
            
         }
         //------------------------------------------------------------------------------------------
