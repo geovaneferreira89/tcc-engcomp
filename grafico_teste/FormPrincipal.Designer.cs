@@ -34,6 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.configuraçõeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informaçõesEDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
-            this.informaçõesEDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editorDePadrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -132,10 +133,18 @@
             // ferramentasToolStripMenuItem
             // 
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.informaçõesEDFToolStripMenuItem});
+            this.informaçõesEDFToolStripMenuItem,
+            this.editorDePadrõesToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
+            // 
+            // informaçõesEDFToolStripMenuItem
+            // 
+            this.informaçõesEDFToolStripMenuItem.Name = "informaçõesEDFToolStripMenuItem";
+            this.informaçõesEDFToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.informaçõesEDFToolStripMenuItem.Text = "Informações .EDF";
+            this.informaçõesEDFToolStripMenuItem.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
             // 
             // mapasToolStripMenuItem
             // 
@@ -162,7 +171,7 @@
             this.check_MostrarCursorX.Checked = true;
             this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_MostrarCursorX.Name = "check_MostrarCursorX";
-            this.check_MostrarCursorX.Size = new System.Drawing.Size(152, 22);
+            this.check_MostrarCursorX.Size = new System.Drawing.Size(114, 22);
             this.check_MostrarCursorX.Text = "Canal X";
             this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
             // 
@@ -390,12 +399,12 @@
             this.AmplitudeCombo.Size = new System.Drawing.Size(121, 25);
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
-            // informaçõesEDFToolStripMenuItem
+            // editorDePadrõesToolStripMenuItem
             // 
-            this.informaçõesEDFToolStripMenuItem.Name = "informaçõesEDFToolStripMenuItem";
-            this.informaçõesEDFToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.informaçõesEDFToolStripMenuItem.Text = "Informações .EDF";
-            this.informaçõesEDFToolStripMenuItem.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
+            this.editorDePadrõesToolStripMenuItem.Name = "editorDePadrõesToolStripMenuItem";
+            this.editorDePadrõesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.editorDePadrõesToolStripMenuItem.Text = "Editor de Padrões";
+            this.editorDePadrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -470,6 +479,7 @@
         private System.Windows.Forms.ToolStripComboBox AmplitudeCombo;
         private System.Windows.Forms.ToolStripMenuItem check_MostrarCursorX;
         private System.Windows.Forms.ToolStripMenuItem informaçõesEDFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editorDePadrõesToolStripMenuItem;
     }
 }
 

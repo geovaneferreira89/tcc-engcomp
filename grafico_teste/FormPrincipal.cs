@@ -239,14 +239,17 @@ namespace AmbienteRPB
                             chart1.Annotations.Clear();
                             Adiciona_linhas_de_tempo();
 
+                            result.ChartArea.CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
+                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
+
                             x_Pos = (e.X);
                             y_Pos = (e.Y); 
 
                             //linha fixa
                             VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
-                            cursor_vertical.AnchorDataPoint = chart1.Series[0].Points[1];
+                            cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
 
-                            cursor_vertical.Height = result.ChartArea.Position.Height;
+                            cursor_vertical.Height    = result.ChartArea.Position.Height;
                             cursor_vertical.LineColor = Color.Green;
                             cursor_vertical.LineWidth = 1;
                             cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X);
@@ -263,17 +266,25 @@ namespace AmbienteRPB
                             result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
 
                             // Set range selection color, specifying transparency of 120
-                            result.ChartArea.CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
+                            result.ChartArea.CursorX.SelectionColor = Color.FromArgb(90, 50, 50, 50);
                             result.ChartArea.CursorX.IsUserEnabled = true;
                             result.ChartArea.CursorX.IsUserSelectionEnabled = true;
                             PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
-                            PointF Padrao_Fim = new PointF(e.X, e.Y);
+                            PointF Padrao_Fim    = new PointF(e.X, e.Y);
                             result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                            
                             numCursor = 0;//CLICAR + VEZES SEM EFEITO
                             Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
                             chart1.Annotations.Clear();
                             Adiciona_linhas_de_tempo();
+                          
+                            Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
+                            Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
+
+                            //result.ChartArea.CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
+                            //result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
+
+                
                         }
                     }
            
@@ -288,13 +299,20 @@ namespace AmbienteRPB
                 SalvarPadrao.ShowDialog();
 
                 Arquivos.ExportarPadraoArquivo(SalvarPadrao.NomePadrao, chart1, var_result, Padrao_Inicio, Padrao_Fim);
-        
-               // MessageBox.Show("Nome é "+ SalvarPadrao.NomePadrao, "Ambiente RPB");
+       
+                MessageBox.Show("Padrão '"+ SalvarPadrao.NomePadrao + "' salvo.", "Ambiente RPB");
             }
             else
             {
                 MessageBox.Show("Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
             }
+        }
+        //------------------------------------------------------------------------------------------
+        private void editorDePadrõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditorDePadroes EditorForm = new FormEditorDePadroes();
+            EditorForm.ShowDialog();
+
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
