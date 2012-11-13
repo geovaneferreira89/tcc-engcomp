@@ -26,12 +26,13 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
-        private double x_Pos, y_Pos;
+        private float x_Pos, y_Pos;
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
         private bool MostrarCursorX = true;
         private EDFFile edfFileOutput = null;
         private bool ThreadInicializada = false;
+        private HitTestResult var_result;
         //Geren Arquivos------------------------------------------
         private GerenArquivos Arquivos;
 
@@ -209,69 +210,91 @@ namespace AmbienteRPB
         //Botão Clicado
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
-           /* if (mostrarCursores == 0)
+            if (mostrarCursores == 0)
             {
                 check_MostrarCursorX.Checked = false;
                 MostrarCursorX = false;
                 AtualizaFerramentaAtiva("", 0);
                 mostrarCursores = 1;
-                Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorY.cur");
+                //Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorY.cur");
                 AtualizaFerramentaAtiva("Marcar Padrões", 1);
             }
             else
             {
                 AtualizaFerramentaAtiva("", 0);
-            }*/
+            }
         }
         //------------------------------------------------------------------------------------------
         //Defini uma seleção afim de ser um padrão. 
         private void MarcarSelecao(MouseEventArgs e)
         {
-            /*
+            
                     HitTestResult result = chart1.HitTest(e.X, e.Y);
                     if (result != null)
                     {
                         if (numCursor == 0)
                         {
+                            var_result = result;
 
-                            x_Pos = result.ChartArea.AxisX.PixelPositionToValue(e.X);
-                            y_Pos = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
+                            chart1.Annotations.Clear();
+                            Adiciona_linhas_de_tempo();
+
+                            x_Pos = (e.X);
+                            y_Pos = (e.Y); 
 
                             //linha fixa
                             VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
                             cursor_vertical.AnchorDataPoint = chart1.Series[0].Points[1];
 
-                            cursor_vertical.Height = 3;
-                            cursor_vertical.LineColor = Color.Chocolate;
-                            cursor_vertical.LineWidth = 2;
-                            cursor_vertical.AnchorX = x_Pos;
+                            cursor_vertical.Height = result.ChartArea.Position.Height;
+                            cursor_vertical.LineColor = Color.Green;
+                            cursor_vertical.LineWidth = 1;
+                            cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X);
                             cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
                             chart1.Annotations.Add(cursor_vertical);
 
                             numCursor++;
                         }
-                        //APOS O ELSE IF PERGUNTAR SE DESEJA REALMENTE MARCAR UM PADrÃO E TRATAR ISSO!!!
-
-                        else if (numCursor == 1)
+                        else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
                         {
                             result.ChartArea.CursorX.AxisType = AxisType.Secondary;
-                            result.ChartArea.CursorX.LineColor = Color.Chocolate;
-                            result.ChartArea.CursorX.LineWidth = 2;
+                            result.ChartArea.CursorX.LineColor = Color.Green;
+                            result.ChartArea.CursorX.LineWidth = 1;
                             result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
-
-                            chart1.Annotations.Clear();
 
                             // Set range selection color, specifying transparency of 120
                             result.ChartArea.CursorX.SelectionColor = Color.FromArgb(120, 50, 50, 50);
                             result.ChartArea.CursorX.IsUserEnabled = true;
                             result.ChartArea.CursorX.IsUserSelectionEnabled = true;
-                            result.ChartArea.CursorX.SetSelectionPosition(x_Pos, e.X);
-
+                            PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
+                            PointF Padrao_Fim = new PointF(e.X, e.Y);
+                            result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+                           
                             numCursor = 0;//CLICAR + VEZES SEM EFEITO
-                            //PADrões(); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
+                            chart1.Annotations.Clear();
+                            Adiciona_linhas_de_tempo();
                         }
-                    }*/
+                    }
            
+        }
+        //------------------------------------------------------------------------------------------
+        private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
+        {
+            if (MessageBox.Show("Deseja salvar o padrão selecionado?", "Ambiente RPB", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                //true
+                Form_SalvarPadrao SalvarPadrao = new Form_SalvarPadrao();
+                SalvarPadrao.ShowDialog();
+
+                Arquivos.ExportarPadraoArquivo(SalvarPadrao.NomePadrao, chart1, var_result, Padrao_Inicio, Padrao_Fim);
+        
+               // MessageBox.Show("Nome é "+ SalvarPadrao.NomePadrao, "Ambiente RPB");
+            }
+            else
+            {
+                MessageBox.Show("Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
+            }
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
@@ -315,6 +338,47 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].Position.Height = Divisao;
                 chart1.ChartAreas[i].Position.Width = 95;  
             }
+
+            Adiciona_linhas_de_tempo();
+
+            if (status_projeto == "Projeto_NOVO")
+            {
+                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
+                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+                ThreadChart.Start();
+                chart1.Enabled = true;
+                ThreadInicializada = true;
+                FrequenciaCombo.Enabled = true;
+                AmplitudeCombo.Enabled = true;
+            }
+            if (status_projeto == "Projeto_RPB")
+            {
+                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
+                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+                ThreadChart.Start();
+                ThreadInicializada = true;
+                chart1.Enabled = true;
+                FrequenciaCombo.Enabled = true;
+                AmplitudeCombo.Enabled = true;
+            }
+            if (status_projeto == "Projeto_EDF")
+            {
+                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
+                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
+                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
+                ThreadChart.Start();
+                ThreadInicializada = true;
+                chart1.Enabled = true;
+                FrequenciaCombo.Enabled = true;
+                AmplitudeCombo.Enabled = true;
+            }
+            
+        }
+        //------------------------------------------------------------------------------------------
+        private void Adiciona_linhas_de_tempo()
+        {
             //adicionar linhas eixo Y
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
@@ -326,7 +390,6 @@ namespace AmbienteRPB
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation8 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-          
 
             lineAnnotation1.LineColor = System.Drawing.Color.LightGray;
             lineAnnotation2.LineColor = System.Drawing.Color.LightGray;
@@ -338,7 +401,7 @@ namespace AmbienteRPB
             lineAnnotation8.LineColor = System.Drawing.Color.LightGray;
             lineAnnotation9.LineColor = System.Drawing.Color.LightGray;
             lineAnnotation10.LineColor = System.Drawing.Color.LightGray;
-      
+
             lineAnnotation1.ToolTip = "1";
             lineAnnotation2.ToolTip = "1";
             lineAnnotation3.ToolTip = "1";
@@ -415,41 +478,6 @@ namespace AmbienteRPB
             chart1.Annotations.Add(lineAnnotation8);
             chart1.Annotations.Add(lineAnnotation9);
             chart1.Annotations.Add(lineAnnotation10);
-        
-            if (status_projeto == "Projeto_NOVO")
-            {
-                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
-                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-                ThreadChart.Start();
-                chart1.Enabled = true;
-                ThreadInicializada = true;
-                FrequenciaCombo.Enabled = true;
-                AmplitudeCombo.Enabled = true;
-            }
-            if (status_projeto == "Projeto_RPB")
-            {
-                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
-                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-                ThreadChart.Start();
-                ThreadInicializada = true;
-                chart1.Enabled = true;
-                FrequenciaCombo.Enabled = true;
-                AmplitudeCombo.Enabled = true;
-            }
-            if (status_projeto == "Projeto_EDF")
-            {
-                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
-                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-                ThreadChart.Start();
-                ThreadInicializada = true;
-                chart1.Enabled = true;
-                FrequenciaCombo.Enabled = true;
-                AmplitudeCombo.Enabled = true;
-            }
-            
         }
         //------------------------------------------------------------------------------------------
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -475,7 +503,6 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
-
         private void FrequenciaCombo_TextChanged(object sender, EventArgs e)
         {
             if (FrequenciaCombo.Text != "")
@@ -484,7 +511,7 @@ namespace AmbienteRPB
                     chart1.ChartAreas[i].AxisX.ScaleView.Size = Convert.ToDouble(FrequenciaCombo.Text);
             }
         }
-
+        //------------------------------------------------------------------------------------------
         private void informaçõesEDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Nome Paciente:\n"+edfFileOutput.Header.PatientIdentification

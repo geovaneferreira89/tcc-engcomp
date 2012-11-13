@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EDF;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing;
 
 namespace AmbienteRPB
 {
@@ -63,5 +65,24 @@ namespace AmbienteRPB
             edfFileOutput = formEDF.edfFileOutput;
             return edfFileOutput;
         }
+        //Exportao Padrao   -----------------------------------------------------------------
+        public void ExportarPadraoArquivo(string nomePadrao, Control _Chart, HitTestResult canal, PointF Padrao_Inicio, PointF Padrao_Fim)
+        {
+            chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
+            fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
+            for(int i = 0; (i + Padrao_Inicio.X <= Padrao_Fim.X); i++)
+            {
+           // fileW.WriteLine((Padrao_Inicio.X+i) + " " + canal.ChartArea.Axes.//PixelPositionToValue(Padrao_Inicio.Y + i));
+                int J = Convert.ToInt16(Padrao_Inicio.X) + i;
+                fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[J]);
+            }
+            fileW.Close();
+        }
+        //Importar Padraoes  -----------------------------------------------------------------
+        public void ImportarPadraoArquivo(string nomePadrao, Control _Chart, HitTestResult canal)
+        {
+
+        }
+
     }
 }
