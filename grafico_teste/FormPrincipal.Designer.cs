@@ -35,6 +35,7 @@
             this.configuraçõeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaçõesEDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editorDePadrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
-            this.editorDePadrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_cm = new System.Windows.Forms.ToolStripLabel();
+            this.lbl_V = new System.Windows.Forms.ToolStripLabel();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -145,6 +147,13 @@
             this.informaçõesEDFToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.informaçõesEDFToolStripMenuItem.Text = "Informações .EDF";
             this.informaçõesEDFToolStripMenuItem.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
+            // 
+            // editorDePadrõesToolStripMenuItem
+            // 
+            this.editorDePadrõesToolStripMenuItem.Name = "editorDePadrõesToolStripMenuItem";
+            this.editorDePadrõesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.editorDePadrõesToolStripMenuItem.Text = "Editor de Padrões";
+            this.editorDePadrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
             // mapasToolStripMenuItem
             // 
@@ -295,9 +304,11 @@
             this.toolStripSeparator3,
             this.toolStripLabel1,
             this.FrequenciaCombo,
+            this.lbl_cm,
             this.toolStripSeparator4,
             this.toolStripLabel2,
-            this.AmplitudeCombo});
+            this.AmplitudeCombo,
+            this.lbl_V});
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.Size = new System.Drawing.Size(709, 25);
@@ -379,7 +390,9 @@
             // FrequenciaCombo
             // 
             this.FrequenciaCombo.Name = "FrequenciaCombo";
-            this.FrequenciaCombo.Size = new System.Drawing.Size(121, 25);
+            this.FrequenciaCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.FrequenciaCombo.Size = new System.Drawing.Size(75, 25);
+            this.FrequenciaCombo.Text = "3";
             this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
             // 
             // toolStripSeparator4
@@ -396,15 +409,22 @@
             // AmplitudeCombo
             // 
             this.AmplitudeCombo.Name = "AmplitudeCombo";
-            this.AmplitudeCombo.Size = new System.Drawing.Size(121, 25);
+            this.AmplitudeCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.AmplitudeCombo.Size = new System.Drawing.Size(75, 25);
+            this.AmplitudeCombo.Text = "50";
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
-            // editorDePadrõesToolStripMenuItem
+            // lbl_cm
             // 
-            this.editorDePadrõesToolStripMenuItem.Name = "editorDePadrõesToolStripMenuItem";
-            this.editorDePadrõesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.editorDePadrõesToolStripMenuItem.Text = "Editor de Padrões";
-            this.editorDePadrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
+            this.lbl_cm.Name = "lbl_cm";
+            this.lbl_cm.Size = new System.Drawing.Size(34, 22);
+            this.lbl_cm.Text = "cm/s";
+            // 
+            // lbl_V
+            // 
+            this.lbl_V.Name = "lbl_V";
+            this.lbl_V.Size = new System.Drawing.Size(21, 22);
+            this.lbl_V.Text = "uV";
             // 
             // FormPrincipal
             // 
@@ -480,6 +500,8 @@
         private System.Windows.Forms.ToolStripMenuItem check_MostrarCursorX;
         private System.Windows.Forms.ToolStripMenuItem informaçõesEDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editorDePadrõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel lbl_cm;
+        private System.Windows.Forms.ToolStripLabel lbl_V;
     }
 }
 

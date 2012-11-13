@@ -526,7 +526,7 @@ namespace AmbienteRPB
             if (FrequenciaCombo.Text != "")
             {
                 for (int i = 0; i < __numeroDeCanais; i++)
-                    chart1.ChartAreas[i].AxisX.ScaleView.Size = Convert.ToDouble(FrequenciaCombo.Text);
+                    chart1.ChartAreas[i].AxisX.ScaleView.Size = Convert.ToDouble(FrequenciaCombo.Text)*1000;
             }
         }
         //------------------------------------------------------------------------------------------
