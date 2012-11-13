@@ -74,6 +74,12 @@
     <Compile Include="Carregar_EDF.Designer.cs">
       <DependentUpon>Carregar_EDF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_SalvarPadrao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SalvarPadrao.Designer.cs">
+      <DependentUpon>Form_SalvarPadrao.cs</DependentUpon>
+    </Compile>
     <Compile Include="GerenArquivos.cs" />
     <Compile Include="MDIPrincipalForm.cs">
       <SubType>Form</SubType>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SalvarPadrao.resx">
+      <DependentUpon>Form_SalvarPadrao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIPrincipalForm.resx">
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>
