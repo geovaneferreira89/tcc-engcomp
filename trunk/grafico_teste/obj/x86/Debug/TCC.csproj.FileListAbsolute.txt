@@ -35,3 +35,4 @@ C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.Properties.Resources.resources
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.Form_SalvarPadrao.resources
+C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditorDePadroes.resources

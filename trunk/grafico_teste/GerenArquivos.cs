@@ -70,19 +70,45 @@ namespace AmbienteRPB
         {
             chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
             fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
+            fileW.WriteLine("[Numero de Amostras = " +  (Padrao_Fim.X - Padrao_Inicio.X) + "]"); 
             for(int i = 0; (i + Padrao_Inicio.X <= Padrao_Fim.X); i++)
             {
-           // fileW.WriteLine((Padrao_Inicio.X+i) + " " + canal.ChartArea.Axes.//PixelPositionToValue(Padrao_Inicio.Y + i));
                 int J = Convert.ToInt16(Padrao_Inicio.X) + i;
                 fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[J]);
             }
             fileW.Close();
         }
         //Importar Padraoes  -----------------------------------------------------------------
-        public void ImportarPadraoArquivo(string nomePadrao, Control _Chart, HitTestResult canal)
+        public void ImportarPadraoArquivo(string nomePadrao, Control _Chart)
         {
+            chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
+            fileR = new System.IO.StreamReader(nomePadrao);
+            string dados;
+            dados = fileR.ReadLine();
+            dados = dados.Substring(22);
+            dados = dados.Substring(0, dados.Length - 1);
+            int NumeroDeAmostras = Convert.ToInt16(dados);
+            chart.Series[0].Color = Color.Red;
+                      
+            for (int i = 0; i <= NumeroDeAmostras; i++)
+            {
+                dados = fileR.ReadLine();
+                string x = dados;
+                string y = dados;
+                int X_ = x.IndexOf(" ");
+                
+                x = x.Substring(3);
+                x = x.Substring(0, X_);
 
+                y = y.Substring(X_+2);
+                y = y.Substring(0, y.Length - 1);
+
+
+
+              chart.Series[0].Points.AddXY(Convert.ToDouble(x),Convert.ToDouble(y));
+            }
         }
+        //----------------------------------------------------------------------------------
 
     }
 }

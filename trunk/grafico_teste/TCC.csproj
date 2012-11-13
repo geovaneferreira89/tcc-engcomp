@@ -74,6 +74,12 @@
     <Compile Include="Carregar_EDF.Designer.cs">
       <DependentUpon>Carregar_EDF.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditorDePadroes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditorDePadroes.Designer.cs">
+      <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_SalvarPadrao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Carregar_EDF.resx">
       <DependentUpon>Carregar_EDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditorDePadroes.resx">
+      <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
