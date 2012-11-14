@@ -545,6 +545,26 @@ namespace AmbienteRPB
                 ,"Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tool_ControlesProjeto.BackColor = Color.DimGray;
+            chart1.BackColor = Color.DimGray;
+            gbx_Chart.BackColor = Color.DimGray;
+
+        }
+        //Teste!
+
+        private void canal1Canal2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chart1.Series[2].Points.Clear();
+            for (int j = 0; j < chart1.Series[0].Points.Count; j++)
+            {
+                double Y__ = chart1.Series[0].Points[j].YValues[0] - chart1.Series[1].Points[j].YValues[0];
+                chart1.Series[2].Points.AddXY(j,Y__);// = "" + chart.Series[i].Points[j];       
+            }
+            MessageBox.Show("Nome Pac");
+        }
         //------------------------------------------------------------------------------------------
        
     }

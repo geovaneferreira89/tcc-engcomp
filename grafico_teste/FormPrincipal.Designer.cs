@@ -40,6 +40,7 @@
             this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.janelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,11 +66,12 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.FrequenciaCombo = new System.Windows.Forms.ToolStripComboBox();
+            this.lbl_cm = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
-            this.lbl_cm = new System.Windows.Forms.ToolStripLabel();
             this.lbl_V = new System.Windows.Forms.ToolStripLabel();
+            this.canal1Canal2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -136,7 +138,8 @@
             // 
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.informaçõesEDFToolStripMenuItem,
-            this.editorDePadrõesToolStripMenuItem});
+            this.editorDePadrõesToolStripMenuItem,
+            this.canal1Canal2ToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
@@ -170,7 +173,8 @@
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.check_MostrarCursorX});
+            this.check_MostrarCursorX,
+            this.darkThemeToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
             this.verToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
             this.verToolStripMenuItem.Text = "Ver";
@@ -180,9 +184,16 @@
             this.check_MostrarCursorX.Checked = true;
             this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_MostrarCursorX.Name = "check_MostrarCursorX";
-            this.check_MostrarCursorX.Size = new System.Drawing.Size(114, 22);
+            this.check_MostrarCursorX.Size = new System.Drawing.Size(138, 22);
             this.check_MostrarCursorX.Text = "Canal X";
             this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
+            // 
+            // darkThemeToolStripMenuItem
+            // 
+            this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.darkThemeToolStripMenuItem.Text = "Dark Theme";
+            this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
             // janelaToolStripMenuItem
             // 
@@ -293,6 +304,7 @@
             // 
             // tool_ControlesProjeto
             // 
+            this.tool_ControlesProjeto.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tool_ControlesProjeto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_novoProjeto,
             this.btn_Importar,
@@ -395,6 +407,12 @@
             this.FrequenciaCombo.Text = "3";
             this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
             // 
+            // lbl_cm
+            // 
+            this.lbl_cm.Name = "lbl_cm";
+            this.lbl_cm.Size = new System.Drawing.Size(34, 22);
+            this.lbl_cm.Text = "cm/s";
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -414,17 +432,18 @@
             this.AmplitudeCombo.Text = "50";
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
-            // lbl_cm
-            // 
-            this.lbl_cm.Name = "lbl_cm";
-            this.lbl_cm.Size = new System.Drawing.Size(34, 22);
-            this.lbl_cm.Text = "cm/s";
-            // 
             // lbl_V
             // 
             this.lbl_V.Name = "lbl_V";
             this.lbl_V.Size = new System.Drawing.Size(21, 22);
             this.lbl_V.Text = "uV";
+            // 
+            // canal1Canal2ToolStripMenuItem
+            // 
+            this.canal1Canal2ToolStripMenuItem.Name = "canal1Canal2ToolStripMenuItem";
+            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.canal1Canal2ToolStripMenuItem.Text = "Canal 1 - Canal 2";
+            this.canal1Canal2ToolStripMenuItem.Click += new System.EventHandler(this.canal1Canal2ToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -433,12 +452,12 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(709, 394);
+            this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.Box_Status);
-            this.Controls.Add(this.tool_ControlesProjeto);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.gbx_Chart);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPrincipal";
             this.ShowIcon = false;
@@ -502,6 +521,8 @@
         private System.Windows.Forms.ToolStripMenuItem editorDePadrõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel lbl_cm;
         private System.Windows.Forms.ToolStripLabel lbl_V;
+        private System.Windows.Forms.ToolStripMenuItem darkThemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem canal1Canal2ToolStripMenuItem;
     }
 }
 
