@@ -36,6 +36,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btn_OK_EDF = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_derivacao = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -102,11 +103,22 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "EDF Selecionados:";
             // 
+            // btn_derivacao
+            // 
+            this.btn_derivacao.Location = new System.Drawing.Point(209, 307);
+            this.btn_derivacao.Name = "btn_derivacao";
+            this.btn_derivacao.Size = new System.Drawing.Size(75, 23);
+            this.btn_derivacao.TabIndex = 16;
+            this.btn_derivacao.Text = "-";
+            this.btn_derivacao.UseVisualStyleBackColor = true;
+            this.btn_derivacao.Click += new System.EventHandler(this.btn_derivacao_Click);
+            // 
             // Carregar_EDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(361, 350);
+            this.Controls.Add(this.btn_derivacao);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_OK_EDF);
             this.Controls.Add(this.button2);
@@ -133,5 +145,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btn_OK_EDF;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_derivacao;
     }
 }

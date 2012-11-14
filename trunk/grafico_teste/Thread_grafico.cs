@@ -20,7 +20,7 @@ namespace thread_chart
     {
         //Controles Chart--------------------------------------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(double x, double y, int caso, int _VarchartArea_, string Cor, string nomeSerie);
+        private delegate void AtualizaChart(int caso, int _VarchartArea_, string Cor, string nomeSerie, double []SINAL);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         //Controles Progress Bar-------------------------------------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
@@ -67,41 +67,41 @@ namespace thread_chart
             {
                 case ("Projeto_NOVO"):
                 {
-                    for (int i = 0; i < _NumCanais; i++)
-                    {
-                        Plotar(0, 0, 2, i, " ", " ");
-                        load_progress_bar(0, 2);
-                        FuncAtualizaStatusProjeto("...Iniciou", 0);
-                        double j = 0;
-                        int inc = 0;
-                        while (j < num_de_voltas)
-                        {
-                            if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
-                            {
-                                Plotar(j, Math.Sin(j), 1, i, "YellowGreen", "Seno");
-                            }
-                            if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
-                            {
-                                Plotar(j, Math.Cos(j), 1, i, "Blue", "Cosseno");
-                            }
-                            if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
-                            {
-                                Plotar(j, Math.Tan(j), 1, i, "Green", "Tangente");
-                            }
-                            inc++;
-                            j += num_de_amostras;
-                            Thread.Sleep(0);
-                        }
-                        load_progress_bar(inc, 1);
+                    /*   for (int i = 0; i < _NumCanais; i++)
+                  {
+                 Plotar(0, 0, 2, i, " ", " ");
+                      load_progress_bar(0, 2);
+                      FuncAtualizaStatusProjeto("...Iniciou", 0);
+                      double j = 0;
+                      int inc = 0;
+                      while (j < num_de_voltas)
+                      {
+                          if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
+                          {
+                              Plotar(j, Math.Sin(j), 1, i, "YellowGreen", "Seno");
+                          }
+                          if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
+                          {
+                              Plotar(j, Math.Cos(j), 1, i, "Blue", "Cosseno");
+                          }
+                          if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
+                          {
+                              Plotar(j, Math.Tan(j), 1, i, "Green", "Tangente");
+                          }
+                          inc++;
+                          j += num_de_amostras;
+                          Thread.Sleep(0);
+                      }
+                      load_progress_bar(inc, 1);
 
-                    }
-                    while (chave)
-                    {
-                        load_progress_bar(0, 3);
-                        FuncScrollBar_Propriedades(num_de_voltas);
-                        FuncAtualizaStatusProjeto("...terminou", 1);
-                        FuncAtualizaControleProjeto("Des_btn_Suspender");
-                    }
+                  }
+                  while (chave)
+                  {
+                      load_progress_bar(0, 3);
+                      FuncScrollBar_Propriedades(num_de_voltas);
+                      FuncAtualizaStatusProjeto("...terminou", 1);
+                      FuncAtualizaControleProjeto("Des_btn_Suspender");
+                  }*/
                     break;
                 } //Fim Case Gerar sinal
                 case ("Projeto_RPB"):
@@ -116,21 +116,23 @@ namespace thread_chart
                         int i = 0;
                         foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                         {
-                            Plotar(0, 0, 2, i, " ", " ");
+                            Plotar(2, i, " ", " ", null);
                             load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
                             num_de_voltas = 0;
                             //Thread.Sleep(1);
+                            double[] Enviar = new double[edfFileOutput.DataRecords.Capacity * 256];
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
-                                foreach (float sample in dataRecord[signal.IndexNumberWithLabel])
+                                
+                                foreach (double sample in dataRecord[signal.IndexNumberWithLabel])
                                 {
-                                    Plotar(num_de_voltas, sample, 1, i, "Blue", signal.Label.ToString().Substring(4));
+                                    Enviar[num_de_voltas] = sample;
                                     num_de_voltas++;
-                                    load_progress_bar(num_de_voltas, 1);
-                                    FuncScrollBar_Propriedades(num_de_voltas);
                                 }
-
                             }
+                            Plotar(1, i, "Blue", signal.Label.ToString().Substring(4), Enviar);
+                            load_progress_bar(num_de_voltas, 1);
+                            FuncScrollBar_Propriedades(num_de_voltas);
                             i++;
                         }
                             load_progress_bar(0, 3);
@@ -140,11 +142,11 @@ namespace thread_chart
             }
         }
         //-----------------------------------------------------------------------------------------------------------------
-        private void Plotar(double x, double y, int caso, int _NumCanais_, string Cor, string nomeSerie)
+        private void Plotar(int caso, int _NumCanais_, string Cor, string nomeSerie, double []SINAL)
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { x, y, caso, _NumCanais_, Cor, nomeSerie });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] {caso, _NumCanais_, Cor, nomeSerie, SINAL});
             }
             else
             {
@@ -153,7 +155,8 @@ namespace thread_chart
                     if (prb != null)
                     {
                         prb.Series["canal" + _NumCanais_].Color = Color.FromName(Cor);
-                        prb.Series["canal" + _NumCanais_].Points.AddXY(x, y);
+                        for (int i = 0; i < SINAL.Length; i++)
+                            prb.Series["canal" + _NumCanais_].Points.AddXY(i,SINAL[i]);
                         prb.Titles[_NumCanais_].Text = nomeSerie;
                     }
                 }

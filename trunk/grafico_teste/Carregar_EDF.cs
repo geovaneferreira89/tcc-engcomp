@@ -93,5 +93,36 @@ namespace AmbienteRPB
         {
             //AtributoAcessadoPorOutroForm = "o form foi fechado";
         }
+
+        private void btn_derivacao_Click(object sender, EventArgs e)
+        {
+        /*    EDFSignal Teste1  = (EDFSignal)listBox2.SelectedItems[0];// - (EDFSignal)listBox2.SelectedItems[1];
+            EDFSignal Teste2 = (EDFSignal)listBox2.SelectedItems[1];
+            EDFSignal OUT;
+           // foreach (EDFSignal signal in edfFileOutput.Header.Signals)
+           // {
+                  foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
+                  {
+                      foreach (float sample1 in dataRecord[Teste1.IndexNumberWithLabel])
+                    {
+                        //Plotar(num_de_voltas, sample, 1, i, "Blue", signal.Label.ToString().Substring(4));
+                        foreach (float sample2 in dataRecord[Teste2.IndexNumberWithLabel])
+                        {
+                            OUT.IndexNumberWithLabel
+                        }
+                    }
+
+                  }
+           // }
+                     
+
+
+            for (int i = 0; i < listBox2.SelectedItems.Count; i++)
+            {
+                edfFileOutput.deleteSignal((EDFSignal)listBox2.SelectedItems[i]);
+
+                listBox2.Items.Add(listBox1.SelectedItems[i]);
+            }*/
+        }
     }
 }
