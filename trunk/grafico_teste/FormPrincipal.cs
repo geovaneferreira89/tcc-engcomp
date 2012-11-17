@@ -14,12 +14,10 @@ using System.IO;
 using System.Runtime.InteropServices;
 using EDF;
 
-
 namespace AmbienteRPB
 {
     public partial class FormPrincipal : Form
     {
-       
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
         private int __numeroDeCanais = 23;
@@ -143,9 +141,7 @@ namespace AmbienteRPB
                     "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             status_projeto = "Projeto_NOVO";
-
             ChartInicializarThreads(__numeroDeCanais);
-           
             btn_novoProjeto.Enabled = false;
             btn_MarcarPadroes.Enabled = true;
 
@@ -186,7 +182,6 @@ namespace AmbienteRPB
         // Mostra o cursor no eixo X dos gráficos
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-           
            /* HitTestResult result = chart1.HitTest(e.X, e.Y);
             if (result.ChartArea != null)
             {
@@ -228,9 +223,8 @@ namespace AmbienteRPB
         //Defini uma seleção afim de ser um padrão. 
         private void MarcarSelecao(MouseEventArgs e)
         {
-            
                     HitTestResult result = chart1.HitTest(e.X, e.Y);
-                    if (result != null)
+                    if (result.ChartArea != null)
                     {
                         if (numCursor == 0)
                         {
@@ -248,14 +242,12 @@ namespace AmbienteRPB
                             //linha fixa
                             VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
                             cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
-
                             cursor_vertical.Height    = result.ChartArea.Position.Height;
                             cursor_vertical.LineColor = Color.Green;
                             cursor_vertical.LineWidth = 1;
                             cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X);
                             cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
                             chart1.Annotations.Add(cursor_vertical);
-
                             numCursor++;
                         }
                         else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
@@ -280,14 +272,11 @@ namespace AmbienteRPB
                           
                             Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                             Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
-
                             //result.ChartArea.CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
                             //result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
-
                 
                         }
                     }
-           
         }
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
@@ -312,7 +301,6 @@ namespace AmbienteRPB
         {
             FormEditorDePadroes EditorForm = new FormEditorDePadroes();
             EditorForm.ShowDialog();
-
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
@@ -352,7 +340,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].BackColor = Color.Linen; //Cor de fundo nos canais... 
                 chart1.ChartAreas[i].Position.X = 4;
-                chart1.ChartAreas[i].Position.Y = Divisao * i + 1;
+                chart1.ChartAreas[i].Position.Y = Divisao * i; 
                 chart1.ChartAreas[i].Position.Height = Divisao;
                 chart1.ChartAreas[i].Position.Width = 95;  
             }
@@ -398,37 +386,37 @@ namespace AmbienteRPB
         private void Adiciona_linhas_de_tempo()
         {
             //adicionar linhas eixo Y
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation3 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation4 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation5 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation6 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation7 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation8 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation1  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation2  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation3  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation4  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation5  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation6  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation7  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation8  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
 
-            lineAnnotation1.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation2.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation3.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation4.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation5.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation6.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation7.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation8.LineColor = System.Drawing.Color.LightGray;
-            lineAnnotation9.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation1.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation2.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation3.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation4.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation5.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation6.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation7.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation8.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation9.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation10.LineColor = System.Drawing.Color.LightGray;
 
-            lineAnnotation1.ToolTip = "1";
-            lineAnnotation2.ToolTip = "1";
-            lineAnnotation3.ToolTip = "1";
-            lineAnnotation4.ToolTip = "1";
-            lineAnnotation5.ToolTip = "1";
-            lineAnnotation6.ToolTip = "1";
-            lineAnnotation7.ToolTip = "1";
-            lineAnnotation8.ToolTip = "1";
-            lineAnnotation9.ToolTip = "1";
+            lineAnnotation1.ToolTip  = "1";
+            lineAnnotation2.ToolTip  = "1";
+            lineAnnotation3.ToolTip  = "1";
+            lineAnnotation4.ToolTip  = "1";
+            lineAnnotation5.ToolTip  = "1";
+            lineAnnotation6.ToolTip  = "1";
+            lineAnnotation7.ToolTip  = "1";
+            lineAnnotation8.ToolTip  = "1";
+            lineAnnotation9.ToolTip  = "1";
             lineAnnotation10.ToolTip = "1";
 
             lineAnnotation1.X = 4;
@@ -464,15 +452,15 @@ namespace AmbienteRPB
             lineAnnotation10.Width = 0;
             lineAnnotation10.Y = 0;
 
-            lineAnnotation1.Height = 200;
-            lineAnnotation2.Height = 200;
-            lineAnnotation3.Height = 200;
-            lineAnnotation4.Height = 200;
-            lineAnnotation5.Height = 200;
-            lineAnnotation6.Height = 200;
-            lineAnnotation7.Height = 200;
-            lineAnnotation8.Height = 200;
-            lineAnnotation9.Height = 200;
+            lineAnnotation1.Height  = 200;
+            lineAnnotation2.Height  = 200;
+            lineAnnotation3.Height  = 200;
+            lineAnnotation4.Height  = 200;
+            lineAnnotation5.Height  = 200;
+            lineAnnotation6.Height  = 200;
+            lineAnnotation7.Height  = 200;
+            lineAnnotation8.Height  = 200;
+            lineAnnotation9.Height  = 200;
             lineAnnotation10.Height = 200;
 
             lineAnnotation1.Name = "LineAnnotation1";

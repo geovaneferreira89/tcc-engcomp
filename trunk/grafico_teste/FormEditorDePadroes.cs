@@ -53,7 +53,20 @@ namespace AmbienteRPB
 
                     chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
                 }
+                
             }
+        }
+        //Frequencia
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox1.Text != null)
+            chart1.ChartAreas[0].AxisX.ScaleView.Size = Convert.ToDouble(textBox1.Text) ;
+        }
+        //Amplitude
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != null)
+            chart1.ChartAreas[0].AxisY.ScaleView.Size = Convert.ToDouble(textBox2.Text);
         }
     }
 }
