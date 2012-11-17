@@ -117,13 +117,12 @@ namespace thread_chart
                         foreach (EDFSignal signal in edfFileOutput.Header.Signals)
                         {
                             Plotar(2, i, " ", " ", null);
-                            load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
+                            //load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
                             num_de_voltas = 0;
                             //Thread.Sleep(1);
                             double[] Enviar = new double[edfFileOutput.DataRecords.Capacity * 256];
                             foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
                             {
-                                
                                 foreach (double sample in dataRecord[signal.IndexNumberWithLabel])
                                 {
                                     Enviar[num_de_voltas] = sample;
@@ -131,11 +130,11 @@ namespace thread_chart
                                 }
                             }
                             Plotar(1, i, "Blue", signal.Label.ToString().Substring(4), Enviar);
-                            load_progress_bar(num_de_voltas, 1);
+                            //load_progress_bar(num_de_voltas, 1);
                             FuncScrollBar_Propriedades(num_de_voltas);
                             i++;
                         }
-                            load_progress_bar(0, 3);
+                            //load_progress_bar(0, 3);
                      }
                     break;
                 }
@@ -175,7 +174,7 @@ namespace thread_chart
                     prb.Titles[_NumCanais_].Position.Width = 40;
                     prb.Titles[_NumCanais_].Alignment = ContentAlignment.MiddleLeft;
                     prb.Titles[_NumCanais_].Position.X = 0;
-                    prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Y;
+                    prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Height / 2 + prb.ChartAreas[_NumCanais_].Position.Y;
                 }
             }
         }
