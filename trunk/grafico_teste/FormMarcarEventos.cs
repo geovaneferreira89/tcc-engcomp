@@ -190,114 +190,48 @@ namespace AmbienteRPB
             {
                 FormEditarNomeEvento NomeEvento = new FormEditarNomeEvento();
                 NomeEvento.ShowDialog();
-                NovoNomeEvento(Evento,NomeEvento.NomePadrao);
-            }
-        }
-        public void NovoNomeEvento(string nome, string novo_nome)
-        {
-            switch (nome)
-            {
-                case ("Evento1"):
-                    {
-                        Evento1.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento2"):
-                    {
-                        Evento2.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento3"):
-                    {
-                        Evento3.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento4"):
-                    {
-                        Evento4.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento5"):
-                    {
-                        Evento5.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento6"):
-                    {
-                        Evento6.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento7"):
-                    {
-                        Evento7.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento8"):
-                    {
-                        Evento8.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento9"):
-                    {
-                        Evento9.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento10"):
-                    {
-                        Evento10.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento11"):
-                    {
-                        Evento11.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento12"):
-                    {
-                        Evento12.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento13"):
-                    {
-                        Evento13.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento14"):
-                    {
-                        Evento14.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento15"):
-                    {
-                        Evento15.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento16"):
-                    {
-                        Evento16.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento17"):
-                    {
-                        Evento17.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento18"):
-                    {
-                        Evento18.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento19"):
-                    {
-                        Evento19.Text = novo_nome;
-                        break;
-                    }
-                case ("Evento20"):
-                    {
-                        Evento20.Text = novo_nome;
-                        break;
-                    }
-              
+      
+                if(Evento1.Checked)
+                    Evento1.Text = NomeEvento.NomePadrao;
+                if (Evento2.Checked)
+                    Evento2.Text = NomeEvento.NomePadrao;
+                if (Evento3.Checked)
+                    Evento3.Text = NomeEvento.NomePadrao;
+                if (Evento4.Checked)
+                    Evento4.Text = NomeEvento.NomePadrao;
+                if (Evento5.Checked)
+                    Evento5.Text = NomeEvento.NomePadrao;
+                if (Evento6.Checked)
+                    Evento6.Text = NomeEvento.NomePadrao;
+                if (Evento7.Checked)
+                    Evento7.Text = NomeEvento.NomePadrao;
+                if (Evento8.Checked)
+                    Evento8.Text = NomeEvento.NomePadrao;
+                if (Evento9.Checked)
+                    Evento9.Text = NomeEvento.NomePadrao;
+                if (Evento10.Checked)
+                    Evento10.Text = NomeEvento.NomePadrao;
+                if (Evento11.Checked)
+                    Evento11.Text = NomeEvento.NomePadrao;
+                if (Evento12.Checked)
+                    Evento12.Text = NomeEvento.NomePadrao;
+                if (Evento13.Checked)
+                    Evento13.Text = NomeEvento.NomePadrao;
+                if (Evento14.Checked)
+                    Evento14.Text = NomeEvento.NomePadrao;
+                if (Evento15.Checked)
+                    Evento15.Text = NomeEvento.NomePadrao;
+                if (Evento16.Checked)
+                    Evento16.Text = NomeEvento.NomePadrao;
+                if (Evento17.Checked)
+                    Evento17.Text = NomeEvento.NomePadrao;
+                if (Evento18.Checked)
+                    Evento18.Text = NomeEvento.NomePadrao;
+                if (Evento19.Checked)
+                    Evento19.Text = NomeEvento.NomePadrao;
+                if (Evento20.Checked)
+                    Evento20.Text = NomeEvento.NomePadrao;
+                Evento = NomeEvento.NomePadrao;
             }
         }
 
