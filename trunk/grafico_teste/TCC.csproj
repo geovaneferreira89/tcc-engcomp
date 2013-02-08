@@ -68,11 +68,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Carregar_EDF.cs">
+    <Compile Include="FormCarregar_EDF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Carregar_EDF.Designer.cs">
-      <DependentUpon>Carregar_EDF.cs</DependentUpon>
+    <Compile Include="FormCarregar_EDF.Designer.cs">
+      <DependentUpon>FormCarregar_EDF.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditorDePadroes.cs">
       <SubType>Form</SubType>
@@ -80,18 +80,18 @@
     <Compile Include="FormEditorDePadroes.Designer.cs">
       <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_SalvarPadrao.cs">
+    <Compile Include="FormEditarNomeEvento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_SalvarPadrao.Designer.cs">
-      <DependentUpon>Form_SalvarPadrao.cs</DependentUpon>
+    <Compile Include="FormEditarNomeEvento.Designer.cs">
+      <DependentUpon>FormEditarNomeEvento.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenArquivos.cs" />
-    <Compile Include="MarcarEventos.cs">
+    <Compile Include="FormMarcarEventos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MarcarEventos.Designer.cs">
-      <DependentUpon>MarcarEventos.cs</DependentUpon>
+    <Compile Include="FormMarcarEventos.Designer.cs">
+      <DependentUpon>FormMarcarEventos.cs</DependentUpon>
     </Compile>
     <Compile Include="MDIPrincipalForm.cs">
       <SubType>Form</SubType>
@@ -108,8 +108,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Carregar_EDF.resx">
-      <DependentUpon>Carregar_EDF.cs</DependentUpon>
+    <EmbeddedResource Include="FormCarregar_EDF.resx">
+      <DependentUpon>FormCarregar_EDF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditorDePadroes.resx">
       <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
@@ -117,11 +117,11 @@
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_SalvarPadrao.resx">
-      <DependentUpon>Form_SalvarPadrao.cs</DependentUpon>
+    <EmbeddedResource Include="FormEditarNomeEvento.resx">
+      <DependentUpon>FormEditarNomeEvento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MarcarEventos.resx">
-      <DependentUpon>MarcarEventos.cs</DependentUpon>
+    <EmbeddedResource Include="FormMarcarEventos.resx">
+      <DependentUpon>FormMarcarEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIPrincipalForm.resx">
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>

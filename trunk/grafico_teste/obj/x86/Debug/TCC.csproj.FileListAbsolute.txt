@@ -29,12 +29,10 @@ C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\bin\Debug\AmbienteRPB.pdb
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\bin\Debug\EDF.dll
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\bin\Debug\EDF.pdb
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
-C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.Carregar_EDF.resources
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormPrincipal.resources
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.Properties.Resources.resources
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
-C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.Form_SalvarPadrao.resources
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditorDePadroes.resources
 C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.exe
 C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.pdb
@@ -50,4 +48,6 @@ C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRP
 C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources
 C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.Properties.Resources.resources
 C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
-C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.MarcarEventos.resources
+C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormCarregar_EDF.resources
+C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditarNomeEvento.resources
+C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormMarcarEventos.resources

@@ -396,6 +396,7 @@
             // btn_MarcarPadroes
             // 
             this.btn_MarcarPadroes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_MarcarPadroes.Enabled = false;
             this.btn_MarcarPadroes.Image = ((System.Drawing.Image)(resources.GetObject("btn_MarcarPadroes.Image")));
             this.btn_MarcarPadroes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_MarcarPadroes.Name = "btn_MarcarPadroes";

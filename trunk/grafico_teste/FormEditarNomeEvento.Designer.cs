@@ -1,6 +1,6 @@
 ﻿namespace AmbienteRPB
 {
-    partial class Form_SalvarPadrao
+    partial class FormEditarNomeEvento
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             // 
             // btn_salvar
             // 
-            this.btn_salvar.Location = new System.Drawing.Point(186, 73);
+            this.btn_salvar.Location = new System.Drawing.Point(182, 51);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(86, 24);
             this.btn_salvar.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // text_NomePadrao
             // 
-            this.text_NomePadrao.Location = new System.Drawing.Point(15, 38);
+            this.text_NomePadrao.Location = new System.Drawing.Point(10, 25);
             this.text_NomePadrao.Name = "text_NomePadrao";
             this.text_NomePadrao.Size = new System.Drawing.Size(257, 20);
             this.text_NomePadrao.TabIndex = 1;
@@ -53,22 +53,23 @@
             // lbl_digiteONomeDoPadrao
             // 
             this.lbl_digiteONomeDoPadrao.AutoSize = true;
-            this.lbl_digiteONomeDoPadrao.Location = new System.Drawing.Point(12, 22);
+            this.lbl_digiteONomeDoPadrao.Location = new System.Drawing.Point(7, 9);
             this.lbl_digiteONomeDoPadrao.Name = "lbl_digiteONomeDoPadrao";
             this.lbl_digiteONomeDoPadrao.Size = new System.Drawing.Size(123, 13);
             this.lbl_digiteONomeDoPadrao.TabIndex = 2;
-            this.lbl_digiteONomeDoPadrao.Text = "Digite o nome do padrão";
+            this.lbl_digiteONomeDoPadrao.Text = "Digite o nome do evento";
             // 
-            // Form_SalvarPadrao
+            // FormEditarNomeEvento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 107);
+            this.ClientSize = new System.Drawing.Size(277, 81);
             this.Controls.Add(this.lbl_digiteONomeDoPadrao);
             this.Controls.Add(this.text_NomePadrao);
             this.Controls.Add(this.btn_salvar);
-            this.Name = "Form_SalvarPadrao";
-            this.Text = "Salvar Padrao";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "FormEditarNomeEvento";
+            this.Text = "Nome Evento";
             this.ResumeLayout(false);
             this.PerformLayout();
 
