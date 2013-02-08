@@ -60,7 +60,7 @@ namespace AmbienteRPB
         //Abrir Projeto EDF  -----------------------------------------------------------------
         public EDFFile Abrir_Projeto_EDF(string diretorio)
         {
-            Carregar_EDF formEDF = new Carregar_EDF(diretorio);
+            FormCarregar_EDF formEDF = new FormCarregar_EDF(diretorio);
             formEDF.ShowDialog();
             edfFileOutput = formEDF.edfFileOutput;
             return edfFileOutput;

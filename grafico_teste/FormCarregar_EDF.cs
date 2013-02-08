@@ -11,7 +11,7 @@ using EDF;
 
 namespace AmbienteRPB
 {
-    public partial class Carregar_EDF : Form
+    public partial class FormCarregar_EDF : Form
     {
         private string dirArquivo;     
         //private string initialDirectory = "C:\\";
@@ -30,7 +30,7 @@ namespace AmbienteRPB
             set;
         }
 
-        public Carregar_EDF(string dirArquivo_)
+        public FormCarregar_EDF(string dirArquivo_)
         {
             dirArquivo = dirArquivo_;
             InitializeComponent();

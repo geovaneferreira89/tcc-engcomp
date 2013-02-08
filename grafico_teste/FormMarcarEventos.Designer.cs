@@ -1,6 +1,6 @@
 ﻿namespace AmbienteRPB
 {
-    partial class MarcarEventos
+    partial class FormMarcarEventos
     {
         /// <summary>
         /// Required designer variable.
@@ -49,6 +49,7 @@
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.Evento1 = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +80,7 @@
             this.groupBox1.Controls.Add(this.Evento1);
             this.groupBox1.Location = new System.Drawing.Point(11, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(94, 339);
+            this.groupBox1.Size = new System.Drawing.Size(90, 344);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -303,16 +304,29 @@
             this.Evento1.UseVisualStyleBackColor = true;
             this.Evento1.Click += new System.EventHandler(this.Evento01_CheckedChanged);
             // 
-            // MarcarEventos
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(23, 358);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 20);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Renomear";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // FormMarcarEventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(117, 359);
+            this.ClientSize = new System.Drawing.Size(113, 384);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MarcarEventos";
+            this.Name = "FormMarcarEventos";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -346,5 +360,6 @@
         private System.Windows.Forms.CheckBox Evento3;
         private System.Windows.Forms.CheckBox Evento2;
         private System.Windows.Forms.CheckBox Evento1;
+        private System.Windows.Forms.Button button1;
     }
 }

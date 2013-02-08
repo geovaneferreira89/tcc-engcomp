@@ -33,6 +33,9 @@ namespace AmbienteRPB
         private HitTestResult var_result;
         //Geren Arquivos------------------------------------------
         private GerenArquivos Arquivos;
+        //Editor de eventos
+        private FormMarcarEventos _MarcarEventos;
+        private int numDeEventosMarcados = 0;
 
         ToolTip tooltip = new ToolTip();
       
@@ -80,7 +83,7 @@ namespace AmbienteRPB
                     ChartInicializarThreads(__numeroDeCanais);
 
                     btn_novoProjeto.Enabled = false;
-                    btn_MarcarPadroes.Enabled = true;
+                    //btn_MarcarPadroes.Enabled = true;
 
                     btn_Importar.Enabled = false;
                     btn_novoProjeto.Enabled = false;
@@ -143,7 +146,7 @@ namespace AmbienteRPB
             status_projeto = "Projeto_NOVO";
             ChartInicializarThreads(__numeroDeCanais);
             btn_novoProjeto.Enabled = false;
-            btn_MarcarPadroes.Enabled = true;
+            //btn_MarcarPadroes.Enabled = true;
 
         }
         //------------------------------------------------------------------------------------------
@@ -204,8 +207,9 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------------------
         private void marcarPadrõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MarcarEventos _MarcarEventos = new MarcarEventos();
+            _MarcarEventos = new FormMarcarEventos();
             _MarcarEventos.Show();
+            btn_MarcarPadroes.Enabled = true;
         }
         //------------------------------------------------------------------------------------------
         //Botão Clicado
@@ -287,20 +291,14 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
         {
-            if (MessageBox.Show("Deseja salvar o padrão selecionado?", "Ambiente RPB", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (_MarcarEventos.Evento != null)
             {
-                //true
-                Form_SalvarPadrao SalvarPadrao = new Form_SalvarPadrao();
-                SalvarPadrao.ShowDialog();
-
-                Arquivos.ExportarPadraoArquivo(SalvarPadrao.NomePadrao, chart1, var_result, Padrao_Inicio, Padrao_Fim);
-       
-                MessageBox.Show("Padrão '"+ SalvarPadrao.NomePadrao + "' salvo.", "Ambiente RPB");
+                Arquivos.ExportarPadraoArquivo(_MarcarEventos.Evento + "_" + numDeEventosMarcados, chart1, var_result, Padrao_Inicio, Padrao_Fim);
+                MessageBox.Show("Padrão '" + _MarcarEventos.Evento + "' salvo.", "Ambiente RPB");
+                numDeEventosMarcados++;
             }
             else
-            {
-                MessageBox.Show("Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
-            }
+                MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
         }
         //------------------------------------------------------------------------------------------
         private void editorDePadrõesToolStripMenuItem_Click(object sender, EventArgs e)
