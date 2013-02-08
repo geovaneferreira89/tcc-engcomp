@@ -87,6 +87,12 @@
       <DependentUpon>Form_SalvarPadrao.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenArquivos.cs" />
+    <Compile Include="MarcarEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarcarEventos.Designer.cs">
+      <DependentUpon>MarcarEventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_SalvarPadrao.resx">
       <DependentUpon>Form_SalvarPadrao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarcarEventos.resx">
+      <DependentUpon>MarcarEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIPrincipalForm.resx">
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>

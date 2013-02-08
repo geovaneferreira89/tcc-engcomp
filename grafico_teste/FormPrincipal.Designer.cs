@@ -35,7 +35,9 @@
             this.configuraçõeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaçõesEDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcarPadrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editorDePadrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.canal1Canal2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +73,6 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
             this.lbl_V = new System.Windows.Forms.ToolStripLabel();
-            this.canal1Canal2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbx_Chart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -138,6 +139,7 @@
             // 
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.informaçõesEDFToolStripMenuItem,
+            this.marcarPadrõesToolStripMenuItem,
             this.editorDePadrõesToolStripMenuItem,
             this.canal1Canal2ToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
@@ -151,12 +153,26 @@
             this.informaçõesEDFToolStripMenuItem.Text = "Informações .EDF";
             this.informaçõesEDFToolStripMenuItem.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
             // 
+            // marcarPadrõesToolStripMenuItem
+            // 
+            this.marcarPadrõesToolStripMenuItem.Name = "marcarPadrõesToolStripMenuItem";
+            this.marcarPadrõesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.marcarPadrõesToolStripMenuItem.Text = "Marcar Eventos";
+            this.marcarPadrõesToolStripMenuItem.Click += new System.EventHandler(this.marcarPadrõesToolStripMenuItem_Click);
+            // 
             // editorDePadrõesToolStripMenuItem
             // 
             this.editorDePadrõesToolStripMenuItem.Name = "editorDePadrõesToolStripMenuItem";
             this.editorDePadrõesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.editorDePadrõesToolStripMenuItem.Text = "Editor de Padrões";
             this.editorDePadrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
+            // 
+            // canal1Canal2ToolStripMenuItem
+            // 
+            this.canal1Canal2ToolStripMenuItem.Name = "canal1Canal2ToolStripMenuItem";
+            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.canal1Canal2ToolStripMenuItem.Text = "Canal 1 - Canal 2";
+            this.canal1Canal2ToolStripMenuItem.Click += new System.EventHandler(this.canal1Canal2ToolStripMenuItem_Click);
             // 
             // mapasToolStripMenuItem
             // 
@@ -438,13 +454,6 @@
             this.lbl_V.Size = new System.Drawing.Size(21, 22);
             this.lbl_V.Text = "uV";
             // 
-            // canal1Canal2ToolStripMenuItem
-            // 
-            this.canal1Canal2ToolStripMenuItem.Name = "canal1Canal2ToolStripMenuItem";
-            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.canal1Canal2ToolStripMenuItem.Text = "Canal 1 - Canal 2";
-            this.canal1Canal2ToolStripMenuItem.Click += new System.EventHandler(this.canal1Canal2ToolStripMenuItem_Click);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,6 +532,7 @@
         private System.Windows.Forms.ToolStripLabel lbl_V;
         private System.Windows.Forms.ToolStripMenuItem darkThemeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem canal1Canal2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcarPadrõesToolStripMenuItem;
     }
 }
 

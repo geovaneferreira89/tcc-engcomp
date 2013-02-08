@@ -201,6 +201,12 @@ namespace AmbienteRPB
         
         //---------------------------------------------------------------------------------------
         //                               ##   Definir Padrões  ##
+        //---------------------------------------------------------------------------------------
+        private void marcarPadrõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MarcarEventos _MarcarEventos = new MarcarEventos();
+            _MarcarEventos.Show();
+        }
         //------------------------------------------------------------------------------------------
         //Botão Clicado
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
@@ -338,7 +344,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas.Add("canal" + i);
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].BackColor = Color.Linen; //Cor de fundo nos canais... 
+                //chart1.ChartAreas[i].BackColor = Color.Linen; //Cor de fundo nos canais... 
                 chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = Divisao * i; 
                 chart1.ChartAreas[i].Position.Height = Divisao;
@@ -553,7 +559,7 @@ namespace AmbienteRPB
             }
             MessageBox.Show("Nome Pac");
         }
-        //------------------------------------------------------------------------------------------
+
        
     }
 }
