@@ -68,5 +68,10 @@ namespace AmbienteRPB
             if (textBox2.Text != null)
             chart1.ChartAreas[0].AxisY.ScaleView.Size = Convert.ToDouble(textBox2.Text);
         }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
