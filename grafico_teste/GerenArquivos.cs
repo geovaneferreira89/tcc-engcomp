@@ -68,13 +68,44 @@ namespace AmbienteRPB
         //Exportao Padrao   -----------------------------------------------------------------
         public void ExportarPadraoArquivo(string nomePadrao, Control _Chart, HitTestResult canal, PointF Padrao_Inicio, PointF Padrao_Fim)
         {
+                chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
+                fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
+                fileW.WriteLine("[Numero de Amostras = " + (Padrao_Fim.X - Padrao_Inicio.X) + "]");
+                for (int i = 0; (i + Padrao_Inicio.X <= Padrao_Fim.X); i++)
+                {
+                    int J = Convert.ToInt16(Padrao_Inicio.X) + i;
+                    fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[J]);
+                }
+                fileW.Close();
+        }
+        //Exportao Padrao Editado  -----------------------------------------------------------------
+        public void ExportarPadraoEditado(string nomePadrao, Control _Chart, PointF Padrao_Inicio, PointF Padrao_Fim)
+        {
             chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
             fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
-            fileW.WriteLine("[Numero de Amostras = " +  (Padrao_Fim.X - Padrao_Inicio.X) + "]"); 
-            for(int i = 0; (i + Padrao_Inicio.X <= Padrao_Fim.X); i++)
+            int inicio = 0;
+            int fim = 0;
+            bool Busca = true;
+            while (Busca)
             {
-                int J = Convert.ToInt16(Padrao_Inicio.X) + i;
-                fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[J]);
+                if (chart.Series[0].Points[inicio].XValue == Convert.ToInt16(Padrao_Inicio.X))
+                    Busca = false;
+                    
+                inicio++;
+            }
+            Busca = true;
+            while (Busca)
+            {
+                if (chart.Series[0].Points[fim].XValue == Convert.ToInt16(Padrao_Fim.X))
+                    Busca = false;
+                fim++;
+            }
+            fileW.WriteLine("[Numero de Amostras = " + Convert.ToInt16(fim - inicio - 1) + "]");
+
+            for (int i = inicio; chart.Series[0].Points[i].XValue <= Padrao_Fim.X; i++)
+            {
+                //int J = Convert.ToInt16(Padrao_Inicio.X) + i;
+                fileW.WriteLine(chart.Series[0].Points[i]);
             }
             fileW.Close();
         }
