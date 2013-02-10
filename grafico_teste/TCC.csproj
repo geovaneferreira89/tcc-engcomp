@@ -87,12 +87,6 @@
       <DependentUpon>FormEditarNomeEvento.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenArquivos.cs" />
-    <Compile Include="FormMarcarEventos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMarcarEventos.Designer.cs">
-      <DependentUpon>FormMarcarEventos.cs</DependentUpon>
-    </Compile>
     <Compile Include="MDIPrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,9 +113,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarNomeEvento.resx">
       <DependentUpon>FormEditarNomeEvento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMarcarEventos.resx">
-      <DependentUpon>FormMarcarEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIPrincipalForm.resx">
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>
