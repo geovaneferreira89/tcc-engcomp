@@ -34,8 +34,8 @@ namespace AmbienteRPB
         //Geren Arquivos------------------------------------------
         private GerenArquivos Arquivos;
         //Editor de eventos
-        private FormMarcarEventos _MarcarEventos;
         private int numDeEventosMarcados = 0;
+        String Evento;
 
         ToolTip tooltip = new ToolTip();
       
@@ -44,6 +44,11 @@ namespace AmbienteRPB
         {
             Arquivos = new GerenArquivos();
             InitializeComponent();
+            gbxEventos.Visible = false;
+            gbxEventos.Enabled = false;
+
+            gbxChart.Location = new System.Drawing.Point(2, 21);
+            gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
         }
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -79,14 +84,13 @@ namespace AmbienteRPB
                     status_projeto = "Projeto_EDF";
                     AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1);
                     __numeroDeCanais = edfFileOutput.Header.Signals.Count;
-                    //saveToolStripButton.Enabled = true;
                     ChartInicializarThreads(__numeroDeCanais);
-
                     btn_novoProjeto.Enabled = false;
-                    //btn_MarcarPadroes.Enabled = true;
-
                     btn_Importar.Enabled = false;
                     btn_novoProjeto.Enabled = false;
+                    infoEDF.Enabled = true;
+                    marcarEventos.Enabled = true;
+                    btn_Importar.Enabled = false;
                 }
                 else
                     AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
@@ -207,15 +211,46 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------------------
         private void marcarPadrõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _MarcarEventos = new FormMarcarEventos();
-            _MarcarEventos.Show();
-            btn_MarcarPadroes.Enabled = true;
+            if (marcarEventos.Checked == false)
+            {
+               // _MarcarEventos = new FormMarcarEventos();
+               // _MarcarEventos.Show();
+                btn_MarcarPadroes.Enabled = true;
+                marcarEventos.Checked = true;
+
+                gbxEventos.Visible = true;
+                gbxEventos.Enabled = true;
+                gbxChart.Location = new System.Drawing.Point(95, 21);
+                chart1.Location = new System.Drawing.Point(6, 11);
+                gbxChart.Size = new System.Drawing.Size(this.Size.Width - 115, this.Size.Height - 105);
+                chart1.Size = new System.Drawing.Size(this.Size.Width - 125, this.Size.Height - 120);
+
+                check_MostrarCursorX.Checked = false;
+                MostrarCursorX = false;
+                AtualizaFerramentaAtiva("", 0);
+                mostrarCursores = 1;
+                AtualizaFerramentaAtiva("Marcar Eventos", 1);
+            }
+            else
+            {
+                marcarEventos.Checked = false;
+
+                gbxEventos.Visible = false;
+                gbxEventos.Enabled = false;
+
+                gbxChart.Location = new System.Drawing.Point(2, 21);
+                chart1.Location = new System.Drawing.Point(6, 11);
+
+                gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, this.Size.Height - 105);
+                chart1.Size = new System.Drawing.Size(this.Size.Width - 30, this.Size.Height - 120);
+                AtualizaFerramentaAtiva("", 0);
+            }
         }
         //------------------------------------------------------------------------------------------
         //Botão Clicado
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
-            if (mostrarCursores == 0)
+          /*  if (mostrarCursores == 0)
             {
                 check_MostrarCursorX.Checked = false;
                 MostrarCursorX = false;
@@ -227,7 +262,7 @@ namespace AmbienteRPB
             else
             {
                 AtualizaFerramentaAtiva("", 0);
-            }
+            }*/
         }
         //------------------------------------------------------------------------------------------
         //Defini uma seleção afim de ser um padrão. 
@@ -294,10 +329,10 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
         {
-            if (_MarcarEventos.Evento != null)
+            if (Evento != null)
             {
-                Arquivos.ExportarPadraoArquivo(_MarcarEventos.Evento + "_" + numDeEventosMarcados, chart1, var_result, Padrao_Inicio, Padrao_Fim);
-                MessageBox.Show("Padrão '" + _MarcarEventos.Evento + "' salvo.", "Ambiente RPB");
+                Arquivos.ExportarPadraoArquivo(Evento + "_" + numDeEventosMarcados, chart1, var_result, Padrao_Inicio, Padrao_Fim);
+                MessageBox.Show("Padrão '" + Evento + "' salvo.", "Ambiente RPB");
                 numDeEventosMarcados++;
             }
             else
@@ -545,7 +580,37 @@ namespace AmbienteRPB
         {
             tool_ControlesProjeto.BackColor = Color.DimGray;
             chart1.BackColor = Color.DimGray;
-            gbx_Chart.BackColor = Color.DimGray;
+            gbxChart.BackColor = Color.DimGray;
+            gbxEventos.BackColor = Color.DimGray;
+            FrequenciaCombo.BackColor = Color.DimGray;
+            FrequenciaCombo.ForeColor = Color.White;
+            AmplitudeCombo.BackColor = Color.DimGray;
+            AmplitudeCombo.ForeColor = Color.White;
+            lblFreq.ForeColor = Color.White;
+            lblAmpli.ForeColor = Color.White;
+            lbl_cm.ForeColor = Color.White;
+            lbl_V.ForeColor = Color.White;
+            Evento1.ForeColor = Color.White;
+            Evento2.ForeColor = Color.White;
+            Evento3.ForeColor = Color.White;
+            Evento4.ForeColor = Color.White;
+            Evento5.ForeColor = Color.White;
+            Evento6.ForeColor = Color.White;
+            Evento7.ForeColor = Color.White;
+            Evento8.ForeColor = Color.White;
+            Evento9.ForeColor = Color.White;
+            Evento10.ForeColor = Color.White;
+            for (int i = 0; i < __numeroDeCanais; i++)
+            {
+                chart1.ChartAreas[i].BackColor =  Color.DimGray;
+                chart1.Series[i].BackSecondaryColor = Color.DimGray;
+                chart1.Series[i].BorderColor = Color.DimGray;
+                chart1.Series[i].ShadowColor = Color.DimGray;
+
+
+
+                chart1.Series[i].Color = Color.LightPink;
+            }
 
         }
         //Teste!
@@ -560,7 +625,137 @@ namespace AmbienteRPB
             }
             MessageBox.Show("Nome Pac");
         }
+        //--------------------------------------------------------------------------
+        private void fecharToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if( marcarEventos.Checked == true)
+            {
+                marcarEventos.Checked = false;
 
+                gbxEventos.Visible = false;
+                gbxEventos.Enabled = false;
+
+                gbxChart.Location = new System.Drawing.Point(2, 21);
+                gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
+            }
+        }
+        //-------------------------------------------------------------------------
+        public void SetNenhumEventoMarcado()
+        {
+            Evento1.Checked = false;
+            Evento2.Checked = false;
+            Evento3.Checked = false;
+            Evento4.Checked = false;
+            Evento5.Checked = false;
+            Evento6.Checked = false;
+            Evento7.Checked = false;
+            Evento8.Checked = false;
+            Evento9.Checked = false;
+            Evento10.Checked = false;
+        }
+      
+        //-------------------------------------------------------------------------
+        private void Evento1_Click(object sender, EventArgs e)
+        {
+            Evento = Evento1.Text;
+            SetNenhumEventoMarcado();
+            Evento1.Checked = true;
+        }
+
+        private void Evento2_Click(object sender, EventArgs e)
+        {
+            Evento = Evento2.Text;
+            SetNenhumEventoMarcado();
+            Evento2.Checked = true;
+        }
+
+        private void Evento3_Click(object sender, EventArgs e)
+        {
+            Evento = Evento3.Text;
+            SetNenhumEventoMarcado();
+            Evento3.Checked = true;
+        }
+
+        private void Evento4_Click(object sender, EventArgs e)
+        {
+            Evento = Evento4.Text;
+            SetNenhumEventoMarcado();
+            Evento4.Checked = true;
+        }
+
+        private void Evento5_Click(object sender, EventArgs e)
+        {
+            Evento = Evento5.Text;
+            SetNenhumEventoMarcado();
+            Evento5.Checked = true;
+        }
+
+        private void Evento6_Click(object sender, EventArgs e)
+        {
+            Evento = Evento6.Text;
+            SetNenhumEventoMarcado();
+            Evento6.Checked = true;
+        }
+
+        private void Evento7_Click(object sender, EventArgs e)
+        {
+            Evento = Evento7.Text;
+            SetNenhumEventoMarcado();
+            Evento7.Checked = true;
+        }
+
+        private void Evento8_Click(object sender, EventArgs e)
+        {
+            Evento = Evento8.Text;
+            SetNenhumEventoMarcado();
+            Evento8.Checked = true;
+        }
+
+        private void Evento9_Click(object sender, EventArgs e)
+        {
+            Evento = Evento9.Text;
+            SetNenhumEventoMarcado();
+            Evento9.Checked = true;
+        }
+
+        private void Evento10_Click(object sender, EventArgs e)
+        {
+            Evento = Evento10.Text;
+            SetNenhumEventoMarcado();
+            Evento10.Checked = true;
+        }
+        //------------------------------------------------------------------
+        private void renomearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Evento != null)
+            {
+                FormEditarNomeEvento NomeEvento = new FormEditarNomeEvento();
+                NomeEvento.ShowDialog();
+
+                if (Evento1.Checked)
+                    Evento1.Text = NomeEvento.NomePadrao;
+                if (Evento2.Checked)
+                    Evento2.Text = NomeEvento.NomePadrao;
+                if (Evento3.Checked)
+                    Evento3.Text = NomeEvento.NomePadrao;
+                if (Evento4.Checked)
+                    Evento4.Text = NomeEvento.NomePadrao;
+                if (Evento5.Checked)
+                    Evento5.Text = NomeEvento.NomePadrao;
+                if (Evento6.Checked)
+                    Evento6.Text = NomeEvento.NomePadrao;
+                if (Evento7.Checked)
+                    Evento7.Text = NomeEvento.NomePadrao;
+                if (Evento8.Checked)
+                    Evento8.Text = NomeEvento.NomePadrao;
+                if (Evento9.Checked)
+                    Evento9.Text = NomeEvento.NomePadrao;
+                if (Evento10.Checked)
+                    Evento10.Text = NomeEvento.NomePadrao;
+                Evento = NomeEvento.NomePadrao;
+            }
+        }
+        //-----------------------------------------------------------
        
     }
 }
