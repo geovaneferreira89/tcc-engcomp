@@ -69,6 +69,7 @@
             this.Controls.Add(this.btn_salvar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormEditarNomeEvento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nome Evento";
             this.ResumeLayout(false);
             this.PerformLayout();

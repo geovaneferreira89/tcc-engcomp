@@ -29,16 +29,17 @@ namespace AmbienteRPB
         //-----------------------------------------------------
         private void btn_Abrir_Click(object sender, EventArgs e)
         {
-           
-                if (openFile.ShowDialog() == DialogResult.OK)
+            if (chart1.Series.Count != 0)
+            {
+                chart1.Series.Remove(chart1.Series["Serie01"]); 
+                chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
+            }
+            if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     chart1.ChartAreas.Add("Padrao");
                     chart1.Series.Add("Serie01");
                     chart1.Series["Serie01"].ChartArea = "Padrao";
                     chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-
-                    // Arquivos.ImportarPadraoArquivo(openFile.FileName, chart1);
-                    // chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
                     System.IO.StreamReader fileR = new System.IO.StreamReader(openFile.FileName);
                     edtEvento_Nome.Text = openFile.SafeFileName; //Tirar o resto... 
                     string dados;
@@ -47,22 +48,16 @@ namespace AmbienteRPB
                     dados = dados.Substring(0, dados.Length - 1);
                     int NumeroDeAmostras = Convert.ToInt16(dados);
                     chart1.Series[0].Color = Color.Red;
-
                     for (int i = 0; i <= NumeroDeAmostras; i++)
                     {
                         dados = fileR.ReadLine();
                         string x = dados;
                         string y = dados;
                         int X_ = x.IndexOf(" ");
-
                         x = x.Substring(3);
                         x = x.Substring(0, X_ - 4);
-
                         y = y.Substring(X_ + 3);
                         y = y.Substring(0, y.Length - 1);
-
-
-
                         chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
                     }
 
@@ -95,12 +90,10 @@ namespace AmbienteRPB
         //-----------------------------------------------------
         private void chart1_MouseClick(object sender, MouseEventArgs e)
         {
-            //HitTestResult result = chart1.HitTest(e.X, e.Y);
             if (chart1.ChartAreas[0] != null)
             {
                 if (numCursor == 0)
                 {
-                    
                     chart1.Annotations.Clear();
                     chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
                     chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
@@ -151,6 +144,11 @@ namespace AmbienteRPB
             Arquivos = new GerenArquivos();
             Arquivos.ExportarPadraoEditado(edtEvento_Nome.Text, chart1, Padrao_Inicio, Padrao_Fim);
             MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Ambiente RPB");
+        }
+
+        private void FormEditorDePadroes_Load(object sender, EventArgs e)
+        {
+
         }
         //-----------------------------------------------------
     }
