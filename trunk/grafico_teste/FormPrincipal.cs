@@ -274,17 +274,20 @@ namespace AmbienteRPB
                             PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
                             PointF Padrao_Fim    = new PointF(e.X, e.Y);
                             result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-                           
-                            numCursor = 0;//CLICAR + VEZES SEM EFEITO
-                            Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
-                            chart1.Annotations.Clear();
-                            Adiciona_linhas_de_tempo();
                           
                             Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                             Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
-                            //result.ChartArea.CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
-                            //result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
-                
+
+                            Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
+                            numCursor = 0;//CLICAR + VEZES SEM EFEITO
+                            result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0),new PointF(0, 0), true);
+                            result.ChartArea.CursorX.LineColor = Color.LightGray;
+                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
+                            result.ChartArea.CursorX.IsUserEnabled = false;
+                            result.ChartArea.CursorX.IsUserSelectionEnabled = false;
+                           
+                            chart1.Annotations.Clear();
+                            Adiciona_linhas_de_tempo();
                         }
                     }
         }

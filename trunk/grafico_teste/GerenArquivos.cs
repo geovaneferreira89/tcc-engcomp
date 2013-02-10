@@ -68,13 +68,39 @@ namespace AmbienteRPB
         //Exportao Padrao   -----------------------------------------------------------------
         public void ExportarPadraoArquivo(string nomePadrao, Control _Chart, HitTestResult canal, PointF Padrao_Inicio, PointF Padrao_Fim)
         {
-                chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
-                fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
-                fileW.WriteLine("[Numero de Amostras = " + (Padrao_Fim.X - Padrao_Inicio.X) + "]");
+                /*
+                
+                 * fileW.WriteLine("[Numero de Amostras = " + (Padrao_Fim.X - Padrao_Inicio.X) + "]");
                 for (int i = 0; (i + Padrao_Inicio.X <= Padrao_Fim.X); i++)
                 {
                     int J = Convert.ToInt16(Padrao_Inicio.X) + i;
                     fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[J]);
+                }
+                fileW.Close();
+                 */
+                chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
+                fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
+                int inicio = 0;
+                int fim = 0;
+                bool Busca = true;
+                while (Busca)
+                {
+                    if (chart.Series[canal.ChartArea.Name].Points[inicio].XValue == Convert.ToInt16(Padrao_Inicio.X))
+                        Busca = false;
+                    inicio++;
+                }
+                Busca = true;
+                while (Busca)
+                {
+                    if (chart.Series[canal.ChartArea.Name].Points[fim].XValue == Convert.ToInt16(Padrao_Fim.X))
+                        Busca = false;
+                    fim++;
+                }
+                fileW.WriteLine("[Numero de Amostras = " + Convert.ToInt16(fim - inicio - 1) + "]");
+
+                for (int i = inicio; i < fim; i++)
+                {
+                    fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[i]);
                 }
                 fileW.Close();
         }
@@ -82,7 +108,7 @@ namespace AmbienteRPB
         public void ExportarPadraoEditado(string nomePadrao, Control _Chart, PointF Padrao_Inicio, PointF Padrao_Fim)
         {
             chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
-            fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
+            fileW = new System.IO.StreamWriter(nomePadrao + "_NEW", true);
             int inicio = 0;
             int fim = 0;
             bool Busca = true;
@@ -90,7 +116,6 @@ namespace AmbienteRPB
             {
                 if (chart.Series[0].Points[inicio].XValue == Convert.ToInt16(Padrao_Inicio.X))
                     Busca = false;
-                    
                 inicio++;
             }
             Busca = true;
@@ -101,15 +126,13 @@ namespace AmbienteRPB
                 fim++;
             }
             fileW.WriteLine("[Numero de Amostras = " + Convert.ToInt16(fim - inicio - 1) + "]");
-
-            for (int i = inicio; chart.Series[0].Points[i].XValue <= Padrao_Fim.X; i++)
+            for (int i = inicio; i<fim; i++)
             {
-                //int J = Convert.ToInt16(Padrao_Inicio.X) + i;
                 fileW.WriteLine(chart.Series[0].Points[i]);
             }
             fileW.Close();
         }
-        //Importar Padraoes  -----------------------------------------------------------------
+        //Importar Padraoes  ----------------------------------------------------------------
         public void ImportarPadraoArquivo(string nomePadrao, Control _Chart)
         {
             chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
@@ -120,26 +143,19 @@ namespace AmbienteRPB
             dados = dados.Substring(0, dados.Length - 1);
             int NumeroDeAmostras = Convert.ToInt16(dados);
             chart.Series[0].Color = Color.Red;
-                      
             for (int i = 0; i <= NumeroDeAmostras; i++)
             {
                 dados = fileR.ReadLine();
                 string x = dados;
                 string y = dados;
                 int X_ = x.IndexOf(" ");
-                
                 x = x.Substring(3);
                 x = x.Substring(0, X_);
-
                 y = y.Substring(X_+2);
                 y = y.Substring(0, y.Length - 1);
-
-
-
               chart.Series[0].Points.AddXY(Convert.ToDouble(x),Convert.ToDouble(y));
             }
         }
         //----------------------------------------------------------------------------------
-
     }
 }

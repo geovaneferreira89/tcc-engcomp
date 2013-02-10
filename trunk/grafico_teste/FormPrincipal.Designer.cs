@@ -322,8 +322,8 @@
             // 
             this.tool_ControlesProjeto.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tool_ControlesProjeto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_novoProjeto,
             this.btn_Importar,
+            this.btn_novoProjeto,
             this.toolStripSeparator1,
             this.toolStripButton3,
             this.btn_Suspender,
@@ -346,6 +346,7 @@
             // btn_novoProjeto
             // 
             this.btn_novoProjeto.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_novoProjeto.Enabled = false;
             this.btn_novoProjeto.Image = ((System.Drawing.Image)(resources.GetObject("btn_novoProjeto.Image")));
             this.btn_novoProjeto.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_novoProjeto.Name = "btn_novoProjeto";
@@ -371,6 +372,7 @@
             // toolStripButton3
             // 
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Enabled = false;
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
@@ -381,6 +383,7 @@
             // btn_Suspender
             // 
             this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Suspender.Enabled = false;
             this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
             this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_Suspender.Name = "btn_Suspender";
@@ -418,10 +421,19 @@
             // 
             // FrequenciaCombo
             // 
+            this.FrequenciaCombo.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "100",
+            "200",
+            "300"});
             this.FrequenciaCombo.Name = "FrequenciaCombo";
             this.FrequenciaCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FrequenciaCombo.Size = new System.Drawing.Size(75, 25);
-            this.FrequenciaCombo.Text = "3";
+            this.FrequenciaCombo.Text = "1";
             this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
             // 
             // lbl_cm
@@ -443,6 +455,18 @@
             // 
             // AmplitudeCombo
             // 
+            this.AmplitudeCombo.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "80",
+            "100",
+            "150",
+            "200"});
             this.AmplitudeCombo.Name = "AmplitudeCombo";
             this.AmplitudeCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.AmplitudeCombo.Size = new System.Drawing.Size(75, 25);

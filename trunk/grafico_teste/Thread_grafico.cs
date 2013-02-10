@@ -263,7 +263,7 @@ namespace thread_chart
                     }
                     else
                     {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 3;
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = 1; //Colocar 3
                         ScrollBar.Maximum = num_de_voltas;
                     }
                 }

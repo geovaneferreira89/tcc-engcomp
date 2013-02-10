@@ -136,17 +136,6 @@
     <value>0, 43</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btn_novoProjeto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD+SURBVDhPYxiGYOuNf04rLv8L3n/nn8mpJ/9kZ5/+lw6V
-        Ig7MOPYr9z8SABmQMfP0Jqg0YTDp4LfSP3///4fh2Wf+/weJp08j0pDuPR/qfv75///HbyAG0k2bn//P
-        mHHmP8gVRLmkeeurrs8///8H4U8/UOlWoBxUGW5Qu+7xpDff/v9/8xWIQTQSrl33cBJUGW5Qvuz2vGef
-        //9/+un/fxANxlB2CVAOqgw3KJx/ddnDj///PwLihx+QMJBfAJSDKsMNcuaeX3Pv3f//cPwewc6cfX4N
-        VBlu0Lb6YnvVkqszJm2/V7r46IvIxYdeRILYILGWFRfbocqGD2BgAAAIc/HIn3mLmAAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
   <data name="btn_Importar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -156,6 +145,17 @@
         rns8CaoMNyhfdnves8///8PxJwQNkoMqww0K5l9d9vADzAXv4C4AiRUuvLoMqgw3yJl7fs29d///g/D9
         9xAahnNmn18DVYYbtKy42F615OqMSdvvlS4++iJy8aEXkSA2SKxt9cV2qLLhAxgYAC4Q6+VlAv+OAAAA
         AElFTkSuQmCC
+</value>
+  </data>
+  <data name="btn_novoProjeto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD+SURBVDhPYxiGYOuNf04rLv8L3n/nn8mpJ/9kZ5/+lw6V
+        Ig7MOPYr9z8SABmQMfP0Jqg0YTDp4LfSP3///4fh2Wf+/weJp08j0pDuPR/qfv75///HbyAG0k2bn//P
+        mHHmP8gVRLmkeeurrs8///8H4U8/UOlWoBxUGW5Qu+7xpDff/v9/8xWIQTQSrl33cBJUGW5Qvuz2vGef
+        //9/+un/fxANxlB2CVAOqgw3KJx/ddnDj///PwLihx+QMJBfAJSDKsMNcuaeX3Pv3f//cPwewc6cfX4N
+        VBlu0Lb6YnvVkqszJm2/V7r46IvIxYdeRILYILGWFRfbocqGD2BgAAAIc/HIn3mLmAAAAABJRU5ErkJg
+        gg==
 </value>
   </data>
   <data name="toolStripButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
