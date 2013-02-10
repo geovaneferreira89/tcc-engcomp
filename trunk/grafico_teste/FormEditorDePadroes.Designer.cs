@@ -39,7 +39,6 @@
             this.edtEvento_Nome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnMarcar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btn_Abrir = new System.Windows.Forms.Button();
@@ -62,9 +61,9 @@
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 2);
+            this.groupBox1.Location = new System.Drawing.Point(4, -4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(127, 450);
+            this.groupBox1.Size = new System.Drawing.Size(642, 59);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -74,9 +73,9 @@
             this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.textBox2);
             this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Location = new System.Drawing.Point(10, 213);
+            this.groupBox5.Location = new System.Drawing.Point(497, 7);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(111, 65);
+            this.groupBox5.Size = new System.Drawing.Size(136, 43);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             // 
@@ -84,7 +83,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 15);
+            this.label2.Location = new System.Drawing.Point(5, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 9;
@@ -94,7 +93,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 41);
+            this.label1.Location = new System.Drawing.Point(66, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 8;
@@ -103,18 +102,18 @@
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(53, 38);
+            this.textBox2.Location = new System.Drawing.Point(98, 16);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(42, 20);
+            this.textBox2.Size = new System.Drawing.Size(32, 20);
             this.textBox2.TabIndex = 7;
             this.textBox2.Text = "50";
             // 
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(53, 12);
+            this.textBox1.Location = new System.Drawing.Point(38, 16);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(42, 20);
+            this.textBox1.Size = new System.Drawing.Size(26, 20);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "3";
             // 
@@ -122,23 +121,23 @@
             // 
             this.groupBox4.Controls.Add(this.edtEvento_Nome);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Location = new System.Drawing.Point(10, 145);
+            this.groupBox4.Location = new System.Drawing.Point(286, 7);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(110, 65);
+            this.groupBox4.Size = new System.Drawing.Size(205, 43);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             // 
             // edtEvento_Nome
             // 
-            this.edtEvento_Nome.Location = new System.Drawing.Point(8, 34);
+            this.edtEvento_Nome.Location = new System.Drawing.Point(48, 14);
             this.edtEvento_Nome.Name = "edtEvento_Nome";
-            this.edtEvento_Nome.Size = new System.Drawing.Size(93, 20);
+            this.edtEvento_Nome.Size = new System.Drawing.Size(151, 20);
             this.edtEvento_Nome.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 18);
+            this.label3.Location = new System.Drawing.Point(6, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 0;
@@ -146,31 +145,19 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnMarcar);
             this.groupBox2.Controls.Add(this.btnSair);
             this.groupBox2.Controls.Add(this.btnSalvar);
             this.groupBox2.Controls.Add(this.btn_Abrir);
-            this.groupBox2.Location = new System.Drawing.Point(9, 15);
+            this.groupBox2.Location = new System.Drawing.Point(7, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(111, 124);
+            this.groupBox2.Size = new System.Drawing.Size(273, 43);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            // 
-            // btnMarcar
-            // 
-            this.btnMarcar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMarcar.Location = new System.Drawing.Point(14, 95);
-            this.btnMarcar.Name = "btnMarcar";
-            this.btnMarcar.Size = new System.Drawing.Size(82, 22);
-            this.btnMarcar.TabIndex = 10;
-            this.btnMarcar.Text = "Marcar";
-            this.btnMarcar.UseVisualStyleBackColor = true;
-            this.btnMarcar.Click += new System.EventHandler(this.btnMarcar_Click);
             // 
             // btnSair
             // 
             this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSair.Location = new System.Drawing.Point(14, 67);
+            this.btnSair.Location = new System.Drawing.Point(187, 15);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(82, 22);
             this.btnSair.TabIndex = 9;
@@ -182,7 +169,7 @@
             // 
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Enabled = false;
-            this.btnSalvar.Location = new System.Drawing.Point(14, 40);
+            this.btnSalvar.Location = new System.Drawing.Point(99, 15);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(82, 22);
             this.btnSalvar.TabIndex = 8;
@@ -193,7 +180,7 @@
             // btn_Abrir
             // 
             this.btn_Abrir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Abrir.Location = new System.Drawing.Point(14, 15);
+            this.btn_Abrir.Location = new System.Drawing.Point(11, 15);
             this.btn_Abrir.Name = "btn_Abrir";
             this.btn_Abrir.Size = new System.Drawing.Size(82, 21);
             this.btn_Abrir.TabIndex = 7;
@@ -207,9 +194,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.chart1);
-            this.groupBox3.Location = new System.Drawing.Point(149, 2);
+            this.groupBox3.Location = new System.Drawing.Point(4, 54);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(505, 450);
+            this.groupBox3.Size = new System.Drawing.Size(642, 297);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             // 
@@ -219,9 +206,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.chart1.Location = new System.Drawing.Point(10, 11);
+            this.chart1.Location = new System.Drawing.Point(3, 9);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(486, 430);
+            this.chart1.Size = new System.Drawing.Size(636, 284);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
@@ -230,12 +217,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 461);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(649, 353);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox3);
             this.Name = "FormEditorDePadroes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor de Eventos";
+            this.Load += new System.EventHandler(this.FormEditorDePadroes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -265,7 +253,6 @@
         private System.Windows.Forms.Button btn_Abrir;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button btnMarcar;
         private System.Windows.Forms.Button btnSair;
     }
 }

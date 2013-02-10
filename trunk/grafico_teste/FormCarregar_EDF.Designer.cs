@@ -113,7 +113,7 @@
             this.btn_derivacao.UseVisualStyleBackColor = true;
             this.btn_derivacao.Click += new System.EventHandler(this.btn_derivacao_Click);
             // 
-            // Carregar_EDF
+            // FormCarregar_EDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -127,7 +127,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Carregar_EDF";
+            this.Name = "FormCarregar_EDF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Abrir Arquivo .EDF";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Carregar_EDF_FormClosed);
             this.Load += new System.EventHandler(this.EDF_Load);

@@ -213,15 +213,13 @@ namespace AmbienteRPB
         {
             if (marcarEventos.Checked == false)
             {
-               // _MarcarEventos = new FormMarcarEventos();
-               // _MarcarEventos.Show();
                 btn_MarcarPadroes.Enabled = true;
                 marcarEventos.Checked = true;
 
                 gbxEventos.Visible = true;
                 gbxEventos.Enabled = true;
                 gbxChart.Location = new System.Drawing.Point(95, 21);
-                chart1.Location = new System.Drawing.Point(6, 11);
+                chart1.Location = new System.Drawing.Point(6, 7);
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 115, this.Size.Height - 105);
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 125, this.Size.Height - 120);
 
@@ -239,7 +237,7 @@ namespace AmbienteRPB
                 gbxEventos.Enabled = false;
 
                 gbxChart.Location = new System.Drawing.Point(2, 21);
-                chart1.Location = new System.Drawing.Point(6, 11);
+                chart1.Location = new System.Drawing.Point(6, 7);
 
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, this.Size.Height - 105);
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 30, this.Size.Height - 120);
@@ -250,19 +248,7 @@ namespace AmbienteRPB
         //Botão Clicado
         private void btn_MarcarPadrões_Click(object sender, EventArgs e)
         {
-          /*  if (mostrarCursores == 0)
-            {
-                check_MostrarCursorX.Checked = false;
-                MostrarCursorX = false;
-                AtualizaFerramentaAtiva("", 0);
-                mostrarCursores = 1;
-                //Cursor = new System.Windows.Forms.Cursor(GetType(), "CursorY.cur");
-                AtualizaFerramentaAtiva("Marcar Padrões", 1);
-            }
-            else
-            {
-                AtualizaFerramentaAtiva("", 0);
-            }*/
+        
         }
         //------------------------------------------------------------------------------------------
         //Defini uma seleção afim de ser um padrão. 
@@ -271,60 +257,88 @@ namespace AmbienteRPB
                     HitTestResult result = chart1.HitTest(e.X, e.Y);
                     if (result.ChartArea != null)
                     {
-                        if (numCursor == 0)
-                        {
-                            var_result = result;
+                        AtualizaFerramentaAtiva("", 2);
+                        ExecutaSelecao(result, e);
 
-                            chart1.Annotations.Clear();
-                            Adiciona_linhas_de_tempo();
-
-                            result.ChartArea.CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
-                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
-
-                            x_Pos = (e.X);
-                            y_Pos = (e.Y); 
-
-                            //linha fixa
-                            VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
-                            cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
-                            cursor_vertical.Height    = result.ChartArea.Position.Height;
-                            cursor_vertical.LineColor = Color.Green;
-                            cursor_vertical.LineWidth = 1;
-                            cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X);
-                            cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
-                            chart1.Annotations.Add(cursor_vertical);
-                            numCursor++;
-                        }
-                        else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
-                        {
-                            result.ChartArea.CursorX.AxisType = AxisType.Secondary;
-                            result.ChartArea.CursorX.LineColor = Color.Green;
-                            result.ChartArea.CursorX.LineWidth = 1;
-                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
-
-                            // Set range selection color, specifying transparency of 120
-                            result.ChartArea.CursorX.SelectionColor = Color.FromArgb(90, 50, 50, 50);
-                            result.ChartArea.CursorX.IsUserEnabled = true;
-                            result.ChartArea.CursorX.IsUserSelectionEnabled = true;
-                            PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
-                            PointF Padrao_Fim    = new PointF(e.X, e.Y);
-                            result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-                          
-                            Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
-                            Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
-
-                            Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
-                            numCursor = 0;//CLICAR + VEZES SEM EFEITO
-                            result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0),new PointF(0, 0), true);
-                            result.ChartArea.CursorX.LineColor = Color.LightGray;
-                            result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
-                            result.ChartArea.CursorX.IsUserEnabled = false;
-                            result.ChartArea.CursorX.IsUserSelectionEnabled = false;
-                           
-                            chart1.Annotations.Clear();
-                            Adiciona_linhas_de_tempo();
-                        }
                     }
+                    else
+                    {
+                        //Caso não encontrado nenhum resultado para onde foi clicado, o sofware 
+                        //faz uma varredura de no maximo elemtos acima, evita transtornos... 
+                        bool cont = true;
+                        int i = 1;
+                        while(cont)
+                        {
+                            result = chart1.HitTest(e.X + i, e.Y);
+                            if (result != null)
+                                cont = false;
+                            if (i == 10)
+                                cont = false;
+                            i++;
+                        }
+                        AtualizaFerramentaAtiva("Result null", 2);
+                        if(result == null)
+                            AtualizaFerramentaAtiva("RESULT NULL 2 - Marque novamente", 2);
+                        else
+                            ExecutaSelecao(result, e);
+                    }
+        }
+        //------------------------------------------------------------------------------------------
+        private void ExecutaSelecao(HitTestResult result, MouseEventArgs e)
+        {
+            if (numCursor == 0)
+            {
+                var_result = result;
+
+                chart1.Annotations.Clear();
+                Adiciona_linhas_de_tempo();
+
+                result.ChartArea.CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
+                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
+
+                x_Pos = (e.X);
+                y_Pos = (e.Y);
+
+                //linha fixa
+                VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
+                cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
+                cursor_vertical.Height = result.ChartArea.Position.Height;
+                cursor_vertical.LineColor = Color.Green;
+                cursor_vertical.LineWidth = 1;
+                cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
+                chart1.Annotations.Add(cursor_vertical);
+                numCursor++;
+            }
+            else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
+            {
+                result.ChartArea.CursorX.AxisType = AxisType.Secondary;
+                result.ChartArea.CursorX.LineColor = Color.Green;
+                result.ChartArea.CursorX.LineWidth = 1;
+                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
+
+                // Set range selection color, specifying transparency of 120
+                result.ChartArea.CursorX.SelectionColor = Color.FromArgb(90, 50, 50, 50);
+                result.ChartArea.CursorX.IsUserEnabled = true;
+                result.ChartArea.CursorX.IsUserSelectionEnabled = true;
+                PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
+                PointF Padrao_Fim = new PointF(e.X, e.Y);
+                result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+
+                Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
+                Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
+
+                Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
+                numCursor = 0;//CLICAR + VEZES SEM EFEITO
+                result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0), new PointF(0, 0), true);
+                result.ChartArea.CursorX.LineColor = Color.LightGray;
+                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
+                result.ChartArea.CursorX.IsUserEnabled = false;
+                result.ChartArea.CursorX.IsUserSelectionEnabled = false;
+
+                chart1.Annotations.Clear();
+                Adiciona_linhas_de_tempo();
+            }
         }
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
@@ -363,8 +377,8 @@ namespace AmbienteRPB
             }
             if (opcao == 2)
             {
-                lbl_ferramentaAtiva.ForeColor = Color.Red;
-                lbl_ferramentaAtiva.Text = ferramenta;
+                toolInfo.ForeColor = Color.Red;
+                toolInfo.Text = ferramenta;
             }
 
         }
@@ -380,18 +394,14 @@ namespace AmbienteRPB
                 chart1.ChartAreas.Add("canal" + i);
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                //chart1.ChartAreas[i].BackColor = Color.Linen; //Cor de fundo nos canais... 
                 chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = Divisao * i; 
                 chart1.ChartAreas[i].Position.Height = Divisao;
-                chart1.ChartAreas[i].Position.Width = 95;  
+                chart1.ChartAreas[i].Position.Width = 96;
             }
-
             Adiciona_linhas_de_tempo();
-
             if (status_projeto == "Projeto_NOVO")
             {
-                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
@@ -437,7 +447,6 @@ namespace AmbienteRPB
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation7  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation8  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
 
             lineAnnotation1.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation2.LineColor  = System.Drawing.Color.LightGray;
@@ -448,7 +457,6 @@ namespace AmbienteRPB
             lineAnnotation7.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation8.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation9.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation10.LineColor = System.Drawing.Color.LightGray;
 
             lineAnnotation1.ToolTip  = "1";
             lineAnnotation2.ToolTip  = "1";
@@ -459,19 +467,16 @@ namespace AmbienteRPB
             lineAnnotation7.ToolTip  = "1";
             lineAnnotation8.ToolTip  = "1";
             lineAnnotation9.ToolTip  = "1";
-            lineAnnotation10.ToolTip = "1";
 
             lineAnnotation1.X = 4;
-            //=]
-            lineAnnotation2.X = 14.3;
-            lineAnnotation3.X = 24.6;
-            lineAnnotation4.X = 34.9;
-            lineAnnotation5.X = 45.2;
-            lineAnnotation6.X = 55.5;
-            lineAnnotation7.X = 65.8;
-            lineAnnotation8.X = 76.1;
-            lineAnnotation9.X = 87.4;
-            lineAnnotation10.X = 99;
+            lineAnnotation2.X = 4 + 10.6 * 1;
+            lineAnnotation3.X = 4 + 10.6 * 2;
+            lineAnnotation4.X = 4 + 10.6 * 3;
+            lineAnnotation5.X = 4 + 10.6 * 4;
+            lineAnnotation6.X = 4 + 10.6 * 5;
+            lineAnnotation7.X = 4 + 10.6 * 6;
+            lineAnnotation8.X = 4 + 10.6 * 7;
+            lineAnnotation9.X = 4 + 10.6 * 8;
 
             lineAnnotation1.Width = 0;
             lineAnnotation1.Y = 0;
@@ -491,8 +496,6 @@ namespace AmbienteRPB
             lineAnnotation8.Y = 0;
             lineAnnotation9.Width = 0;
             lineAnnotation9.Y = 0;
-            lineAnnotation10.Width = 0;
-            lineAnnotation10.Y = 0;
 
             lineAnnotation1.Height  = 200;
             lineAnnotation2.Height  = 200;
@@ -503,7 +506,6 @@ namespace AmbienteRPB
             lineAnnotation7.Height  = 200;
             lineAnnotation8.Height  = 200;
             lineAnnotation9.Height  = 200;
-            lineAnnotation10.Height = 200;
 
             lineAnnotation1.Name = "LineAnnotation1";
             lineAnnotation2.Name = "LineAnnotation2";
@@ -514,7 +516,6 @@ namespace AmbienteRPB
             lineAnnotation7.Name = "LineAnnotation7";
             lineAnnotation8.Name = "LineAnnotation8";
             lineAnnotation9.Name = "LineAnnotation9";
-            lineAnnotation10.Name = "LineAnnotation10";
 
             chart1.Annotations.Add(lineAnnotation1);
             chart1.Annotations.Add(lineAnnotation2);
@@ -525,7 +526,6 @@ namespace AmbienteRPB
             chart1.Annotations.Add(lineAnnotation7);
             chart1.Annotations.Add(lineAnnotation8);
             chart1.Annotations.Add(lineAnnotation9);
-            chart1.Annotations.Add(lineAnnotation10);
         }
         //------------------------------------------------------------------------------------------
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -575,7 +575,7 @@ namespace AmbienteRPB
                 ,"Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+        //------------------------------------------------------------------------------------------
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tool_ControlesProjeto.BackColor = Color.DimGray;
