@@ -95,7 +95,7 @@
             this.gbxChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxChart.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxChart.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.gbxChart.Controls.Add(this.chart1);
             this.gbxChart.Location = new System.Drawing.Point(95, 21);
             this.gbxChart.Name = "gbxChart";
@@ -112,10 +112,10 @@
             this.chart1.BackSecondaryColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.BorderlineColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.Enabled = false;
-            this.chart1.Location = new System.Drawing.Point(6, 7);
+            this.chart1.Location = new System.Drawing.Point(2, 8);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(714, 369);
+            this.chart1.Size = new System.Drawing.Size(717, 368);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -123,7 +123,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ferramentasToolStripMenuItem,
@@ -410,7 +410,6 @@
             this.btn_MarcarPadroes.Size = new System.Drawing.Size(23, 22);
             this.btn_MarcarPadroes.Text = "btn_MarcarPadrões";
             this.btn_MarcarPadroes.ToolTipText = "Marcar Padroes";
-            this.btn_MarcarPadroes.Click += new System.EventHandler(this.btn_MarcarPadrões_Click);
             // 
             // lblFreq
             // 
@@ -478,6 +477,8 @@
             // 
             this.gbxEventos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbxEventos.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.gbxEventos.Controls.Add(this.Evento1);
             this.gbxEventos.Controls.Add(this.Evento10);
             this.gbxEventos.Controls.Add(this.Evento9);
             this.gbxEventos.Controls.Add(this.Evento8);
@@ -487,7 +488,6 @@
             this.gbxEventos.Controls.Add(this.Evento4);
             this.gbxEventos.Controls.Add(this.Evento3);
             this.gbxEventos.Controls.Add(this.Evento2);
-            this.gbxEventos.Controls.Add(this.Evento1);
             this.gbxEventos.Location = new System.Drawing.Point(2, 21);
             this.gbxEventos.Name = "gbxEventos";
             this.gbxEventos.Size = new System.Drawing.Size(89, 379);
@@ -623,15 +623,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(820, 445);
             this.Controls.Add(this.tool_ControlesProjeto);
+            this.Controls.Add(this.gbxChart);
             this.Controls.Add(this.gbxEventos);
             this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.Box_Status);
-            this.Controls.Add(this.gbxChart);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPrincipal";
