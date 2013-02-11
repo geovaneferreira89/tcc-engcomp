@@ -11,8 +11,6 @@ using EDF;
 using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
-
 
 namespace thread_chart
 {
@@ -129,7 +127,7 @@ namespace thread_chart
                                     num_de_voltas++;
                                 }
                             }
-                            Plotar(1, i, "Blue", signal.Label.ToString().Substring(4), Enviar);
+                            Plotar(1, i, "Black", signal.Label.ToString().Substring(4), Enviar);
                             //load_progress_bar(num_de_voltas, 1);
                             FuncScrollBar_Propriedades(num_de_voltas);
                             i++;

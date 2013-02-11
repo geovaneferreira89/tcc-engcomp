@@ -33,25 +33,30 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.canal1Canal2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcarEventos = new System.Windows.Forms.ToolStripMenuItem();
             this.renomearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editorDePadrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.canal1Canal2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTemas = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretoVermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretoBrancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brancoVermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brancoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brancoPretoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoEDF = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status = new System.Windows.Forms.StatusStrip();
             this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Y = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_mouseX = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_mouseY = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.saveFileExplorer = new System.Windows.Forms.SaveFileDialog();
             this.openFileExplorer = new System.Windows.Forms.OpenFileDialog();
@@ -70,6 +75,7 @@
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
             this.lbl_V = new System.Windows.Forms.ToolStripLabel();
             this.gbxEventos = new System.Windows.Forms.GroupBox();
+            this.Evento1 = new System.Windows.Forms.CheckBox();
             this.Evento10 = new System.Windows.Forms.CheckBox();
             this.Evento9 = new System.Windows.Forms.CheckBox();
             this.Evento8 = new System.Windows.Forms.CheckBox();
@@ -79,9 +85,6 @@
             this.Evento4 = new System.Windows.Forms.CheckBox();
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
-            this.Evento1 = new System.Windows.Forms.CheckBox();
-            this.infoEDF = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -115,7 +118,7 @@
             this.chart1.Location = new System.Drawing.Point(2, 8);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(717, 368);
+            this.chart1.Size = new System.Drawing.Size(718, 370);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -127,12 +130,10 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ferramentasToolStripMenuItem,
-            this.verToolStripMenuItem,
-            this.estatísticasToolStripMenuItem,
-            this.ajudaToolStripMenuItem});
+            this.verToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(254, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(154, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -145,6 +146,14 @@
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
+            // 
+            // canal1Canal2ToolStripMenuItem
+            // 
+            this.canal1Canal2ToolStripMenuItem.Enabled = false;
+            this.canal1Canal2ToolStripMenuItem.Name = "canal1Canal2ToolStripMenuItem";
+            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.canal1Canal2ToolStripMenuItem.Text = "Canal 1 - Canal 2";
+            this.canal1Canal2ToolStripMenuItem.Click += new System.EventHandler(this.canal1Canal2ToolStripMenuItem_Click);
             // 
             // marcarEventos
             // 
@@ -162,26 +171,26 @@
             // renomearToolStripMenuItem
             // 
             this.renomearToolStripMenuItem.Name = "renomearToolStripMenuItem";
-            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.renomearToolStripMenuItem.Text = "Renomear";
             this.renomearToolStripMenuItem.Click += new System.EventHandler(this.renomearToolStripMenuItem_Click);
             // 
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             // 
             // excluirToolStripMenuItem
             // 
             this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.excluirToolStripMenuItem.Text = "Excluir";
             // 
             // fecharToolStripMenuItem
             // 
             this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click_1);
             // 
@@ -192,29 +201,15 @@
             this.editorDePadrõesToolStripMenuItem.Text = "Editor de Padrões";
             this.editorDePadrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
-            // canal1Canal2ToolStripMenuItem
-            // 
-            this.canal1Canal2ToolStripMenuItem.Enabled = false;
-            this.canal1Canal2ToolStripMenuItem.Name = "canal1Canal2ToolStripMenuItem";
-            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.canal1Canal2ToolStripMenuItem.Text = "Canal 1 - Canal 2";
-            this.canal1Canal2ToolStripMenuItem.Click += new System.EventHandler(this.canal1Canal2ToolStripMenuItem_Click);
-            // 
-            // estatísticasToolStripMenuItem
-            // 
-            this.estatísticasToolStripMenuItem.Name = "estatísticasToolStripMenuItem";
-            this.estatísticasToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.estatísticasToolStripMenuItem.Text = "Estatísticas";
-            // 
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.check_MostrarCursorX,
-            this.darkThemeToolStripMenuItem,
+            this.btnTemas,
             this.infoEDF});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
-            this.verToolStripMenuItem.Text = "Ver";
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.verToolStripMenuItem.Text = "Opções ";
             // 
             // check_MostrarCursorX
             // 
@@ -225,26 +220,69 @@
             this.check_MostrarCursorX.Text = "Canal X";
             this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
             // 
-            // darkThemeToolStripMenuItem
+            // btnTemas
             // 
-            this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.darkThemeToolStripMenuItem.Text = "Dark Theme";
-            this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            this.btnTemas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.brancoVermelhoToolStripMenuItem,
+            this.brancoRosaToolStripMenuItem,
+            this.brancoPretoToolStripMenuItem,
+            this.pretoVermelhoToolStripMenuItem,
+            this.pretoRosaToolStripMenuItem,
+            this.pretoBrancoToolStripMenuItem});
+            this.btnTemas.Enabled = false;
+            this.btnTemas.Name = "btnTemas";
+            this.btnTemas.Size = new System.Drawing.Size(163, 22);
+            this.btnTemas.Text = "Temas";
             // 
-            // ajudaToolStripMenuItem
+            // pretoVermelhoToolStripMenuItem
             // 
-            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sobreToolStripMenuItem});
-            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            this.pretoVermelhoToolStripMenuItem.Name = "pretoVermelhoToolStripMenuItem";
+            this.pretoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pretoVermelhoToolStripMenuItem.Text = "Preto - Vermelho";
+            this.pretoVermelhoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
-            // sobreToolStripMenuItem
+            // pretoRosaToolStripMenuItem
             // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sobreToolStripMenuItem.Text = "Sobre";
+            this.pretoRosaToolStripMenuItem.Name = "pretoRosaToolStripMenuItem";
+            this.pretoRosaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pretoRosaToolStripMenuItem.Text = "Preto - Rosa";
+            this.pretoRosaToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // pretoBrancoToolStripMenuItem
+            // 
+            this.pretoBrancoToolStripMenuItem.Name = "pretoBrancoToolStripMenuItem";
+            this.pretoBrancoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pretoBrancoToolStripMenuItem.Text = "Preto - Branco";
+            this.pretoBrancoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // brancoVermelhoToolStripMenuItem
+            // 
+            this.brancoVermelhoToolStripMenuItem.Name = "brancoVermelhoToolStripMenuItem";
+            this.brancoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.brancoVermelhoToolStripMenuItem.Text = "Branco - Vermelho";
+            this.brancoVermelhoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // brancoRosaToolStripMenuItem
+            // 
+            this.brancoRosaToolStripMenuItem.Name = "brancoRosaToolStripMenuItem";
+            this.brancoRosaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.brancoRosaToolStripMenuItem.Text = "Branco - Rosa";
+            this.brancoRosaToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // brancoPretoToolStripMenuItem
+            // 
+            this.brancoPretoToolStripMenuItem.Name = "brancoPretoToolStripMenuItem";
+            this.brancoPretoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.brancoPretoToolStripMenuItem.Text = "Branco - Preto";
+            this.brancoPretoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // infoEDF
+            // 
+            this.infoEDF.Enabled = false;
+            this.infoEDF.Name = "infoEDF";
+            this.infoEDF.Size = new System.Drawing.Size(163, 22);
+            this.infoEDF.Text = "Informações EDF";
+            this.infoEDF.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
             // 
             // Box_Status
             // 
@@ -298,10 +336,16 @@
             this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
             this.lbl_mouseY.Text = "Mouse Y:";
             // 
+            // toolInfo
+            // 
+            this.toolInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolInfo.Name = "toolInfo";
+            this.toolInfo.Size = new System.Drawing.Size(0, 17);
+            // 
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(544, 426);
+            this.progressBar.Location = new System.Drawing.Point(670, 426);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(127, 14);
             this.progressBar.TabIndex = 11;
@@ -350,9 +394,10 @@
             this.lblAmpli,
             this.AmplitudeCombo,
             this.lbl_V});
+            this.tool_ControlesProjeto.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
-            this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.tool_ControlesProjeto.Size = new System.Drawing.Size(820, 25);
             this.tool_ControlesProjeto.TabIndex = 15;
             this.tool_ControlesProjeto.Text = "toolStrip1";
@@ -488,11 +533,23 @@
             this.gbxEventos.Controls.Add(this.Evento4);
             this.gbxEventos.Controls.Add(this.Evento3);
             this.gbxEventos.Controls.Add(this.Evento2);
-            this.gbxEventos.Location = new System.Drawing.Point(2, 21);
+            this.gbxEventos.Location = new System.Drawing.Point(3, 21);
             this.gbxEventos.Name = "gbxEventos";
             this.gbxEventos.Size = new System.Drawing.Size(89, 379);
             this.gbxEventos.TabIndex = 16;
             this.gbxEventos.TabStop = false;
+            // 
+            // Evento1
+            // 
+            this.Evento1.AutoSize = true;
+            this.Evento1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Evento1.Location = new System.Drawing.Point(4, 15);
+            this.Evento1.Name = "Evento1";
+            this.Evento1.Size = new System.Drawing.Size(75, 17);
+            this.Evento1.TabIndex = 0;
+            this.Evento1.Text = "Evento 01";
+            this.Evento1.UseVisualStyleBackColor = true;
+            this.Evento1.Click += new System.EventHandler(this.Evento1_Click);
             // 
             // Evento10
             // 
@@ -593,32 +650,6 @@
             this.Evento2.UseVisualStyleBackColor = true;
             this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
             // 
-            // Evento1
-            // 
-            this.Evento1.AutoSize = true;
-            this.Evento1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Evento1.Location = new System.Drawing.Point(4, 15);
-            this.Evento1.Name = "Evento1";
-            this.Evento1.Size = new System.Drawing.Size(75, 17);
-            this.Evento1.TabIndex = 0;
-            this.Evento1.Text = "Evento 01";
-            this.Evento1.UseVisualStyleBackColor = true;
-            this.Evento1.Click += new System.EventHandler(this.Evento1_Click);
-            // 
-            // infoEDF
-            // 
-            this.infoEDF.Enabled = false;
-            this.infoEDF.Name = "infoEDF";
-            this.infoEDF.Size = new System.Drawing.Size(163, 22);
-            this.infoEDF.Text = "Informações EDF";
-            this.infoEDF.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
-            // 
-            // toolInfo
-            // 
-            this.toolInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolInfo.Name = "toolInfo";
-            this.toolInfo.Size = new System.Drawing.Size(0, 17);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,8 +694,6 @@
         private System.Windows.Forms.ToolStripStatusLabel lbl_x;
         private System.Windows.Forms.ToolStripStatusLabel lbl_Y;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseX;
         private System.Windows.Forms.ToolStripStatusLabel lbl_mouseY;
         private System.Windows.Forms.ProgressBar progressBar;
@@ -674,9 +703,7 @@
         private System.Windows.Forms.OpenFileDialog openFileEDF;
         private System.Windows.Forms.HScrollBar ScrollBar;
         private System.Windows.Forms.ToolStripMenuItem ferramentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem estatísticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip tool_ControlesProjeto;
         private System.Windows.Forms.ToolStripButton btn_novoProjeto;
         private System.Windows.Forms.ToolStripButton btn_Importar;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
@@ -690,7 +717,7 @@
         private System.Windows.Forms.ToolStripMenuItem editorDePadrõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripLabel lbl_cm;
         private System.Windows.Forms.ToolStripLabel lbl_V;
-        private System.Windows.Forms.ToolStripMenuItem darkThemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnTemas;
         private System.Windows.Forms.ToolStripMenuItem canal1Canal2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcarEventos;
         private System.Windows.Forms.GroupBox gbxEventos;
@@ -710,6 +737,13 @@
         private System.Windows.Forms.ToolStripMenuItem fecharToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem infoEDF;
         private System.Windows.Forms.ToolStripStatusLabel toolInfo;
+        public System.Windows.Forms.ToolStrip tool_ControlesProjeto;
+        private System.Windows.Forms.ToolStripMenuItem pretoVermelhoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pretoRosaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pretoBrancoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brancoVermelhoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brancoRosaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brancoPretoToolStripMenuItem;
     }
 }
 

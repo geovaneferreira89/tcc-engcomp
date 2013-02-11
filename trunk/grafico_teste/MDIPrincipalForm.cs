@@ -118,5 +118,12 @@ namespace AmbienteRPB
         {
 
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Universidade Tecnológica Federal do Paraná\nEngenharia de Computação\nTrabalho De Conclusão de Curso\nAlunos: Geovane Ferreira\n              Georgia\nOrientador: Miguel\nCuritiba 2013",
+                "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

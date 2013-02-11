@@ -29,12 +29,15 @@ namespace AmbienteRPB
         private string status_projeto = "Projeto_NOVO";
         private EDFFile edfFileOutput = null;
         private HitTestResult var_result;
+        private bool MostrarCursorX;
         //Geren Arquivos-----------------------------------------------------------------
         private GerenArquivos Arquivos;
         //Editor de eventos--------------------------------------------------------------
         private int numDeEventosMarcados = 0;
         String Evento;
         ToolTip tooltip = new ToolTip();
+        Color Cor;
+        Color CorFundo;
         //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
@@ -87,6 +90,7 @@ namespace AmbienteRPB
                     infoEDF.Enabled = true;
                     marcarEventos.Enabled = true;
                     btn_Importar.Enabled = false;
+                    btnTemas.Enabled = true;
                 }
                 else
                     AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
@@ -213,9 +217,9 @@ namespace AmbienteRPB
                 gbxEventos.Visible = true;
                 gbxEventos.Enabled = true;
                 gbxChart.Location = new System.Drawing.Point(95, 21);
-                chart1.Location = new System.Drawing.Point(6, 7);
+                chart1.Location = new System.Drawing.Point(2, 8);
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 115, this.Size.Height - 105);
-                chart1.Size = new System.Drawing.Size(this.Size.Width - 125, this.Size.Height - 120);
+                chart1.Size = new System.Drawing.Size(this.Size.Width - 119, this.Size.Height - 115);
                 check_MostrarCursorX.Checked = false;
                 MostrarCursorX = false;
                 AtualizaFerramentaAtiva("", 0);
@@ -228,9 +232,9 @@ namespace AmbienteRPB
                 gbxEventos.Visible = false;
                 gbxEventos.Enabled = false;
                 gbxChart.Location = new System.Drawing.Point(2, 21);
-                chart1.Location = new System.Drawing.Point(6, 7);
+                chart1.Location = new System.Drawing.Point(2, 8);
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, this.Size.Height - 105);
-                chart1.Size = new System.Drawing.Size(this.Size.Width - 30, this.Size.Height - 120);
+                chart1.Size = new System.Drawing.Size(this.Size.Width - 24, this.Size.Height - 115);
                 AtualizaFerramentaAtiva("", 0);
             }
         }
@@ -389,7 +393,7 @@ namespace AmbienteRPB
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
                 chart1.Enabled = true;
-                ThreadInicializada = true;
+                //ThreadInicializada = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
             }
@@ -399,7 +403,7 @@ namespace AmbienteRPB
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
-                ThreadInicializada = true;
+                //ThreadInicializada = true;
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
@@ -410,7 +414,7 @@ namespace AmbienteRPB
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
-                ThreadInicializada = true;
+                //ThreadInicializada = true;
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
@@ -561,7 +565,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tool_ControlesProjeto.BackColor = Color.Black;
+           /* tool_ControlesProjeto.BackColor = Color.Black;
             chart1.BackColor = Color.Black;
             gbxChart.BackColor = Color.Black;
             gbxEventos.BackColor = Color.Black;
@@ -583,14 +587,44 @@ namespace AmbienteRPB
             Evento7.ForeColor = Color.White;
             Evento8.ForeColor = Color.White;
             Evento9.ForeColor = Color.White;
-            Evento10.ForeColor = Color.White;
+            Evento10.ForeColor = Color.White;*/
+            if (sender.ToString() == "Preto - Vermelho")
+            {
+                Cor = Color.Red;
+                CorFundo = Color.Black;
+            }
+            if (sender.ToString() == "Preto - Rosa")
+            {
+                Cor = Color.LightPink;
+                CorFundo = Color.Black;
+            }
+            if (sender.ToString() == "Preto - Branco")
+            {
+                Cor = Color.White;
+                CorFundo = Color.Black;
+            }
+            if (sender.ToString() == "Branco - Vermelho")
+            {
+                Cor = Color.Red;
+                CorFundo = Color.White;
+            }
+            if (sender.ToString() == "Branco - Rosa")
+            {
+                Cor = Color.LightPink;
+                CorFundo = Color.White;
+            }
+            if (sender.ToString() == "Branco - Preto")
+            {
+                Cor = Color.Black;
+                CorFundo = Color.White;
+            }
             for (int i = 0; i < __numeroDeCanais; i++)
             {
-                chart1.ChartAreas[i].BackColor = Color.Black;
-                chart1.Series[i].BackSecondaryColor = Color.Black;
-                chart1.Series[i].BorderColor = Color.Black;
-                chart1.Series[i].ShadowColor = Color.Black;
-                chart1.Series[i].Color = Color.LightPink;
+                chart1.ChartAreas[i].BackColor = CorFundo;
+                chart1.Series[i].BackSecondaryColor = CorFundo;
+                chart1.Series[i].BorderColor = CorFundo;
+                chart1.Series[i].ShadowColor = CorFundo;
+                chart1.Series[i].Color = Cor;
             }
         }
         //Teste!
@@ -734,6 +768,12 @@ namespace AmbienteRPB
                     Evento10.Text = NomeEvento.NomePadrao;
                 Evento = NomeEvento.NomePadrao;
             }
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          
+
         }
         //-----------------------------------------------------------
        
