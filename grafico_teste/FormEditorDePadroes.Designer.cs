@@ -63,7 +63,7 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(4, -4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(642, 59);
+            this.groupBox1.Size = new System.Drawing.Size(582, 48);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -73,17 +73,16 @@
             this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.textBox2);
             this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Location = new System.Drawing.Point(497, 7);
+            this.groupBox5.Location = new System.Drawing.Point(436, 7);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(136, 43);
+            this.groupBox5.Size = new System.Drawing.Size(136, 35);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 19);
+            this.label2.Location = new System.Drawing.Point(5, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 9;
@@ -91,9 +90,8 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 19);
+            this.label1.Location = new System.Drawing.Point(66, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 8;
@@ -101,8 +99,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(98, 16);
+            this.textBox2.Location = new System.Drawing.Point(98, 11);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(32, 20);
             this.textBox2.TabIndex = 7;
@@ -110,8 +107,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(38, 16);
+            this.textBox1.Location = new System.Drawing.Point(38, 11);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(26, 20);
             this.textBox1.TabIndex = 6;
@@ -121,23 +117,23 @@
             // 
             this.groupBox4.Controls.Add(this.edtEvento_Nome);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Location = new System.Drawing.Point(286, 7);
+            this.groupBox4.Location = new System.Drawing.Point(194, 7);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(205, 43);
+            this.groupBox4.Size = new System.Drawing.Size(243, 35);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             // 
             // edtEvento_Nome
             // 
-            this.edtEvento_Nome.Location = new System.Drawing.Point(48, 14);
+            this.edtEvento_Nome.Location = new System.Drawing.Point(48, 10);
             this.edtEvento_Nome.Name = "edtEvento_Nome";
-            this.edtEvento_Nome.Size = new System.Drawing.Size(151, 20);
+            this.edtEvento_Nome.Size = new System.Drawing.Size(188, 20);
             this.edtEvento_Nome.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Location = new System.Drawing.Point(7, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 0;
@@ -148,18 +144,17 @@
             this.groupBox2.Controls.Add(this.btnSair);
             this.groupBox2.Controls.Add(this.btnSalvar);
             this.groupBox2.Controls.Add(this.btn_Abrir);
-            this.groupBox2.Location = new System.Drawing.Point(7, 7);
+            this.groupBox2.Location = new System.Drawing.Point(5, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(273, 43);
+            this.groupBox2.Size = new System.Drawing.Size(190, 35);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             // 
             // btnSair
             // 
-            this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSair.Location = new System.Drawing.Point(187, 15);
+            this.btnSair.Location = new System.Drawing.Point(125, 10);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(82, 22);
+            this.btnSair.Size = new System.Drawing.Size(61, 21);
             this.btnSair.TabIndex = 9;
             this.btnSair.Text = "Fechar";
             this.btnSair.UseVisualStyleBackColor = true;
@@ -167,11 +162,10 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Enabled = false;
-            this.btnSalvar.Location = new System.Drawing.Point(99, 15);
+            this.btnSalvar.Location = new System.Drawing.Point(64, 10);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(82, 22);
+            this.btnSalvar.Size = new System.Drawing.Size(61, 21);
             this.btnSalvar.TabIndex = 8;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -179,12 +173,11 @@
             // 
             // btn_Abrir
             // 
-            this.btn_Abrir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Abrir.Location = new System.Drawing.Point(11, 15);
+            this.btn_Abrir.Location = new System.Drawing.Point(3, 10);
             this.btn_Abrir.Name = "btn_Abrir";
-            this.btn_Abrir.Size = new System.Drawing.Size(82, 21);
+            this.btn_Abrir.Size = new System.Drawing.Size(61, 21);
             this.btn_Abrir.TabIndex = 7;
-            this.btn_Abrir.Text = "Abrir Padrão ";
+            this.btn_Abrir.Text = "Abrir";
             this.btn_Abrir.UseVisualStyleBackColor = true;
             this.btn_Abrir.Click += new System.EventHandler(this.btn_Abrir_Click);
             // 
@@ -194,9 +187,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.chart1);
-            this.groupBox3.Location = new System.Drawing.Point(4, 54);
+            this.groupBox3.Location = new System.Drawing.Point(4, 41);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(642, 297);
+            this.groupBox3.Size = new System.Drawing.Size(582, 287);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             // 
@@ -208,7 +201,7 @@
             this.chart1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.chart1.Location = new System.Drawing.Point(3, 9);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(636, 284);
+            this.chart1.Size = new System.Drawing.Size(576, 274);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
@@ -217,10 +210,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 353);
+            this.ClientSize = new System.Drawing.Size(588, 333);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Name = "FormEditorDePadroes";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor de Eventos";
             this.Load += new System.EventHandler(this.FormEditorDePadroes_Load);

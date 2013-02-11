@@ -24,8 +24,11 @@ namespace AmbienteRPB
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            NomePadrao = text_NomePadrao.Text;
-            this.Close();
+            if (text_NomePadrao.Text != "")
+            {
+                NomePadrao = text_NomePadrao.Text;
+                this.Close();
+            }
         }
     }
 }
