@@ -27,18 +27,14 @@ namespace AmbienteRPB
         private float x_Pos, y_Pos;
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
-        private bool MostrarCursorX = true;
         private EDFFile edfFileOutput = null;
-        private bool ThreadInicializada = false;
         private HitTestResult var_result;
-        //Geren Arquivos------------------------------------------
+        //Geren Arquivos-----------------------------------------------------------------
         private GerenArquivos Arquivos;
-        //Editor de eventos
+        //Editor de eventos--------------------------------------------------------------
         private int numDeEventosMarcados = 0;
         String Evento;
-
         ToolTip tooltip = new ToolTip();
-      
         //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
@@ -205,7 +201,6 @@ namespace AmbienteRPB
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
-        
         //---------------------------------------------------------------------------------------
         //                               ##   Definir Padrões  ##
         //---------------------------------------------------------------------------------------
@@ -215,14 +210,12 @@ namespace AmbienteRPB
             {
                 btn_MarcarPadroes.Enabled = true;
                 marcarEventos.Checked = true;
-
                 gbxEventos.Visible = true;
                 gbxEventos.Enabled = true;
                 gbxChart.Location = new System.Drawing.Point(95, 21);
                 chart1.Location = new System.Drawing.Point(6, 7);
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 115, this.Size.Height - 105);
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 125, this.Size.Height - 120);
-
                 check_MostrarCursorX.Checked = false;
                 MostrarCursorX = false;
                 AtualizaFerramentaAtiva("", 0);
@@ -232,23 +225,14 @@ namespace AmbienteRPB
             else
             {
                 marcarEventos.Checked = false;
-
                 gbxEventos.Visible = false;
                 gbxEventos.Enabled = false;
-
                 gbxChart.Location = new System.Drawing.Point(2, 21);
                 chart1.Location = new System.Drawing.Point(6, 7);
-
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, this.Size.Height - 105);
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 30, this.Size.Height - 120);
                 AtualizaFerramentaAtiva("", 0);
             }
-        }
-        //------------------------------------------------------------------------------------------
-        //Botão Clicado
-        private void btn_MarcarPadrões_Click(object sender, EventArgs e)
-        {
-        
         }
         //------------------------------------------------------------------------------------------
         //Defini uma seleção afim de ser um padrão. 
@@ -259,7 +243,6 @@ namespace AmbienteRPB
                     {
                         AtualizaFerramentaAtiva("", 2);
                         ExecutaSelecao(result, e);
-
                     }
                     else
                     {
@@ -578,13 +561,14 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tool_ControlesProjeto.BackColor = Color.DimGray;
-            chart1.BackColor = Color.DimGray;
-            gbxChart.BackColor = Color.DimGray;
-            gbxEventos.BackColor = Color.DimGray;
-            FrequenciaCombo.BackColor = Color.DimGray;
+            tool_ControlesProjeto.BackColor = Color.Black;
+            chart1.BackColor = Color.Black;
+            gbxChart.BackColor = Color.Black;
+            gbxEventos.BackColor = Color.Black;
+            FrequenciaCombo.BackColor = Color.Black;
+            AmplitudeCombo.BackColor = Color.Black;
+            menuStrip1.BackColor = Color.Black;
             FrequenciaCombo.ForeColor = Color.White;
-            AmplitudeCombo.BackColor = Color.DimGray;
             AmplitudeCombo.ForeColor = Color.White;
             lblFreq.ForeColor = Color.White;
             lblAmpli.ForeColor = Color.White;
@@ -602,16 +586,12 @@ namespace AmbienteRPB
             Evento10.ForeColor = Color.White;
             for (int i = 0; i < __numeroDeCanais; i++)
             {
-                chart1.ChartAreas[i].BackColor =  Color.DimGray;
-                chart1.Series[i].BackSecondaryColor = Color.DimGray;
-                chart1.Series[i].BorderColor = Color.DimGray;
-                chart1.Series[i].ShadowColor = Color.DimGray;
-
-
-
+                chart1.ChartAreas[i].BackColor = Color.Black;
+                chart1.Series[i].BackSecondaryColor = Color.Black;
+                chart1.Series[i].BorderColor = Color.Black;
+                chart1.Series[i].ShadowColor = Color.Black;
                 chart1.Series[i].Color = Color.LightPink;
             }
-
         }
         //Teste!
 
