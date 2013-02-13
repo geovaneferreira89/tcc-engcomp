@@ -2522,7 +2522,7 @@
 		<row><td>DVD-18</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>15.83</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>DVD-5</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>4.38</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
 		<row><td>DVD-9</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>Default</td><td>3</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>7.95</td><td>1</td><td>2048</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>75805</td><td/><td/><td/><td>3</td></row>
-		<row><td>SingleImage</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>0</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>108573</td><td/><td/><td/><td>3</td></row>
+		<row><td>SingleImage</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>0</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>108573</td><td/><td/><td/><td>3</td></row>
 		<row><td>WebDeployment</td><td>Express</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>4</td><td>1033</td><td>2</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>124941</td><td/><td/><td/><td>3</td></row>
 	</table>
 
@@ -3581,7 +3581,8 @@
 		<row><td>IDS_PROGMSG_XML_ROLLBACK_FILES</td><td>1033</td><td>Rolling back XML file changes...</td><td>0</td><td/><td>1763808880</td></row>
 		<row><td>IDS_PROGMSG_XML_UPDATE_FILE</td><td>1033</td><td>Updating XML file %s...</td><td>0</td><td/><td>1763808880</td></row>
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>1763808880</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>LAUNCH~1.EXE|Launch AmbienteRPB.exe</td><td>0</td><td/><td>1763786576</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>AMBIEN~1.EXE|Ambiente RPB.exe</td><td>0</td><td/><td>1763799633</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>Ambiente RPB.exe</td><td>0</td><td/><td>1763807857</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>1763808880</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>1763808880</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>1763808880</td></row>
@@ -3874,6 +3875,7 @@
 		<row><td>ID_STRING2</td><td>1033</td><td>http://code.google.com/p/tcc-engcomp/</td><td>0</td><td/><td>1763772144</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>TCC - UTFPR</td><td>0</td><td/><td>1763794576</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>LAUNCH~1.EXE|Launch AmbienteRPB.exe</td><td>0</td><td/><td>1763805425</td></row>
+		<row><td>ID_STRING5</td><td>1033</td><td>Ambiente RPB.exe</td><td>0</td><td/><td>1763811953</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1763808880</td></row>
 	</table>
 
@@ -3982,8 +3984,8 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
-		<row><td>AmbienteRPB.exe1_F236E54AB02943648CDE84025DB7FE62.exe</td><td/><td>C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\eegico.ico</td><td>0</td></row>
-		<row><td>AmbienteRPB.exe_6E470E92EAC24A609011F565B2774BFC.exe</td><td/><td>C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\eegico.ico</td><td>0</td></row>
+		<row><td>AmbienteRPB.exe1_D666198BC6194563BC6BF01EC5C6F0E3.exe</td><td/><td>C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\eegico.ico</td><td>0</td></row>
+		<row><td>AmbienteRPB.exe_21389A09B1014CBC96C10F140CA76CD8.exe</td><td/><td>C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\eegico.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4116,7 +4118,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{705DAD0A-F78D-4BD8-890F-4CC0B9F45A8E}</td></row>
 		<row><td>ISUSSignature</td><td>{5C75D40B-97D1-450C-BFAF-7558C41101BF}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewRealSetupDesign,viewSetupDesign,viewSetupTypes,viewUpgradePaths,viewUpdateService,viewShortcuts,viewRegistry,viewRelease,viewDesignPatches</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewRealSetupDesign,viewSetupDesign,viewSetupTypes,viewUpgradePaths,viewUpdateService,viewShortcuts,viewRegistry,viewRelease,viewDesignPatches,viewISToday,viewAppV,viewAppFiles,viewIniFiles,viewTextFiles,viewFileExtensions,viewEnvironmentVariables,viewVRoots,viewSQLServer,viewComponentServices,viewUI,viewTextMessages,viewSystemSearch,viewInstallScriptStd,viewCustomActions,viewSupportFiles</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4653,8 +4655,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>AmbienteRPB.exe</td><td>ambien_1_ambiente_de_avalia__o_de_reconhecimento_de_padr_es_biom_</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>AmbienteRPB.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AmbienteRPB.exe_6E470E92EAC24A609011F565B2774BFC.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>AmbienteRPB.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>AmbienteRPB.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AmbienteRPB.exe1_F236E54AB02943648CDE84025DB7FE62.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>AmbienteRPB.exe</td><td>ambien_1_ambiente_de_avalia__o_de_reconhecimento_de_padr_es_biom_</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>AmbienteRPB.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AmbienteRPB.exe_21389A09B1014CBC96C10F140CA76CD8.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>AmbienteRPB.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>AmbienteRPB.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AmbienteRPB.exe1_D666198BC6194563BC6BF01EC5C6F0E3.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
