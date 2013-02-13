@@ -1,6 +1,6 @@
 ﻿namespace AmbienteRPB
 {
-    partial class FormEditarNomeEvento
+    partial class FormEditarNomePadrao
     {
         /// <summary>
         /// Required designer variable.
@@ -57,7 +57,7 @@
             this.lbl_digiteONomeDoPadrao.Name = "lbl_digiteONomeDoPadrao";
             this.lbl_digiteONomeDoPadrao.Size = new System.Drawing.Size(123, 13);
             this.lbl_digiteONomeDoPadrao.TabIndex = 2;
-            this.lbl_digiteONomeDoPadrao.Text = "Digite o nome do evento";
+            this.lbl_digiteONomeDoPadrao.Text = "Digite o nome do padrão";
             // 
             // FormEditarNomeEvento
             // 
@@ -70,7 +70,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormEditarNomeEvento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nome Evento";
+            this.Text = "Nome Padrão";
             this.ResumeLayout(false);
             this.PerformLayout();
 

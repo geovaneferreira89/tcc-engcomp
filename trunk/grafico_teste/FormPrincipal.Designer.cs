@@ -43,12 +43,12 @@
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTemas = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretoVermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretoBrancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brancoVermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brancoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brancoPretoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretoVermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretoBrancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoEDF = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status = new System.Windows.Forms.StatusStrip();
             this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
@@ -234,27 +234,6 @@
             this.btnTemas.Size = new System.Drawing.Size(163, 22);
             this.btnTemas.Text = "Temas";
             // 
-            // pretoVermelhoToolStripMenuItem
-            // 
-            this.pretoVermelhoToolStripMenuItem.Name = "pretoVermelhoToolStripMenuItem";
-            this.pretoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.pretoVermelhoToolStripMenuItem.Text = "Preto - Vermelho";
-            this.pretoVermelhoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // pretoRosaToolStripMenuItem
-            // 
-            this.pretoRosaToolStripMenuItem.Name = "pretoRosaToolStripMenuItem";
-            this.pretoRosaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.pretoRosaToolStripMenuItem.Text = "Preto - Rosa";
-            this.pretoRosaToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // pretoBrancoToolStripMenuItem
-            // 
-            this.pretoBrancoToolStripMenuItem.Name = "pretoBrancoToolStripMenuItem";
-            this.pretoBrancoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.pretoBrancoToolStripMenuItem.Text = "Preto - Branco";
-            this.pretoBrancoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
             // brancoVermelhoToolStripMenuItem
             // 
             this.brancoVermelhoToolStripMenuItem.Name = "brancoVermelhoToolStripMenuItem";
@@ -275,6 +254,27 @@
             this.brancoPretoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.brancoPretoToolStripMenuItem.Text = "Branco - Preto";
             this.brancoPretoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // pretoVermelhoToolStripMenuItem
+            // 
+            this.pretoVermelhoToolStripMenuItem.Name = "pretoVermelhoToolStripMenuItem";
+            this.pretoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pretoVermelhoToolStripMenuItem.Text = "Preto - Vermelho";
+            this.pretoVermelhoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // pretoRosaToolStripMenuItem
+            // 
+            this.pretoRosaToolStripMenuItem.Name = "pretoRosaToolStripMenuItem";
+            this.pretoRosaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pretoRosaToolStripMenuItem.Text = "Preto - Rosa";
+            this.pretoRosaToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // pretoBrancoToolStripMenuItem
+            // 
+            this.pretoBrancoToolStripMenuItem.Name = "pretoBrancoToolStripMenuItem";
+            this.pretoBrancoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pretoBrancoToolStripMenuItem.Text = "Preto - Branco";
+            this.pretoBrancoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
             // infoEDF
             // 
@@ -541,113 +541,113 @@
             // 
             // Evento1
             // 
-            this.Evento1.AutoSize = true;
+            this.Evento1.BackColor = System.Drawing.Color.Lime;
             this.Evento1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Evento1.Location = new System.Drawing.Point(4, 15);
+            this.Evento1.Location = new System.Drawing.Point(2, 9);
             this.Evento1.Name = "Evento1";
-            this.Evento1.Size = new System.Drawing.Size(75, 17);
+            this.Evento1.Size = new System.Drawing.Size(84, 17);
             this.Evento1.TabIndex = 0;
-            this.Evento1.Text = "Evento 01";
-            this.Evento1.UseVisualStyleBackColor = true;
+            this.Evento1.Text = "Espicula";
+            this.Evento1.UseVisualStyleBackColor = false;
             this.Evento1.Click += new System.EventHandler(this.Evento1_Click);
             // 
             // Evento10
             // 
-            this.Evento10.AutoSize = true;
-            this.Evento10.Location = new System.Drawing.Point(4, 163);
+            this.Evento10.BackColor = System.Drawing.Color.Salmon;
+            this.Evento10.Location = new System.Drawing.Point(3, 162);
             this.Evento10.Name = "Evento10";
-            this.Evento10.Size = new System.Drawing.Size(75, 17);
+            this.Evento10.Size = new System.Drawing.Size(84, 17);
             this.Evento10.TabIndex = 9;
-            this.Evento10.Text = "Evento 10";
-            this.Evento10.UseVisualStyleBackColor = true;
+            this.Evento10.Text = "Padrão 10";
+            this.Evento10.UseVisualStyleBackColor = false;
             this.Evento10.Click += new System.EventHandler(this.Evento10_Click);
             // 
             // Evento9
             // 
-            this.Evento9.AutoSize = true;
-            this.Evento9.Location = new System.Drawing.Point(4, 147);
+            this.Evento9.BackColor = System.Drawing.Color.Orchid;
+            this.Evento9.Location = new System.Drawing.Point(3, 145);
             this.Evento9.Name = "Evento9";
-            this.Evento9.Size = new System.Drawing.Size(75, 17);
+            this.Evento9.Size = new System.Drawing.Size(84, 17);
             this.Evento9.TabIndex = 8;
-            this.Evento9.Text = "Evento 09";
-            this.Evento9.UseVisualStyleBackColor = true;
+            this.Evento9.Text = "Padrão 09";
+            this.Evento9.UseVisualStyleBackColor = false;
             this.Evento9.Click += new System.EventHandler(this.Evento9_Click);
             // 
             // Evento8
             // 
-            this.Evento8.AutoSize = true;
-            this.Evento8.Location = new System.Drawing.Point(4, 131);
+            this.Evento8.BackColor = System.Drawing.Color.Gold;
+            this.Evento8.Location = new System.Drawing.Point(3, 129);
             this.Evento8.Name = "Evento8";
-            this.Evento8.Size = new System.Drawing.Size(75, 17);
+            this.Evento8.Size = new System.Drawing.Size(84, 17);
             this.Evento8.TabIndex = 7;
-            this.Evento8.Text = "Evento 08";
-            this.Evento8.UseVisualStyleBackColor = true;
+            this.Evento8.Text = "Padrão 08";
+            this.Evento8.UseVisualStyleBackColor = false;
             this.Evento8.Click += new System.EventHandler(this.Evento8_Click);
             // 
             // Evento7
             // 
-            this.Evento7.AutoSize = true;
-            this.Evento7.Location = new System.Drawing.Point(4, 115);
+            this.Evento7.BackColor = System.Drawing.Color.Aqua;
+            this.Evento7.Location = new System.Drawing.Point(3, 112);
             this.Evento7.Name = "Evento7";
-            this.Evento7.Size = new System.Drawing.Size(75, 17);
+            this.Evento7.Size = new System.Drawing.Size(84, 17);
             this.Evento7.TabIndex = 6;
-            this.Evento7.Text = "Evento 07";
-            this.Evento7.UseVisualStyleBackColor = true;
+            this.Evento7.Text = "Padrão 07";
+            this.Evento7.UseVisualStyleBackColor = false;
             this.Evento7.Click += new System.EventHandler(this.Evento7_Click);
             // 
             // Evento6
             // 
-            this.Evento6.AutoSize = true;
-            this.Evento6.Location = new System.Drawing.Point(4, 98);
+            this.Evento6.BackColor = System.Drawing.Color.HotPink;
+            this.Evento6.Location = new System.Drawing.Point(3, 95);
             this.Evento6.Name = "Evento6";
-            this.Evento6.Size = new System.Drawing.Size(75, 17);
+            this.Evento6.Size = new System.Drawing.Size(84, 17);
             this.Evento6.TabIndex = 5;
-            this.Evento6.Text = "Evento 06";
-            this.Evento6.UseVisualStyleBackColor = true;
+            this.Evento6.Text = "Padrão 06";
+            this.Evento6.UseVisualStyleBackColor = false;
             this.Evento6.Click += new System.EventHandler(this.Evento6_Click);
             // 
             // Evento5
             // 
-            this.Evento5.AutoSize = true;
-            this.Evento5.Location = new System.Drawing.Point(4, 81);
+            this.Evento5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.Evento5.Location = new System.Drawing.Point(3, 78);
             this.Evento5.Name = "Evento5";
-            this.Evento5.Size = new System.Drawing.Size(75, 17);
+            this.Evento5.Size = new System.Drawing.Size(84, 17);
             this.Evento5.TabIndex = 4;
-            this.Evento5.Text = "Evento 05";
-            this.Evento5.UseVisualStyleBackColor = true;
+            this.Evento5.Text = "Padrão 05";
+            this.Evento5.UseVisualStyleBackColor = false;
             this.Evento5.Click += new System.EventHandler(this.Evento5_Click);
             // 
             // Evento4
             // 
-            this.Evento4.AutoSize = true;
-            this.Evento4.Location = new System.Drawing.Point(4, 64);
+            this.Evento4.BackColor = System.Drawing.Color.Orange;
+            this.Evento4.Location = new System.Drawing.Point(3, 61);
             this.Evento4.Name = "Evento4";
-            this.Evento4.Size = new System.Drawing.Size(75, 17);
+            this.Evento4.Size = new System.Drawing.Size(84, 17);
             this.Evento4.TabIndex = 3;
-            this.Evento4.Text = "Evento 04";
-            this.Evento4.UseVisualStyleBackColor = true;
+            this.Evento4.Text = "Padrão 04";
+            this.Evento4.UseVisualStyleBackColor = false;
             this.Evento4.Click += new System.EventHandler(this.Evento4_Click);
             // 
             // Evento3
             // 
-            this.Evento3.AutoSize = true;
-            this.Evento3.Location = new System.Drawing.Point(4, 48);
+            this.Evento3.BackColor = System.Drawing.Color.Red;
+            this.Evento3.Location = new System.Drawing.Point(3, 44);
             this.Evento3.Name = "Evento3";
-            this.Evento3.Size = new System.Drawing.Size(75, 17);
+            this.Evento3.Size = new System.Drawing.Size(84, 17);
             this.Evento3.TabIndex = 2;
-            this.Evento3.Text = "Evento 03";
-            this.Evento3.UseVisualStyleBackColor = true;
+            this.Evento3.Text = "Pisc. Palp";
+            this.Evento3.UseVisualStyleBackColor = false;
             this.Evento3.Click += new System.EventHandler(this.Evento3_Click);
             // 
             // Evento2
             // 
-            this.Evento2.AutoSize = true;
-            this.Evento2.Location = new System.Drawing.Point(4, 32);
+            this.Evento2.BackColor = System.Drawing.Color.Yellow;
+            this.Evento2.Location = new System.Drawing.Point(3, 27);
             this.Evento2.Name = "Evento2";
-            this.Evento2.Size = new System.Drawing.Size(75, 17);
+            this.Evento2.Size = new System.Drawing.Size(84, 17);
             this.Evento2.TabIndex = 1;
-            this.Evento2.Text = "Evento 02";
-            this.Evento2.UseVisualStyleBackColor = true;
+            this.Evento2.Text = "Ponta e Ond";
+            this.Evento2.UseVisualStyleBackColor = false;
             this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
             // 
             // FormPrincipal
@@ -680,7 +680,6 @@
             this.tool_ControlesProjeto.ResumeLayout(false);
             this.tool_ControlesProjeto.PerformLayout();
             this.gbxEventos.ResumeLayout(false);
-            this.gbxEventos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

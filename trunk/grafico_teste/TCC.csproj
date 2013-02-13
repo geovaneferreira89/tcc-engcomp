@@ -80,11 +80,11 @@
     <Compile Include="FormEditorDePadroes.Designer.cs">
       <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditarNomeEvento.cs">
+    <Compile Include="FormEditarNomePadrao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditarNomeEvento.Designer.cs">
-      <DependentUpon>FormEditarNomeEvento.cs</DependentUpon>
+    <Compile Include="FormEditarNomePadrao.Designer.cs">
+      <DependentUpon>FormEditarNomePadrao.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenArquivos.cs" />
     <Compile Include="MDIPrincipalForm.cs">
@@ -111,8 +111,8 @@
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditarNomeEvento.resx">
-      <DependentUpon>FormEditarNomeEvento.cs</DependentUpon>
+    <EmbeddedResource Include="FormEditarNomePadrao.resx">
+      <DependentUpon>FormEditarNomePadrao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIPrincipalForm.resx">
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>
