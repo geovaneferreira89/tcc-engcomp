@@ -743,7 +743,7 @@ namespace AmbienteRPB
         {
             if (Evento != null)
             {
-                FormEditarNomeEvento NomeEvento = new FormEditarNomeEvento();
+                FormEditarNomePadrao NomeEvento = new FormEditarNomePadrao();
                 NomeEvento.ShowDialog();
 
                 if (Evento1.Checked)
@@ -774,6 +774,11 @@ namespace AmbienteRPB
         {
           
 
+        }
+
+        private void btnEvento1_Click(object sender, EventArgs e)
+        {
+           
         }
         //-----------------------------------------------------------
        

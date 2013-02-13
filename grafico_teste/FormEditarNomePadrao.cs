@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace AmbienteRPB
 {
-    public partial class FormEditarNomeEvento : Form
+    public partial class FormEditarNomePadrao : Form
     {
         //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
         public String NomePadrao
@@ -17,7 +17,7 @@ namespace AmbienteRPB
             get;
             set;
         }
-        public FormEditarNomeEvento()
+        public FormEditarNomePadrao()
         {
             InitializeComponent();
         }
