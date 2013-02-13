@@ -137,7 +137,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Evento";
+            this.label3.Text = "Padrão";
             // 
             // groupBox2
             // 
@@ -216,7 +216,7 @@
             this.Name = "FormEditorDePadroes";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editor de Eventos";
+            this.Text = "Editor de Padrões";
             this.Load += new System.EventHandler(this.FormEditorDePadroes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);

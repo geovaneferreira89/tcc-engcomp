@@ -74,6 +74,12 @@
     <Compile Include="FormCarregar_EDF.Designer.cs">
       <DependentUpon>FormCarregar_EDF.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditorDeEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditorDeEventos.Designer.cs">
+      <DependentUpon>FormEditorDeEventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditorDePadroes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCarregar_EDF.resx">
       <DependentUpon>FormCarregar_EDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditorDeEventos.resx">
+      <DependentUpon>FormEditorDeEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditorDePadroes.resx">
       <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
