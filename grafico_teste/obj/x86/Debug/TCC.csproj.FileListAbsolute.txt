@@ -49,4 +49,5 @@ C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRP
 C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.Properties.Resources.resources
 C:\Users\geovane.v.ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormCarregar_EDF.resources
-C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditarNomeEvento.resources
+C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditorDeEventos.resources
+C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditarNomePadrao.resources

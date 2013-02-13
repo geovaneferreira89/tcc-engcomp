@@ -345,6 +345,12 @@ namespace AmbienteRPB
             FormEditorDePadroes EditorForm = new FormEditorDePadroes();
             EditorForm.ShowDialog();
         }
+        //------------------------------------------------------------------------------------------       
+        private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos();
+            EditorEvenForm.ShowDialog();
+        }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
         //------------------------------------------------------------------------------------------
