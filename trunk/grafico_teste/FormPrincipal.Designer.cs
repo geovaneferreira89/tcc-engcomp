@@ -39,6 +39,9 @@
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ediarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.padrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTemas = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,9 +87,6 @@
             this.Evento4 = new System.Windows.Forms.CheckBox();
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
-            this.ediarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.padrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -153,7 +153,7 @@
             // 
             this.canal1Canal2ToolStripMenuItem.Enabled = false;
             this.canal1Canal2ToolStripMenuItem.Name = "canal1Canal2ToolStripMenuItem";
-            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.canal1Canal2ToolStripMenuItem.Text = "Canal 1 - Canal 2";
             this.canal1Canal2ToolStripMenuItem.Click += new System.EventHandler(this.canal1Canal2ToolStripMenuItem_Click);
             // 
@@ -166,7 +166,7 @@
             this.fecharToolStripMenuItem});
             this.marcarEventos.Enabled = false;
             this.marcarEventos.Name = "marcarEventos";
-            this.marcarEventos.Size = new System.Drawing.Size(166, 22);
+            this.marcarEventos.Size = new System.Drawing.Size(163, 22);
             this.marcarEventos.Text = "Marcar Eventos";
             this.marcarEventos.Click += new System.EventHandler(this.marcarPadrõesToolStripMenuItem_Click);
             // 
@@ -195,6 +195,29 @@
             this.fecharToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click_1);
+            // 
+            // ediarToolStripMenuItem
+            // 
+            this.ediarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eventosToolStripMenuItem,
+            this.padrõesToolStripMenuItem});
+            this.ediarToolStripMenuItem.Name = "ediarToolStripMenuItem";
+            this.ediarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.ediarToolStripMenuItem.Text = "Editar";
+            // 
+            // eventosToolStripMenuItem
+            // 
+            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.eventosToolStripMenuItem.Text = "Eventos";
+            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
+            // 
+            // padrõesToolStripMenuItem
+            // 
+            this.padrõesToolStripMenuItem.Name = "padrõesToolStripMenuItem";
+            this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.padrõesToolStripMenuItem.Text = "Padrões";
+            this.padrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
             // verToolStripMenuItem
             // 
@@ -644,29 +667,6 @@
             this.Evento2.Text = "Ponta e Ond";
             this.Evento2.UseVisualStyleBackColor = false;
             this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
-            // 
-            // ediarToolStripMenuItem
-            // 
-            this.ediarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eventosToolStripMenuItem,
-            this.padrõesToolStripMenuItem});
-            this.ediarToolStripMenuItem.Name = "ediarToolStripMenuItem";
-            this.ediarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.ediarToolStripMenuItem.Text = "Editar";
-            // 
-            // eventosToolStripMenuItem
-            // 
-            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.eventosToolStripMenuItem.Text = "Eventos";
-            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
-            // 
-            // padrõesToolStripMenuItem
-            // 
-            this.padrõesToolStripMenuItem.Name = "padrõesToolStripMenuItem";
-            this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.padrõesToolStripMenuItem.Text = "Padrões";
-            this.padrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
