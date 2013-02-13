@@ -32,9 +32,12 @@ namespace AmbienteRPB
         private bool MostrarCursorX;
         //Geren Arquivos-----------------------------------------------------------------
         private GerenArquivos Arquivos;
-        //Editor de eventos--------------------------------------------------------------
-        private int numDeEventosMarcados = 0;
+        //Marção de Padrões e seus Eventos-----------------------------------------------
+        private int[] numDeEventosMarcados;
+        private int EventoAtual;
         String Evento;
+        Color highlight;
+
         ToolTip tooltip = new ToolTip();
         Color Cor;
         Color CorFundo;
@@ -45,7 +48,7 @@ namespace AmbienteRPB
             InitializeComponent();
             gbxEventos.Visible = false;
             gbxEventos.Enabled = false;
-
+            numDeEventosMarcados = new int[50];
             gbxChart.Location = new System.Drawing.Point(2, 21);
             gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
         }
@@ -257,17 +260,17 @@ namespace AmbienteRPB
                         while(cont)
                         {
                             result = chart1.HitTest(e.X + i, e.Y);
-                            if (result != null)
+                            if (result.ChartArea != null)
                                 cont = false;
                             if (i == 10)
                                 cont = false;
                             i++;
                         }
                         AtualizaFerramentaAtiva("Result null", 2);
-                        if(result == null)
-                            AtualizaFerramentaAtiva("RESULT NULL 2 - Marque novamente", 2);
-                        else
+                        if (result.ChartArea != null)
                             ExecutaSelecao(result, e);
+                        else
+                            AtualizaFerramentaAtiva("RESULT NULL 2 - Marque novamente", 2);
                     }
         }
         //------------------------------------------------------------------------------------------
@@ -280,7 +283,7 @@ namespace AmbienteRPB
                 chart1.Annotations.Clear();
                 Adiciona_linhas_de_tempo();
 
-                result.ChartArea.CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
+                result.ChartArea.CursorX.SelectionColor = highlight;//Color.FromArgb(00, 50, 50, 50);
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
 
                 x_Pos = (e.X);
@@ -305,7 +308,7 @@ namespace AmbienteRPB
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
 
                 // Set range selection color, specifying transparency of 120
-                result.ChartArea.CursorX.SelectionColor = Color.FromArgb(90, 50, 50, 50);
+                result.ChartArea.CursorX.SelectionColor = highlight;
                 result.ChartArea.CursorX.IsUserEnabled = true;
                 result.ChartArea.CursorX.IsUserSelectionEnabled = true;
                 PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
@@ -334,7 +337,7 @@ namespace AmbienteRPB
             {
                 Arquivos.ExportarPadraoArquivo(Evento + "_" + numDeEventosMarcados, chart1, var_result, Padrao_Inicio, Padrao_Fim);
                 MessageBox.Show("Padrão '" + Evento + "' salvo.", "Ambiente RPB");
-                numDeEventosMarcados++;
+                numDeEventosMarcados[EventoAtual] = numDeEventosMarcados[EventoAtual] + 1;
             }
             else
                 MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
@@ -571,29 +574,6 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           /* tool_ControlesProjeto.BackColor = Color.Black;
-            chart1.BackColor = Color.Black;
-            gbxChart.BackColor = Color.Black;
-            gbxEventos.BackColor = Color.Black;
-            FrequenciaCombo.BackColor = Color.Black;
-            AmplitudeCombo.BackColor = Color.Black;
-            menuStrip1.BackColor = Color.Black;
-            FrequenciaCombo.ForeColor = Color.White;
-            AmplitudeCombo.ForeColor = Color.White;
-            lblFreq.ForeColor = Color.White;
-            lblAmpli.ForeColor = Color.White;
-            lbl_cm.ForeColor = Color.White;
-            lbl_V.ForeColor = Color.White;
-            Evento1.ForeColor = Color.White;
-            Evento2.ForeColor = Color.White;
-            Evento3.ForeColor = Color.White;
-            Evento4.ForeColor = Color.White;
-            Evento5.ForeColor = Color.White;
-            Evento6.ForeColor = Color.White;
-            Evento7.ForeColor = Color.White;
-            Evento8.ForeColor = Color.White;
-            Evento9.ForeColor = Color.White;
-            Evento10.ForeColor = Color.White;*/
             if (sender.ToString() == "Preto - Vermelho")
             {
                 Cor = Color.Red;
@@ -680,6 +660,8 @@ namespace AmbienteRPB
             Evento = Evento1.Text;
             SetNenhumEventoMarcado();
             Evento1.Checked = true;
+            EventoAtual = 1;
+            highlight = Color.Lime;
         }
 
         private void Evento2_Click(object sender, EventArgs e)
@@ -687,6 +669,8 @@ namespace AmbienteRPB
             Evento = Evento2.Text;
             SetNenhumEventoMarcado();
             Evento2.Checked = true;
+            EventoAtual = 2;
+            highlight = Color.Yellow;
         }
 
         private void Evento3_Click(object sender, EventArgs e)
@@ -694,6 +678,8 @@ namespace AmbienteRPB
             Evento = Evento3.Text;
             SetNenhumEventoMarcado();
             Evento3.Checked = true;
+            EventoAtual = 3;
+            highlight = Color.Red;
         }
 
         private void Evento4_Click(object sender, EventArgs e)
@@ -701,6 +687,8 @@ namespace AmbienteRPB
             Evento = Evento4.Text;
             SetNenhumEventoMarcado();
             Evento4.Checked = true;
+            EventoAtual = 4;
+            highlight = Color.Orange;
         }
 
         private void Evento5_Click(object sender, EventArgs e)
@@ -708,6 +696,8 @@ namespace AmbienteRPB
             Evento = Evento5.Text;
             SetNenhumEventoMarcado();
             Evento5.Checked = true;
+            EventoAtual = 5;
+            highlight = Color.RoyalBlue;
         }
 
         private void Evento6_Click(object sender, EventArgs e)
@@ -715,6 +705,8 @@ namespace AmbienteRPB
             Evento = Evento6.Text;
             SetNenhumEventoMarcado();
             Evento6.Checked = true;
+            EventoAtual = 6;
+            highlight = Color.HotPink;
         }
 
         private void Evento7_Click(object sender, EventArgs e)
@@ -722,6 +714,8 @@ namespace AmbienteRPB
             Evento = Evento7.Text;
             SetNenhumEventoMarcado();
             Evento7.Checked = true;
+            EventoAtual = 7;
+            highlight = Color.Aqua;
         }
 
         private void Evento8_Click(object sender, EventArgs e)
@@ -729,6 +723,8 @@ namespace AmbienteRPB
             Evento = Evento8.Text;
             SetNenhumEventoMarcado();
             Evento8.Checked = true;
+            EventoAtual = 8;
+            highlight = Color.Gold;
         }
 
         private void Evento9_Click(object sender, EventArgs e)
@@ -736,6 +732,8 @@ namespace AmbienteRPB
             Evento = Evento9.Text;
             SetNenhumEventoMarcado();
             Evento9.Checked = true;
+            EventoAtual = 9;
+            highlight = Color.Orchid;
         }
 
         private void Evento10_Click(object sender, EventArgs e)
@@ -743,6 +741,8 @@ namespace AmbienteRPB
             Evento = Evento10.Text;
             SetNenhumEventoMarcado();
             Evento10.Checked = true;
+            EventoAtual = 10;
+            highlight = Color.Salmon;
         }
         //------------------------------------------------------------------
         private void renomearToolStripMenuItem_Click(object sender, EventArgs e)
