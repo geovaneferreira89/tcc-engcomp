@@ -42,5 +42,42 @@ namespace AmbienteRPB
                 lbxEventosPorTipo.Items.Add(comboTiposDeEventos.SelectedItem.ToString() + "_" + Convert.ToString(i));
             }
         }
+
+        private void lbxEventosPorTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (chart1.Series.Count != 0)
+            {
+                chart1.Series.Remove(chart1.Series["Serie01"]);
+                chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
+            }
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                chart1.ChartAreas.Add("Padrao");
+                chart1.Series.Add("Serie01");
+                chart1.Series["Serie01"].ChartArea = "Padrao";
+                chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                System.IO.StreamReader fileR = new System.IO.StreamReader(openFile.FileName);
+                edtEvento_Nome.Text = openFile.SafeFileName; //Tirar o resto... 
+                string dados;
+                dados = fileR.ReadLine();
+                dados = dados.Substring(22);
+                dados = dados.Substring(0, dados.Length - 1);
+                int NumeroDeAmostras = Convert.ToInt16(dados);
+                chart1.Series[0].Color = Color.Red;
+                for (int i = 0; i <= NumeroDeAmostras; i++)
+                {
+                    dados = fileR.ReadLine();
+                    string x = dados;
+                    string y = dados;
+                    int X_ = x.IndexOf(" ");
+                    x = x.Substring(3);
+                    x = x.Substring(0, X_ - 4);
+                    y = y.Substring(X_ + 3);
+                    y = y.Substring(0, y.Length - 1);
+                    chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
+                }
+
+            }
+        }
     }
 }

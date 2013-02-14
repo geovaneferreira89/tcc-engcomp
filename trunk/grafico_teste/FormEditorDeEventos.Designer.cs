@@ -138,6 +138,7 @@
             this.lbxEventosPorTipo.Name = "lbxEventosPorTipo";
             this.lbxEventosPorTipo.Size = new System.Drawing.Size(104, 290);
             this.lbxEventosPorTipo.TabIndex = 15;
+            this.lbxEventosPorTipo.SelectedIndexChanged += new System.EventHandler(this.lbxEventosPorTipo_SelectedIndexChanged);
             // 
             // comboTiposDeEventos
             // 
