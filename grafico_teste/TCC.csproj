@@ -99,6 +99,7 @@
     <Compile Include="MDIPrincipalForm.Designer.cs">
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListaPadroesEventos.cs" />
     <Compile Include="Thread_grafico.cs" />
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>

@@ -33,10 +33,8 @@ namespace AmbienteRPB
         //Geren Arquivos-----------------------------------------------------------------
         private GerenArquivos Arquivos;
         //Marção de Padrões e seus Eventos-----------------------------------------------
-        private int[] numDeEventosMarcados;
-        private string[] listaDePadroes;
-        private int numeroDePadroes = 10;
         private int EventoAtual;
+        private ListaPadroesEventos ListaDePadroes;
         String Evento;
         Color highlight;
 
@@ -50,7 +48,8 @@ namespace AmbienteRPB
             InitializeComponent();
             gbxEventos.Visible = false;
             gbxEventos.Enabled = false;
-            numDeEventosMarcados = new int[50];
+            ListaDePadroes = new ListaPadroesEventos();
+            ListaDePadroes.CriarLista(50, 50, 50, 10);
             gbxChart.Location = new System.Drawing.Point(2, 21);
             gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
         }
@@ -70,8 +69,8 @@ namespace AmbienteRPB
         private void encerrar_sistema()
         {
             //Salva eventos caso haja
-            CarregaListaDePadroes(1,listaDePadroes);
-            Arquivos.ExportarEventos(listaDePadroes, numDeEventosMarcados, numeroDePadroes);
+            CarregaListaDePadroes(1);
+            Arquivos.ExportarEventos(ListaDePadroes);
             /*if (ThreadChart.IsAlive == true && ThreadInicializada)
             {
                 ThreadChart.Abort();
@@ -340,9 +339,9 @@ namespace AmbienteRPB
         {
             if (Evento != null)
             {
-                Arquivos.ExportarPadraoArquivo(Evento + "_" + numDeEventosMarcados[EventoAtual], chart1, var_result, Padrao_Inicio, Padrao_Fim);
+                Arquivos.ExportarPadraoArquivo(Evento + "_" + ListaDePadroes.GetListaNumeroDeEnvetosPOS(EventoAtual), chart1, var_result, Padrao_Inicio, Padrao_Fim);
                 MessageBox.Show("Padrão '" + Evento + "' salvo.", "Ambiente RPB");
-                numDeEventosMarcados[EventoAtual] = numDeEventosMarcados[EventoAtual] + 1;
+                ListaDePadroes.SetListaNumeroDeEnvetosPOS(EventoAtual,ListaDePadroes.GetListaNumeroDeEnvetosPOS(EventoAtual) + 1);
             }
             else
                 MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
@@ -356,39 +355,30 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------       
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CarregaListaDePadroes(1, listaDePadroes);
-            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(numDeEventosMarcados,listaDePadroes,numeroDePadroes);
+            CarregaListaDePadroes(1);
+            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaDePadroes);
             EditorEvenForm.ShowDialog();
         }
         //-----------------------------------------------------------------------------------------
-        private void CarregaListaDePadroes(int Opcao, string []NovaLista)
+        private void CarregaListaDePadroes(int Opcao)
         {
             if (Opcao == 1) //Salva a lista atual
             {
-                listaDePadroes = new string[numeroDePadroes];
-                for (int i = 1; i <= numeroDePadroes; i++)
+                for (int i = 1; i <= ListaDePadroes.GetNumDePadroes(); i++)
                 {
                     string str = "Evento" + i;
-                    listaDePadroes[i-1] = this.Controls.Find(str, true)[0].Text;
+                    ListaDePadroes.SetListaDePadroesPOS(i - 1, this.Controls.Find(str, true)[0].Text);
                 }
             }
-            else //Carrega a lista de algum lugar
-            {
-                listaDePadroes = new string[numeroDePadroes];
-                for (int i = 1; i <= numeroDePadroes; i++)
-                {
-                    string str = "Evento" + i;
-                    this.Controls.Find(str, true)[0].Text = NovaLista[i-1];
-                    listaDePadroes[i-1] = NovaLista[i-1]; 
-                }
-            }
+            //else //Carrega a lista de algum lugar
+            //FAZER//
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            numeroDePadroes++;
+            ListaDePadroes.SetNumDePadroes(ListaDePadroes.GetNumDePadroes() + 1);
             //adiciona novo check box... 
-            //FAZER... 
+            //FAZER.//
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-

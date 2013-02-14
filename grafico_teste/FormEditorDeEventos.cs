@@ -11,38 +11,39 @@ namespace AmbienteRPB
 {
     public partial class FormEditorDeEventos : Form
     {
-        private int[] ListaNumeroEventos;
-        private int Padroes;
-        private string[] ListaPadroes;
+        private ListaPadroesEventos Listas;
 
-        public FormEditorDeEventos(int []_ListaEventos, string []_ListaPadroes, int _Padroes)
+        public FormEditorDeEventos(ListaPadroesEventos _Listas)
         {
-            ListaNumeroEventos = _ListaEventos;
-            Padroes = _Padroes;
-            ListaPadroes = _ListaPadroes;
+            Listas = _Listas;
+            if (Listas.GetNumDePadroes() == 0)
+                CarregaListaDoArquivo();
             InitializeComponent();
         }
+        private void CarregaListaDoArquivo()
+        {
 
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void FormEditorDeEventos_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < Padroes; i++)
-                comboTiposDeEventos.Items.Add(ListaPadroes[i]);
+            for (int i = 0; i < Listas.GetNumDePadroes(); i++)
+                comboTiposDeEventos.Items.Add(Listas.GetListaDePadroesPOS(i));
         }
-
         private void comboTiposDeEventos_SelectedIndexChanged(object sender, EventArgs e)
         {
             lbxEventosPorTipo.Items.Clear();
-            for (int i = 0; i < ListaNumeroEventos[comboTiposDeEventos.SelectedIndex]; i++)
-            {
+            for (int i = 0; i < Listas.GetListaNumeroDeEnvetosPOS(comboTiposDeEventos.SelectedIndex); i++)
                 lbxEventosPorTipo.Items.Add(comboTiposDeEventos.SelectedItem.ToString() + "_" + Convert.ToString(i));
+            if (chart1.Series.Count != 0)
+            {
+                chart1.Series.Remove(chart1.Series["Serie01"]);
+                chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
             }
         }
-
         private void lbxEventosPorTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (chart1.Series.Count != 0)
@@ -50,14 +51,14 @@ namespace AmbienteRPB
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
             }
-           /* if (openFile.ShowDialog() == DialogResult.OK)
-            {
+           if (lbxEventosPorTipo.SelectedItem != null)
+           {
                 chart1.ChartAreas.Add("Padrao");
                 chart1.Series.Add("Serie01");
                 chart1.Series["Serie01"].ChartArea = "Padrao";
                 chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                System.IO.StreamReader fileR = new System.IO.StreamReader(openFile.FileName);
-                edtEvento_Nome.Text = openFile.SafeFileName; //Tirar o resto... 
+                System.IO.StreamReader fileR = new System.IO.StreamReader(lbxEventosPorTipo.SelectedItem + ".txt");
+                edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString(); //Tirar o resto... 
                 string dados;
                 dados = fileR.ReadLine();
                 dados = dados.Substring(22);
@@ -77,7 +78,7 @@ namespace AmbienteRPB
                     chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
                 }
 
-            }*/
+            }
         }
     }
 }

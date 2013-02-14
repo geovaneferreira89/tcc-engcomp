@@ -19,7 +19,6 @@ namespace AmbienteRPB
         //Salvar Projeto Como ----------------------------------------------------------------
         public void Salva_Projeto(string diretorio, int __numeroDeCanais, Control _Chart)
         {
-             
             chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
             string Dados_Saida; //= {"[NumDeCanais = X]","[Canal 1 = XXXXXXXX]","[Canal 2 = YYYYYY]"};
             Dados_Saida = "[NumDeCanais = " + __numeroDeCanais + "]";
@@ -105,15 +104,15 @@ namespace AmbienteRPB
                 fileW.Close();
         }
         //Exportao Eventos        -----------------------------------------------------------------
-        public void ExportarEventos(string[] Padrao, int[] numeroDeEventos, int numeroDePadroes)
+        public void ExportarEventos(ListaPadroesEventos Lista)
         {   
             //Cabeçalho do arquivo
-            fileW = new System.IO.StreamWriter("ListaDeEventos.txt", true);
-            fileW.WriteLine("[Numero de Padroes = " + Convert.ToInt16(numeroDePadroes) + "]");
-            for (int i = 0; i < numeroDePadroes; i++)
+            fileW = new System.IO.StreamWriter("ListaDeEventos.txt", false);
+            fileW.WriteLine("[Numero de Padroes = " + Convert.ToInt16(Lista.GetNumDePadroes()) + "]");
+            for (int i = 0; i < Lista.GetNumDePadroes(); i++)
             {
-                fileW.WriteLine("[Evento = " + Padrao[i] + "]");
-                fileW.WriteLine("[Quantidade = " + numeroDeEventos[i] + "]");
+                fileW.WriteLine("[Evento = " + Lista.GetListaDePadroesPOS(i) + "]");
+                fileW.WriteLine("[Quantidade = " + Lista.GetListaNumeroDeEnvetosPOS(i) + "]");
             }
             fileW.Close();
         }
