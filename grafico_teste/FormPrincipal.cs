@@ -36,7 +36,7 @@ namespace AmbienteRPB
         private int EventoAtual;
         private ListaPadroesEventos ListaDePadroes;
         String Evento;
-        Color highlight;
+        Color highlightColor;
 
         ToolTip tooltip = new ToolTip();
         Color Cor;
@@ -294,7 +294,7 @@ namespace AmbienteRPB
                 chart1.Annotations.Clear();
                 Adiciona_linhas_de_tempo();
 
-                result.ChartArea.CursorX.SelectionColor = highlight;//Color.FromArgb(00, 50, 50, 50);
+                result.ChartArea.CursorX.SelectionColor = highlightColor;//Color.FromArgb(00, 50, 50, 50);
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
 
                 x_Pos = (e.X);
@@ -304,7 +304,7 @@ namespace AmbienteRPB
                 VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
                 cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
                 cursor_vertical.Height = result.ChartArea.Position.Height;
-                cursor_vertical.LineColor = Color.Green;
+                cursor_vertical.LineColor = highlightColor;
                 cursor_vertical.LineWidth = 1;
                 cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X);
                 cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
@@ -314,24 +314,37 @@ namespace AmbienteRPB
             else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
             {
                 result.ChartArea.CursorX.AxisType = AxisType.Secondary;
-                result.ChartArea.CursorX.LineColor = Color.Green;
+                result.ChartArea.CursorX.LineColor = highlightColor;
                 result.ChartArea.CursorX.LineWidth = 1;
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
 
                 // Set range selection color, specifying transparency of 120
-                result.ChartArea.CursorX.SelectionColor = highlight;
+                result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.IsUserEnabled = true;
                 result.ChartArea.CursorX.IsUserSelectionEnabled = true;
                 PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
                 PointF Padrao_Fim = new PointF(e.X, e.Y);
-                result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+                
+               result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
 
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
 
+               /* RectangleAnnotation highlight = new RectangleAnnotation();
+                highlight.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
+                highlight.LineColor = highlightColor;
+                highlight.BackColor = highlightColor;
+                highlight.X = result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
+                highlight.Y = result.ChartArea.AxisY.Maximum;
+
+                highlight.Width = (result.ChartArea.AxisX.PixelPositionToValue(e.X) - result.ChartArea.AxisX.PixelPositionToValue(x_Pos)) / (Convert.ToInt16(FrequenciaCombo.Text) * 10);
+                highlight.Height = result.ChartArea.Position.Height;
+                highlight.Visible = true;
+                chart1.Annotations.Add(highlight);*/
+
                 Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
                 numCursor = 0;//CLICAR + VEZES SEM EFEITO
-                result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0), new PointF(0, 0), true);
+                //result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0), new PointF(0, 0), true);
                 result.ChartArea.CursorX.LineColor = Color.LightGray;
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
                 result.ChartArea.CursorX.IsUserEnabled = false;
@@ -486,6 +499,16 @@ namespace AmbienteRPB
             lineAnnotation7.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation8.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation9.LineColor  = System.Drawing.Color.LightGray;
+
+            lineAnnotation1.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation2.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation3.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation4.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation5.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation6.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation7.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation8.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation9.LineDashStyle = ChartDashStyle.Dash;
 
             lineAnnotation1.ToolTip  = "1";
             lineAnnotation2.ToolTip  = "1";
@@ -694,7 +717,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento1.Checked = true;
             EventoAtual = 0;
-            highlight = Color.Lime;
+            highlightColor = Color.Lime;
         }
 
         private void Evento2_Click(object sender, EventArgs e)
@@ -703,7 +726,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento2.Checked = true;
             EventoAtual = 1;
-            highlight = Color.Yellow;
+            highlightColor = Color.Yellow;
         }
 
         private void Evento3_Click(object sender, EventArgs e)
@@ -712,7 +735,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento3.Checked = true;
             EventoAtual = 2;
-            highlight = Color.Red;
+            highlightColor = Color.Red;
         }
 
         private void Evento4_Click(object sender, EventArgs e)
@@ -721,7 +744,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento4.Checked = true;
             EventoAtual = 3;
-            highlight = Color.Orange;
+            highlightColor = Color.Orange;
         }
 
         private void Evento5_Click(object sender, EventArgs e)
@@ -730,7 +753,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento5.Checked = true;
             EventoAtual = 4;
-            highlight = Color.RoyalBlue;
+            highlightColor = Color.RoyalBlue;
         }
 
         private void Evento6_Click(object sender, EventArgs e)
@@ -739,7 +762,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento6.Checked = true;
             EventoAtual = 5;
-            highlight = Color.HotPink;
+            highlightColor = Color.HotPink;
         }
 
         private void Evento7_Click(object sender, EventArgs e)
@@ -748,7 +771,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento7.Checked = true;
             EventoAtual = 6;
-            highlight = Color.Aqua;
+            highlightColor = Color.Aqua;
         }
 
         private void Evento8_Click(object sender, EventArgs e)
@@ -757,7 +780,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento8.Checked = true;
             EventoAtual = 7;
-            highlight = Color.Gold;
+            highlightColor = Color.Gold;
         }
 
         private void Evento9_Click(object sender, EventArgs e)
@@ -766,7 +789,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento9.Checked = true;
             EventoAtual = 8;
-            highlight = Color.Orchid;
+            highlightColor = Color.Orchid;
         }
 
         private void Evento10_Click(object sender, EventArgs e)
@@ -775,7 +798,7 @@ namespace AmbienteRPB
             SetNenhumEventoMarcado();
             Evento10.Checked = true;
             EventoAtual = 9;
-            highlight = Color.Salmon;
+            highlightColor = Color.Salmon;
         }
         //------------------------------------------------------------------
         private void renomearToolStripMenuItem_Click(object sender, EventArgs e)
