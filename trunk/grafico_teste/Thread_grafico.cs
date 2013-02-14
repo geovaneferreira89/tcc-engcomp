@@ -256,7 +256,7 @@ namespace thread_chart
                 {
                     if (OpcaoSinal == "Projeto_EDF")
                     {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 3000;//num_de_voltas; // 30; //VERIFICAR VALOR! "Frequencia"
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = 1000;//num_de_voltas; // 30; //VERIFICAR VALOR! "Frequencia"
                         ScrollBar.Maximum = num_de_voltas;
                     }
                     else
