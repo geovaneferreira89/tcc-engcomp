@@ -50,7 +50,7 @@ namespace AmbienteRPB
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
             }
-            if (openFile.ShowDialog() == DialogResult.OK)
+           /* if (openFile.ShowDialog() == DialogResult.OK)
             {
                 chart1.ChartAreas.Add("Padrao");
                 chart1.Series.Add("Serie01");
@@ -77,7 +77,7 @@ namespace AmbienteRPB
                     chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
                 }
 
-            }
+            }*/
         }
     }
 }
