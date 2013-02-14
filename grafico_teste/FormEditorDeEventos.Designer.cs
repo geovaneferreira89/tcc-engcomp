@@ -30,7 +30,7 @@
         {
             this.gbxEditorDeEventos = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.edtEvento_Nome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxEditorDeEventos.Controls.Add(this.button1);
-            this.gbxEditorDeEventos.Controls.Add(this.button2);
+            this.gbxEditorDeEventos.Controls.Add(this.btnSalvar);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox4);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox1);
             this.gbxEditorDeEventos.Controls.Add(this.chart1);
@@ -78,16 +78,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnSalvar
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(596, 364);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 21);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Salvar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalvar.Enabled = false;
+            this.btnSalvar.Location = new System.Drawing.Point(596, 364);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(61, 21);
+            this.btnSalvar.TabIndex = 15;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // groupBox4
             // 
@@ -216,6 +217,7 @@
             this.chart1.Size = new System.Drawing.Size(587, 301);
             this.chart1.TabIndex = 13;
             this.chart1.Text = "chart1";
+            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             // 
             // FormEditorDeEventos
             // 
@@ -242,7 +244,7 @@
 
         private System.Windows.Forms.GroupBox gbxEditorDeEventos;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox edtEvento_Nome;
         private System.Windows.Forms.Label label3;
