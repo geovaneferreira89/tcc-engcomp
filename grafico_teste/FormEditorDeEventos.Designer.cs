@@ -35,15 +35,15 @@
             this.edtEvento_Nome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbxEventosPorTipo = new System.Windows.Forms.ListBox();
+            this.comboTiposDeEventos = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboTiposDeEventos = new System.Windows.Forms.ComboBox();
-            this.lbxEventosPorTipo = new System.Windows.Forms.ListBox();
             this.gbxEditorDeEventos.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -129,6 +129,35 @@
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             // 
+            // lbxEventosPorTipo
+            // 
+            this.lbxEventosPorTipo.FormattingEnabled = true;
+            this.lbxEventosPorTipo.Items.AddRange(new object[] {
+            ""});
+            this.lbxEventosPorTipo.Location = new System.Drawing.Point(7, 39);
+            this.lbxEventosPorTipo.Name = "lbxEventosPorTipo";
+            this.lbxEventosPorTipo.Size = new System.Drawing.Size(104, 290);
+            this.lbxEventosPorTipo.TabIndex = 15;
+            // 
+            // comboTiposDeEventos
+            // 
+            this.comboTiposDeEventos.FormattingEnabled = true;
+            this.comboTiposDeEventos.Location = new System.Drawing.Point(33, 13);
+            this.comboTiposDeEventos.Name = "comboTiposDeEventos";
+            this.comboTiposDeEventos.Size = new System.Drawing.Size(79, 21);
+            this.comboTiposDeEventos.TabIndex = 14;
+            this.comboTiposDeEventos.Tag = "";
+            this.comboTiposDeEventos.SelectedIndexChanged += new System.EventHandler(this.comboTiposDeEventos_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Tipo";
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label2);
@@ -187,42 +216,6 @@
             this.chart1.TabIndex = 13;
             this.chart1.Text = "chart1";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Tipo";
-            // 
-            // comboTiposDeEventos
-            // 
-            this.comboTiposDeEventos.FormattingEnabled = true;
-            this.comboTiposDeEventos.Items.AddRange(new object[] {
-            "Espicula",
-            ".",
-            ".",
-            ".",
-            ".",
-            "testes"});
-            this.comboTiposDeEventos.Location = new System.Drawing.Point(33, 13);
-            this.comboTiposDeEventos.Name = "comboTiposDeEventos";
-            this.comboTiposDeEventos.Size = new System.Drawing.Size(79, 21);
-            this.comboTiposDeEventos.TabIndex = 14;
-            this.comboTiposDeEventos.Tag = "";
-            this.comboTiposDeEventos.Text = "espicula";
-            // 
-            // lbxEventosPorTipo
-            // 
-            this.lbxEventosPorTipo.FormattingEnabled = true;
-            this.lbxEventosPorTipo.Items.AddRange(new object[] {
-            ""});
-            this.lbxEventosPorTipo.Location = new System.Drawing.Point(7, 39);
-            this.lbxEventosPorTipo.Name = "lbxEventosPorTipo";
-            this.lbxEventosPorTipo.Size = new System.Drawing.Size(104, 290);
-            this.lbxEventosPorTipo.TabIndex = 15;
-            // 
             // FormEditorDeEventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,6 +224,7 @@
             this.Controls.Add(this.gbxEditorDeEventos);
             this.Name = "FormEditorDeEventos";
             this.Text = "Editor De Eventos";
+            this.Load += new System.EventHandler(this.FormEditorDeEventos_Load);
             this.gbxEditorDeEventos.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();

@@ -34,6 +34,8 @@ namespace AmbienteRPB
         private GerenArquivos Arquivos;
         //Marção de Padrões e seus Eventos-----------------------------------------------
         private int[] numDeEventosMarcados;
+        private string[] listaDePadroes;
+        private int numeroDePadroes = 10;
         private int EventoAtual;
         String Evento;
         Color highlight;
@@ -67,6 +69,9 @@ namespace AmbienteRPB
          */
         private void encerrar_sistema()
         {
+            //Salva eventos caso haja
+            CarregaListaDePadroes(1,listaDePadroes);
+            Arquivos.ExportarEventos(listaDePadroes, numDeEventosMarcados, numeroDePadroes);
             /*if (ThreadChart.IsAlive == true && ThreadInicializada)
             {
                 ThreadChart.Abort();
@@ -335,7 +340,7 @@ namespace AmbienteRPB
         {
             if (Evento != null)
             {
-                Arquivos.ExportarPadraoArquivo(Evento + "_" + numDeEventosMarcados, chart1, var_result, Padrao_Inicio, Padrao_Fim);
+                Arquivos.ExportarPadraoArquivo(Evento + "_" + numDeEventosMarcados[EventoAtual], chart1, var_result, Padrao_Inicio, Padrao_Fim);
                 MessageBox.Show("Padrão '" + Evento + "' salvo.", "Ambiente RPB");
                 numDeEventosMarcados[EventoAtual] = numDeEventosMarcados[EventoAtual] + 1;
             }
@@ -351,8 +356,39 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------       
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos();
+            CarregaListaDePadroes(1, listaDePadroes);
+            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(numDeEventosMarcados,listaDePadroes,numeroDePadroes);
             EditorEvenForm.ShowDialog();
+        }
+        //-----------------------------------------------------------------------------------------
+        private void CarregaListaDePadroes(int Opcao, string []NovaLista)
+        {
+            if (Opcao == 1) //Salva a lista atual
+            {
+                listaDePadroes = new string[numeroDePadroes];
+                for (int i = 1; i <= numeroDePadroes; i++)
+                {
+                    string str = "Evento" + i;
+                    listaDePadroes[i-1] = this.Controls.Find(str, true)[0].Text;
+                }
+            }
+            else //Carrega a lista de algum lugar
+            {
+                listaDePadroes = new string[numeroDePadroes];
+                for (int i = 1; i <= numeroDePadroes; i++)
+                {
+                    string str = "Evento" + i;
+                    this.Controls.Find(str, true)[0].Text = NovaLista[i-1];
+                    listaDePadroes[i-1] = NovaLista[i-1]; 
+                }
+            }
+        }
+        //-----------------------------------------------------------------------------------------
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            numeroDePadroes++;
+            //adiciona novo check box... 
+            //FAZER... 
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
@@ -660,7 +696,7 @@ namespace AmbienteRPB
             Evento = Evento1.Text;
             SetNenhumEventoMarcado();
             Evento1.Checked = true;
-            EventoAtual = 1;
+            EventoAtual = 0;
             highlight = Color.Lime;
         }
 
@@ -669,7 +705,7 @@ namespace AmbienteRPB
             Evento = Evento2.Text;
             SetNenhumEventoMarcado();
             Evento2.Checked = true;
-            EventoAtual = 2;
+            EventoAtual = 1;
             highlight = Color.Yellow;
         }
 
@@ -678,7 +714,7 @@ namespace AmbienteRPB
             Evento = Evento3.Text;
             SetNenhumEventoMarcado();
             Evento3.Checked = true;
-            EventoAtual = 3;
+            EventoAtual = 2;
             highlight = Color.Red;
         }
 
@@ -687,7 +723,7 @@ namespace AmbienteRPB
             Evento = Evento4.Text;
             SetNenhumEventoMarcado();
             Evento4.Checked = true;
-            EventoAtual = 4;
+            EventoAtual = 3;
             highlight = Color.Orange;
         }
 
@@ -696,7 +732,7 @@ namespace AmbienteRPB
             Evento = Evento5.Text;
             SetNenhumEventoMarcado();
             Evento5.Checked = true;
-            EventoAtual = 5;
+            EventoAtual = 4;
             highlight = Color.RoyalBlue;
         }
 
@@ -705,7 +741,7 @@ namespace AmbienteRPB
             Evento = Evento6.Text;
             SetNenhumEventoMarcado();
             Evento6.Checked = true;
-            EventoAtual = 6;
+            EventoAtual = 5;
             highlight = Color.HotPink;
         }
 
@@ -714,7 +750,7 @@ namespace AmbienteRPB
             Evento = Evento7.Text;
             SetNenhumEventoMarcado();
             Evento7.Checked = true;
-            EventoAtual = 7;
+            EventoAtual = 6;
             highlight = Color.Aqua;
         }
 
@@ -723,7 +759,7 @@ namespace AmbienteRPB
             Evento = Evento8.Text;
             SetNenhumEventoMarcado();
             Evento8.Checked = true;
-            EventoAtual = 8;
+            EventoAtual = 7;
             highlight = Color.Gold;
         }
 
@@ -732,7 +768,7 @@ namespace AmbienteRPB
             Evento = Evento9.Text;
             SetNenhumEventoMarcado();
             Evento9.Checked = true;
-            EventoAtual = 9;
+            EventoAtual = 8;
             highlight = Color.Orchid;
         }
 
@@ -741,7 +777,7 @@ namespace AmbienteRPB
             Evento = Evento10.Text;
             SetNenhumEventoMarcado();
             Evento10.Checked = true;
-            EventoAtual = 10;
+            EventoAtual = 9;
             highlight = Color.Salmon;
         }
         //------------------------------------------------------------------
