@@ -78,7 +78,7 @@ namespace AmbienteRPB
                 fileW.Close();
                  */
                 chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
-                fileW = new System.IO.StreamWriter(nomePadrao + ".txt", true);
+                fileW = new System.IO.StreamWriter(nomePadrao + ".txt", false);
                 int inicio = 0;
                 int fim = 0;
                 bool Busca = true;
@@ -117,14 +117,44 @@ namespace AmbienteRPB
             fileW.Close();
         }
         //Importar Eventos         -----------------------------------------------------------------
-        public void ImportarEventos(string nomePadrao, Control _Chart, PointF Padrao_Inicio, PointF Padrao_Fim)
+        public ListaPadroesEventos ImportarEventos()
         {
+             ListaPadroesEventos Lista = new ListaPadroesEventos();
+             try
+             {
+                 fileR = new System.IO.StreamReader("ListaDeEventos.txt");
+                 string dados;
+                 int NUM = 0;
+                 dados = fileR.ReadLine();
+                 dados = dados.Substring(21);
+                 dados = dados.Substring(0, dados.Length - 1);
+                 NUM = Convert.ToInt16(dados);
+                 Lista.CriarLista(NUM * 2, NUM, NUM, NUM);
+                 for (int i = 0; i < NUM; i++)
+                 {
+                     dados = fileR.ReadLine();
+                     dados = dados.Substring(10);
+                     dados = dados.Substring(0, dados.Length - 1);
+                     Lista.SetListaDePadroesPOS(i, dados);
+
+                     dados = fileR.ReadLine();
+                     dados = dados.Substring(14);
+                     dados = dados.Substring(0, dados.Length - 1);
+                     Lista.SetListaNumeroDeEnvetosPOS(i, Convert.ToInt16(dados));
+                 }
+                 return Lista;
+             }
+             catch
+             {
+                 return Lista;
+             }
+
         }
         //Exportao Padrao Editado  -----------------------------------------------------------------
         public void ExportarPadraoEditado(string nomePadrao, Control _Chart, PointF Padrao_Inicio, PointF Padrao_Fim)
         {
             chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
-            fileW = new System.IO.StreamWriter(nomePadrao + "_NEW", true);
+            fileW = new System.IO.StreamWriter(nomePadrao + "_NEW", false);
             int inicio = 0;
             int fim = 0;
             bool Busca = true;

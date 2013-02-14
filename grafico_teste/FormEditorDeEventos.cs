@@ -12,17 +12,22 @@ namespace AmbienteRPB
     public partial class FormEditorDeEventos : Form
     {
         private ListaPadroesEventos Listas;
+        private GerenArquivos Arquivo; 
 
         public FormEditorDeEventos(ListaPadroesEventos _Listas)
         {
+            InitializeComponent();            
             Listas = _Listas;
-            if (Listas.GetNumDePadroes() == 0)
-                CarregaListaDoArquivo();
-            InitializeComponent();
         }
         private void CarregaListaDoArquivo()
         {
-
+            Arquivo = new GerenArquivos();
+            Listas = Arquivo.ImportarEventos();
+            if (Listas.GetNumDePadroes() == 0)
+            {
+                MessageBox.Show("Não existe registro de eventos marcados", "Ambiente RPB", MessageBoxButtons.OK);
+                this.Close();
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -30,6 +35,18 @@ namespace AmbienteRPB
         }
         private void FormEditorDeEventos_Load(object sender, EventArgs e)
         {
+            bool chave = false;
+            for (int i = 0; i < Listas.GetNumDePadroes(); i++)
+            {
+                if (Listas.GetListaNumeroDeEnvetosPOS(i) != 0)
+                {
+                    chave = true;
+                    i = Listas.GetNumDePadroes() + 2;
+                }
+            }
+            if (chave == false)
+                CarregaListaDoArquivo();
+
             for (int i = 0; i < Listas.GetNumDePadroes(); i++)
                 comboTiposDeEventos.Items.Add(Listas.GetListaDePadroesPOS(i));
         }

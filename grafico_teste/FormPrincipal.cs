@@ -49,7 +49,7 @@ namespace AmbienteRPB
             gbxEventos.Visible = false;
             gbxEventos.Enabled = false;
             ListaDePadroes = new ListaPadroesEventos();
-            ListaDePadroes.CriarLista(50, 50, 50, 10);
+            ListaDePadroes.CriarLista(50*2, 50, 50, 10);
             gbxChart.Location = new System.Drawing.Point(2, 21);
             gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
         }
@@ -70,7 +70,14 @@ namespace AmbienteRPB
         {
             //Salva eventos caso haja
             CarregaListaDePadroes(1);
-            Arquivos.ExportarEventos(ListaDePadroes);
+            for (int i = 0; i < ListaDePadroes.GetNumDePadroes(); i++)
+            {
+                if (ListaDePadroes.GetListaNumeroDeEnvetosPOS(i) != 0)
+                {
+                    Arquivos.ExportarEventos(ListaDePadroes);
+                    i = ListaDePadroes.GetNumDePadroes() + 2;
+                }
+            }
             /*if (ThreadChart.IsAlive == true && ThreadInicializada)
             {
                 ThreadChart.Abort();
