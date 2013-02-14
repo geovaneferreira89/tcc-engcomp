@@ -104,6 +104,23 @@ namespace AmbienteRPB
                 }
                 fileW.Close();
         }
+        //Exportao Eventos        -----------------------------------------------------------------
+        public void ExportarEventos(string[] Padrao, int[] numeroDeEventos, int numeroDePadroes)
+        {   
+            //Cabeçalho do arquivo
+            fileW = new System.IO.StreamWriter("ListaDeEventos.txt", true);
+            fileW.WriteLine("[Numero de Padroes = " + Convert.ToInt16(numeroDePadroes) + "]");
+            for (int i = 0; i < numeroDePadroes; i++)
+            {
+                fileW.WriteLine("[Evento = " + Padrao[i] + "]");
+                fileW.WriteLine("[Quantidade = " + numeroDeEventos[i] + "]");
+            }
+            fileW.Close();
+        }
+        //Importar Eventos         -----------------------------------------------------------------
+        public void ImportarEventos(string nomePadrao, Control _Chart, PointF Padrao_Inicio, PointF Padrao_Fim)
+        {
+        }
         //Exportao Padrao Editado  -----------------------------------------------------------------
         public void ExportarPadraoEditado(string nomePadrao, Control _Chart, PointF Padrao_Inicio, PointF Padrao_Fim)
         {
