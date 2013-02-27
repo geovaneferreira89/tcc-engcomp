@@ -506,7 +506,7 @@
             this.FrequenciaCombo.Name = "FrequenciaCombo";
             this.FrequenciaCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FrequenciaCombo.Size = new System.Drawing.Size(75, 25);
-            this.FrequenciaCombo.Text = "1";
+            this.FrequenciaCombo.Text = "4";
             this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
             // 
             // lbl_cm
@@ -534,11 +534,14 @@
             "80",
             "100",
             "150",
-            "200"});
+            "200",
+            "2000",
+            "2500",
+            "3000"});
             this.AmplitudeCombo.Name = "AmplitudeCombo";
             this.AmplitudeCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.AmplitudeCombo.Size = new System.Drawing.Size(75, 25);
-            this.AmplitudeCombo.Text = "50";
+            this.AmplitudeCombo.Text = "1000";
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
             // lbl_V
