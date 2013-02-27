@@ -708,6 +708,16 @@ namespace AmbienteRPB
             Evento8.Checked = false;
             Evento9.Checked = false;
             Evento10.Checked = false;
+            Evento11.Checked = false;
+            Evento12.Checked = false;
+            Evento13.Checked = false;
+            Evento14.Checked = false;
+            Evento15.Checked = false;
+            Evento16.Checked = false;
+            Evento17.Checked = false;
+            Evento18.Checked = false;
+            Evento19.Checked = false;
+            Evento20.Checked = false;
         }
       
         //-------------------------------------------------------------------------
@@ -800,6 +810,95 @@ namespace AmbienteRPB
             EventoAtual = 9;
             highlightColor = Color.Salmon;
         }
+        private void Enveto11_Click(object sender, EventArgs e)
+        {
+            Evento = Evento11.Text;
+            SetNenhumEventoMarcado();
+            Evento11.Checked = true;
+            EventoAtual = 10;
+            highlightColor = Color.PeachPuff;
+        }
+
+        private void Enveto12_Click(object sender, EventArgs e)
+        {
+            Evento = Evento12.Text;
+            SetNenhumEventoMarcado();
+            Evento12.Checked = true;
+            EventoAtual = 11;
+            highlightColor = Color.SkyBlue;
+        }
+
+        private void Enveto13_Click(object sender, EventArgs e)
+        {
+            Evento = Evento13.Text;
+            SetNenhumEventoMarcado();
+            Evento13.Checked = true;
+            EventoAtual = 12;
+            highlightColor = Color.Plum;
+        }
+
+        private void Enveto14_Click(object sender, EventArgs e)
+        {
+            Evento = Evento14.Text;
+            SetNenhumEventoMarcado();
+            Evento14.Checked = true;
+            EventoAtual = 13;
+            highlightColor = Color.MediumSlateBlue;
+        }
+
+        private void Enveto15_Click(object sender, EventArgs e)
+        {
+            Evento = Evento15.Text;
+            SetNenhumEventoMarcado();
+            Evento15.Checked = true;
+            EventoAtual = 14;
+            highlightColor = Color.LightGray;
+        }
+
+        private void Enveto16_Click(object sender, EventArgs e)
+        {
+            Evento = Evento16.Text;
+            SetNenhumEventoMarcado();
+            Evento16.Checked = true;
+            EventoAtual = 15;
+            highlightColor = Color.Brown;
+        }
+
+        private void Enveto17_Click(object sender, EventArgs e)
+        {
+            Evento = Evento17.Text;
+            SetNenhumEventoMarcado();
+            Evento17.Checked = true;
+            EventoAtual = 16;
+            highlightColor = Color.Khaki;
+        }
+
+        private void Enveto18_Click(object sender, EventArgs e)
+        {
+            Evento = Evento18.Text;
+            SetNenhumEventoMarcado();
+            Evento18.Checked = true;
+            EventoAtual = 17;
+            highlightColor = Color.DarkGoldenrod;
+        }
+
+        private void Enveto19_Click(object sender, EventArgs e)
+        {
+            Evento = Evento19.Text;
+            SetNenhumEventoMarcado();
+            Evento19.Checked = true;
+            EventoAtual = 18;
+            highlightColor = Color.YellowGreen;
+        }
+
+        private void Enveto20_Click(object sender, EventArgs e)
+        {
+             Evento = Evento20.Text;
+            SetNenhumEventoMarcado();
+            Evento20.Checked = true;
+            EventoAtual = 19;
+            highlightColor = Color.LightCoral;
+        }
         //------------------------------------------------------------------
         private void renomearToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -828,6 +927,26 @@ namespace AmbienteRPB
                     Evento9.Text = NomeEvento.NomePadrao;
                 if (Evento10.Checked)
                     Evento10.Text = NomeEvento.NomePadrao;
+                if (Evento11.Checked)
+                    Evento11.Text = NomeEvento.NomePadrao;
+                if (Evento12.Checked)
+                    Evento12.Text = NomeEvento.NomePadrao;
+                if (Evento13.Checked)
+                    Evento13.Text = NomeEvento.NomePadrao;
+                if (Evento14.Checked)
+                    Evento14.Text = NomeEvento.NomePadrao;
+                if (Evento15.Checked)
+                    Evento15.Text = NomeEvento.NomePadrao;
+                if (Evento16.Checked)
+                    Evento16.Text = NomeEvento.NomePadrao;
+                if (Evento17.Checked)
+                    Evento17.Text = NomeEvento.NomePadrao;
+                if (Evento18.Checked)
+                    Evento18.Text = NomeEvento.NomePadrao;
+                if (Evento19.Checked)
+                    Evento19.Text = NomeEvento.NomePadrao;
+                if (Evento20.Checked)
+                    Evento20.Text = NomeEvento.NomePadrao;
                 Evento = NomeEvento.NomePadrao;
             }
         }
@@ -842,6 +961,8 @@ namespace AmbienteRPB
         {
            
         }
+
+       
         //-----------------------------------------------------------
        
     }
