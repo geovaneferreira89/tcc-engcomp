@@ -35,8 +35,8 @@
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.canal1Canal2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcarEventos = new System.Windows.Forms.ToolStripMenuItem();
-            this.renomearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renomearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ediarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +87,16 @@
             this.Evento4 = new System.Windows.Forms.CheckBox();
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
+            this.Evento11 = new System.Windows.Forms.CheckBox();
+            this.Evento12 = new System.Windows.Forms.CheckBox();
+            this.Evento13 = new System.Windows.Forms.CheckBox();
+            this.Evento14 = new System.Windows.Forms.CheckBox();
+            this.Evento15 = new System.Windows.Forms.CheckBox();
+            this.Evento16 = new System.Windows.Forms.CheckBox();
+            this.Evento17 = new System.Windows.Forms.CheckBox();
+            this.Evento18 = new System.Windows.Forms.CheckBox();
+            this.Evento19 = new System.Windows.Forms.CheckBox();
+            this.Evento20 = new System.Windows.Forms.CheckBox();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -170,30 +180,30 @@
             this.marcarEventos.Text = "Marcar Eventos";
             this.marcarEventos.Click += new System.EventHandler(this.marcarPadrõesToolStripMenuItem_Click);
             // 
-            // renomearToolStripMenuItem
-            // 
-            this.renomearToolStripMenuItem.Name = "renomearToolStripMenuItem";
-            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.renomearToolStripMenuItem.Text = "Renomear";
-            this.renomearToolStripMenuItem.Click += new System.EventHandler(this.renomearToolStripMenuItem_Click);
-            // 
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
+            // 
+            // renomearToolStripMenuItem
+            // 
+            this.renomearToolStripMenuItem.Name = "renomearToolStripMenuItem";
+            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.renomearToolStripMenuItem.Text = "Renomear";
+            this.renomearToolStripMenuItem.Click += new System.EventHandler(this.renomearToolStripMenuItem_Click);
             // 
             // excluirToolStripMenuItem
             // 
             this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.excluirToolStripMenuItem.Text = "Excluir";
             // 
             // fecharToolStripMenuItem
             // 
             this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click_1);
             // 
@@ -209,14 +219,14 @@
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // padrõesToolStripMenuItem
             // 
             this.padrõesToolStripMenuItem.Name = "padrõesToolStripMenuItem";
-            this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.padrõesToolStripMenuItem.Text = "Padrões";
             this.padrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
@@ -542,6 +552,16 @@
             this.gbxEventos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.gbxEventos.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.gbxEventos.Controls.Add(this.Evento20);
+            this.gbxEventos.Controls.Add(this.Evento19);
+            this.gbxEventos.Controls.Add(this.Evento18);
+            this.gbxEventos.Controls.Add(this.Evento17);
+            this.gbxEventos.Controls.Add(this.Evento16);
+            this.gbxEventos.Controls.Add(this.Evento15);
+            this.gbxEventos.Controls.Add(this.Evento14);
+            this.gbxEventos.Controls.Add(this.Evento13);
+            this.gbxEventos.Controls.Add(this.Evento12);
+            this.gbxEventos.Controls.Add(this.Evento11);
             this.gbxEventos.Controls.Add(this.Evento1);
             this.gbxEventos.Controls.Add(this.Evento10);
             this.gbxEventos.Controls.Add(this.Evento9);
@@ -669,6 +689,116 @@
             this.Evento2.UseVisualStyleBackColor = false;
             this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
             // 
+            // Evento11
+            // 
+            this.Evento11.BackColor = System.Drawing.Color.PeachPuff;
+            this.Evento11.Location = new System.Drawing.Point(3, 179);
+            this.Evento11.Name = "Evento11";
+            this.Evento11.Size = new System.Drawing.Size(84, 17);
+            this.Evento11.TabIndex = 10;
+            this.Evento11.Text = "Padrão 11";
+            this.Evento11.UseVisualStyleBackColor = false;
+            this.Evento11.Click += new System.EventHandler(this.Enveto11_Click);
+            // 
+            // Evento12
+            // 
+            this.Evento12.BackColor = System.Drawing.Color.SkyBlue;
+            this.Evento12.Location = new System.Drawing.Point(4, 196);
+            this.Evento12.Name = "Evento12";
+            this.Evento12.Size = new System.Drawing.Size(84, 17);
+            this.Evento12.TabIndex = 11;
+            this.Evento12.Text = "Padrão 12";
+            this.Evento12.UseVisualStyleBackColor = false;
+            this.Evento12.Click += new System.EventHandler(this.Enveto12_Click);
+            // 
+            // Evento13
+            // 
+            this.Evento13.BackColor = System.Drawing.Color.Plum;
+            this.Evento13.Location = new System.Drawing.Point(4, 213);
+            this.Evento13.Name = "Evento13";
+            this.Evento13.Size = new System.Drawing.Size(84, 17);
+            this.Evento13.TabIndex = 12;
+            this.Evento13.Text = "Padrão 13";
+            this.Evento13.UseVisualStyleBackColor = false;
+            this.Evento13.Click += new System.EventHandler(this.Enveto13_Click);
+            // 
+            // Evento14
+            // 
+            this.Evento14.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.Evento14.Location = new System.Drawing.Point(4, 230);
+            this.Evento14.Name = "Evento14";
+            this.Evento14.Size = new System.Drawing.Size(84, 17);
+            this.Evento14.TabIndex = 13;
+            this.Evento14.Text = "Padrão 14";
+            this.Evento14.UseVisualStyleBackColor = false;
+            this.Evento14.Click += new System.EventHandler(this.Enveto14_Click);
+            // 
+            // Evento15
+            // 
+            this.Evento15.BackColor = System.Drawing.Color.LightGray;
+            this.Evento15.Location = new System.Drawing.Point(4, 247);
+            this.Evento15.Name = "Evento15";
+            this.Evento15.Size = new System.Drawing.Size(84, 17);
+            this.Evento15.TabIndex = 14;
+            this.Evento15.Text = "Padrão 15";
+            this.Evento15.UseVisualStyleBackColor = false;
+            this.Evento15.Click += new System.EventHandler(this.Enveto15_Click);
+            // 
+            // Evento16
+            // 
+            this.Evento16.BackColor = System.Drawing.Color.Brown;
+            this.Evento16.Location = new System.Drawing.Point(4, 264);
+            this.Evento16.Name = "Evento16";
+            this.Evento16.Size = new System.Drawing.Size(84, 17);
+            this.Evento16.TabIndex = 15;
+            this.Evento16.Text = "Padrão 16";
+            this.Evento16.UseVisualStyleBackColor = false;
+            this.Evento16.Click += new System.EventHandler(this.Enveto16_Click);
+            // 
+            // Evento17
+            // 
+            this.Evento17.BackColor = System.Drawing.Color.Khaki;
+            this.Evento17.Location = new System.Drawing.Point(4, 281);
+            this.Evento17.Name = "Evento17";
+            this.Evento17.Size = new System.Drawing.Size(84, 17);
+            this.Evento17.TabIndex = 16;
+            this.Evento17.Text = "Padrão 17";
+            this.Evento17.UseVisualStyleBackColor = false;
+            this.Evento17.Click += new System.EventHandler(this.Enveto17_Click);
+            // 
+            // Evento18
+            // 
+            this.Evento18.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.Evento18.Location = new System.Drawing.Point(4, 298);
+            this.Evento18.Name = "Evento18";
+            this.Evento18.Size = new System.Drawing.Size(84, 17);
+            this.Evento18.TabIndex = 17;
+            this.Evento18.Text = "Padrão 18";
+            this.Evento18.UseVisualStyleBackColor = false;
+            this.Evento18.Click += new System.EventHandler(this.Enveto18_Click);
+            // 
+            // Evento19
+            // 
+            this.Evento19.BackColor = System.Drawing.Color.YellowGreen;
+            this.Evento19.Location = new System.Drawing.Point(4, 315);
+            this.Evento19.Name = "Evento19";
+            this.Evento19.Size = new System.Drawing.Size(84, 17);
+            this.Evento19.TabIndex = 18;
+            this.Evento19.Text = "Padrão 19";
+            this.Evento19.UseVisualStyleBackColor = false;
+            this.Evento19.Click += new System.EventHandler(this.Enveto19_Click);
+            // 
+            // Evento20
+            // 
+            this.Evento20.BackColor = System.Drawing.Color.LightCoral;
+            this.Evento20.Location = new System.Drawing.Point(4, 332);
+            this.Evento20.Name = "Evento20";
+            this.Evento20.Size = new System.Drawing.Size(84, 17);
+            this.Evento20.TabIndex = 19;
+            this.Evento20.Text = "Padrão 20";
+            this.Evento20.UseVisualStyleBackColor = false;
+            this.Evento20.Click += new System.EventHandler(this.Enveto20_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -764,6 +894,16 @@
         private System.Windows.Forms.ToolStripMenuItem ediarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem padrõesToolStripMenuItem;
+        private System.Windows.Forms.CheckBox Evento20;
+        private System.Windows.Forms.CheckBox Evento19;
+        private System.Windows.Forms.CheckBox Evento18;
+        private System.Windows.Forms.CheckBox Evento17;
+        private System.Windows.Forms.CheckBox Evento16;
+        private System.Windows.Forms.CheckBox Evento15;
+        private System.Windows.Forms.CheckBox Evento14;
+        private System.Windows.Forms.CheckBox Evento13;
+        private System.Windows.Forms.CheckBox Evento12;
+        private System.Windows.Forms.CheckBox Evento11;
     }
 }
 
