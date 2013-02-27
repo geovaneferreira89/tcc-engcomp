@@ -164,5 +164,20 @@ namespace AmbienteRPB
             Arquivos.ExportarPadraoEditado(edtEvento_Nome.Text, chart1, Padrao_Inicio, Padrao_Fim);
             MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Ambiente RPB");
         }
+
+        private void cbx_Inicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbx_Fim_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbx_Referencia_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

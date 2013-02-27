@@ -43,15 +43,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbx_Inicio = new System.Windows.Forms.CheckBox();
+            this.cbx_Fim = new System.Windows.Forms.CheckBox();
+            this.cbx_Referencia = new System.Windows.Forms.CheckBox();
             this.gbxEditorDeEventos.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxEditorDeEventos
@@ -59,14 +63,10 @@
             this.gbxEditorDeEventos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxEditorDeEventos.Controls.Add(this.button4);
-            this.gbxEditorDeEventos.Controls.Add(this.button3);
-            this.gbxEditorDeEventos.Controls.Add(this.button2);
-            this.gbxEditorDeEventos.Controls.Add(this.button1);
-            this.gbxEditorDeEventos.Controls.Add(this.btnSalvar);
+            this.gbxEditorDeEventos.Controls.Add(this.groupBox3);
+            this.gbxEditorDeEventos.Controls.Add(this.groupBox2);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox4);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox1);
-            this.gbxEditorDeEventos.Controls.Add(this.chart1);
             this.gbxEditorDeEventos.Location = new System.Drawing.Point(4, 4);
             this.gbxEditorDeEventos.Name = "gbxEditorDeEventos";
             this.gbxEditorDeEventos.Size = new System.Drawing.Size(714, 420);
@@ -75,10 +75,9 @@
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(653, 395);
+            this.button1.Location = new System.Drawing.Point(492, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 21);
+            this.button1.Size = new System.Drawing.Size(77, 25);
             this.button1.TabIndex = 16;
             this.button1.Text = "Fechar";
             this.button1.UseVisualStyleBackColor = true;
@@ -86,11 +85,10 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSalvar.Enabled = false;
-            this.btnSalvar.Location = new System.Drawing.Point(592, 395);
+            this.btnSalvar.Location = new System.Drawing.Point(408, 9);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(61, 21);
+            this.btnSalvar.Size = new System.Drawing.Size(77, 25);
             this.btnSalvar.TabIndex = 15;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -130,7 +128,7 @@
             this.groupBox1.Controls.Add(this.comboTiposDeEventos);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Location = new System.Drawing.Point(3, 49);
+            this.groupBox1.Location = new System.Drawing.Point(3, 45);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(120, 370);
             this.groupBox1.TabIndex = 12;
@@ -212,48 +210,72 @@
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "3";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chart1);
+            this.groupBox2.Location = new System.Drawing.Point(129, 45);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(576, 333);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            // 
             // chart1
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.chart1.Location = new System.Drawing.Point(132, 57);
+            this.chart1.Location = new System.Drawing.Point(4, 10);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(575, 330);
-            this.chart1.TabIndex = 13;
+            this.chart1.Size = new System.Drawing.Size(569, 318);
+            this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
-            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             // 
-            // button2
+            // groupBox3
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(128, 394);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 22);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Inicio";
-            this.button2.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.cbx_Referencia);
+            this.groupBox3.Controls.Add(this.cbx_Fim);
+            this.groupBox3.Controls.Add(this.cbx_Inicio);
+            this.groupBox3.Controls.Add(this.btnSalvar);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Location = new System.Drawing.Point(129, 379);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(576, 35);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
             // 
-            // button3
+            // cbx_Inicio
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(201, 394);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 22);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Referência";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cbx_Inicio.AutoSize = true;
+            this.cbx_Inicio.Location = new System.Drawing.Point(6, 12);
+            this.cbx_Inicio.Name = "cbx_Inicio";
+            this.cbx_Inicio.Size = new System.Drawing.Size(53, 17);
+            this.cbx_Inicio.TabIndex = 17;
+            this.cbx_Inicio.Text = "Início";
+            this.cbx_Inicio.UseVisualStyleBackColor = true;
+            this.cbx_Inicio.Click += new System.EventHandler(this.cbx_Inicio_Click);
             // 
-            // button4
+            // cbx_Fim
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.Location = new System.Drawing.Point(274, 394);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 22);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "Fim";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cbx_Fim.AutoSize = true;
+            this.cbx_Fim.Location = new System.Drawing.Point(92, 12);
+            this.cbx_Fim.Name = "cbx_Fim";
+            this.cbx_Fim.Size = new System.Drawing.Size(42, 17);
+            this.cbx_Fim.TabIndex = 18;
+            this.cbx_Fim.Text = "Fim";
+            this.cbx_Fim.UseVisualStyleBackColor = true;
+            this.cbx_Fim.Click += new System.EventHandler(this.cbx_Fim_Click);
+            // 
+            // cbx_Referencia
+            // 
+            this.cbx_Referencia.AutoSize = true;
+            this.cbx_Referencia.Location = new System.Drawing.Point(178, 12);
+            this.cbx_Referencia.Name = "cbx_Referencia";
+            this.cbx_Referencia.Size = new System.Drawing.Size(78, 17);
+            this.cbx_Referencia.TabIndex = 19;
+            this.cbx_Referencia.Text = "Referência";
+            this.cbx_Referencia.UseVisualStyleBackColor = true;
+            this.cbx_Referencia.Click += new System.EventHandler(this.cbx_Referencia_Click);
             // 
             // FormEditorDeEventos
             // 
@@ -271,7 +293,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,13 +315,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ListBox lbxEventosPorTipo;
         private System.Windows.Forms.ComboBox comboTiposDeEventos;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.CheckBox cbx_Referencia;
+        private System.Windows.Forms.CheckBox cbx_Fim;
+        private System.Windows.Forms.CheckBox cbx_Inicio;
 
     }
 }
