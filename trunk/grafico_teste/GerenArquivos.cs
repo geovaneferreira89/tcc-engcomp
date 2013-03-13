@@ -64,144 +64,75 @@ namespace AmbienteRPB
             edfFileOutput = formEDF.edfFileOutput;
             return edfFileOutput;
         }
-        //Exportao Padrao   -----------------------------------------------------------------
-        public void ExportarPadraoArquivo(string nomePadrao, Control _Chart, HitTestResult canal, PointF Padrao_Inicio, PointF Padrao_Fim)
+        //Exportao Padrao & Eventos-----------------------------------------------------------
+        public void Exportar_Padroes_Eventos(ListaPadroesEventos[] Lista)
         {
-                /*
-                
-                 * fileW.WriteLine("[Numero de Amostras = " + (Padrao_Fim.X - Padrao_Inicio.X) + "]");
-                for (int i = 0; (i + Padrao_Inicio.X <= Padrao_Fim.X); i++)
+            int EvenTotal = 0;
+                fileW = new System.IO.StreamWriter("Padroes_Eventos.txt", false);
+                fileW.WriteLine("[Num de Padroes = 20]");
+                for (int i=0; i < 20; i++)
                 {
-                    int J = Convert.ToInt16(Padrao_Inicio.X) + i;
-                    fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[J]);
+                    fileW.WriteLine("[Padrao = " + Lista[i].GetNomePadrao() + "]");
+                    EvenTotal = Lista[i].GetNumeroEventos();
+                    fileW.WriteLine("[Eventos= " + EvenTotal + "]");
+                    if (EvenTotal != 0)
+                    {
+                        for (int j = 0; j < EvenTotal; j++)
+                        {
+                            fileW.WriteLine("[Evento = " + Lista[i].GetNomesEvento(j) + "]");
+                            fileW.WriteLine("[Inicio = " + Lista[i].GetValorInicio(j) + "]");
+                            fileW.WriteLine("[Fim    = " + Lista[i].GetValorFim(j) + "]");
+                        }
+                   }
                 }
                 fileW.Close();
-                 */
-                chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
-                fileW = new System.IO.StreamWriter(nomePadrao + ".txt", false);
-                int inicio = 0;
-                int fim = 0;
-                bool Busca = true;
-                while (Busca)
-                {
-                    if (chart.Series[canal.ChartArea.Name].Points[inicio].XValue == Convert.ToInt16(Padrao_Inicio.X))
-                        Busca = false;
-                    inicio++;
-                }
-                Busca = true;
-                while (Busca)
-                {
-                    if (chart.Series[canal.ChartArea.Name].Points[fim].XValue == Convert.ToInt16(Padrao_Fim.X))
-                        Busca = false;
-                    fim++;
-                }
-                fileW.WriteLine("[Numero de Amostras = " + Convert.ToInt16(fim - inicio - 1) + "]");
+        }
 
-                for (int i = inicio; i < fim; i++)
-                {
-                    fileW.WriteLine(chart.Series[canal.ChartArea.Name].Points[i]);
-                }
-                fileW.Close();
-        }
-        //Exportao Eventos        -----------------------------------------------------------------
-        public void ExportarEventos(ListaPadroesEventos Lista)
-        {   
-            //Cabeçalho do arquivo
-            fileW = new System.IO.StreamWriter("ListaDeEventos.txt", false);
-            fileW.WriteLine("[Numero de Padroes = " + Convert.ToInt16(Lista.GetNumDePadroes()) + "]");
-            for (int i = 0; i < Lista.GetNumDePadroes(); i++)
-            {
-                fileW.WriteLine("[Evento = " + Lista.GetListaDePadroesPOS(i) + "]");
-                fileW.WriteLine("[Quantidade = " + Lista.GetListaNumeroDeEnvetosPOS(i) + "]");
-            }
-            fileW.Close();
-        }
-        //Importar Eventos         -----------------------------------------------------------------
-        public ListaPadroesEventos ImportarEventos()
+        //Importar Padrao & Eventos------------------------------------------------------------
+        public ListaPadroesEventos[] Importar_Exportar_Padroes_Eventos()
         {
-             ListaPadroesEventos Lista = new ListaPadroesEventos();
+             ListaPadroesEventos[] Lista;
              try
              {
-                 fileR = new System.IO.StreamReader("ListaDeEventos.txt");
+                 fileR = new System.IO.StreamReader("Padroes_Eventos.txt");
                  string dados;
-                 int NUM = 0;
-                 dados = fileR.ReadLine();
-                 dados = dados.Substring(21);
-                 dados = dados.Substring(0, dados.Length - 1);
-                 NUM = Convert.ToInt16(dados);
-                 Lista.CriarLista(NUM * 2, NUM, NUM, NUM);
+                 int NUM = Convert.ToInt16(LerLinha(17));
+                 Lista = new ListaPadroesEventos[NUM];
                  for (int i = 0; i < NUM; i++)
                  {
-                     dados = fileR.ReadLine();
-                     dados = dados.Substring(10);
-                     dados = dados.Substring(0, dados.Length - 1);
-                     Lista.SetListaDePadroesPOS(i, dados);
-
-                     dados = fileR.ReadLine();
-                     dados = dados.Substring(14);
-                     dados = dados.Substring(0, dados.Length - 1);
-                     Lista.SetListaNumeroDeEnvetosPOS(i, Convert.ToInt16(dados));
+                     Lista[i].SetNomePadrao(LerLinha(10));
+                     dados = LerLinha(10);
+                     Lista[i].SetNumeroEventos(Convert.ToInt16(dados));
+                     if(Convert.ToInt16(dados) != 0)
+                     {
+                        int VarCont = Convert.ToInt16(dados);
+                         for(int j=0;j<VarCont;j++)
+                         {
+                             Lista[i].SetNomesEvento(j, LerLinha(10));
+                             //-----------VER ISTO------------------
+                             // Lista[i].SetValorInicio(j, LerLinha(10));
+                            // Lista[i].SetValorFim(j, LerLinha(10));
+                            
+                         }
+                     
+                     }
                  }
                  return Lista;
              }
              catch
              {
-                 return Lista;
+                 return null;
              }
 
         }
-        //Exportao Padrao Editado  -----------------------------------------------------------------
-        public void ExportarPadraoEditado(string nomePadrao, Control _Chart, PointF Padrao_Inicio, PointF Padrao_Fim)
+        //Ler Linha    -----------------------------------------------------------------
+        private string LerLinha(int Offset)
         {
-            chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
-            fileW = new System.IO.StreamWriter(nomePadrao + "_NEW", false);
-            int inicio = 0;
-            int fim = 0;
-            bool Busca = true;
-            while (Busca)
-            {
-                if (chart.Series[0].Points[inicio].XValue == Convert.ToInt16(Padrao_Inicio.X))
-                    Busca = false;
-                inicio++;
-            }
-            Busca = true;
-            while (Busca)
-            {
-                if (chart.Series[0].Points[fim].XValue == Convert.ToInt16(Padrao_Fim.X))
-                    Busca = false;
-                fim++;
-            }
-            fileW.WriteLine("[Numero de Amostras = " + Convert.ToInt16(fim - inicio - 1) + "]");
-            for (int i = inicio; i<fim; i++)
-            {
-                fileW.WriteLine(chart.Series[0].Points[i]);
-            }
-            fileW.Close();
-        }
-        //Importar Padraoes  ----------------------------------------------------------------
-        public void ImportarPadraoArquivo(string nomePadrao, Control _Chart)
-        {
-            chart = _Chart as System.Windows.Forms.DataVisualization.Charting.Chart;
-            fileR = new System.IO.StreamReader(nomePadrao);
             string dados;
             dados = fileR.ReadLine();
-            dados = dados.Substring(22);
+            dados = dados.Substring(Offset);
             dados = dados.Substring(0, dados.Length - 1);
-            int NumeroDeAmostras = Convert.ToInt16(dados);
-            chart.Series[0].Color = Color.Red;
-            for (int i = 0; i <= NumeroDeAmostras; i++)
-            {
-                dados = fileR.ReadLine();
-                string x = dados;
-                string y = dados;
-                int X_ = x.IndexOf(" ");
-                x = x.Substring(3);
-                x = x.Substring(0, X_);
-                y = y.Substring(X_+2);
-                y = y.Substring(0, y.Length - 1);
-              chart.Series[0].Points.AddXY(Convert.ToDouble(x),Convert.ToDouble(y));
-            }
+            return dados;
         }
-        //----------------------------------------------------------------------------------
     }
 }

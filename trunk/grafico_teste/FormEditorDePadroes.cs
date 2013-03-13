@@ -114,7 +114,7 @@ namespace AmbienteRPB
         private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
         {
             Arquivos = new GerenArquivos();
-            Arquivos.ExportarPadraoEditado(edtEvento_Nome.Text, chart1, Padrao_Inicio, Padrao_Fim);
+            //Arquivos.ExportarPadraoEditado(Listas);
             MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Ambiente RPB");
         }
 
