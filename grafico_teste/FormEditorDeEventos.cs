@@ -14,7 +14,7 @@ namespace AmbienteRPB
 {
     public partial class FormEditorDeEventos : Form
     {
-        private ListaPadroesEventos Listas;
+        private ListaPadroesEventos[] Listas;
         private GerenArquivos Arquivos;
         private int numCursor = 0;
         private int mostrarCursores = 0;
@@ -23,20 +23,29 @@ namespace AmbienteRPB
         PointF Padrao_Inicio;
         PointF Padrao_Fim;
 
-        public FormEditorDeEventos(ListaPadroesEventos _Listas)
+        public FormEditorDeEventos(ListaPadroesEventos[] _Listas)
         {
             InitializeComponent();            
             Listas = _Listas;
         }
         private void CarregaListaDoArquivo()
         {
+           /* bool chave = false;
             Arquivos = new GerenArquivos();
             Listas = Arquivos.ImportarEventos();
-            if (Listas.GetNumDePadroes() == 0)
+            for (int i = 0; i < 20; i++)
+            {
+                if (Listas[i].NumeroEventos != 0)
+                {
+                    i = 100;
+                    chave = true; 
+                }
+            }
+            if (chave == false)
             {
                 MessageBox.Show("Não existe registro de eventos marcados", "Ambiente RPB", MessageBoxButtons.OK);
                 this.Close();
-            }
+            }*/
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -44,26 +53,14 @@ namespace AmbienteRPB
         }
         private void FormEditorDeEventos_Load(object sender, EventArgs e)
         {
-            bool chave = false;
-            for (int i = 0; i < Listas.GetNumDePadroes(); i++)
-            {
-                if (Listas.GetListaNumeroDeEnvetosPOS(i) != 0)
-                {
-                    chave = true;
-                    i = Listas.GetNumDePadroes() + 2;
-                }
-            }
-            if (chave == false)
-                CarregaListaDoArquivo();
-
-            for (int i = 0; i < Listas.GetNumDePadroes(); i++)
-                comboTiposDeEventos.Items.Add(Listas.GetListaDePadroesPOS(i));
+            for (int i = 0; i < 20; i++)
+                comboTiposDeEventos.Items.Add(Listas[i].NomePadrao);
         }
         private void comboTiposDeEventos_SelectedIndexChanged(object sender, EventArgs e)
         {
             lbxEventosPorTipo.Items.Clear();
-            for (int i = 0; i < Listas.GetListaNumeroDeEnvetosPOS(comboTiposDeEventos.SelectedIndex); i++)
-                lbxEventosPorTipo.Items.Add(comboTiposDeEventos.SelectedItem.ToString() + "_" + Convert.ToString(i));
+            for (int i = 0; i < Listas[comboTiposDeEventos.SelectedIndex].NumeroEventos; i++)
+                lbxEventosPorTipo.Items.Add(Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(i));
             if (chart1.Series.Count != 0)
             {
                 chart1.Series.Remove(chart1.Series["Serie01"]);
@@ -83,7 +80,7 @@ namespace AmbienteRPB
                 chart1.Series.Add("Serie01");
                 chart1.Series["Serie01"].ChartArea = "Padrao";
                 chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                System.IO.StreamReader fileR = new System.IO.StreamReader(lbxEventosPorTipo.SelectedItem + ".txt");
+            /*    System.IO.StreamReader fileR = new System.IO.StreamReader(lbxEventosPorTipo.SelectedItem + ".txt");
                 edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString(); //Tirar o resto... 
                 string dados;
                 dados = fileR.ReadLine();
@@ -103,7 +100,7 @@ namespace AmbienteRPB
                     y = y.Substring(0, y.Length - 1);
                     chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
                 }
-
+               */
             }
         }
 
@@ -161,23 +158,26 @@ namespace AmbienteRPB
         private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
         {
             Arquivos = new GerenArquivos();
-            Arquivos.ExportarPadraoEditado(edtEvento_Nome.Text, chart1, Padrao_Inicio, Padrao_Fim);
+            Arquivos.Exportar_Padroes_Eventos(Listas);
             MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Ambiente RPB");
         }
-
+        //--
         private void cbx_Inicio_Click(object sender, EventArgs e)
         {
-
+            cbx_Referencia.Checked = false;
+            cbx_Fim.Checked = false;
         }
-
+        //--
         private void cbx_Fim_Click(object sender, EventArgs e)
         {
-
+            cbx_Inicio.Checked = false;
+            cbx_Referencia.Checked = false;
         }
-
+        //--
         private void cbx_Referencia_Click(object sender, EventArgs e)
         {
-
+            cbx_Inicio.Checked = false;
+            cbx_Fim.Checked = false;
         }
     }
 }

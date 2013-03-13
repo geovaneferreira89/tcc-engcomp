@@ -2,82 +2,72 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+
 
 namespace AmbienteRPB
 {
     public class ListaPadroesEventos
     {
-        public int[] ListaDeEventos; //ex inicio é posicao [0] e fim pos [1] para o evento 01... inicio é posicao [2] e fim pos [3] para o evento 02... 
-        public int[] ListaNumeroEventos;
-        public string[] ListaPadroes;
-        public int NumDePadroes;
+        public PointF[] ValorInicio;
+        public PointF[] ValorFim;
+        public string[] NomesEvento;
+        public int      NumeroEventos;
+        public string   NomePadrao;
+
         //-------------------------------------------------
-        public void CriarLista(int tamaListaEvent, int tamListaNumEvent, int tamListaPadros, int _NumDePadroes)
+        public void CriarLista(int _NumeroDeEventos, string _nomePadrao)
         {
-            ListaDeEventos = new int[tamaListaEvent];
-            ListaNumeroEventos = new int[tamListaNumEvent];
-            ListaPadroes = new string[tamListaPadros];
-            NumDePadroes = _NumDePadroes;
+            ValorInicio = new PointF[_NumeroDeEventos];
+            ValorFim    = new PointF[_NumeroDeEventos];
+            NomesEvento     = new string[_NumeroDeEventos];
+            NumeroEventos   = 0;
+            NomePadrao      = _nomePadrao;
         }
         //Sets------------------------------------------------
-        public void SetListaDeEnvetos(int[] _ListaDeEventos)
+        public void SetValorInicio(int Posicao, PointF Valor)
         {
-            ListaDeEventos = _ListaDeEventos;
+            ValorInicio[Posicao] = new PointF();
+            ValorInicio[Posicao] = Valor;
         }
-        public void SetListaNumeroDeEnvetos(int[] _ListaNumeroEventos)
+        public void SetValorFim(int Posicao, PointF Valor)
         {
-            ListaNumeroEventos = _ListaNumeroEventos;
+            ValorFim[Posicao] = new PointF();
+            ValorFim[Posicao] = Valor;
         }
-        public void SetListaDePadroes(string[] _ListaPadroes)
+        public void SetNomesEvento(int Posicao,string Nome)
         {
-            ListaPadroes = _ListaPadroes;
+            NomesEvento[Posicao] = Nome;
         }
-        public void SetNumDePadroes(int _NumDePadroes)
+        public void SetNumeroEventos(int Valor)
         {
-            NumDePadroes = _NumDePadroes;
+           NumeroEventos = Valor;
         }
-        //-----------
-        public void SetListaDeEnvetosPOS(int pos, int valor)
+        public void SetNomePadrao(string Nome)
         {
-            ListaDeEventos[pos] = valor;
+            NomePadrao = Nome;
         }
-        public void SetListaNumeroDeEnvetosPOS(int pos, int valor)
-        {
-            ListaNumeroEventos[pos] = valor;
-        }
-        public void SetListaDePadroesPOS(int pos, string nome)
-        {
-            ListaPadroes[pos] = nome;
-        }
+       
         //Gets------------------------------------------------
-        public int[] GetListaDeEnvetos()
+        public PointF GetValorInicio(int POS)
         {
-            return ListaDeEventos;
+            return ValorInicio[POS];
         }
-        public int[] GetListaNumeroDeEnvetos()
+        public PointF GetValorFim(int POS)
         {
-            return ListaNumeroEventos;
+            return ValorFim[POS];
         }
-        public string[] GetListaDePadroes()
+        public string GetNomesEvento(int POS)
         {
-            return ListaPadroes;
+            return NomesEvento[POS];
         }
-        public int GetNumDePadroes()
+        public int GetNumeroEventos()
         {
-            return NumDePadroes;
+            return NumeroEventos;
         }
-        //----------
-        public int GetListaDeEnvetosPOS(int pos)
+        public string GetNomePadrao()
         {
-            return ListaDeEventos[pos];
-        }
-        public int GetListaNumeroDeEnvetosPOS(int pos)
-        {
-            return ListaNumeroEventos[pos];
-        }
-        public string GetListaDePadroesPOS(int pos)
-        {
-            return ListaPadroes[pos];
+            return NomePadrao;
         }
         //----------------------------------------------------
     }

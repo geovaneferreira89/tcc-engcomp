@@ -34,7 +34,8 @@ namespace AmbienteRPB
         private GerenArquivos Arquivos;
         //Marção de Padrões e seus Eventos-----------------------------------------------
         private int EventoAtual;
-        private ListaPadroesEventos ListaDePadroes;
+        private ListaPadroesEventos[] ListaPadroes;
+
         String Evento;
         Color highlightColor;
 
@@ -48,10 +49,21 @@ namespace AmbienteRPB
             InitializeComponent();
             gbxEventos.Visible = false;
             gbxEventos.Enabled = false;
-            ListaDePadroes = new ListaPadroesEventos();
-            ListaDePadroes.CriarLista(50*2, 50, 50, 10);
             gbxChart.Location = new System.Drawing.Point(2, 21);
             gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
+        }
+        public void CarregaNomesPadroes(int Total)
+        {
+            string str;
+            ListaPadroes = new ListaPadroesEventos[Total];
+            for (int i = 0; i < Total; i++)
+            {
+                str = "Evento" + (i + 1);
+                ListaPadroes[i] = new ListaPadroesEventos();
+                ListaPadroes[i].CriarLista(20, this.Controls.Find(str, true)[0].Text);
+
+
+            }
         }
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -68,15 +80,15 @@ namespace AmbienteRPB
          */
         private void encerrar_sistema()
         {
-            //Salva eventos caso haja
-            CarregaListaDePadroes(1);
-            for (int i = 0; i < ListaDePadroes.GetNumDePadroes(); i++)
+            //SALVAR
+            if(ListaPadroes != null)
             {
-                if (ListaDePadroes.GetListaNumeroDeEnvetosPOS(i) != 0)
-                {
-                    Arquivos.ExportarEventos(ListaDePadroes);
-                    i = ListaDePadroes.GetNumDePadroes() + 2;
-                }
+               DialogResult resposta = MessageBox.Show("Deseja salvar a lista de pradrões e eventos?", "Ambiente RPB", MessageBoxButtons.YesNo);
+               if (resposta == DialogResult.Yes)
+               {
+                   Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
+                   MessageBox.Show("Salvo com sucesso!", "Ambiente RPB");
+               }
             }
             /*if (ThreadChart.IsAlive == true && ThreadInicializada)
             {
@@ -224,6 +236,9 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------------------
         private void marcarPadrõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (CarregaListaDePadroes() == false)
+                CarregaNomesPadroes(20);
+
             if (marcarEventos.Checked == false)
             {
                 btn_MarcarPadroes.Enabled = true;
@@ -250,6 +265,7 @@ namespace AmbienteRPB
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, this.Size.Height - 105);
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 24, this.Size.Height - 115);
                 AtualizaFerramentaAtiva("", 0);
+                Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
             }
         }
         //------------------------------------------------------------------------------------------
@@ -342,7 +358,7 @@ namespace AmbienteRPB
                 highlight.Visible = true;
                 chart1.Annotations.Add(highlight);*/
 
-                Exportar_Padrao(Padrao_Inicio, Padrao_Fim);
+                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result);
                 numCursor = 0;//CLICAR + VEZES SEM EFEITO
                 //result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0), new PointF(0, 0), true);
                 result.ChartArea.CursorX.LineColor = Color.LightGray;
@@ -355,13 +371,21 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
-        private void Exportar_Padrao(PointF Padrao_Inicio, PointF Padrao_Fim)
+        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal)
         {
             if (Evento != null)
             {
-                Arquivos.ExportarPadraoArquivo(Evento + "_" + ListaDePadroes.GetListaNumeroDeEnvetosPOS(EventoAtual), chart1, var_result, Padrao_Inicio, Padrao_Fim);
-                MessageBox.Show("Padrão '" + Evento + "' salvo.", "Ambiente RPB");
-                ListaDePadroes.SetListaNumeroDeEnvetosPOS(EventoAtual,ListaDePadroes.GetListaNumeroDeEnvetosPOS(EventoAtual) + 1);
+                for (int i = 0; i <= 20; i++)
+                {
+                    if (ListaPadroes[i].NomePadrao == Evento)
+                    {
+                        ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1); 
+                        ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(),Padrao_Inicio);
+                        ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
+                        ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "_" + ListaPadroes[i].GetNumeroEventos() + "_" + Canal.ChartArea.ToString());
+                        i = 100; //Sai do loop
+                    }
+                }
             }
             else
                 MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
@@ -375,30 +399,25 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------       
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CarregaListaDePadroes(1);
-            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaDePadroes);
-            EditorEvenForm.ShowDialog();
+            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
         }
         //-----------------------------------------------------------------------------------------
-        private void CarregaListaDePadroes(int Opcao)
-        {
-            if (Opcao == 1) //Salva a lista atual
+        private bool CarregaListaDePadroes( )
+        {   
+            ListaPadroesEventos[] ListaPadroesAux = Arquivos.Importar_Exportar_Padroes_Eventos();
+            if (ListaPadroesAux != null)
             {
-                for (int i = 1; i <= ListaDePadroes.GetNumDePadroes(); i++)
-                {
-                    string str = "Evento" + i;
-                    ListaDePadroes.SetListaDePadroesPOS(i - 1, this.Controls.Find(str, true)[0].Text);
-                }
+                ListaPadroes = ListaPadroesAux;
+                return true;
             }
-            //else //Carrega a lista de algum lugar
-            //FAZER//
+            else
+                return false;
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListaDePadroes.SetNumDePadroes(ListaDePadroes.GetNumDePadroes() + 1);
             //adiciona novo check box... 
-            //FAZER.//
+            //?
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
