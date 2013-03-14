@@ -16,6 +16,21 @@ namespace AmbienteRPB
         private System.IO.StreamReader fileR;
         private EDFFile edfFileInput;
         private EDFFile edfFileOutput;
+
+        //Verifica se o Arquivo existe----------------------------------------------------------
+        public bool ArquivoExiste(string Arquivo_Nome)
+        {
+            try
+            {
+                fileR = new System.IO.StreamReader(Arquivo_Nome);
+                fileR.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         //Salvar Projeto Como ----------------------------------------------------------------
         public void Salva_Projeto(string diretorio, int __numeroDeCanais, Control _Chart)
         {
@@ -81,17 +96,17 @@ namespace AmbienteRPB
                         {
                             fileW.WriteLine("[Evento = " + Lista[i].GetNomesEvento(j) + "]");
                             fileW.WriteLine("[Inicio = " + Lista[i].GetValorInicio(j) + "]");
+                            fileW.WriteLine("[Meio   = " + Lista[i].GetValorMeio(j) + "]");
                             fileW.WriteLine("[Fim    = " + Lista[i].GetValorFim(j) + "]");
                         }
                    }
                 }
                 fileW.Close();
         }
-
         //Importar Padrao & Eventos------------------------------------------------------------
         public ListaPadroesEventos[] Importar_Exportar_Padroes_Eventos()
         {
-             ListaPadroesEventos[] Lista;
+            ListaPadroesEventos[] Lista = new ListaPadroesEventos[20];
              try
              {
                  fileR = new System.IO.StreamReader("Padroes_Eventos.txt");
@@ -100,27 +115,55 @@ namespace AmbienteRPB
                  Lista = new ListaPadroesEventos[NUM];
                  for (int i = 0; i < NUM; i++)
                  {
+                     Lista[i] = new ListaPadroesEventos();
+                     Lista[i].CriarLista(0,"Null");
                      Lista[i].SetNomePadrao(LerLinha(10));
                      dados = LerLinha(10);
                      Lista[i].SetNumeroEventos(Convert.ToInt16(dados));
                      if(Convert.ToInt16(dados) != 0)
                      {
                         int VarCont = Convert.ToInt16(dados);
-                         for(int j=0;j<VarCont;j++)
+                        PointF Aux  = new PointF(0,0); 
+                        string Aux_;
+                        int OffSets;
+                          for(int j=0;j<VarCont;j++)
                          {
                              Lista[i].SetNomesEvento(j, LerLinha(10));
                              //-----------VER ISTO------------------
-                             // Lista[i].SetValorInicio(j, LerLinha(10));
-                            // Lista[i].SetValorFim(j, LerLinha(10));
-                            
+                             Aux_ = LerLinha(13);
+                             dados = Aux_;
+                             OffSets = Aux_.IndexOf("Y=");
+                             Aux.X = float.Parse(Aux_.Substring(0,  dados.Length - OffSets),System.Globalization.CultureInfo.InvariantCulture);//Ta dando pau aqui valor estranho
+                             Aux.Y = float.Parse(dados.Substring(OffSets + 2, dados.Length - 3 - OffSets),System.Globalization.CultureInfo.InvariantCulture);
+                             Lista[i].SetValorInicio(j, Aux);
+
+                             Aux_ = LerLinha(13);
+                             dados = Aux_;
+                             OffSets = Aux_.IndexOf("Y=");
+                             Aux.X = float.Parse(Aux_.Substring(0, dados.Length - OffSets - 3));
+                             Aux.Y = float.Parse(dados.Substring(OffSets + 2, dados.Length - 3 - OffSets));
+                             Lista[i].SetValorMeio(j, Aux);
+                             
+                             Aux_ = LerLinha(13);
+                             dados = Aux_;
+                             OffSets = Aux_.IndexOf("Y=");
+                             Aux.X = float.Parse(Aux_.Substring(0, dados.Length - OffSets - 3));
+                             Aux.Y = float.Parse(dados.Substring(OffSets + 2, dados.Length - 3 - OffSets));
+                             Lista[i].SetValorFim(j, Aux);
+                      
                          }
                      
                      }
                  }
+                 fileR.Close();
                  return Lista;
              }
              catch
              {
+                 fileR.Close();
+                 MessageBox.Show("Erro ao carregar arquivo",
+                        "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                  return null;
              }
 

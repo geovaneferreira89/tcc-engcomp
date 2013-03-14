@@ -11,6 +11,7 @@ namespace AmbienteRPB
     {
         public PointF[] ValorInicio;
         public PointF[] ValorFim;
+        public PointF[] ValorMeio;
         public string[] NomesEvento;
         public int      NumeroEventos;
         public string   NomePadrao;
@@ -18,11 +19,12 @@ namespace AmbienteRPB
         //-------------------------------------------------
         public void CriarLista(int _NumeroDeEventos, string _nomePadrao)
         {
-            ValorInicio = new PointF[_NumeroDeEventos];
-            ValorFim    = new PointF[_NumeroDeEventos];
-            NomesEvento     = new string[_NumeroDeEventos];
-            NumeroEventos   = 0;
-            NomePadrao      = _nomePadrao;
+            ValorInicio = new PointF[600];
+            ValorMeio   = new PointF[600];
+            ValorFim    = new PointF[600];
+            NomesEvento = new string[600];
+            NumeroEventos = 0;
+            NomePadrao    = _nomePadrao;
         }
         //Sets------------------------------------------------
         public void SetValorInicio(int Posicao, PointF Valor)
@@ -34,6 +36,11 @@ namespace AmbienteRPB
         {
             ValorFim[Posicao] = new PointF();
             ValorFim[Posicao] = Valor;
+        }
+        public void SetValorMeio(int Posicao, PointF Valor)
+        {
+            ValorMeio[Posicao] = new PointF();
+            ValorMeio[Posicao] = Valor;
         }
         public void SetNomesEvento(int Posicao,string Nome)
         {
@@ -56,6 +63,10 @@ namespace AmbienteRPB
         public PointF GetValorFim(int POS)
         {
             return ValorFim[POS];
+        }
+        public PointF GetValorMeio(int POS)
+        {
+            return ValorMeio[POS];
         }
         public string GetNomesEvento(int POS)
         {
