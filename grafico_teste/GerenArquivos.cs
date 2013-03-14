@@ -132,23 +132,26 @@ namespace AmbienteRPB
                              //-----------VER ISTO------------------
                              Aux_ = LerLinha(13);
                              dados = Aux_;
-                             OffSets = Aux_.IndexOf("Y=");
-                             Aux.X = float.Parse(Aux_.Substring(0,  dados.Length - OffSets),System.Globalization.CultureInfo.InvariantCulture);//Ta dando pau aqui valor estranho
-                             Aux.Y = float.Parse(dados.Substring(OffSets + 2, dados.Length - 3 - OffSets),System.Globalization.CultureInfo.InvariantCulture);
+                             OffSets = Aux_.IndexOf(", ");
+                             Aux.X = float.Parse(Aux_.Substring(0,  OffSets));
+                             OffSets = OffSets + 4;
+                             Aux.Y = float.Parse(dados.Substring(OffSets, dados.Length - OffSets -1));
                              Lista[i].SetValorInicio(j, Aux);
 
                              Aux_ = LerLinha(13);
                              dados = Aux_;
-                             OffSets = Aux_.IndexOf("Y=");
-                             Aux.X = float.Parse(Aux_.Substring(0, dados.Length - OffSets - 3));
-                             Aux.Y = float.Parse(dados.Substring(OffSets + 2, dados.Length - 3 - OffSets));
+                             OffSets = Aux_.IndexOf(", ");
+                             Aux.X = float.Parse(Aux_.Substring(0, OffSets));
+                             OffSets = OffSets + 4;
+                             Aux.Y = float.Parse(dados.Substring(OffSets, dados.Length - OffSets - 1));
                              Lista[i].SetValorMeio(j, Aux);
                              
                              Aux_ = LerLinha(13);
                              dados = Aux_;
-                             OffSets = Aux_.IndexOf("Y=");
-                             Aux.X = float.Parse(Aux_.Substring(0, dados.Length - OffSets - 3));
-                             Aux.Y = float.Parse(dados.Substring(OffSets + 2, dados.Length - 3 - OffSets));
+                             OffSets = Aux_.IndexOf(", ");
+                             Aux.X = float.Parse(Aux_.Substring(0, OffSets));
+                             OffSets = OffSets + 4;
+                             Aux.Y = float.Parse(dados.Substring(OffSets, dados.Length - OffSets - 1));
                              Lista[i].SetValorFim(j, Aux);
                       
                          }
