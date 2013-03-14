@@ -52,19 +52,6 @@ namespace AmbienteRPB
             gbxChart.Location = new System.Drawing.Point(2, 21);
             gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
         }
-        public void CarregaNomesPadroes(int Total)
-        {
-            string str;
-            ListaPadroes = new ListaPadroesEventos[Total];
-            for (int i = 0; i < Total; i++)
-            {
-                str = "Evento" + (i + 1);
-                ListaPadroes[i] = new ListaPadroesEventos();
-                ListaPadroes[i].CriarLista(20, this.Controls.Find(str, true)[0].Text);
-
-
-            }
-        }
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -117,6 +104,10 @@ namespace AmbienteRPB
                     marcarEventos.Enabled = true;
                     btn_Importar.Enabled = false;
                     btnTemas.Enabled = true;
+                    CarregaNomesPadroes(20);
+                    if (Arquivos.ArquivoExiste("Padroes_Eventos.txt") == true)
+                      ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
+                    
                 }
                 else
                     AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
@@ -151,6 +142,18 @@ namespace AmbienteRPB
                 AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 
             }
            
+        }
+        //-----------------------------------------------------------------------------------------
+        public void CarregaNomesPadroes(int Total)
+        {
+            string str;
+            ListaPadroes = new ListaPadroesEventos[Total];
+            for (int i = 0; i < Total; i++)
+            {
+                str = "Evento" + (i + 1);
+                ListaPadroes[i] = new ListaPadroesEventos();
+                ListaPadroes[i].CriarLista(20, this.Controls.Find(str, true)[0].Text);
+            }
         }
         //##########################################################################################
         //------------------------------------------------------------------------------------------
@@ -236,9 +239,6 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------------------
         private void marcarPadrõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (CarregaListaDePadroes() == false)
-                CarregaNomesPadroes(20);
-
             if (marcarEventos.Checked == false)
             {
                 btn_MarcarPadroes.Enabled = true;
@@ -379,10 +379,10 @@ namespace AmbienteRPB
                 {
                     if (ListaPadroes[i].NomePadrao == Evento)
                     {
-                        ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1); 
                         ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(),Padrao_Inicio);
                         ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
                         ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "_" + ListaPadroes[i].GetNumeroEventos() + "_" + Canal.ChartArea.ToString());
+                        ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1); 
                         i = 100; //Sai do loop
                     }
                 }
@@ -400,18 +400,6 @@ namespace AmbienteRPB
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
-        }
-        //-----------------------------------------------------------------------------------------
-        private bool CarregaListaDePadroes( )
-        {   
-            ListaPadroesEventos[] ListaPadroesAux = Arquivos.Importar_Exportar_Padroes_Eventos();
-            if (ListaPadroesAux != null)
-            {
-                ListaPadroes = ListaPadroesAux;
-                return true;
-            }
-            else
-                return false;
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
