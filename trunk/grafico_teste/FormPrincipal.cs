@@ -381,7 +381,10 @@ namespace AmbienteRPB
                     {
                         ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(),Padrao_Inicio);
                         ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
-                        ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "_" + ListaPadroes[i].GetNumeroEventos() + "_" + Canal.ChartArea.ToString());
+                        string dados = Canal.ChartArea.Name;
+                        dados = dados.Substring(5);
+                        dados = dados.Substring(0, dados.Length);
+                        ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "_" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[Convert.ToInt16(dados)].Text);
                         ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1); 
                         i = 100; //Sai do loop
                     }
@@ -400,6 +403,7 @@ namespace AmbienteRPB
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
+            EditorEvenForm.ShowDialog();
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
