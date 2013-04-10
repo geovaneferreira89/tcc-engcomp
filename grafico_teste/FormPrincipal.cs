@@ -12,7 +12,8 @@ using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
-using EDF;
+using NeuroLoopGainLibrary.Edf;
+
 
 namespace AmbienteRPB
 {
@@ -27,7 +28,7 @@ namespace AmbienteRPB
         private float x_Pos, y_Pos;
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
-        private EDFFile edfFileOutput = null;
+        private EdfFile edfFileOutput = null;
         private HitTestResult var_result;
         private bool MostrarCursorX;
         //Geren Arquivos-----------------------------------------------------------------
@@ -95,7 +96,7 @@ namespace AmbienteRPB
                 {
                     status_projeto = "Projeto_EDF";
                     AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1);
-                    __numeroDeCanais = edfFileOutput.Header.Signals.Count;
+                    __numeroDeCanais = edfFileOutput.SignalInfo.Count;
                     ChartInicializarThreads(__numeroDeCanais);
                     btn_novoProjeto.Enabled = false;
                     btn_Importar.Enabled = false;
@@ -384,7 +385,7 @@ namespace AmbienteRPB
                         string dados = Canal.ChartArea.Name;
                         dados = dados.Substring(5);
                         dados = dados.Substring(0, dados.Length);
-                        ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "_" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[Convert.ToInt16(dados)].Text);
+                        ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "-" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[Convert.ToInt16(dados)].Text);
                         ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1); 
                         i = 100; //Sai do loop
                     }
@@ -445,11 +446,12 @@ namespace AmbienteRPB
             {
                 //propriedades de cada sinal
                 chart1.ChartAreas.Add("canal" + i);
+                chart1.ChartAreas[i].BackColor = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = Divisao * i; 
-                chart1.ChartAreas[i].Position.Height = Divisao;
+                chart1.ChartAreas[i].Position.Height = Divisao+5;
                 chart1.ChartAreas[i].Position.Width = 96;
             }
             Adiciona_linhas_de_tempo();
@@ -625,14 +627,11 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void informaçõesEDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nome Paciente:\n"+edfFileOutput.Header.PatientIdentification
-                +"\nData\n"+edfFileOutput.Header.StartDateEDF
-                    + "\nHora\n" + edfFileOutput.Header.StartTimeEDF
-                      + "\nDuração\n" + edfFileOutput.Header.DurationOfDataRecordInSeconds
-                        + "\nNumberOfBytes\n" + edfFileOutput.Header.NumberOfBytes
-                           + "\nNumberOfDataRecords\n" + edfFileOutput.Header.NumberOfDataRecords
-                             + "\nNumberOfSignalsInDataRecord\n" + edfFileOutput.Header.NumberOfSignalsInDataRecord
-                             + "\nVersion\n" + edfFileOutput.Header.Version
+            MessageBox.Show("Nome Paciente:\n"+edfFileOutput.FileInfo.PatientName
+                + "\nData\n" + edfFileOutput.FileInfo.DataExists
+                    + "\nHora\n" + edfFileOutput.FileInfo.StartDate
+                      + "\nDuração\n" + edfFileOutput.FileInfo.NrDataRecords
+                             + "\nVersion\n" + edfFileOutput.FileInfo.Version
 
 
                 ,"Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",

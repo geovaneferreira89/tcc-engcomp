@@ -80,6 +80,8 @@ namespace AmbienteRPB
                 chart1.Series.Add("Serie01");
                 chart1.Series["Serie01"].ChartArea = "Padrao";
                 chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+               // string Aux = Listas;
+
             /*    System.IO.StreamReader fileR = new System.IO.StreamReader(lbxEventosPorTipo.SelectedItem + ".txt");
                 edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString(); //Tirar o resto... 
                 string dados;
