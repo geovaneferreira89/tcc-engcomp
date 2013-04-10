@@ -77,6 +77,16 @@
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
             this.lbl_V = new System.Windows.Forms.ToolStripLabel();
             this.gbxEventos = new System.Windows.Forms.GroupBox();
+            this.Evento20 = new System.Windows.Forms.CheckBox();
+            this.Evento19 = new System.Windows.Forms.CheckBox();
+            this.Evento18 = new System.Windows.Forms.CheckBox();
+            this.Evento17 = new System.Windows.Forms.CheckBox();
+            this.Evento16 = new System.Windows.Forms.CheckBox();
+            this.Evento15 = new System.Windows.Forms.CheckBox();
+            this.Evento14 = new System.Windows.Forms.CheckBox();
+            this.Evento13 = new System.Windows.Forms.CheckBox();
+            this.Evento12 = new System.Windows.Forms.CheckBox();
+            this.Evento11 = new System.Windows.Forms.CheckBox();
             this.Evento1 = new System.Windows.Forms.CheckBox();
             this.Evento10 = new System.Windows.Forms.CheckBox();
             this.Evento9 = new System.Windows.Forms.CheckBox();
@@ -87,16 +97,6 @@
             this.Evento4 = new System.Windows.Forms.CheckBox();
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
-            this.Evento11 = new System.Windows.Forms.CheckBox();
-            this.Evento12 = new System.Windows.Forms.CheckBox();
-            this.Evento13 = new System.Windows.Forms.CheckBox();
-            this.Evento14 = new System.Windows.Forms.CheckBox();
-            this.Evento15 = new System.Windows.Forms.CheckBox();
-            this.Evento16 = new System.Windows.Forms.CheckBox();
-            this.Evento17 = new System.Windows.Forms.CheckBox();
-            this.Evento18 = new System.Windows.Forms.CheckBox();
-            this.Evento19 = new System.Windows.Forms.CheckBox();
-            this.Evento20 = new System.Windows.Forms.CheckBox();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -127,10 +127,10 @@
             this.chart1.BackSecondaryColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.BorderlineColor = System.Drawing.SystemColors.ControlLightLight;
             this.chart1.Enabled = false;
-            this.chart1.Location = new System.Drawing.Point(2, 8);
+            this.chart1.Location = new System.Drawing.Point(1, 7);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(718, 370);
+            this.chart1.Size = new System.Drawing.Size(718, 372);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -398,12 +398,12 @@
             this.ScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScrollBar.Enabled = false;
-            this.ScrollBar.LargeChange = 9000;
+            this.ScrollBar.LargeChange = 900;
             this.ScrollBar.Location = new System.Drawing.Point(2, 403);
             this.ScrollBar.Maximum = 20000;
             this.ScrollBar.Name = "ScrollBar";
             this.ScrollBar.Size = new System.Drawing.Size(815, 20);
-            this.ScrollBar.SmallChange = 4000;
+            this.ScrollBar.SmallChange = 900;
             this.ScrollBar.TabIndex = 13;
             this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
             // 
@@ -507,6 +507,7 @@
             this.FrequenciaCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FrequenciaCombo.Size = new System.Drawing.Size(75, 25);
             this.FrequenciaCombo.Text = "4";
+            this.FrequenciaCombo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmplitudeCombo_KeyPress);
             this.FrequenciaCombo.TextChanged += new System.EventHandler(this.FrequenciaCombo_TextChanged);
             // 
             // lbl_cm
@@ -542,6 +543,7 @@
             this.AmplitudeCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.AmplitudeCombo.Size = new System.Drawing.Size(75, 25);
             this.AmplitudeCombo.Text = "1000";
+            this.AmplitudeCombo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmplitudeCombo_KeyPress);
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
             // lbl_V
@@ -580,6 +582,116 @@
             this.gbxEventos.Size = new System.Drawing.Size(89, 379);
             this.gbxEventos.TabIndex = 16;
             this.gbxEventos.TabStop = false;
+            // 
+            // Evento20
+            // 
+            this.Evento20.BackColor = System.Drawing.Color.LightCoral;
+            this.Evento20.Location = new System.Drawing.Point(4, 332);
+            this.Evento20.Name = "Evento20";
+            this.Evento20.Size = new System.Drawing.Size(84, 17);
+            this.Evento20.TabIndex = 19;
+            this.Evento20.Text = "Padrão 20";
+            this.Evento20.UseVisualStyleBackColor = false;
+            this.Evento20.Click += new System.EventHandler(this.Enveto20_Click);
+            // 
+            // Evento19
+            // 
+            this.Evento19.BackColor = System.Drawing.Color.YellowGreen;
+            this.Evento19.Location = new System.Drawing.Point(4, 315);
+            this.Evento19.Name = "Evento19";
+            this.Evento19.Size = new System.Drawing.Size(84, 17);
+            this.Evento19.TabIndex = 18;
+            this.Evento19.Text = "Padrão 19";
+            this.Evento19.UseVisualStyleBackColor = false;
+            this.Evento19.Click += new System.EventHandler(this.Enveto19_Click);
+            // 
+            // Evento18
+            // 
+            this.Evento18.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.Evento18.Location = new System.Drawing.Point(4, 298);
+            this.Evento18.Name = "Evento18";
+            this.Evento18.Size = new System.Drawing.Size(84, 17);
+            this.Evento18.TabIndex = 17;
+            this.Evento18.Text = "Padrão 18";
+            this.Evento18.UseVisualStyleBackColor = false;
+            this.Evento18.Click += new System.EventHandler(this.Enveto18_Click);
+            // 
+            // Evento17
+            // 
+            this.Evento17.BackColor = System.Drawing.Color.Khaki;
+            this.Evento17.Location = new System.Drawing.Point(4, 281);
+            this.Evento17.Name = "Evento17";
+            this.Evento17.Size = new System.Drawing.Size(84, 17);
+            this.Evento17.TabIndex = 16;
+            this.Evento17.Text = "Padrão 17";
+            this.Evento17.UseVisualStyleBackColor = false;
+            this.Evento17.Click += new System.EventHandler(this.Enveto17_Click);
+            // 
+            // Evento16
+            // 
+            this.Evento16.BackColor = System.Drawing.Color.Brown;
+            this.Evento16.Location = new System.Drawing.Point(4, 264);
+            this.Evento16.Name = "Evento16";
+            this.Evento16.Size = new System.Drawing.Size(84, 17);
+            this.Evento16.TabIndex = 15;
+            this.Evento16.Text = "Padrão 16";
+            this.Evento16.UseVisualStyleBackColor = false;
+            this.Evento16.Click += new System.EventHandler(this.Enveto16_Click);
+            // 
+            // Evento15
+            // 
+            this.Evento15.BackColor = System.Drawing.Color.LightGray;
+            this.Evento15.Location = new System.Drawing.Point(4, 247);
+            this.Evento15.Name = "Evento15";
+            this.Evento15.Size = new System.Drawing.Size(84, 17);
+            this.Evento15.TabIndex = 14;
+            this.Evento15.Text = "Padrão 15";
+            this.Evento15.UseVisualStyleBackColor = false;
+            this.Evento15.Click += new System.EventHandler(this.Enveto15_Click);
+            // 
+            // Evento14
+            // 
+            this.Evento14.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.Evento14.Location = new System.Drawing.Point(4, 230);
+            this.Evento14.Name = "Evento14";
+            this.Evento14.Size = new System.Drawing.Size(84, 17);
+            this.Evento14.TabIndex = 13;
+            this.Evento14.Text = "Padrão 14";
+            this.Evento14.UseVisualStyleBackColor = false;
+            this.Evento14.Click += new System.EventHandler(this.Enveto14_Click);
+            // 
+            // Evento13
+            // 
+            this.Evento13.BackColor = System.Drawing.Color.Plum;
+            this.Evento13.Location = new System.Drawing.Point(4, 213);
+            this.Evento13.Name = "Evento13";
+            this.Evento13.Size = new System.Drawing.Size(84, 17);
+            this.Evento13.TabIndex = 12;
+            this.Evento13.Text = "Padrão 13";
+            this.Evento13.UseVisualStyleBackColor = false;
+            this.Evento13.Click += new System.EventHandler(this.Enveto13_Click);
+            // 
+            // Evento12
+            // 
+            this.Evento12.BackColor = System.Drawing.Color.SkyBlue;
+            this.Evento12.Location = new System.Drawing.Point(4, 196);
+            this.Evento12.Name = "Evento12";
+            this.Evento12.Size = new System.Drawing.Size(84, 17);
+            this.Evento12.TabIndex = 11;
+            this.Evento12.Text = "Padrão 12";
+            this.Evento12.UseVisualStyleBackColor = false;
+            this.Evento12.Click += new System.EventHandler(this.Enveto12_Click);
+            // 
+            // Evento11
+            // 
+            this.Evento11.BackColor = System.Drawing.Color.PeachPuff;
+            this.Evento11.Location = new System.Drawing.Point(3, 179);
+            this.Evento11.Name = "Evento11";
+            this.Evento11.Size = new System.Drawing.Size(84, 17);
+            this.Evento11.TabIndex = 10;
+            this.Evento11.Text = "Padrão 11";
+            this.Evento11.UseVisualStyleBackColor = false;
+            this.Evento11.Click += new System.EventHandler(this.Enveto11_Click);
             // 
             // Evento1
             // 
@@ -691,116 +803,6 @@
             this.Evento2.Text = "Ponta e Ond";
             this.Evento2.UseVisualStyleBackColor = false;
             this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
-            // 
-            // Evento11
-            // 
-            this.Evento11.BackColor = System.Drawing.Color.PeachPuff;
-            this.Evento11.Location = new System.Drawing.Point(3, 179);
-            this.Evento11.Name = "Evento11";
-            this.Evento11.Size = new System.Drawing.Size(84, 17);
-            this.Evento11.TabIndex = 10;
-            this.Evento11.Text = "Padrão 11";
-            this.Evento11.UseVisualStyleBackColor = false;
-            this.Evento11.Click += new System.EventHandler(this.Enveto11_Click);
-            // 
-            // Evento12
-            // 
-            this.Evento12.BackColor = System.Drawing.Color.SkyBlue;
-            this.Evento12.Location = new System.Drawing.Point(4, 196);
-            this.Evento12.Name = "Evento12";
-            this.Evento12.Size = new System.Drawing.Size(84, 17);
-            this.Evento12.TabIndex = 11;
-            this.Evento12.Text = "Padrão 12";
-            this.Evento12.UseVisualStyleBackColor = false;
-            this.Evento12.Click += new System.EventHandler(this.Enveto12_Click);
-            // 
-            // Evento13
-            // 
-            this.Evento13.BackColor = System.Drawing.Color.Plum;
-            this.Evento13.Location = new System.Drawing.Point(4, 213);
-            this.Evento13.Name = "Evento13";
-            this.Evento13.Size = new System.Drawing.Size(84, 17);
-            this.Evento13.TabIndex = 12;
-            this.Evento13.Text = "Padrão 13";
-            this.Evento13.UseVisualStyleBackColor = false;
-            this.Evento13.Click += new System.EventHandler(this.Enveto13_Click);
-            // 
-            // Evento14
-            // 
-            this.Evento14.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.Evento14.Location = new System.Drawing.Point(4, 230);
-            this.Evento14.Name = "Evento14";
-            this.Evento14.Size = new System.Drawing.Size(84, 17);
-            this.Evento14.TabIndex = 13;
-            this.Evento14.Text = "Padrão 14";
-            this.Evento14.UseVisualStyleBackColor = false;
-            this.Evento14.Click += new System.EventHandler(this.Enveto14_Click);
-            // 
-            // Evento15
-            // 
-            this.Evento15.BackColor = System.Drawing.Color.LightGray;
-            this.Evento15.Location = new System.Drawing.Point(4, 247);
-            this.Evento15.Name = "Evento15";
-            this.Evento15.Size = new System.Drawing.Size(84, 17);
-            this.Evento15.TabIndex = 14;
-            this.Evento15.Text = "Padrão 15";
-            this.Evento15.UseVisualStyleBackColor = false;
-            this.Evento15.Click += new System.EventHandler(this.Enveto15_Click);
-            // 
-            // Evento16
-            // 
-            this.Evento16.BackColor = System.Drawing.Color.Brown;
-            this.Evento16.Location = new System.Drawing.Point(4, 264);
-            this.Evento16.Name = "Evento16";
-            this.Evento16.Size = new System.Drawing.Size(84, 17);
-            this.Evento16.TabIndex = 15;
-            this.Evento16.Text = "Padrão 16";
-            this.Evento16.UseVisualStyleBackColor = false;
-            this.Evento16.Click += new System.EventHandler(this.Enveto16_Click);
-            // 
-            // Evento17
-            // 
-            this.Evento17.BackColor = System.Drawing.Color.Khaki;
-            this.Evento17.Location = new System.Drawing.Point(4, 281);
-            this.Evento17.Name = "Evento17";
-            this.Evento17.Size = new System.Drawing.Size(84, 17);
-            this.Evento17.TabIndex = 16;
-            this.Evento17.Text = "Padrão 17";
-            this.Evento17.UseVisualStyleBackColor = false;
-            this.Evento17.Click += new System.EventHandler(this.Enveto17_Click);
-            // 
-            // Evento18
-            // 
-            this.Evento18.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.Evento18.Location = new System.Drawing.Point(4, 298);
-            this.Evento18.Name = "Evento18";
-            this.Evento18.Size = new System.Drawing.Size(84, 17);
-            this.Evento18.TabIndex = 17;
-            this.Evento18.Text = "Padrão 18";
-            this.Evento18.UseVisualStyleBackColor = false;
-            this.Evento18.Click += new System.EventHandler(this.Enveto18_Click);
-            // 
-            // Evento19
-            // 
-            this.Evento19.BackColor = System.Drawing.Color.YellowGreen;
-            this.Evento19.Location = new System.Drawing.Point(4, 315);
-            this.Evento19.Name = "Evento19";
-            this.Evento19.Size = new System.Drawing.Size(84, 17);
-            this.Evento19.TabIndex = 18;
-            this.Evento19.Text = "Padrão 19";
-            this.Evento19.UseVisualStyleBackColor = false;
-            this.Evento19.Click += new System.EventHandler(this.Enveto19_Click);
-            // 
-            // Evento20
-            // 
-            this.Evento20.BackColor = System.Drawing.Color.LightCoral;
-            this.Evento20.Location = new System.Drawing.Point(4, 332);
-            this.Evento20.Name = "Evento20";
-            this.Evento20.Size = new System.Drawing.Size(84, 17);
-            this.Evento20.TabIndex = 19;
-            this.Evento20.Text = "Padrão 20";
-            this.Evento20.UseVisualStyleBackColor = false;
-            this.Evento20.Click += new System.EventHandler(this.Enveto20_Click);
             // 
             // FormPrincipal
             // 

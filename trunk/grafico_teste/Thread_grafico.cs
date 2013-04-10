@@ -43,7 +43,7 @@ namespace thread_chart
         private string OpcaoSinal;
         //Controles Scroll Bar ----------------------------------------------------------------------------------------
         private Control _ScrollBar = null;
-        private delegate void ScrollBar_Propriedades(int num_volta);
+        private delegate void ScrollBar_Propriedades(int num_volta, EdfFile SinalEEG);
         private System.Windows.Forms.ScrollBar ScrollBar;
         //Arquivos EDF----------------------------------------------------------------------------------------
         private EdfFile edfFileOutput;
@@ -117,11 +117,8 @@ namespace thread_chart
                         {
                             Plotar(2, k, null,tempo);
                         }
-                        
-                           
-                            bool q = Plotar(1, 0, edfFileOutput, 0);
-
-                         
+                        bool q = Plotar(1, 0, edfFileOutput, 0);
+                        FuncScrollBar_Propriedades(1, edfFileOutput);
                      }
                     Plotar(3, 0, edfFileOutput, 0);
                     break;
@@ -139,6 +136,7 @@ namespace thread_chart
             }
             else
             {
+                tempo = 0;
                 if (caso == 1)
                 {
                     if (prb != null)
@@ -146,10 +144,10 @@ namespace thread_chart
                         for (int k = 0; k < 10; k++)//edfFileOutput.FileInfo.NrDataRecords; k++)
                         {
                             edfFileOutput.ReadDataBlock(k);
-                            tempo = 256 + tempo;
                             for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
                                 for (int i = 0; i < 256; i++)
                                     prb.Series["canal" + j].Points.AddXY(i + tempo, SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                            tempo = 256 + tempo;
                         }
                     }
                 }
@@ -159,7 +157,15 @@ namespace thread_chart
                     {
                         prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
                         prb.Series["canal" + i].Color = Color.FromName("Black");
+                       // i++;
                     }
+                   /* for (int i = 1; i < SinalEEG.SignalInfo.Count; i++)
+                    {
+                        prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
+                        prb.Series["canal" + i].Color = Color.FromName("Green");
+                        i++;
+                    }*/
+                    prb.Series["canal" + 0].Color = Color.FromName("Blue");
                 }
                 if (caso == 2)
                 {
@@ -247,11 +253,11 @@ namespace thread_chart
             }
         }
         //-----------------------------------------------------------------------------------------------------------------
-        private void FuncScrollBar_Propriedades(int num_volta)
+        private void FuncScrollBar_Propriedades(int num_volta, EdfFile SinalEEG)
         {
             if (_ScrollBar.InvokeRequired)
             {
-                _ScrollBar.BeginInvoke(new ScrollBar_Propriedades(FuncScrollBar_Propriedades), new Object[] {num_volta });
+                _ScrollBar.BeginInvoke(new ScrollBar_Propriedades(FuncScrollBar_Propriedades), new Object[] {num_volta,  SinalEEG});
             }
             else
             {
@@ -261,12 +267,14 @@ namespace thread_chart
                 {
                     if (OpcaoSinal == "Projeto_EDF")
                     {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 2000;//num_de_voltas; // 30; //VERIFICAR VALOR! "Frequencia"
-                        ScrollBar.Maximum = num_de_voltas;
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;//num_de_voltas; // 30; //VERIFICAR VALOR! "Frequencia"
+                        ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
+                        ScrollBar.SmallChange = 1;
+                        ScrollBar.LargeChange = 1;
                     }
                     else
                     {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 4; //Colocar 3
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = 10; //Colocar 3
                         ScrollBar.Maximum = num_de_voltas;
                     }
                 }

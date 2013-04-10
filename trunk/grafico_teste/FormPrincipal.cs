@@ -449,11 +449,18 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].BackColor = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.X = 4;
-                chart1.ChartAreas[i].Position.Y = Divisao * i; 
-                chart1.ChartAreas[i].Position.Height = Divisao+5;
+                chart1.ChartAreas[i].Position.Height = Divisao+10;
                 chart1.ChartAreas[i].Position.Width = 96;
+                chart1.ChartAreas[i].Position.X = 4;
+                chart1.ChartAreas[i].Position.Y = Divisao * i;
+                //chart1.ChartAreas[i].InnerPlotPosition.Auto = false;
+                //chart1.ChartAreas[i].InnerPlotPosition.Y = Divisao * i; 
+
             }
+            
+            //chart1.ChartAreas[0].Position.Height = Divisao;
+            //chart1.ChartAreas[0].BackColor = Color.Red;
+            //chart1.ChartAreas[1].BackColor = Color.Blue;
             Adiciona_linhas_de_tempo();
             if (status_projeto == "Projeto_NOVO")
             {
@@ -600,11 +607,19 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
-            for (int i = 0; i < __numeroDeCanais; i++)
-            {
-                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
-            }
-            progressBar.Enabled = false;
+          //  for (int i = 0;/// i < __numeroDeCanais; i++)
+          //  {
+          //      chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
+          //  }
+          //  progressBar.Enabled = false;
+        }
+        //------------------------------------------------------------------------------------------
+        //Somente Numeros
+        private void AmplitudeCombo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+                e.Handled = true;
         }
         //------------------------------------------------------------------------------------------
         private void AmplitudeCombo_TextChanged(object sender, EventArgs e)
@@ -612,7 +627,13 @@ namespace AmbienteRPB
             if (AmplitudeCombo.Text != "")
             {
                 for (int i = 0; i < __numeroDeCanais; i++)
-                    chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+                {
+                 //   chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+                   // chart1.ChartAreas[i].AxisY.IntervalOffsetType = DateTimeIntervalType.Number;
+                   // chart1.ChartAreas[i].AxisY.IntervalOffset = Convert.ToDouble(AmplitudeCombo.Text);
+                    chart1.ChartAreas[i].AxisY.Maximum = chart1.ChartAreas[i].AxisY.Maximum - 100;
+                    //chart1.ChartAreas[i].Position.Y = (100 / __numeroDeCanais) * i;
+                }
             }
         }
         //------------------------------------------------------------------------------------------
@@ -971,8 +992,6 @@ namespace AmbienteRPB
         {
            
         }
-
-       
         //-----------------------------------------------------------
        
     }
