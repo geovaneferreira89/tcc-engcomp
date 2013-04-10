@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EDF;
+using NeuroLoopGainLibrary.Edf;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
 
@@ -14,8 +14,8 @@ namespace AmbienteRPB
         private System.Windows.Forms.DataVisualization.Charting.Chart chart = null;
         private System.IO.StreamWriter fileW;
         private System.IO.StreamReader fileR;
-        private EDFFile edfFileInput;
-        private EDFFile edfFileOutput;
+        private EdfFile edfFileInput;
+        private EdfFile edfFileOutput;
 
         //Verifica se o Arquivo existe----------------------------------------------------------
         public bool ArquivoExiste(string Arquivo_Nome)
@@ -72,11 +72,11 @@ namespace AmbienteRPB
             return Convert.ToInt32(dados);
         }
         //Abrir Projeto EDF  -----------------------------------------------------------------
-        public EDFFile Abrir_Projeto_EDF(string diretorio)
+        public EdfFile Abrir_Projeto_EDF(string diretorio)
         {
             FormCarregar_EDF formEDF = new FormCarregar_EDF(diretorio);
             formEDF.ShowDialog();
-            edfFileOutput = formEDF.edfFileOutput;
+            edfFileOutput = formEDF.edfFileInput;
             return edfFileOutput;
         }
         //Exportao Padrao & Eventos-----------------------------------------------------------

@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EDF;
+using NeuroLoopGainLibrary.Edf;
 
 
 namespace AmbienteRPB
@@ -16,15 +16,15 @@ namespace AmbienteRPB
         private string dirArquivo;     
         //private string initialDirectory = "C:\\";
         private System.IO.StreamWriter fileW;
-        
+        private EdfFile _edfFileInput;
         //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
-        public EDFFile edfFileOutput
+        public EdfFile edfFileOutput
         {
             get;
             set;
         }
 
-        public EDFFile edfFileInput
+        public EdfFile edfFileInput
         {
             get;
             set;
@@ -40,15 +40,17 @@ namespace AmbienteRPB
         {
              if (dirArquivo != null)
              {
-                 edfFileInput = new EDFFile();
-                 edfFileInput.readFile(dirArquivo);
+                 _edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
              }
+            edfFileInput = _edfFileInput;
+            if (edfFileInput.ValidFormat)
+            {
+                listBox1.Items.Clear();
+                //listBox1.Items.Add(string.Format("{0} - {1} ({2}Hz)", k + 1, edfFileInput.SignalInfo[k].SignalLabel, edfFileInput.SignalInfo[k].NrSamples / edfFileInput.FileInfo.SampleRecDuration));
+                for (int k = 0; k < edfFileInput.SignalInfo.Count; k++)
+                    listBox1.Items.Add(edfFileInput.SignalInfo[k].SignalLabel);
 
-             listBox1.Items.Clear();
-             foreach (EDFSignal signal in edfFileInput.Header.Signals)
-             {
-                listBox1.Items.Add(signal);
-             }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,15 +60,18 @@ namespace AmbienteRPB
 
             for (int i = 0; i < listBox1.SelectedItems.Count; i++)
             {
-                edfFileOutput.addSignal((EDFSignal)listBox1.SelectedItems[i], edfFileInput.retrieveSignalSampleValues((EDFSignal)listBox1.SelectedItems[i]));
+               // edfFileOutput.SignalInfo.Add(edfFileInput.SignalInfo[(int)listBox1.SelectedItems[i]]);
+                   //                    addSignal((EDFSignal)listBox1.SelectedItems[i], edfFileInput.retrieveSignalSampleValues((EDFSignal)listBox1.SelectedItems[i]));
                 listBox2.Items.Add(listBox1.SelectedItems[i]);
             }
+            
         }
 
         private void initializeEDFOutput()
         {
-            edfFileOutput = new EDFFile();
-            edfFileOutput.Header.DurationOfDataRecordInSeconds = edfFileInput.Header.DurationOfDataRecordInSeconds;
+          //  edfFileOutput = new EdfFile();
+          //  edfFileOutput.FileInfo.NrDataFields = edfFileInput.FileInfo.NrDataFields;
+            /*edfFileOutput. Header.DurationOfDataRecordInSeconds = edfFileInput.Header.DurationOfDataRecordInSeconds;
             edfFileOutput.Header.NumberOfBytes = edfFileInput.Header.NumberOfBytes;
             edfFileOutput.Header.PatientIdentification = edfFileInput.Header.PatientIdentification;
             edfFileOutput.Header.RecordingIdentification = edfFileInput.Header.RecordingIdentification;
@@ -76,12 +81,12 @@ namespace AmbienteRPB
             foreach (EDFDataRecord dr in edfFileInput.DataRecords)
             {
                 edfFileOutput.DataRecords.Add(new EDFDataRecord());
-            }
+            }*/
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-           if (edfFileOutput == null)
+           if (edfFileInput == null)
                 MessageBox.Show("Nenhum canal selecionado",
                   "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                       MessageBoxButtons.OK, MessageBoxIcon.Information);   

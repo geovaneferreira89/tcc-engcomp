@@ -7,7 +7,7 @@ using System.Threading;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using EDF;
+using NeuroLoopGainLibrary.Edf;
 using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.InteropServices;
@@ -18,7 +18,8 @@ namespace thread_chart
     {
         //Controles Chart--------------------------------------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(int caso, int _VarchartArea_, string Cor, string nomeSerie, double []SINAL);
+        //private delegate void AtualizaChart(int caso, int _VarchartArea_, string Cor, string nomeSerie, double []SINAL);
+        private delegate bool AtualizaChart(int caso, int canal, EdfFile SinalEEG,int tempo);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         //Controles Progress Bar-------------------------------------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
@@ -45,9 +46,9 @@ namespace thread_chart
         private delegate void ScrollBar_Propriedades(int num_volta);
         private System.Windows.Forms.ScrollBar ScrollBar;
         //Arquivos EDF----------------------------------------------------------------------------------------
-        private EDFFile edfFileOutput;
+        private EdfFile edfFileOutput;
         //-----------------------------------------------------------------------------------------------------------------
-        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal, EDFFile __edfFileOutput, Control __ScrollBar)
+        public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal, EdfFile __edfFileOutput, Control __ScrollBar)
         {
             edfFileOutput     = __edfFileOutput;
             _Grafico          = Controle;
@@ -108,42 +109,33 @@ namespace thread_chart
                 }
                 case("Projeto_EDF"):
                 {
+                    int tempo = 0;
                     //FuncAtualizaStatusProjeto("...Iniciou", 0);
                     if (edfFileOutput != null)
                     {
-                        int i = 0;
-                        foreach (EDFSignal signal in edfFileOutput.Header.Signals)
+                        for (int k = 0; k < edfFileOutput.SignalInfo.Count; k++) 
                         {
-                            Plotar(2, i, " ", " ", null);
-                            //load_progress_bar(signal.NumberOfSamplesPerDataRecord, 2);
-                            num_de_voltas = 0;
-                            //Thread.Sleep(1);
-                            double[] Enviar = new double[edfFileOutput.DataRecords.Capacity * 256];
-                            foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
-                            {
-                                foreach (double sample in dataRecord[signal.IndexNumberWithLabel])
-                                {
-                                    Enviar[num_de_voltas] = sample;
-                                    num_de_voltas++;
-                                }
-                            }
-                            Plotar(1, i, "Black", signal.Label.ToString().Substring(4), Enviar);
-                            //load_progress_bar(num_de_voltas, 1);
-                            FuncScrollBar_Propriedades(num_de_voltas);
-                            i++;
+                            Plotar(2, k, null,tempo);
                         }
-                            //load_progress_bar(0, 3);
+                        
+                           
+                            bool q = Plotar(1, 0, edfFileOutput, 0);
+
+                         
                      }
+                    Plotar(3, 0, edfFileOutput, 0);
                     break;
                 }
             }
         }
         //-----------------------------------------------------------------------------------------------------------------
-        private void Plotar(int caso, int _NumCanais_, string Cor, string nomeSerie, double []SINAL)
+        //private void Plotar(int caso, int _NumCanais_, string Cor, string nomeSerie, double []SINAL)
+        private bool Plotar(int caso, int canal, EdfFile SinalEEG, int tempo) 
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] {caso, _NumCanais_, Cor, nomeSerie, SINAL});
+               // _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] {caso, _NumCanais_, Cor, nomeSerie, SINAL});
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, tempo });
             }
             else
             {
@@ -151,30 +143,43 @@ namespace thread_chart
                 {
                     if (prb != null)
                     {
-                        prb.Series["canal" + _NumCanais_].Color = Color.FromName(Cor);
-                        for (int i = 0; i < SINAL.Length; i++)
-                            prb.Series["canal" + _NumCanais_].Points.AddXY(i,SINAL[i]);
-                        prb.Titles[_NumCanais_].Text = nomeSerie;
+                        for (int k = 0; k < 10; k++)//edfFileOutput.FileInfo.NrDataRecords; k++)
+                        {
+                            edfFileOutput.ReadDataBlock(k);
+                            tempo = 256 + tempo;
+                            for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
+                                for (int i = 0; i < 256; i++)
+                                    prb.Series["canal" + j].Points.AddXY(i + tempo, SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                        }
+                    }
+                }
+                if (caso == 3)
+                {
+                    for (int i = 0; i < SinalEEG.SignalInfo.Count; i++)
+                    {
+                        prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
+                        prb.Series["canal" + i].Color = Color.FromName("Black");
                     }
                 }
                 if (caso == 2)
                 {
                     prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                    prb.Series.Add("canal" + _NumCanais_);
-                    prb.Series["canal" + _NumCanais_].ChartArea = "canal" + _NumCanais_;
-                    prb.Series["canal" + _NumCanais_].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                    prb.Series.Add("canal" + canal);
+                    prb.Series["canal" + canal].ChartArea = "canal" + canal;
+                    prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                     prb.Legends.Clear();
                 
-                    prb.Titles.Add("canal" + _NumCanais_);
+                    prb.Titles.Add("canal" + canal);
                     
-                    prb.Titles[_NumCanais_].DockedToChartArea = "canal" + _NumCanais_;
-                    prb.Titles[_NumCanais_].Position.Height = 3;
-                    prb.Titles[_NumCanais_].Position.Width = 40;
-                    prb.Titles[_NumCanais_].Alignment = ContentAlignment.MiddleLeft;
-                    prb.Titles[_NumCanais_].Position.X = 0;
-                    prb.Titles[_NumCanais_].Position.Y = prb.ChartAreas[_NumCanais_].Position.Height / 2 + prb.ChartAreas[_NumCanais_].Position.Y;
+                    prb.Titles[canal].DockedToChartArea = "canal" + canal;
+                    prb.Titles[canal].Position.Height = 3;
+                    prb.Titles[canal].Position.Width = 40;
+                    prb.Titles[canal].Alignment = ContentAlignment.MiddleLeft;
+                    prb.Titles[canal].Position.X = 0;
+                    prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Height / 2 + prb.ChartAreas[canal].Position.Y;
                 }
             }
+            return true;
         }
         //-----------------------------------------------------------------------------------------------------------------
         private void load_progress_bar(int valor, int caso)
