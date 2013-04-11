@@ -16,38 +16,35 @@ namespace thread_chart
 {
     public class atualiza_sinal
     {
-        //Controles Chart--------------------------------------------------------------------------------------------------------
+        //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        //private delegate void AtualizaChart(int caso, int _VarchartArea_, string Cor, string nomeSerie, double []SINAL);
         private delegate bool AtualizaChart(int caso, int canal, EdfFile SinalEEG,int tempo);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
-        //Controles Progress Bar-------------------------------------------------------------------------------------------------
+        //Controles Progress Bar--------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
         private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.ProgressBar prgbar = null;
-        private bool chave = true;
-        private int cont = 0;
-        // Controles Projeto------------------------------------------------------------------------------------------------------
+        // Controles Projeto-----------------------------------------------------------------------
         private Control _ControleProjeto = null;
         private System.Windows.Forms.ToolStrip ControleProjeto = null;
         private delegate void AtualizaControleProjeto(string caso);
-        //Status do Projeto-------------------------------------------------------------------------------------------------------
+        //Status do Projeto------------------------------------------------------------------------
         private Control _StatusProjeto = null;
         private System.Windows.Forms.StatusStrip StatusProjeto = null;
         private delegate void AtualizaStatusProjeto(string SMS, int caso);
-        //amostras sinal de teste-------------------------------------------------------------------------------------------------
+        //amostras sinal de teste------------------------------------------------------------------
         private int num_de_voltas = 20;
         private double num_de_amostras = 0.2;
         private int _NumCanais = 0;
-        //Controles sobre o sinal a exibir----------------------------------------------------------------------------------------
+        //Controles sobre o sinal a exibir----------------------------------------------------------
         private string OpcaoSinal;
-        //Controles Scroll Bar ----------------------------------------------------------------------------------------
+        //Controles Scroll Bar ---------------------------------------------------------------------
         private Control _ScrollBar = null;
         private delegate void ScrollBar_Propriedades(int num_volta, EdfFile SinalEEG);
         private System.Windows.Forms.ScrollBar ScrollBar;
-        //Arquivos EDF----------------------------------------------------------------------------------------
+        //Arquivos EDF-----------------------------------------------------------------------------
         private EdfFile edfFileOutput;
-        //-----------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------
         public atualiza_sinal(Control Controle, int NumCanais, Control BarraDeProgresso, Control __ControleProjeto, Control __StatusProjeto, string _OpcaoSinal, EdfFile __edfFileOutput, Control __ScrollBar)
         {
             edfFileOutput     = __edfFileOutput;
@@ -59,58 +56,14 @@ namespace thread_chart
             OpcaoSinal        = _OpcaoSinal;
             _ScrollBar        = __ScrollBar;
         }
-        //-----------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         public void Inicializa()
         {
-            switch (OpcaoSinal) //Gerar Sinal Aleatorio
+            switch (OpcaoSinal) 
             {
-                case ("Projeto_NOVO"):
-                {
-                    /*   for (int i = 0; i < _NumCanais; i++)
-                  {
-                 Plotar(0, 0, 2, i, " ", " ");
-                      load_progress_bar(0, 2);
-                      FuncAtualizaStatusProjeto("...Iniciou", 0);
-                      double j = 0;
-                      int inc = 0;
-                      while (j < num_de_voltas)
-                      {
-                          if (i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
-                          {
-                              Plotar(j, Math.Sin(j), 1, i, "YellowGreen", "Seno");
-                          }
-                          if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
-                          {
-                              Plotar(j, Math.Cos(j), 1, i, "Blue", "Cosseno");
-                          }
-                          if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
-                          {
-                              Plotar(j, Math.Tan(j), 1, i, "Green", "Tangente");
-                          }
-                          inc++;
-                          j += num_de_amostras;
-                          Thread.Sleep(0);
-                      }
-                      load_progress_bar(inc, 1);
-
-                  }
-                  while (chave)
-                  {
-                      load_progress_bar(0, 3);
-                      FuncScrollBar_Propriedades(num_de_voltas);
-                      FuncAtualizaStatusProjeto("...terminou", 1);
-                      FuncAtualizaControleProjeto("Des_btn_Suspender");
-                  }*/
-                    break;
-                } //Fim Case Gerar sinal
-                case ("Projeto_RPB"):
-                {
-                    break;
-                }
                 case("Projeto_EDF"):
                 {
                     int tempo = 0;
-                    //FuncAtualizaStatusProjeto("...Iniciou", 0);
                     if (edfFileOutput != null)
                     {
                         for (int k = 0; k < edfFileOutput.SignalInfo.Count; k++) 
@@ -125,13 +78,11 @@ namespace thread_chart
                 }
             }
         }
-        //-----------------------------------------------------------------------------------------------------------------
-        //private void Plotar(int caso, int _NumCanais_, string Cor, string nomeSerie, double []SINAL)
+        //------------------------------------------------------------------------------------------
         private bool Plotar(int caso, int canal, EdfFile SinalEEG, int tempo) 
         {
             if (_Grafico.InvokeRequired)
             {
-               // _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] {caso, _NumCanais_, Cor, nomeSerie, SINAL});
                 _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, tempo });
             }
             else
@@ -141,7 +92,7 @@ namespace thread_chart
                 {
                     if (prb != null)
                     {
-                        for (int k = 0; k < 10; k++)//edfFileOutput.FileInfo.NrDataRecords; k++)
+                        for (int k = 0; k < 10; k++)
                         {
                             edfFileOutput.ReadDataBlock(k);
                             for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
@@ -157,14 +108,7 @@ namespace thread_chart
                     {
                         prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
                         prb.Series["canal" + i].Color = Color.FromName("Black");
-                       // i++;
                     }
-                   /* for (int i = 1; i < SinalEEG.SignalInfo.Count; i++)
-                    {
-                        prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
-                        prb.Series["canal" + i].Color = Color.FromName("Green");
-                        i++;
-                    }*/
                     prb.Series["canal" + 0].Color = Color.FromName("Blue");
                 }
                 if (caso == 2)
@@ -187,7 +131,7 @@ namespace thread_chart
             }
             return true;
         }
-        //-----------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void load_progress_bar(int valor, int caso)
         {
 
@@ -214,7 +158,7 @@ namespace thread_chart
                     prgbar.Visible = false;
             }
         }
-        //-----------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------  
         private void FuncAtualizaControleProjeto(string caso)
         {
             if (_ControleProjeto.InvokeRequired)
@@ -230,7 +174,7 @@ namespace thread_chart
                 }
            }
         }
-        //-----------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void FuncAtualizaStatusProjeto(string SMS, int caso)
         {
             if (_StatusProjeto.InvokeRequired)
@@ -252,7 +196,7 @@ namespace thread_chart
                 }
             }
         }
-        //-----------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
         private void FuncScrollBar_Propriedades(int num_volta, EdfFile SinalEEG)
         {
             if (_ScrollBar.InvokeRequired)
@@ -267,21 +211,21 @@ namespace thread_chart
                 {
                     if (OpcaoSinal == "Projeto_EDF")
                     {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;//num_de_voltas; // 30; //VERIFICAR VALOR! "Frequencia"
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
                         ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
                         ScrollBar.SmallChange = 1;
                         ScrollBar.LargeChange = 1;
                     }
                     else
                     {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 10; //Colocar 3
+                        prb.ChartAreas[i].AxisX.ScaleView.Size = 10;
                         ScrollBar.Maximum = num_de_voltas;
                     }
                 }
                 chave = false;
             }
         }
-        //-----------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
 
     }
 }
