@@ -22,6 +22,7 @@ namespace AmbienteRPB
         //Plotar sinais na tela------------------------------------------------------------
         private Thread ThreadChart;
         private int __numeroDeCanais = 23;
+        private int DataRecords_lidos = 10;
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
@@ -461,6 +462,7 @@ namespace AmbienteRPB
             //chart1.ChartAreas[0].Position.Height = Divisao;
             //chart1.ChartAreas[0].BackColor = Color.Red;
             //chart1.ChartAreas[1].BackColor = Color.Blue;
+            AdicionaData(0,0);
             Adiciona_linhas_de_tempo();
             if (status_projeto == "Projeto_NOVO")
             {
@@ -615,29 +617,85 @@ namespace AmbienteRPB
 
         }
         //------------------------------------------------------------------------------------------
+        //                              FUNCÕES DA SCROLL BAR
+        //------------------------------------------------------------------------------------------
         private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
-        {
-          //  for (int i = 0;/// i < __numeroDeCanais; i++)
-          //  {
-          //      chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
-          //  }
-            int _min = 0;
-            int _seg = 0;
-            int _hora = 0;
-            _seg = e.NewValue * 10;
-            if (_seg >= 60)
+        {   
+            //Atualizar o tempo
+            if (e.Type == ScrollEventType.SmallIncrement)
             {
-                _min = _seg/60;
-                _seg = _seg - _min * 60;
-                if (_min >= 60)
-                {
-                    _hora = _min/60;
-                    _min = _min - _hora * 60;
-                }
+                //"Apaga" 10s Primeiro de sinal, 256 em x
+                AdicionaData(0,e.NewValue * 10);
+                Add10sInChart();
             }
-            string tempo = "(" + Convert.ToString(_hora) + ":" + Convert.ToString(_min) + ":" + Convert.ToString(_seg) + ")";
-            lbl_Tempo.Text = tempo;
-          //  progressBar.Enabled = false;
+            else if (e.Type == ScrollEventType.SmallDecrement)
+            {
+                AdicionaData(0,e.NewValue * 10);
+            }
+            //Atualizar o chart
+            for (int i = 0; i < __numeroDeCanais; i++)
+            {
+                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * 256;
+            }
+         
+        }
+        //------------------------------------------------------------------------------------------
+        private void Add10sInChart()
+        {
+            if(DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
+            {
+                int tempo = DataRecords_lidos * 256;
+                DataRecords_lidos++;
+                edfFileOutput.ReadDataBlock(DataRecords_lidos);
+                for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                    for (int i = 0; i < 256; i++)
+                        chart1.Series["canal" + j].Points.AddXY(i + tempo, edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+            }
+        }
+        //------------------------------------------------------------------------------------------
+        // Função reposalvel por atualizar o tempo atual na tela
+        // Caso = 0 -> Incrementa tempo, Caso == 1 -> Decrementa o tempos
+        private void AdicionaData(int caso, int aux)
+        {
+            if (caso == 0)
+            {
+                int _min = 0;
+                int _seg = 0;
+                int _hora = 0;
+                _seg = aux;
+                if (_seg >= 60)
+                {
+                    _min = _seg / 60;
+                    _seg = _seg - _min * 60;
+                    if (_min >= 60)
+                    {
+                        _hora = _min / 60;
+                        _min = _min - _hora * 60;
+                    }
+                }
+                DateTime dt_chart = new DateTime(2013, 4, 11, _hora, _min, _seg);
+                _seg = edfFileOutput.FileInfo.StartTime.Value.Seconds + aux;
+                _min = edfFileOutput.FileInfo.StartTime.Value.Minutes;
+                _hora = edfFileOutput.FileInfo.StartTime.Value.Hours;
+                if (_seg >= 60)
+                {
+                    aux =  _seg / 60;
+                    _seg = _seg - aux * 60;
+                    _min = aux + edfFileOutput.FileInfo.StartTime.Value.Minutes;
+                    if (_min >= 60)
+                    {
+                        aux = _min/60;
+                        _hora = aux + edfFileOutput.FileInfo.StartTime.Value.Hours;
+                        _min = _min - aux * 60;
+                    }
+                }
+                DateTime dt_EEG = new DateTime(2013, 4, 11, _hora, _min, _seg);
+
+                string tempo = dt_EEG.ToString("H:mm:ss") + " (" + dt_chart.ToString("H:mm:ss") + ")";
+                lbl_Tempo.Text = tempo;
+            }
+            else if (caso == 1) { }
+
         }
         //------------------------------------------------------------------------------------------
         //Auto sets
