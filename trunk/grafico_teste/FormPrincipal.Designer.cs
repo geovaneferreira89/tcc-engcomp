@@ -98,6 +98,8 @@
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.autoFreqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_tempo_s = new System.Windows.Forms.Label();
+            this.lbl_Tempo = new System.Windows.Forms.Label();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -112,6 +114,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxChart.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.gbxChart.Controls.Add(this.lbl_Tempo);
             this.gbxChart.Controls.Add(this.chart1);
             this.gbxChart.Location = new System.Drawing.Point(95, 21);
             this.gbxChart.Name = "gbxChart";
@@ -376,7 +379,7 @@
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(670, 426);
+            this.progressBar.Location = new System.Drawing.Point(654, 427);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(127, 14);
             this.progressBar.TabIndex = 11;
@@ -813,6 +816,30 @@
             this.autoFreqToolStripMenuItem.Text = "Auto Freq";
             this.autoFreqToolStripMenuItem.Click += new System.EventHandler(this.autoFreqToolStripMenuItem_Click);
             // 
+            // lbl_tempo_s
+            // 
+            this.lbl_tempo_s.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_tempo_s.AutoSize = true;
+            this.lbl_tempo_s.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_tempo_s.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tempo_s.Location = new System.Drawing.Point(784, 427);
+            this.lbl_tempo_s.Name = "lbl_tempo_s";
+            this.lbl_tempo_s.Size = new System.Drawing.Size(26, 14);
+            this.lbl_tempo_s.TabIndex = 17;
+            this.lbl_tempo_s.Text = "10s";
+            // 
+            // lbl_Tempo
+            // 
+            this.lbl_Tempo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_Tempo.AutoSize = true;
+            this.lbl_Tempo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_Tempo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Tempo.Location = new System.Drawing.Point(3, 365);
+            this.lbl_Tempo.Name = "lbl_Tempo";
+            this.lbl_Tempo.Size = new System.Drawing.Size(102, 14);
+            this.lbl_Tempo.TabIndex = 18;
+            this.lbl_Tempo.Text = "00:00:00 (00:00:00)";
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,6 +847,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(820, 445);
+            this.Controls.Add(this.lbl_tempo_s);
             this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.gbxChart);
             this.Controls.Add(this.gbxEventos);
@@ -835,6 +863,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.gbxChart.ResumeLayout(false);
+            this.gbxChart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -919,6 +948,8 @@
         private System.Windows.Forms.CheckBox Evento12;
         private System.Windows.Forms.CheckBox Evento11;
         private System.Windows.Forms.ToolStripMenuItem autoFreqToolStripMenuItem;
+        private System.Windows.Forms.Label lbl_Tempo;
+        private System.Windows.Forms.Label lbl_tempo_s;
     }
 }
 
