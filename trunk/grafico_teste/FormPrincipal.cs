@@ -509,6 +509,7 @@ namespace AmbienteRPB
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation7  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation8  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
 
             lineAnnotation1.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation2.LineColor  = System.Drawing.Color.LightGray;
@@ -519,6 +520,7 @@ namespace AmbienteRPB
             lineAnnotation7.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation8.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation9.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation10.LineColor = System.Drawing.Color.LightGray;
 
             lineAnnotation1.LineDashStyle = ChartDashStyle.Dash;
             lineAnnotation2.LineDashStyle = ChartDashStyle.Dash;
@@ -529,6 +531,7 @@ namespace AmbienteRPB
             lineAnnotation7.LineDashStyle = ChartDashStyle.Dash;
             lineAnnotation8.LineDashStyle = ChartDashStyle.Dash;
             lineAnnotation9.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation10.LineDashStyle = ChartDashStyle.Dash;
 
             lineAnnotation1.ToolTip  = "1";
             lineAnnotation2.ToolTip  = "1";
@@ -539,16 +542,18 @@ namespace AmbienteRPB
             lineAnnotation7.ToolTip  = "1";
             lineAnnotation8.ToolTip  = "1";
             lineAnnotation9.ToolTip  = "1";
+            lineAnnotation10.ToolTip = "1";
 
             lineAnnotation1.X = 4;
-            lineAnnotation2.X = 4 + 10.6 * 1;
-            lineAnnotation3.X = 4 + 10.6 * 2;
-            lineAnnotation4.X = 4 + 10.6 * 3;
-            lineAnnotation5.X = 4 + 10.6 * 4;
-            lineAnnotation6.X = 4 + 10.6 * 5;
-            lineAnnotation7.X = 4 + 10.6 * 6;
-            lineAnnotation8.X = 4 + 10.6 * 7;
-            lineAnnotation9.X = 4 + 10.6 * 8;
+            lineAnnotation2.X = 4 + 9.6 * 1;
+            lineAnnotation3.X = 4 + 9.6 * 2;
+            lineAnnotation4.X = 4 + 9.6 * 3;
+            lineAnnotation5.X = 4 + 9.6 * 4;
+            lineAnnotation6.X = 4 + 9.6 * 5;
+            lineAnnotation7.X = 4 + 9.6 * 6;
+            lineAnnotation8.X = 4 + 9.6 * 7;
+            lineAnnotation9.X = 4 + 9.6 * 8;
+            lineAnnotation10.X = 4 + 9.6 * 9;
 
             lineAnnotation1.Width = 0;
             lineAnnotation1.Y = 0;
@@ -568,6 +573,8 @@ namespace AmbienteRPB
             lineAnnotation8.Y = 0;
             lineAnnotation9.Width = 0;
             lineAnnotation9.Y = 0;
+            lineAnnotation10.Width = 0;
+            lineAnnotation10.Y = 0;
 
             lineAnnotation1.Height  = 200;
             lineAnnotation2.Height  = 200;
@@ -578,6 +585,7 @@ namespace AmbienteRPB
             lineAnnotation7.Height  = 200;
             lineAnnotation8.Height  = 200;
             lineAnnotation9.Height  = 200;
+            lineAnnotation10.Height = 200;
 
             lineAnnotation1.Name = "LineAnnotation1";
             lineAnnotation2.Name = "LineAnnotation2";
@@ -588,6 +596,7 @@ namespace AmbienteRPB
             lineAnnotation7.Name = "LineAnnotation7";
             lineAnnotation8.Name = "LineAnnotation8";
             lineAnnotation9.Name = "LineAnnotation9";
+            lineAnnotation10.Name = "LineAnnotation10";
 
             chart1.Annotations.Add(lineAnnotation1);
             chart1.Annotations.Add(lineAnnotation2);
@@ -598,6 +607,7 @@ namespace AmbienteRPB
             chart1.Annotations.Add(lineAnnotation7);
             chart1.Annotations.Add(lineAnnotation8);
             chart1.Annotations.Add(lineAnnotation9);
+            chart1.Annotations.Add(lineAnnotation10);
         }
         //------------------------------------------------------------------------------------------
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -614,6 +624,18 @@ namespace AmbienteRPB
           //  progressBar.Enabled = false;
         }
         //------------------------------------------------------------------------------------------
+        //Auto sets
+        private void autoFreqToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                chart1.ChartAreas[0].AxisY.Maximum = 250;
+                for (int i = 0; i < __numeroDeCanais; i++)
+                {
+      
+                    chart1.ChartAreas[i].Position.Y = 100 / __numeroDeCanais * i;
+                }
+            
+        }
+        //------------------------------------------------------------------------------------------
         //Somente Numeros
         private void AmplitudeCombo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -623,17 +645,14 @@ namespace AmbienteRPB
         }
         //------------------------------------------------------------------------------------------
         private void AmplitudeCombo_TextChanged(object sender, EventArgs e)
-        {
+        {        
             if (AmplitudeCombo.Text != "")
             {
-                for (int i = 0; i < __numeroDeCanais; i++)
-                {
-                 //   chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
-                   // chart1.ChartAreas[i].AxisY.IntervalOffsetType = DateTimeIntervalType.Number;
-                   // chart1.ChartAreas[i].AxisY.IntervalOffset = Convert.ToDouble(AmplitudeCombo.Text);
-                    chart1.ChartAreas[i].AxisY.Maximum = chart1.ChartAreas[i].AxisY.Maximum - 100;
-                    //chart1.ChartAreas[i].Position.Y = (100 / __numeroDeCanais) * i;
-                }
+                chart1.ChartAreas[0].AxisY.Maximum = 250;
+               for (int i = 0; i < __numeroDeCanais; i++){
+                     chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+                     //chart1.ChartAreas[i].Position.Y = 100/__numeroDeCanais*i;
+               }
             }
         }
         //------------------------------------------------------------------------------------------
@@ -992,6 +1011,7 @@ namespace AmbienteRPB
         {
            
         }
+
         //-----------------------------------------------------------
        
     }
