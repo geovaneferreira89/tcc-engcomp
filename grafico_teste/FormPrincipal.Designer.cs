@@ -97,6 +97,7 @@
             this.Evento4 = new System.Windows.Forms.CheckBox();
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
+            this.autoFreqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -219,14 +220,14 @@
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // padrõesToolStripMenuItem
             // 
             this.padrõesToolStripMenuItem.Name = "padrõesToolStripMenuItem";
-            this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.padrõesToolStripMenuItem.Text = "Padrões";
             this.padrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
@@ -235,7 +236,8 @@
             this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.check_MostrarCursorX,
             this.btnTemas,
-            this.infoEDF});
+            this.infoEDF,
+            this.autoFreqToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
             this.verToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.verToolStripMenuItem.Text = "Opções ";
@@ -804,6 +806,13 @@
             this.Evento2.UseVisualStyleBackColor = false;
             this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
             // 
+            // autoFreqToolStripMenuItem
+            // 
+            this.autoFreqToolStripMenuItem.Name = "autoFreqToolStripMenuItem";
+            this.autoFreqToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.autoFreqToolStripMenuItem.Text = "Auto Freq";
+            this.autoFreqToolStripMenuItem.Click += new System.EventHandler(this.autoFreqToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -909,6 +918,7 @@
         private System.Windows.Forms.CheckBox Evento13;
         private System.Windows.Forms.CheckBox Evento12;
         private System.Windows.Forms.CheckBox Evento11;
+        private System.Windows.Forms.ToolStripMenuItem autoFreqToolStripMenuItem;
     }
 }
 
