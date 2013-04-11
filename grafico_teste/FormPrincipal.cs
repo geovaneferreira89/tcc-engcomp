@@ -37,10 +37,8 @@ namespace AmbienteRPB
         //Marção de Padrões e seus Eventos-----------------------------------------------
         private int EventoAtual;
         private ListaPadroesEventos[] ListaPadroes;
-
         String Evento;
         Color highlightColor;
-
         ToolTip tooltip = new ToolTip();
         Color Cor;
         Color CorFundo;
@@ -87,8 +85,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         // Ferramenta de importar sinais EEG de arquivo .EDF
         private void btn_Importar_Click(object sender, EventArgs e)
-        {
-                       
+        {  
             if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
                 nomeProject = openFileEDF.FileName;
@@ -108,8 +105,7 @@ namespace AmbienteRPB
                     btnTemas.Enabled = true;
                     CarregaNomesPadroes(20);
                     if (Arquivos.ArquivoExiste("Padroes_Eventos.txt") == true)
-                      ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
-                    
+                      ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos(); 
                 }
                 else
                     AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
@@ -173,16 +169,12 @@ namespace AmbienteRPB
         {
             btn_Importar.Enabled = false;
             btn_novoProjeto.Enabled = false;
-            //btn_help.Enabled = true;
-            //saveToolStripButton.Enabled = true;
             MessageBox.Show("Projeto " + nomeProject + "\nCriado",
                     "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             status_projeto = "Projeto_NOVO";
             ChartInicializarThreads(__numeroDeCanais);
             btn_novoProjeto.Enabled = false;
-            //btn_MarcarPadroes.Enabled = true;
-
         }
         //------------------------------------------------------------------------------------------
         //Supende o sistema
@@ -191,7 +183,7 @@ namespace AmbienteRPB
        
         }
         //------------------------------------------------------------------------------------------
-        //retorna o sistema
+        //Retorna o sistema
         private void btn_Resume_Click(object sender, EventArgs e)
         {
          
@@ -308,16 +300,13 @@ namespace AmbienteRPB
             if (numCursor == 0)
             {
                 var_result = result;
-
                 chart1.Annotations.Clear();
                 Adiciona_linhas_de_tempo();
-
-                result.ChartArea.CursorX.SelectionColor = highlightColor;//Color.FromArgb(00, 50, 50, 50);
+                result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
 
                 x_Pos = (e.X);
                 y_Pos = (e.Y);
-
                 //linha fixa
                 VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
                 cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
@@ -335,7 +324,6 @@ namespace AmbienteRPB
                 result.ChartArea.CursorX.LineColor = highlightColor;
                 result.ChartArea.CursorX.LineWidth = 1;
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
-
                 // Set range selection color, specifying transparency of 120
                 result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.IsUserEnabled = true;
@@ -343,8 +331,7 @@ namespace AmbienteRPB
                 PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
                 PointF Padrao_Fim = new PointF(e.X, e.Y);
                 
-               result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-
+                result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
 
@@ -410,8 +397,7 @@ namespace AmbienteRPB
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //adiciona novo check box... 
-            //?
+            //adiciona novo check box...(Fazer)
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
@@ -445,7 +431,7 @@ namespace AmbienteRPB
             int Divisao = 100 / numeroDeCanais;
             for (int i = 0; i < numeroDeCanais; i++)
             {
-                //propriedades de cada sinal
+                //Propriedades de cada sinal
                 chart1.ChartAreas.Add("canal" + i);
                 chart1.ChartAreas[i].BackColor = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
@@ -454,15 +440,9 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].Position.Width = 96;
                 chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = Divisao * i;
-                //chart1.ChartAreas[i].InnerPlotPosition.Auto = false;
-                //chart1.ChartAreas[i].InnerPlotPosition.Y = Divisao * i; 
 
-            }
-            
-            //chart1.ChartAreas[0].Position.Height = Divisao;
-            //chart1.ChartAreas[0].BackColor = Color.Red;
-            //chart1.ChartAreas[1].BackColor = Color.Blue;
-            AdicionaData(0,0);
+            }            
+            AdicionaData(0);
             Adiciona_linhas_de_tempo();
             if (status_projeto == "Projeto_NOVO")
             {
@@ -487,7 +467,6 @@ namespace AmbienteRPB
             }
             if (status_projeto == "Projeto_EDF")
             {
-                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
@@ -625,12 +604,12 @@ namespace AmbienteRPB
             if (e.Type == ScrollEventType.SmallIncrement)
             {
                 //"Apaga" 10s Primeiro de sinal, 256 em x
-                AdicionaData(0,e.NewValue * 10);
+                AdicionaData(e.NewValue * 10);
                 Add10sInChart();
             }
             else if (e.Type == ScrollEventType.SmallDecrement)
             {
-                AdicionaData(0,e.NewValue * 10);
+                AdicionaData(e.NewValue * 10);
             }
             //Atualizar o chart
             for (int i = 0; i < __numeroDeCanais; i++)
@@ -655,47 +634,42 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         // Função reposalvel por atualizar o tempo atual na tela
         // Caso = 0 -> Incrementa tempo, Caso == 1 -> Decrementa o tempos
-        private void AdicionaData(int caso, int aux)
+        private void AdicionaData(int aux)
         {
-            if (caso == 0)
+            int _min = 0;
+            int _seg = 0;
+            int _hora = 0;
+            _seg = aux;
+            if (_seg >= 60)
             {
-                int _min = 0;
-                int _seg = 0;
-                int _hora = 0;
-                _seg = aux;
-                if (_seg >= 60)
+                _min = _seg / 60;
+                _seg = _seg - _min * 60;
+                if (_min >= 60)
                 {
-                    _min = _seg / 60;
-                    _seg = _seg - _min * 60;
-                    if (_min >= 60)
-                    {
-                        _hora = _min / 60;
-                        _min = _min - _hora * 60;
-                    }
+                    _hora = _min / 60;
+                    _min = _min - _hora * 60;
                 }
-                DateTime dt_chart = new DateTime(2013, 4, 11, _hora, _min, _seg);
-                _seg = edfFileOutput.FileInfo.StartTime.Value.Seconds + aux;
-                _min = edfFileOutput.FileInfo.StartTime.Value.Minutes;
-                _hora = edfFileOutput.FileInfo.StartTime.Value.Hours;
-                if (_seg >= 60)
-                {
-                    aux =  _seg / 60;
-                    _seg = _seg - aux * 60;
-                    _min = aux + edfFileOutput.FileInfo.StartTime.Value.Minutes;
-                    if (_min >= 60)
-                    {
-                        aux = _min/60;
-                        _hora = aux + edfFileOutput.FileInfo.StartTime.Value.Hours;
-                        _min = _min - aux * 60;
-                    }
-                }
-                DateTime dt_EEG = new DateTime(2013, 4, 11, _hora, _min, _seg);
-
-                string tempo = dt_EEG.ToString("H:mm:ss") + " (" + dt_chart.ToString("H:mm:ss") + ")";
-                lbl_Tempo.Text = tempo;
             }
-            else if (caso == 1) { }
+            DateTime dt_chart = new DateTime(2013, 4, 11, _hora, _min, _seg);
+            _seg = edfFileOutput.FileInfo.StartTime.Value.Seconds + aux;
+            _min = edfFileOutput.FileInfo.StartTime.Value.Minutes;
+            _hora = edfFileOutput.FileInfo.StartTime.Value.Hours;
+            if (_seg >= 60)
+            {
+                aux =  _seg / 60;
+                _seg = _seg - aux * 60;
+                _min = aux + edfFileOutput.FileInfo.StartTime.Value.Minutes;
+                if (_min >= 60)
+                {
+                    aux = _min/60;
+                    _hora = aux + edfFileOutput.FileInfo.StartTime.Value.Hours;
+                    _min = _min - aux * 60;
+                }
+            }
+            DateTime dt_EEG = new DateTime(2013, 4, 11, _hora, _min, _seg);
 
+            string tempo = dt_EEG.ToString("H:mm:ss") + " (" + dt_chart.ToString("H:mm:ss") + ")";
+            lbl_Tempo.Text = tempo;   
         }
         //------------------------------------------------------------------------------------------
         //Auto sets
@@ -722,10 +696,9 @@ namespace AmbienteRPB
         {        
             if (AmplitudeCombo.Text != "")
             {
-                chart1.ChartAreas[0].AxisY.Maximum = 250;
+               //chart1.ChartAreas[0].AxisY.Maximum = 250;
                for (int i = 0; i < __numeroDeCanais; i++){
                      chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
-                     //chart1.ChartAreas[i].Position.Y = 100/__numeroDeCanais*i;
                }
             }
         }
@@ -793,15 +766,14 @@ namespace AmbienteRPB
                 chart1.Series[i].Color = Cor;
             }
         }
-        //Teste!
-
+        //--------------------------------------------------------------------------
         private void canal1Canal2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series[2].Points.Clear();
             for (int j = 0; j < chart1.Series[0].Points.Count; j++)
             {
                 double Y__ = chart1.Series[0].Points[j].YValues[0] - chart1.Series[1].Points[j].YValues[0];
-                chart1.Series[2].Points.AddXY(j,Y__);// = "" + chart.Series[i].Points[j];       
+                chart1.Series[2].Points.AddXY(j,Y__);
             }
             MessageBox.Show("Nome Pac");
         }
@@ -843,8 +815,9 @@ namespace AmbienteRPB
             Evento19.Checked = false;
             Evento20.Checked = false;
         }
-      
         //-------------------------------------------------------------------------
+        //                          EVENTOS CLICADOS 
+        //--------------------------------------------------------------------------
         private void Evento1_Click(object sender, EventArgs e)
         {
             Evento = Evento1.Text;
@@ -853,7 +826,7 @@ namespace AmbienteRPB
             EventoAtual = 0;
             highlightColor = Color.Lime;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento2_Click(object sender, EventArgs e)
         {
             Evento = Evento2.Text;
@@ -862,7 +835,7 @@ namespace AmbienteRPB
             EventoAtual = 1;
             highlightColor = Color.Yellow;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento3_Click(object sender, EventArgs e)
         {
             Evento = Evento3.Text;
@@ -871,7 +844,7 @@ namespace AmbienteRPB
             EventoAtual = 2;
             highlightColor = Color.Red;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento4_Click(object sender, EventArgs e)
         {
             Evento = Evento4.Text;
@@ -880,7 +853,7 @@ namespace AmbienteRPB
             EventoAtual = 3;
             highlightColor = Color.Orange;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento5_Click(object sender, EventArgs e)
         {
             Evento = Evento5.Text;
@@ -889,7 +862,7 @@ namespace AmbienteRPB
             EventoAtual = 4;
             highlightColor = Color.RoyalBlue;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento6_Click(object sender, EventArgs e)
         {
             Evento = Evento6.Text;
@@ -898,7 +871,7 @@ namespace AmbienteRPB
             EventoAtual = 5;
             highlightColor = Color.HotPink;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento7_Click(object sender, EventArgs e)
         {
             Evento = Evento7.Text;
@@ -907,7 +880,7 @@ namespace AmbienteRPB
             EventoAtual = 6;
             highlightColor = Color.Aqua;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento8_Click(object sender, EventArgs e)
         {
             Evento = Evento8.Text;
@@ -916,7 +889,7 @@ namespace AmbienteRPB
             EventoAtual = 7;
             highlightColor = Color.Gold;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento9_Click(object sender, EventArgs e)
         {
             Evento = Evento9.Text;
@@ -925,7 +898,7 @@ namespace AmbienteRPB
             EventoAtual = 8;
             highlightColor = Color.Orchid;
         }
-
+        //--------------------------------------------------------------------------
         private void Evento10_Click(object sender, EventArgs e)
         {
             Evento = Evento10.Text;
@@ -934,6 +907,7 @@ namespace AmbienteRPB
             EventoAtual = 9;
             highlightColor = Color.Salmon;
         }
+        //--------------------------------------------------------------------------
         private void Enveto11_Click(object sender, EventArgs e)
         {
             Evento = Evento11.Text;
@@ -942,7 +916,7 @@ namespace AmbienteRPB
             EventoAtual = 10;
             highlightColor = Color.PeachPuff;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto12_Click(object sender, EventArgs e)
         {
             Evento = Evento12.Text;
@@ -951,7 +925,7 @@ namespace AmbienteRPB
             EventoAtual = 11;
             highlightColor = Color.SkyBlue;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto13_Click(object sender, EventArgs e)
         {
             Evento = Evento13.Text;
@@ -960,7 +934,7 @@ namespace AmbienteRPB
             EventoAtual = 12;
             highlightColor = Color.Plum;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto14_Click(object sender, EventArgs e)
         {
             Evento = Evento14.Text;
@@ -969,7 +943,7 @@ namespace AmbienteRPB
             EventoAtual = 13;
             highlightColor = Color.MediumSlateBlue;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto15_Click(object sender, EventArgs e)
         {
             Evento = Evento15.Text;
@@ -978,7 +952,7 @@ namespace AmbienteRPB
             EventoAtual = 14;
             highlightColor = Color.LightGray;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto16_Click(object sender, EventArgs e)
         {
             Evento = Evento16.Text;
@@ -987,7 +961,7 @@ namespace AmbienteRPB
             EventoAtual = 15;
             highlightColor = Color.Brown;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto17_Click(object sender, EventArgs e)
         {
             Evento = Evento17.Text;
@@ -996,7 +970,7 @@ namespace AmbienteRPB
             EventoAtual = 16;
             highlightColor = Color.Khaki;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto18_Click(object sender, EventArgs e)
         {
             Evento = Evento18.Text;
@@ -1005,7 +979,7 @@ namespace AmbienteRPB
             EventoAtual = 17;
             highlightColor = Color.DarkGoldenrod;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto19_Click(object sender, EventArgs e)
         {
             Evento = Evento19.Text;
@@ -1014,7 +988,7 @@ namespace AmbienteRPB
             EventoAtual = 18;
             highlightColor = Color.YellowGreen;
         }
-
+        //--------------------------------------------------------------------------
         private void Enveto20_Click(object sender, EventArgs e)
         {
              Evento = Evento20.Text;
@@ -1074,13 +1048,13 @@ namespace AmbienteRPB
                 Evento = NomeEvento.NomePadrao;
             }
         }
-
+        //--------------------------------------------------------------------------
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
           
 
         }
-
+        //--------------------------------------------------------------------------
         private void btnEvento1_Click(object sender, EventArgs e)
         {
            
