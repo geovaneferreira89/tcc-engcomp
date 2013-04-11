@@ -621,6 +621,22 @@ namespace AmbienteRPB
           //  {
           //      chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue;
           //  }
+            int _min = 0;
+            int _seg = 0;
+            int _hora = 0;
+            _seg = e.NewValue * 10;
+            if (_seg >= 60)
+            {
+                _min = _seg/60;
+                _seg = _seg - _min * 60;
+                if (_min >= 60)
+                {
+                    _hora = _min/60;
+                    _min = _min - _hora * 60;
+                }
+            }
+            string tempo = "(" + Convert.ToString(_hora) + ":" + Convert.ToString(_min) + ":" + Convert.ToString(_seg) + ")";
+            lbl_Tempo.Text = tempo;
           //  progressBar.Enabled = false;
         }
         //------------------------------------------------------------------------------------------
