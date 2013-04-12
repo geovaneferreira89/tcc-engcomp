@@ -428,20 +428,20 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void ChartInicializarThreads(int numeroDeCanais)
         {
-            int Divisao = 100 / numeroDeCanais;
+            double Divisao = 100 / (double)numeroDeCanais;
+            float _aux;
+            _aux = (float)Divisao;
             for (int i = 0; i < numeroDeCanais; i++)
-            {
-                //Propriedades de cada sinal
+            {   //Propriedades de cada sinal
                 chart1.ChartAreas.Add("canal" + i);
                 chart1.ChartAreas[i].BackColor = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height = Divisao+10;
+                chart1.ChartAreas[i].Position.Height = _aux+2;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[i].Position.Width = 96;
                 chart1.ChartAreas[i].Position.X = 4;
-                chart1.ChartAreas[i].Position.Y = Divisao * i;
-
-            }            
+                chart1.ChartAreas[i].Position.Y = _aux * i;
+            }
             AdicionaData(0);
             Adiciona_linhas_de_tempo();
             if (status_projeto == "Projeto_NOVO")

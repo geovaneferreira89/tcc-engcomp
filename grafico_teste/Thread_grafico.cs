@@ -18,7 +18,7 @@ namespace thread_chart
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate bool AtualizaChart(int caso, int canal, EdfFile SinalEEG,int tempo);
+        private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         //Controles Progress Bar--------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
@@ -63,31 +63,29 @@ namespace thread_chart
             {
                 case("Projeto_EDF"):
                 {
-                    int tempo = 0;
                     if (edfFileOutput != null)
                     {
                         for (int k = 0; k < edfFileOutput.SignalInfo.Count; k++) 
                         {
-                            Plotar(2, k, null,tempo);
+                            Plotar(2, k, null);
                         }
-                        bool q = Plotar(1, 0, edfFileOutput, 0);
+                        Plotar(1, 0, edfFileOutput);
                         FuncScrollBar_Propriedades(1, edfFileOutput);
                      }
-                    Plotar(3, 0, edfFileOutput, 0);
                     break;
                 }
             }
         }
         //------------------------------------------------------------------------------------------
-        private bool Plotar(int caso, int canal, EdfFile SinalEEG, int tempo) 
+        private void Plotar(int caso, int canal, EdfFile SinalEEG) 
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, tempo });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG });
             }
             else
             {
-                tempo = 0;
+                int tempo = 0;
                 if (caso == 1)
                 {
                     if (prb != null)
@@ -101,16 +99,13 @@ namespace thread_chart
                             tempo = 256 + tempo;
                         }
                     }
-                }
-                if (caso == 3)
-                {
                     for (int i = 0; i < SinalEEG.SignalInfo.Count; i++)
                     {
                         prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
                         prb.Series["canal" + i].Color = Color.FromName("Black");
                     }
-                    prb.Series["canal" + 0].Color = Color.FromName("Blue");
                 }
+                //---------------------------               
                 if (caso == 2)
                 {
                     prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
@@ -118,18 +113,16 @@ namespace thread_chart
                     prb.Series["canal" + canal].ChartArea = "canal" + canal;
                     prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                     prb.Legends.Clear();
-                
                     prb.Titles.Add("canal" + canal);
-                    
                     prb.Titles[canal].DockedToChartArea = "canal" + canal;
                     prb.Titles[canal].Position.Height = 3;
                     prb.Titles[canal].Position.Width = 40;
                     prb.Titles[canal].Alignment = ContentAlignment.MiddleLeft;
+                    //prb.Titles[canal].Position.Auto = true;
                     prb.Titles[canal].Position.X = 0;
-                    prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Height / 2 + prb.ChartAreas[canal].Position.Y;
+                    prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Y;
                 }
             }
-            return true;
         }
         //------------------------------------------------------------------------------------------
         private void load_progress_bar(int valor, int caso)
@@ -222,7 +215,6 @@ namespace thread_chart
                         ScrollBar.Maximum = num_de_voltas;
                     }
                 }
-                chave = false;
             }
         }
         //------------------------------------------------------------------------------------------
