@@ -9,8 +9,10 @@ using System.Windows.Forms;
 
 namespace AmbienteRPB
 {
+     
     public partial class MDIPrincipalForm : Form
     {
+        FormPrincipal childForm;
         private int childFormNumber = 0;
 
         public MDIPrincipalForm()
@@ -20,7 +22,7 @@ namespace AmbienteRPB
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            FormPrincipal childForm = new FormPrincipal();
+            childForm = new FormPrincipal();
             childForm.MdiParent = this;
             if (childFormNumber != 0)
                 childForm.Text = "Novo Projeto " + childFormNumber;
@@ -124,6 +126,12 @@ namespace AmbienteRPB
             MessageBox.Show("Universidade Tecnológica Federal do Paraná\nEngenharia de Computação\nTrabalho De Conclusão de Curso\nAlunos: Geovane Ferreira\n              Georgia\nOrientador: Miguel\nCuritiba 2013",
                 "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

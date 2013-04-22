@@ -23,6 +23,7 @@ namespace AmbienteRPB
         private Thread ThreadChart;
         private int __numeroDeCanais = 23;
         private int DataRecords_lidos = 10;
+        private int Scroll_Click_Escala_Seg = 10;
         //---------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
@@ -93,7 +94,7 @@ namespace AmbienteRPB
                 if (edfFileOutput != null)
                 {
                     status_projeto = "Projeto_EDF";
-                    AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1);
+                    AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1, Color.Green);
                     __numeroDeCanais = edfFileOutput.SignalInfo.Count;
                     ChartInicializarThreads(__numeroDeCanais);
                     btn_novoProjeto.Enabled = false;
@@ -108,7 +109,7 @@ namespace AmbienteRPB
                       ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos(); 
                 }
                 else
-                    AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2);
+                    AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2, Color.Red);
             }
             openFileEDF.Dispose();
          }
@@ -137,7 +138,7 @@ namespace AmbienteRPB
                     btn_novoProjeto.Enabled = false;
                 }
                 status_projeto = "Projeto_RPB";
-                AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2); 
+                AtualizaFerramentaAtiva("Abrir projeto não implentado!", 2, Color.Red); 
             }
            
         }
@@ -192,11 +193,28 @@ namespace AmbienteRPB
         //Função responsavel por verificar qual ferramenta usar quando o mouse é clicado em cima dos sinais
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(mostrarCursores != 0)
+            if (mostrarCursores != 0)
             {
                 MarcarSelecao(e);
-            }    
+            }
+            else//muda cor...
+            {
+                MudarCorChart(e);
+            }
         }
+        //-----------------------------------------------------------------------------------------
+        //Check box responsavel por Mostra o cursor no eixo X dos gráficos
+        private void MudarCorChart(MouseEventArgs e)
+        {
+            HitTestResult result = chart1.HitTest(e.X, e.Y, true);
+            if (result.Series != null)
+            {
+                result.Series.Color = Color.Blue;
+                  ///   prb.Series["canal" + i].Color = Color.FromName("Black");
+            }
+        }
+        //------------------------------------------------------------------------------------------
+        
         //-----------------------------------------------------------------------------------------
         //Check box responsavel por Mostra o cursor no eixo X dos gráficos
         private void check_MostrarCursorX_CheckedChanged(object sender, EventArgs e)
@@ -245,9 +263,9 @@ namespace AmbienteRPB
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 119, this.Size.Height - 115);
                 check_MostrarCursorX.Checked = false;
                 MostrarCursorX = false;
-                AtualizaFerramentaAtiva("", 0);
+                AtualizaFerramentaAtiva("", 0,Color.Gray);
                 mostrarCursores = 1;
-                AtualizaFerramentaAtiva("Marcar Eventos", 1);
+                AtualizaFerramentaAtiva("Marcar Eventos", 1, Color.Green);
             }
             else
             {
@@ -258,7 +276,7 @@ namespace AmbienteRPB
                 chart1.Location = new System.Drawing.Point(2, 8);
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, this.Size.Height - 105);
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 24, this.Size.Height - 115);
-                AtualizaFerramentaAtiva("", 0);
+                AtualizaFerramentaAtiva("", 0,Color.Green);
                 Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
             }
         }
@@ -266,10 +284,10 @@ namespace AmbienteRPB
         //Defini uma seleção afim de ser um padrão. 
         private void MarcarSelecao(MouseEventArgs e)
         {
-                    HitTestResult result = chart1.HitTest(e.X, e.Y);
+                    HitTestResult result = chart1.HitTest(e.X, e.Y, true);
                     if (result.ChartArea != null)
                     {
-                        AtualizaFerramentaAtiva("", 2);
+                        AtualizaFerramentaAtiva("", 2,Color.Gray);
                         ExecutaSelecao(result, e);
                     }
                     else
@@ -283,15 +301,15 @@ namespace AmbienteRPB
                             result = chart1.HitTest(e.X + i, e.Y);
                             if (result.ChartArea != null)
                                 cont = false;
-                            if (i == 10)
+                            if (i == 100)
                                 cont = false;
                             i++;
                         }
-                        AtualizaFerramentaAtiva("Result null", 2);
+                        AtualizaFerramentaAtiva("Inicio de envento marcado.", 2, Color.Orange);
                         if (result.ChartArea != null)
                             ExecutaSelecao(result, e);
                         else
-                            AtualizaFerramentaAtiva("RESULT NULL 2 - Marque novamente", 2);
+                            AtualizaFerramentaAtiva("ERRO - Marque novamente (proximo ao sinal)", 2, Color.Red);
                     }
         }
         //------------------------------------------------------------------------------------------
@@ -317,6 +335,7 @@ namespace AmbienteRPB
                 cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
                 chart1.Annotations.Add(cursor_vertical);
                 numCursor++;
+                AtualizaFerramentaAtiva("Inicio de envento marcado", 2, Color.Green);
             }
             else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
             {
@@ -334,7 +353,7 @@ namespace AmbienteRPB
                 result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
-
+                AtualizaFerramentaAtiva("Fim de envento marcado", 2,Color.Green);
                /* RectangleAnnotation highlight = new RectangleAnnotation();
                 highlight.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
                 highlight.LineColor = highlightColor;
@@ -402,7 +421,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
         //------------------------------------------------------------------------------------------
-        private void AtualizaFerramentaAtiva(string ferramenta, int opcao)
+        private void AtualizaFerramentaAtiva(string ferramenta, int opcao, Color CorDeInfo)
         {
             if (opcao == 0)
             {
@@ -418,7 +437,7 @@ namespace AmbienteRPB
             }
             if (opcao == 2)
             {
-                toolInfo.ForeColor = Color.Red;
+                toolInfo.ForeColor = CorDeInfo;
                 toolInfo.Text = ferramenta;
             }
 
@@ -437,7 +456,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].BackColor = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height = _aux+2;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Height = _aux+5;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[i].Position.Width = 96;
                 chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = _aux * i;
@@ -603,32 +622,60 @@ namespace AmbienteRPB
             //Atualizar o tempo
             if (e.Type == ScrollEventType.SmallIncrement)
             {
-                //"Apaga" 10s Primeiro de sinal, 256 em x
-                AdicionaData(e.NewValue * 10);
-                Add10sInChart();
+                //"Apaga" 1s Primeiro de sinal, 256 em x
+                AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
+                AddSegInChart();
             }
             else if (e.Type == ScrollEventType.SmallDecrement)
             {
-                AdicionaData(e.NewValue * 10);
+                AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
             }
             //Atualizar o chart
             for (int i = 0; i < __numeroDeCanais; i++)
             {
-                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * 256;
+                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * 256; //* Scroll_Click_Escala_Seg;
             }
          
         }
-        //------------------------------------------------------------------------------------------
-        private void Add10sInChart()
+        //-----------------------------------------------------------------------------------------
+        //Mudar a escala de visualização de telas por clicque
+        private void segundoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
+            lbl_tempo_s.Text = sender.ToString();
+            if (sender.ToString() == "1 s")
             {
-                int tempo = DataRecords_lidos * 256;
-                DataRecords_lidos++;
-                edfFileOutput.ReadDataBlock(DataRecords_lidos);
-                for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
-                    for (int i = 0; i < 256; i++)
-                        chart1.Series["canal" + j].Points.AddXY(i + tempo, edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                Scroll_Click_Escala_Seg = 1;
+                ScrollBar.SmallChange = 1;//segundos
+                ScrollBar.LargeChange = 1;//segundos
+            }
+            if (sender.ToString() == "5 s")
+            {
+                Scroll_Click_Escala_Seg = 5;
+                ScrollBar.SmallChange = 5;//segundos
+                ScrollBar.LargeChange = 5;//segundos
+            }
+            if (sender.ToString() == "10 s")
+            {
+                Scroll_Click_Escala_Seg = 10;
+                ScrollBar.SmallChange = 10;//segundos
+                ScrollBar.LargeChange = 10;//segundos
+            }
+
+        }
+        //------------------------------------------------------------------------------------------
+        private void AddSegInChart()
+        {
+            for(int k=0; k < Scroll_Click_Escala_Seg; k++){
+                if(DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
+                {
+                    int tempo = DataRecords_lidos * 256;
+                    DataRecords_lidos++;
+                    edfFileOutput.ReadDataBlock(DataRecords_lidos);
+                    //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                    for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                        for (int i = 0; i < 256; i++)
+                            chart1.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                }
             }
         }
         //------------------------------------------------------------------------------------------
@@ -1060,6 +1107,10 @@ namespace AmbienteRPB
            
         }
 
+        private void imprimirEEGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chart1.Printing.PrintPreview();
+        }
         //-----------------------------------------------------------
        
     }

@@ -95,7 +95,7 @@ namespace thread_chart
                             edfFileOutput.ReadDataBlock(k);
                             for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
                                 for (int i = 0; i < 256; i++)
-                                    prb.Series["canal" + j].Points.AddXY(i + tempo, SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                    prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                             tempo = 256 + tempo;
                         }
                     }
@@ -111,7 +111,7 @@ namespace thread_chart
                     prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                     prb.Series.Add("canal" + canal);
                     prb.Series["canal" + canal].ChartArea = "canal" + canal;
-                    prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                    prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                     prb.Legends.Clear();
                     prb.Titles.Add("canal" + canal);
                     prb.Titles[canal].DockedToChartArea = "canal" + canal;
@@ -206,8 +206,8 @@ namespace thread_chart
                     {
                         prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
                         ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
-                        ScrollBar.SmallChange = 1;
-                        ScrollBar.LargeChange = 1;
+                        ScrollBar.SmallChange = 10;//segundos
+                        ScrollBar.LargeChange = 10;//segundos
                     }
                     else
                     {

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.gbxChart = new System.Windows.Forms.GroupBox();
+            this.lbl_Tempo = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +53,7 @@
             this.pretoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretoBrancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoEDF = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoFreqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status = new System.Windows.Forms.StatusStrip();
             this.lbl_ferramentaAtiva = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_x = new System.Windows.Forms.ToolStripStatusLabel();
@@ -97,9 +99,15 @@
             this.Evento4 = new System.Windows.Forms.CheckBox();
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
-            this.autoFreqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
-            this.lbl_Tempo = new System.Windows.Forms.Label();
+            this.imprimirEEGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selecionarVáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.segundosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segundosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.segundoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -121,6 +129,18 @@
             this.gbxChart.Size = new System.Drawing.Size(721, 379);
             this.gbxChart.TabIndex = 5;
             this.gbxChart.TabStop = false;
+            // 
+            // lbl_Tempo
+            // 
+            this.lbl_Tempo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_Tempo.AutoSize = true;
+            this.lbl_Tempo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_Tempo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Tempo.Location = new System.Drawing.Point(3, 365);
+            this.lbl_Tempo.Name = "lbl_Tempo";
+            this.lbl_Tempo.Size = new System.Drawing.Size(102, 14);
+            this.lbl_Tempo.TabIndex = 18;
+            this.lbl_Tempo.Text = "00:00:00 (00:00:00)";
             // 
             // chart1
             // 
@@ -177,10 +197,12 @@
             this.novoToolStripMenuItem,
             this.renomearToolStripMenuItem,
             this.excluirToolStripMenuItem,
-            this.fecharToolStripMenuItem});
+            this.fecharToolStripMenuItem,
+            this.selecionarVáriosToolStripMenuItem});
             this.marcarEventos.Enabled = false;
             this.marcarEventos.Name = "marcarEventos";
-            this.marcarEventos.Size = new System.Drawing.Size(163, 22);
+            this.marcarEventos.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.marcarEventos.Size = new System.Drawing.Size(195, 22);
             this.marcarEventos.Text = "Marcar Eventos";
             this.marcarEventos.Click += new System.EventHandler(this.marcarPadrõesToolStripMenuItem_Click);
             // 
@@ -238,9 +260,13 @@
             // 
             this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.check_MostrarCursorX,
+            this.autoFreqToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.btnTemas,
+            this.toolStripSeparator1,
             this.infoEDF,
-            this.autoFreqToolStripMenuItem});
+            this.toolStripSeparator2,
+            this.imprimirEEGToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
             this.verToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.verToolStripMenuItem.Text = "Opções ";
@@ -265,13 +291,15 @@
             this.pretoBrancoToolStripMenuItem});
             this.btnTemas.Enabled = false;
             this.btnTemas.Name = "btnTemas";
-            this.btnTemas.Size = new System.Drawing.Size(163, 22);
+            this.btnTemas.Size = new System.Drawing.Size(200, 22);
             this.btnTemas.Text = "Temas";
             // 
             // brancoVermelhoToolStripMenuItem
             // 
             this.brancoVermelhoToolStripMenuItem.Name = "brancoVermelhoToolStripMenuItem";
-            this.brancoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.brancoVermelhoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D2)));
+            this.brancoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.brancoVermelhoToolStripMenuItem.Text = "Branco - Vermelho";
             this.brancoVermelhoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
@@ -285,7 +313,9 @@
             // brancoPretoToolStripMenuItem
             // 
             this.brancoPretoToolStripMenuItem.Name = "brancoPretoToolStripMenuItem";
-            this.brancoPretoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.brancoPretoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D1)));
+            this.brancoPretoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.brancoPretoToolStripMenuItem.Text = "Branco - Preto";
             this.brancoPretoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
@@ -306,7 +336,9 @@
             // pretoBrancoToolStripMenuItem
             // 
             this.pretoBrancoToolStripMenuItem.Name = "pretoBrancoToolStripMenuItem";
-            this.pretoBrancoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pretoBrancoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D3)));
+            this.pretoBrancoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.pretoBrancoToolStripMenuItem.Text = "Preto - Branco";
             this.pretoBrancoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
@@ -314,9 +346,18 @@
             // 
             this.infoEDF.Enabled = false;
             this.infoEDF.Name = "infoEDF";
-            this.infoEDF.Size = new System.Drawing.Size(163, 22);
+            this.infoEDF.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.infoEDF.Size = new System.Drawing.Size(200, 22);
             this.infoEDF.Text = "Informações EDF";
             this.infoEDF.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
+            // 
+            // autoFreqToolStripMenuItem
+            // 
+            this.autoFreqToolStripMenuItem.Name = "autoFreqToolStripMenuItem";
+            this.autoFreqToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.autoFreqToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.autoFreqToolStripMenuItem.Text = "Auto Freq";
+            this.autoFreqToolStripMenuItem.Click += new System.EventHandler(this.autoFreqToolStripMenuItem_Click);
             // 
             // Box_Status
             // 
@@ -809,13 +850,6 @@
             this.Evento2.UseVisualStyleBackColor = false;
             this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
             // 
-            // autoFreqToolStripMenuItem
-            // 
-            this.autoFreqToolStripMenuItem.Name = "autoFreqToolStripMenuItem";
-            this.autoFreqToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.autoFreqToolStripMenuItem.Text = "Auto Freq";
-            this.autoFreqToolStripMenuItem.Click += new System.EventHandler(this.autoFreqToolStripMenuItem_Click);
-            // 
             // lbl_tempo_s
             // 
             this.lbl_tempo_s.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -828,17 +862,61 @@
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
             // 
-            // lbl_Tempo
+            // imprimirEEGToolStripMenuItem
             // 
-            this.lbl_Tempo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_Tempo.AutoSize = true;
-            this.lbl_Tempo.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbl_Tempo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Tempo.Location = new System.Drawing.Point(3, 365);
-            this.lbl_Tempo.Name = "lbl_Tempo";
-            this.lbl_Tempo.Size = new System.Drawing.Size(102, 14);
-            this.lbl_Tempo.TabIndex = 18;
-            this.lbl_Tempo.Text = "00:00:00 (00:00:00)";
+            this.imprimirEEGToolStripMenuItem.Name = "imprimirEEGToolStripMenuItem";
+            this.imprimirEEGToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.imprimirEEGToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.imprimirEEGToolStripMenuItem.Text = "Imprimir - EEG";
+            this.imprimirEEGToolStripMenuItem.Click += new System.EventHandler(this.imprimirEEGToolStripMenuItem_Click);
+            // 
+            // selecionarVáriosToolStripMenuItem
+            // 
+            this.selecionarVáriosToolStripMenuItem.Name = "selecionarVáriosToolStripMenuItem";
+            this.selecionarVáriosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selecionarVáriosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.selecionarVáriosToolStripMenuItem.Text = "Selecionar Vários";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.segundoToolStripMenuItem,
+            this.segundosToolStripMenuItem,
+            this.segundosToolStripMenuItem1});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(200, 22);
+            this.toolStripMenuItem1.Text = "Tempo de tela";
+            // 
+            // segundosToolStripMenuItem
+            // 
+            this.segundosToolStripMenuItem.Name = "segundosToolStripMenuItem";
+            this.segundosToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.segundosToolStripMenuItem.Text = "5 s";
+            this.segundosToolStripMenuItem.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
+            // 
+            // segundosToolStripMenuItem1
+            // 
+            this.segundosToolStripMenuItem1.Name = "segundosToolStripMenuItem1";
+            this.segundosToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.segundosToolStripMenuItem1.Text = "10 s";
+            this.segundosToolStripMenuItem1.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
+            // 
+            // segundoToolStripMenuItem
+            // 
+            this.segundoToolStripMenuItem.Name = "segundoToolStripMenuItem";
+            this.segundoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.segundoToolStripMenuItem.Text = "1 s";
+            this.segundoToolStripMenuItem.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -847,8 +925,8 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(820, 445);
-            this.Controls.Add(this.lbl_tempo_s);
             this.Controls.Add(this.tool_ControlesProjeto);
+            this.Controls.Add(this.lbl_tempo_s);
             this.Controls.Add(this.gbxChart);
             this.Controls.Add(this.gbxEventos);
             this.Controls.Add(this.ScrollBar);
@@ -950,6 +1028,14 @@
         private System.Windows.Forms.ToolStripMenuItem autoFreqToolStripMenuItem;
         private System.Windows.Forms.Label lbl_Tempo;
         private System.Windows.Forms.Label lbl_tempo_s;
+        private System.Windows.Forms.ToolStripMenuItem selecionarVáriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem imprimirEEGToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem segundoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segundosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segundosToolStripMenuItem1;
     }
 }
 
