@@ -33,7 +33,6 @@ namespace thread_chart
         private System.Windows.Forms.StatusStrip StatusProjeto = null;
         private delegate void AtualizaStatusProjeto(string SMS, int caso);
         //amostras sinal de teste------------------------------------------------------------------
-        private int num_de_voltas = 20;
         private double num_de_amostras = 0.2;
         private int _NumCanais = 0;
         //Controles sobre o sinal a exibir----------------------------------------------------------
@@ -90,6 +89,7 @@ namespace thread_chart
                 {
                     if (prb != null)
                     {
+                        load_progress_bar(10, 2);
                         for (int k = 0; k < 10; k++)
                         {
                             edfFileOutput.ReadDataBlock(k);
@@ -97,6 +97,7 @@ namespace thread_chart
                                 for (int i = 0; i < 256; i++)
                                     prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                             tempo = 256 + tempo;
+                            load_progress_bar(0, 1);
                         }
                     }
                     for (int i = 0; i < SinalEEG.SignalInfo.Count; i++)
@@ -104,6 +105,7 @@ namespace thread_chart
                         prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
                         prb.Series["canal" + i].Color = Color.FromName("Black");
                     }
+                    load_progress_bar(1, 3);
                 }
                 //---------------------------               
                 if (caso == 2)
@@ -145,7 +147,7 @@ namespace thread_chart
                 {
                     prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
                     prgbar.Visible = true;
-                    prgbar.Maximum = valor * _NumCanais * 90;
+                    prgbar.Maximum = valor;
                 }
                 if(caso == 3)
                     prgbar.Visible = false;
@@ -202,19 +204,12 @@ namespace thread_chart
                 ScrollBar.Enabled = true;
                 for (int i = 0; i < _NumCanais; i++)
                 {
-                    if (OpcaoSinal == "Projeto_EDF")
-                    {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
-                        ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
-                        ScrollBar.SmallChange = 10;//segundos
-                        ScrollBar.LargeChange = 10;//segundos
-                    }
-                    else
-                    {
-                        prb.ChartAreas[i].AxisX.ScaleView.Size = 10;
-                        ScrollBar.Maximum = num_de_voltas;
-                    }
+                    prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
+                    prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
                 }
+                ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
+                ScrollBar.SmallChange = 10;//segundos
+                ScrollBar.LargeChange = 10;//segundos            
             }
         }
         //------------------------------------------------------------------------------------------

@@ -1111,6 +1111,26 @@ namespace AmbienteRPB
         {
             chart1.Printing.PrintPreview();
         }
+        //Atalhos via teclado... 
+        private void FormPrincipal_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Control:
+                   // notaFiscalToolStripMenuItem_Click(sender, e);
+                    break;
+            }
+        }
+
+        private void FormPrincipal_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Control:
+                  //notaFiscalToolStripMenuItem_Click(sender, e);
+                    break;
+            }
+        }
         //-----------------------------------------------------------
        
     }

@@ -1879,8 +1879,8 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>alexandro_souza_bomfim.edf</td><td>ISX_DEFAULTCOMPONENT</td><td>ALEXAN~1.EDF|ALEXANDRO SOUZA BOMFIM.EDF</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\ALEXANDRO SOUZA BOMFIM.EDF</td><td>1</td><td/></row>
 		<row><td>ambienterpb.exe</td><td>AmbienteRPB.exe</td><td>AMBIEN~1.EXE|AmbienteRPB.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\bin\Debug\AmbienteRPB.exe</td><td>1</td><td/></row>
+		<row><td>chb01_01.edf</td><td>ISX_DEFAULTCOMPONENT</td><td>chb01_01.edf</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Geovane Ferreira\Documents\TCC\chb01_01.edf</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
