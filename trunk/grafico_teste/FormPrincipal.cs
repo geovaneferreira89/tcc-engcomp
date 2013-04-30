@@ -209,8 +209,9 @@ namespace AmbienteRPB
             HitTestResult result = chart1.HitTest(e.X, e.Y, true);
             if (result.Series != null)
             {
-                result.Series.Color = Color.Blue;
-                  ///   prb.Series["canal" + i].Color = Color.FromName("Black");
+                if(colorDialog1.ShowDialog() == DialogResult.OK){
+                    result.Series.Color = colorDialog1.Color;
+                }
             }
         }
         //------------------------------------------------------------------------------------------

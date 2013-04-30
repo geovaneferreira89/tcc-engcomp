@@ -52,3 +52,19 @@ C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\obj\x86\Debug\AmbienteRPB.
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\bin\Debug\NeuroLoopGainLibrary.dll
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\bin\Debug\NLog.dll
 C:\Users\Geovane Ferreira\Documents\TCC\grafico_teste\bin\Debug\NeuroLoopGainLibrary.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.exe
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\bin\Debug\AmbienteRPB.exe
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\bin\Debug\AmbienteRPB.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\bin\Debug\NeuroLoopGainLibrary.dll
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\bin\Debug\NLog.dll
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\bin\Debug\NeuroLoopGainLibrary.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormCarregar_EDF.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditorDeEventos.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditorDePadroes.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormPrincipal.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditarNomePadrao.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.Properties.Resources.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\TCC.csproj.GenerateResource.Cache

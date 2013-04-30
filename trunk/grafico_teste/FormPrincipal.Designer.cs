@@ -108,6 +108,7 @@
             this.Evento3 = new System.Windows.Forms.CheckBox();
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -1039,6 +1040,7 @@
         private System.Windows.Forms.ToolStripMenuItem segundoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segundosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segundosToolStripMenuItem1;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 
