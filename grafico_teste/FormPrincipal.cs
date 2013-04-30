@@ -32,17 +32,13 @@ namespace AmbienteRPB
         private string status_projeto = "Projeto_NOVO";
         private EdfFile edfFileOutput = null;
         private HitTestResult var_result;
-        private bool MostrarCursorX;
         //Geren Arquivos-----------------------------------------------------------------
         private GerenArquivos Arquivos;
         //Marção de Padrões e seus Eventos-----------------------------------------------
-        private int EventoAtual;
         private ListaPadroesEventos[] ListaPadroes;
         String Evento;
         Color highlightColor;
         ToolTip tooltip = new ToolTip();
-        Color Cor;
-        Color CorFundo;
         //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
@@ -78,10 +74,6 @@ namespace AmbienteRPB
                    MessageBox.Show("Salvo com sucesso!", "Ambiente RPB");
                }
             }
-            /*if (ThreadChart.IsAlive == true && ThreadInicializada)
-            {
-                ThreadChart.Abort();
-            }*/
         }
         //------------------------------------------------------------------------------------------
         // Ferramenta de importar sinais EEG de arquivo .EDF
@@ -103,7 +95,6 @@ namespace AmbienteRPB
                     infoEDF.Enabled = true;
                     marcarEventos.Enabled = true;
                     btn_Importar.Enabled = false;
-                    btnTemas.Enabled = true;
                     CarregaNomesPadroes(20);
                     if (Arquivos.ArquivoExiste("Padroes_Eventos.txt") == true)
                       ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos(); 
@@ -194,11 +185,11 @@ namespace AmbienteRPB
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
             if (mostrarCursores != 0)
-            {
+            {//Marcar um evento
                 MarcarSelecao(e);
             }
-            else//muda cor...
-            {
+            else
+            {//Mudar a cor do canal
                 MudarCorChart(e);
             }
         }
@@ -215,34 +206,16 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
-        
-        //-----------------------------------------------------------------------------------------
-        //Check box responsavel por Mostra o cursor no eixo X dos gráficos
-        private void check_MostrarCursorX_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_MostrarCursorX.Checked == true)
-            {
-                MostrarCursorX = true;
-            }
-            else
-                MostrarCursorX = false;
-        }
-        //------------------------------------------------------------------------------------------
         // Mostra o cursor no eixo X dos gráficos
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-           /* HitTestResult result = chart1.HitTest(e.X, e.Y);
+           /* HitTestResult result = chart1.HitTest(e.X, e.Y, true);
             if (result.ChartArea != null)
             {
                 var pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
                 var pointYPixel = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
                 lbl_x.Text = "Valor X: " + pointXPixel;
                 lbl_Y.Text = "Valor Y: " + pointYPixel;
-                if (MostrarCursorX == true)
-                {
-                //Mostra cursor X
-                result.ChartArea.CursorX.SetCursorPosition(pointXPixel);
-                }
             }*/
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
@@ -262,8 +235,6 @@ namespace AmbienteRPB
                 chart1.Location = new System.Drawing.Point(2, 8);
                 gbxChart.Size = new System.Drawing.Size(this.Size.Width - 115, this.Size.Height - 105);
                 chart1.Size = new System.Drawing.Size(this.Size.Width - 119, this.Size.Height - 115);
-                check_MostrarCursorX.Checked = false;
-                MostrarCursorX = false;
                 AtualizaFerramentaAtiva("", 0,Color.Gray);
                 mostrarCursores = 1;
                 AtualizaFerramentaAtiva("Marcar Eventos", 1, Color.Green);
@@ -464,33 +435,11 @@ namespace AmbienteRPB
             }
             AdicionaData(0);
             Adiciona_linhas_de_tempo();
-            if (status_projeto == "Projeto_NOVO")
-            {
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
-                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-                ThreadChart.Start();
-                chart1.Enabled = true;
-                //ThreadInicializada = true;
-                FrequenciaCombo.Enabled = true;
-                AmplitudeCombo.Enabled = true;
-            }
-            if (status_projeto == "Projeto_RPB")
-            {
-                //  this.tool_ControlesGerais = new System.Windows.Forms.ToolStrip
-                atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
-                ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
-                ThreadChart.Start();
-                //ThreadInicializada = true;
-                chart1.Enabled = true;
-                FrequenciaCombo.Enabled = true;
-                AmplitudeCombo.Enabled = true;
-            }
             if (status_projeto == "Projeto_EDF")
             {
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
                 ThreadChart = new Thread(new ThreadStart(objCliente.Inicializa));
                 ThreadChart.Start();
-                //ThreadInicializada = true;
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
@@ -773,48 +722,6 @@ namespace AmbienteRPB
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //------------------------------------------------------------------------------------------
-        private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (sender.ToString() == "Preto - Vermelho")
-            {
-                Cor = Color.Red;
-                CorFundo = Color.Black;
-            }
-            if (sender.ToString() == "Preto - Rosa")
-            {
-                Cor = Color.LightPink;
-                CorFundo = Color.Black;
-            }
-            if (sender.ToString() == "Preto - Branco")
-            {
-                Cor = Color.White;
-                CorFundo = Color.Black;
-            }
-            if (sender.ToString() == "Branco - Vermelho")
-            {
-                Cor = Color.Red;
-                CorFundo = Color.White;
-            }
-            if (sender.ToString() == "Branco - Rosa")
-            {
-                Cor = Color.LightPink;
-                CorFundo = Color.White;
-            }
-            if (sender.ToString() == "Branco - Preto")
-            {
-                Cor = Color.Black;
-                CorFundo = Color.White;
-            }
-            for (int i = 0; i < __numeroDeCanais; i++)
-            {
-                chart1.ChartAreas[i].BackColor = CorFundo;
-                chart1.Series[i].BackSecondaryColor = CorFundo;
-                chart1.Series[i].BorderColor = CorFundo;
-                chart1.Series[i].ShadowColor = CorFundo;
-                chart1.Series[i].Color = Cor;
-            }
-        }
-        //--------------------------------------------------------------------------
         private void canal1Canal2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series[2].Points.Clear();
@@ -842,257 +749,83 @@ namespace AmbienteRPB
         //-------------------------------------------------------------------------
         public void SetNenhumEventoMarcado()
         {
-            Evento1.Checked = false;
-            Evento2.Checked = false;
-            Evento3.Checked = false;
-            Evento4.Checked = false;
-            Evento5.Checked = false;
-            Evento6.Checked = false;
-            Evento7.Checked = false;
-            Evento8.Checked = false;
-            Evento9.Checked = false;
-            Evento10.Checked = false;
-            Evento11.Checked = false;
-            Evento12.Checked = false;
-            Evento13.Checked = false;
-            Evento14.Checked = false;
-            Evento15.Checked = false;
-            Evento16.Checked = false;
-            Evento17.Checked = false;
-            Evento18.Checked = false;
-            Evento19.Checked = false;
-            Evento20.Checked = false;
+            string str;
+            for (int i = 0; i < 20; i++)
+            {
+                str = "Evento" + (i + 1);  
+                CheckBox chebox_events = this.Controls.Find(str, true)[0] as CheckBox;
+                chebox_events.Checked = false;
+            }
         }
         //-------------------------------------------------------------------------
         //                          EVENTOS CLICADOS 
         //--------------------------------------------------------------------------
-        private void Evento1_Click(object sender, EventArgs e)
+        private void Evento_Click(object sender, EventArgs e)
         {
-            Evento = Evento1.Text;
+            CheckBox chebox_events = this.Controls.Find(((Control)sender).Name, true)[0] as CheckBox;
+            Evento = chebox_events.Text;
             SetNenhumEventoMarcado();
-            Evento1.Checked = true;
-            EventoAtual = 0;
-            highlightColor = Color.Lime;
+            chebox_events.Checked = true;
+            if (((Control)sender).Name == "Evento1")
+                highlightColor = Color.Lime;
+            if (((Control)sender).Name == "Evento2")
+                highlightColor = Color.Yellow;
+            if (((Control)sender).Name == "Evento3")
+                highlightColor = Color.Red;
+            if (((Control)sender).Name == "Evento4")
+                highlightColor = Color.Orange;
+            if (((Control)sender).Name == "Evento5")
+                highlightColor = Color.RoyalBlue;
+            if (((Control)sender).Name == "Evento6")
+                highlightColor = Color.HotPink;
+            if (((Control)sender).Name == "Evento7")
+                highlightColor = Color.Aqua;
+            if (((Control)sender).Name == "Evento8")
+                highlightColor = Color.Gold;
+            if (((Control)sender).Name == "Evento9")
+                highlightColor = Color.Orchid;
+            if (((Control)sender).Name == "Evento10")
+                highlightColor = Color.Salmon;
+            if (((Control)sender).Name == "Evento11")
+                highlightColor = Color.PeachPuff;
+            if (((Control)sender).Name == "Evento12")
+                highlightColor = Color.SkyBlue;
+            if (((Control)sender).Name == "Evento13")
+                highlightColor = Color.Plum;
+            if (((Control)sender).Name == "Evento14")
+                highlightColor = Color.MediumSlateBlue;
+            if (((Control)sender).Name == "Evento15")
+                highlightColor = Color.LightGray;
+            if (((Control)sender).Name == "Evento16")
+                highlightColor = Color.Brown;
+            if (((Control)sender).Name == "Evento17")
+                highlightColor = Color.Khaki;
+            if (((Control)sender).Name == "Evento18")
+                highlightColor = Color.DarkGoldenrod;
+            if (((Control)sender).Name == "Evento19")
+                highlightColor = Color.YellowGreen;
+            if (((Control)sender).Name == "Evento20")
+                highlightColor = Color.LightCoral;
         }
         //--------------------------------------------------------------------------
-        private void Evento2_Click(object sender, EventArgs e)
-        {
-            Evento = Evento2.Text;
-            SetNenhumEventoMarcado();
-            Evento2.Checked = true;
-            EventoAtual = 1;
-            highlightColor = Color.Yellow;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento3_Click(object sender, EventArgs e)
-        {
-            Evento = Evento3.Text;
-            SetNenhumEventoMarcado();
-            Evento3.Checked = true;
-            EventoAtual = 2;
-            highlightColor = Color.Red;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento4_Click(object sender, EventArgs e)
-        {
-            Evento = Evento4.Text;
-            SetNenhumEventoMarcado();
-            Evento4.Checked = true;
-            EventoAtual = 3;
-            highlightColor = Color.Orange;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento5_Click(object sender, EventArgs e)
-        {
-            Evento = Evento5.Text;
-            SetNenhumEventoMarcado();
-            Evento5.Checked = true;
-            EventoAtual = 4;
-            highlightColor = Color.RoyalBlue;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento6_Click(object sender, EventArgs e)
-        {
-            Evento = Evento6.Text;
-            SetNenhumEventoMarcado();
-            Evento6.Checked = true;
-            EventoAtual = 5;
-            highlightColor = Color.HotPink;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento7_Click(object sender, EventArgs e)
-        {
-            Evento = Evento7.Text;
-            SetNenhumEventoMarcado();
-            Evento7.Checked = true;
-            EventoAtual = 6;
-            highlightColor = Color.Aqua;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento8_Click(object sender, EventArgs e)
-        {
-            Evento = Evento8.Text;
-            SetNenhumEventoMarcado();
-            Evento8.Checked = true;
-            EventoAtual = 7;
-            highlightColor = Color.Gold;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento9_Click(object sender, EventArgs e)
-        {
-            Evento = Evento9.Text;
-            SetNenhumEventoMarcado();
-            Evento9.Checked = true;
-            EventoAtual = 8;
-            highlightColor = Color.Orchid;
-        }
-        //--------------------------------------------------------------------------
-        private void Evento10_Click(object sender, EventArgs e)
-        {
-            Evento = Evento10.Text;
-            SetNenhumEventoMarcado();
-            Evento10.Checked = true;
-            EventoAtual = 9;
-            highlightColor = Color.Salmon;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto11_Click(object sender, EventArgs e)
-        {
-            Evento = Evento11.Text;
-            SetNenhumEventoMarcado();
-            Evento11.Checked = true;
-            EventoAtual = 10;
-            highlightColor = Color.PeachPuff;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto12_Click(object sender, EventArgs e)
-        {
-            Evento = Evento12.Text;
-            SetNenhumEventoMarcado();
-            Evento12.Checked = true;
-            EventoAtual = 11;
-            highlightColor = Color.SkyBlue;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto13_Click(object sender, EventArgs e)
-        {
-            Evento = Evento13.Text;
-            SetNenhumEventoMarcado();
-            Evento13.Checked = true;
-            EventoAtual = 12;
-            highlightColor = Color.Plum;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto14_Click(object sender, EventArgs e)
-        {
-            Evento = Evento14.Text;
-            SetNenhumEventoMarcado();
-            Evento14.Checked = true;
-            EventoAtual = 13;
-            highlightColor = Color.MediumSlateBlue;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto15_Click(object sender, EventArgs e)
-        {
-            Evento = Evento15.Text;
-            SetNenhumEventoMarcado();
-            Evento15.Checked = true;
-            EventoAtual = 14;
-            highlightColor = Color.LightGray;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto16_Click(object sender, EventArgs e)
-        {
-            Evento = Evento16.Text;
-            SetNenhumEventoMarcado();
-            Evento16.Checked = true;
-            EventoAtual = 15;
-            highlightColor = Color.Brown;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto17_Click(object sender, EventArgs e)
-        {
-            Evento = Evento17.Text;
-            SetNenhumEventoMarcado();
-            Evento17.Checked = true;
-            EventoAtual = 16;
-            highlightColor = Color.Khaki;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto18_Click(object sender, EventArgs e)
-        {
-            Evento = Evento18.Text;
-            SetNenhumEventoMarcado();
-            Evento18.Checked = true;
-            EventoAtual = 17;
-            highlightColor = Color.DarkGoldenrod;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto19_Click(object sender, EventArgs e)
-        {
-            Evento = Evento19.Text;
-            SetNenhumEventoMarcado();
-            Evento19.Checked = true;
-            EventoAtual = 18;
-            highlightColor = Color.YellowGreen;
-        }
-        //--------------------------------------------------------------------------
-        private void Enveto20_Click(object sender, EventArgs e)
-        {
-             Evento = Evento20.Text;
-            SetNenhumEventoMarcado();
-            Evento20.Checked = true;
-            EventoAtual = 19;
-            highlightColor = Color.LightCoral;
-        }
-        //------------------------------------------------------------------
+        //Renomear o nome de algum padrão 
         private void renomearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Evento != null)
             {
                 FormEditarNomePadrao NomeEvento = new FormEditarNomePadrao();
                 NomeEvento.ShowDialog();
-
-                if (Evento1.Checked)
-                    Evento1.Text = NomeEvento.NomePadrao;
-                if (Evento2.Checked)
-                    Evento2.Text = NomeEvento.NomePadrao;
-                if (Evento3.Checked)
-                    Evento3.Text = NomeEvento.NomePadrao;
-                if (Evento4.Checked)
-                    Evento4.Text = NomeEvento.NomePadrao;
-                if (Evento5.Checked)
-                    Evento5.Text = NomeEvento.NomePadrao;
-                if (Evento6.Checked)
-                    Evento6.Text = NomeEvento.NomePadrao;
-                if (Evento7.Checked)
-                    Evento7.Text = NomeEvento.NomePadrao;
-                if (Evento8.Checked)
-                    Evento8.Text = NomeEvento.NomePadrao;
-                if (Evento9.Checked)
-                    Evento9.Text = NomeEvento.NomePadrao;
-                if (Evento10.Checked)
-                    Evento10.Text = NomeEvento.NomePadrao;
-                if (Evento11.Checked)
-                    Evento11.Text = NomeEvento.NomePadrao;
-                if (Evento12.Checked)
-                    Evento12.Text = NomeEvento.NomePadrao;
-                if (Evento13.Checked)
-                    Evento13.Text = NomeEvento.NomePadrao;
-                if (Evento14.Checked)
-                    Evento14.Text = NomeEvento.NomePadrao;
-                if (Evento15.Checked)
-                    Evento15.Text = NomeEvento.NomePadrao;
-                if (Evento16.Checked)
-                    Evento16.Text = NomeEvento.NomePadrao;
-                if (Evento17.Checked)
-                    Evento17.Text = NomeEvento.NomePadrao;
-                if (Evento18.Checked)
-                    Evento18.Text = NomeEvento.NomePadrao;
-                if (Evento19.Checked)
-                    Evento19.Text = NomeEvento.NomePadrao;
-                if (Evento20.Checked)
-                    Evento20.Text = NomeEvento.NomePadrao;
+                string str;
+                for (int i = 1; i <= 20; i++)
+                {
+                    str = "Evento" + i;
+                    CheckBox chebox_events = this.Controls.Find(str, true)[0] as CheckBox;
+                    if (chebox_events.Checked)
+                    {
+                        chebox_events.Text = NomeEvento.NomePadrao;
+                        i = 30;
+                    }
+                }
                 Evento = NomeEvento.NomePadrao;
             }
         }
@@ -1107,32 +840,37 @@ namespace AmbienteRPB
         {
            
         }
-
+        //------------------------------------------------------------------------
+        //Imprimir tela
         private void imprimirEEGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Printing.PrintPreview();
         }
+        //------------------------------------------------------------------------
         //Atalhos via teclado... 
         private void FormPrincipal_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Control:
-                   // notaFiscalToolStripMenuItem_Click(sender, e);
-                    break;
+                    {
+                        // Fazer, ativa a opçao de selecionar vários canais
+                        break;
+                    }
             }
         }
-
+        //------------------------------------------------------------------------
         private void FormPrincipal_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Control:
-                  //notaFiscalToolStripMenuItem_Click(sender, e);
+                    // Fazer, desativa a opçao de selecionar vários canais
                     break;
             }
         }
-        //-----------------------------------------------------------
-       
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
     }
 }
