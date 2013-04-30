@@ -45,19 +45,11 @@
             this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.padrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.check_MostrarCursorX = new System.Windows.Forms.ToolStripMenuItem();
             this.autoFreqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.segundoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segundosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segundosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnTemas = new System.Windows.Forms.ToolStripMenuItem();
-            this.brancoVermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.brancoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.brancoPretoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretoVermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretoRosaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretoBrancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.infoEDF = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -267,10 +259,8 @@
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.check_MostrarCursorX,
             this.autoFreqToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.btnTemas,
             this.toolStripSeparator1,
             this.infoEDF,
             this.toolStripSeparator2,
@@ -278,15 +268,6 @@
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
             this.verToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.verToolStripMenuItem.Text = "Opções ";
-            // 
-            // check_MostrarCursorX
-            // 
-            this.check_MostrarCursorX.Checked = true;
-            this.check_MostrarCursorX.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_MostrarCursorX.Name = "check_MostrarCursorX";
-            this.check_MostrarCursorX.Size = new System.Drawing.Size(200, 22);
-            this.check_MostrarCursorX.Text = "Canal X";
-            this.check_MostrarCursorX.CheckedChanged += new System.EventHandler(this.check_MostrarCursorX_CheckedChanged);
             // 
             // autoFreqToolStripMenuItem
             // 
@@ -326,68 +307,6 @@
             this.segundosToolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
             this.segundosToolStripMenuItem1.Text = "10 s";
             this.segundosToolStripMenuItem1.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
-            // 
-            // btnTemas
-            // 
-            this.btnTemas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.brancoVermelhoToolStripMenuItem,
-            this.brancoRosaToolStripMenuItem,
-            this.brancoPretoToolStripMenuItem,
-            this.pretoVermelhoToolStripMenuItem,
-            this.pretoRosaToolStripMenuItem,
-            this.pretoBrancoToolStripMenuItem});
-            this.btnTemas.Enabled = false;
-            this.btnTemas.Name = "btnTemas";
-            this.btnTemas.Size = new System.Drawing.Size(200, 22);
-            this.btnTemas.Text = "Temas";
-            // 
-            // brancoVermelhoToolStripMenuItem
-            // 
-            this.brancoVermelhoToolStripMenuItem.Name = "brancoVermelhoToolStripMenuItem";
-            this.brancoVermelhoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D2)));
-            this.brancoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.brancoVermelhoToolStripMenuItem.Text = "Branco - Vermelho";
-            this.brancoVermelhoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // brancoRosaToolStripMenuItem
-            // 
-            this.brancoRosaToolStripMenuItem.Name = "brancoRosaToolStripMenuItem";
-            this.brancoRosaToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.brancoRosaToolStripMenuItem.Text = "Branco - Rosa";
-            this.brancoRosaToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // brancoPretoToolStripMenuItem
-            // 
-            this.brancoPretoToolStripMenuItem.Name = "brancoPretoToolStripMenuItem";
-            this.brancoPretoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D1)));
-            this.brancoPretoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.brancoPretoToolStripMenuItem.Text = "Branco - Preto";
-            this.brancoPretoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // pretoVermelhoToolStripMenuItem
-            // 
-            this.pretoVermelhoToolStripMenuItem.Name = "pretoVermelhoToolStripMenuItem";
-            this.pretoVermelhoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.pretoVermelhoToolStripMenuItem.Text = "Preto - Vermelho";
-            this.pretoVermelhoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // pretoRosaToolStripMenuItem
-            // 
-            this.pretoRosaToolStripMenuItem.Name = "pretoRosaToolStripMenuItem";
-            this.pretoRosaToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.pretoRosaToolStripMenuItem.Text = "Preto - Rosa";
-            this.pretoRosaToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // pretoBrancoToolStripMenuItem
-            // 
-            this.pretoBrancoToolStripMenuItem.Name = "pretoBrancoToolStripMenuItem";
-            this.pretoBrancoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D3)));
-            this.pretoBrancoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.pretoBrancoToolStripMenuItem.Text = "Preto - Branco";
-            this.pretoBrancoToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -695,7 +614,7 @@
             this.Evento20.TabIndex = 19;
             this.Evento20.Text = "Padrão 20";
             this.Evento20.UseVisualStyleBackColor = false;
-            this.Evento20.Click += new System.EventHandler(this.Enveto20_Click);
+            this.Evento20.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento19
             // 
@@ -706,7 +625,7 @@
             this.Evento19.TabIndex = 18;
             this.Evento19.Text = "Padrão 19";
             this.Evento19.UseVisualStyleBackColor = false;
-            this.Evento19.Click += new System.EventHandler(this.Enveto19_Click);
+            this.Evento19.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento18
             // 
@@ -717,7 +636,7 @@
             this.Evento18.TabIndex = 17;
             this.Evento18.Text = "Padrão 18";
             this.Evento18.UseVisualStyleBackColor = false;
-            this.Evento18.Click += new System.EventHandler(this.Enveto18_Click);
+            this.Evento18.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento17
             // 
@@ -728,7 +647,7 @@
             this.Evento17.TabIndex = 16;
             this.Evento17.Text = "Padrão 17";
             this.Evento17.UseVisualStyleBackColor = false;
-            this.Evento17.Click += new System.EventHandler(this.Enveto17_Click);
+            this.Evento17.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento16
             // 
@@ -739,7 +658,7 @@
             this.Evento16.TabIndex = 15;
             this.Evento16.Text = "Padrão 16";
             this.Evento16.UseVisualStyleBackColor = false;
-            this.Evento16.Click += new System.EventHandler(this.Enveto16_Click);
+            this.Evento16.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento15
             // 
@@ -750,7 +669,7 @@
             this.Evento15.TabIndex = 14;
             this.Evento15.Text = "Padrão 15";
             this.Evento15.UseVisualStyleBackColor = false;
-            this.Evento15.Click += new System.EventHandler(this.Enveto15_Click);
+            this.Evento15.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento14
             // 
@@ -761,7 +680,7 @@
             this.Evento14.TabIndex = 13;
             this.Evento14.Text = "Padrão 14";
             this.Evento14.UseVisualStyleBackColor = false;
-            this.Evento14.Click += new System.EventHandler(this.Enveto14_Click);
+            this.Evento14.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento13
             // 
@@ -772,7 +691,7 @@
             this.Evento13.TabIndex = 12;
             this.Evento13.Text = "Padrão 13";
             this.Evento13.UseVisualStyleBackColor = false;
-            this.Evento13.Click += new System.EventHandler(this.Enveto13_Click);
+            this.Evento13.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento12
             // 
@@ -783,7 +702,7 @@
             this.Evento12.TabIndex = 11;
             this.Evento12.Text = "Padrão 12";
             this.Evento12.UseVisualStyleBackColor = false;
-            this.Evento12.Click += new System.EventHandler(this.Enveto12_Click);
+            this.Evento12.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento11
             // 
@@ -794,7 +713,7 @@
             this.Evento11.TabIndex = 10;
             this.Evento11.Text = "Padrão 11";
             this.Evento11.UseVisualStyleBackColor = false;
-            this.Evento11.Click += new System.EventHandler(this.Enveto11_Click);
+            this.Evento11.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento1
             // 
@@ -806,7 +725,7 @@
             this.Evento1.TabIndex = 0;
             this.Evento1.Text = "Espicula";
             this.Evento1.UseVisualStyleBackColor = false;
-            this.Evento1.Click += new System.EventHandler(this.Evento1_Click);
+            this.Evento1.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento10
             // 
@@ -817,7 +736,7 @@
             this.Evento10.TabIndex = 9;
             this.Evento10.Text = "Padrão 10";
             this.Evento10.UseVisualStyleBackColor = false;
-            this.Evento10.Click += new System.EventHandler(this.Evento10_Click);
+            this.Evento10.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento9
             // 
@@ -828,7 +747,7 @@
             this.Evento9.TabIndex = 8;
             this.Evento9.Text = "Padrão 09";
             this.Evento9.UseVisualStyleBackColor = false;
-            this.Evento9.Click += new System.EventHandler(this.Evento9_Click);
+            this.Evento9.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento8
             // 
@@ -839,7 +758,7 @@
             this.Evento8.TabIndex = 7;
             this.Evento8.Text = "Padrão 08";
             this.Evento8.UseVisualStyleBackColor = false;
-            this.Evento8.Click += new System.EventHandler(this.Evento8_Click);
+            this.Evento8.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento7
             // 
@@ -850,7 +769,7 @@
             this.Evento7.TabIndex = 6;
             this.Evento7.Text = "Padrão 07";
             this.Evento7.UseVisualStyleBackColor = false;
-            this.Evento7.Click += new System.EventHandler(this.Evento7_Click);
+            this.Evento7.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento6
             // 
@@ -861,7 +780,7 @@
             this.Evento6.TabIndex = 5;
             this.Evento6.Text = "Padrão 06";
             this.Evento6.UseVisualStyleBackColor = false;
-            this.Evento6.Click += new System.EventHandler(this.Evento6_Click);
+            this.Evento6.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento5
             // 
@@ -872,7 +791,7 @@
             this.Evento5.TabIndex = 4;
             this.Evento5.Text = "Padrão 05";
             this.Evento5.UseVisualStyleBackColor = false;
-            this.Evento5.Click += new System.EventHandler(this.Evento5_Click);
+            this.Evento5.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento4
             // 
@@ -883,7 +802,7 @@
             this.Evento4.TabIndex = 3;
             this.Evento4.Text = "Padrão 04";
             this.Evento4.UseVisualStyleBackColor = false;
-            this.Evento4.Click += new System.EventHandler(this.Evento4_Click);
+            this.Evento4.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento3
             // 
@@ -894,7 +813,7 @@
             this.Evento3.TabIndex = 2;
             this.Evento3.Text = "Pisc. Palp";
             this.Evento3.UseVisualStyleBackColor = false;
-            this.Evento3.Click += new System.EventHandler(this.Evento3_Click);
+            this.Evento3.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento2
             // 
@@ -905,7 +824,7 @@
             this.Evento2.TabIndex = 1;
             this.Evento2.Text = "Ponta e Ond";
             this.Evento2.UseVisualStyleBackColor = false;
-            this.Evento2.Click += new System.EventHandler(this.Evento2_Click);
+            this.Evento2.Click += new System.EventHandler(this.Evento_Click);
             // 
             // lbl_tempo_s
             // 
@@ -986,10 +905,8 @@
         private System.Windows.Forms.ToolStripComboBox FrequenciaCombo;
         private System.Windows.Forms.ToolStripLabel lblAmpli;
         private System.Windows.Forms.ToolStripComboBox AmplitudeCombo;
-        private System.Windows.Forms.ToolStripMenuItem check_MostrarCursorX;
         private System.Windows.Forms.ToolStripLabel lbl_cm;
         private System.Windows.Forms.ToolStripLabel lbl_V;
-        private System.Windows.Forms.ToolStripMenuItem btnTemas;
         private System.Windows.Forms.ToolStripMenuItem canal1Canal2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcarEventos;
         private System.Windows.Forms.GroupBox gbxEventos;
@@ -1010,12 +927,6 @@
         private System.Windows.Forms.ToolStripMenuItem infoEDF;
         private System.Windows.Forms.ToolStripStatusLabel toolInfo;
         public System.Windows.Forms.ToolStrip tool_ControlesProjeto;
-        private System.Windows.Forms.ToolStripMenuItem pretoVermelhoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pretoRosaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pretoBrancoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem brancoVermelhoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem brancoRosaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem brancoPretoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ediarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem padrõesToolStripMenuItem;

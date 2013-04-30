@@ -15,7 +15,6 @@ namespace AmbienteRPB
     {
         private string dirArquivo;     
         //private string initialDirectory = "C:\\";
-        private System.IO.StreamWriter fileW;
         private EdfFile _edfFileInput;
         //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
         public EdfFile edfFileOutput
