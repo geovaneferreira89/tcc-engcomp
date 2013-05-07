@@ -373,17 +373,25 @@ namespace AmbienteRPB
             else
                 MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Ambiente RPB", MessageBoxButtons.OK);
         }
-        //------------------------------------------------------------------------------------------
-        private void editorDePadrõesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormEditorDePadroes EditorForm = new FormEditorDePadroes();
-            EditorForm.ShowDialog();
-        }
         //------------------------------------------------------------------------------------------       
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
-            EditorEvenForm.ShowDialog();
+            if (ListaPadroes == null)
+            {
+                if (Arquivos.ArquivoExiste("Padroes_Eventos.txt") == true)
+                {
+                    ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
+                    FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
+                    EditorEvenForm.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Nenhum evento marcado ainda", "Ambiente RPB", MessageBoxButtons.OK);
+            }
+            else
+            {
+                FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
+                EditorEvenForm.ShowDialog();
+            }
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -461,6 +469,12 @@ namespace AmbienteRPB
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
 
+           /* string name;
+            for (int i = 1; i <= 10; i++)
+            {
+                name = "lineAnnotation" + i;
+                System.Windows.Forms.DataVisualization.Charting.LineAnnotation Linha = this.Controls.Find(name, true)[0] as LineAnnotation;
+            }*/
             lineAnnotation1.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation2.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation3.LineColor  = System.Drawing.Color.LightGray;
@@ -674,11 +688,7 @@ namespace AmbienteRPB
         {
                 chart1.ChartAreas[0].AxisY.Maximum = 250;
                 for (int i = 0; i < __numeroDeCanais; i++)
-                {
-      
                     chart1.ChartAreas[i].Position.Y = 100 / __numeroDeCanais * i;
-                }
-            
         }
         //------------------------------------------------------------------------------------------
         //Somente Numeros
