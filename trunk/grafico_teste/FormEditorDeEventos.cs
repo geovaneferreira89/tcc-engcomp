@@ -28,25 +28,7 @@ namespace AmbienteRPB
             InitializeComponent();            
             Listas = _Listas;
         }
-        private void CarregaListaDoArquivo()
-        {
-           /* bool chave = false;
-            Arquivos = new GerenArquivos();
-            Listas = Arquivos.ImportarEventos();
-            for (int i = 0; i < 20; i++)
-            {
-                if (Listas[i].NumeroEventos != 0)
-                {
-                    i = 100;
-                    chave = true; 
-                }
-            }
-            if (chave == false)
-            {
-                MessageBox.Show("Não existe registro de eventos marcados", "Ambiente RPB", MessageBoxButtons.OK);
-                this.Close();
-            }*/
-        }
+     
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -74,23 +56,19 @@ namespace AmbienteRPB
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
             }
-           if (lbxEventosPorTipo.SelectedItem != null)
-           {
+            if (lbxEventosPorTipo.SelectedItem != null)
+            {
                 chart1.ChartAreas.Add("Padrao");
                 chart1.Series.Add("Serie01");
                 chart1.Series["Serie01"].ChartArea = "Padrao";
                 chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-               // string Aux = Listas;
-
-            /*    System.IO.StreamReader fileR = new System.IO.StreamReader(lbxEventosPorTipo.SelectedItem + ".txt");
+                
                 edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString(); //Tirar o resto... 
-                string dados;
-                dados = fileR.ReadLine();
-                dados = dados.Substring(22);
-                dados = dados.Substring(0, dados.Length - 1);
-                int NumeroDeAmostras = Convert.ToInt16(dados);
-                chart1.Series[0].Color = Color.Red;
-                for (int i = 0; i <= NumeroDeAmostras; i++)
+                cbx_Inicio.Text = "Início " +  Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex);
+                cbx_Referencia.Text = "Referência " + Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex);
+                cbx_Fim.Text = "Fim: " + Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex);
+                      
+                /*for (int i = 0; i <= NumeroDeAmostras; i++)
                 {
                     dados = fileR.ReadLine();
                     string x = dados;
@@ -101,8 +79,8 @@ namespace AmbienteRPB
                     y = y.Substring(X_ + 3);
                     y = y.Substring(0, y.Length - 1);
                     chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
-                }
-               */
+                }*/
+               
             }
         }
 

@@ -76,12 +76,6 @@
     <Compile Include="FormEditorDeEventos.Designer.cs">
       <DependentUpon>FormEditorDeEventos.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditorDePadroes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEditorDePadroes.Designer.cs">
-      <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormEditarNomePadrao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,9 +104,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditorDeEventos.resx">
       <DependentUpon>FormEditorDeEventos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormEditorDePadroes.resx">
-      <DependentUpon>FormEditorDePadroes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>

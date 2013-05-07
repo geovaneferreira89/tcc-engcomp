@@ -118,9 +118,6 @@ namespace AmbienteRPB
 
                   }
            // }
-                     
-
-
             for (int i = 0; i < listBox2.SelectedItems.Count; i++)
             {
                 edfFileOutput.deleteSignal((EDFSignal)listBox2.SelectedItems[i]);

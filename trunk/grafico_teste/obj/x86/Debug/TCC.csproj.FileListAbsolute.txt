@@ -62,7 +62,6 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\bin\Debug\NeuroLoopGa
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormCarregar_EDF.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditorDeEventos.resources
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditorDePadroes.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormPrincipal.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.FormEditarNomePadrao.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\grafico_teste\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources

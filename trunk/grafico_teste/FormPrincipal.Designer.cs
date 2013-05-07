@@ -254,7 +254,6 @@
             this.padrõesToolStripMenuItem.Name = "padrõesToolStripMenuItem";
             this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.padrõesToolStripMenuItem.Text = "Padrões";
-            this.padrõesToolStripMenuItem.Click += new System.EventHandler(this.editorDePadrõesToolStripMenuItem_Click);
             // 
             // verToolStripMenuItem
             // 
