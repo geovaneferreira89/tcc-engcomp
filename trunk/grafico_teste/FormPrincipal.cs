@@ -256,11 +256,16 @@ namespace AmbienteRPB
         //Defini uma seleção afim de ser um padrão. 
         private void MarcarSelecao(MouseEventArgs e)
         {
-                    HitTestResult result = chart1.HitTest(e.X, e.Y, true);
+            string sms;
+            if (numCursor == 0)
+                sms = "Inicio";
+            else
+                sms = "Fim";
+                HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
                     if (result.Series != null)
                     {
-                        AtualizaFerramentaAtiva("", 2,Color.Gray);
-                        ExecutaSelecao(result, e);
+                        AtualizaFerramentaAtiva(sms + " marcado.", 2, Color.Green);
+                        ExecutaSelecao(result, e, 0);
                     }
                     else
                     {
@@ -270,22 +275,25 @@ namespace AmbienteRPB
                         int i = 1;
                         while(cont)
                         {
-                            result = chart1.HitTest(e.X + i, e.Y, true);
+                            result = chart1.HitTest(e.X + i, e.Y, ChartElementType.DataPoint);
                             if (result.Series != null)
                                 cont = false;
-                            if (i == 100)
+                            if (i == 10)
                                 cont = false;
-                            i++;
+                            if(cont)
+                                i++;
                         }
-                        AtualizaFerramentaAtiva("Inicio de envento marcado.", 2, Color.Orange);
+                        AtualizaFerramentaAtiva(sms + " marcado. - Forçado", 2, Color.Orange);
                         if (result.Series != null)
-                            ExecutaSelecao(result, e);
+                        {
+                            ExecutaSelecao(result, e, i);
+                        }
                         else
-                            AtualizaFerramentaAtiva("ERRO - Marque novamente (proximo ao sinal)", 2, Color.Red);
+                            AtualizaFerramentaAtiva("Marque novamente (clique proximo ao sinal) - ERRO", 2, Color.Red);
                     }
         }
         //------------------------------------------------------------------------------------------
-        private void ExecutaSelecao(HitTestResult result, MouseEventArgs e)
+        private void ExecutaSelecao(HitTestResult result, MouseEventArgs e, int offsetX)
         {
             if (numCursor == 0)
             {
@@ -295,7 +303,7 @@ namespace AmbienteRPB
                 result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
 
-                x_Pos = (e.X);
+                x_Pos = (e.X + offsetX);
                 y_Pos = (e.Y);
                 //linha fixa
                 VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
@@ -303,7 +311,7 @@ namespace AmbienteRPB
                 cursor_vertical.Height = result.ChartArea.Position.Height;
                 cursor_vertical.LineColor = highlightColor;
                 cursor_vertical.LineWidth = 1;
-                cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX);
                 cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
                 chart1.Annotations.Add(cursor_vertical);
                 numCursor++;
@@ -314,17 +322,17 @@ namespace AmbienteRPB
                 result.ChartArea.CursorX.AxisType = AxisType.Secondary;
                 result.ChartArea.CursorX.LineColor = highlightColor;
                 result.ChartArea.CursorX.LineWidth = 1;
-                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X, e.Y), true);
+                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X + offsetX, e.Y), true);
                 // Set range selection color, specifying transparency of 120
                 result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.IsUserEnabled = true;
                 result.ChartArea.CursorX.IsUserSelectionEnabled = true;
                 PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
-                PointF Padrao_Fim = new PointF(e.X, e.Y);
+                PointF Padrao_Fim = new PointF(e.X + offsetX, e.Y);
                 
                 result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
-                Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
                 AtualizaFerramentaAtiva("Fim de envento marcado", 2,Color.Green);
                /* RectangleAnnotation highlight = new RectangleAnnotation();
                 highlight.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
