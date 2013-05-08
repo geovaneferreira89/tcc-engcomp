@@ -16,6 +16,7 @@ namespace AmbienteRPB
         private string dirArquivo;     
         //private string initialDirectory = "C:\\";
         private EdfFile _edfFileInput;
+        private bool MostarTela;
         //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
         public EdfFile edfFileOutput
         {
@@ -29,10 +30,21 @@ namespace AmbienteRPB
             set;
         }
 
-        public FormCarregar_EDF(string dirArquivo_)
+        public FormCarregar_EDF(string _dirArquivo, bool _MostarTela)
         {
-            dirArquivo = dirArquivo_;
-            InitializeComponent();
+            dirArquivo = _dirArquivo;
+            MostarTela = _MostarTela;
+            if (MostarTela)
+                InitializeComponent();
+            else
+            {
+                if (dirArquivo != null)
+                {
+                    _edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
+                }
+                edfFileInput = _edfFileInput;
+                this.Close();
+            }
         }
 
         private void EDF_Load(object sender, EventArgs e)
@@ -42,13 +54,13 @@ namespace AmbienteRPB
                  _edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
              }
             edfFileInput = _edfFileInput;
+         
             if (edfFileInput.ValidFormat)
             {
                 listBox1.Items.Clear();
                 //listBox1.Items.Add(string.Format("{0} - {1} ({2}Hz)", k + 1, edfFileInput.SignalInfo[k].SignalLabel, edfFileInput.SignalInfo[k].NrSamples / edfFileInput.FileInfo.SampleRecDuration));
                 for (int k = 0; k < edfFileInput.SignalInfo.Count; k++)
                     listBox1.Items.Add(edfFileInput.SignalInfo[k].SignalLabel);
-
             }
         }
 

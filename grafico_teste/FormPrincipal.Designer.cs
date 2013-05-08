@@ -43,7 +43,6 @@
             this.selecionarVáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ediarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.padrõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoFreqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -236,8 +235,7 @@
             // ediarToolStripMenuItem
             // 
             this.ediarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eventosToolStripMenuItem,
-            this.padrõesToolStripMenuItem});
+            this.eventosToolStripMenuItem});
             this.ediarToolStripMenuItem.Name = "ediarToolStripMenuItem";
             this.ediarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.ediarToolStripMenuItem.Text = "Editar";
@@ -245,15 +243,9 @@
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
-            // 
-            // padrõesToolStripMenuItem
-            // 
-            this.padrõesToolStripMenuItem.Name = "padrõesToolStripMenuItem";
-            this.padrõesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.padrõesToolStripMenuItem.Text = "Padrões";
             // 
             // verToolStripMenuItem
             // 
@@ -928,7 +920,6 @@
         public System.Windows.Forms.ToolStrip tool_ControlesProjeto;
         private System.Windows.Forms.ToolStripMenuItem ediarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem padrõesToolStripMenuItem;
         private System.Windows.Forms.CheckBox Evento20;
         private System.Windows.Forms.CheckBox Evento19;
         private System.Windows.Forms.CheckBox Evento18;

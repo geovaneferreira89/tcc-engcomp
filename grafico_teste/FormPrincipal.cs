@@ -82,7 +82,7 @@ namespace AmbienteRPB
             if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
                 nomeProject = openFileEDF.FileName;
-                edfFileOutput = Arquivos.Abrir_Projeto_EDF(nomeProject);
+                edfFileOutput = Arquivos.Abrir_Projeto_EDF(nomeProject, false);//desabilitado a escolha dos canais
                 if (edfFileOutput != null)
                 {
                     status_projeto = "Projeto_EDF";
@@ -270,7 +270,7 @@ namespace AmbienteRPB
                         int i = 1;
                         while(cont)
                         {
-                            result = chart1.HitTest(e.X + i, e.Y);
+                            result = chart1.HitTest(e.X + i, e.Y, true);
                             if (result.ChartArea != null)
                                 cont = false;
                             if (i == 100)
@@ -379,19 +379,24 @@ namespace AmbienteRPB
             if (ListaPadroes == null)
             {
                 if (Arquivos.ArquivoExiste("Padroes_Eventos.txt") == true)
-                {
-                    ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
-                    FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
-                    EditorEvenForm.ShowDialog();
-                }
+                    CarregarEditorDeEventos();
                 else
                     MessageBox.Show("Nenhum evento marcado ainda", "Ambiente RPB", MessageBoxButtons.OK);
             }
             else
+                  CarregarEditorDeEventos();
+        }
+        //------------------------------------------------------------------------------------------       
+        private void CarregarEditorDeEventos()
+        {
+            if (chart1.Series.Count != 0)
             {
-                FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes);
+                ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
+                FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes, nomeProject);
                 EditorEvenForm.ShowDialog();
             }
+            else
+                MessageBox.Show("Nenhum EDF carregado", "Ambiente RPB", MessageBoxButtons.OK);
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)

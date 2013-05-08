@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
+using NeuroLoopGainLibrary.Edf;
 
 namespace AmbienteRPB
 {
@@ -20,13 +21,18 @@ namespace AmbienteRPB
         private int mostrarCursores = 0;
         private float x_Pos, y_Pos;
         private HitTestResult var_result;
+        private Chart Chart_Principal;
+        private string EDF_File;
         PointF Padrao_Inicio;
         PointF Padrao_Fim;
+        EdfFile SinalEEG;
 
-        public FormEditorDeEventos(ListaPadroesEventos[] _Listas)
+        public FormEditorDeEventos(ListaPadroesEventos[] _Listas, string _EDF_File)
         {
             InitializeComponent();            
             Listas = _Listas;
+           // Chart_Principal = _Chart_Principal;
+            EDF_File = _EDF_File;
         }
      
         private void button1_Click(object sender, EventArgs e)
@@ -63,24 +69,50 @@ namespace AmbienteRPB
                 chart1.Series["Serie01"].ChartArea = "Padrao";
                 chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                 
-                edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString(); //Tirar o resto... 
+                edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString();
                 cbx_Inicio.Text = "Início " +  Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex);
                 cbx_Referencia.Text = "Referência " + Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex);
                 cbx_Fim.Text = "Fim: " + Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex);
-                      
-                /*for (int i = 0; i <= NumeroDeAmostras; i++)
+                
+                //Carrega sinal edf do arquivo.. 
+                Arquivos = new GerenArquivos();
+                SinalEEG = Arquivos.Abrir_Projeto_EDF(EDF_File, false);
+
+                //Nome do canal
+                string nome_canal =  Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex);
+                int X_ = nome_canal.IndexOf("_");
+              //  nome_canal = nome_canal.Substring(3);
+                nome_canal = nome_canal.Substring(X_+1);
+                //Inicio do enveto
+                float x = Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex).X;
+                float y = Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex).Y;
+                chart1.Series[0].Points.AddY(Convert.ToDouble(y));
+                float aux;
+                int DataRecords_lidos = 0;
+                int tempo_X = DataRecords_lidos * 256;
+                while (tempo_X <= Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex).X)
                 {
-                    dados = fileR.ReadLine();
-                    string x = dados;
-                    string y = dados;
-                    int X_ = x.IndexOf(" ");
-                    x = x.Substring(3);
-                    x = x.Substring(0, X_ - 4);
-                    y = y.Substring(X_ + 3);
-                    y = y.Substring(0, y.Length - 1);
-                    chart1.Series[0].Points.AddXY(Convert.ToDouble(x), Convert.ToDouble(y));
-                }*/
-               
+                    DataRecords_lidos++;
+                    SinalEEG.ReadDataBlock(DataRecords_lidos);
+                    //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                    for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
+                    {
+                        for (int i = 0; i < 256; i++)
+                        {
+                            if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
+                            {    
+                                if(tempo_X >= x){
+                                    chart1.Series[0].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                }
+                                else
+                                     aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                tempo_X++;
+                            }
+                            else
+                               aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                        }
+                    }
+                }
             }
         }
 
