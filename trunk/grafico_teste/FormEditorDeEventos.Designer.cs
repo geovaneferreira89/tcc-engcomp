@@ -299,6 +299,7 @@
             this.ClientSize = new System.Drawing.Size(734, 434);
             this.Controls.Add(this.gbxEditorDeEventos);
             this.Name = "FormEditorDeEventos";
+            this.ShowIcon = false;
             this.Text = "Editor De Eventos";
             this.Load += new System.EventHandler(this.FormEditorDeEventos_Load);
             this.gbxEditorDeEventos.ResumeLayout(false);

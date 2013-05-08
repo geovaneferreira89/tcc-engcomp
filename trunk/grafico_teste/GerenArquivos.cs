@@ -72,10 +72,11 @@ namespace AmbienteRPB
             return Convert.ToInt32(dados);
         }
         //Abrir Projeto EDF  -----------------------------------------------------------------
-        public EdfFile Abrir_Projeto_EDF(string diretorio)
+        public EdfFile Abrir_Projeto_EDF(string diretorio, bool SelecionarCanais)
         {
-            FormCarregar_EDF formEDF = new FormCarregar_EDF(diretorio);
-            formEDF.ShowDialog();
+            FormCarregar_EDF formEDF = new FormCarregar_EDF(diretorio, SelecionarCanais);
+            if(SelecionarCanais)
+                formEDF.ShowDialog();
             edfFileOutput = formEDF.edfFileInput;
             return edfFileOutput;
         }
