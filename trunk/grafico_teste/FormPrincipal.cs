@@ -257,7 +257,7 @@ namespace AmbienteRPB
         private void MarcarSelecao(MouseEventArgs e)
         {
                     HitTestResult result = chart1.HitTest(e.X, e.Y, true);
-                    if (result.ChartArea != null)
+                    if (result.Series != null)
                     {
                         AtualizaFerramentaAtiva("", 2,Color.Gray);
                         ExecutaSelecao(result, e);
@@ -271,14 +271,14 @@ namespace AmbienteRPB
                         while(cont)
                         {
                             result = chart1.HitTest(e.X + i, e.Y, true);
-                            if (result.ChartArea != null)
+                            if (result.Series != null)
                                 cont = false;
                             if (i == 100)
                                 cont = false;
                             i++;
                         }
                         AtualizaFerramentaAtiva("Inicio de envento marcado.", 2, Color.Orange);
-                        if (result.ChartArea != null)
+                        if (result.Series != null)
                             ExecutaSelecao(result, e);
                         else
                             AtualizaFerramentaAtiva("ERRO - Marque novamente (proximo ao sinal)", 2, Color.Red);
