@@ -84,16 +84,17 @@ namespace AmbienteRPB
                 int X_ = nome_canal.IndexOf("_");
                 nome_canal = nome_canal.Substring(X_+1);
                 //Inicio do enveto
-                float x = Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex).X - 1;
-                float x_max = Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex).X + 1;
+                float x = Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex).X;
+                float x_max = Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex).X;
                 
                 float aux;
                 int DataRecords_lidos = 0;
-                int tempo_X = DataRecords_lidos * 256;
+                int tempo_X = 0;
                 while (tempo_X <= (int) x_max)
                 {
-                    DataRecords_lidos++;
+                    
                     SinalEEG.ReadDataBlock(DataRecords_lidos);
+                    DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
                     {
@@ -102,9 +103,7 @@ namespace AmbienteRPB
                             if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
                             {
                                 if (tempo_X >= (int) x && tempo_X <= (int) x_max)
-                                {
                                     chart1.Series[0].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                }
                                 else
                                      aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                                 tempo_X++;
