@@ -81,3 +81,4 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\EventosEEG.Properties.Resources.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.exe
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache

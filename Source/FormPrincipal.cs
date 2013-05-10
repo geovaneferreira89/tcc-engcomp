@@ -14,20 +14,19 @@ using System.IO;
 using System.Runtime.InteropServices;
 using NeuroLoopGainLibrary.Edf;
 
-
 namespace AmbienteRPB
 {
     public partial class FormPrincipal : Form
     {
-        //Plotar sinais na tela------------------------------------------------------------
+        //Plotar sinais na tela----------------------------------------------------------
         private Thread ThreadChart;
         private int __numeroDeCanais = 23;
         private int DataRecords_lidos = 10;
         private int Scroll_Click_Escala_Seg = 10;
-        //---------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private int numCursor = 0;
         private int mostrarCursores = 0;
-        private float x_Pos, y_Pos;
+        private double x_Pos, y_Pos;
         private String nomeProject = "Sem nome";
         private string status_projeto = "Projeto_NOVO";
         private EdfFile edfFileOutput = null;
@@ -48,6 +47,11 @@ namespace AmbienteRPB
             gbxEventos.Enabled = false;
             gbxChart.Location = new System.Drawing.Point(2, 21);
             gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
+        }
+          //------------------------------------------------------------------------------------------
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -78,7 +82,8 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         // Ferramenta de importar sinais EEG de arquivo .EDF
         private void btn_Importar_Click(object sender, EventArgs e)
-        {  
+        {
+            openFileEDF.InitialDirectory = Arquivos.getPathUser();
             if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
                 nomeProject = openFileEDF.FileName;
@@ -211,14 +216,14 @@ namespace AmbienteRPB
         // Mostra o cursor no eixo X dos gráficos
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-           /* HitTestResult result = chart1.HitTest(e.X, e.Y, true);
+            HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
             if (result.ChartArea != null)
             {
-                var pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
-                var pointYPixel = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
-                lbl_x.Text = "Valor X: " + pointXPixel;
-                lbl_Y.Text = "Valor Y: " + pointYPixel;
-            }*/
+                double pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                double pointYPixel = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
+                lbl_x.Text = "Valor X: " +  pointXPixel.ToString("f4");
+                lbl_Y.Text = "Valor Y: " + pointYPixel.ToString("f4");
+            }
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
@@ -255,7 +260,7 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
-        //Defini uma seleção afim de ser um padrão. 
+        //Define uma seleção afim de ser um padrão. 
         private void MarcarSelecao(MouseEventArgs e)
         {
             string sms;
@@ -329,9 +334,10 @@ namespace AmbienteRPB
                 result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.IsUserEnabled = true;
                 result.ChartArea.CursorX.IsUserSelectionEnabled = true;
-                PointF Padrao_Inicio = new PointF(x_Pos, y_Pos);
-                PointF Padrao_Fim = new PointF(e.X + offsetX, e.Y);
                 
+                PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
+                PointF Padrao_Fim = new PointF((e.X + offsetX), e.Y);
+                //Colore a região do evento
                 result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
@@ -347,7 +353,8 @@ namespace AmbienteRPB
                 highlight.Height = result.ChartArea.Position.Height;
                 highlight.Visible = true;
                 chart1.Annotations.Add(highlight);*/
-
+                Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
+                Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
                 Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result);
                 numCursor = 0;//CLICAR + VEZES SEM EFEITO
                 //result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0), new PointF(0, 0), true);
@@ -391,7 +398,10 @@ namespace AmbienteRPB
                 string aux_path = Arquivos.getPathUser();
                 aux_path += "Padroes_Eventos.txt";
                 if (Arquivos.ArquivoExiste(aux_path) == true)
+                {
+                    ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
                     CarregarEditorDeEventos();
+                }
                 else
                     MessageBox.Show("Nenhum evento marcado ainda", "Reconhecimento de Padrões EEG", MessageBoxButtons.OK);
             }
@@ -403,7 +413,6 @@ namespace AmbienteRPB
         {
             if (chart1.Series.Count != 0)
             {
-                ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
                 FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes, nomeProject);
                 EditorEvenForm.ShowDialog();
             }
@@ -486,12 +495,6 @@ namespace AmbienteRPB
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9  = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
 
-           /* string name;
-            for (int i = 1; i <= 10; i++)
-            {
-                name = "lineAnnotation" + i;
-                System.Windows.Forms.DataVisualization.Charting.LineAnnotation Linha = this.Controls.Find(name, true)[0] as LineAnnotation;
-            }*/
             lineAnnotation1.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation2.LineColor  = System.Drawing.Color.LightGray;
             lineAnnotation3.LineColor  = System.Drawing.Color.LightGray;
@@ -589,11 +592,6 @@ namespace AmbienteRPB
             chart1.Annotations.Add(lineAnnotation8);
             chart1.Annotations.Add(lineAnnotation9);
             chart1.Annotations.Add(lineAnnotation10);
-        }
-        //------------------------------------------------------------------------------------------
-        private void FormPrincipal_Load(object sender, EventArgs e)
-        {
-
         }
         //------------------------------------------------------------------------------------------
         //                              FUNCÕES DA SCROLL BAR
@@ -757,7 +755,7 @@ namespace AmbienteRPB
                 double Y__ = chart1.Series[0].Points[j].YValues[0] - chart1.Series[1].Points[j].YValues[0];
                 chart1.Series[2].Points.AddXY(j,Y__);
             }
-            MessageBox.Show("Nome Pac");
+            MessageBox.Show("Derivação entre canais");
         }
         //--------------------------------------------------------------------------
         private void fecharToolStripMenuItem_Click_1(object sender, EventArgs e)
