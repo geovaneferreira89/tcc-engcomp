@@ -372,7 +372,7 @@ namespace AmbienteRPB
         {
             if (Evento != null)
             {
-                for (int i = 0; i <= 20; i++)
+                for (int i = 0; i <= 20; i++) //20 Eventos existentes
                 {
                     if (ListaPadroes[i].NomePadrao == Evento)
                     {
