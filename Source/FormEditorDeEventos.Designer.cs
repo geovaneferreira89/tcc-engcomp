@@ -92,6 +92,7 @@
             // 
             this.cbx_Referencia.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cbx_Referencia.AutoSize = true;
+            this.cbx_Referencia.ForeColor = System.Drawing.Color.Chocolate;
             this.cbx_Referencia.Location = new System.Drawing.Point(258, 14);
             this.cbx_Referencia.Name = "cbx_Referencia";
             this.cbx_Referencia.Size = new System.Drawing.Size(78, 17);
@@ -104,6 +105,7 @@
             // 
             this.cbx_Fim.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbx_Fim.AutoSize = true;
+            this.cbx_Fim.ForeColor = System.Drawing.Color.Green;
             this.cbx_Fim.Location = new System.Drawing.Point(152, 14);
             this.cbx_Fim.Name = "cbx_Fim";
             this.cbx_Fim.Size = new System.Drawing.Size(42, 17);
@@ -115,6 +117,7 @@
             // cbx_Inicio
             // 
             this.cbx_Inicio.AutoSize = true;
+            this.cbx_Inicio.ForeColor = System.Drawing.Color.Blue;
             this.cbx_Inicio.Location = new System.Drawing.Point(6, 14);
             this.cbx_Inicio.Name = "cbx_Inicio";
             this.cbx_Inicio.Size = new System.Drawing.Size(53, 17);
@@ -169,6 +172,7 @@
             this.chart1.Size = new System.Drawing.Size(582, 326);
             this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
+            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             // 
             // groupBox4
             // 
