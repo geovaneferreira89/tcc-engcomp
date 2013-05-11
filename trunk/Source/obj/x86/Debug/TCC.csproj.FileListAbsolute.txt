@@ -82,3 +82,10 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\EventosEEG.Pro
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.exe
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.exe.manifest
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.application
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.TrustInfo.xml
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.exe.manifest
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.application
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.exe.config
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Modelo1.edf

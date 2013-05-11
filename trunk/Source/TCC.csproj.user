@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>publish\</PublishUrlHistory>
-    <InstallUrlHistory />
-    <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <PublishUrlHistory>ftp://ftp.novoindustrial.com.br/|http://eeg.novoindustrial.com.br/|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://eeg.novoindustrial.com.br/|http://eeg.novoindustrial.com.br/Site/|http://gejota.novoindustrial.com.br/Ge_e_Jota/</InstallUrlHistory>
+    <SupportUrlHistory>http://eeg.novoindustrial.com.br/suport</SupportUrlHistory>
+    <UpdateUrlHistory>http://eeg.novoindustrial.com.br/SW.html/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
-    <ErrorReportUrlHistory />
+    <ErrorReportUrlHistory>http://eeg.novoindustrial.com.br/|http://gejota.novoindustrial.com.br/Ge_e_Jota/</ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>
+    </ReferencePath>
   </PropertyGroup>
 </Project>

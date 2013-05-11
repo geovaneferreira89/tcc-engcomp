@@ -163,14 +163,14 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "&Sobre";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(101, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(149, 6);
             // 
             // MDIPrincipalForm
             // 
@@ -183,7 +183,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIPrincipalForm";
-            this.Text = "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos";
+            this.Text = "Reconhecimento de Padrões EEG - 1.0";
             this.TransparencyKey = System.Drawing.Color.White;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDIPrincipalForm_Load);
