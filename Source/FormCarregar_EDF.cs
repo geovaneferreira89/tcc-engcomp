@@ -99,7 +99,7 @@ namespace AmbienteRPB
         {
            if (edfFileInput == null)
                 MessageBox.Show("Nenhum canal selecionado",
-                  "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                  "Reconhecimento Automatizado de Padrões EEG",
                       MessageBoxButtons.OK, MessageBoxIcon.Information);   
                 
             this.Close();

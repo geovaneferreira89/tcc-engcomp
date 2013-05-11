@@ -73,7 +73,7 @@ namespace AmbienteRPB
             }
             fileW.Close();
             MessageBox.Show("Projeto:\n" + diretorio + "\n\nSalvado com sucesso!",
-               "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+               "Reconhecimento Automatizado de Padrões EEG",
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //Abrir Projeto  --------------------------------------------------------------------
@@ -85,7 +85,7 @@ namespace AmbienteRPB
             dados = dados.Substring(15);
             dados = dados.Substring(0, dados.Length - 1);
             MessageBox.Show("Projeto:\n" + diretorio + "\n\n"+dados,
-               "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+               "Reconhecimento Automatizado de Padrões EEG",
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
             return Convert.ToInt32(dados);
         }
@@ -191,7 +191,7 @@ namespace AmbienteRPB
              {
                  fileR.Close();
                  MessageBox.Show("Erro ao carregar arquivo",
-                        "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                        "Reconhecimento Automatizado de Padrões EEG",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                  return null;
              }

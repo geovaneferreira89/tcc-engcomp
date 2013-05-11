@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Deployment.Application;
+
 namespace AmbienteRPB
 {
      
@@ -123,8 +124,8 @@ namespace AmbienteRPB
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("\nUniversidade Tecnológica Federal do Paraná\nEngenharia de Computação\nTrabalho De Conclusão de Curso\nAlunos: Geovane Ferreira\n              Georgia\nOrientador: Miguel\nCuritiba 2013",
-                "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+            MessageBox.Show("\nUniversidade Tecnológica Federal do Paraná\nEngenharia de Computação\nTrabalho De Conclusão de Curso\nAlunos:\nGeovane Ferreira\nGeorgia\n\nOrientador:\nMiguel\n\nCuritiba 2013",
+                "Reconhecimento Automatizado de Padrões EEG",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -138,15 +139,23 @@ namespace AmbienteRPB
         {
             string path = System.IO.Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
             MessageBox.Show(path,
-              "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+              "Reconhecimento Automatizado de Padrões EEG",
                   MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (Environment.OSVersion.Version.Major >= 6)
             {
                 path = System.IO.Directory.GetParent(path).ToString();
             }
             MessageBox.Show(path,
-                 "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                 "Reconhecimento Automatizado de Padrões EEG",
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void siteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReconhecimentoAutPadroesEEG.Form_Site form = new ReconhecimentoAutPadroesEEG.Form_Site();
+            form.MdiParent = this;
+            form.Text = "Web Site";
+            form.Show();
         }
     }
 }

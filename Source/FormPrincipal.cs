@@ -71,11 +71,11 @@ namespace AmbienteRPB
             //SALVAR
             if(ListaPadroes != null)
             {
-               DialogResult resposta = MessageBox.Show("Deseja salvar a lista de pradrões e eventos?", "Reconhecimento de Padrões EEG", MessageBoxButtons.YesNo);
+                DialogResult resposta = MessageBox.Show("Deseja salvar a lista de pradrões e eventos?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
                if (resposta == DialogResult.Yes)
                {
                    Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
-                   MessageBox.Show("Salvo com sucesso!", "Reconhecimento de Padrões EEG");
+                   MessageBox.Show("Salvo com sucesso!", "Reconhecimento Automatizado de Padrões EEG");
                }
             }
         }
@@ -170,7 +170,7 @@ namespace AmbienteRPB
             btn_Importar.Enabled = false;
             btn_novoProjeto.Enabled = false;
             MessageBox.Show("Projeto " + nomeProject + "\nCriado",
-                    "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                    "Reconhecimento Automatizado de Padrões EEG",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             status_projeto = "Projeto_NOVO";
             ChartInicializarThreads(__numeroDeCanais);
@@ -389,7 +389,7 @@ namespace AmbienteRPB
                 }
             }
             else
-                MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Reconhecimento de Padrões EEG", MessageBoxButtons.OK);
+                MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.OK);
         }
         //------------------------------------------------------------------------------------------       
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -404,7 +404,7 @@ namespace AmbienteRPB
                     CarregarEditorDeEventos();
                 }
                 else
-                    MessageBox.Show("Nenhum evento marcado ainda", "Reconhecimento de Padrões EEG", MessageBoxButtons.OK);
+                    MessageBox.Show("Nenhum evento marcado ainda", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.OK);
             }
             else
                   CarregarEditorDeEventos();
@@ -418,7 +418,7 @@ namespace AmbienteRPB
                 EditorEvenForm.ShowDialog();
             }
             else
-                MessageBox.Show("Nenhum EDF carregado", "Reconhecimento de Padrões EEG", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum EDF carregado", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.OK);
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -744,7 +744,7 @@ namespace AmbienteRPB
                              + "\nVersion\n" + edfFileOutput.FileInfo.Version
 
 
-                ,"Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
+                , "Reconhecimento Automatizado de Padrões EEG",
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //------------------------------------------------------------------------------------------

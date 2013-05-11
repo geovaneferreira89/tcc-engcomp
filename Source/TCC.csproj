@@ -8,8 +8,8 @@
     <ProjectGuid>{8639B6D7-DAA9-4F1D-94CC-46D62691D90D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EventosEEG</RootNamespace>
-    <AssemblyName>Eventos EEG</AssemblyName>
+    <RootNamespace>ReconhecimentoAutPadroesEEG</RootNamespace>
+    <AssemblyName>Reconhecimento Automatizado de Padrões EEG</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -28,7 +28,7 @@
     <UpdateUrl>http://eeg.novoindustrial.com.br/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>SW.html</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -117,6 +117,12 @@
     <Compile Include="FormEditarNomePadrao.Designer.cs">
       <DependentUpon>FormEditarNomePadrao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Site.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Site.Designer.cs">
+      <DependentUpon>Form_Site.cs</DependentUpon>
+    </Compile>
     <Compile Include="GerenArquivos.cs" />
     <Compile Include="MDIPrincipalForm.cs">
       <SubType>Form</SubType>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarNomePadrao.resx">
       <DependentUpon>FormEditarNomePadrao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Site.resx">
+      <DependentUpon>Form_Site.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIPrincipalForm.resx">
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>
