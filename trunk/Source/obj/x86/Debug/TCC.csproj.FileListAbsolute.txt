@@ -76,16 +76,16 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.Fo
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormEditarNomePadrao.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.exe
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.pdb
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\EventosEEG.Properties.Resources.resources
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.exe
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.pdb
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.exe.manifest
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.application
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.TrustInfo.xml
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.exe.manifest
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Eventos EEG.application
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Eventos EEG.exe.config
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Modelo1.edf
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.config
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.application
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\ReconhecimentoAutPadroesEEG.Properties.Resources.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.TrustInfo.xml
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.application
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\ReconhecimentoAutPadroesEEG.Form_Site.resources

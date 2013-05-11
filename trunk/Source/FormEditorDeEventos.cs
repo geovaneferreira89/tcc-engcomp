@@ -232,7 +232,7 @@ namespace AmbienteRPB
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if(ValorInicio.X > ValorFim.X)
-                MessageBox.Show("Marcação errada.\n A posição de inicio está maior que a posição de fim.\n\nNão salvo.", "Editor de Eventos EEG");
+                MessageBox.Show("Marcação errada.\n A posição de inicio está maior que a posição de fim.\n\nNão salvo.", "Reconhecimento Automatizado de Padrões EEG");
             else
             {
                 btnSalvar.Enabled = false;
@@ -242,7 +242,7 @@ namespace AmbienteRPB
                 Listas[comboTiposDeEventos.SelectedIndex].SetValorMeio(lbxEventosPorTipo.SelectedIndex, ValorReferencia);
                 Arquivos.Exportar_Padroes_Eventos(Listas);
 
-                MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Editor de Eventos EEG"); 
+                MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Reconhecimento Automatizado de Padrões EEG"); 
                 chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
@@ -284,8 +284,8 @@ namespace AmbienteRPB
         }
         public void Init()
         {
+            Thread.Sleep(20);
             Referencia_Init(_ValX);
-        
         }
         private void Referencia_Init(float PosicaoX)
         {
