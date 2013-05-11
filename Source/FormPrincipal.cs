@@ -83,7 +83,8 @@ namespace AmbienteRPB
         // Ferramenta de importar sinais EEG de arquivo .EDF
         private void btn_Importar_Click(object sender, EventArgs e)
         {
-            openFileEDF.InitialDirectory = Arquivos.getPathUser();
+            string dir = AppDomain.CurrentDomain.BaseDirectory + "Modelos EDF\\";
+            openFileEDF.InitialDirectory = dir;
             if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
                 nomeProject = openFileEDF.FileName;

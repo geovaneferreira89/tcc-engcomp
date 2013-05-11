@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using NeuroLoopGainLibrary.Edf;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
+using System.IO;
 
 namespace AmbienteRPB
 {
@@ -37,6 +38,9 @@ namespace AmbienteRPB
              if (Environment.OSVersion.Version.Major >= 6)
                     path = System.IO.Directory.GetParent(path).ToString();
              path += "\\Eventos EEG\\";
+             if (!Directory.Exists(path))
+                 Directory.CreateDirectory(path);
+
         }
         //Get Path -----------------------------------------------------------------------------
         public string getPathUser()

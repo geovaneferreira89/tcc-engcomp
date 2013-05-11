@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.Deployment.Application;
 namespace AmbienteRPB
 {
      
@@ -113,7 +113,7 @@ namespace AmbienteRPB
 
         private void MDIPrincipalForm_Load(object sender, EventArgs e)
         {
-            
+         
         }
 
         private void fileMenu_Click(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace AmbienteRPB
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Universidade Tecnológica Federal do Paraná\nEngenharia de Computação\nTrabalho De Conclusão de Curso\nAlunos: Geovane Ferreira\n              Georgia\nOrientador: Miguel\nCuritiba 2013",
+            MessageBox.Show("\nUniversidade Tecnológica Federal do Paraná\nEngenharia de Computação\nTrabalho De Conclusão de Curso\nAlunos: Geovane Ferreira\n              Georgia\nOrientador: Miguel\nCuritiba 2013",
                 "Ambiente de Avaliação de Reconhecimento de Padrões Biomédicos",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
