@@ -14,6 +14,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using NeuroLoopGainLibrary.Edf;
 using Thread_Annotations;
+using Microsoft.VisualBasic;
 
 
 namespace AmbienteRPB
@@ -40,6 +41,7 @@ namespace AmbienteRPB
         String Evento;
         Color highlightColor;
         ToolTip tooltip = new ToolTip();
+        private bool adicionarComentario = false;
         //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
@@ -102,6 +104,7 @@ namespace AmbienteRPB
                     btn_novoProjeto.Enabled = false;
                     infoEDF.Enabled = true;
                     marcarEventos.Enabled = true;
+                    inserirComent.Enabled = true;
                     btn_Importar.Enabled = false;
                     CarregaNomesPadroes(20);
                     string aux_path = Arquivos.getPathUser();
@@ -194,14 +197,13 @@ namespace AmbienteRPB
         //Função responsavel por verificar qual ferramenta usar quando o mouse é clicado em cima dos sinais
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
+           
             if (mostrarCursores != 0)
             {//Marcar um evento
                 MarcarSelecao(e);
             }
             else
-            {//Mudar a cor do canal
-                MudarCorChart(e);
-            }
+             MudarCorChart(e);
         }
         //-----------------------------------------------------------------------------------------
         //Check box responsavel por Mostra o cursor no eixo X dos gráficos
@@ -219,14 +221,15 @@ namespace AmbienteRPB
         // Mostra o cursor no eixo X dos gráficos
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
-            HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            //Mostra X e Y do grafico onde o mouse está, (Função deixa o SW lento)
+            /*HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
             if (result.ChartArea != null)
             {
                 double pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
                 double pointYPixel = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
                 lbl_x.Text = "Valor X: " +  pointXPixel.ToString("f4");
                 lbl_Y.Text = "Valor Y: " + pointYPixel.ToString("f4");
-            }
+            }*/
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
@@ -315,6 +318,8 @@ namespace AmbienteRPB
                 y_Pos = (e.Y);
                 //linha fixa
                 VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
+                //cursor_vertical.AnchorDataPoint = result.Series.Points[2];
+                cursor_vertical.Name = "cursor_inicio_evento";
                 cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
                 cursor_vertical.Height = result.ChartArea.Position.Height;
                 cursor_vertical.LineColor = highlightColor;
@@ -330,7 +335,7 @@ namespace AmbienteRPB
                 result.ChartArea.CursorX.AxisType = AxisType.Secondary;
                 result.ChartArea.CursorX.LineColor = highlightColor;
                 result.ChartArea.CursorX.LineWidth = 1;
-                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X + offsetX, e.Y), true);
+                //result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X + offsetX, e.Y), true);
                 // Set range selection color, specifying transparency of 120
                 result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.IsUserEnabled = true;
@@ -338,35 +343,38 @@ namespace AmbienteRPB
                 
                 PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
                 PointF Padrao_Fim = new PointF((e.X + offsetX), e.Y);
-                //Colore a região do evento
-                result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-               
+                //---Colore a região do evento
+                //result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+                //result.ChartArea.CursorX.LineColor = Color.LightGray;
+                //result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
+                //result.ChartArea.CursorX.IsUserEnabled = false;
+                //result.ChartArea.CursorX.IsUserSelectionEnabled = false;
+
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
                 AtualizaFerramentaAtiva("Fim de envento marcado", 2,Color.Green);
         
                 Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
                 Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
-                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result);
+                
+                string string_coment = "";
+                if (adicionarComentario)
+                {
+                    string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões EEG", "nothing", 10, 10);
+                }
+                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment);
                 numCursor = 0;//CLICAR + VEZES SEM EFEITO
                 
-                
-                result.ChartArea.CursorX.LineColor = Color.LightGray;
-                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
-                result.ChartArea.CursorX.IsUserEnabled = false;
-                result.ChartArea.CursorX.IsUserSelectionEnabled = false;
-                
-
-                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos), highlightColor, Evento, result.Series.Points[2]);
+                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos),
+                                highlightColor, Evento, result.Series.Points[2], adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos));
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
 
-                chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_vertical"));
-                //Adiciona_linhas_de_tempo();
+                chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_inicio_evento"));
             }
         }
         //------------------------------------------------------------------------------------------
-        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal)
+        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment)
         {
             if (Evento != null)
             {
@@ -376,6 +384,7 @@ namespace AmbienteRPB
                     {
                         ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(),Padrao_Inicio);
                         ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
+                        ListaPadroes[i].SetComentario(ListaPadroes[i].GetNumeroEventos(), coment);
                         string dados = Canal.ChartArea.Name;
                         dados = dados.Substring(5);
                         dados = dados.Substring(0, dados.Length);
@@ -914,6 +923,22 @@ namespace AmbienteRPB
                     // Fazer, desativa a opçao de selecionar vários canais
                     break;
             }
+        }
+       
+
+        private void inserirComentárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!adicionarComentario)
+            {
+                AtualizaFerramentaAtiva("Opção de Inserir Comentarios Habilitada", 2, Color.Orange);
+                adicionarComentario = true;
+            }
+            else
+            {
+                AtualizaFerramentaAtiva("Opção de Inserir Comentarios Desabilitada", 2, Color.Orange);
+                adicionarComentario = false;
+            }
+
         }
         //------------------------------------------------------------------------
         //------------------------------------------------------------------------

@@ -100,6 +100,7 @@
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.inserirComent = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -170,7 +171,8 @@
             // 
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.canal1Canal2ToolStripMenuItem,
-            this.marcarEventos});
+            this.marcarEventos,
+            this.inserirComent});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
@@ -179,7 +181,7 @@
             // 
             this.canal1Canal2ToolStripMenuItem.Enabled = false;
             this.canal1Canal2ToolStripMenuItem.Name = "canal1Canal2ToolStripMenuItem";
-            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.canal1Canal2ToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.canal1Canal2ToolStripMenuItem.Text = "Canal 1 - Canal 2";
             this.canal1Canal2ToolStripMenuItem.Click += new System.EventHandler(this.canal1Canal2ToolStripMenuItem_Click);
             // 
@@ -193,8 +195,8 @@
             this.selecionarVáriosToolStripMenuItem});
             this.marcarEventos.Enabled = false;
             this.marcarEventos.Name = "marcarEventos";
-            this.marcarEventos.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.marcarEventos.Size = new System.Drawing.Size(195, 22);
+            this.marcarEventos.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.marcarEventos.Size = new System.Drawing.Size(212, 22);
             this.marcarEventos.Text = "Marcar Eventos";
             this.marcarEventos.Click += new System.EventHandler(this.marcarPadrõesToolStripMenuItem_Click);
             // 
@@ -243,7 +245,7 @@
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
@@ -387,9 +389,9 @@
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(654, 427);
+            this.progressBar.Location = new System.Drawing.Point(654, 428);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(127, 14);
+            this.progressBar.Size = new System.Drawing.Size(127, 12);
             this.progressBar.TabIndex = 11;
             this.progressBar.Visible = false;
             // 
@@ -829,6 +831,15 @@
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
             // 
+            // inserirComent
+            // 
+            this.inserirComent.Enabled = false;
+            this.inserirComent.Name = "inserirComent";
+            this.inserirComent.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.inserirComent.Size = new System.Drawing.Size(212, 22);
+            this.inserirComent.Text = "Inserir Comentário";
+            this.inserirComent.Click += new System.EventHandler(this.inserirComentárioToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -942,6 +953,7 @@
         private System.Windows.Forms.ToolStripMenuItem segundosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segundosToolStripMenuItem1;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ToolStripMenuItem inserirComent;
     }
 }
 

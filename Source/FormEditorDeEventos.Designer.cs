@@ -49,6 +49,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_Coments = new System.Windows.Forms.Label();
+            this.txtComents = new System.Windows.Forms.TextBox();
             this.gbxEditorDeEventos.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,13 +65,16 @@
             this.gbxEditorDeEventos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxEditorDeEventos.Controls.Add(this.cbx_Referencia);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox3);
+            this.gbxEditorDeEventos.Controls.Add(this.cbx_Fim);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox2);
+            this.gbxEditorDeEventos.Controls.Add(this.cbx_Inicio);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox4);
             this.gbxEditorDeEventos.Controls.Add(this.groupBox1);
             this.gbxEditorDeEventos.Location = new System.Drawing.Point(4, 4);
             this.gbxEditorDeEventos.Name = "gbxEditorDeEventos";
-            this.gbxEditorDeEventos.Size = new System.Drawing.Size(727, 428);
+            this.gbxEditorDeEventos.Size = new System.Drawing.Size(773, 459);
             this.gbxEditorDeEventos.TabIndex = 0;
             this.gbxEditorDeEventos.TabStop = false;
             // 
@@ -77,23 +82,22 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.cbx_Referencia);
-            this.groupBox3.Controls.Add(this.cbx_Fim);
-            this.groupBox3.Controls.Add(this.cbx_Inicio);
+            this.groupBox3.Controls.Add(this.txtComents);
+            this.groupBox3.Controls.Add(this.lbl_Coments);
             this.groupBox3.Controls.Add(this.btnSalvar);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Location = new System.Drawing.Point(131, 387);
+            this.groupBox3.Location = new System.Drawing.Point(131, 418);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(587, 35);
+            this.groupBox3.Size = new System.Drawing.Size(633, 35);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             // 
             // cbx_Referencia
             // 
-            this.cbx_Referencia.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.cbx_Referencia.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cbx_Referencia.AutoSize = true;
             this.cbx_Referencia.ForeColor = System.Drawing.Color.Chocolate;
-            this.cbx_Referencia.Location = new System.Drawing.Point(258, 14);
+            this.cbx_Referencia.Location = new System.Drawing.Point(366, 399);
             this.cbx_Referencia.Name = "cbx_Referencia";
             this.cbx_Referencia.Size = new System.Drawing.Size(78, 17);
             this.cbx_Referencia.TabIndex = 19;
@@ -103,10 +107,10 @@
             // 
             // cbx_Fim
             // 
-            this.cbx_Fim.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbx_Fim.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbx_Fim.AutoSize = true;
             this.cbx_Fim.ForeColor = System.Drawing.Color.Green;
-            this.cbx_Fim.Location = new System.Drawing.Point(152, 14);
+            this.cbx_Fim.Location = new System.Drawing.Point(725, 399);
             this.cbx_Fim.Name = "cbx_Fim";
             this.cbx_Fim.Size = new System.Drawing.Size(42, 17);
             this.cbx_Fim.TabIndex = 18;
@@ -116,9 +120,11 @@
             // 
             // cbx_Inicio
             // 
+            this.cbx_Inicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbx_Inicio.AutoSize = true;
             this.cbx_Inicio.ForeColor = System.Drawing.Color.Blue;
-            this.cbx_Inicio.Location = new System.Drawing.Point(6, 14);
+            this.cbx_Inicio.Location = new System.Drawing.Point(132, 398);
             this.cbx_Inicio.Name = "cbx_Inicio";
             this.cbx_Inicio.Size = new System.Drawing.Size(53, 17);
             this.cbx_Inicio.TabIndex = 17;
@@ -130,7 +136,7 @@
             // 
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSalvar.Enabled = false;
-            this.btnSalvar.Location = new System.Drawing.Point(473, 9);
+            this.btnSalvar.Location = new System.Drawing.Point(519, 9);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(49, 22);
             this.btnSalvar.TabIndex = 15;
@@ -141,7 +147,7 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(529, 9);
+            this.button1.Location = new System.Drawing.Point(575, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(49, 22);
             this.button1.TabIndex = 16;
@@ -157,7 +163,7 @@
             this.groupBox2.Controls.Add(this.chart1);
             this.groupBox2.Location = new System.Drawing.Point(129, 45);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(589, 341);
+            this.groupBox2.Size = new System.Drawing.Size(635, 347);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             // 
@@ -169,7 +175,7 @@
             this.chart1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.chart1.Location = new System.Drawing.Point(4, 10);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(582, 326);
+            this.chart1.Size = new System.Drawing.Size(628, 331);
             this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
@@ -182,7 +188,7 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(4, 8);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(713, 37);
+            this.groupBox4.Size = new System.Drawing.Size(759, 37);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             // 
@@ -192,7 +198,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.edtEvento_Nome.Location = new System.Drawing.Point(99, 11);
             this.edtEvento_Nome.Name = "edtEvento_Nome";
-            this.edtEvento_Nome.Size = new System.Drawing.Size(608, 20);
+            this.edtEvento_Nome.Size = new System.Drawing.Size(654, 20);
             this.edtEvento_Nome.TabIndex = 1;
             // 
             // label3
@@ -214,7 +220,7 @@
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Location = new System.Drawing.Point(3, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(120, 378);
+            this.groupBox1.Size = new System.Drawing.Size(120, 409);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             // 
@@ -227,7 +233,7 @@
             ""});
             this.lbxEventosPorTipo.Location = new System.Drawing.Point(4, 36);
             this.lbxEventosPorTipo.Name = "lbxEventosPorTipo";
-            this.lbxEventosPorTipo.Size = new System.Drawing.Size(108, 329);
+            this.lbxEventosPorTipo.Size = new System.Drawing.Size(108, 368);
             this.lbxEventosPorTipo.TabIndex = 15;
             this.lbxEventosPorTipo.SelectedIndexChanged += new System.EventHandler(this.lbxEventosPorTipo_SelectedIndexChanged);
             // 
@@ -296,17 +302,34 @@
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "3";
             // 
+            // lbl_Coments
+            // 
+            this.lbl_Coments.AutoSize = true;
+            this.lbl_Coments.Location = new System.Drawing.Point(6, 14);
+            this.lbl_Coments.Name = "lbl_Coments";
+            this.lbl_Coments.Size = new System.Drawing.Size(66, 13);
+            this.lbl_Coments.TabIndex = 17;
+            this.lbl_Coments.Text = "Comentário: ";
+            // 
+            // txtComents
+            // 
+            this.txtComents.Location = new System.Drawing.Point(69, 11);
+            this.txtComents.Name = "txtComents";
+            this.txtComents.Size = new System.Drawing.Size(433, 20);
+            this.txtComents.TabIndex = 18;
+            // 
             // FormEditorDeEventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 434);
+            this.ClientSize = new System.Drawing.Size(780, 465);
             this.Controls.Add(this.gbxEditorDeEventos);
             this.Name = "FormEditorDeEventos";
             this.ShowIcon = false;
             this.Text = "Editor De Eventos";
             this.Load += new System.EventHandler(this.FormEditorDeEventos_Load);
             this.gbxEditorDeEventos.ResumeLayout(false);
+            this.gbxEditorDeEventos.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -344,6 +367,8 @@
         private System.Windows.Forms.CheckBox cbx_Referencia;
         private System.Windows.Forms.CheckBox cbx_Fim;
         private System.Windows.Forms.CheckBox cbx_Inicio;
+        private System.Windows.Forms.TextBox txtComents;
+        private System.Windows.Forms.Label lbl_Coments;
 
     }
 }
