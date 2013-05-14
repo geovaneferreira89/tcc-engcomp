@@ -67,12 +67,17 @@ namespace Thread_Annotations
                 
                 annotationRectangle.AnchorX = PosX;
                 annotationRectangle.AnchorY = PosY;
-                
+               
                 annotationRectangle.AnchorDataPoint = _Canal_;
                 //Altura
                 annotationRectangle.Height = _Altura_;
                 //Comprimento
-                annotationRectangle.Width = _Comprimento_ / 10;
+                float aux; 
+                  aux = (float)(_Comprimento_/1.7);
+                  aux = aux / 2;
+                if (aux < 0)
+                    aux = _Comprimento_ / 10;
+                annotationRectangle.Width = (_Comprimento_/1.7) / 10;
               
                 // Prevent moving or selecting
                 annotationRectangle.AllowMoving = false;

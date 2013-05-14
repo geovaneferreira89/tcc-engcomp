@@ -365,8 +365,13 @@ namespace AmbienteRPB
                 Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment);
                 numCursor = 0;//CLICAR + VEZES SEM EFEITO
                 
-                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos),
+                float aux_x_pos = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X) - (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
+                aux_x_pos = aux_x_pos / 2;
+                
+                aux_x_pos = aux_x_pos + (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
+                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, aux_x_pos, (float)result.ChartArea.AxisY.Minimum,//(float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos),
                                 highlightColor, Evento, result.Series.Points[2], adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos));
+
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
 
@@ -655,8 +660,8 @@ namespace AmbienteRPB
                 if(DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
                 {
                     int tempo = DataRecords_lidos * 256;
-                    DataRecords_lidos++;
                     edfFileOutput.ReadDataBlock(DataRecords_lidos);
+                    DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
                         for (int i = 0; i < 256; i++)
