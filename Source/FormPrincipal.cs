@@ -13,6 +13,8 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
 using NeuroLoopGainLibrary.Edf;
+using Thread_Annotations;
+
 
 namespace AmbienteRPB
 {
@@ -306,8 +308,6 @@ namespace AmbienteRPB
             if (numCursor == 0)
             {
                 var_result = result;
-                chart1.Annotations.Clear();
-                Adiciona_linhas_de_tempo();
                 result.ChartArea.CursorX.SelectionColor = highlightColor;
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
 
@@ -340,32 +340,29 @@ namespace AmbienteRPB
                 PointF Padrao_Fim = new PointF((e.X + offsetX), e.Y);
                 //Colore a região do evento
                 result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+               
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
                 AtualizaFerramentaAtiva("Fim de envento marcado", 2,Color.Green);
-               /* RectangleAnnotation highlight = new RectangleAnnotation();
-                highlight.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
-                highlight.LineColor = highlightColor;
-                highlight.BackColor = highlightColor;
-                highlight.X = result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
-                highlight.Y = result.ChartArea.AxisY.Maximum;
-
-                highlight.Width = (result.ChartArea.AxisX.PixelPositionToValue(e.X) - result.ChartArea.AxisX.PixelPositionToValue(x_Pos)) / (Convert.ToInt16(FrequenciaCombo.Text) * 10);
-                highlight.Height = result.ChartArea.Position.Height;
-                highlight.Visible = true;
-                chart1.Annotations.Add(highlight);*/
+        
                 Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
                 Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
                 Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result);
                 numCursor = 0;//CLICAR + VEZES SEM EFEITO
-                //result.ChartArea.CursorX.SetSelectionPixelPosition(new PointF(0, 0), new PointF(0, 0), true);
+                
+                
                 result.ChartArea.CursorX.LineColor = Color.LightGray;
                 result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
                 result.ChartArea.CursorX.IsUserEnabled = false;
                 result.ChartArea.CursorX.IsUserSelectionEnabled = false;
+                
 
-                chart1.Annotations.Clear();
-                Adiciona_linhas_de_tempo();
+                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos), highlightColor, Evento, result.Series.Points[2]);
+                Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
+                oThread.Start();
+
+                chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_vertical"));
+                //Adiciona_linhas_de_tempo();
             }
         }
         //------------------------------------------------------------------------------------------
@@ -881,6 +878,29 @@ namespace AmbienteRPB
                 case Keys.Control:
                     {
                         // Fazer, ativa a opçao de selecionar vários canais
+                        break;
+                    }
+                case Keys.A:
+                    {
+                        // Create a callout annotation
+                        CalloutAnnotation annotationCallout = new CalloutAnnotation();
+
+                        // Setup visual attributes
+                        annotationCallout.AnchorX = 10;
+                        annotationCallout.AnchorY = 20;
+                        annotationCallout.AnchorDataPoint = chart1.Series[0].Points[1];
+                        annotationCallout.Text = Evento;
+                        annotationCallout.BackColor = highlightColor;
+                        annotationCallout.ClipToChartArea = "Default";
+
+                        // Prevent moving or selecting
+                        annotationCallout.AllowMoving = true;
+                        annotationCallout.AllowAnchorMoving = true;
+                        annotationCallout.AllowSelecting = true;
+                        annotationCallout.Visible = true;
+
+                        // Add the annotation to the collection
+                        chart1.Annotations.Add(annotationCallout);
                         break;
                     }
             }
