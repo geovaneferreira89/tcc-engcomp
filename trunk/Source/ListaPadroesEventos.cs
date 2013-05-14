@@ -15,6 +15,7 @@ namespace AmbienteRPB
         public string[] NomesEvento;
         public int      NumeroEventos;
         public string   NomePadrao;
+        public string[]  Comentario;
 
         //-------------------------------------------------
         public void CriarLista(int _NumeroDeEventos, string _nomePadrao)
@@ -22,6 +23,7 @@ namespace AmbienteRPB
             ValorInicio = new PointF[600];
             ValorMeio   = new PointF[600];
             ValorFim    = new PointF[600];
+            Comentario  = new string[600];
             NomesEvento = new string[600];
             NumeroEventos = 0;
             NomePadrao    = _nomePadrao;
@@ -45,6 +47,10 @@ namespace AmbienteRPB
         public void SetNomesEvento(int Posicao,string Nome)
         {
             NomesEvento[Posicao] = Nome;
+        }
+        public void SetComentario(int Posicao, string Coment)
+        {
+            Comentario[Posicao] = Coment;
         }
         public void SetNumeroEventos(int Valor)
         {
@@ -71,6 +77,10 @@ namespace AmbienteRPB
         public string GetNomesEvento(int POS)
         {
             return NomesEvento[POS];
+        }
+        public string GetComentario(int POS)
+        {
+            return Comentario[POS];
         }
         public int GetNumeroEventos()
         {

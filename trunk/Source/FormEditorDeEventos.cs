@@ -50,20 +50,22 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------
         private void comboTiposDeEventos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbxEventosPorTipo.Items.Clear();
-            for (int i = 0; i < Listas[comboTiposDeEventos.SelectedIndex].NumeroEventos; i++)
-                lbxEventosPorTipo.Items.Add(Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(i));
             if (chart1.Series.Count != 0)
             {
+                chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
             }
+            lbxEventosPorTipo.Items.Clear();
+            for (int i = 0; i < Listas[comboTiposDeEventos.SelectedIndex].NumeroEventos; i++)
+                lbxEventosPorTipo.Items.Add(Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(i));
         }
         //---------------------------------------------------------------------------
         private void lbxEventosPorTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (chart1.Series.Count != 0)
             {
+                chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
             }
@@ -104,7 +106,8 @@ namespace AmbienteRPB
                 //Inicio do enveto
                 float x = Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex).X;
                 float x_max = Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex).X;
-                
+                //Carrega comentários
+                txtComents.Text = Listas[comboTiposDeEventos.SelectedIndex].GetComentario(lbxEventosPorTipo.SelectedIndex);
                 float aux;
                 int DataRecords_lidos = 0;
                 int tempo_X = 0;
@@ -240,9 +243,12 @@ namespace AmbienteRPB
                 Listas[comboTiposDeEventos.SelectedIndex].SetValorInicio(lbxEventosPorTipo.SelectedIndex, ValorInicio);
                 Listas[comboTiposDeEventos.SelectedIndex].SetValorFim(lbxEventosPorTipo.SelectedIndex, ValorFim);
                 Listas[comboTiposDeEventos.SelectedIndex].SetValorMeio(lbxEventosPorTipo.SelectedIndex, ValorReferencia);
+                Listas[comboTiposDeEventos.SelectedIndex].SetComentario(lbxEventosPorTipo.SelectedIndex, txtComents.Text.ToString());
+
                 Arquivos.Exportar_Padroes_Eventos(Listas);
 
-                MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Reconhecimento Automatizado de Padrões EEG"); 
+                MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Reconhecimento Automatizado de Padrões EEG");
+                txtComents.Text = "";
                 chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);

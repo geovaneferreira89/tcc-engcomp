@@ -121,6 +121,7 @@ namespace AmbienteRPB
                             fileW.WriteLine("[Inicio = " + Lista[i].GetValorInicio(j) + "]");
                             fileW.WriteLine("[Meio   = " + Lista[i].GetValorMeio(j) + "]");
                             fileW.WriteLine("[Fim    = " + Lista[i].GetValorFim(j) + "]");
+                            fileW.WriteLine("[Coment = " + Lista[i].GetComentario(j) + "]");
                         }
                    }
                 }
@@ -143,6 +144,7 @@ namespace AmbienteRPB
                  {
                      Lista[i] = new ListaPadroesEventos();
                      Lista[i].CriarLista(0,"Null");
+                     //Nome do Padrao
                      Lista[i].SetNomePadrao(LerLinha(10));
                      dados = LerLinha(10);
                      Lista[i].SetNumeroEventos(Convert.ToInt16(dados));
@@ -154,8 +156,9 @@ namespace AmbienteRPB
                         int OffSets;
                           for(int j=0;j<VarCont;j++)
                          {
+                             //Nome do Evento 
                              Lista[i].SetNomesEvento(j, LerLinha(10));
-                             //-----------VER ISTO------------------
+                             //Valor Inicial
                              Aux_ = LerLinha(13);
                              dados = Aux_;
                              OffSets = Aux_.IndexOf(", ");
@@ -163,7 +166,7 @@ namespace AmbienteRPB
                              OffSets = OffSets + 4;
                              Aux.Y = float.Parse(dados.Substring(OffSets, dados.Length - OffSets -1));
                              Lista[i].SetValorInicio(j, Aux);
-
+                             //Valor Referencia
                              Aux_ = LerLinha(13);
                              dados = Aux_;
                              OffSets = Aux_.IndexOf(", ");
@@ -171,7 +174,7 @@ namespace AmbienteRPB
                              OffSets = OffSets + 4;
                              Aux.Y = float.Parse(dados.Substring(OffSets, dados.Length - OffSets - 1));
                              Lista[i].SetValorMeio(j, Aux);
-                             
+                             //Valor Final
                              Aux_ = LerLinha(13);
                              dados = Aux_;
                              OffSets = Aux_.IndexOf(", ");
@@ -179,6 +182,8 @@ namespace AmbienteRPB
                              OffSets = OffSets + 4;
                              Aux.Y = float.Parse(dados.Substring(OffSets, dados.Length - OffSets - 1));
                              Lista[i].SetValorFim(j, Aux);
+                             //Comentario
+                             Lista[i].SetComentario(j, LerLinha(10));
                       
                          }
                      
