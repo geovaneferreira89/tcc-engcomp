@@ -131,6 +131,7 @@
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ListaPadroesEventos.cs" />
+    <Compile Include="Thread_Annotations.cs" />
     <Compile Include="Thread_grafico.cs" />
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
