@@ -45,8 +45,8 @@
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.siteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,19 +165,19 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.aboutToolStripMenuItem.Text = "&Sobre";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(112, 6);
             // 
             // siteToolStripMenuItem
             // 
             this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.siteToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.siteToolStripMenuItem.Text = "Suporte";
             this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
             // 
@@ -192,7 +192,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIPrincipalForm";
-            this.Text = "Reconhecimento Automatizado de Padrões EEG - 1.0.0.6";
+            this.Text = "Reconhecimento Automatizado de Padrões EEG - 1.0.1.0";
             this.TransparencyKey = System.Drawing.Color.White;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDIPrincipalForm_Load);
