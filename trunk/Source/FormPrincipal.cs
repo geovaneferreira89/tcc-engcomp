@@ -13,7 +13,6 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
 using NeuroLoopGainLibrary.Edf;
-using Thread_Annotations;
 using Microsoft.VisualBasic;
 
 
@@ -38,6 +37,7 @@ namespace AmbienteRPB
         private GerenArquivos Arquivos;
         //Marção de Padrões e seus Eventos-----------------------------------------------
         private ListaPadroesEventos[] ListaPadroes;
+        private int numDePadroes = 20;
         String Evento;
         Color highlightColor;
         ToolTip tooltip = new ToolTip();
@@ -98,7 +98,17 @@ namespace AmbienteRPB
                     status_projeto = "Projeto_EDF";
                     AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1, Color.Green);
                     __numeroDeCanais = edfFileOutput.SignalInfo.Count;
-                    ChartInicializarThreads(__numeroDeCanais);
+                    CarregaNomesPadroes(numDePadroes,0);
+                    bool ListaExiste = false;
+                    string aux_path = Arquivos.getPathUser();
+                    aux_path += "Padroes_Eventos.txt";
+                    if (Arquivos.ArquivoExiste(aux_path) == true)
+                    {
+                        ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
+                        CarregaNomesPadroes(numDePadroes, 1);
+                        ListaExiste = true;
+                    }
+                    ChartInicializarThreads(__numeroDeCanais, ListaExiste);
                     btn_novoProjeto.Enabled = false;
                     btn_Importar.Enabled = false;
                     btn_novoProjeto.Enabled = false;
@@ -106,11 +116,7 @@ namespace AmbienteRPB
                     marcarEventos.Enabled = true;
                     inserirComent.Enabled = true;
                     btn_Importar.Enabled = false;
-                    CarregaNomesPadroes(20);
-                    string aux_path = Arquivos.getPathUser();
-                        aux_path += "Padroes_Eventos.txt";
-                    if (Arquivos.ArquivoExiste(aux_path) == true)
-                      ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos(); 
+                     
                 }
                 else
                     AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2, Color.Red);
@@ -147,15 +153,27 @@ namespace AmbienteRPB
            
         }
         //-----------------------------------------------------------------------------------------
-        public void CarregaNomesPadroes(int Total)
+        public void CarregaNomesPadroes(int Total,int OP)
         {
-            string str;
-            ListaPadroes = new ListaPadroesEventos[Total];
-            for (int i = 0; i < Total; i++)
+            if (OP == 0)
             {
-                str = "Evento" + (i + 1);
-                ListaPadroes[i] = new ListaPadroesEventos();
-                ListaPadroes[i].CriarLista(20, this.Controls.Find(str, true)[0].Text);
+                string str;
+                ListaPadroes = new ListaPadroesEventos[Total];
+                for (int i = 0; i < Total; i++)
+                {
+                    str = "Evento" + (i + 1);
+                    ListaPadroes[i] = new ListaPadroesEventos();
+                    ListaPadroes[i].CriarLista(20, this.Controls.Find(str, true)[0].Text,600);
+                }
+            }
+            if (OP == 1)
+            {
+                string str;
+                for (int i = 0; i < Total; i++)
+                {
+                    str = "Evento" + (i + 1);
+                    this.Controls.Find(str, true)[0].Text = ListaPadroes[i].GetNomePadrao();
+                }
             }
         }
         //##########################################################################################
@@ -178,7 +196,7 @@ namespace AmbienteRPB
                     "Reconhecimento Automatizado de Padrões EEG",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             status_projeto = "Projeto_NOVO";
-            ChartInicializarThreads(__numeroDeCanais);
+            ChartInicializarThreads(__numeroDeCanais,false);
             btn_novoProjeto.Enabled = false;
         }
         //------------------------------------------------------------------------------------------
@@ -333,29 +351,27 @@ namespace AmbienteRPB
             else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
             {
                 PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
-                PointF Padrao_Fim = new PointF((e.X + offsetX), e.Y);
+                PointF Padrao_Fim    = new PointF((e.X + offsetX), e.Y);
 
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
-                Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
+                Padrao_Fim.X    = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
                 AtualizaFerramentaAtiva("Fim de envento marcado", 2,Color.Green);
         
                 Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
-                Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
+                Padrao_Fim    = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
                 
                 string string_coment = "";
                 if (adicionarComentario)
                     string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões EEG", "nothing", 10, 10);
-                
-                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment);
-                
-                
-                float aux_x_pos = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X) - (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
-                aux_x_pos = aux_x_pos / 2;
-                
-                aux_x_pos = aux_x_pos + (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
-                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, aux_x_pos, (float)result.ChartArea.AxisY.Minimum,//(float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos),
-                                highlightColor, Evento, result.Series.Points[2], adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos));
 
+                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment, (float)(e.X - x_Pos));
+
+                float aux_x_pos = (float)Padrao_Fim.X - (float)Padrao_Inicio.X;
+                aux_x_pos = aux_x_pos / 2;
+                aux_x_pos = aux_x_pos + (float)Padrao_Inicio.X;
+              
+                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2], 
+                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos),true,null);
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
 
@@ -364,7 +380,7 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
-        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment)
+        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment,float Comprimento)
         {
             if (Evento != null)
             {
@@ -375,9 +391,12 @@ namespace AmbienteRPB
                         ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(),Padrao_Inicio);
                         ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
                         ListaPadroes[i].SetComentario(ListaPadroes[i].GetNumeroEventos(), coment);
+                        ListaPadroes[i].SetCorDeFundo(ListaPadroes[i].GetNumeroEventos(), highlightColor);
+                        ListaPadroes[i].SetWidth(ListaPadroes[i].GetNumeroEventos(), Comprimento);
                         string dados = Canal.ChartArea.Name;
                         dados = dados.Substring(5);
                         dados = dados.Substring(0, dados.Length);
+                        ListaPadroes[i].SetChartDataPoint(ListaPadroes[i].GetNumeroEventos(), Convert.ToInt16(dados));
                         ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "-" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[Convert.ToInt16(dados)].Text);
                         ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1); 
                         i = 100; //Sai do loop
@@ -448,7 +467,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         //           -> Inicializa Thread responsalvel pela aquisição do sinal. <-
         //------------------------------------------------------------------------------------------
-        private void ChartInicializarThreads(int numeroDeCanais)
+        private void ChartInicializarThreads(int numeroDeCanais, bool ListaExiste)
         {
             double Divisao = 100 / (double)numeroDeCanais;
             float _aux;
@@ -459,7 +478,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].BackColor = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height = _aux+5;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Height = _aux+4;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[i].Position.Width = 96;
                 chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = _aux * i;
@@ -474,6 +493,19 @@ namespace AmbienteRPB
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
+             
+                //Tread responsavel por marcar os eventos caso eles já existam
+                if (ListaExiste)
+                {
+                    DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
+                    if (resposta == DialogResult.Yes)
+                    {
+                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1, 0, 0, Color.Red, "", null, false, "", 0, 0, false, ListaPadroes);
+                        Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
+                        oThread.Start();
+                    }
+                    
+                }
             }
             
         }
@@ -845,6 +877,7 @@ namespace AmbienteRPB
                     if (chebox_events.Checked)
                     {
                         chebox_events.Text = NomeEvento.NomePadrao;
+                        ListaPadroes[i].SetNomePadrao(NomeEvento.NomePadrao);
                         i = 30;
                     }
                 }
@@ -879,29 +912,6 @@ namespace AmbienteRPB
                         // Fazer, ativa a opçao de selecionar vários canais
                         break;
                     }
-                case Keys.A:
-                    {
-                        // Create a callout annotation
-                        CalloutAnnotation annotationCallout = new CalloutAnnotation();
-
-                        // Setup visual attributes
-                        annotationCallout.AnchorX = 10;
-                        annotationCallout.AnchorY = 20;
-                        annotationCallout.AnchorDataPoint = chart1.Series[0].Points[1];
-                        annotationCallout.Text = Evento;
-                        annotationCallout.BackColor = highlightColor;
-                        annotationCallout.ClipToChartArea = "Default";
-
-                        // Prevent moving or selecting
-                        annotationCallout.AllowMoving = true;
-                        annotationCallout.AllowAnchorMoving = true;
-                        annotationCallout.AllowSelecting = true;
-                        annotationCallout.Visible = true;
-
-                        // Add the annotation to the collection
-                        chart1.Annotations.Add(annotationCallout);
-                        break;
-                    }
             }
         }
         //------------------------------------------------------------------------
@@ -909,9 +919,10 @@ namespace AmbienteRPB
         {
             switch (e.KeyCode)
             {
-                case Keys.Control:
+                //case Keys.Control:
                     // Fazer, desativa a opçao de selecionar vários canais
-                    break;
+                //    break;
+               
             }
         }
        

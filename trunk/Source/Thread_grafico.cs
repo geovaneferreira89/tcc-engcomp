@@ -119,7 +119,6 @@ namespace thread_chart
                     prb.Titles[canal].Position.Height = 3;
                     prb.Titles[canal].Position.Width = 40;
                     prb.Titles[canal].Alignment = ContentAlignment.MiddleLeft;
-                    //prb.Titles[canal].Position.Auto = true;
                     prb.Titles[canal].Position.X = 0;
                     prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Y;
                 }
