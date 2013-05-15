@@ -29,8 +29,13 @@ namespace AmbienteRPB
         private float Comprimento;
         private ListaPadroesEventos[] ListaPadroes;
         private bool opcao;
+        //Controles Progress Bar--------------------------------------------------------------------
+        private Control _BarraDeProgresso = null;
+        private delegate void AtualizaPloter(int valor, int caso);
+        private System.Windows.Forms.ProgressBar prgbar = null;
+        //-----------------------------------------------------------------------------------------
         // This method that will be called when the thread is started
-        public Annotations_Chart(Control Chart, float _ValX, float _ValY, Color _Cor, string _Evento, DataPoint _Canal, bool _comentOn, string _coment, float _Altura, float _Comprimento, bool _Opcao, ListaPadroesEventos[] _ListaPadroes)
+        public Annotations_Chart(Control Chart, Control BarraDeProgresso, float _ValX, float _ValY, Color _Cor, string _Evento, DataPoint _Canal, bool _comentOn, string _coment, float _Altura, float _Comprimento, bool _Opcao, ListaPadroesEventos[] _ListaPadroes)
         {
             _Grafico     = Chart;
             ValX         = _ValX;
@@ -44,12 +49,15 @@ namespace AmbienteRPB
             Comprimento  = _Comprimento;
             ListaPadroes = _ListaPadroes;
             opcao        = _Opcao;
+            _BarraDeProgresso = BarraDeProgresso;
         }
+        //----------------------------------------------
         public void Init()
         {
             Thread.Sleep(20);
             Add_Comentario(ValX, ValY, Cor, Evento, Canal,comentOn,coment,Altura,Comprimento,opcao,ListaPadroes);
         }
+        //----------------------------------------------
         private void Add_Comentario(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, bool _opcao_, ListaPadroesEventos[] _Lista_)
         {
             if (_Grafico.InvokeRequired)
@@ -87,6 +95,7 @@ namespace AmbienteRPB
                 }
                 else
                 {//Carrega do arquivo... 
+                    load_progress_bar(_Lista_.Count(), 2);
                     for (int i = 0; i < _Lista_.Count(); i++)
                     {
                         for (int j = 0; j < _Lista_[i].GetNumeroEventos(); j++)
@@ -115,10 +124,41 @@ namespace AmbienteRPB
                             // Add the annotation to the collection
                             chart1.Annotations.Add(annotationRectangle);
                         }
+                        load_progress_bar(0, 1);
                     }
+                    load_progress_bar(0, 3);
                 }
             }
         }
+        //------------------------------------------------------------------------------------------
+        private void load_progress_bar(int valor, int caso)
+        {
+
+            if (_BarraDeProgresso.InvokeRequired)
+            {
+                _BarraDeProgresso.BeginInvoke(new AtualizaPloter(load_progress_bar), new Object[] { valor, caso });
+            }
+            else
+            {
+                if (caso == 1)
+                {
+                    if (prgbar != null)
+                    {
+                        prgbar.Increment(1);
+                    }
+                }
+                if (caso == 2)
+                {
+                    prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
+                    prgbar.Visible = true;
+                    prgbar.BackColor = Color.Yellow;
+                    prgbar.Maximum = valor;
+                }
+                if (caso == 3)
+                    prgbar.Visible = false;
+            }
+        }
+        //---------------------------------------------------------------------------------------
     }
     
 }

@@ -370,7 +370,7 @@ namespace AmbienteRPB
                 aux_x_pos = aux_x_pos / 2;
                 aux_x_pos = aux_x_pos + (float)Padrao_Inicio.X;
               
-                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2], 
+                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar,aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2], 
                                                                       adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos),true,null);
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
@@ -500,7 +500,7 @@ namespace AmbienteRPB
                     DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
                     if (resposta == DialogResult.Yes)
                     {
-                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1, 0, 0, Color.Red, "", null, false, "", 0, 0, false, ListaPadroes);
+                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1,progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, false, ListaPadroes);
                         Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                         oThread.Start();
                     }
