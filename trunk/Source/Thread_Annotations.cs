@@ -72,12 +72,9 @@ namespace Thread_Annotations
                 //Altura
                 annotationRectangle.Height = _Altura_;
                 //Comprimento
-                float aux; 
-                  aux = (float)(_Comprimento_/1.7);
-                  aux = aux / 2;
-                if (aux < 0)
-                    aux = _Comprimento_ / 10;
-                annotationRectangle.Width = (_Comprimento_/1.7) / 10;
+               
+                 
+                annotationRectangle.Width = _Comprimento_/ 10;
               
                 // Prevent moving or selecting
                 annotationRectangle.AllowMoving = false;
@@ -85,27 +82,7 @@ namespace Thread_Annotations
                 annotationRectangle.AllowSelecting = false;
                 // Add the annotation to the collection
                 chart1.Annotations.Add(annotationRectangle);
-                /*
-                if (_comentOn_)
-                {
-                    Thread.Sleep(20);
-                    // Create a callout annotation
-                    CalloutAnnotation annotationCallout = new CalloutAnnotation();
-                    // Setup visual attributes
-                    annotationCallout.AnchorX = PosX;
-                    annotationCallout.AnchorY = PosY;
-                    annotationCallout.AnchorDataPoint = _Canal_;
-                    annotationCallout.Text = _coment_;
-                    annotationCallout.BackColor = CorDeFundo;
-                    annotationCallout.ClipToChartArea = _coment_;
-                    // Prevent moving or selecting
-                    annotationCallout.AllowMoving = true;
-                    annotationCallout.AllowAnchorMoving = true;
-                    annotationCallout.AllowSelecting = true;
-                    annotationCallout.Visible = true;
-                    // Add the annotation to the collection
-                    chart1.Annotations.Add(annotationCallout);
-                }*/
+               
             }
         }
     }
