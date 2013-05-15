@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms.DataVisualization.Charting;
 
 
 namespace AmbienteRPB
@@ -12,21 +13,28 @@ namespace AmbienteRPB
         public PointF[] ValorInicio;
         public PointF[] ValorFim;
         public PointF[] ValorMeio;
+        public Color[]  CorDeFundo;
+        public float[]  Width;
+        public int[]    Canal;
         public string[] NomesEvento;
         public int      NumeroEventos;
         public string   NomePadrao;
-        public string[]  Comentario;
+        public string[] Comentario;
 
         //-------------------------------------------------
-        public void CriarLista(int _NumeroDeEventos, string _nomePadrao)
+        public void CriarLista(int _NumeroDeEventos, string _nomePadrao, int TamanhoLista)
         {
-            ValorInicio = new PointF[600];
-            ValorMeio   = new PointF[600];
-            ValorFim    = new PointF[600];
-            Comentario  = new string[600];
-            NomesEvento = new string[600];
+            ValorInicio = new PointF[TamanhoLista];
+            ValorMeio   = new PointF[TamanhoLista];
+            ValorFim    = new PointF[TamanhoLista];
+            Comentario  = new string[TamanhoLista];
+            NomesEvento = new string[TamanhoLista];
+            Canal       = new int[TamanhoLista];
+            CorDeFundo  = new Color[TamanhoLista];
+            Width       = new float[TamanhoLista];
             NumeroEventos = 0;
-            NomePadrao    = _nomePadrao;
+            NomePadrao  = _nomePadrao;
+
         }
         //Sets------------------------------------------------
         public void SetValorInicio(int Posicao, PointF Valor)
@@ -44,6 +52,10 @@ namespace AmbienteRPB
             ValorMeio[Posicao] = new PointF();
             ValorMeio[Posicao] = Valor;
         }
+        public void SetChartDataPoint(int Posicao, int Canal_)
+        {
+            Canal[Posicao] = Canal_;
+        }
         public void SetNomesEvento(int Posicao,string Nome)
         {
             NomesEvento[Posicao] = Nome;
@@ -60,7 +72,14 @@ namespace AmbienteRPB
         {
             NomePadrao = Nome;
         }
-       
+        public void SetCorDeFundo(int POS, Color NomeCor)
+        {
+            CorDeFundo[POS] = NomeCor;
+        }
+        public void SetWidth(int POS, float Comprimento)
+        {
+            Width[POS] = Comprimento;
+        }
         //Gets------------------------------------------------
         public PointF GetValorInicio(int POS)
         {
@@ -73,6 +92,10 @@ namespace AmbienteRPB
         public PointF GetValorMeio(int POS)
         {
             return ValorMeio[POS];
+        }
+        public int GetChartDataPoint(int POS)
+        {
+            return Canal[POS];
         }
         public string GetNomesEvento(int POS)
         {
@@ -89,6 +112,14 @@ namespace AmbienteRPB
         public string GetNomePadrao()
         {
             return NomePadrao;
+        }
+        public Color GetCorDeFundo(int POS)
+        {
+            return CorDeFundo[POS];
+        }
+        public float GetWidth(int POS)
+        {
+           return Width[POS];
         }
         //----------------------------------------------------
     }

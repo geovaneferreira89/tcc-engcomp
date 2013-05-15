@@ -121,7 +121,10 @@ namespace AmbienteRPB
                             fileW.WriteLine("[Inicio = " + Lista[i].GetValorInicio(j) + "]");
                             fileW.WriteLine("[Meio   = " + Lista[i].GetValorMeio(j) + "]");
                             fileW.WriteLine("[Fim    = " + Lista[i].GetValorFim(j) + "]");
+                            fileW.WriteLine("[DPCanal= " + Lista[i].GetChartDataPoint(j) + "]");
                             fileW.WriteLine("[Coment = " + Lista[i].GetComentario(j) + "]");
+                            fileW.WriteLine("[Color  = " + Lista[i].GetCorDeFundo(j).Name + "]");
+                            fileW.WriteLine("[Compri = " + Lista[i].GetWidth(j) + "]");
                         }
                    }
                 }
@@ -143,7 +146,7 @@ namespace AmbienteRPB
                  for (int i = 0; i < NUM; i++)
                  {
                      Lista[i] = new ListaPadroesEventos();
-                     Lista[i].CriarLista(0,"Null");
+                     Lista[i].CriarLista(0,"Null",600);
                      //Nome do Padrao
                      Lista[i].SetNomePadrao(LerLinha(10));
                      dados = LerLinha(10);
@@ -182,9 +185,14 @@ namespace AmbienteRPB
                              OffSets = OffSets + 4;
                              Aux.Y = float.Parse(dados.Substring(OffSets, dados.Length - OffSets - 1));
                              Lista[i].SetValorFim(j, Aux);
+                             //Data point do canal
+                             Lista[i].SetChartDataPoint(j, Convert.ToInt16(LerLinha(10)));
                              //Comentario
                              Lista[i].SetComentario(j, LerLinha(10));
-                      
+                             //Cor
+                             Lista[i].SetCorDeFundo(j, Color.FromName(LerLinha(10)));
+                             //Comprimento
+                             Lista[i].SetWidth(j,float.Parse(LerLinha(10)));
                          }
                      
                      }
