@@ -332,23 +332,8 @@ namespace AmbienteRPB
             }
             else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
             {
-                result.ChartArea.CursorX.AxisType = AxisType.Secondary;
-                result.ChartArea.CursorX.LineColor = highlightColor;
-                result.ChartArea.CursorX.LineWidth = 1;
-                //result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(e.X + offsetX, e.Y), true);
-                // Set range selection color, specifying transparency of 120
-                result.ChartArea.CursorX.SelectionColor = highlightColor;
-                result.ChartArea.CursorX.IsUserEnabled = true;
-                result.ChartArea.CursorX.IsUserSelectionEnabled = true;
-                
                 PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
                 PointF Padrao_Fim = new PointF((e.X + offsetX), e.Y);
-                //---Colore a região do evento
-                //result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-                //result.ChartArea.CursorX.LineColor = Color.LightGray;
-                //result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), true);
-                //result.ChartArea.CursorX.IsUserEnabled = false;
-                //result.ChartArea.CursorX.IsUserSelectionEnabled = false;
 
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
@@ -359,11 +344,10 @@ namespace AmbienteRPB
                 
                 string string_coment = "";
                 if (adicionarComentario)
-                {
                     string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões EEG", "nothing", 10, 10);
-                }
+                
                 Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment);
-                numCursor = 0;//CLICAR + VEZES SEM EFEITO
+                
                 
                 float aux_x_pos = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X) - (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 aux_x_pos = aux_x_pos / 2;
@@ -376,6 +360,7 @@ namespace AmbienteRPB
                 oThread.Start();
 
                 chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_inicio_evento"));
+                numCursor = 0;
             }
         }
         //------------------------------------------------------------------------------------------
