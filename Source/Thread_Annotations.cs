@@ -16,7 +16,7 @@ namespace AmbienteRPB
     public class Annotations_Chart
     {
         private Control _Grafico = null;
-        private delegate void Anotation(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, bool _opcao_, ListaPadroesEventos[] _Lista_);
+        private delegate void Anotation(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, bool _opcao_, ListaPadroesEventos[] _Lista_, int _countCRTL_, int[] _vectorCTRL_);
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1 = null;
         private float ValX;
         private float ValY;
@@ -29,13 +29,15 @@ namespace AmbienteRPB
         private float Comprimento;
         private ListaPadroesEventos[] ListaPadroes;
         private bool opcao;
+        private int countCRTL; 
+        private int[] vectorCTRL;
         //Controles Progress Bar--------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
         private delegate void AtualizaPloter(int valor, int caso);
         private System.Windows.Forms.ProgressBar prgbar = null;
         //-----------------------------------------------------------------------------------------
         // This method that will be called when the thread is started
-        public Annotations_Chart(Control Chart, Control BarraDeProgresso, float _ValX, float _ValY, Color _Cor, string _Evento, DataPoint _Canal, bool _comentOn, string _coment, float _Altura, float _Comprimento, bool _Opcao, ListaPadroesEventos[] _ListaPadroes)
+        public Annotations_Chart(Control Chart, Control BarraDeProgresso, float _ValX, float _ValY, Color _Cor, string _Evento, DataPoint _Canal, bool _comentOn, string _coment, float _Altura, float _Comprimento, bool _Opcao, ListaPadroesEventos[] _ListaPadroes,int _countCRTL, int[] _vectorCTRL)
         {
             _Grafico     = Chart;
             ValX         = _ValX;
@@ -50,48 +52,72 @@ namespace AmbienteRPB
             ListaPadroes = _ListaPadroes;
             opcao        = _Opcao;
             _BarraDeProgresso = BarraDeProgresso;
+            countCRTL    = _countCRTL; 
+            vectorCTRL   = _vectorCTRL;
         }
         //----------------------------------------------
         public void Init()
         {
             Thread.Sleep(20);
-            Add_Comentario(ValX, ValY, Cor, Evento, Canal,comentOn,coment,Altura,Comprimento,opcao,ListaPadroes);
+            Add_Comentario(ValX, ValY, Cor, Evento, Canal, comentOn, coment, Altura, Comprimento, opcao, ListaPadroes, countCRTL, vectorCTRL);
         }
         //----------------------------------------------
-        private void Add_Comentario(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, bool _opcao_, ListaPadroesEventos[] _Lista_)
+        private void Add_Comentario(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, bool _opcao_, ListaPadroesEventos[] _Lista_, int _countCRTL_, int[] _vectorCTRL_)
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new Anotation(Add_Comentario), new Object[] { PosX, PosY, CorDeFundo, nomeEvento, _Canal_, _comentOn_, _coment_, _Altura_, _Comprimento_, _opcao_ , _Lista_});
+                _Grafico.BeginInvoke(new Anotation(Add_Comentario), new Object[] { PosX, PosY, CorDeFundo, nomeEvento, _Canal_, _comentOn_, _coment_, _Altura_, _Comprimento_, _opcao_, _Lista_, _countCRTL_, _vectorCTRL_ });
             }
             else
             {
                 chart1 = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                 if (opcao)
                 {
-                    // Create a rectangle annotation
-                    RectangleAnnotation annotationRectangle = new RectangleAnnotation();
-                    // Setup visual attributes
-                    if (_comentOn_)
-                        annotationRectangle.Text = _coment_;
+                    if (_countCRTL_ == 0)
+                    {
+                            RectangleAnnotation annotationRectangle = new RectangleAnnotation();
+                            // Setup visual attributes
+                            if (_comentOn_)
+                                annotationRectangle.Text = _coment_;
+                            else
+                                annotationRectangle.Text = "";
+                            annotationRectangle.BackColor = Color.FromArgb(128, CorDeFundo);
+                            annotationRectangle.AnchorX = PosX;
+                            annotationRectangle.AnchorY = PosY;
+                            annotationRectangle.AnchorDataPoint = _Canal_;
+                            annotationRectangle.LineColor = CorDeFundo;
+                            annotationRectangle.Font = new Font("Arial", 14, FontStyle.Bold);
+                            annotationRectangle.Height = _Altura_;
+                            annotationRectangle.Width = _Comprimento_ / 10;
+                            annotationRectangle.AllowMoving = false;
+                            annotationRectangle.AllowAnchorMoving = false;
+                            annotationRectangle.AllowSelecting = false;
+                            chart1.Annotations.Add(annotationRectangle);
+                    }
                     else
-                        annotationRectangle.Text = "";
-                    annotationRectangle.BackColor = Color.FromArgb(128, CorDeFundo);
-                    annotationRectangle.AnchorX = PosX;
-                    annotationRectangle.AnchorY = PosY;
-                    annotationRectangle.AnchorDataPoint = _Canal_;
-                    annotationRectangle.LineColor = CorDeFundo;
-                    annotationRectangle.Font = new Font("Arial", 14, FontStyle.Bold);
-                    //Altura
-                    annotationRectangle.Height = _Altura_;
-                    //Comprimento
-                    annotationRectangle.Width = _Comprimento_ / 10;
-                    // Prevent moving or selecting
-                    annotationRectangle.AllowMoving = false;
-                    annotationRectangle.AllowAnchorMoving = false;
-                    annotationRectangle.AllowSelecting = false;
-                    // Add the annotation to the collection
-                    chart1.Annotations.Add(annotationRectangle);
+                    {
+                        for (int i = 0; i < _countCRTL_; i++)
+                        {
+                            RectangleAnnotation annotationRectangle = new RectangleAnnotation();
+                            if (_comentOn_)
+                                annotationRectangle.Text = _coment_;
+                            else
+                                annotationRectangle.Text = "";
+                            annotationRectangle.BackColor = Color.FromArgb(128, CorDeFundo);
+                            annotationRectangle.AxisX = chart1.ChartAreas[_vectorCTRL_[i + 1]].AxisX;
+                            annotationRectangle.AxisY = chart1.ChartAreas[_vectorCTRL_[i + 1]].AxisY;
+                            annotationRectangle.AnchorX  = PosX;
+                            annotationRectangle.Y = chart1.ChartAreas[_vectorCTRL_[i + 1]].AxisY.Maximum;
+                            annotationRectangle.LineColor = CorDeFundo;
+                            annotationRectangle.Font = new Font("Arial", 14, FontStyle.Bold);
+                            annotationRectangle.Height = _Altura_;
+                            annotationRectangle.Width = _Comprimento_ / 10;
+                            annotationRectangle.AllowMoving = false;
+                            annotationRectangle.AllowAnchorMoving = false;
+                            annotationRectangle.AllowSelecting = false;
+                            chart1.Annotations.Add(annotationRectangle);
+                        }
+                    }
                 }
                 else
                 {//Carrega do arquivo... 

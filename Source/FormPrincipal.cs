@@ -330,14 +330,12 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void ExecutaSelecao(HitTestResult result, MouseEventArgs e, int offsetX)
         {
+            bool chave = true;
+            bool fimDeEvent = false;
             if (numCursor == 0 )
             {
                 string dados;
-                bool chave = true;
                 var_result = result;
-                
-                if (!teclaCTRL)
-                    numCursor++;
                 
                 if (!teclaCTRL && countCTRL != 0)
                     chave = false;
@@ -373,16 +371,16 @@ namespace AmbienteRPB
                     chart1.Annotations.Add(cursor_vertical);
                     AtualizaFerramentaAtiva("Inicio de envento marcado", 2, Color.Green);
                 }
-                if(teclaCTRL)
+                if(teclaCTRL && chave)
                 {
+                    countCTRL++;
                     dados = result.ChartArea.Name;
                     dados = dados.Substring(5);
                     dados = dados.Substring(0, dados.Length);
                     canaisCTRL[countCTRL] = Convert.ToInt16(dados);
-                    countCTRL++;
                 }
             }
-            else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
+            if (numCursor != 0 && (result.ChartArea == var_result.ChartArea) || !chave)
             {
                 PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
                 PointF Padrao_Fim    = new PointF((e.X + offsetX), e.Y);
@@ -405,7 +403,7 @@ namespace AmbienteRPB
                 aux_x_pos = aux_x_pos + (float)Padrao_Inicio.X;
               
                 Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar,aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2], 
-                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos),true,null);
+                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos),true,null, countCTRL, canaisCTRL);
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
                 
@@ -413,7 +411,10 @@ namespace AmbienteRPB
                     chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_inicio_evento_" +i));
                 countCTRL = 0;
                 numCursor = 0;
+                fimDeEvent = true;
             }
+            if (!teclaCTRL && !fimDeEvent)
+                numCursor++;
         }
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment,float Comprimento)
@@ -536,7 +537,7 @@ namespace AmbienteRPB
                     DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
                     if (resposta == DialogResult.Yes)
                     {
-                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1,progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, false, ListaPadroes);
+                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1,progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, false, ListaPadroes,0, canaisCTRL);
                         Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                         oThread.Start();
                     }
