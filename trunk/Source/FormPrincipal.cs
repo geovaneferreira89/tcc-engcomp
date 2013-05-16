@@ -42,6 +42,9 @@ namespace AmbienteRPB
         Color highlightColor;
         ToolTip tooltip = new ToolTip();
         private bool adicionarComentario = false;
+        private bool teclaCTRL = false;
+        private int[] canaisCTRL;
+        private int countCTRL = 0;
         //-----------------------------------------------------------------------------------------
         public FormPrincipal()
         {
@@ -116,6 +119,7 @@ namespace AmbienteRPB
                     marcarEventos.Enabled = true;
                     inserirComent.Enabled = true;
                     btn_Importar.Enabled = false;
+                    canaisCTRL = new int[23];
                      
                 }
                 else
@@ -326,27 +330,57 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void ExecutaSelecao(HitTestResult result, MouseEventArgs e, int offsetX)
         {
-            if (numCursor == 0)
+            if (numCursor == 0 )
             {
+                string dados;
+                bool chave = true;
                 var_result = result;
-                result.ChartArea.CursorX.SelectionColor = highlightColor;
-                result.ChartArea.CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
+                
+                if (!teclaCTRL)
+                    numCursor++;
+                
+                if (!teclaCTRL && countCTRL != 0)
+                    chave = false;
 
-                x_Pos = (e.X + offsetX);
-                y_Pos = (e.Y);
-                //linha fixa
-                VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
-                //cursor_vertical.AnchorDataPoint = result.Series.Points[2];
-                cursor_vertical.Name = "cursor_inicio_evento";
-                cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
-                cursor_vertical.Height = result.ChartArea.Position.Height;
-                cursor_vertical.LineColor = highlightColor;
-                cursor_vertical.LineWidth = 1;
-                cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX);
-                cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
-                chart1.Annotations.Add(cursor_vertical);
-                numCursor++;
-                AtualizaFerramentaAtiva("Inicio de envento marcado", 2, Color.Green);
+                if (countCTRL == 0)
+                {
+                    x_Pos = (e.X + offsetX);
+                    y_Pos = (e.Y);
+                }
+                if (teclaCTRL && countCTRL != 0)
+                {
+                    dados = result.ChartArea.Name;
+                    dados = dados.Substring(5);
+                    dados = dados.Substring(0, dados.Length);
+                    for (int i = 0; i <= countCTRL; i++)
+                    {
+                        if (canaisCTRL[i] == Convert.ToInt16(dados))
+                            chave = false;
+                    }
+                }
+
+                if (chave)
+                {
+                    //linha fixa
+                    VerticalLineAnnotation cursor_vertical = new VerticalLineAnnotation();
+                    cursor_vertical.Name = "cursor_inicio_evento_" + countCTRL;
+                    cursor_vertical.AnchorDataPoint = chart1.Series[result.ChartArea.Name].Points[1];
+                    cursor_vertical.Height = result.ChartArea.Position.Height;
+                    cursor_vertical.LineColor = highlightColor;
+                    cursor_vertical.LineWidth = 1;
+                    cursor_vertical.AnchorX = result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
+                    cursor_vertical.AnchorY = result.ChartArea.AxisY.Maximum;
+                    chart1.Annotations.Add(cursor_vertical);
+                    AtualizaFerramentaAtiva("Inicio de envento marcado", 2, Color.Green);
+                }
+                if(teclaCTRL)
+                {
+                    dados = result.ChartArea.Name;
+                    dados = dados.Substring(5);
+                    dados = dados.Substring(0, dados.Length);
+                    canaisCTRL[countCTRL] = Convert.ToInt16(dados);
+                    countCTRL++;
+                }
             }
             else if (numCursor == 1 && (result.ChartArea == var_result.ChartArea))
             {
@@ -374,8 +408,10 @@ namespace AmbienteRPB
                                                                       adicionarComentario, string_coment, result.ChartArea.Position.Height,(float)(e.X-x_Pos),true,null);
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
-
-                chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_inicio_evento"));
+                
+                for(int i=0;i<=countCTRL;i++)
+                    chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_inicio_evento_" +i));
+                countCTRL = 0;
                 numCursor = 0;
             }
         }
@@ -907,9 +943,10 @@ namespace AmbienteRPB
         {
             switch (e.KeyCode)
             {
-                case Keys.Control:
+                case Keys.X:
                     {
-                        // Fazer, ativa a opçao de selecionar vários canais
+                        //Ativa a opçao de selecionar vários canais
+                        teclaCTRL = true;
                         break;
                     }
             }
@@ -919,14 +956,14 @@ namespace AmbienteRPB
         {
             switch (e.KeyCode)
             {
-                //case Keys.Control:
-                    // Fazer, desativa a opçao de selecionar vários canais
-                //    break;
+               case Keys.X:
+                    //Desativa a opçao de selecionar vários canais
+                    teclaCTRL = false;
+               break;
                
             }
         }
-       
-
+        //------------------------------------------------------------------------
         private void inserirComentárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!adicionarComentario)
@@ -941,8 +978,6 @@ namespace AmbienteRPB
             }
 
         }
-        //------------------------------------------------------------------------
-        //------------------------------------------------------------------------
         //------------------------------------------------------------------------
     }
 }
