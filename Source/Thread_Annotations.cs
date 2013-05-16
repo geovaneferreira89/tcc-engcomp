@@ -116,7 +116,6 @@ namespace AmbienteRPB
                             annotationRectangle.Height = chart1.ChartAreas[_Lista_[i].GetChartDataPoint(j)].Position.Height;
                             //Comprimento
                             annotationRectangle.Width = _Lista_[i].GetWidth(j) / 10;
-
                             // Prevent moving or selecting
                             annotationRectangle.AllowMoving = false;
                             annotationRectangle.AllowAnchorMoving = false;
