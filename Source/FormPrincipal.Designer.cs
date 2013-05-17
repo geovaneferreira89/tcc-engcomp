@@ -41,6 +41,7 @@
             this.fecharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selecionarVáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirComent = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoFreqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +98,6 @@
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -231,6 +231,13 @@
             this.inserirComent.Text = "Inserir Comentário";
             this.inserirComent.Click += new System.EventHandler(this.inserirComentárioToolStripMenuItem_Click);
             // 
+            // eventosToolStripMenuItem
+            // 
+            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.eventosToolStripMenuItem.Text = "Editor de Eventos";
+            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
+            // 
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -264,21 +271,21 @@
             // segundoToolStripMenuItem
             // 
             this.segundoToolStripMenuItem.Name = "segundoToolStripMenuItem";
-            this.segundoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.segundoToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.segundoToolStripMenuItem.Text = "1 s";
             this.segundoToolStripMenuItem.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
             // 
             // segundosToolStripMenuItem
             // 
             this.segundosToolStripMenuItem.Name = "segundosToolStripMenuItem";
-            this.segundosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.segundosToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.segundosToolStripMenuItem.Text = "5 s";
             this.segundosToolStripMenuItem.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
             // 
             // segundosToolStripMenuItem1
             // 
             this.segundosToolStripMenuItem1.Name = "segundosToolStripMenuItem1";
-            this.segundosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.segundosToolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
             this.segundosToolStripMenuItem1.Text = "10 s";
             this.segundosToolStripMenuItem1.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
             // 
@@ -807,13 +814,6 @@
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
             // 
-            // eventosToolStripMenuItem
-            // 
-            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.eventosToolStripMenuItem.Text = "Editor de Eventos";
-            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -837,6 +837,7 @@
             this.Text = "Reconhecimento Automatizado de Padrões EEG";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
+            this.Shown += new System.EventHandler(this.FormPrincipal_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormPrincipal_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormPrincipal_KeyUp);
             this.gbxChart.ResumeLayout(false);
