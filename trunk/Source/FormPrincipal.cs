@@ -58,8 +58,20 @@ namespace AmbienteRPB
           //------------------------------------------------------------------------------------------
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-
+            
         }
+        private void FormPrincipal_Shown(object sender, EventArgs e)
+        {
+            if (!Arquivos.VerificaLicencaExiste())
+            {
+                Licenca gerenLicenca = new Licenca();
+                gerenLicenca.ShowDialog();
+                int status = gerenLicenca.StatusRegistro;
+                if (status == 0)
+                    this.Close();
+            }
+        }
+        //------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -979,6 +991,5 @@ namespace AmbienteRPB
             }
 
         }
-        //------------------------------------------------------------------------
     }
 }
