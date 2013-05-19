@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Deployment.Application;
+using System.Reflection;
+using System.Diagnostics;
+using System.Deployment;
+
 
 namespace AmbienteRPB
 {
@@ -114,8 +118,12 @@ namespace AmbienteRPB
 
         private void MDIPrincipalForm_Load(object sender, EventArgs e)
         {
-         
-        }
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                Version myVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                this.Text = string.Format("Reconhecimento Automatizado de Padrões EEG - : v{0}.{1}.{2}.{3}", myVersion.Major, myVersion.Minor, myVersion.Build, myVersion.Revision);
+            }
+         }
 
         private void fileMenu_Click(object sender, EventArgs e)
         {
