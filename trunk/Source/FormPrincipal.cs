@@ -542,7 +542,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].BackColor = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height = _aux+4;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Height = _aux+3;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[i].Position.Width = 96;
                 chart1.ChartAreas[i].Position.X = 4;
                 chart1.ChartAreas[i].Position.Y = _aux * i;
@@ -573,6 +573,31 @@ namespace AmbienteRPB
             }
             
         }
+        //------------------------------------------------------------------------------------------
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            double Divisao = 100 / 23;
+            float _aux;
+            _aux = (float)Divisao;
+            for (int i = 0; i < 23; i++)
+            {   //Propriedades de cada sinal
+                chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height - 1;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Y = _aux * i;
+            }
+        }
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            double Divisao = 100 / 23;
+            float _aux;
+            _aux = (float)Divisao;
+            for (int i = 0; i < 23; i++)
+            {   //Propriedades de cada sinal
+                chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Y = _aux * i;
+            }
+        }
+
         //------------------------------------------------------------------------------------------
         private void Adiciona_linhas_de_tempo()
         {

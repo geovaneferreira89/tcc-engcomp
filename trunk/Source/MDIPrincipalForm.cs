@@ -121,7 +121,7 @@ namespace AmbienteRPB
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 Version myVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-                this.Text = string.Format("Reconhecimento Automatizado de Padrões EEG - : v{0}.{1}.{2}.{3}", myVersion.Major, myVersion.Minor, myVersion.Build, myVersion.Revision);
+                this.Text = string.Format("Reconhecimento Automatizado de Padrões EEG - v{0}.{1}.{2}.{3}", myVersion.Major, myVersion.Minor, myVersion.Build, myVersion.Revision);
             }
          }
 
