@@ -192,7 +192,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIPrincipalForm";
-            this.Text = "Reconhecimento Automatizado de Padrões EEG - 1.0.2.2 Beta";
+            this.Text = "Reconhecimento Automatizado de Padrões EEG - 1.0.2.3 Beta";
             this.TransparencyKey = System.Drawing.Color.White;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDIPrincipalForm_Load);
