@@ -1,4 +1,15 @@
-﻿using System;
+﻿/**
+ * @file Thread_grafico.cd
+ * 
+ *
+ * \brief   Implementação dos métodos de plotagem
+ * \details Este arquivo apresenta a implementação dos métodos de plotagem do sinal EEG na tela 
+ * 
+ * @version 1.0
+ * @date    05/2012
+ * @author  Geovane Vinicius Ferreira (email: geovanevinicius89@gmail.com)
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

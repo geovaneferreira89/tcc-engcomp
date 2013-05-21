@@ -1,4 +1,15 @@
-﻿using System;
+﻿//#########################################################################################
+//-----------------------------------------------------------------------------------------
+//                          UNIVERSIDADE TECNOLÓGICA FEDERAL DO PARANÁ
+//                              Trabalho de Conclusão de Curso
+//                                Engenharia de Computação 
+//
+// Geovane Vinicius Ferreira (geovanevinicius89@gmail.com)
+// Georgia D
+// Orientador: Prof Dr. Miguel
+//-----------------------------------------------------------------------------------------
+//#########################################################################################
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +25,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using NeuroLoopGainLibrary.Edf;
 using Microsoft.VisualBasic;
-
 
 namespace AmbienteRPB
 {
@@ -38,9 +48,9 @@ namespace AmbienteRPB
         //Marção de Padrões e seus Eventos-----------------------------------------------
         private ListaPadroesEventos[] ListaPadroes;
         private int numDePadroes = 20;
-        String Evento;
-        Color highlightColor;
-        ToolTip tooltip = new ToolTip();
+        private string  Evento;
+        private Color highlightColor;
+        private ToolTip tooltip = new ToolTip();
         private bool adicionarComentario = false;
         private bool teclaCTRL = false;
         private int[] canaisCTRL;
@@ -53,13 +63,14 @@ namespace AmbienteRPB
             gbxEventos.Visible = false;
             gbxEventos.Enabled = false;
             gbxChart.Location = new System.Drawing.Point(2, 21);
-            gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, 379); 
+            gbxChart.Size = new System.Drawing.Size(this.Size.Width - 12, 349); 
         }
-          //------------------------------------------------------------------------------------------
+          //---------------------------------------------------------------------------------------
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             
         }
+        //---------------------------------------------------------------------------------------
         private void FormPrincipal_Shown(object sender, EventArgs e)
         {
             if (!Arquivos.VerificaLicencaExiste())
@@ -71,7 +82,6 @@ namespace AmbienteRPB
                     this.Close();
             }
         }
-        //------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -82,9 +92,7 @@ namespace AmbienteRPB
         //                                 Gerencia de Projetos
         //-----------------------------------------------------------------------------------------
         //#########################################################################################
-        /*
-         *Verifica estado do sistema, caso esteja em execução aborta as operações. 
-         */
+        //Verifica estado do sistema, caso esteja em execução aborta as operações. 
         private void encerrar_sistema()
         {
             //SALVAR
@@ -279,9 +287,9 @@ namespace AmbienteRPB
                 gbxEventos.Visible = true;
                 gbxEventos.Enabled = true;
                 gbxChart.Location = new System.Drawing.Point(95, 21);
-                chart1.Location = new System.Drawing.Point(2, 8);
-                gbxChart.Size = new System.Drawing.Size(this.Size.Width - 115, this.Size.Height - 105);
-                chart1.Size = new System.Drawing.Size(this.Size.Width - 119, this.Size.Height - 115);
+                chart1.Location = new System.Drawing.Point(1, 7);
+                gbxChart.Size = new System.Drawing.Size(this.Size.Width - 104, gbxChart.Size.Height);
+                chart1.Size = new System.Drawing.Size(this.Size.Width - 109, chart1.Size.Height);
                 AtualizaFerramentaAtiva("", 0,Color.Gray);
                 mostrarCursores = 1;
                 AtualizaFerramentaAtiva("Marcar Eventos", 1, Color.Green);
@@ -292,9 +300,9 @@ namespace AmbienteRPB
                 gbxEventos.Visible = false;
                 gbxEventos.Enabled = false;
                 gbxChart.Location = new System.Drawing.Point(2, 21);
-                chart1.Location = new System.Drawing.Point(2, 8);
-                gbxChart.Size = new System.Drawing.Size(this.Size.Width - 20, this.Size.Height - 105);
-                chart1.Size = new System.Drawing.Size(this.Size.Width - 24, this.Size.Height - 115);
+                chart1.Location = new System.Drawing.Point(1, 7);
+                gbxChart.Size = new System.Drawing.Size(this.Size.Width - 9, gbxChart.Size.Height);
+                chart1.Size = new System.Drawing.Size(this.Size.Width - 13, chart1.Size.Height);
                 AtualizaFerramentaAtiva("", 0,Color.Green);
                 Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
             }
@@ -557,7 +565,6 @@ namespace AmbienteRPB
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
-             
                 //Tread responsavel por marcar os eventos caso eles já existam
                 if (ListaExiste)
                 {
@@ -568,13 +575,11 @@ namespace AmbienteRPB
                         Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                         oThread.Start();
                     }
-                    
                 }
             }
-            
         }
         //------------------------------------------------------------------------------------------
-
+        //Diminui o tamanho de largura de todas as séries, (diminuindo a sobreposição entre canais)
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             double Divisao = 100 / 23;
@@ -582,10 +587,15 @@ namespace AmbienteRPB
             _aux = (float)Divisao;
             for (int i = 0; i < 23; i++)
             {   //Propriedades de cada sinal
-                chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height - 1;//+10 os sinais sobreescrevem
-                chart1.ChartAreas[i].Position.Y = _aux * i;
+                if (chart1.ChartAreas[i].Position.Height > 1)
+                {
+                    chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height - 1;
+                    chart1.ChartAreas[i].Position.Y = _aux * i;
+                }
             }
         }
+        //------------------------------------------------------------------------------------------
+        //Aumenta o tamanho de largura de todas as séries, (aumentando a sobreposição entre canais)
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             double Divisao = 100 / 23;
@@ -593,11 +603,10 @@ namespace AmbienteRPB
             _aux = (float)Divisao;
             for (int i = 0; i < 23; i++)
             {   //Propriedades de cada sinal
-                chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;
                 chart1.ChartAreas[i].Position.Y = _aux * i;
             }
         }
-
         //------------------------------------------------------------------------------------------
         private void Adiciona_linhas_de_tempo()
         {
@@ -732,7 +741,6 @@ namespace AmbienteRPB
             {
                 chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * 256; //* Scroll_Click_Escala_Seg;
             }
-         
         }
         //-----------------------------------------------------------------------------------------
         //Mudar a escala de visualização de telas por clicque
@@ -859,8 +867,6 @@ namespace AmbienteRPB
                     + "\nHora\n" + edfFileOutput.FileInfo.StartDate
                       + "\nDuração\n" + edfFileOutput.FileInfo.NrDataRecords
                              + "\nVersion\n" + edfFileOutput.FileInfo.Version
-
-
                 , "Reconhecimento Automatizado de Padrões EEG",
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -1013,7 +1019,6 @@ namespace AmbienteRPB
                     //Desativa a opçao de selecionar vários canais
                     teclaCTRL = false;
                break;
-               
             }
         }
         //------------------------------------------------------------------------
@@ -1029,7 +1034,8 @@ namespace AmbienteRPB
                 AtualizaFerramentaAtiva("Opção de Inserir Comentarios Desabilitada", 2, Color.Orange);
                 adicionarComentario = false;
             }
-
         }
+        //------------------------------------------------------------------------
+
     }
 }

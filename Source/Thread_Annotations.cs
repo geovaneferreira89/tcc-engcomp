@@ -1,4 +1,15 @@
-﻿using System;
+﻿/**
+ * @file Thread_Annotations.cs
+ * 
+ *
+ * \brief   Implementação dos métodos para a plotagem das highliths
+ * \details Este arquivo apresenta a implementação dos métodos das highliths
+ * 
+ * @version 1.0
+ * @date    05/2013
+ * @author  Geovane Vinicius Ferreira (email: geovanevinicius89@gmail.com)
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

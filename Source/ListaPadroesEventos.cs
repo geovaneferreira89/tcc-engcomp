@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**
+ * @file ListaPadroesEventos.cs
+ * 
+ * \brief   Implementação dos métodos das lista de padroes
+ * \details Este arquivo apresenta a implementação dos métodos da classe de lista de padroes
+ * 
+ * @version 1.0
+ * @date    03/2013
+ * @author  Geovane Vinicius Ferreira (email: geovanevinicius89@gmail.com)
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
