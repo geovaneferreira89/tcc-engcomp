@@ -75,6 +75,8 @@
             this.lblAmpli = new System.Windows.Forms.ToolStripLabel();
             this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
             this.lbl_V = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.gbxEventos = new System.Windows.Forms.GroupBox();
             this.Evento20 = new System.Windows.Forms.CheckBox();
             this.Evento19 = new System.Windows.Forms.CheckBox();
@@ -98,8 +100,6 @@
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -118,7 +118,7 @@
             this.gbxChart.Controls.Add(this.chart1);
             this.gbxChart.Location = new System.Drawing.Point(95, 21);
             this.gbxChart.Name = "gbxChart";
-            this.gbxChart.Size = new System.Drawing.Size(721, 379);
+            this.gbxChart.Size = new System.Drawing.Size(637, 348);
             this.gbxChart.TabIndex = 5;
             this.gbxChart.TabStop = false;
             // 
@@ -126,9 +126,9 @@
             // 
             this.lbl_Tempo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_Tempo.AutoSize = true;
-            this.lbl_Tempo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_Tempo.BackColor = System.Drawing.Color.White;
             this.lbl_Tempo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Tempo.Location = new System.Drawing.Point(3, 365);
+            this.lbl_Tempo.Location = new System.Drawing.Point(3, 329);
             this.lbl_Tempo.Name = "lbl_Tempo";
             this.lbl_Tempo.Size = new System.Drawing.Size(102, 14);
             this.lbl_Tempo.TabIndex = 18;
@@ -146,7 +146,7 @@
             this.chart1.Location = new System.Drawing.Point(1, 7);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(718, 372);
+            this.chart1.Size = new System.Drawing.Size(634, 339);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -161,7 +161,7 @@
             this.verToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(154, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(146, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -172,7 +172,7 @@
             this.inserirComent,
             this.eventosToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
-            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
             // 
             // marcarEventos
@@ -186,34 +186,34 @@
             this.marcarEventos.Enabled = false;
             this.marcarEventos.Name = "marcarEventos";
             this.marcarEventos.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.marcarEventos.Size = new System.Drawing.Size(212, 22);
+            this.marcarEventos.Size = new System.Drawing.Size(201, 22);
             this.marcarEventos.Text = "Marcar Eventos";
             this.marcarEventos.Click += new System.EventHandler(this.marcarPadrõesToolStripMenuItem_Click);
             // 
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // renomearToolStripMenuItem
             // 
             this.renomearToolStripMenuItem.Name = "renomearToolStripMenuItem";
-            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.renomearToolStripMenuItem.Text = "Renomear";
             this.renomearToolStripMenuItem.Click += new System.EventHandler(this.renomearToolStripMenuItem_Click);
             // 
             // excluirToolStripMenuItem
             // 
             this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.excluirToolStripMenuItem.Text = "Excluir";
             // 
             // fecharToolStripMenuItem
             // 
             this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click_1);
             // 
@@ -221,7 +221,7 @@
             // 
             this.selecionarVáriosToolStripMenuItem.Name = "selecionarVáriosToolStripMenuItem";
             this.selecionarVáriosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selecionarVáriosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.selecionarVáriosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.selecionarVáriosToolStripMenuItem.Text = "Selecionar Vários";
             // 
             // inserirComent
@@ -229,14 +229,14 @@
             this.inserirComent.Enabled = false;
             this.inserirComent.Name = "inserirComent";
             this.inserirComent.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.inserirComent.Size = new System.Drawing.Size(212, 22);
+            this.inserirComent.Size = new System.Drawing.Size(201, 22);
             this.inserirComent.Text = "Inserir Comentário";
             this.inserirComent.Click += new System.EventHandler(this.inserirComentárioToolStripMenuItem_Click);
             // 
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.eventosToolStripMenuItem.Text = "Editor de Eventos";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
@@ -249,14 +249,14 @@
             this.infoEDF,
             this.imprimirEEGToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.verToolStripMenuItem.Text = "Opções ";
             // 
             // autoFreqToolStripMenuItem
             // 
             this.autoFreqToolStripMenuItem.Name = "autoFreqToolStripMenuItem";
             this.autoFreqToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.autoFreqToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.autoFreqToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.autoFreqToolStripMenuItem.Text = "Auto Freq";
             this.autoFreqToolStripMenuItem.Click += new System.EventHandler(this.autoFreqToolStripMenuItem_Click);
             // 
@@ -267,7 +267,7 @@
             this.segundosToolStripMenuItem,
             this.segundosToolStripMenuItem1});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(200, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
             this.toolStripMenuItem1.Text = "Tempo de tela";
             // 
             // segundoToolStripMenuItem
@@ -294,14 +294,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
             // 
             // infoEDF
             // 
             this.infoEDF.Enabled = false;
             this.infoEDF.Name = "infoEDF";
             this.infoEDF.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.infoEDF.Size = new System.Drawing.Size(200, 22);
+            this.infoEDF.Size = new System.Drawing.Size(192, 22);
             this.infoEDF.Text = "Informações EDF";
             this.infoEDF.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
             // 
@@ -309,7 +309,7 @@
             // 
             this.imprimirEEGToolStripMenuItem.Name = "imprimirEEGToolStripMenuItem";
             this.imprimirEEGToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimirEEGToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.imprimirEEGToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.imprimirEEGToolStripMenuItem.Text = "Imprimir - EEG";
             this.imprimirEEGToolStripMenuItem.Click += new System.EventHandler(this.imprimirEEGToolStripMenuItem_Click);
             // 
@@ -323,9 +323,9 @@
             this.lbl_mouseX,
             this.lbl_mouseY,
             this.toolInfo});
-            this.Box_Status.Location = new System.Drawing.Point(0, 423);
+            this.Box_Status.Location = new System.Drawing.Point(0, 392);
             this.Box_Status.Name = "Box_Status";
-            this.Box_Status.Size = new System.Drawing.Size(820, 22);
+            this.Box_Status.Size = new System.Drawing.Size(736, 22);
             this.Box_Status.TabIndex = 7;
             this.Box_Status.Text = "statusStrip1";
             // 
@@ -333,7 +333,7 @@
             // 
             this.lbl_ferramentaAtiva.ForeColor = System.Drawing.Color.Brown;
             this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
-            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(192, 17);
+            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(175, 17);
             this.lbl_ferramentaAtiva.Text = "Ferramenta Selecionada: Nenhuma";
             // 
             // lbl_x
@@ -355,14 +355,14 @@
             // 
             this.lbl_mouseX.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbl_mouseX.Name = "lbl_mouseX";
-            this.lbl_mouseX.Size = new System.Drawing.Size(59, 17);
+            this.lbl_mouseX.Size = new System.Drawing.Size(54, 17);
             this.lbl_mouseX.Text = "Mouse X: ";
             // 
             // lbl_mouseY
             // 
             this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbl_mouseY.Name = "lbl_mouseY";
-            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
+            this.lbl_mouseY.Size = new System.Drawing.Size(51, 17);
             this.lbl_mouseY.Text = "Mouse Y:";
             // 
             // toolInfo
@@ -374,7 +374,7 @@
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(654, 428);
+            this.progressBar.Location = new System.Drawing.Point(570, 397);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(127, 12);
             this.progressBar.TabIndex = 11;
@@ -399,10 +399,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScrollBar.Enabled = false;
             this.ScrollBar.LargeChange = 900;
-            this.ScrollBar.Location = new System.Drawing.Point(2, 403);
+            this.ScrollBar.Location = new System.Drawing.Point(2, 372);
             this.ScrollBar.Maximum = 20000;
             this.ScrollBar.Name = "ScrollBar";
-            this.ScrollBar.Size = new System.Drawing.Size(815, 20);
+            this.ScrollBar.Size = new System.Drawing.Size(731, 20);
             this.ScrollBar.SmallChange = 900;
             this.ScrollBar.TabIndex = 13;
             this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
@@ -429,7 +429,7 @@
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
             this.tool_ControlesProjeto.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tool_ControlesProjeto.Size = new System.Drawing.Size(820, 25);
+            this.tool_ControlesProjeto.Size = new System.Drawing.Size(736, 25);
             this.tool_ControlesProjeto.TabIndex = 15;
             this.tool_ControlesProjeto.Text = "toolStrip1";
             // 
@@ -515,13 +515,13 @@
             // lbl_cm
             // 
             this.lbl_cm.Name = "lbl_cm";
-            this.lbl_cm.Size = new System.Drawing.Size(34, 22);
+            this.lbl_cm.Size = new System.Drawing.Size(29, 22);
             this.lbl_cm.Text = "cm/s";
             // 
             // lblAmpli
             // 
             this.lblAmpli.Name = "lblAmpli";
-            this.lblAmpli.Size = new System.Drawing.Size(36, 22);
+            this.lblAmpli.Size = new System.Drawing.Size(32, 22);
             this.lblAmpli.Text = "Amp.";
             // 
             // AmplitudeCombo
@@ -551,8 +551,27 @@
             // lbl_V
             // 
             this.lbl_V.Name = "lbl_V";
-            this.lbl_V.Size = new System.Drawing.Size(21, 22);
+            this.lbl_V.Size = new System.Drawing.Size(19, 22);
             this.lbl_V.Text = "uV";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "-";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "+";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // gbxEventos
             // 
@@ -581,16 +600,16 @@
             this.gbxEventos.Controls.Add(this.Evento2);
             this.gbxEventos.Location = new System.Drawing.Point(3, 21);
             this.gbxEventos.Name = "gbxEventos";
-            this.gbxEventos.Size = new System.Drawing.Size(89, 379);
+            this.gbxEventos.Size = new System.Drawing.Size(89, 348);
             this.gbxEventos.TabIndex = 16;
             this.gbxEventos.TabStop = false;
             // 
             // Evento20
             // 
             this.Evento20.BackColor = System.Drawing.Color.LightCoral;
-            this.Evento20.Location = new System.Drawing.Point(4, 332);
+            this.Evento20.Location = new System.Drawing.Point(2, 329);
             this.Evento20.Name = "Evento20";
-            this.Evento20.Size = new System.Drawing.Size(84, 17);
+            this.Evento20.Size = new System.Drawing.Size(85, 17);
             this.Evento20.TabIndex = 19;
             this.Evento20.Text = "Padrão 20";
             this.Evento20.UseVisualStyleBackColor = false;
@@ -599,9 +618,9 @@
             // Evento19
             // 
             this.Evento19.BackColor = System.Drawing.Color.YellowGreen;
-            this.Evento19.Location = new System.Drawing.Point(4, 315);
+            this.Evento19.Location = new System.Drawing.Point(2, 312);
             this.Evento19.Name = "Evento19";
-            this.Evento19.Size = new System.Drawing.Size(84, 17);
+            this.Evento19.Size = new System.Drawing.Size(85, 17);
             this.Evento19.TabIndex = 18;
             this.Evento19.Text = "Padrão 19";
             this.Evento19.UseVisualStyleBackColor = false;
@@ -610,9 +629,9 @@
             // Evento18
             // 
             this.Evento18.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.Evento18.Location = new System.Drawing.Point(4, 298);
+            this.Evento18.Location = new System.Drawing.Point(2, 295);
             this.Evento18.Name = "Evento18";
-            this.Evento18.Size = new System.Drawing.Size(84, 17);
+            this.Evento18.Size = new System.Drawing.Size(85, 17);
             this.Evento18.TabIndex = 17;
             this.Evento18.Text = "Padrão 18";
             this.Evento18.UseVisualStyleBackColor = false;
@@ -621,9 +640,9 @@
             // Evento17
             // 
             this.Evento17.BackColor = System.Drawing.Color.Khaki;
-            this.Evento17.Location = new System.Drawing.Point(4, 281);
+            this.Evento17.Location = new System.Drawing.Point(2, 278);
             this.Evento17.Name = "Evento17";
-            this.Evento17.Size = new System.Drawing.Size(84, 17);
+            this.Evento17.Size = new System.Drawing.Size(85, 17);
             this.Evento17.TabIndex = 16;
             this.Evento17.Text = "Padrão 17";
             this.Evento17.UseVisualStyleBackColor = false;
@@ -632,9 +651,9 @@
             // Evento16
             // 
             this.Evento16.BackColor = System.Drawing.Color.Brown;
-            this.Evento16.Location = new System.Drawing.Point(4, 264);
+            this.Evento16.Location = new System.Drawing.Point(2, 261);
             this.Evento16.Name = "Evento16";
-            this.Evento16.Size = new System.Drawing.Size(84, 17);
+            this.Evento16.Size = new System.Drawing.Size(85, 17);
             this.Evento16.TabIndex = 15;
             this.Evento16.Text = "Padrão 16";
             this.Evento16.UseVisualStyleBackColor = false;
@@ -643,9 +662,9 @@
             // Evento15
             // 
             this.Evento15.BackColor = System.Drawing.Color.LightGray;
-            this.Evento15.Location = new System.Drawing.Point(4, 247);
+            this.Evento15.Location = new System.Drawing.Point(2, 244);
             this.Evento15.Name = "Evento15";
-            this.Evento15.Size = new System.Drawing.Size(84, 17);
+            this.Evento15.Size = new System.Drawing.Size(85, 17);
             this.Evento15.TabIndex = 14;
             this.Evento15.Text = "Padrão 15";
             this.Evento15.UseVisualStyleBackColor = false;
@@ -654,9 +673,9 @@
             // Evento14
             // 
             this.Evento14.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.Evento14.Location = new System.Drawing.Point(4, 230);
+            this.Evento14.Location = new System.Drawing.Point(2, 227);
             this.Evento14.Name = "Evento14";
-            this.Evento14.Size = new System.Drawing.Size(84, 17);
+            this.Evento14.Size = new System.Drawing.Size(85, 17);
             this.Evento14.TabIndex = 13;
             this.Evento14.Text = "Padrão 14";
             this.Evento14.UseVisualStyleBackColor = false;
@@ -665,9 +684,9 @@
             // Evento13
             // 
             this.Evento13.BackColor = System.Drawing.Color.Plum;
-            this.Evento13.Location = new System.Drawing.Point(4, 213);
+            this.Evento13.Location = new System.Drawing.Point(2, 210);
             this.Evento13.Name = "Evento13";
-            this.Evento13.Size = new System.Drawing.Size(84, 17);
+            this.Evento13.Size = new System.Drawing.Size(85, 17);
             this.Evento13.TabIndex = 12;
             this.Evento13.Text = "Padrão 13";
             this.Evento13.UseVisualStyleBackColor = false;
@@ -676,9 +695,9 @@
             // Evento12
             // 
             this.Evento12.BackColor = System.Drawing.Color.SkyBlue;
-            this.Evento12.Location = new System.Drawing.Point(4, 196);
+            this.Evento12.Location = new System.Drawing.Point(2, 193);
             this.Evento12.Name = "Evento12";
-            this.Evento12.Size = new System.Drawing.Size(84, 17);
+            this.Evento12.Size = new System.Drawing.Size(85, 17);
             this.Evento12.TabIndex = 11;
             this.Evento12.Text = "Padrão 12";
             this.Evento12.UseVisualStyleBackColor = false;
@@ -687,9 +706,9 @@
             // Evento11
             // 
             this.Evento11.BackColor = System.Drawing.Color.PeachPuff;
-            this.Evento11.Location = new System.Drawing.Point(3, 179);
+            this.Evento11.Location = new System.Drawing.Point(2, 176);
             this.Evento11.Name = "Evento11";
-            this.Evento11.Size = new System.Drawing.Size(84, 17);
+            this.Evento11.Size = new System.Drawing.Size(85, 17);
             this.Evento11.TabIndex = 10;
             this.Evento11.Text = "Padrão 11";
             this.Evento11.UseVisualStyleBackColor = false;
@@ -699,9 +718,9 @@
             // 
             this.Evento1.BackColor = System.Drawing.Color.Lime;
             this.Evento1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Evento1.Location = new System.Drawing.Point(2, 9);
+            this.Evento1.Location = new System.Drawing.Point(2, 6);
             this.Evento1.Name = "Evento1";
-            this.Evento1.Size = new System.Drawing.Size(84, 17);
+            this.Evento1.Size = new System.Drawing.Size(85, 17);
             this.Evento1.TabIndex = 0;
             this.Evento1.Text = "Espicula";
             this.Evento1.UseVisualStyleBackColor = false;
@@ -710,9 +729,9 @@
             // Evento10
             // 
             this.Evento10.BackColor = System.Drawing.Color.Salmon;
-            this.Evento10.Location = new System.Drawing.Point(3, 162);
+            this.Evento10.Location = new System.Drawing.Point(2, 159);
             this.Evento10.Name = "Evento10";
-            this.Evento10.Size = new System.Drawing.Size(84, 17);
+            this.Evento10.Size = new System.Drawing.Size(85, 17);
             this.Evento10.TabIndex = 9;
             this.Evento10.Text = "Padrão 10";
             this.Evento10.UseVisualStyleBackColor = false;
@@ -721,9 +740,9 @@
             // Evento9
             // 
             this.Evento9.BackColor = System.Drawing.Color.Orchid;
-            this.Evento9.Location = new System.Drawing.Point(3, 145);
+            this.Evento9.Location = new System.Drawing.Point(2, 142);
             this.Evento9.Name = "Evento9";
-            this.Evento9.Size = new System.Drawing.Size(84, 17);
+            this.Evento9.Size = new System.Drawing.Size(85, 17);
             this.Evento9.TabIndex = 8;
             this.Evento9.Text = "Padrão 09";
             this.Evento9.UseVisualStyleBackColor = false;
@@ -732,9 +751,9 @@
             // Evento8
             // 
             this.Evento8.BackColor = System.Drawing.Color.Gold;
-            this.Evento8.Location = new System.Drawing.Point(3, 129);
+            this.Evento8.Location = new System.Drawing.Point(2, 126);
             this.Evento8.Name = "Evento8";
-            this.Evento8.Size = new System.Drawing.Size(84, 17);
+            this.Evento8.Size = new System.Drawing.Size(85, 17);
             this.Evento8.TabIndex = 7;
             this.Evento8.Text = "Padrão 08";
             this.Evento8.UseVisualStyleBackColor = false;
@@ -743,9 +762,9 @@
             // Evento7
             // 
             this.Evento7.BackColor = System.Drawing.Color.Aqua;
-            this.Evento7.Location = new System.Drawing.Point(3, 112);
+            this.Evento7.Location = new System.Drawing.Point(2, 109);
             this.Evento7.Name = "Evento7";
-            this.Evento7.Size = new System.Drawing.Size(84, 17);
+            this.Evento7.Size = new System.Drawing.Size(85, 17);
             this.Evento7.TabIndex = 6;
             this.Evento7.Text = "Padrão 07";
             this.Evento7.UseVisualStyleBackColor = false;
@@ -754,9 +773,9 @@
             // Evento6
             // 
             this.Evento6.BackColor = System.Drawing.Color.HotPink;
-            this.Evento6.Location = new System.Drawing.Point(3, 95);
+            this.Evento6.Location = new System.Drawing.Point(2, 92);
             this.Evento6.Name = "Evento6";
-            this.Evento6.Size = new System.Drawing.Size(84, 17);
+            this.Evento6.Size = new System.Drawing.Size(85, 17);
             this.Evento6.TabIndex = 5;
             this.Evento6.Text = "Padrão 06";
             this.Evento6.UseVisualStyleBackColor = false;
@@ -765,9 +784,9 @@
             // Evento5
             // 
             this.Evento5.BackColor = System.Drawing.Color.RoyalBlue;
-            this.Evento5.Location = new System.Drawing.Point(3, 78);
+            this.Evento5.Location = new System.Drawing.Point(2, 75);
             this.Evento5.Name = "Evento5";
-            this.Evento5.Size = new System.Drawing.Size(84, 17);
+            this.Evento5.Size = new System.Drawing.Size(85, 17);
             this.Evento5.TabIndex = 4;
             this.Evento5.Text = "Padrão 05";
             this.Evento5.UseVisualStyleBackColor = false;
@@ -776,9 +795,9 @@
             // Evento4
             // 
             this.Evento4.BackColor = System.Drawing.Color.Orange;
-            this.Evento4.Location = new System.Drawing.Point(3, 61);
+            this.Evento4.Location = new System.Drawing.Point(2, 58);
             this.Evento4.Name = "Evento4";
-            this.Evento4.Size = new System.Drawing.Size(84, 17);
+            this.Evento4.Size = new System.Drawing.Size(85, 17);
             this.Evento4.TabIndex = 3;
             this.Evento4.Text = "Padrão 04";
             this.Evento4.UseVisualStyleBackColor = false;
@@ -787,9 +806,9 @@
             // Evento3
             // 
             this.Evento3.BackColor = System.Drawing.Color.Red;
-            this.Evento3.Location = new System.Drawing.Point(3, 44);
+            this.Evento3.Location = new System.Drawing.Point(2, 41);
             this.Evento3.Name = "Evento3";
-            this.Evento3.Size = new System.Drawing.Size(84, 17);
+            this.Evento3.Size = new System.Drawing.Size(85, 17);
             this.Evento3.TabIndex = 2;
             this.Evento3.Text = "Pisc. Palp";
             this.Evento3.UseVisualStyleBackColor = false;
@@ -798,9 +817,9 @@
             // Evento2
             // 
             this.Evento2.BackColor = System.Drawing.Color.Yellow;
-            this.Evento2.Location = new System.Drawing.Point(3, 27);
+            this.Evento2.Location = new System.Drawing.Point(2, 24);
             this.Evento2.Name = "Evento2";
-            this.Evento2.Size = new System.Drawing.Size(84, 17);
+            this.Evento2.Size = new System.Drawing.Size(85, 17);
             this.Evento2.TabIndex = 1;
             this.Evento2.Text = "Ponta e Ond";
             this.Evento2.UseVisualStyleBackColor = false;
@@ -812,38 +831,20 @@
             this.lbl_tempo_s.AutoSize = true;
             this.lbl_tempo_s.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbl_tempo_s.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tempo_s.Location = new System.Drawing.Point(784, 427);
+            this.lbl_tempo_s.Location = new System.Drawing.Point(700, 396);
             this.lbl_tempo_s.Name = "lbl_tempo_s";
             this.lbl_tempo_s.Size = new System.Drawing.Size(26, 14);
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "-";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "+";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(820, 445);
+            this.ClientSize = new System.Drawing.Size(736, 414);
             this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.lbl_tempo_s);
             this.Controls.Add(this.gbxChart);
@@ -854,6 +855,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(744, 441);
             this.Name = "FormPrincipal";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

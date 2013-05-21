@@ -89,8 +89,8 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\ReconhecimentoAutPadroesEEG.Form_Site.resources
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
 D:\Geovane Ferreira\Documentos\TCC\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.config
 D:\Geovane Ferreira\Documentos\TCC\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe
 D:\Geovane Ferreira\Documentos\TCC\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.Licenca.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache

@@ -1,4 +1,15 @@
-﻿using System;
+﻿/**
+ * @file GerenArquivos.cs
+ * 
+ *
+ * \brief   Implementação dos métodos do Gerenciador de Arquivos
+ * \details Este arquivo apresenta a implementação dos métodos da GerenArquivos
+ * 
+ * @version 1.0
+ * @date    05/2012
+ * @author  Geovane Vinicius Ferreira (email: geovanevinicius89@gmail.com)
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
