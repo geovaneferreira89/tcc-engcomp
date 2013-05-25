@@ -29,7 +29,7 @@
     <UpdateUrl>http://eeg.novoindustrial.com.br/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>SW.html</WebPage>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Correlacao.cs" />
     <Compile Include="FormCarregar_EDF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +118,12 @@
     </Compile>
     <Compile Include="FormEditarNomePadrao.Designer.cs">
       <DependentUpon>FormEditarNomePadrao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormResultados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResultados.Designer.cs">
+      <DependentUpon>FormResultados.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Site.cs">
       <SubType>Form</SubType>
@@ -159,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarNomePadrao.resx">
       <DependentUpon>FormEditarNomePadrao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResultados.resx">
+      <DependentUpon>FormResultados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Site.resx">
       <DependentUpon>Form_Site.cs</DependentUpon>

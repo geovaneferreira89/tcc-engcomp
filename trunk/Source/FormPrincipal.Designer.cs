@@ -100,6 +100,14 @@
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.btnTela10S = new System.Windows.Forms.ToolStripButton();
+            this.btnTela5S = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_Correlacao = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -170,7 +178,8 @@
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.marcarEventos,
             this.inserirComent,
-            this.eventosToolStripMenuItem});
+            this.eventosToolStripMenuItem,
+            this.btn_Correlacao});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
@@ -273,22 +282,22 @@
             // segundoToolStripMenuItem
             // 
             this.segundoToolStripMenuItem.Name = "segundoToolStripMenuItem";
-            this.segundoToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.segundoToolStripMenuItem.Text = "1 s";
+            this.segundoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.segundoToolStripMenuItem.Text = "1s";
             this.segundoToolStripMenuItem.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
             // 
             // segundosToolStripMenuItem
             // 
             this.segundosToolStripMenuItem.Name = "segundosToolStripMenuItem";
-            this.segundosToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-            this.segundosToolStripMenuItem.Text = "5 s";
+            this.segundosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.segundosToolStripMenuItem.Text = "5s";
             this.segundosToolStripMenuItem.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
             // 
             // segundosToolStripMenuItem1
             // 
             this.segundosToolStripMenuItem1.Name = "segundosToolStripMenuItem1";
-            this.segundosToolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
-            this.segundosToolStripMenuItem1.Text = "10 s";
+            this.segundosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.segundosToolStripMenuItem1.Text = "10s";
             this.segundosToolStripMenuItem1.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -412,19 +421,26 @@
             this.tool_ControlesProjeto.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tool_ControlesProjeto.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tool_ControlesProjeto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator6,
             this.btn_Importar,
             this.btn_novoProjeto,
             this.toolStripButton3,
             this.btn_Suspender,
             this.btn_MarcarPadroes,
+            this.toolStripSeparator5,
             this.lblFreq,
             this.FrequenciaCombo,
             this.lbl_cm,
             this.lblAmpli,
             this.AmplitudeCombo,
             this.lbl_V,
+            this.toolStripSeparator4,
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripSeparator2,
+            this.btnTela10S,
+            this.btnTela5S,
+            this.toolStripSeparator3});
             this.tool_ControlesProjeto.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
@@ -837,6 +853,58 @@
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
             // 
+            // btnTela10S
+            // 
+            this.btnTela10S.Checked = true;
+            this.btnTela10S.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnTela10S.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnTela10S.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTela10S.Name = "btnTela10S";
+            this.btnTela10S.Size = new System.Drawing.Size(28, 22);
+            this.btnTela10S.Text = "10s";
+            this.btnTela10S.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
+            // 
+            // btnTela5S
+            // 
+            this.btnTela5S.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnTela5S.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTela5S.Name = "btnTela5S";
+            this.btnTela5S.Size = new System.Drawing.Size(23, 22);
+            this.btnTela5S.Text = "5s";
+            this.btnTela5S.Click += new System.EventHandler(this.segundoToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btn_Correlacao
+            // 
+            this.btn_Correlacao.Name = "btn_Correlacao";
+            this.btn_Correlacao.Size = new System.Drawing.Size(201, 22);
+            this.btn_Correlacao.Text = "Correlação ";
+            this.btn_Correlacao.Click += new System.EventHandler(this.btn_Correlacao_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -953,6 +1021,14 @@
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnTela10S;
+        private System.Windows.Forms.ToolStripButton btnTela5S;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem btn_Correlacao;
     }
 }
 
