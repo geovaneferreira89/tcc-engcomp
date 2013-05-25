@@ -94,3 +94,4 @@ D:\Geovane Ferreira\Documentos\TCC\Source\obj\x86\Debug\Reconhecimento Automatiz
 D:\Geovane Ferreira\Documentos\TCC\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.Licenca.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormResultados.resources

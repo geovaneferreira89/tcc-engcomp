@@ -747,23 +747,29 @@ namespace AmbienteRPB
         private void segundoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             lbl_tempo_s.Text = sender.ToString();
-            if (sender.ToString() == "1 s")
+            if (sender.ToString() == "1s")
             {
+                btnTela10S.CheckState   = CheckState.Unchecked;
+                btnTela5S.CheckState    = CheckState.Unchecked;
                 Scroll_Click_Escala_Seg = 1;
-                ScrollBar.SmallChange = 1;//segundos
-                ScrollBar.LargeChange = 1;//segundos
+                ScrollBar.SmallChange   = 1;
+                ScrollBar.LargeChange   = 1;
             }
-            if (sender.ToString() == "5 s")
+            if (sender.ToString() == "5s")
             {
+                btnTela10S.CheckState   = CheckState.Unchecked;
+                btnTela5S.CheckState    = CheckState.Checked;
                 Scroll_Click_Escala_Seg = 5;
-                ScrollBar.SmallChange = 5;//segundos
-                ScrollBar.LargeChange = 5;//segundos
+                ScrollBar.SmallChange   = 5;
+                ScrollBar.LargeChange   = 5;
             }
-            if (sender.ToString() == "10 s")
+            if (sender.ToString() == "10s")
             {
+                btnTela10S.CheckState   = CheckState.Checked;
+                btnTela5S.CheckState    = CheckState.Unchecked;
                 Scroll_Click_Escala_Seg = 10;
-                ScrollBar.SmallChange = 10;//segundos
-                ScrollBar.LargeChange = 10;//segundos
+                ScrollBar.SmallChange   = 10;
+                ScrollBar.LargeChange   = 10;
             }
 
         }
@@ -1034,6 +1040,12 @@ namespace AmbienteRPB
                 AtualizaFerramentaAtiva("Opção de Inserir Comentarios Desabilitada", 2, Color.Orange);
                 adicionarComentario = false;
             }
+        }
+        //------------------------------------------------------------------------
+        private void btn_Correlacao_Click(object sender, EventArgs e)
+        {
+            FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
+            correlacaoForm.ShowDialog();
         }
         //------------------------------------------------------------------------
 
