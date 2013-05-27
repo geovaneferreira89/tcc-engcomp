@@ -62,8 +62,8 @@ namespace AmbienteRPB
             InitializeComponent();
             gbxEventos.Visible = false;
             gbxEventos.Enabled = false;
-            gbxChart.Location = new System.Drawing.Point(2, 21);
-            gbxChart.Size = new System.Drawing.Size(this.Size.Width - 12, 349); 
+            gbxChart.Location  = new System.Drawing.Point(2, 21);
+            gbxChart.Size      = new System.Drawing.Size(this.Size.Width - 12, 349); 
         }
           //---------------------------------------------------------------------------------------
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -1044,7 +1044,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------
         private void btn_Correlacao_Click(object sender, EventArgs e)
         {
-            FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
+            FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, nomeProject);
             correlacaoForm.ShowDialog();
         }
         //------------------------------------------------------------------------

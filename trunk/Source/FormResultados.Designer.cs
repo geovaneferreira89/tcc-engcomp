@@ -41,10 +41,11 @@
             this.lbl_Tempo = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
-            this.btn_SinalProximo = new System.Windows.Forms.ToolStripButton();
-            this.btn_SinalAvancar = new System.Windows.Forms.ToolStripButton();
             this.btn_SinalRetroceder = new System.Windows.Forms.ToolStripButton();
+            this.btn_SinalProximo = new System.Windows.Forms.ToolStripButton();
+            this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
+            this.btn_SinalAvancar = new System.Windows.Forms.ToolStripButton();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -177,13 +178,14 @@
             this.toolStrip1.TabIndex = 18;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btn_SinalAnterior
+            // btn_SinalRetroceder
             // 
-            this.btn_SinalAnterior.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_SinalAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_SinalAnterior.Name = "btn_SinalAnterior";
-            this.btn_SinalAnterior.Size = new System.Drawing.Size(23, 22);
-            this.btn_SinalAnterior.Text = "^";
+            this.btn_SinalRetroceder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_SinalRetroceder.Image = ((System.Drawing.Image)(resources.GetObject("btn_SinalRetroceder.Image")));
+            this.btn_SinalRetroceder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_SinalRetroceder.Name = "btn_SinalRetroceder";
+            this.btn_SinalRetroceder.Size = new System.Drawing.Size(27, 22);
+            this.btn_SinalRetroceder.Text = "<<";
             // 
             // btn_SinalProximo
             // 
@@ -194,6 +196,14 @@
             this.btn_SinalProximo.Size = new System.Drawing.Size(23, 22);
             this.btn_SinalProximo.Text = "V";
             // 
+            // btn_SinalAnterior
+            // 
+            this.btn_SinalAnterior.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_SinalAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_SinalAnterior.Name = "btn_SinalAnterior";
+            this.btn_SinalAnterior.Size = new System.Drawing.Size(23, 22);
+            this.btn_SinalAnterior.Text = "^";
+            // 
             // btn_SinalAvancar
             // 
             this.btn_SinalAvancar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -203,20 +213,21 @@
             this.btn_SinalAvancar.Size = new System.Drawing.Size(27, 22);
             this.btn_SinalAvancar.Text = ">>";
             // 
-            // btn_SinalRetroceder
+            // progressBar
             // 
-            this.btn_SinalRetroceder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_SinalRetroceder.Image = ((System.Drawing.Image)(resources.GetObject("btn_SinalRetroceder.Image")));
-            this.btn_SinalRetroceder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_SinalRetroceder.Name = "btn_SinalRetroceder";
-            this.btn_SinalRetroceder.Size = new System.Drawing.Size(27, 22);
-            this.btn_SinalRetroceder.Text = "<<";
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(521, 430);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(127, 12);
+            this.progressBar.TabIndex = 19;
+            this.progressBar.Visible = false;
             // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 446);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.gbxChart);
             this.Controls.Add(this.ScrollBar);
@@ -225,6 +236,7 @@
             this.Name = "FormResultados";
             this.Text = "Técnica de Reconhecimento -- Correlação ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Shown += new System.EventHandler(this.FormResultados_Shown);
             this.Box_Status.ResumeLayout(false);
             this.Box_Status.PerformLayout();
             this.gbxChart.ResumeLayout(false);
@@ -255,5 +267,6 @@
         private System.Windows.Forms.ToolStripButton btn_SinalProximo;
         private System.Windows.Forms.ToolStripButton btn_SinalAnterior;
         private System.Windows.Forms.ToolStripButton btn_SinalAvancar;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
