@@ -47,7 +47,7 @@ namespace AmbienteRPB
             {
                 Plotar(2, Canal, null);
                 Plotar(1, Canal, edfFileOutput);
-              //  FuncScrollBar_Propriedades(1, edfFileOutput);
+                FuncScrollBar_Propriedades(1, edfFileOutput);
             }
         }
      //------------------------------------------------------------------------------------------
