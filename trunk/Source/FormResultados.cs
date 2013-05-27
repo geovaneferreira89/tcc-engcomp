@@ -26,6 +26,8 @@ namespace AmbienteRPB
         private GerenArquivos Arquivos;
         private EdfFile edfFileOutput;
         private int CanalAtual = 0;
+        private int DataRecords_lidos = 10;
+        private int Scroll_Click_Escala_Seg = 10; //tempo em segundos de tela
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, string end_EDF)
         {
@@ -44,13 +46,13 @@ namespace AmbienteRPB
             for (int i = 0; i < 3; i++)
             {   //Propriedades de cada sinal
                 chart1.ChartAreas.Add("canal" + i);
-                chart1.ChartAreas[i].BackColor = Color.Transparent;
-                chart1.ChartAreas[i].AxisX.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height = _aux+3;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].BackColor      = Color.Transparent;
+                chart1.ChartAreas[i].AxisX.Enabled  = AxisEnabled.False;
+                chart1.ChartAreas[i].AxisY.Enabled  = AxisEnabled.False;
+                chart1.ChartAreas[i].Position.Height= _aux+3;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[i].Position.Width = 96;
-                chart1.ChartAreas[i].Position.X = 4;
-                chart1.ChartAreas[i].Position.Y = _aux * i;
+                chart1.ChartAreas[i].Position.X     = 4;
+                chart1.ChartAreas[i].Position.Y     = _aux * i;
             }
             AdicionaData(0);
             Adiciona_linhas_de_tempo();
@@ -59,7 +61,6 @@ namespace AmbienteRPB
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
-         
         }
         //------------------------------------------------------------------------------------------
         private void Adiciona_linhas_de_tempo()
@@ -212,5 +213,72 @@ namespace AmbienteRPB
             string tempo = dt_EEG.ToString("H:mm:ss") + " (" + dt_chart.ToString("H:mm:ss") + ")";
             lbl_Tempo.Text = tempo;
         }
+        //------------------------------------------------------------------------------------------
+        //Mudança de sinal
+        private void btn_SinalProximo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_SinalAnterior_Click(object sender, EventArgs e)
+        {
+
+        }
+        //------------------------------------------------------------------------------------------
+        //Mudança no eixo de tempo do sinal
+        private void btn_SinalAvancar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_SinalRetroceder_Click(object sender, EventArgs e)
+        {
+
+        }
+        //------------------------------------------------------------------------------------------
+        private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            //Atualizar o tempo
+            if (e.Type == ScrollEventType.SmallIncrement)
+            {
+                //"Apaga" 1s Primeiro de sinal, 256 em x
+                AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
+                AddSegInChart();
+            }
+            else if (e.Type == ScrollEventType.SmallDecrement)
+            {
+                AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
+            }
+            //Atualizar o chart
+            for (int i = 0; i < chart1.ChartAreas.Count(); i++)
+                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * 256; 
+        }
+        //------------------------------------------------------------------------------------------
+        private void AddSegInChart()
+        {
+            for (int k = 0; k < Scroll_Click_Escala_Seg; k++)
+            {
+                if (DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
+                {
+                    int excluir;
+                    int tempo = DataRecords_lidos * 256;
+                    edfFileOutput.ReadDataBlock(DataRecords_lidos);
+                    DataRecords_lidos++;
+                    //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                    for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                    {
+                        for (int i = 0; i < 256; i++)
+                        {
+                            if (j == CanalAtual)
+                                chart1.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                            else
+                                excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
+                        }
+                    }
+                }
+            }
+        }
+        //------------------------------------------------------------------------------------------
+
      }
 }

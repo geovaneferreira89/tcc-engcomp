@@ -56,7 +56,6 @@
             // 
             this.ScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScrollBar.Enabled = false;
             this.ScrollBar.LargeChange = 900;
             this.ScrollBar.Location = new System.Drawing.Point(0, 404);
             this.ScrollBar.Maximum = 20000;
@@ -64,6 +63,7 @@
             this.ScrollBar.Size = new System.Drawing.Size(668, 20);
             this.ScrollBar.SmallChange = 900;
             this.ScrollBar.TabIndex = 16;
+            this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
             // 
             // Box_Status
             // 
@@ -186,6 +186,7 @@
             this.btn_SinalRetroceder.Name = "btn_SinalRetroceder";
             this.btn_SinalRetroceder.Size = new System.Drawing.Size(27, 22);
             this.btn_SinalRetroceder.Text = "<<";
+            this.btn_SinalRetroceder.Click += new System.EventHandler(this.btn_SinalRetroceder_Click);
             // 
             // btn_SinalProximo
             // 
@@ -195,6 +196,7 @@
             this.btn_SinalProximo.Name = "btn_SinalProximo";
             this.btn_SinalProximo.Size = new System.Drawing.Size(23, 22);
             this.btn_SinalProximo.Text = "V";
+            this.btn_SinalProximo.Click += new System.EventHandler(this.btn_SinalProximo_Click);
             // 
             // btn_SinalAnterior
             // 
@@ -203,6 +205,7 @@
             this.btn_SinalAnterior.Name = "btn_SinalAnterior";
             this.btn_SinalAnterior.Size = new System.Drawing.Size(23, 22);
             this.btn_SinalAnterior.Text = "^";
+            this.btn_SinalAnterior.Click += new System.EventHandler(this.btn_SinalAnterior_Click);
             // 
             // btn_SinalAvancar
             // 
@@ -212,6 +215,7 @@
             this.btn_SinalAvancar.Name = "btn_SinalAvancar";
             this.btn_SinalAvancar.Size = new System.Drawing.Size(27, 22);
             this.btn_SinalAvancar.Text = ">>";
+            this.btn_SinalAvancar.Click += new System.EventHandler(this.btn_SinalAvancar_Click);
             // 
             // progressBar
             // 
