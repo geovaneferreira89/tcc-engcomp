@@ -291,7 +291,7 @@ namespace AmbienteRPB
             {
                 vector_evento = new double[selecionar_evento.vector.Count()];
                 vector_evento = selecionar_evento.vector;
-                DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
+                DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
                 if (resposta == DialogResult.Yes)
                     inicia_correlacao();
             }

@@ -243,7 +243,7 @@ namespace AmbienteRPB
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if(ValorInicio.X > ValorFim.X)
-                MessageBox.Show("Marcação errada.\n A posição de inicio está maior que a posição de fim.\n\nNão salvo.", "Reconhecimento Automatizado de Padrões EEG");
+                MessageBox.Show("Marcação errada.\n A posição de inicio está maior que a posição de fim.\n\nNão salvo.", "Reconhecimento Automatizado de Padrões em EEG");
             else
             {
                 btnSalvar.Enabled = false;
@@ -255,7 +255,7 @@ namespace AmbienteRPB
 
                 Arquivos.Exportar_Padroes_Eventos(Listas);
 
-                MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Reconhecimento Automatizado de Padrões EEG");
+                MessageBox.Show("Padrão '" + edtEvento_Nome.Text + "' editado e salvo.", "Reconhecimento Automatizado de Padrões em EEG");
                 txtComents.Text = "";
                 chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);

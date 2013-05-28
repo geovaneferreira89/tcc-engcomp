@@ -99,7 +99,7 @@ namespace AmbienteRPB
         {
            if (edfFileInput == null)
                 MessageBox.Show("Nenhum canal selecionado",
-                  "Reconhecimento Automatizado de Padrões EEG",
+                  "Reconhecimento Automatizado de Padrões em EEG",
                       MessageBoxButtons.OK, MessageBoxIcon.Information);   
                 
             this.Close();

@@ -132,7 +132,7 @@ namespace AmbienteRPB
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 Version myVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-                this.Text = string.Format("Reconhecimento Automatizado de Padrões EEG - v{0}.{1}.{2}.{3}", myVersion.Major, myVersion.Minor, myVersion.Build, myVersion.Revision);
+                this.Text = string.Format("Reconhecimento Automatizado de Padrões em EEG - v{0}.{1}.{2}.{3}", myVersion.Major, myVersion.Minor, myVersion.Build, myVersion.Revision);
             }
          }
 
@@ -144,7 +144,7 @@ namespace AmbienteRPB
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("\nUniversidade Tecnológica Federal do Paraná\nEngenharia de Computação\nTrabalho De Conclusão de Curso\nAlunos:\nGeovane Ferreira\nGeorgia\n\nOrientador:\nMiguel\n\nCuritiba 2013",
-                "Reconhecimento Automatizado de Padrões EEG",
+                "Reconhecimento Automatizado de Padrões em EEG",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -158,14 +158,14 @@ namespace AmbienteRPB
         {
             string path = System.IO.Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
             MessageBox.Show(path,
-              "Reconhecimento Automatizado de Padrões EEG",
+              "Reconhecimento Automatizado de Padrões em EEG",
                   MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (Environment.OSVersion.Version.Major >= 6)
             {
                 path = System.IO.Directory.GetParent(path).ToString();
             }
             MessageBox.Show(path,
-                 "Reconhecimento Automatizado de Padrões EEG",
+                 "Reconhecimento Automatizado de Padrões em EEG",
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
