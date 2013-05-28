@@ -98,11 +98,11 @@ namespace AmbienteRPB
             //SALVAR
             if(ListaPadroes != null)
             {
-                DialogResult resposta = MessageBox.Show("Deseja salvar a lista de pradrões e eventos?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
+                DialogResult resposta = MessageBox.Show("Deseja salvar a lista de pradrões e eventos?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
                if (resposta == DialogResult.Yes)
                {
                    Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
-                  // MessageBox.Show("Salvo com sucesso!", "Reconhecimento Automatizado de Padrões EEG");
+                  // MessageBox.Show("Salvo com sucesso!", "Reconhecimento Automatizado de Padrões em EEG");
                }
             }
         }
@@ -217,7 +217,7 @@ namespace AmbienteRPB
             btn_Importar.Enabled = false;
             btn_novoProjeto.Enabled = false;
             MessageBox.Show("Projeto " + nomeProject + "\nCriado",
-                    "Reconhecimento Automatizado de Padrões EEG",
+                    "Reconhecimento Automatizado de Padrões em EEG",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             status_projeto = "Projeto_NOVO";
             ChartInicializarThreads(__numeroDeCanais,false);
@@ -413,7 +413,7 @@ namespace AmbienteRPB
                 
                 string string_coment = "";
                 if (adicionarComentario)
-                    string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões EEG", "nothing", 10, 10);
+                    string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
 
                 Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment, (float)Padrao_Fim.X - Padrao_Inicio.X);
 
@@ -476,7 +476,7 @@ namespace AmbienteRPB
                 }
             }
             else
-                MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.OK);
+                MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
         }
         //------------------------------------------------------------------------------------------       
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -491,7 +491,7 @@ namespace AmbienteRPB
                     CarregarEditorDeEventos();
                 }
                 else
-                    MessageBox.Show("Nenhum evento marcado ainda", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.OK);
+                    MessageBox.Show("Nenhum evento marcado ainda", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
             }
             else
                   CarregarEditorDeEventos();
@@ -505,7 +505,7 @@ namespace AmbienteRPB
                 EditorEvenForm.ShowDialog();
             }
             else
-                MessageBox.Show("Nenhum EDF carregado", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum EDF carregado", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
         }
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -568,7 +568,7 @@ namespace AmbienteRPB
                 //Tread responsavel por marcar os eventos caso eles já existam
                 if (ListaExiste)
                 {
-                    DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
+                    DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
                     if (resposta == DialogResult.Yes)
                     {
                         Annotations_Chart oAnnotation = new Annotations_Chart(chart1,progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, false, ListaPadroes,0, canaisCTRL);
@@ -873,7 +873,7 @@ namespace AmbienteRPB
                     + "\nHora\n" + edfFileOutput.FileInfo.StartDate
                       + "\nDuração\n" + edfFileOutput.FileInfo.NrDataRecords
                              + "\nVersion\n" + edfFileOutput.FileInfo.Version
-                , "Reconhecimento Automatizado de Padrões EEG",
+                , "Reconhecimento Automatizado de Padrões em EEG",
                      MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //------------------------------------------------------------------------------------------

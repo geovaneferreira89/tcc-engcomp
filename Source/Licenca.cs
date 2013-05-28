@@ -29,7 +29,7 @@ namespace AmbienteRPB
         {
             StatusRegistro = 0;
             MessageBox.Show("Software não registrado",
-               "Reconhecimento Automatizado de Padrões EEG",
+               "Reconhecimento Automatizado de Padrões em EEG",
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -63,7 +63,7 @@ namespace AmbienteRPB
                     catch
                     {
                         MessageBox.Show("Nao envio para o server!",
-                            "Reconhecimento Automatizado de Padrões EEG",
+                            "Reconhecimento Automatizado de Padrões em EEG",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }*/
                     this.Close();
@@ -71,7 +71,7 @@ namespace AmbienteRPB
                 else
                 {
                     MessageBox.Show("Serial Key inválido!",
-                             "Reconhecimento Automatizado de Padrões EEG",
+                             "Reconhecimento Automatizado de Padrões em EEG",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
                     StatusRegistro = 0;
                 }

@@ -85,7 +85,7 @@ namespace AmbienteRPB
             }
             fileW.Close();
             MessageBox.Show("Projeto:\n" + diretorio + "\n\nSalvado com sucesso!",
-               "Reconhecimento Automatizado de Padrões EEG",
+               "Reconhecimento Automatizado de Padrões em EEG",
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //Abrir Projeto  --------------------------------------------------------------------
@@ -97,7 +97,7 @@ namespace AmbienteRPB
             dados = dados.Substring(15);
             dados = dados.Substring(0, dados.Length - 1);
             MessageBox.Show("Projeto:\n" + diretorio + "\n\n" + dados,
-               "Reconhecimento Automatizado de Padrões EEG",
+               "Reconhecimento Automatizado de Padrões em EEG",
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
             return Convert.ToInt32(dados);
         }
@@ -216,7 +216,7 @@ namespace AmbienteRPB
             {
                 fileR.Close();
                 MessageBox.Show("Erro ao carregar arquivo",
-                       "Reconhecimento Automatizado de Padrões EEG",
+                       "Reconhecimento Automatizado de Padrões em EEG",
                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
@@ -243,7 +243,7 @@ namespace AmbienteRPB
             fileW.WriteLine("[Meio   = " + serial + "]");
             fileW.Close();
             MessageBox.Show("Licença ativada",
-                             "Reconhecimento Automatizado de Padrões EEG",
+                             "Reconhecimento Automatizado de Padrões em EEG",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         //Verifica Licença Existe------------------------------------------------------
