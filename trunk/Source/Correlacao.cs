@@ -138,16 +138,25 @@ namespace AmbienteRPB
                         prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                         load_progress_bar(vector_evento.Count() * prb.Series[0].Points.Count(), 2);
                         float res = 0;
+                        //Canal que está sendo amostrado
                         for (int i = 0; i < prb.Series[0].Points.Count; i++)
                         {
+                            //Vetor do Evento
                             for (int j = 0; j < vector_evento.Count(); j++)
                             {
-                                if ((j + i) < prb.Series[0].Points.Count) 
+                                //Se j+1 tem que ser menor que o tamanho do canal... 
+                                if ((j + i) < prb.Series[0].Points.Count)
+                                {
+                                    //AQUI entra a forma de correlação!!! 
                                     res = (float)(prb.Series[0].Points[j + i].YValues[0] * vector_evento[j]);
+                                }
+                                //Incrementa a barra de progresso
                                 load_progress_bar(0, 1);
                             }
-                            prb.Series["canal" + 1].Points.AddY(res);
+                            //Vai Plotando o resultado...
+                            prb.Series["canal" + 1].Points.AddY(res); 
                         }
+                        //desabilita a barra de progresso
                         load_progress_bar(1, 3);
                         break;
                     }
