@@ -102,7 +102,7 @@ namespace AmbienteRPB
                if (resposta == DialogResult.Yes)
                {
                    Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
-                   MessageBox.Show("Salvo com sucesso!", "Reconhecimento Automatizado de Padrões EEG");
+                  // MessageBox.Show("Salvo com sucesso!", "Reconhecimento Automatizado de Padrões EEG");
                }
             }
         }

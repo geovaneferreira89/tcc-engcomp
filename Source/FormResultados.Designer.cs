@@ -45,10 +45,10 @@
             this.btn_SinalProximo = new System.Windows.Forms.ToolStripButton();
             this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
             this.btn_SinalAvancar = new System.Windows.Forms.ToolStripButton();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -223,14 +223,10 @@
             this.btn_SinalAvancar.Text = ">>";
             this.btn_SinalAvancar.Click += new System.EventHandler(this.btn_SinalAvancar_Click);
             // 
-            // progressBar
+            // toolStripSeparator1
             // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(521, 430);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(127, 12);
-            this.progressBar.TabIndex = 19;
-            this.progressBar.Visible = false;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton3
             // 
@@ -242,11 +238,6 @@
             this.toolStripButton3.Text = "toolStripButton3";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // btn_Suspender
             // 
             this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -255,6 +246,17 @@
             this.btn_Suspender.Name = "btn_Suspender";
             this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
             this.btn_Suspender.Text = "btn_Suspender";
+            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar.Location = new System.Drawing.Point(425, 426);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(240, 19);
+            this.progressBar.TabIndex = 19;
+            this.progressBar.Visible = false;
             // 
             // FormResultados
             // 
