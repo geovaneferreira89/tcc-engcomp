@@ -30,6 +30,7 @@ namespace AmbienteRPB
         private int Scroll_Click_Escala_Seg = 10; //tempo em segundos de tela
         private double[] vector_evento;
         private string end_EDF;
+        private Thread Thread_;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, string _end_EDF)
         {
@@ -60,7 +61,7 @@ namespace AmbienteRPB
             AdicionaData(0);
             Adiciona_linhas_de_tempo();
 
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar,edfFileOutput, CanalAtual);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar,edfFileOutput, CanalAtual,"PlotaSinalEEG",vector_evento);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
@@ -286,34 +287,29 @@ namespace AmbienteRPB
         {
             FormEditorDeEventos selecionar_evento = new FormEditorDeEventos(ListaDeEventos, end_EDF);
             selecionar_evento.ShowDialog();
-            vector_evento = new double[selecionar_evento.vector.Count()];
-            vector_evento = selecionar_evento.vector;
-            inicia_correlacao();
+            if (selecionar_evento.vector != null)
+            {
+                vector_evento = new double[selecionar_evento.vector.Count()];
+                vector_evento = selecionar_evento.vector;
+                DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?", "Reconhecimento Automatizado de Padrões EEG", MessageBoxButtons.YesNo);
+                if (resposta == DialogResult.Yes)
+                    inicia_correlacao();
+            }
         }
         //------------------------------------------------------------------------------------------
         //Passar para thread depois... 
         private void inicia_correlacao()
         {
-            chart1.Series.Add("canal" + 1);
-            chart1.Series["canal" + 1].ChartArea = "canal" + 1;
-            chart1.Series["canal" + 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            chart1.Legends.Clear();
-            chart1.Titles.Add("canal" + 1);
-            chart1.Titles[1].DockedToChartArea = "canal" + 1;
-            chart1.Titles[1].Position.Height = 3;
-            chart1.Titles[1].Position.Width = 40;
-            chart1.Titles[1].Alignment = ContentAlignment.MiddleLeft;
-            chart1.Titles[1].Position.X = 0;
-            chart1.Titles[1].Position.Y = chart1.ChartAreas[1].Position.Y;
+           chart1.Series["canal" + 1].Points.Clear();
+            
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento);
+            Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
+            Thread_.Start();
+        }
 
-            float res = 0;
-            for(int i=0;i<chart1.Series[0].Points.Count;i++)
-            {
-                for(int j=0; j<vector_evento.Count();j++){
-                    res = (float)(chart1.Series[0].Points[j+i].YValues[0] * vector_evento[j]);
-                }
-                chart1.Series["canal" + 1].Points.AddY(res);
-            }
+        private void btn_Suspender_Click(object sender, EventArgs e)
+        {
+            Thread_.Suspend();
         }
         //------------------------------------------------------------------------------------------
      }

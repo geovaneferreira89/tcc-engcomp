@@ -168,7 +168,7 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------
         private void chart1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (chart1.ChartAreas[0] != null)
+            if (chart1.ChartAreas.Count != 0)
             {
                 if (cbx_Inicio.Checked == true)
                 {
@@ -285,10 +285,15 @@ namespace AmbienteRPB
         {
             if (checkCorrela.Checked)
             {
-                vector = new double[chart1.Series[0].Points.Count];
-                for (int i = 0; i < chart1.Series[0].Points.Count; i++)
-                   vector[i] = chart1.Series[0].Points[i].YValues[0];
-                this.Close();
+                if (chart1.ChartAreas.Count != 0)
+                {
+                    vector = new double[chart1.Series[0].Points.Count];
+                    for (int i = 0; i < chart1.Series[0].Points.Count; i++)
+                        vector[i] = chart1.Series[0].Points[i].YValues[0];
+                    this.Close();
+                }
+                else
+                    checkCorrela.Checked = false;
             }
             else
             {
