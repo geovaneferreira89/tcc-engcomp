@@ -26,6 +26,8 @@ namespace AmbienteRPB
         public PointF ValorFim;
         public PointF ValorReferencia;
 
+        public double[] Vector;
+
         VerticalLineAnnotation Cursor_vertical_Inicio; 
         VerticalLineAnnotation Cursor_vertical_Fim;
         VerticalLineAnnotation Cursor_vertical_Referencia;
@@ -35,6 +37,12 @@ namespace AmbienteRPB
             InitializeComponent();            
             Listas = _Listas;
             EDF_File = _EDF_File;
+        }
+        //---------------------------------------------------------------------------
+        public double[] vector
+        {
+            get;
+            set;
         }
         //---------------------------------------------------------------------------
         private void button1_Click(object sender, EventArgs e)
@@ -271,7 +279,21 @@ namespace AmbienteRPB
         {
             cbx_Inicio.Checked = false;
             cbx_Fim.Checked = false;
+        }
 
+        private void checkCorrela_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkCorrela.Checked)
+            {
+                vector = new double[chart1.Series[0].Points.Count];
+                for (int i = 0; i < chart1.Series[0].Points.Count; i++)
+                   vector[i] = chart1.Series[0].Points[i].YValues[0];
+                this.Close();
+            }
+            else
+            {
+                vector = null;
+            }
         }
     }
     //--------------------------------

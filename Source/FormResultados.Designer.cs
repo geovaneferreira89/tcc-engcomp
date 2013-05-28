@@ -46,6 +46,9 @@
             this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
             this.btn_SinalAvancar = new System.Windows.Forms.ToolStripButton();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -171,7 +174,10 @@
             this.btn_SinalRetroceder,
             this.btn_SinalProximo,
             this.btn_SinalAnterior,
-            this.btn_SinalAvancar});
+            this.btn_SinalAvancar,
+            this.toolStripSeparator1,
+            this.toolStripButton3,
+            this.btn_Suspender});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(668, 25);
@@ -226,6 +232,30 @@
             this.progressBar.TabIndex = 19;
             this.progressBar.Visible = false;
             // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btn_Suspender
+            // 
+            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
+            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Suspender.Name = "btn_Suspender";
+            this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
+            this.btn_Suspender.Text = "btn_Suspender";
+            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,5 +302,8 @@
         private System.Windows.Forms.ToolStripButton btn_SinalAnterior;
         private System.Windows.Forms.ToolStripButton btn_SinalAvancar;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton btn_Suspender;
     }
 }
