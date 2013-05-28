@@ -149,12 +149,13 @@ namespace AmbienteRPB
                                 {
                                     //AQUI entra a forma de correlação!!! 
                                     res = (float)(prb.Series[0].Points[j + i].YValues[0] * vector_evento[j]);
+                                    //Vai Plotando o resultado...
+                                    prb.Series["canal" + 1].Points.AddY(res); 
+                                   
                                 }
                                 //Incrementa a barra de progresso
                                 load_progress_bar(0, 1);
-                            }
-                            //Vai Plotando o resultado...
-                            prb.Series["canal" + 1].Points.AddY(res); 
+                            }                            
                         }
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);
