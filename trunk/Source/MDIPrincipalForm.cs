@@ -38,15 +38,23 @@ namespace AmbienteRPB
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            childForm = new FormPrincipal();
-            childForm.MdiParent = this;
-            if (childFormNumber != 0)
-                childForm.Text = "Novo Projeto " + childFormNumber;
-            else
-                childForm.Text = "Novo Projeto";
-            childFormNumber++;
+            string nomeProject;
+            string dir = AppDomain.CurrentDomain.BaseDirectory + "Modelos EDF\\";
+            openFileEDF.InitialDirectory = dir;
+            if (openFileEDF.ShowDialog() == DialogResult.OK)
+            {
+                nomeProject = openFileEDF.FileName;
 
-            childForm.Show();
+                childForm = new FormPrincipal(nomeProject);
+                childForm.MdiParent = this;
+                if (childFormNumber != 0)
+                    childForm.Text = "Novo Projeto " + childFormNumber;
+                else
+                    childForm.Text = "Novo Projeto";
+                childFormNumber++;
+                childForm.Show();
+            }
+            openFileEDF.Dispose();
         }
 
         private void OpenFile(object sender, EventArgs e)

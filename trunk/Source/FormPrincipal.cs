@@ -56,8 +56,9 @@ namespace AmbienteRPB
         private int[] canaisCTRL;
         private int countCTRL = 0;
         //-----------------------------------------------------------------------------------------
-        public FormPrincipal()
+        public FormPrincipal(string _nomeProject)
         {
+            nomeProject = _nomeProject;
             Arquivos = new GerenArquivos();
             InitializeComponent();
             gbxEventos.Visible = false;
@@ -81,6 +82,35 @@ namespace AmbienteRPB
                 if (status == 0)
                     this.Close();
             }
+
+            edfFileOutput = Arquivos.Abrir_Projeto_EDF(nomeProject, false);//desabilitado a escolha dos canais
+            if (edfFileOutput != null)
+            {
+                status_projeto = "Projeto_EDF";
+                AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1, Color.Green);
+                __numeroDeCanais = edfFileOutput.SignalInfo.Count;
+                CarregaNomesPadroes(numDePadroes, 0);
+                bool ListaExiste = false;
+                string aux_path = Arquivos.getPathUser();
+                aux_path += "Padroes_Eventos.txt";
+                if (Arquivos.ArquivoExiste(aux_path) == true)
+                {
+                    ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
+                    CarregaNomesPadroes(numDePadroes, 1);
+                    ListaExiste = true;
+                }
+                ChartInicializarThreads(__numeroDeCanais, ListaExiste);
+                btn_novoProjeto.Enabled = false;
+                btn_Importar.Enabled = false;
+                btn_novoProjeto.Enabled = false;
+                infoEDF.Enabled = true;
+                marcarEventos.Enabled = true;
+                inserirComent.Enabled = true;
+                btn_Importar.Enabled = false;
+                canaisCTRL = new int[23];
+            }
+            else
+                AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2, Color.Red);
         }
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -110,42 +140,14 @@ namespace AmbienteRPB
         // Ferramenta de importar sinais EEG de arquivo .EDF
         private void btn_Importar_Click(object sender, EventArgs e)
         {
-            string dir = AppDomain.CurrentDomain.BaseDirectory + "Modelos EDF\\";
+          /*  string dir = AppDomain.CurrentDomain.BaseDirectory + "Modelos EDF\\";
             openFileEDF.InitialDirectory = dir;
             if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
                 nomeProject = openFileEDF.FileName;
-                edfFileOutput = Arquivos.Abrir_Projeto_EDF(nomeProject, false);//desabilitado a escolha dos canais
-                if (edfFileOutput != null)
-                {
-                    status_projeto = "Projeto_EDF";
-                    AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1, Color.Green);
-                    __numeroDeCanais = edfFileOutput.SignalInfo.Count;
-                    CarregaNomesPadroes(numDePadroes,0);
-                    bool ListaExiste = false;
-                    string aux_path = Arquivos.getPathUser();
-                    aux_path += "Padroes_Eventos.txt";
-                    if (Arquivos.ArquivoExiste(aux_path) == true)
-                    {
-                        ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
-                        CarregaNomesPadroes(numDePadroes, 1);
-                        ListaExiste = true;
-                    }
-                    ChartInicializarThreads(__numeroDeCanais, ListaExiste);
-                    btn_novoProjeto.Enabled = false;
-                    btn_Importar.Enabled = false;
-                    btn_novoProjeto.Enabled = false;
-                    infoEDF.Enabled = true;
-                    marcarEventos.Enabled = true;
-                    inserirComent.Enabled = true;
-                    btn_Importar.Enabled = false;
-                    canaisCTRL = new int[23];
-                     
-                }
-                else
-                    AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2, Color.Red);
+                
             }
-            openFileEDF.Dispose();
+            openFileEDF.Dispose();*/
          }
         //------------------------------------------------------------------------------------------
         //Salva Projeto em que está sendo executado
