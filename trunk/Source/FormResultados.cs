@@ -255,7 +255,10 @@ namespace AmbienteRPB
             }
             //Atualizar o chart
             for (int i = 0; i < chart1.ChartAreas.Count(); i++)
-                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * 256; 
+            {
+                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * 256;
+                chart1.ChartAreas["canal" + 1].AxisX.ScaleView.Position = e.NewValue * 256;
+            }
         }
         //------------------------------------------------------------------------------------------
         private void AddSegInChart()
@@ -291,9 +294,31 @@ namespace AmbienteRPB
             {
                 vector_evento = new double[selecionar_evento.vector.Count()];
                 vector_evento = selecionar_evento.vector;
-                DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                if (resposta == DialogResult.Yes)
+                DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?\nSim - Todo o sinal\nNão - Somente 10s de sinal\nCancel - Aborta a operação\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
+                if (resposta == DialogResult.No)
                     inicia_correlacao();
+                if (resposta == DialogResult.Yes)
+                {
+                    while (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
+                    {
+                        int excluir;
+                        int tempo = DataRecords_lidos * 256;
+                        edfFileOutput.ReadDataBlock(DataRecords_lidos);
+                        DataRecords_lidos++;
+                        //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                        for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                        {
+                            for (int i = 0; i < 256; i++)
+                            {
+                                if (j == CanalAtual)
+                                    chart1.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                                else
+                                    excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
+                            }
+                        }
+                    }
+                    inicia_correlacao();
+                }
             }
         }
         //------------------------------------------------------------------------------------------
