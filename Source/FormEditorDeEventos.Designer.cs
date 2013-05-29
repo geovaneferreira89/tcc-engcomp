@@ -91,6 +91,7 @@
             this.cbx_Referencia.Text = "Referência";
             this.cbx_Referencia.UseVisualStyleBackColor = true;
             this.cbx_Referencia.Click += new System.EventHandler(this.cbx_Referencia_Click);
+            this.cbx_Referencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormEditorDeEventos_KeyUp);
             // 
             // groupBox3
             // 
@@ -193,6 +194,7 @@
             this.chart1.Size = new System.Drawing.Size(618, 350);
             this.chart1.TabIndex = 14;
             this.chart1.Text = "chart1";
+            this.chart1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormEditorDeEventos_KeyUp);
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             // 
             // cbx_Inicio
@@ -265,6 +267,7 @@
             this.lbxEventosPorTipo.Size = new System.Drawing.Size(108, 381);
             this.lbxEventosPorTipo.TabIndex = 15;
             this.lbxEventosPorTipo.SelectedIndexChanged += new System.EventHandler(this.lbxEventosPorTipo_SelectedIndexChanged);
+            this.lbxEventosPorTipo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormEditorDeEventos_KeyUp);
             // 
             // comboTiposDeEventos
             // 
@@ -275,6 +278,7 @@
             this.comboTiposDeEventos.TabIndex = 14;
             this.comboTiposDeEventos.Tag = "";
             this.comboTiposDeEventos.SelectedIndexChanged += new System.EventHandler(this.comboTiposDeEventos_SelectedIndexChanged);
+            this.comboTiposDeEventos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormEditorDeEventos_KeyUp);
             // 
             // label4
             // 
@@ -337,10 +341,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 484);
             this.Controls.Add(this.gbxEditorDeEventos);
+            this.KeyPreview = true;
             this.Name = "FormEditorDeEventos";
             this.ShowIcon = false;
             this.Text = "Editor De Eventos";
             this.Load += new System.EventHandler(this.FormEditorDeEventos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormEditorDeEventos_KeyUp);
             this.gbxEditorDeEventos.ResumeLayout(false);
             this.gbxEditorDeEventos.PerformLayout();
             this.groupBox3.ResumeLayout(false);

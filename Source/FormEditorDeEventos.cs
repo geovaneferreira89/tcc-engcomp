@@ -16,7 +16,7 @@ namespace AmbienteRPB
 {
     public partial class FormEditorDeEventos : Form
     {
-      
+
         private ListaPadroesEventos[] Listas;
         private GerenArquivos Arquivos;
         private string EDF_File;
@@ -28,13 +28,13 @@ namespace AmbienteRPB
 
         public double[] Vector;
 
-        VerticalLineAnnotation Cursor_vertical_Inicio; 
+        VerticalLineAnnotation Cursor_vertical_Inicio;
         VerticalLineAnnotation Cursor_vertical_Fim;
         VerticalLineAnnotation Cursor_vertical_Referencia;
         //---------------------------------------------------------------------------
         public FormEditorDeEventos(ListaPadroesEventos[] _Listas, string _EDF_File)
         {
-            InitializeComponent();            
+            InitializeComponent();
             Listas = _Listas;
             EDF_File = _EDF_File;
         }
@@ -76,6 +76,7 @@ namespace AmbienteRPB
                 chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
+                cbx_Referencia.Text = "Referência";
             }
             if (lbxEventosPorTipo.SelectedItem != null)
             {
@@ -83,34 +84,34 @@ namespace AmbienteRPB
                 chart1.Series.Add("Serie01");
                 chart1.Series["Serie01"].ChartArea = "Padrao";
                 chart1.Series["Serie01"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                
+
                 chart1.Series["Serie01"].IsVisibleInLegend = false;
                 chart1.Legends.Clear();
                 chart1.ChartAreas["Padrao"].BackColor = Color.Transparent;
                 chart1.ChartAreas["Padrao"].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas["Padrao"].AxisY.Enabled = AxisEnabled.False;
-                
+
                 edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString();
                 //Mostra valores ao lado dos labels
                 //cbx_Inicio.Text = "Início " +  Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex);
                 //cbx_Referencia.Text = "Referência " + Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex);
                 //cbx_Fim.Text = "Fim: " + Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex);
 
-                ValorInicio = new PointF(); 
-                ValorInicio =  Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex);
+                ValorInicio = new PointF();
+                ValorInicio = Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex);
                 ValorFim = new PointF();
                 ValorFim = Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex);
                 ValorReferencia = new PointF();
                 ValorReferencia = Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex);
-                
+
                 //Carrega sinal edf do arquivo.. 
                 Arquivos = new GerenArquivos();
                 SinalEEG = Arquivos.Abrir_Projeto_EDF(EDF_File, false);
 
                 //Nome do canal
-                string nome_canal =  Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex);
+                string nome_canal = Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex);
                 int X_ = nome_canal.IndexOf("_");
-                nome_canal = nome_canal.Substring(X_+1);
+                nome_canal = nome_canal.Substring(X_ + 1);
                 //Inicio do enveto
                 float x = Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex).X;
                 float x_max = Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(lbxEventosPorTipo.SelectedIndex).X;
@@ -119,9 +120,9 @@ namespace AmbienteRPB
                 float aux;
                 int DataRecords_lidos = 0;
                 int tempo_X = 0;
-                while (tempo_X <= (int) x_max)
+                while (tempo_X <= (int)x_max)
                 {
-                    
+
                     SinalEEG.ReadDataBlock(DataRecords_lidos);
                     DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
@@ -140,14 +141,14 @@ namespace AmbienteRPB
                                 tempo_X++;
                             }
                             else
-                               aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                         }
                     }
                 }
                 AtualizarRefInChart oAlpha = new AtualizarRefInChart(chart1, Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex).X);
                 Thread oThread = new Thread(new ThreadStart(oAlpha.Init));
                 oThread.Start();
-             }
+            }
         }
         private void add_Ref()
         {
@@ -175,7 +176,7 @@ namespace AmbienteRPB
                     chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
                     chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
                     //Valores
-                    ValorInicio.X =  (float)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                    ValorInicio.X = (float)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                     ValorInicio.Y = (float)chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
                     //Deleta linha se já tiver, ou cria uma nova
                     if (Cursor_vertical_Inicio == null)
@@ -192,13 +193,13 @@ namespace AmbienteRPB
                     chart1.Annotations.Add(Cursor_vertical_Inicio);
                     btnSalvar.Enabled = true;
                 }
-               if (cbx_Fim.Checked == true)
+                if (cbx_Fim.Checked == true)
                 {
                     chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
                     chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
                     //Valores
-                    ValorFim.X =  (float)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                    ValorFim.Y =  (float)chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+                    ValorFim.X = (float)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                    ValorFim.Y = (float)chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
                     //Deleta linha se já tiver, ou cria uma nova
                     if (Cursor_vertical_Fim == null)
                         Cursor_vertical_Fim = new VerticalLineAnnotation();
@@ -234,6 +235,8 @@ namespace AmbienteRPB
                     Cursor_vertical_Referencia.AnchorX = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                     Cursor_vertical_Referencia.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
                     chart1.Annotations.Add(Cursor_vertical_Referencia);
+
+                    cbx_Referencia.Text = "Referência : " + ValorReferencia.Y.ToString();
                     //Habilita opção de salvar
                     btnSalvar.Enabled = true;
                 }
@@ -242,7 +245,7 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if(ValorInicio.X > ValorFim.X)
+            if (ValorInicio.X > ValorFim.X)
                 MessageBox.Show("Marcação errada.\n A posição de inicio está maior que a posição de fim.\n\nNão salvo.", "Reconhecimento Automatizado de Padrões em EEG");
             else
             {
@@ -280,7 +283,7 @@ namespace AmbienteRPB
             cbx_Inicio.Checked = false;
             cbx_Fim.Checked = false;
         }
-
+        //---------------------------------------------------------------------------        
         private void checkCorrela_CheckedChanged(object sender, EventArgs e)
         {
             if (checkCorrela.Checked)
@@ -298,6 +301,80 @@ namespace AmbienteRPB
             else
             {
                 vector = null;
+            }
+        }
+        //--------------------------------
+        private void FormEditorDeEventos_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    {
+                        //Ativa a opçao de selecionar vários canais
+                        MoveViaTeclado("Left");
+                        break;
+                    }
+                case Keys.Right:
+                    {
+                        //Ativa a opçao de selecionar vários canais
+                        MoveViaTeclado("Right");
+                        break;
+                    }
+            }
+        }
+        //-------------
+        private void MoveViaTeclado(string OP)
+        {
+            bool chave = true;
+            if (OP == "Left" && ValorReferencia.X == 0)
+            {
+                chave = false;
+            }
+            if (OP == "Right" && chart1.ChartAreas[0].AxisX.Maximum == ValorReferencia.X)
+            {
+                chave = false;
+            }
+            if (chave)
+            {
+                float newX = ValorReferencia.X;
+                if (OP == "Right")
+                    newX++;
+                else
+                    newX--;
+                if (cbx_Referencia.Checked == true)
+                {
+                    chart1.ChartAreas[0].CursorX.SelectionColor = Color.FromArgb(00, 50, 50, 50);
+                    chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new PointF(0, 0), false);
+                    //Valores
+                    ValorReferencia.X = (float)newX;
+                    int posicao=0;
+                    for (int i = 0; i < chart1.Series[0].Points.Count(); i++)
+                    {
+                        if (newX <= chart1.Series[0].Points[i].XValue)
+                        {
+                            posicao = i;
+                            i = chart1.Series[0].Points.Count();
+                        }
+                    }
+                    ValorReferencia.Y = (float)chart1.Series[0].Points[posicao].YValues[0];
+                    //Deleta linha se já tiver, ou cria uma nova
+                    if (Cursor_vertical_Referencia == null)
+                        Cursor_vertical_Referencia = new VerticalLineAnnotation();
+                    else
+                        chart1.Annotations.Remove(Cursor_vertical_Referencia);
+                    //Linha no Chart
+                    Cursor_vertical_Referencia.AnchorDataPoint = chart1.Series[0].Points[1];
+                    Cursor_vertical_Referencia.Height = chart1.ChartAreas[0].Position.Height;
+                    Cursor_vertical_Referencia.LineColor = Color.Orange;
+                    Cursor_vertical_Referencia.LineWidth = 1;
+                    Cursor_vertical_Referencia.AnchorX = ValorReferencia.X;
+                    Cursor_vertical_Referencia.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
+                    chart1.Annotations.Add(Cursor_vertical_Referencia);
+
+                    cbx_Referencia.Text = "Referência : " + ValorReferencia.Y.ToString();
+                    //Habilita opção de salvar
+                    btnSalvar.Enabled = true;
+                }
             }
         }
     }

@@ -20,6 +20,7 @@ namespace AmbienteRPB
         private Control _Grafico = null;
         private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
+        private VerticalLineAnnotation Cursor_vertical_Inicio; 
         //Controles Progress Bar-------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
         private delegate void AtualizaPloter(int valor, int caso);
@@ -136,8 +137,19 @@ namespace AmbienteRPB
                     //-----------------------------------------
                     case("Correlacao"):{
                         prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                        load_progress_bar(vector_evento.Count() * prb.Series[0].Points.Count(), 2);
+                        load_progress_bar(0, 4);
+                        load_progress_bar(vector_evento.Count(), 2);
                         float res = 0;
+                        double K = 0;
+                        float MaxY = 0;
+                        float MaxX = 0;
+                        for (int i = 0; i < vector_evento.Count(); i++)
+                        {
+                            K = (vector_evento[i]*vector_evento[i]) + K; 
+                            load_progress_bar(0, 1);
+                        }
+                        load_progress_bar(0, 4);
+                        load_progress_bar(vector_evento.Count() * prb.Series[0].Points.Count(), 2);
                         //Canal que está sendo amostrado
                         for (int i = 0; i < prb.Series[0].Points.Count; i++)
                         {
@@ -147,15 +159,33 @@ namespace AmbienteRPB
                                 //Se j+1 tem que ser menor que o tamanho do canal... 
                                 if ((j + i) < prb.Series[0].Points.Count)
                                 {
-                                    //AQUI entra a forma de correlação!!! 
-                                    res = (float)(prb.Series[0].Points[j + i].YValues[0] * vector_evento[j]);
-                                    //Vai Plotando o resultado...
-                                    prb.Series["canal" + 1].Points.AddY(res); 
-                                   
+                                    res = (float)((prb.Series[0].Points[j + i].YValues[0] * vector_evento[j])) + res;
                                 }
                                 //Incrementa a barra de progresso
                                 load_progress_bar(0, 1);
-                            }                            
+                            }
+                            res = (float)((1/K)*res);
+                            if (MaxY < res)
+                            {
+                                MaxY = res;
+                                MaxX = i;
+                                //Deleta linha se já tiver, ou cria uma nova
+                                if (Cursor_vertical_Inicio == null)
+                                    Cursor_vertical_Inicio = new VerticalLineAnnotation();
+                                else
+                                    prb.Annotations.Remove(Cursor_vertical_Inicio);
+                                //Linha no Chart
+                                Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[0].Points[1];
+                                Cursor_vertical_Inicio.Height = prb.ChartAreas[0].Position.Height + prb.ChartAreas[0].Position.Height;
+                                Cursor_vertical_Inicio.LineColor = Color.Blue;
+                                Cursor_vertical_Inicio.LineWidth = 1;
+                                Cursor_vertical_Inicio.AnchorX = MaxX;
+                                Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[0].AxisY.Maximum;
+                                prb.Annotations.Add(Cursor_vertical_Inicio);
+                            }
+                            //Vai Plotando o resultado...
+                            prb.Series["canal" + 1].Points.AddY(res);
+                            res = 0;
                         }
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);
@@ -175,6 +205,7 @@ namespace AmbienteRPB
             }
             else
             {
+                prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
                 if (caso == 1)
                 {
                     if (prgbar != null)
@@ -184,12 +215,13 @@ namespace AmbienteRPB
                 }
                 if (caso == 2)  
                 {
-                    prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
                     prgbar.Visible = true;
                     prgbar.Maximum = valor;
                 }
                 if(caso == 3)
                     prgbar.Visible = false;
+                if (caso == 4)
+                    prgbar.Value = 0;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -214,7 +246,5 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
-
     }
-
 }
