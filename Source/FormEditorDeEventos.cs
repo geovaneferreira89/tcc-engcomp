@@ -377,6 +377,11 @@ namespace AmbienteRPB
                 }
             }
         }
+
+        private void groupBox2_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
+        }
     }
     //--------------------------------
     public class AtualizarRefInChart
