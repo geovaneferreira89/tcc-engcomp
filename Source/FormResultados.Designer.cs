@@ -41,10 +41,8 @@
             this.lbl_Tempo = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btn_SinalRetroceder = new System.Windows.Forms.ToolStripButton();
             this.btn_SinalProximo = new System.Windows.Forms.ToolStripButton();
             this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
-            this.btn_SinalAvancar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
@@ -171,10 +169,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_SinalRetroceder,
             this.btn_SinalProximo,
             this.btn_SinalAnterior,
-            this.btn_SinalAvancar,
             this.toolStripSeparator1,
             this.toolStripButton3,
             this.btn_Suspender});
@@ -183,16 +179,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(668, 25);
             this.toolStrip1.TabIndex = 18;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btn_SinalRetroceder
-            // 
-            this.btn_SinalRetroceder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_SinalRetroceder.Image = ((System.Drawing.Image)(resources.GetObject("btn_SinalRetroceder.Image")));
-            this.btn_SinalRetroceder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_SinalRetroceder.Name = "btn_SinalRetroceder";
-            this.btn_SinalRetroceder.Size = new System.Drawing.Size(27, 22);
-            this.btn_SinalRetroceder.Text = "<<";
-            this.btn_SinalRetroceder.Click += new System.EventHandler(this.btn_SinalRetroceder_Click);
             // 
             // btn_SinalProximo
             // 
@@ -212,16 +198,6 @@
             this.btn_SinalAnterior.Size = new System.Drawing.Size(23, 22);
             this.btn_SinalAnterior.Text = "^";
             this.btn_SinalAnterior.Click += new System.EventHandler(this.btn_SinalAnterior_Click);
-            // 
-            // btn_SinalAvancar
-            // 
-            this.btn_SinalAvancar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_SinalAvancar.Image = ((System.Drawing.Image)(resources.GetObject("btn_SinalAvancar.Image")));
-            this.btn_SinalAvancar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_SinalAvancar.Name = "btn_SinalAvancar";
-            this.btn_SinalAvancar.Size = new System.Drawing.Size(27, 22);
-            this.btn_SinalAvancar.Text = ">>";
-            this.btn_SinalAvancar.Click += new System.EventHandler(this.btn_SinalAvancar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -299,10 +275,8 @@
         private System.Windows.Forms.Label lbl_Tempo;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btn_SinalRetroceder;
         private System.Windows.Forms.ToolStripButton btn_SinalProximo;
         private System.Windows.Forms.ToolStripButton btn_SinalAnterior;
-        private System.Windows.Forms.ToolStripButton btn_SinalAvancar;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;

@@ -44,27 +44,35 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void FormResultados_Shown(object sender, EventArgs e)
         {
-            double Divisao = 100 / (double)3;
-            float _aux;
-            _aux = (float)Divisao;
-            for (int i = 0; i < 3; i++)
-            {   //Propriedades de cada sinal
-                chart1.ChartAreas.Add("canal" + i);
-                chart1.ChartAreas[i].BackColor      = Color.Transparent;
-                chart1.ChartAreas[i].AxisX.Enabled  = AxisEnabled.False;
-                chart1.ChartAreas[i].AxisY.Enabled  = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height= _aux+3;//+10 os sinais sobreescrevem
-                chart1.ChartAreas[i].Position.Width = 96;
-                chart1.ChartAreas[i].Position.X     = 4;
-                chart1.ChartAreas[i].Position.Y     = _aux * i;
-            }
-            AdicionaData(0);
+            AdicionaCanais();
             Adiciona_linhas_de_tempo();
 
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar,edfFileOutput, CanalAtual,"PlotaSinalEEG",vector_evento);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
+        }
+        //-----------------------------------------------------------------------------------------
+        private void AdicionaCanais()
+        {
+            double Divisao = 100 / (double)3;
+            float _aux;
+            _aux = (float)Divisao;
+            // Primeira serie é o canal 
+            // Segundo serie é para a correlação deste canal
+            for (int i = 0; i < 2; i++)
+            {   //Propriedades de cada sinal
+                int _pos = (CanalAtual + i);
+                chart1.ChartAreas.Add("canal" + _pos);
+                chart1.ChartAreas[_pos].BackColor = Color.Transparent;
+                chart1.ChartAreas[_pos].AxisX.Enabled = AxisEnabled.False;
+                chart1.ChartAreas[_pos].AxisY.Enabled = AxisEnabled.False;
+                chart1.ChartAreas[_pos].Position.Height = _aux + 3;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[_pos].Position.Width = 96;
+                chart1.ChartAreas[_pos].Position.X = 4;
+                chart1.ChartAreas[_pos].Position.Y = _aux * i;
+            }
+            AdicionaData(0);
         }
         //------------------------------------------------------------------------------------------
         private void Adiciona_linhas_de_tempo()
@@ -221,24 +229,20 @@ namespace AmbienteRPB
         //Mudança de sinal
         private void btn_SinalProximo_Click(object sender, EventArgs e)
         {
-
+            if (CanalAtual < edfFileOutput.SignalInfo.Count())
+            {
+                CanalAtual++;
+            }
         }
 
         private void btn_SinalAnterior_Click(object sender, EventArgs e)
         {
-
+            if (CanalAtual != 0)
+            {
+                CanalAtual--;
+            }
         }
-        //------------------------------------------------------------------------------------------
-        //Mudança no eixo de tempo do sinal
-        private void btn_SinalAvancar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_SinalRetroceder_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         //------------------------------------------------------------------------------------------
         private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
@@ -299,24 +303,12 @@ namespace AmbienteRPB
                     inicia_correlacao();
                 if (resposta == DialogResult.Yes)
                 {
-                    while (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
-                    {
-                        int excluir;
-                        int tempo = DataRecords_lidos * 256;
-                        edfFileOutput.ReadDataBlock(DataRecords_lidos);
-                        DataRecords_lidos++;
-                        //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                        for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
-                        {
-                            for (int i = 0; i < 256; i++)
-                            {
-                                if (j == CanalAtual)
-                                    chart1.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
-                                else
-                                    excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
-                            }
-                        }
-                    }
+                    double[] Parametros;
+                    Parametros = new double[3];
+                    Parametros[0] = DataRecords_lidos;
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros);
+                    Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
+                    Thread_.Start();
                     inicia_correlacao();
                 }
             }
