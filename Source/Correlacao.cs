@@ -27,7 +27,7 @@ namespace AmbienteRPB
         private System.Windows.Forms.ProgressBar prgbar = null;
         //Controles Scroll Bar --------------------------------------------------------------------
         private Control _ScrollBar = null;
-        private delegate void ScrollBar_Propriedades(int num_volta, EdfFile SinalEEG);
+        private delegate void ScrollBar_Propriedades(int _canal, EdfFile SinalEEG);
         private System.Windows.Forms.ScrollBar ScrollBar;
         //Arquivos EDF-----------------------------------------------------------------------------
         private EdfFile edfFileOutput;
@@ -55,16 +55,13 @@ namespace AmbienteRPB
                 {
                     Plotar(2, Canal, null, Opcao, Vector_evento);
                     Plotar(1, Canal, edfFileOutput, Opcao, Vector_evento);
-                    FuncScrollBar_Propriedades(1, edfFileOutput);
+                    FuncScrollBar_Propriedades(Canal, edfFileOutput);
                 }
                 if (Opcao == "Correlacao")
-                {
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento);
-                }
+
                 if (Opcao == "CarregarTodoSinal")
-                {
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento);
-                }
             }
         }
        
@@ -95,7 +92,7 @@ namespace AmbienteRPB
                                         {
                                             for (int i = 0; i < 256; i++)
                                             {
-                                                if (j == canal)
+                                                if (j == (canal/2))
                                                     prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                                 else
                                                    excluir = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]; 
@@ -105,10 +102,10 @@ namespace AmbienteRPB
                                         }
                                     }
                                 }
-                                prb.Titles[canal].Text = SinalEEG.SignalInfo[canal].SignalLabel;
+                                prb.Titles[canal].Text = SinalEEG.SignalInfo[(canal/2)].SignalLabel;
                                 prb.Series["canal" + canal].Color = Color.FromName("Black");
 
-                                prb.Titles[(canal + 1)].Text = "CORRL" + (canal + 1);
+                                prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/2) + 1);
                                 prb.Series["canal" + (canal + 1)].Color = Color.Green;
                   
                                 load_progress_bar(1, 3);
@@ -191,7 +188,7 @@ namespace AmbienteRPB
                                 prb.Annotations.Add(Cursor_vertical_Inicio);
                             }
                             //Vai Plotando o resultado...
-                            prb.Series["canal" + 1].Points.AddY(res);
+                            prb.Series[canal + 1].Points.AddY(res);
                             res = 0;
                         }
                         //desabilita a barra de progresso
@@ -216,10 +213,10 @@ namespace AmbienteRPB
                             {
                                 for (int i = 0; i < 256; i++)
                                 {
-                                    if (j == canal)
-                                        prb.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                                    if (j == (canal/2))
+                                        prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                                     else
-                                        excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
+                                        excluir = edfFileOutput.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                                 }
                             }
                             //Incrementa a barra de progresso
@@ -261,24 +258,27 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
-        private void FuncScrollBar_Propriedades(int num_volta, EdfFile SinalEEG)
+        private void FuncScrollBar_Propriedades(int _canal, EdfFile SinalEEG)
         {
             if (_ScrollBar.InvokeRequired)
             {
-                _ScrollBar.BeginInvoke(new ScrollBar_Propriedades(FuncScrollBar_Propriedades), new Object[] {num_volta,  SinalEEG});
+                _ScrollBar.BeginInvoke(new ScrollBar_Propriedades(FuncScrollBar_Propriedades), new Object[] { _canal, SinalEEG });
             }
             else
             {
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
                 ScrollBar.Enabled = true;
-                for (int i = 0; i < 2; i++)
-                {
-                    prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
-                    prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
-                }
+
+                prb.ChartAreas[_canal].AxisX.ScaleView.Size = 2500;
+                prb.ChartAreas[_canal].AxisX.ScrollBar.Enabled = false;
+
+                prb.ChartAreas[_canal + 1].AxisX.ScaleView.Size = 2500;
+                prb.ChartAreas[_canal + 1].AxisX.ScrollBar.Enabled = false;
+               
                 ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
                 ScrollBar.SmallChange = 10;//segundos
-                ScrollBar.LargeChange = 10;//segundos            
+                ScrollBar.LargeChange = 10;//segundos       
+                ScrollBar.Value = 0;
             }
         }
         //------------------------------------------------------------------------------------------
