@@ -61,6 +61,10 @@ namespace AmbienteRPB
                 {
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento);
                 }
+                if (Opcao == "CarregarTodoSinal")
+                {
+                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento);
+                }
             }
         }
        
@@ -100,9 +104,12 @@ namespace AmbienteRPB
                                             load_progress_bar(0, 1);
                                         }
                                     }
-                                }  
-                                prb.Titles[0].Text = SinalEEG.SignalInfo[canal].SignalLabel;
+                                }
+                                prb.Titles[canal].Text = SinalEEG.SignalInfo[canal].SignalLabel;
                                 prb.Series["canal" + canal].Color = Color.FromName("Black");
+
+                                prb.Titles[(canal + 1)].Text = "CORRL" + (canal + 1);
+                                prb.Series["canal" + (canal + 1)].Color = Color.Green;
                   
                                 load_progress_bar(1, 3);
                             }
@@ -121,16 +128,16 @@ namespace AmbienteRPB
                                 prb.Titles[canal].Position.X = 0;
                                 prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Y;
 
-                                prb.Series.Add("canal" + 1);
-                                prb.Series["canal" + 1].ChartArea = "canal" + 1;
-                                prb.Series["canal" + 1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-                                prb.Titles.Add("canal" + 1);
-                                prb.Titles[1].DockedToChartArea = "canal" + 1;
-                                prb.Titles[1].Position.Height = 3;
-                                prb.Titles[1].Position.Width = 40;
-                                prb.Titles[1].Alignment = ContentAlignment.MiddleLeft;
-                                prb.Titles[1].Position.X = 0;
-                                prb.Titles[1].Position.Y = prb.ChartAreas[1].Position.Y;
+                                prb.Series.Add("canal" + (canal + 1));
+                                prb.Series["canal" + (canal+1)].ChartArea = "canal" + (canal+1);
+                                prb.Series["canal" + (canal + 1)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                                prb.Titles.Add("canal" + (canal + 1));
+                                prb.Titles[(canal + 1)].DockedToChartArea = "canal" + (canal +1);
+                                prb.Titles[(canal + 1)].Position.Height = 3;
+                                prb.Titles[(canal + 1)].Position.Width = 40;
+                                prb.Titles[(canal + 1)].Alignment = ContentAlignment.MiddleLeft;
+                                prb.Titles[(canal + 1)].Position.X = 0;
+                                prb.Titles[(canal + 1)].Position.Y = prb.ChartAreas[(canal +1)].Position.Y;
                             }
                             break;
                     }
@@ -149,17 +156,17 @@ namespace AmbienteRPB
                             load_progress_bar(0, 1);
                         }
                         load_progress_bar(0, 4);
-                        load_progress_bar(vector_evento.Count() * prb.Series[0].Points.Count(), 2);
+                        load_progress_bar(vector_evento.Count() * prb.Series[canal].Points.Count(), 2);
                         //Canal que está sendo amostrado
-                        for (int i = 0; i < prb.Series[0].Points.Count; i++)
+                        for (int i = 0; i < prb.Series[canal].Points.Count; i++)
                         {
                             //Vetor do Evento
                             for (int j = 0; j < vector_evento.Count(); j++)
                             {
                                 //Se j+1 tem que ser menor que o tamanho do canal... 
-                                if ((j + i) < prb.Series[0].Points.Count)
+                                if ((j + i) < prb.Series[canal].Points.Count)
                                 {
-                                    res = (float)((prb.Series[0].Points[j + i].YValues[0] * vector_evento[j])) + res;
+                                    res = (float)((prb.Series[canal].Points[j + i].YValues[0] * vector_evento[j])) + res;
                                 }
                                 //Incrementa a barra de progresso
                                 load_progress_bar(0, 1);
@@ -175,12 +182,12 @@ namespace AmbienteRPB
                                 else
                                     prb.Annotations.Remove(Cursor_vertical_Inicio);
                                 //Linha no Chart
-                                Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[0].Points[1];
-                                Cursor_vertical_Inicio.Height = prb.ChartAreas[0].Position.Height + prb.ChartAreas[0].Position.Height;
+                                Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[canal].Points[1];
+                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height + prb.ChartAreas[canal].Position.Height;
                                 Cursor_vertical_Inicio.LineColor = Color.Blue;
                                 Cursor_vertical_Inicio.LineWidth = 1;
                                 Cursor_vertical_Inicio.AnchorX = MaxX;
-                                Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[0].AxisY.Maximum;
+                                Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
                                 prb.Annotations.Add(Cursor_vertical_Inicio);
                             }
                             //Vai Plotando o resultado...
@@ -192,6 +199,35 @@ namespace AmbienteRPB
                         break;
                     }
                     //-----------------------------------------
+                   case("CarregarTodoSinal"):{
+                       int DataRecords_lidos = (int)vector_evento[0];
+
+                        prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                        load_progress_bar(0, 4);
+                        load_progress_bar(edfFileOutput.FileInfo.NrDataRecords - DataRecords_lidos, 2);
+                        while (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
+                        {
+                            int excluir;
+                            int tempo = DataRecords_lidos * 256;
+                            edfFileOutput.ReadDataBlock(DataRecords_lidos);
+                            DataRecords_lidos++;
+                            //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                            for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                            {
+                                for (int i = 0; i < 256; i++)
+                                {
+                                    if (j == canal)
+                                        prb.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                                    else
+                                        excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
+                                }
+                            }
+                            //Incrementa a barra de progresso
+                            load_progress_bar(0, 1);
+                        }
+                        load_progress_bar(1, 3);
+                       break;
+                    }
                 }
             }
         }
@@ -235,7 +271,7 @@ namespace AmbienteRPB
             {
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
                 ScrollBar.Enabled = true;
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
                     prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
