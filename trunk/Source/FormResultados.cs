@@ -230,7 +230,7 @@ namespace AmbienteRPB
         //Mudança de sinal
         private void btn_SinalProximo_Click(object sender, EventArgs e)
         {
-            if ((CanalAtual/2) < (edfFileOutput.SignalInfo.Count()-1))
+            if ((CanalAtual/3) < (edfFileOutput.SignalInfo.Count()-1))
             {
                 //Desabilita o canal que está sendo exibido... 
                 chart1.ChartAreas[CanalAtual].Visible = false;
@@ -348,8 +348,8 @@ namespace AmbienteRPB
         //Passar para thread depois... 
         private void inicia_correlacao()
         {
-           chart1.Series["canal" + 1].Points.Clear();
-            
+            chart1.Series[CanalAtual+1].Points.Clear();
+            chart1.Series[CanalAtual+2].Points.Clear();
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
