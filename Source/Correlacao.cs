@@ -92,7 +92,7 @@ namespace AmbienteRPB
                                         {
                                             for (int i = 0; i < 256; i++)
                                             {
-                                                if (j == (canal/2))
+                                                if (j == (canal/3))
                                                     prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                                 else
                                                    excluir = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]; 
@@ -102,11 +102,14 @@ namespace AmbienteRPB
                                         }
                                     }
                                 }
-                                prb.Titles[canal].Text = SinalEEG.SignalInfo[(canal/2)].SignalLabel;
+                                prb.Titles[canal].Text = SinalEEG.SignalInfo[(canal/3)].SignalLabel;
                                 prb.Series["canal" + canal].Color = Color.FromName("Black");
 
-                                prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/2) + 1);
+                                prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/3) + 1);
                                 prb.Series["canal" + (canal + 1)].Color = Color.Green;
+
+                                prb.Titles[(canal + 2)].Text = "CORRL" + ((canal/3) + 2);
+                                prb.Series["canal" + (canal + 1)].Color = Color.Red;
                   
                                 load_progress_bar(1, 3);
                             }
@@ -135,6 +138,17 @@ namespace AmbienteRPB
                                 prb.Titles[(canal + 1)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 1)].Position.X = 0;
                                 prb.Titles[(canal + 1)].Position.Y = prb.ChartAreas[(canal +1)].Position.Y;
+
+                                prb.Series.Add("canal" + (canal + 2));
+                                prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
+                                prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                                prb.Titles.Add("canal" + (canal + 2));
+                                prb.Titles[(canal + 2)].DockedToChartArea = "canal" + (canal + 2);
+                                prb.Titles[(canal + 2)].Position.Height = 3;
+                                prb.Titles[(canal + 2)].Position.Width = 40;
+                                prb.Titles[(canal + 2)].Alignment = ContentAlignment.MiddleLeft;
+                                prb.Titles[(canal + 2)].Position.X = 0;
+                                prb.Titles[(canal + 2)].Position.Y = prb.ChartAreas[(canal + 2)].Position.Y;
                             }
                             break;
                     }
@@ -193,6 +207,9 @@ namespace AmbienteRPB
                         }
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);
+                        //Inicia a segunda tecnica de correlação... 
+                        //FAZER  prb.Series[canal + 2].Points.AddY(res);
+
                         break;
                     }
                     //-----------------------------------------
@@ -213,7 +230,7 @@ namespace AmbienteRPB
                             {
                                 for (int i = 0; i < 256; i++)
                                 {
-                                    if (j == (canal/2))
+                                    if (j == (canal/3))
                                         prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                                     else
                                         excluir = edfFileOutput.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
@@ -274,6 +291,9 @@ namespace AmbienteRPB
 
                 prb.ChartAreas[_canal + 1].AxisX.ScaleView.Size = 2500;
                 prb.ChartAreas[_canal + 1].AxisX.ScrollBar.Enabled = false;
+
+                prb.ChartAreas[_canal + 2].AxisX.ScaleView.Size = 2500;
+                prb.ChartAreas[_canal + 2].AxisX.ScrollBar.Enabled = false;
                
                 ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
                 ScrollBar.SmallChange = 10;//segundos
