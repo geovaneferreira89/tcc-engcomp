@@ -61,7 +61,7 @@ namespace AmbienteRPB
             _aux = (float)Divisao;
             // Primeira serie é o canal 
             // Segundo serie é para a correlação deste canal
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {   //Propriedades de cada sinal
                 int _pos = (CanalAtual + i);
                 chart1.ChartAreas.Add("canal" + _pos);
@@ -235,10 +235,11 @@ namespace AmbienteRPB
                 //Desabilita o canal que está sendo exibido... 
                 chart1.ChartAreas[CanalAtual].Visible = false;
                 chart1.ChartAreas[CanalAtual + 1].Visible = false;
+                chart1.ChartAreas[CanalAtual + 2].Visible = false;
                 //Incrementa o canal...
-                CanalAtual = CanalAtual + 2;
+                CanalAtual = CanalAtual + 3;
                 //Cria as séries para o novo canal, se ela não existe (incrementa CanaisCriados)
-                if (CanaisCriados <= (CanalAtual / 2))
+                if (CanaisCriados <= (CanalAtual / 3))
                 {
                     AdicionaCanais();
                     Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento);
@@ -251,6 +252,7 @@ namespace AmbienteRPB
                 {
                     chart1.ChartAreas[CanalAtual].Visible = true;
                     chart1.ChartAreas[CanalAtual + 1].Visible = true;
+                    chart1.ChartAreas[CanalAtual + 2].Visible = true;
                 }
             }
         }
@@ -262,11 +264,12 @@ namespace AmbienteRPB
                 //Desabilita o canal que está sendo exibido... 
                 chart1.ChartAreas[CanalAtual].Visible = false;
                 chart1.ChartAreas[CanalAtual + 1].Visible = false;
+                chart1.ChartAreas[CanalAtual + 2].Visible = false;
                 //Carrega o canal inferior, o qual já está cirado
-                CanalAtual = CanalAtual - 2;
+                CanalAtual = CanalAtual - 3;
                 chart1.ChartAreas[CanalAtual].Visible = true;
                 chart1.ChartAreas[CanalAtual + 1].Visible = true;
-                chart1.Series[CanalAtual + 1].Enabled = true;
+                chart1.ChartAreas[CanalAtual + 2].Visible = true;
             }
         }
         
@@ -289,6 +292,7 @@ namespace AmbienteRPB
             {
                 chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * 256;
                 chart1.ChartAreas[CanalAtual+1].AxisX.ScaleView.Position = e.NewValue * 256;
+                chart1.ChartAreas[CanalAtual+2].AxisX.ScaleView.Position = e.NewValue * 256;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -307,7 +311,7 @@ namespace AmbienteRPB
                     {
                         for (int i = 0; i < 256; i++)
                         {
-                            if (j == (CanalAtual/2))
+                            if (j == (CanalAtual/3))
                                 chart1.Series[CanalAtual].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                             else
                                 excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
