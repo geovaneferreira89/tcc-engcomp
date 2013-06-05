@@ -109,7 +109,7 @@ namespace AmbienteRPB
                                 prb.Series["canal" + (canal + 1)].Color = Color.Green;
 
                                 prb.Titles[(canal + 2)].Text = "CORRL" + ((canal/3) + 2);
-                                prb.Series["canal" + (canal + 1)].Color = Color.Red;
+                                prb.Series["canal" + (canal + 2)].Color = Color.Red;
                   
                                 load_progress_bar(1, 3);
                             }
@@ -161,6 +161,9 @@ namespace AmbienteRPB
                         double K = 0;
                         float MaxY = 0;
                         float MaxX = 0;
+                        //===================================================================
+                        //                  Primeira etapa de correlação
+                        //===================================================================     
                         for (int i = 0; i < vector_evento.Count(); i++)
                         {
                             K = (vector_evento[i]*vector_evento[i]) + K; 
@@ -194,7 +197,7 @@ namespace AmbienteRPB
                                     prb.Annotations.Remove(Cursor_vertical_Inicio);
                                 //Linha no Chart
                                 Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[canal].Points[1];
-                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height + prb.ChartAreas[canal].Position.Height;
+                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height *3;
                                 Cursor_vertical_Inicio.LineColor = Color.Blue;
                                 Cursor_vertical_Inicio.LineWidth = 1;
                                 Cursor_vertical_Inicio.AnchorX = MaxX;
@@ -209,7 +212,56 @@ namespace AmbienteRPB
                         load_progress_bar(1, 3);
                         //Inicia a segunda tecnica de correlação... 
                         //FAZER  prb.Series[canal + 2].Points.AddY(res);
-
+                        DialogResult resposta = MessageBox.Show("Deseja iniciar a segunda correlação?\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                        //===================================================================
+                        //                  Segunda etapa de correlação
+                        //===================================================================                        
+                        if (resposta == DialogResult.Yes)
+                        {
+                            load_progress_bar(0, 4);
+                            load_progress_bar(vector_evento.Count(), 2);
+                            load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
+                            //Canal que está sendo amostrado
+                            res = 0;
+                            for (int i = 0; i < prb.Series[canal +1].Points.Count; i++)
+                            {
+                                //Vetor do Evento
+                                for (int j = 0; j < vector_evento.Count(); j++)
+                                {
+                                    //Se j+1 tem que ser menor que o tamanho do canal... 
+                                    if ((j + i) < prb.Series[canal+1].Points.Count)
+                                    {
+                                        res = (float)((prb.Series[canal+1].Points[j + i].YValues[0] * vector_evento[j])) + res;
+                                    }
+                                    //Incrementa a barra de progresso
+                                    load_progress_bar(0, 1);
+                                }
+                                res = (float)((1 / K) * res);
+                                if (MaxY < res)
+                                {
+                                    MaxY = res;
+                                    MaxX = i;
+                                    //Deleta linha se já tiver, ou cria uma nova
+                                    if (Cursor_vertical_Inicio == null)
+                                        Cursor_vertical_Inicio = new VerticalLineAnnotation();
+                                    else
+                                        prb.Annotations.Remove(Cursor_vertical_Inicio);
+                                    //Linha no Chart
+                                    Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[canal].Points[1];
+                                    Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height * 3;
+                                    Cursor_vertical_Inicio.LineColor = Color.Red;
+                                    Cursor_vertical_Inicio.LineWidth = 1;
+                                    Cursor_vertical_Inicio.AnchorX = MaxX;
+                                    Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
+                                    prb.Annotations.Add(Cursor_vertical_Inicio);
+                                }
+                                //Vai Plotando o resultado...
+                                prb.Series[canal + 2].Points.AddY(res);
+                                res = 0;
+                            }
+                        }
+                        //desabilita a barra de progresso
+                        load_progress_bar(1, 3);
                         break;
                     }
                     //-----------------------------------------
