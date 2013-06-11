@@ -169,7 +169,7 @@
             this.verToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(146, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(154, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -181,7 +181,7 @@
             this.eventosToolStripMenuItem,
             this.btn_Correlacao});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
-            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "Ferramentas";
             // 
             // marcarEventos
@@ -195,34 +195,34 @@
             this.marcarEventos.Enabled = false;
             this.marcarEventos.Name = "marcarEventos";
             this.marcarEventos.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.marcarEventos.Size = new System.Drawing.Size(201, 22);
+            this.marcarEventos.Size = new System.Drawing.Size(212, 22);
             this.marcarEventos.Text = "Marcar Eventos";
             this.marcarEventos.Click += new System.EventHandler(this.marcarPadrõesToolStripMenuItem_Click);
             // 
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // renomearToolStripMenuItem
             // 
             this.renomearToolStripMenuItem.Name = "renomearToolStripMenuItem";
-            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.renomearToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.renomearToolStripMenuItem.Text = "Renomear";
             this.renomearToolStripMenuItem.Click += new System.EventHandler(this.renomearToolStripMenuItem_Click);
             // 
             // excluirToolStripMenuItem
             // 
             this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.excluirToolStripMenuItem.Text = "Excluir";
             // 
             // fecharToolStripMenuItem
             // 
             this.fecharToolStripMenuItem.Name = "fecharToolStripMenuItem";
-            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.fecharToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.fecharToolStripMenuItem.Text = "Fechar";
             this.fecharToolStripMenuItem.Click += new System.EventHandler(this.fecharToolStripMenuItem_Click_1);
             // 
@@ -230,7 +230,7 @@
             // 
             this.selecionarVáriosToolStripMenuItem.Name = "selecionarVáriosToolStripMenuItem";
             this.selecionarVáriosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selecionarVáriosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.selecionarVáriosToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.selecionarVáriosToolStripMenuItem.Text = "Selecionar Vários";
             // 
             // inserirComent
@@ -238,21 +238,21 @@
             this.inserirComent.Enabled = false;
             this.inserirComent.Name = "inserirComent";
             this.inserirComent.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.inserirComent.Size = new System.Drawing.Size(201, 22);
+            this.inserirComent.Size = new System.Drawing.Size(212, 22);
             this.inserirComent.Text = "Inserir Comentário";
             this.inserirComent.Click += new System.EventHandler(this.inserirComentárioToolStripMenuItem_Click);
             // 
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.eventosToolStripMenuItem.Text = "Editor de Eventos";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // btn_Correlacao
             // 
             this.btn_Correlacao.Name = "btn_Correlacao";
-            this.btn_Correlacao.Size = new System.Drawing.Size(201, 22);
+            this.btn_Correlacao.Size = new System.Drawing.Size(212, 22);
             this.btn_Correlacao.Text = "Correlação ";
             this.btn_Correlacao.Click += new System.EventHandler(this.btn_Correlacao_Click);
             // 
@@ -265,14 +265,14 @@
             this.infoEDF,
             this.imprimirEEGToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.verToolStripMenuItem.Text = "Opções ";
             // 
             // autoFreqToolStripMenuItem
             // 
             this.autoFreqToolStripMenuItem.Name = "autoFreqToolStripMenuItem";
             this.autoFreqToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.autoFreqToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.autoFreqToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.autoFreqToolStripMenuItem.Text = "Auto Freq";
             this.autoFreqToolStripMenuItem.Click += new System.EventHandler(this.autoFreqToolStripMenuItem_Click);
             // 
@@ -283,7 +283,7 @@
             this.segundosToolStripMenuItem,
             this.segundosToolStripMenuItem1});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(200, 22);
             this.toolStripMenuItem1.Text = "Tempo de tela";
             // 
             // segundoToolStripMenuItem
@@ -310,14 +310,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
             // 
             // infoEDF
             // 
             this.infoEDF.Enabled = false;
             this.infoEDF.Name = "infoEDF";
             this.infoEDF.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.infoEDF.Size = new System.Drawing.Size(192, 22);
+            this.infoEDF.Size = new System.Drawing.Size(200, 22);
             this.infoEDF.Text = "Informações EDF";
             this.infoEDF.Click += new System.EventHandler(this.informaçõesEDFToolStripMenuItem_Click);
             // 
@@ -325,7 +325,7 @@
             // 
             this.imprimirEEGToolStripMenuItem.Name = "imprimirEEGToolStripMenuItem";
             this.imprimirEEGToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimirEEGToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.imprimirEEGToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.imprimirEEGToolStripMenuItem.Text = "Imprimir - EEG";
             this.imprimirEEGToolStripMenuItem.Click += new System.EventHandler(this.imprimirEEGToolStripMenuItem_Click);
             // 
@@ -349,7 +349,7 @@
             // 
             this.lbl_ferramentaAtiva.ForeColor = System.Drawing.Color.Brown;
             this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
-            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(175, 17);
+            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(192, 17);
             this.lbl_ferramentaAtiva.Text = "Ferramenta Selecionada: Nenhuma";
             // 
             // lbl_x
@@ -371,14 +371,14 @@
             // 
             this.lbl_mouseX.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbl_mouseX.Name = "lbl_mouseX";
-            this.lbl_mouseX.Size = new System.Drawing.Size(54, 17);
+            this.lbl_mouseX.Size = new System.Drawing.Size(59, 17);
             this.lbl_mouseX.Text = "Mouse X: ";
             // 
             // lbl_mouseY
             // 
             this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbl_mouseY.Name = "lbl_mouseY";
-            this.lbl_mouseY.Size = new System.Drawing.Size(51, 17);
+            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
             this.lbl_mouseY.Text = "Mouse Y:";
             // 
             // toolInfo
@@ -423,6 +423,7 @@
             this.ScrollBar.SmallChange = 900;
             this.ScrollBar.TabIndex = 13;
             this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
+            this.ScrollBar.ValueChanged += new System.EventHandler(this.ScrollBar_ValueChanged);
             // 
             // tool_ControlesProjeto
             // 
@@ -549,13 +550,13 @@
             // lbl_cm
             // 
             this.lbl_cm.Name = "lbl_cm";
-            this.lbl_cm.Size = new System.Drawing.Size(29, 22);
+            this.lbl_cm.Size = new System.Drawing.Size(34, 22);
             this.lbl_cm.Text = "cm/s";
             // 
             // lblAmpli
             // 
             this.lblAmpli.Name = "lblAmpli";
-            this.lblAmpli.Size = new System.Drawing.Size(32, 22);
+            this.lblAmpli.Size = new System.Drawing.Size(36, 22);
             this.lblAmpli.Text = "Amp.";
             // 
             // AmplitudeCombo
@@ -585,7 +586,7 @@
             // lbl_V
             // 
             this.lbl_V.Name = "lbl_V";
-            this.lbl_V.Size = new System.Drawing.Size(19, 22);
+            this.lbl_V.Size = new System.Drawing.Size(21, 22);
             this.lbl_V.Text = "uV";
             // 
             // toolStripSeparator4
