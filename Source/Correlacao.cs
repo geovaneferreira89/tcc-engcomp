@@ -20,7 +20,8 @@ namespace AmbienteRPB
         private Control _Grafico = null;
         private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
-        private VerticalLineAnnotation Cursor_vertical_Inicio; 
+        private VerticalLineAnnotation Cursor_vertical_Inicio;
+        private VerticalLineAnnotation Cursor_vertical_Corr2;
         //Controles Progress Bar-------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
         private delegate void AtualizaPloter(int valor, int caso);
@@ -194,18 +195,19 @@ namespace AmbienteRPB
                                 MaxY = res;
                                 MaxX = i;
                                 //Deleta linha se já tiver, ou cria uma nova
-                                /*if (Cursor_vertical_Inicio == null)
+                                if (Cursor_vertical_Inicio == null)
                                     Cursor_vertical_Inicio = new VerticalLineAnnotation();
                                 else
                                     prb.Annotations.Remove(Cursor_vertical_Inicio);
                                 //Linha no Chart
                                 Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[canal].Points[1];
-                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height *3;
+                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height *2;
                                 Cursor_vertical_Inicio.LineColor = Color.Blue;
+                                Cursor_vertical_Inicio.LineDashStyle = ChartDashStyle.DashDot;
                                 Cursor_vertical_Inicio.LineWidth = 1;
                                 Cursor_vertical_Inicio.AnchorX = MaxX;
                                 Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
-                                prb.Annotations.Add(Cursor_vertical_Inicio);*/
+                                prb.Annotations.Add(Cursor_vertical_Inicio);
                             }
                             if (MinY > res)
                                 MinY = res;
@@ -219,7 +221,7 @@ namespace AmbienteRPB
                         Zero_correla.AnchorDataPoint = prb.Series[canal+1].Points[1];
                         Zero_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
                         Zero_correla.Height = 2;
-                        Zero_correla.LineDashStyle = ChartDashStyle.Dash;
+                        Zero_correla.LineDashStyle = ChartDashStyle.Dot;
                         Zero_correla.LineColor = System.Drawing.Color.SkyBlue;
                         Zero_correla.LineWidth = 1;
                         Zero_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
@@ -230,7 +232,7 @@ namespace AmbienteRPB
                         Max_correla.AnchorDataPoint = prb.Series[canal + 1].Points[1];
                         Max_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
                         Max_correla.Height = 2;
-                        Max_correla.LineDashStyle = ChartDashStyle.Dash;
+                        Max_correla.LineDashStyle = ChartDashStyle.Dot;
                         Max_correla.LineColor = System.Drawing.Color.SkyBlue;
                         Max_correla.LineWidth = 1;
                         Max_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
@@ -242,7 +244,7 @@ namespace AmbienteRPB
                         Min_correla.AnchorDataPoint = prb.Series[canal + 1].Points[1];
                         Min_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
                         Min_correla.Height = 2;
-                        Min_correla.LineDashStyle = ChartDashStyle.Dash;
+                        Min_correla.LineDashStyle = ChartDashStyle.Dot;
                         Min_correla.LineColor = System.Drawing.Color.SkyBlue;
                         Min_correla.LineWidth = 1;
                         Min_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
@@ -271,20 +273,24 @@ namespace AmbienteRPB
                         //===================================================================                        
                         if (resposta == DialogResult.Yes)
                         {
+                            MaxX = 0;
+                            MaxY = 0;
+                            Media = 0;
+                            MinY = 0;
                             load_progress_bar(0, 4);
                             load_progress_bar(vector_evento.Count(), 2);
                             load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
                             //Canal que está sendo amostrado
                             res = 0;
-                            for (int i = 0; i < prb.Series[canal +1].Points.Count; i++)
+                            for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
                             {
                                 //Vetor do Evento
                                 for (int j = 0; j < vector_evento.Count(); j++)
                                 {
                                     //Se j+1 tem que ser menor que o tamanho do canal... 
-                                    if ((j + i) < prb.Series[canal+1].Points.Count)
+                                    if ((j + i) < prb.Series[canal + 1].Points.Count)
                                     {
-                                        res = (float)((prb.Series[canal+1].Points[j + i].YValues[0] * vector_evento[j])) + res;
+                                        res = (float)((prb.Series[canal + 1].Points[j + i].YValues[0] * vector_evento[j])) + res;
                                     }
                                     //Incrementa a barra de progresso
                                     load_progress_bar(0, 1);
@@ -295,23 +301,75 @@ namespace AmbienteRPB
                                     MaxY = res;
                                     MaxX = i;
                                     //Deleta linha se já tiver, ou cria uma nova
-                                    if (Cursor_vertical_Inicio == null)
-                                        Cursor_vertical_Inicio = new VerticalLineAnnotation();
+                                    if (Cursor_vertical_Corr2 == null)
+                                        Cursor_vertical_Corr2 = new VerticalLineAnnotation();
                                     else
-                                        prb.Annotations.Remove(Cursor_vertical_Inicio);
+                                        prb.Annotations.Remove(Cursor_vertical_Corr2);
                                     //Linha no Chart
-                                    Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[canal].Points[1];
-                                    Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height * 3;
-                                    Cursor_vertical_Inicio.LineColor = Color.Red;
-                                    Cursor_vertical_Inicio.LineWidth = 1;
-                                    Cursor_vertical_Inicio.AnchorX = MaxX;
-                                    Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
-                                    prb.Annotations.Add(Cursor_vertical_Inicio);
+                                    Cursor_vertical_Corr2.AnchorDataPoint = prb.Series[canal].Points[1];
+                                    Cursor_vertical_Corr2.Height = prb.ChartAreas[canal].Position.Height * 3;
+                                    Cursor_vertical_Corr2.LineDashStyle = ChartDashStyle.DashDot;
+                                    Cursor_vertical_Corr2.LineColor = Color.Red;
+                                    Cursor_vertical_Corr2.LineWidth = 1;
+                                    Cursor_vertical_Corr2.AnchorX = MaxX;
+                                    Cursor_vertical_Corr2.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
+                                    prb.Annotations.Add(Cursor_vertical_Corr2);
                                 }
                                 //Vai Plotando o resultado...
+                                if (MinY > res)
+                                    MinY = res;
+                                //Vai Plotando o resultado...
                                 prb.Series[canal + 2].Points.AddY(res);
+                                Media = Media + res;
                                 res = 0;
                             }
+
+                            //Adiciona linha vertical em zero
+                            HorizontalLineAnnotation Zero_correla2 = new HorizontalLineAnnotation();
+                            Zero_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
+                            Zero_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
+                            Zero_correla2.Height = 2;
+                            Zero_correla2.LineDashStyle = ChartDashStyle.Dot;
+                            Zero_correla2.LineColor = System.Drawing.Color.SkyBlue;
+                            Zero_correla2.LineWidth = 1;
+                            Zero_correla2.AnchorX = prb.ChartAreas[canal+2].AxisX.Minimum;
+                            Zero_correla2.AnchorY = 0;
+                            prb.Annotations.Add(Zero_correla2);
+                            //Adiciona linha vertical Maximo em Y
+                            HorizontalLineAnnotation Max_correla2 = new HorizontalLineAnnotation();
+                            Max_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
+                            Max_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
+                            Max_correla2.Height = 2;
+                            Max_correla2.LineDashStyle = ChartDashStyle.Dot;
+                            Max_correla2.LineColor = System.Drawing.Color.SkyBlue;
+                            Max_correla2.LineWidth = 1;
+                            Max_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
+                            Max_correla2.AnchorY = MaxY;
+                            prb.Annotations.Add(Max_correla2);
+
+                            //Adiciona linha vertical Minimo em Y
+                            HorizontalLineAnnotation Min_correla2 = new HorizontalLineAnnotation();
+                            Min_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
+                            Min_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
+                            Min_correla2.Height = 2;
+                            Min_correla2.LineDashStyle = ChartDashStyle.Dot;
+                            Min_correla2.LineColor = System.Drawing.Color.SkyBlue;
+                            Min_correla2.LineWidth = 1;
+                            Min_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
+                            Min_correla2.AnchorY = MinY;
+                            prb.Annotations.Add(Min_correla2);
+
+                            //Adiciona linha vertical Média em Y
+                            HorizontalLineAnnotation Med_correla2 = new HorizontalLineAnnotation();
+                            Med_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
+                            Med_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
+                            Med_correla2.Height = 2;
+                            Med_correla2.LineDashStyle = ChartDashStyle.Dash;
+                            Med_correla2.LineColor = System.Drawing.Color.OrangeRed;
+                            Med_correla2.LineWidth = 1;
+                            Med_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
+                            Med_correla2.AnchorY = Media / prb.Series[canal + 2].Points.Count;
+                            prb.Annotations.Add(Med_correla2);
                         }
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);

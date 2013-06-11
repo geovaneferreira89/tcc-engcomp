@@ -54,6 +54,14 @@ namespace AmbienteRPB
         {
             for (int i = 0; i < 20; i++)
                 comboTiposDeEventos.Items.Add(Listas[i].NomePadrao);
+            if (comboTiposDeEventos.Items.Count != 0)
+            {
+                comboTiposDeEventos.Text = comboTiposDeEventos.Items[0].ToString();
+                lbxEventosPorTipo.Items.Clear();
+                for (int i = 0; i < Listas[0].NumeroEventos; i++)
+                    lbxEventosPorTipo.Items.Add(Listas[0].GetNomesEvento(i));
+
+            }
         }
         //---------------------------------------------------------------------------
         private void comboTiposDeEventos_SelectedIndexChanged(object sender, EventArgs e)
