@@ -160,7 +160,10 @@ namespace AmbienteRPB
                         float res = 0;
                         double K = 0;
                         float MaxY = 0;
+                        float MinY = 0;
                         float MaxX = 0;
+
+                        float Media = 0;
                         //===================================================================
                         //                  Primeira etapa de correlação
                         //===================================================================     
@@ -191,7 +194,7 @@ namespace AmbienteRPB
                                 MaxY = res;
                                 MaxX = i;
                                 //Deleta linha se já tiver, ou cria uma nova
-                                if (Cursor_vertical_Inicio == null)
+                                /*if (Cursor_vertical_Inicio == null)
                                     Cursor_vertical_Inicio = new VerticalLineAnnotation();
                                 else
                                     prb.Annotations.Remove(Cursor_vertical_Inicio);
@@ -202,12 +205,62 @@ namespace AmbienteRPB
                                 Cursor_vertical_Inicio.LineWidth = 1;
                                 Cursor_vertical_Inicio.AnchorX = MaxX;
                                 Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
-                                prb.Annotations.Add(Cursor_vertical_Inicio);
+                                prb.Annotations.Add(Cursor_vertical_Inicio);*/
                             }
+                            if (MinY > res)
+                                MinY = res;
                             //Vai Plotando o resultado...
                             prb.Series[canal + 1].Points.AddY(res);
+                            Media = Media + res;
                             res = 0;
                         }
+                        //Adiciona linha vertical em zero
+                        HorizontalLineAnnotation Zero_correla = new HorizontalLineAnnotation();
+                        Zero_correla.AnchorDataPoint = prb.Series[canal+1].Points[1];
+                        Zero_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
+                        Zero_correla.Height = 2;
+                        Zero_correla.LineDashStyle = ChartDashStyle.Dash;
+                        Zero_correla.LineColor = System.Drawing.Color.SkyBlue;
+                        Zero_correla.LineWidth = 1;
+                        Zero_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
+                        Zero_correla.AnchorY = 0;
+                        prb.Annotations.Add(Zero_correla);
+                        //Adiciona linha vertical Maximo em Y
+                        HorizontalLineAnnotation Max_correla = new HorizontalLineAnnotation();
+                        Max_correla.AnchorDataPoint = prb.Series[canal + 1].Points[1];
+                        Max_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
+                        Max_correla.Height = 2;
+                        Max_correla.LineDashStyle = ChartDashStyle.Dash;
+                        Max_correla.LineColor = System.Drawing.Color.SkyBlue;
+                        Max_correla.LineWidth = 1;
+                        Max_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
+                        Max_correla.AnchorY = MaxY;
+                        prb.Annotations.Add(Max_correla);
+                        
+                        //Adiciona linha vertical Minimo em Y
+                        HorizontalLineAnnotation Min_correla = new HorizontalLineAnnotation();
+                        Min_correla.AnchorDataPoint = prb.Series[canal + 1].Points[1];
+                        Min_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
+                        Min_correla.Height = 2;
+                        Min_correla.LineDashStyle = ChartDashStyle.Dash;
+                        Min_correla.LineColor = System.Drawing.Color.SkyBlue;
+                        Min_correla.LineWidth = 1;
+                        Min_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
+                        Min_correla.AnchorY = MinY;
+                        prb.Annotations.Add(Min_correla);
+
+                        //Adiciona linha vertical Média em Y
+                        HorizontalLineAnnotation Med_correla = new HorizontalLineAnnotation();
+                        Med_correla.AnchorDataPoint = prb.Series[canal + 1].Points[1];
+                        Med_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
+                        Med_correla.Height = 2;
+                        Med_correla.LineDashStyle = ChartDashStyle.Dash;
+                        Med_correla.LineColor = System.Drawing.Color.OrangeRed;
+                        Med_correla.LineWidth = 1;
+                        Med_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
+                        Med_correla.AnchorY = Media/prb.Series[canal+1].Points.Count;
+                        prb.Annotations.Add(Med_correla);
+
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);
                         //Inicia a segunda tecnica de correlação... 

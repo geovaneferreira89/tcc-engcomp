@@ -55,6 +55,8 @@ namespace AmbienteRPB
         private bool teclaCTRL = false;
         private int[] canaisCTRL;
         private int countCTRL = 0;
+        //Scroll Bar
+        private int ScrollBarValue = 0;
         //-----------------------------------------------------------------------------------------
         public FormPrincipal(string _nomeProject)
         {
@@ -733,16 +735,41 @@ namespace AmbienteRPB
                 //"Apaga" 1s Primeiro de sinal, 256 em x
                 AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
                 AddSegInChart();
+                ScrollBarValue = e.NewValue;
             }
             else if (e.Type == ScrollEventType.SmallDecrement)
             {
                 AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
+                ScrollBarValue = e.NewValue;
             }
             //Atualizar o chart
             for (int i = 0; i < __numeroDeCanais; i++)
             {
                 chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * 256; //* Scroll_Click_Escala_Seg;
             }
+        }
+        //------------------------------------------------------------------------------------------
+        private void ScrollBar_ValueChanged(object sender, EventArgs e)
+        {
+            int ValueNew;
+            ValueNew = ((System.Windows.Forms.ScrollBar)(sender)).Value;
+             if (ScrollBarValue < ValueNew)
+               {
+                   //"Apaga" 1s Primeiro de sinal, 256 em x
+                   AdicionaData(ValueNew + Scroll_Click_Escala_Seg);
+                   AddSegInChart();
+                   ScrollBarValue = ValueNew;
+               }
+               else
+               {
+                   AdicionaData(ValueNew + Scroll_Click_Escala_Seg);
+                   ScrollBarValue = ValueNew;
+               }
+               //Atualizar o chart
+               for (int i = 0; i < __numeroDeCanais; i++)
+               {
+                   chart1.ChartAreas[i].AxisX.ScaleView.Position = ValueNew * 256; 
+               }
         }
         //-----------------------------------------------------------------------------------------
         //Mudar a escala de visualização de telas por clicque
