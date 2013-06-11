@@ -67,7 +67,7 @@
             this.comboTiposDeEventos.Location = new System.Drawing.Point(32, 3);
             this.comboTiposDeEventos.Name = "comboTiposDeEventos";
             this.comboTiposDeEventos.Size = new System.Drawing.Size(79, 21);
-            this.comboTiposDeEventos.TabIndex = 23;
+            this.comboTiposDeEventos.TabIndex = 1;
             this.comboTiposDeEventos.Tag = "";
             this.comboTiposDeEventos.SelectedIndexChanged += new System.EventHandler(this.comboTiposDeEventos_SelectedIndexChanged);
             // 
