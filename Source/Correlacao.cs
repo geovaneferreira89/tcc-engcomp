@@ -104,6 +104,7 @@ namespace AmbienteRPB
                                     }
                                 }
                                 prb.Titles[canal].Text = SinalEEG.SignalInfo[(canal/3)].SignalLabel;
+
                                 prb.Series["canal" + canal].Color = Color.FromName("Black");
 
                                 prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/3) + 1);
@@ -201,7 +202,7 @@ namespace AmbienteRPB
                                     prb.Annotations.Remove(Cursor_vertical_Inicio);
                                 //Linha no Chart
                                 Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[canal].Points[1];
-                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height *2;
+                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height * 3;
                                 Cursor_vertical_Inicio.LineColor = Color.Blue;
                                 Cursor_vertical_Inicio.LineDashStyle = ChartDashStyle.DashDot;
                                 Cursor_vertical_Inicio.LineWidth = 1;
@@ -257,7 +258,7 @@ namespace AmbienteRPB
                         Med_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
                         Med_correla.Height = 2;
                         Med_correla.LineDashStyle = ChartDashStyle.Dash;
-                        Med_correla.LineColor = System.Drawing.Color.OrangeRed;
+                        Med_correla.LineColor = System.Drawing.Color.Blue;
                         Med_correla.LineWidth = 1;
                         Med_correla.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
                         Med_correla.AnchorY = Media/prb.Series[canal+1].Points.Count;
@@ -309,7 +310,7 @@ namespace AmbienteRPB
                                     Cursor_vertical_Corr2.AnchorDataPoint = prb.Series[canal].Points[1];
                                     Cursor_vertical_Corr2.Height = prb.ChartAreas[canal].Position.Height * 3;
                                     Cursor_vertical_Corr2.LineDashStyle = ChartDashStyle.DashDot;
-                                    Cursor_vertical_Corr2.LineColor = Color.Red;
+                                    Cursor_vertical_Corr2.LineColor = Color.Orange;
                                     Cursor_vertical_Corr2.LineWidth = 1;
                                     Cursor_vertical_Corr2.AnchorX = MaxX;
                                     Cursor_vertical_Corr2.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
@@ -365,7 +366,7 @@ namespace AmbienteRPB
                             Med_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
                             Med_correla2.Height = 2;
                             Med_correla2.LineDashStyle = ChartDashStyle.Dash;
-                            Med_correla2.LineColor = System.Drawing.Color.OrangeRed;
+                            Med_correla2.LineColor = System.Drawing.Color.Orange;
                             Med_correla2.LineWidth = 1;
                             Med_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
                             Med_correla2.AnchorY = Media / prb.Series[canal + 2].Points.Count;
