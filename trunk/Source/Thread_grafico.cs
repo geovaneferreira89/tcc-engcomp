@@ -104,9 +104,9 @@ namespace thread_chart
                         {
                             edfFileOutput.ReadDataBlock(k);
                             for (int j = 0; j < NumeroDeCanais; j++)
-                                for (int i = 0; i < 256; i++)
+                                for (int i = 0; i < edfFileOutput.SignalInfo[1].BufferOffset; i++)
                                     prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                            tempo = 256 + tempo;
+                            tempo = edfFileOutput.SignalInfo[1].BufferOffset + tempo;
                             load_progress_bar(0, 1);
                         }
                     }
@@ -216,7 +216,7 @@ namespace thread_chart
                     prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
                     prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
                 }
-                ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
+                ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords);
                 ScrollBar.SmallChange = 10;//segundos
                 ScrollBar.LargeChange = 10;//segundos            
             }

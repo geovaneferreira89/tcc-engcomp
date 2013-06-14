@@ -745,7 +745,7 @@ namespace AmbienteRPB
             //Atualizar o chart
             for (int i = 0; i < __numeroDeCanais; i++)
             {
-                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * 256; //* Scroll_Click_Escala_Seg;
+                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset; //* Scroll_Click_Escala_Seg;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -768,7 +768,7 @@ namespace AmbienteRPB
                //Atualizar o chart
                for (int i = 0; i < __numeroDeCanais; i++)
                {
-                   chart1.ChartAreas[i].AxisX.ScaleView.Position = ValueNew * 256; 
+                   chart1.ChartAreas[i].AxisX.ScaleView.Position = ValueNew * edfFileOutput.SignalInfo[1].BufferOffset; 
                }
         }
         //-----------------------------------------------------------------------------------------
@@ -808,12 +808,12 @@ namespace AmbienteRPB
             for(int k=0; k < Scroll_Click_Escala_Seg; k++){
                 if(DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
                 {
-                    int tempo = DataRecords_lidos * 256;
+                    int tempo = DataRecords_lidos * edfFileOutput.SignalInfo[1].BufferOffset;
                     edfFileOutput.ReadDataBlock(DataRecords_lidos);
                     DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < __numeroDeCanais; j++)
-                        for (int i = 0; i < 256; i++)
+                        for (int i = 0; i < edfFileOutput.SignalInfo[1].BufferOffset; i++)
                             chart1.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                 }
             }

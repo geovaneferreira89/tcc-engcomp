@@ -225,13 +225,11 @@ namespace AmbienteRPB
                 }
             }
             //Fim das derivações
-            //NumeroDeCanaiscount = edfComMontagem.SignalInfo.Count();
-           // while(NumeroDeCanais < edfComMontagem.SignalInfo.Count())
-           //     edfComMontagem.SignalInfo.RemoveAt(NumeroDeCanais);
             edfFileInput = edfComMontagem;
             this.Close();
         }
-        //=--------------------------------------------------------------------------------
+        //=------------------------------------------------------------------------------
+        //Carrega somente os canais selecionados
         private void button3_Click_1(object sender, EventArgs e)
         {
             NumeroDeCanais = listBox2.Items.Count;
@@ -247,7 +245,7 @@ namespace AmbienteRPB
             for (ItemAtual = 0; ItemAtual < listBox2.Items.Count; )
             {
                 //==============================
-                //Seleciona o canal par
+                //Seleciona o canal 
                 //==============================
                 count = 0;
                 for (bloco1 = 0; bloco1 < _edfFileInput.FileInfo.NrDataRecords; bloco1++)
@@ -257,15 +255,16 @@ namespace AmbienteRPB
                     {
                         if (_edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
                         {
-                            for (int i = 0; i < _edfFileInput.SignalInfo[1].BufferOffset; i++)
+                            for (int i = 0; i < (_edfFileInput.SignalInfo[1].BufferOffset); i++)
                             {
                                 vector1[count] = _edfFileInput.DataBuffer[_edfFileInput.SignalInfo[j].BufferOffset + i];
                                 count++;
                             }
+                            j = _edfFileInput.SignalInfo.Count + 1;//sai fora
                         }
                     }
                 }
-                ItemAtual++;
+                count = 0;
                 float inverter = 1;
                 if (checkInverter.Checked == true)
                     inverter = -1;
@@ -281,6 +280,7 @@ namespace AmbienteRPB
                     }
                     edfComMontagem.WriteDataBlock(bloco2);
                 }
+                ItemAtual++;
                 edfFileInput = edfComMontagem;
                 this.Close();
                 //----------------------------------------------------------------------------------

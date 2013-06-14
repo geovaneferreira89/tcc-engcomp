@@ -288,9 +288,9 @@ namespace AmbienteRPB
             //Atualizar o chart
             for (int i = 0; i < chart1.ChartAreas.Count(); i++)
             {
-                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * 256;
-                chart1.ChartAreas[CanalAtual+1].AxisX.ScaleView.Position = e.NewValue * 256;
-                chart1.ChartAreas[CanalAtual+2].AxisX.ScaleView.Position = e.NewValue * 256;
+                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
+                chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
+                chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -301,13 +301,13 @@ namespace AmbienteRPB
                 if (DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
                 {
                     int excluir;
-                    int tempo = DataRecords_lidos * 256;
+                    int tempo = DataRecords_lidos * edfFileOutput.SignalInfo[1].BufferOffset;
                     edfFileOutput.ReadDataBlock(DataRecords_lidos);
                     DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < numeroDeCanais; j++)
                     {
-                        for (int i = 0; i < 256; i++)
+                        for (int i = 0; i < edfFileOutput.SignalInfo[1].BufferOffset; i++)
                         {
                             if (j == (CanalAtual/3))
                                 chart1.Series[CanalAtual].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
