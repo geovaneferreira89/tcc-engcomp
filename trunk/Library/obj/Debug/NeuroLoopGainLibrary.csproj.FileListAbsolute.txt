@@ -9,3 +9,8 @@ C:\Users\Geovane Ferreira\Documents\TCC\Library\bin\Debug\NeuroLoopGainLibrary.d
 C:\Users\Geovane Ferreira\Documents\TCC\Library\bin\Debug\NeuroLoopGainLibrary.pdb
 C:\Users\Geovane Ferreira\Documents\TCC\Library\obj\Debug\NeuroLoopGainLibrary.dll
 C:\Users\Geovane Ferreira\Documents\TCC\Library\obj\Debug\NeuroLoopGainLibrary.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Library\bin\Debug\NeuroLoopGainLibrary.dll
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Library\bin\Debug\NeuroLoopGainLibrary.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Library\obj\Debug\NeuroLoopGainLibrary.csprojResolveAssemblyReference.cache
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Library\obj\Debug\NeuroLoopGainLibrary.dll
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Library\obj\Debug\NeuroLoopGainLibrary.pdb

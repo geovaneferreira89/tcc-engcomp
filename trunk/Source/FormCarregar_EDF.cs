@@ -16,8 +16,10 @@ namespace AmbienteRPB
         private string dirArquivo;     
         //private string initialDirectory = "C:\\";
         private EdfFile _edfFileInput;
-        private bool MostarTela;
+        private EdfFile edfComMontagem;
+        private bool    MostarTela;
         //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
+        //------------------------------------------------------------------------------------------
         public EdfFile edfFileOutput
         {
             get;
@@ -29,7 +31,7 @@ namespace AmbienteRPB
             get;
             set;
         }
-
+        //------------------------------------------------------------------------------------------
         public FormCarregar_EDF(string _dirArquivo, bool _MostarTela)
         {
             dirArquivo = _dirArquivo;
@@ -46,7 +48,7 @@ namespace AmbienteRPB
                 this.Close();
             }
         }
-
+        //------------------------------------------------------------------------------------------
         private void EDF_Load(object sender, EventArgs e)
         {
              if (dirArquivo != null)
@@ -58,84 +60,107 @@ namespace AmbienteRPB
             if (edfFileInput.ValidFormat)
             {
                 listBox1.Items.Clear();
-                //listBox1.Items.Add(string.Format("{0} - {1} ({2}Hz)", k + 1, edfFileInput.SignalInfo[k].SignalLabel, edfFileInput.SignalInfo[k].NrSamples / edfFileInput.FileInfo.SampleRecDuration));
                 for (int k = 0; k < edfFileInput.SignalInfo.Count; k++)
                     listBox1.Items.Add(edfFileInput.SignalInfo[k].SignalLabel);
             }
         }
-
+        //------------------------------------------------------------------------------------------
         private void button1_Click(object sender, EventArgs e)
         {
-            if (edfFileOutput == null)
-                initializeEDFOutput();
-
             for (int i = 0; i < listBox1.SelectedItems.Count; i++)
             {
-               // edfFileOutput.SignalInfo.Add(edfFileInput.SignalInfo[(int)listBox1.SelectedItems[i]]);
-                   //                    addSignal((EDFSignal)listBox1.SelectedItems[i], edfFileInput.retrieveSignalSampleValues((EDFSignal)listBox1.SelectedItems[i]));
                 listBox2.Items.Add(listBox1.SelectedItems[i]);
             }
-            
         }
-
-        private void initializeEDFOutput()
-        {
-          //  edfFileOutput = new EdfFile();
-          //  edfFileOutput.FileInfo.NrDataFields = edfFileInput.FileInfo.NrDataFields;
-            /*edfFileOutput. Header.DurationOfDataRecordInSeconds = edfFileInput.Header.DurationOfDataRecordInSeconds;
-            edfFileOutput.Header.NumberOfBytes = edfFileInput.Header.NumberOfBytes;
-            edfFileOutput.Header.PatientIdentification = edfFileInput.Header.PatientIdentification;
-            edfFileOutput.Header.RecordingIdentification = edfFileInput.Header.RecordingIdentification;
-            edfFileOutput.Header.Reserved = edfFileInput.Header.Reserved;
-            edfFileOutput.Header.StartDateTime = edfFileInput.Header.StartDateTime;
-            edfFileOutput.Header.Version = edfFileInput.Header.Version;
-            foreach (EDFDataRecord dr in edfFileInput.DataRecords)
-            {
-                edfFileOutput.DataRecords.Add(new EDFDataRecord());
-            }*/
-        }
-
+        //------------------------------------------------------------------------------------------
         private void button3_Click(object sender, EventArgs e)
         {
            if (edfFileInput == null)
                 MessageBox.Show("Nenhum canal selecionado",
                   "Reconhecimento Automatizado de Padrões em EEG",
                       MessageBoxButtons.OK, MessageBoxIcon.Information);   
-                
             this.Close();
         }
-
-        private void Carregar_EDF_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //AtributoAcessadoPorOutroForm = "o form foi fechado";
-        }
-
+        //------------------------------------------------------------------------------------------
         private void btn_derivacao_Click(object sender, EventArgs e)
         {
-        /*    EDFSignal Teste1  = (EDFSignal)listBox2.SelectedItems[0];// - (EDFSignal)listBox2.SelectedItems[1];
-            EDFSignal Teste2 = (EDFSignal)listBox2.SelectedItems[1];
-            EDFSignal OUT;
-           // foreach (EDFSignal signal in edfFileOutput.Header.Signals)
-           // {
-                  foreach (EDFDataRecord dataRecord in edfFileOutput.DataRecords)
-                  {
-                      foreach (float sample1 in dataRecord[Teste1.IndexNumberWithLabel])
+            int NumeroDeCanais = listBox2.Items.Count/2;
+            int ItemAtual = 0;
+            edfComMontagem = new EdfFile(dirArquivo, false, true, false, true);
+            float []vector1;
+            float []vector2;
+            int count = 0;
+            int countT = 0;
+            vector1 = new float[256 * _edfFileInput.FileInfo.NrDataRecords];
+            vector2 = new float[256 * _edfFileInput.FileInfo.NrDataRecords];
+            int bloco1 = 0;
+            int bloco2 = 0;
+
+            for(ItemAtual = 0; ItemAtual < listBox2.Items.Count; )
+            {
+                //==============================
+                //derivação com o canal par
+                //==============================
+                count = 0;
+                for(bloco1 = 0; bloco1 < _edfFileInput.FileInfo.NrDataRecords; bloco1++)
+                {
+                    _edfFileInput.ReadDataBlock(bloco1);
+                    for (int j = 0; j < _edfFileInput.SignalInfo.Count; j++)
                     {
-                        //Plotar(num_de_voltas, sample, 1, i, "Blue", signal.Label.ToString().Substring(4));
-                        foreach (float sample2 in dataRecord[Teste2.IndexNumberWithLabel])
+                        if (_edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
                         {
-                            OUT.IndexNumberWithLabel
+                            for (int i = 0; i < 256; i++)
+                            {
+                                vector1[count] = _edfFileInput.DataBuffer[_edfFileInput.SignalInfo[j].BufferOffset + i];
+                                count++;
+                            }
                         }
                     }
-
-                  }
-           // }
-            for (int i = 0; i < listBox2.SelectedItems.Count; i++)
-            {
-                edfFileOutput.deleteSignal((EDFSignal)listBox2.SelectedItems[i]);
-
-                listBox2.Items.Add(listBox1.SelectedItems[i]);
-            }*/
+                }
+                ItemAtual++;
+                //===================================
+                //derivação com o canal impar (baixo)
+                //===================================
+                count = 0;
+                for(bloco2 = 0; bloco2 < _edfFileInput.FileInfo.NrDataRecords; bloco2++)
+                {
+                    _edfFileInput.ReadDataBlock(bloco2);
+                    for (int j = 0; j < _edfFileInput.SignalInfo.Count; j++)
+                    {
+                        if (_edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
+                        {
+                            for (int i = 0; i < 256; i++)
+                            {
+                                vector2[count] = _edfFileInput.DataBuffer[_edfFileInput.SignalInfo[j].BufferOffset + i];
+                                count++;
+                            }
+                        }
+                    }
+                }
+                ItemAtual++;
+                //======================================
+                //Realiza a derivação e salva no arquivo
+                //======================================
+                countT = 0;
+                for(bloco2 = 0; bloco2 < edfComMontagem.FileInfo.NrDataRecords; bloco2++)
+                {
+                    edfComMontagem.ReadDataBlock(bloco2);
+                    for(int i = 0; i < 256; i++)
+                    {
+                        edfComMontagem.DataBuffer[((ItemAtual-2)*256) + i] = (short)(vector1[countT] - vector2[countT]);
+                        countT++;
+                    }
+                    edfComMontagem.WriteDataBlock(bloco2);
+                }
+            }
+            //Fim das derivações
+            count = edfComMontagem.SignalInfo.Count();
+            while(NumeroDeCanais < edfComMontagem.SignalInfo.Count())
+                edfComMontagem.SignalInfo.RemoveAt(NumeroDeCanais);
+            //edfComMontagem.Edf_setNumSignals(NumeroDeCanais);
+            edfFileInput = edfComMontagem;
+            this.Close();
         }
+        //------------------------------------------------------------------------------------------
     }
 }

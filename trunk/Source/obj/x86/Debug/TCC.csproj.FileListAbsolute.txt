@@ -76,7 +76,6 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.Fo
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormEditarNomePadrao.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
-Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Modelo1.edf
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.config
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.application

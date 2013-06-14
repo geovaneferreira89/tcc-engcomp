@@ -37,6 +37,7 @@
             this.btn_OK_EDF = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_derivacao = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -53,7 +54,7 @@
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(209, 27);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(137, 264);
+            this.listBox2.Size = new System.Drawing.Size(137, 290);
             this.listBox2.TabIndex = 12;
             // 
             // button1
@@ -81,16 +82,16 @@
             this.listBox1.Location = new System.Drawing.Point(12, 27);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(144, 264);
+            this.listBox1.Size = new System.Drawing.Size(144, 290);
             this.listBox1.TabIndex = 9;
             // 
             // btn_OK_EDF
             // 
-            this.btn_OK_EDF.Location = new System.Drawing.Point(12, 307);
+            this.btn_OK_EDF.Location = new System.Drawing.Point(40, 333);
             this.btn_OK_EDF.Name = "btn_OK_EDF";
-            this.btn_OK_EDF.Size = new System.Drawing.Size(63, 23);
+            this.btn_OK_EDF.Size = new System.Drawing.Size(84, 23);
             this.btn_OK_EDF.TabIndex = 1;
-            this.btn_OK_EDF.Text = "Carregar";
+            this.btn_OK_EDF.Text = " Todos";
             this.btn_OK_EDF.UseVisualStyleBackColor = true;
             this.btn_OK_EDF.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -105,19 +106,29 @@
             // 
             // btn_derivacao
             // 
-            this.btn_derivacao.Location = new System.Drawing.Point(209, 307);
+            this.btn_derivacao.Location = new System.Drawing.Point(220, 333);
             this.btn_derivacao.Name = "btn_derivacao";
-            this.btn_derivacao.Size = new System.Drawing.Size(75, 23);
+            this.btn_derivacao.Size = new System.Drawing.Size(84, 23);
             this.btn_derivacao.TabIndex = 16;
-            this.btn_derivacao.Text = "-";
+            this.btn_derivacao.Text = "Montagem";
             this.btn_derivacao.UseVisualStyleBackColor = true;
             this.btn_derivacao.Click += new System.EventHandler(this.btn_derivacao_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(130, 333);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(84, 23);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Selecionados";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // FormCarregar_EDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 350);
+            this.ClientSize = new System.Drawing.Size(361, 368);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_derivacao);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_OK_EDF);
@@ -130,7 +141,6 @@
             this.Name = "FormCarregar_EDF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Abrir Arquivo .EDF";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Carregar_EDF_FormClosed);
             this.Load += new System.EventHandler(this.EDF_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,5 +157,6 @@
         private System.Windows.Forms.Button btn_OK_EDF;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_derivacao;
+        private System.Windows.Forms.Button button3;
     }
 }

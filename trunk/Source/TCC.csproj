@@ -190,10 +190,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <Content Include="Modelos EDF\Modelo1.edf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Modelos EDF\Modelo1.EDF" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
