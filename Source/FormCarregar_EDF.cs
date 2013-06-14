@@ -80,6 +80,66 @@ namespace AmbienteRPB
             }
         }
         //------------------------------------------------------------------------------------------
+        private void btn_Montagem1_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Add("EEG Fp1-Ref");
+            listBox2.Items.Add("EEG F3-Ref");
+            /*
+            listBox2.Items.Add("EEG F3-Ref");
+            listBox2.Items.Add("EEG F3-Ref");
+            */
+            listBox2.Items.Add("EEG F3-Ref");
+            listBox2.Items.Add("EEG C3-Ref");
+
+            listBox2.Items.Add("EEG C3-Ref");
+            listBox2.Items.Add("EEG P3-Ref");
+
+            listBox2.Items.Add("EEG P3-Ref");
+            listBox2.Items.Add("EEG O1-Ref");
+
+            listBox2.Items.Add("EEG Fp1-Ref");
+            listBox2.Items.Add("EEG F7-Ref");
+            
+            listBox2.Items.Add("EEG F7-Ref");
+            listBox2.Items.Add("EEG T3-Ref");
+
+            listBox2.Items.Add("EEG T3-Ref");
+            listBox2.Items.Add("EEG T5-Ref");
+
+            listBox2.Items.Add("EEG T5-Ref");
+            listBox2.Items.Add("EEG O1-Ref");
+            
+            listBox2.Items.Add("EEG Fp2-Ref");
+            listBox2.Items.Add("EEG F4-Ref");
+
+            listBox2.Items.Add("EEG F4-Ref");
+            listBox2.Items.Add("EEG C4-Ref");
+
+            listBox2.Items.Add("EEG C4-Ref");
+            listBox2.Items.Add("EEG P4-Ref");
+
+            listBox2.Items.Add("EEG P4-Ref");
+            listBox2.Items.Add("EEG O2-Ref");
+
+            listBox2.Items.Add("EEG Fp2-Ref");
+            listBox2.Items.Add("EEG F8-Ref");
+
+            listBox2.Items.Add("EEG F8-Ref");
+            listBox2.Items.Add("EEG T4-Ref");
+
+            listBox2.Items.Add("EEG T4-Ref");
+            listBox2.Items.Add("EEG T6-Ref");
+
+            listBox2.Items.Add("EEG T6-Ref");
+            listBox2.Items.Add("EEG O2-Ref");
+
+            listBox2.Items.Add("EEG FZ-Ref");
+            listBox2.Items.Add("EEG CZ-Ref");
+
+            listBox2.Items.Add("EEG CZ-Ref");
+            listBox2.Items.Add("EEG PZ-Ref");
+        }
+        //------------------------------------------------------------------------------------------
         private void button3_Click(object sender, EventArgs e)
         {
            if (edfFileInput == null)
@@ -148,13 +208,17 @@ namespace AmbienteRPB
                 //======================================
                 //Realiza a derivação e salva no arquivo
                 //======================================
+                float inverter = 1;
+                if (checkInverter.Checked == true)
+                    inverter = -1;
+
                 countT = 0;
-                for(bloco2 = 0; bloco2 < edfComMontagem.FileInfo.NrDataRecords; bloco2++)
+                for (bloco2 = 0; bloco2 < _edfFileInput.FileInfo.NrDataRecords; bloco2++)
                 {
                     edfComMontagem.ReadDataBlock(bloco2);
                     for(int i = 0; i < 256; i++)
                     {
-                        edfComMontagem.DataBuffer[((ItemAtual-2)*256) + i] = (short)(vector1[countT] - vector2[countT]);
+                        edfComMontagem.DataBuffer[((ItemAtual - 2) * 256) + i] = (short)((inverter) * (vector1[countT] - vector2[countT]));
                         countT++;
                     }
                     edfComMontagem.WriteDataBlock(bloco2);
@@ -167,6 +231,6 @@ namespace AmbienteRPB
             edfFileInput = edfComMontagem;
             this.Close();
         }
-        //------------------------------------------------------------------------------------------
+      
     }
 }
