@@ -224,8 +224,8 @@ private short _digiMax;
         {
           if (ReadOnly)
             throw new InvalidOperationException(EdfConstants.FileIsReadOnly);
-          if (DataExists)
-            throw new InvalidOperationException(EdfConstants.FileAlreadyContainsData);
+        //  if (DataExists)
+         //   throw new InvalidOperationException(EdfConstants.FileAlreadyContainsData);
           Modified = true;
           _nrSamples = value;
         }

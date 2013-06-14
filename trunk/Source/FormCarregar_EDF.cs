@@ -31,6 +31,11 @@ namespace AmbienteRPB
             get;
             set;
         }
+        public int NumeroDeCanais
+        {
+            get;
+            set;
+        }
         //------------------------------------------------------------------------------------------
         public FormCarregar_EDF(string _dirArquivo, bool _MostarTela)
         {
@@ -43,6 +48,7 @@ namespace AmbienteRPB
                 if (dirArquivo != null)
                 {
                     _edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
+                    NumeroDeCanais = _edfFileInput.FileInfo.NrSignals;
                 }
                 edfFileInput = _edfFileInput;
                 this.Close();
@@ -63,6 +69,7 @@ namespace AmbienteRPB
                 for (int k = 0; k < edfFileInput.SignalInfo.Count; k++)
                     listBox1.Items.Add(edfFileInput.SignalInfo[k].SignalLabel);
             }
+            NumeroDeCanais = _edfFileInput.FileInfo.NrSignals;
         }
         //------------------------------------------------------------------------------------------
         private void button1_Click(object sender, EventArgs e)
@@ -84,7 +91,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void btn_derivacao_Click(object sender, EventArgs e)
         {
-            int NumeroDeCanais = listBox2.Items.Count/2;
+            NumeroDeCanais = listBox2.Items.Count/2;
             int ItemAtual = 0;
             edfComMontagem = new EdfFile(dirArquivo, false, true, false, true);
             float []vector1;
@@ -154,10 +161,9 @@ namespace AmbienteRPB
                 }
             }
             //Fim das derivações
-            count = edfComMontagem.SignalInfo.Count();
-            while(NumeroDeCanais < edfComMontagem.SignalInfo.Count())
-                edfComMontagem.SignalInfo.RemoveAt(NumeroDeCanais);
-            //edfComMontagem.Edf_setNumSignals(NumeroDeCanais);
+            //NumeroDeCanaiscount = edfComMontagem.SignalInfo.Count();
+           // while(NumeroDeCanais < edfComMontagem.SignalInfo.Count())
+           //     edfComMontagem.SignalInfo.RemoveAt(NumeroDeCanais);
             edfFileInput = edfComMontagem;
             this.Close();
         }

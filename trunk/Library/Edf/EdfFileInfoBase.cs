@@ -695,6 +695,7 @@ private readonly EdfFileInfoRaw _edfFileInfo = new EdfFileInfoRaw();
       Modified = true;
     }
 
+
 		#endregion public methods 
   }
 }

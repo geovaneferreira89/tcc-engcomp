@@ -19,8 +19,8 @@ namespace AmbienteRPB
 
         private ListaPadroesEventos[] Listas;
         private GerenArquivos Arquivos;
-        private string EDF_File;
         EdfFile SinalEEG;
+        private int NumeroDeCanais;
 
         public PointF ValorInicio;
         public PointF ValorFim;
@@ -31,12 +31,14 @@ namespace AmbienteRPB
         VerticalLineAnnotation Cursor_vertical_Inicio;
         VerticalLineAnnotation Cursor_vertical_Fim;
         VerticalLineAnnotation Cursor_vertical_Referencia;
+
         //---------------------------------------------------------------------------
-        public FormEditorDeEventos(ListaPadroesEventos[] _Listas, string _EDF_File)
+        public FormEditorDeEventos(ListaPadroesEventos[] _Listas, EdfFile _SinalEEG,int _NumeroDeCanais)
         {
             InitializeComponent();
             Listas = _Listas;
-            EDF_File = _EDF_File;
+            SinalEEG = _SinalEEG;
+            NumeroDeCanais = _NumeroDeCanais;
         }
         //---------------------------------------------------------------------------
         public double[] vector
@@ -112,9 +114,7 @@ namespace AmbienteRPB
                 ValorReferencia = new PointF();
                 ValorReferencia = Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex);
 
-                //Carrega sinal edf do arquivo.. 
-                Arquivos = new GerenArquivos();
-                SinalEEG = Arquivos.Abrir_Projeto_EDF(EDF_File, false);
+               
 
                 //Nome do canal
                 string nome_canal = Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex);
@@ -134,7 +134,7 @@ namespace AmbienteRPB
                     SinalEEG.ReadDataBlock(DataRecords_lidos);
                     DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                    for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
+                    for (int j = 0; j < NumeroDeCanais; j++)
                     {
                         for (int i = 0; i < 256; i++)
                         {

@@ -90,7 +90,7 @@ namespace AmbienteRPB
             {
                 status_projeto = "Projeto_EDF";
                 AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1, Color.Green);
-                __numeroDeCanais = edfFileOutput.SignalInfo.Count;
+                __numeroDeCanais = Arquivos.GetNumeroDeCanais();
                 CarregaNomesPadroes(numDePadroes, 0);
                 bool ListaExiste = false;
                 string aux_path = Arquivos.getPathUser();
@@ -505,7 +505,7 @@ namespace AmbienteRPB
         {
             if (chart1.Series.Count != 0)
             {
-                FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes, nomeProject);
+                FormEditorDeEventos EditorEvenForm = new FormEditorDeEventos(ListaPadroes, edfFileOutput, __numeroDeCanais);
                 EditorEvenForm.ShowDialog();
             }
             else
@@ -812,7 +812,7 @@ namespace AmbienteRPB
                     edfFileOutput.ReadDataBlock(DataRecords_lidos);
                     DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                    for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                    for (int j = 0; j < __numeroDeCanais; j++)
                         for (int i = 0; i < 256; i++)
                             chart1.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                 }
@@ -1073,7 +1073,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------
         private void btn_Correlacao_Click(object sender, EventArgs e)
         {
-            FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, nomeProject);
+            FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
             correlacaoForm.ShowDialog();
         }
         //------------------------------------------------------------------------

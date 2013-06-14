@@ -30,16 +30,14 @@ namespace AmbienteRPB
         private int DataRecords_lidos = 10;
         private int Scroll_Click_Escala_Seg = 10; //tempo em segundos de tela
         private double[] vector_evento;
-        private string end_EDF;
         private Thread Thread_;
         //-------------------------------------------
-        public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, string _end_EDF)
+        public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
         {
-            end_EDF        = _end_EDF;
             ListaDeEventos = _ListaDeEventos;
             numeroDeCanais = _numDeCanais;
+            edfFileOutput  = _EDF;
             Arquivos       = new GerenArquivos();
-            edfFileOutput  = Arquivos.Abrir_Projeto_EDF(end_EDF, false); 
             InitializeComponent();
         }
         //------------------------------------------------------------------------------------------
@@ -48,7 +46,7 @@ namespace AmbienteRPB
             AdicionaCanais();
             Adiciona_linhas_de_tempo();
 
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar,edfFileOutput, CanalAtual,"PlotaSinalEEG",vector_evento);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar,edfFileOutput, CanalAtual,"PlotaSinalEEG",vector_evento, numeroDeCanais);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
@@ -230,7 +228,7 @@ namespace AmbienteRPB
         //Mudança de sinal
         private void btn_SinalProximo_Click(object sender, EventArgs e)
         {
-            if ((CanalAtual/3) < (edfFileOutput.SignalInfo.Count()-1))
+            if ((CanalAtual/3) < (numeroDeCanais-1))
             {
                 //Desabilita o canal que está sendo exibido... 
                 chart1.ChartAreas[CanalAtual].Visible = false;
@@ -242,7 +240,7 @@ namespace AmbienteRPB
                 if (CanaisCriados <= (CanalAtual / 3))
                 {
                     AdicionaCanais();
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento);
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento,numeroDeCanais);
                     Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                     Thread_.Start();
                     CanaisCriados++;
@@ -307,7 +305,7 @@ namespace AmbienteRPB
                     edfFileOutput.ReadDataBlock(DataRecords_lidos);
                     DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                    for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                    for (int j = 0; j < numeroDeCanais; j++)
                     {
                         for (int i = 0; i < 256; i++)
                         {
@@ -323,7 +321,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            FormEditorDeEventos selecionar_evento = new FormEditorDeEventos(ListaDeEventos, end_EDF);
+            FormEditorDeEventos selecionar_evento = new FormEditorDeEventos(ListaDeEventos, edfFileOutput, numeroDeCanais);
             selecionar_evento.ShowDialog();
             if (selecionar_evento.vector != null)
             {
@@ -337,7 +335,7 @@ namespace AmbienteRPB
                     double[] Parametros;
                     Parametros = new double[3];
                     Parametros[0] = DataRecords_lidos;
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros);
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros,numeroDeCanais);
                     Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                     Thread_.Start();
                     inicia_correlacao();
@@ -350,7 +348,7 @@ namespace AmbienteRPB
         {
             chart1.Series[CanalAtual+1].Points.Clear();
             chart1.Series[CanalAtual+2].Points.Clear();
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento,numeroDeCanais);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
