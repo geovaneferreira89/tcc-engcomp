@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCarregar_EDF));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Montagem1 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.btn_derivacao = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_OK_EDF = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_Montagem1 = new System.Windows.Forms.Button();
             this.checkInverter = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -61,6 +61,74 @@
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Canais";
+            // 
+            // btn_Montagem1
+            // 
+            this.btn_Montagem1.Location = new System.Drawing.Point(154, 347);
+            this.btn_Montagem1.Name = "btn_Montagem1";
+            this.btn_Montagem1.Size = new System.Drawing.Size(41, 23);
+            this.btn_Montagem1.TabIndex = 16;
+            this.btn_Montagem1.Text = "M1";
+            this.btn_Montagem1.UseVisualStyleBackColor = true;
+            this.btn_Montagem1.Click += new System.EventHandler(this.btn_Montagem1_Click);
+            // 
+            // listBox2
+            // 
+            this.listBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(201, 28);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(140, 342);
+            this.listBox2.TabIndex = 12;
+            this.listBox2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox2_DrawItem);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 28);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBox1.Size = new System.Drawing.Size(144, 342);
+            this.listBox1.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(198, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "EDF Selecionados:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label2.Location = new System.Drawing.Point(6, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "EDF Sinais:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(154, 40);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(41, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "-->";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(154, 69);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(41, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "<--";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // btn_derivacao
             // 
@@ -92,62 +160,6 @@
             this.btn_OK_EDF.UseVisualStyleBackColor = true;
             this.btn_OK_EDF.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(198, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "EDF Selecionados:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label2.Location = new System.Drawing.Point(6, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "EDF Sinais:";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 28);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(144, 342);
-            this.listBox1.TabIndex = 9;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(154, 69);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(41, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "<--";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(154, 40);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "-->";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(201, 28);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(140, 342);
-            this.listBox2.TabIndex = 12;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkInverter);
@@ -160,16 +172,6 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Carregar";
-            // 
-            // btn_Montagem1
-            // 
-            this.btn_Montagem1.Location = new System.Drawing.Point(154, 347);
-            this.btn_Montagem1.Name = "btn_Montagem1";
-            this.btn_Montagem1.Size = new System.Drawing.Size(41, 23);
-            this.btn_Montagem1.TabIndex = 16;
-            this.btn_Montagem1.Text = "M1";
-            this.btn_Montagem1.UseVisualStyleBackColor = true;
-            this.btn_Montagem1.Click += new System.EventHandler(this.btn_Montagem1_Click);
             // 
             // checkInverter
             // 
