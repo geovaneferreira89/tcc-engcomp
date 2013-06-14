@@ -8,26 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using NeuroLoopGainLibrary.Edf;
 
-
 namespace AmbienteRPB
 {
     public partial class FormCarregar_EDF : Form
     {
-        private string dirArquivo;     
-        //private string initialDirectory = "C:\\";
-        private EdfFile _edfFileInput;
+        private string  dirArquivo;     
         private EdfFile edfComMontagem;
         private bool    MostarTela;
-        private int TipoDeCor = 0;
-        private int CountCor = 0;
+        private int     CountCor = 0;
         //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
         //------------------------------------------------------------------------------------------
-        public EdfFile edfFileOutput
-        {
-            get;
-            set;
-        }
-
         public EdfFile edfFileInput
         {
             get;
@@ -49,10 +39,9 @@ namespace AmbienteRPB
             {
                 if (dirArquivo != null)
                 {
-                    _edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
-                    NumeroDeCanais = _edfFileInput.FileInfo.NrSignals;
+                    edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
+                    NumeroDeCanais = edfFileInput.FileInfo.NrSignals;
                 }
-                edfFileInput = _edfFileInput;
                 this.Close();
             }
         }
@@ -61,9 +50,8 @@ namespace AmbienteRPB
         {
              if (dirArquivo != null)
              {
-                 _edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
+                 edfFileInput = new EdfFile(dirArquivo, true, true, true, true);
              }
-            edfFileInput = _edfFileInput;
          
             if (edfFileInput.ValidFormat)
             {
@@ -71,7 +59,7 @@ namespace AmbienteRPB
                 for (int k = 0; k < edfFileInput.SignalInfo.Count; k++)
                     listBox1.Items.Add(edfFileInput.SignalInfo[k].SignalLabel);
             }
-            NumeroDeCanais = _edfFileInput.FileInfo.NrSignals;
+            NumeroDeCanais = edfFileInput.FileInfo.NrSignals;
         }
         //------------------------------------------------------------------------------------------
         private void button1_Click(object sender, EventArgs e)
@@ -88,10 +76,7 @@ namespace AmbienteRPB
         {
             listBox2.Items.Add("EEG Fp1-Ref");
             listBox2.Items.Add("EEG F3-Ref");
-            /*
-            listBox2.Items.Add("EEG F3-Ref");
-            listBox2.Items.Add("EEG F3-Ref");
-            */
+            
             listBox2.Items.Add("EEG F3-Ref");
             listBox2.Items.Add("EEG C3-Ref");
 
@@ -162,27 +147,28 @@ namespace AmbienteRPB
             float []vector2;
             int count = 0;
             int countT = 0;
-            vector1 = new float[_edfFileInput.SignalInfo[1].BufferOffset * _edfFileInput.FileInfo.NrDataRecords];
-            vector2 = new float[_edfFileInput.SignalInfo[1].BufferOffset * _edfFileInput.FileInfo.NrDataRecords];
+            vector1 = new float[edfFileInput.SignalInfo[1].BufferOffset * edfFileInput.FileInfo.NrDataRecords];
+            vector2 = new float[edfFileInput.SignalInfo[1].BufferOffset * edfFileInput.FileInfo.NrDataRecords];
             int bloco1 = 0;
             int bloco2 = 0;
+            int loop = 0;
 
             for(ItemAtual = 0; ItemAtual < listBox2.Items.Count; )
             {
                 //==============================
-                //derivação com o canal par
+                //   Derivação com o canal par
                 //==============================
                 count = 0;
-                for(bloco1 = 0; bloco1 < _edfFileInput.FileInfo.NrDataRecords; bloco1++)
+                for(bloco1 = 0; bloco1 < edfFileInput.FileInfo.NrDataRecords; bloco1++)
                 {
-                    _edfFileInput.ReadDataBlock(bloco1);
-                    for (int j = 0; j < _edfFileInput.SignalInfo.Count; j++)
+                    edfFileInput.ReadDataBlock(bloco1);
+                    for (int j = 0; j < edfFileInput.SignalInfo.Count; j++)
                     {
-                        if (_edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
+                        if (edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
                         {
-                            for (int i = 0; i < _edfFileInput.SignalInfo[1].BufferOffset; i++)
+                            for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
                             {
-                                vector1[count] = _edfFileInput.DataBuffer[_edfFileInput.SignalInfo[j].BufferOffset + i];
+                                vector1[count] = edfFileInput.DataBuffer[edfFileInput.SignalInfo[j].BufferOffset + i];
                                 count++;
                             }
                         }
@@ -190,19 +176,19 @@ namespace AmbienteRPB
                 }
                 ItemAtual++;
                 //===================================
-                //derivação com o canal impar (baixo)
+                //Derivação com o canal impar (baixo)
                 //===================================
                 count = 0;
-                for(bloco2 = 0; bloco2 < _edfFileInput.FileInfo.NrDataRecords; bloco2++)
+                for(bloco2 = 0; bloco2 < edfFileInput.FileInfo.NrDataRecords; bloco2++)
                 {
-                    _edfFileInput.ReadDataBlock(bloco2);
-                    for (int j = 0; j < _edfFileInput.SignalInfo.Count; j++)
+                    edfFileInput.ReadDataBlock(bloco2);
+                    for (int j = 0; j < edfFileInput.SignalInfo.Count; j++)
                     {
-                        if (_edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
+                        if (edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
                         {
-                            for (int i = 0; i < _edfFileInput.SignalInfo[1].BufferOffset; i++)
+                            for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
                             {
-                                vector2[count] = _edfFileInput.DataBuffer[_edfFileInput.SignalInfo[j].BufferOffset + i];
+                                vector2[count] = edfFileInput.DataBuffer[edfFileInput.SignalInfo[j].BufferOffset + i];
                                 count++;
                             }
                         }
@@ -217,16 +203,17 @@ namespace AmbienteRPB
                     inverter = -1;
 
                 countT = 0;
-                for (bloco2 = 0; bloco2 < _edfFileInput.FileInfo.NrDataRecords; bloco2++)
+                for (bloco2 = 0; bloco2 < edfFileInput.FileInfo.NrDataRecords; bloco2++)
                 {
                     edfComMontagem.ReadDataBlock(bloco2);
-                    for (int i = 0; i < _edfFileInput.SignalInfo[1].BufferOffset; i++)
+                    for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
                     {
-                        edfComMontagem.DataBuffer[_edfFileInput.SignalInfo[(ItemAtual-2)].BufferOffset + i] = (short)((inverter) * (vector1[countT] - vector2[countT]));
+                        edfComMontagem.DataBuffer[edfFileInput.SignalInfo[loop].BufferOffset + i] = (short)((inverter) * (vector1[countT] - vector2[countT]));
                         countT++;
                     }
                     edfComMontagem.WriteDataBlock(bloco2);
                 }
+                loop++;
             }
             //Fim das derivações
             edfFileInput = edfComMontagem;
@@ -242,7 +229,7 @@ namespace AmbienteRPB
             float []vector1;
             int count = 0;
             int countT = 0;
-            vector1 = new float[_edfFileInput.SignalInfo[1].BufferOffset * _edfFileInput.FileInfo.NrDataRecords];
+            vector1 = new float[edfFileInput.SignalInfo[1].BufferOffset * edfFileInput.FileInfo.NrDataRecords];
             int bloco1 = 0;
             int bloco2 = 0;
 
@@ -252,19 +239,19 @@ namespace AmbienteRPB
                 //Seleciona o canal 
                 //==============================
                 count = 0;
-                for (bloco1 = 0; bloco1 < _edfFileInput.FileInfo.NrDataRecords; bloco1++)
+                for (bloco1 = 0; bloco1 < edfFileInput.FileInfo.NrDataRecords; bloco1++)
                 {
-                    _edfFileInput.ReadDataBlock(bloco1);
-                    for (int j = 0; j < _edfFileInput.SignalInfo.Count; j++)
+                    edfFileInput.ReadDataBlock(bloco1);
+                    for (int j = 0; j < edfFileInput.SignalInfo.Count; j++)
                     {
-                        if (_edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
+                        if (edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
                         {
-                            for (int i = 0; i < (_edfFileInput.SignalInfo[1].BufferOffset); i++)
+                            for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
                             {
-                                vector1[count] = _edfFileInput.DataBuffer[_edfFileInput.SignalInfo[j].BufferOffset + i];
+                                vector1[count] = edfFileInput.DataBuffer[edfFileInput.SignalInfo[j].BufferOffset + i];
                                 count++;
                             }
-                            j = _edfFileInput.SignalInfo.Count + 1;//sai fora
+                            j = edfFileInput.SignalInfo.Count + 1;//sai fora
                         }
                     }
                 }
@@ -274,12 +261,12 @@ namespace AmbienteRPB
                     inverter = -1;
 
                 countT = 0;
-                for (bloco2 = 0; bloco2 < _edfFileInput.FileInfo.NrDataRecords; bloco2++)
+                for (bloco2 = 0; bloco2 < edfFileInput.FileInfo.NrDataRecords; bloco2++)
                 {
                     edfComMontagem.ReadDataBlock(bloco2);
-                    for (int i = 0; i < _edfFileInput.SignalInfo[1].BufferOffset; i++)
+                    for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
                     {
-                        edfComMontagem.DataBuffer[_edfFileInput.SignalInfo[ItemAtual].BufferOffset + i] = (short)(inverter * vector1[countT]);
+                        edfComMontagem.DataBuffer[edfFileInput.SignalInfo[ItemAtual].BufferOffset + i] = (short)(inverter * vector1[countT]);
                         countT++;
                     }
                     edfComMontagem.WriteDataBlock(bloco2);
@@ -287,10 +274,9 @@ namespace AmbienteRPB
                 ItemAtual++;
                 edfFileInput = edfComMontagem;
                 this.Close();
-                //----------------------------------------------------------------------------------
             }
         }
-
+        //----------------------------------------------------------------------------------
         private void listBox2_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -319,6 +305,6 @@ namespace AmbienteRPB
 
             e.DrawFocusRectangle();
         }
-      
+        //----------------------------------------------------------------------------------
     }
 }
