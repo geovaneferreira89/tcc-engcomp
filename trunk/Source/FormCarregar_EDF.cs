@@ -18,6 +18,8 @@ namespace AmbienteRPB
         private EdfFile _edfFileInput;
         private EdfFile edfComMontagem;
         private bool    MostarTela;
+        private int TipoDeCor = 0;
+        private int CountCor = 0;
         //Atributo que pode ser acessado pelas outras classes, no caso clase GerenArquivos...
         //------------------------------------------------------------------------------------------
         public EdfFile edfFileOutput
@@ -76,7 +78,9 @@ namespace AmbienteRPB
         {
             for (int i = 0; i < listBox1.SelectedItems.Count; i++)
             {
+                
                 listBox2.Items.Add(listBox1.SelectedItems[i]);
+                
             }
         }
         //------------------------------------------------------------------------------------------
@@ -285,6 +289,35 @@ namespace AmbienteRPB
                 this.Close();
                 //----------------------------------------------------------------------------------
             }
+        }
+
+        private void listBox2_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            Brush myBrush = Brushes.Black;
+            if (CountCor < 2)
+            {
+                CountCor++;
+                myBrush = Brushes.Red;
+            }
+            else
+            {
+                if (CountCor == 3)
+                    CountCor = 0;
+                else
+                    CountCor++;
+               myBrush = Brushes.White;
+            }
+            if ((e.Index+1) == listBox2.Items.Count)
+                CountCor = 0;
+
+            e.Graphics.FillRectangle(myBrush, e.Bounds);
+
+            if (e.Index > -1)
+                e.Graphics.DrawString(((ListBox)sender).Items[e.Index].ToString(),
+                e.Font, Brushes.Black, e.Bounds);
+
+            e.DrawFocusRectangle();
         }
       
     }
