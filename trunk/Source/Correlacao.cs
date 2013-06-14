@@ -461,7 +461,7 @@ namespace AmbienteRPB
                 prb.ChartAreas[_canal + 2].AxisX.ScaleView.Size = 2500;
                 prb.ChartAreas[_canal + 2].AxisX.ScrollBar.Enabled = false;
                
-                ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords/10);
+                ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords);
                 ScrollBar.SmallChange = 10;//segundos
                 ScrollBar.LargeChange = 10;//segundos       
                 ScrollBar.Value = 0;
