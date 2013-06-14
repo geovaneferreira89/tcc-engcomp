@@ -799,6 +799,11 @@ namespace NeuroLoopGainLibrary.Edf
       }
     }
 
+    public void Edf_setNumSignals(int valor)
+    {
+        FileInfo.NrSignals = valor;
+    }
+
     protected void WriteStringField(bool valid, string s, int length)
     {
       // Make sure the string is exactly length characters long

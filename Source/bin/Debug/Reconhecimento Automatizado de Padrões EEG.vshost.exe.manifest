@@ -55,7 +55,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Onkv4H41WNMsOmj/QTscVd8DtfU=</dsig:DigestValue>
+        <dsig:DigestValue>jrpAf6bBedQte6j3vRNYxbLSyTM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -72,14 +72,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="506880">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="507904">
       <assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>tLfTfPELwCI6yLpFoo2bm/Xux+w=</dsig:DigestValue>
+        <dsig:DigestValue>iiOJ5caBjM0oJF4DqEC/O2tN5dc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,15 +90,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>INMd+Uz2RC7ce2Seiu2wf+Fcbm8=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Modelos EDF\Modelo1.edf" size="42399744">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>RLiimpSib85KvYk7qH7/tXZzqIw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Reconhecimento Automatizado de Padrões EEG.exe.config" size="147">

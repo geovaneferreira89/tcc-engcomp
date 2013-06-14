@@ -85,7 +85,7 @@ namespace AmbienteRPB
                     this.Close();
             }
 
-            edfFileOutput = Arquivos.Abrir_Projeto_EDF(nomeProject, false);//desabilitado a escolha dos canais
+            edfFileOutput = Arquivos.Abrir_Projeto_EDF(nomeProject, true);//Habilita a escolha dos canais
             if (edfFileOutput != null)
             {
                 status_projeto = "Projeto_EDF";
@@ -554,7 +554,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].BackColor      = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled  = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled  = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height= _aux+3;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Height= _aux;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[i].Position.Width = 96;
                 chart1.ChartAreas[i].Position.X     = 4;
                 chart1.ChartAreas[i].Position.Y     = _aux * i;
