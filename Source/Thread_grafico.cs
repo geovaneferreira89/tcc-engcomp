@@ -29,7 +29,7 @@ namespace thread_chart
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG);
+        private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG,int NumeroDeCanais);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         //Controles Progress Bar--------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
@@ -74,11 +74,11 @@ namespace thread_chart
                 {
                     if (edfFileOutput != null)
                     {
-                        for (int k = 0; k < edfFileOutput.SignalInfo.Count; k++) 
+                        for (int k = 0; k < _NumCanais; k++) 
                         {
-                            Plotar(2, k, null);
+                            Plotar(2, k, null, _NumCanais);
                         }
-                        Plotar(1, 0, edfFileOutput);
+                        Plotar(1, 0, edfFileOutput,_NumCanais);
                         FuncScrollBar_Propriedades(1, edfFileOutput);
                      }
                     break;
@@ -86,11 +86,11 @@ namespace thread_chart
             }
         }
         //------------------------------------------------------------------------------------------
-        private void Plotar(int caso, int canal, EdfFile SinalEEG) 
+        private void Plotar(int caso, int canal, EdfFile SinalEEG, int NumeroDeCanais) 
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, NumeroDeCanais });
             }
             else
             {
@@ -103,14 +103,14 @@ namespace thread_chart
                         for (int k = 0; k < 10; k++)
                         {
                             edfFileOutput.ReadDataBlock(k);
-                            for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
+                            for (int j = 0; j < NumeroDeCanais; j++)
                                 for (int i = 0; i < 256; i++)
                                     prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                             tempo = 256 + tempo;
                             load_progress_bar(0, 1);
                         }
                     }
-                    for (int i = 0; i < SinalEEG.SignalInfo.Count; i++)
+                    for (int i = 0; i < NumeroDeCanais; i++)
                     {
                         prb.Titles[i].Text = SinalEEG.SignalInfo[i].SignalLabel;
                         prb.Series["canal" + i].Color = Color.FromName("Black");

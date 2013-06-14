@@ -18,7 +18,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento);
+        private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento, int numeroDeCanais_);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor_vertical_Inicio;
         private VerticalLineAnnotation Cursor_vertical_Corr2;
@@ -33,11 +33,12 @@ namespace AmbienteRPB
         //Arquivos EDF-----------------------------------------------------------------------------
         private EdfFile edfFileOutput;
         private int Canal;
+        private int NumeroDeCanais;
         //correlacao
         private string Opcao;
         private double[] Vector_evento;
         //-----------------------------------------------------------------------------------------
-        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento)
+        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, int _NumeroDeCanais)
         {
             _Grafico          = Grafico;
             _BarraDeProgresso = BarraDeProgresso;
@@ -46,6 +47,7 @@ namespace AmbienteRPB
             Canal             = _Canal;
             Opcao             = _opcao;
             Vector_evento     = _vector_evento;
+            NumeroDeCanais = _NumeroDeCanais;
         }
         //-----------------------------------------------------------------------------------------
         public void Inicializa()
@@ -54,24 +56,24 @@ namespace AmbienteRPB
             {
                 if (Opcao == "PlotaSinalEEG")
                 {
-                    Plotar(2, Canal, null, Opcao, Vector_evento);
-                    Plotar(1, Canal, edfFileOutput, Opcao, Vector_evento);
+                    Plotar(2, Canal, null, Opcao, Vector_evento, NumeroDeCanais);
+                    Plotar(1, Canal, edfFileOutput, Opcao, Vector_evento, NumeroDeCanais);
                     FuncScrollBar_Propriedades(Canal, edfFileOutput);
                 }
                 if (Opcao == "Correlacao")
-                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento);
+                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, NumeroDeCanais);
 
                 if (Opcao == "CarregarTodoSinal")
-                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento);
+                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, NumeroDeCanais);
             }
         }
        
         //------------------------------------------------------------------------------------------
-        private void Plotar(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento) 
+        private void Plotar(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento, int numeroDeCanais_) 
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, opcao, vector_evento });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, opcao, vector_evento, numeroDeCanais_ });
             }
             else
             {
@@ -89,7 +91,7 @@ namespace AmbienteRPB
                                     for (int k = 0; k < 10; k++)
                                     {
                                         edfFileOutput.ReadDataBlock(k);
-                                        for (int j = 0; j < SinalEEG.SignalInfo.Count; j++)
+                                        for (int j = 0; j < numeroDeCanais_; j++)
                                         {
                                             for (int i = 0; i < 256; i++)
                                             {
@@ -390,7 +392,7 @@ namespace AmbienteRPB
                             edfFileOutput.ReadDataBlock(DataRecords_lidos);
                             DataRecords_lidos++;
                             //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                            for (int j = 0; j < edfFileOutput.SignalInfo.Count; j++)
+                            for (int j = 0; j < numeroDeCanais_; j++)
                             {
                                 for (int i = 0; i < 256; i++)
                                 {

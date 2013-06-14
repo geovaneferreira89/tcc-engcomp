@@ -28,7 +28,7 @@ namespace AmbienteRPB
         private System.IO.StreamReader fileR;
         private EdfFile edfFileOutput;
         public string path;
-
+        public int NumeroDeCanais;
         //Verifica se o Arquivo existe----------------------------------------------------------
         public bool ArquivoExiste(string Arquivo_Nome)
         {
@@ -42,6 +42,11 @@ namespace AmbienteRPB
             {
                 return false;
             }
+        }
+        //Numero de canais ---------------------------------------------------------------------
+        public int GetNumeroDeCanais()
+        {
+            return NumeroDeCanais;
         }
         //Obtem Path ---------------------------------------------------------------------------
         public void PathUser()
@@ -108,6 +113,7 @@ namespace AmbienteRPB
             if (SelecionarCanais)
                 formEDF.ShowDialog();
             edfFileOutput = formEDF.edfFileInput;
+            NumeroDeCanais = formEDF.NumeroDeCanais;
             return edfFileOutput;
         }
         //Exportao Padrao & Eventos-----------------------------------------------------------
