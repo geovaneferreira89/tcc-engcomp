@@ -46,6 +46,16 @@ namespace AmbienteRPB
             get;
             set;
         }
+        public int vectorInicio
+        {
+            get;
+            set;
+        }
+        public int vectorFim
+        {
+            get;
+            set;
+        }
         //---------------------------------------------------------------------------
         private void button1_Click(object sender, EventArgs e)
         {

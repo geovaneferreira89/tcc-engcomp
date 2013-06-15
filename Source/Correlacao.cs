@@ -18,7 +18,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento, int numeroDeCanais_);
+        private delegate void AtualizaChart(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento, float inicio_, float fim_, int numeroDeCanais_);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor_vertical_Inicio;
         private VerticalLineAnnotation Cursor_vertical_Corr2;
@@ -37,8 +37,10 @@ namespace AmbienteRPB
         //correlacao
         private string Opcao;
         private double[] Vector_evento;
+        private float inicio;
+        private float fim;
         //-----------------------------------------------------------------------------------------
-        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, int _NumeroDeCanais)
+        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, float _inicio, float _fim, int _NumeroDeCanais)
         {
             _Grafico          = Grafico;
             _BarraDeProgresso = BarraDeProgresso;
@@ -47,7 +49,10 @@ namespace AmbienteRPB
             Canal             = _Canal;
             Opcao             = _opcao;
             Vector_evento     = _vector_evento;
-            NumeroDeCanais = _NumeroDeCanais;
+            NumeroDeCanais    = _NumeroDeCanais;
+            inicio            = _inicio;
+            fim               = _fim;
+            
         }
         //-----------------------------------------------------------------------------------------
         public void Inicializa()
@@ -56,24 +61,24 @@ namespace AmbienteRPB
             {
                 if (Opcao == "PlotaSinalEEG")
                 {
-                    Plotar(2, Canal, null, Opcao, Vector_evento, NumeroDeCanais);
-                    Plotar(1, Canal, edfFileOutput, Opcao, Vector_evento, NumeroDeCanais);
+                    Plotar(2, Canal, null, Opcao, Vector_evento,inicio,fim, NumeroDeCanais);
+                    Plotar(1, Canal, edfFileOutput, Opcao, Vector_evento,inicio,fim, NumeroDeCanais);
                     FuncScrollBar_Propriedades(Canal, edfFileOutput);
                 }
                 if (Opcao == "Correlacao")
-                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, NumeroDeCanais);
+                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio,fim, NumeroDeCanais);
 
                 if (Opcao == "CarregarTodoSinal")
-                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, NumeroDeCanais);
+                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
             }
         }
        
         //------------------------------------------------------------------------------------------
-        private void Plotar(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento, int numeroDeCanais_) 
+        private void Plotar(int caso, int canal, EdfFile SinalEEG, string opcao, double[] vector_evento, float inicio_, float fim_, int numeroDeCanais_) 
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, opcao, vector_evento, numeroDeCanais_ });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { caso, canal, SinalEEG, opcao, vector_evento, inicio_, fim_, numeroDeCanais_ });
             }
             else
             {
@@ -285,6 +290,10 @@ namespace AmbienteRPB
                             load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
                             //Canal que está sendo amostrado
                             res = 0;
+
+                            //Este vetor evento tem que ser referente a correlação...
+                            //ta... mais se nao existir em outro canal? 
+                            //talvez, fazer uma marcação?  
                             for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
                             {
                                 //Vetor do Evento
@@ -293,7 +302,7 @@ namespace AmbienteRPB
                                     //Se j+1 tem que ser menor que o tamanho do canal... 
                                     if ((j + i) < prb.Series[canal + 1].Points.Count)
                                     {
-                                        res = (float)((prb.Series[canal + 1].Points[j + i].YValues[0] * vector_evento[j])) + res;
+                                        res = (float)((prb.Series[canal + 1].Points[j + i].YValues[0] * prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + j].YValues[0])) + res;
                                     }
                                     //Incrementa a barra de progresso
                                     load_progress_bar(0, 1);
