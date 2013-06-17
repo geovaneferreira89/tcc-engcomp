@@ -233,9 +233,11 @@ namespace AmbienteRPB
             if ((CanalAtual/3) < (numeroDeCanais-1))
             {
                 //Desabilita o canal que está sendo exibido... 
-                chart1.ChartAreas[CanalAtual].Visible = false;
-                chart1.ChartAreas[CanalAtual + 1].Visible = false;
-                chart1.ChartAreas[CanalAtual + 2].Visible = false;
+                for (int i = 0; i < 3; i++)
+                {
+                    chart1.ChartAreas[CanalAtual + i].Visible = false;
+                    chart1.Titles[CanalAtual + i].Visible = false;
+                }
                 //Incrementa o canal...
                 CanalAtual = CanalAtual + 3;
                 //Cria as séries para o novo canal, se ela não existe (incrementa CanaisCriados)
@@ -250,9 +252,11 @@ namespace AmbienteRPB
                 //Se exite exibe o canal
                 else
                 {
-                    chart1.ChartAreas[CanalAtual].Visible = true;
-                    chart1.ChartAreas[CanalAtual + 1].Visible = true;
-                    chart1.ChartAreas[CanalAtual + 2].Visible = true;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        chart1.ChartAreas[CanalAtual + i].Visible = true;
+                        chart1.Titles[CanalAtual + i].Visible = true;
+                    }
                 }
             }
         }
@@ -262,14 +266,18 @@ namespace AmbienteRPB
             if (CanalAtual != 0)
             {
                 //Desabilita o canal que está sendo exibido... 
-                chart1.ChartAreas[CanalAtual].Visible = false;
-                chart1.ChartAreas[CanalAtual + 1].Visible = false;
-                chart1.ChartAreas[CanalAtual + 2].Visible = false;
+                for(int i=0;i<3;i++)
+                {
+                    chart1.ChartAreas[CanalAtual+i].Visible = false;
+                    chart1.Titles[CanalAtual + i].Visible = false;
+                }
                 //Carrega o canal inferior, o qual já está cirado
                 CanalAtual = CanalAtual - 3;
-                chart1.ChartAreas[CanalAtual].Visible = true;
-                chart1.ChartAreas[CanalAtual + 1].Visible = true;
-                chart1.ChartAreas[CanalAtual + 2].Visible = true;
+                for (int i = 0; i < 3; i++)
+                {
+                    chart1.ChartAreas[CanalAtual + i].Visible = true;
+                    chart1.Titles[CanalAtual + i].Visible = true;
+                }
             }
         }
         
