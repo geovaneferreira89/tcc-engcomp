@@ -554,7 +554,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].BackColor      = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled  = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled  = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height= _aux;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[i].Position.Height= _aux+2;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[i].Position.Width = 96;
                 chart1.ChartAreas[i].Position.X     = 4;
                 chart1.ChartAreas[i].Position.Y     = _aux * i;

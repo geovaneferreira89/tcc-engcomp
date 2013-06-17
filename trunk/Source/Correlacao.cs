@@ -111,7 +111,6 @@ namespace AmbienteRPB
                                     }
                                 }
                                 prb.Titles[canal].Text = SinalEEG.SignalInfo[(canal/3)].SignalLabel;
-
                                 prb.Series["canal" + canal].Color = Color.FromName("Black");
 
                                 prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/3) + 1);
@@ -130,34 +129,34 @@ namespace AmbienteRPB
                                 prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Legends.Clear();
                                 prb.Titles.Add("canal" + canal);
-                                prb.Titles[canal].DockedToChartArea = "canal" + canal;
+                               // prb.Titles[canal].DockedToChartArea = "canal" + canal;
                                 prb.Titles[canal].Position.Height = 3;
                                 prb.Titles[canal].Position.Width = 40;
                                 prb.Titles[canal].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[canal].Position.X = 0;
-                                prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Y;
+                                prb.Titles[canal].Position.Y = (prb.ChartAreas[canal].Position.Bottom - prb.ChartAreas[canal].Position.Y)/2;
 
                                 prb.Series.Add("canal" + (canal + 1));
                                 prb.Series["canal" + (canal+1)].ChartArea = "canal" + (canal+1);
                                 prb.Series["canal" + (canal + 1)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Titles.Add("canal" + (canal + 1));
-                                prb.Titles[(canal + 1)].DockedToChartArea = "canal" + (canal +1);
+                               // prb.Titles[(canal + 1)].DockedToChartArea = "canal" + (canal +1);
                                 prb.Titles[(canal + 1)].Position.Height = 3;
                                 prb.Titles[(canal + 1)].Position.Width = 40;
                                 prb.Titles[(canal + 1)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 1)].Position.X = 0;
-                                prb.Titles[(canal + 1)].Position.Y = prb.ChartAreas[(canal +1)].Position.Y;
+                                prb.Titles[(canal + 1)].Position.Y = 33+(66-33)/2;
 
                                 prb.Series.Add("canal" + (canal + 2));
                                 prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
                                 prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Titles.Add("canal" + (canal + 2));
-                                prb.Titles[(canal + 2)].DockedToChartArea = "canal" + (canal + 2);
+                                ///prb.Titles[(canal + 2)].DockedToChartArea = "canal" + (canal + 2);
                                 prb.Titles[(canal + 2)].Position.Height = 3;
                                 prb.Titles[(canal + 2)].Position.Width = 40;
                                 prb.Titles[(canal + 2)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 2)].Position.X = 0;
-                                prb.Titles[(canal + 2)].Position.Y = prb.ChartAreas[(canal + 2)].Position.Y;
+                                prb.Titles[(canal + 2)].Position.Y = 66+((100-66)/2);
                             }
                             break;
                     }
@@ -167,7 +166,6 @@ namespace AmbienteRPB
                         load_progress_bar(0, 4);
                         load_progress_bar(vector_evento.Count(), 2);
                         float res = 0;
-                        double K = 0;
                         float MaxY = 0;
                         float MinY = 0;
                         float MaxX = 0;
@@ -175,12 +173,16 @@ namespace AmbienteRPB
                         float Media = 0;
                         //===================================================================
                         //                  Primeira etapa de correlação
-                        //===================================================================     
+                        //===================================================================   
+                        //Calculo do fator de normalização (K)
+                        //Igual à soma dos quadrados dos valores da réplica armazenada.
+                        double K = 0;
                         for (int i = 0; i < vector_evento.Count(); i++)
                         {
                             K = (vector_evento[i]*vector_evento[i]) + K; 
                             load_progress_bar(0, 1);
                         }
+                        //Prepara a barra de progresso
                         load_progress_bar(0, 4);
                         load_progress_bar(vector_evento.Count() * prb.Series[canal].Points.Count(), 2);
                         //Canal que está sendo amostrado
@@ -191,9 +193,7 @@ namespace AmbienteRPB
                             {
                                 //Se j+1 tem que ser menor que o tamanho do canal... 
                                 if ((j + i) < prb.Series[canal].Points.Count)
-                                {
                                     res = (float)((prb.Series[canal].Points[j + i].YValues[0] * vector_evento[j])) + res;
-                                }
                                 //Incrementa a barra de progresso
                                 load_progress_bar(0, 1);
                             }
@@ -290,7 +290,12 @@ namespace AmbienteRPB
                             load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
                             //Canal que está sendo amostrado
                             res = 0;
-
+                            K = 0;
+                            for (int i = 0; i < vector_evento.Count(); i++)
+                            {
+                                double valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + i].YValues[0];
+                                K = (valor * valor) + K;
+                            }
                             //Este vetor evento tem que ser referente a correlação...
                             //ta... mais se nao existir em outro canal? 
                             //talvez, fazer uma marcação?  
@@ -299,10 +304,12 @@ namespace AmbienteRPB
                                 //Vetor do Evento
                                 for (int j = 0; j < vector_evento.Count(); j++)
                                 {
+                                    double valor;
                                     //Se j+1 tem que ser menor que o tamanho do canal... 
                                     if ((j + i) < prb.Series[canal + 1].Points.Count)
                                     {
-                                        res = (float)((prb.Series[canal + 1].Points[j + i].YValues[0] * prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + j].YValues[0])) + res;
+                                        valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + j].YValues[0];
+                                        res = (float)((prb.Series[canal + 1].Points[j + i].YValues[0] * valor) + res);
                                     }
                                     //Incrementa a barra de progresso
                                     load_progress_bar(0, 1);
@@ -417,6 +424,7 @@ namespace AmbienteRPB
                         load_progress_bar(1, 3);
                        break;
                     }
+                
                 }
             }
         }

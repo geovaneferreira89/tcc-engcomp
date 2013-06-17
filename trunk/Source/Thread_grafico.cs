@@ -43,7 +43,7 @@ namespace thread_chart
         private Control _StatusProjeto = null;
         private System.Windows.Forms.StatusStrip StatusProjeto = null;
         private delegate void AtualizaStatusProjeto(string SMS, int caso);
-        //amostras sinal de teste------------------------------------------------------------------
+        //amostras sinal de teste-------------------------------------------------------------------
         private int _NumCanais = 0;
         //Controles sobre o sinal a exibir----------------------------------------------------------
         private string OpcaoSinal;
