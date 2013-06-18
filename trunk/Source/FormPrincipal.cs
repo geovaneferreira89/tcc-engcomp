@@ -103,12 +103,11 @@ namespace AmbienteRPB
                 }
                 ChartInicializarThreads(__numeroDeCanais, ListaExiste);
                 btn_novoProjeto.Enabled = false;
-                btn_Importar.Enabled = false;
+                btn_Importar.Enabled = true;
                 btn_novoProjeto.Enabled = false;
                 infoEDF.Enabled = true;
                 marcarEventos.Enabled = true;
                 inserirComent.Enabled = true;
-                btn_Importar.Enabled = false;
                 canaisCTRL = new int[23];
                 this.Text = edfFileOutput.FileInfo.Patient; 
             }
@@ -143,14 +142,47 @@ namespace AmbienteRPB
         // Ferramenta de importar sinais EEG de arquivo .EDF
         private void btn_Importar_Click(object sender, EventArgs e)
         {
-          /*  string dir = AppDomain.CurrentDomain.BaseDirectory + "Modelos EDF\\";
-            openFileEDF.InitialDirectory = dir;
+            String nomeProjectAux = "";
             if (openFileEDF.ShowDialog() == DialogResult.OK)
             {
-                nomeProject = openFileEDF.FileName;
-                
+                nomeProjectAux = openFileEDF.FileName;
+                EdfFile aux_edfFile = Arquivos.Abrir_Projeto_EDF(nomeProjectAux, true);//Habilita a escolha dos canais
+                if (aux_edfFile != null)
+                {
+                    edfFileOutput = aux_edfFile;
+                    nomeProject = nomeProjectAux;
+                    chart1.Annotations.Clear();
+                    chart1.Series.Clear();
+                    chart1.ChartAreas.Clear();
+                    chart1.Titles.Clear();
+
+                    status_projeto = "Projeto_EDF";
+                    AtualizaFerramentaAtiva("Abrir arquivo .EDF", 1, Color.Green);
+                    __numeroDeCanais = Arquivos.GetNumeroDeCanais();
+                    CarregaNomesPadroes(numDePadroes, 0);
+                    bool ListaExiste = false;
+                    string aux_path = Arquivos.getPathUser();
+                    aux_path += "Padroes_Eventos.txt";
+                    if (Arquivos.ArquivoExiste(aux_path) == true)
+                    {
+                        ListaPadroes = Arquivos.Importar_Exportar_Padroes_Eventos();
+                        CarregaNomesPadroes(numDePadroes, 1);
+                        ListaExiste = true;
+                    }
+                    ChartInicializarThreads(__numeroDeCanais, ListaExiste);
+                    btn_novoProjeto.Enabled = false;
+                    btn_Importar.Enabled = true;
+                    btn_novoProjeto.Enabled = false;
+                    infoEDF.Enabled = true;
+                    marcarEventos.Enabled = true;
+                    inserirComent.Enabled = true;
+                    canaisCTRL = new int[23];
+                    this.Text = edfFileOutput.FileInfo.Patient;
+                }
+                else
+                    AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2, Color.Red);
             }
-            openFileEDF.Dispose();*/
+            openFileEDF.Dispose();
          }
         //------------------------------------------------------------------------------------------
         //Salva Projeto em que está sendo executado
@@ -219,7 +251,7 @@ namespace AmbienteRPB
         //Criar novo projeto
         private void btn_novoProjeto_Click(object sender, EventArgs e)
         {
-            btn_Importar.Enabled = false;
+            btn_Importar.Enabled = true;
             btn_novoProjeto.Enabled = false;
             MessageBox.Show("Projeto " + nomeProject + "\nCriado",
                     "Reconhecimento Automatizado de Padrões em EEG",
@@ -331,36 +363,36 @@ namespace AmbienteRPB
                 sms = "Inicio";
             else
                 sms = "Fim";
-                HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            if (result.Series != null)
+            {
+                AtualizaFerramentaAtiva(sms + " marcado.", 2, Color.Green);
+                ExecutaSelecao(result, e, 0);
+            }
+            else
+            {
+                //Caso não encontrado nenhum resultado para onde foi clicado, o sofware 
+                //faz uma varredura de no maximo elemtos acima, evita transtornos... 
+                bool cont = true;
+                int i = 1;
+                while(cont)
+                {
+                    result = chart1.HitTest(e.X + i, e.Y, ChartElementType.DataPoint);
                     if (result.Series != null)
-                    {
-                        AtualizaFerramentaAtiva(sms + " marcado.", 2, Color.Green);
-                        ExecutaSelecao(result, e, 0);
-                    }
-                    else
-                    {
-                        //Caso não encontrado nenhum resultado para onde foi clicado, o sofware 
-                        //faz uma varredura de no maximo elemtos acima, evita transtornos... 
-                        bool cont = true;
-                        int i = 1;
-                        while(cont)
-                        {
-                            result = chart1.HitTest(e.X + i, e.Y, ChartElementType.DataPoint);
-                            if (result.Series != null)
-                                cont = false;
-                            if (i == 10)
-                                cont = false;
-                            if(cont)
-                                i++;
-                        }
-                        AtualizaFerramentaAtiva(sms + " marcado. - Forçado", 2, Color.Orange);
-                        if (result.Series != null)
-                        {
-                            ExecutaSelecao(result, e, i);
-                        }
-                        else
-                            AtualizaFerramentaAtiva("Marque novamente (clique proximo ao sinal) - ERRO", 2, Color.Red);
-                    }
+                        cont = false;
+                    if (i == 10)
+                        cont = false;
+                    if(cont)
+                        i++;
+                }
+                AtualizaFerramentaAtiva(sms + " marcado. - Forçado", 2, Color.Orange);
+                if (result.Series != null)
+                {
+                    ExecutaSelecao(result, e, i);
+                }
+                else
+                    AtualizaFerramentaAtiva("Marque novamente (clique proximo ao sinal) - ERRO", 2, Color.Red);
+            }
         }
         //------------------------------------------------------------------------------------------
         private void ExecutaSelecao(HitTestResult result, MouseEventArgs e, int offsetX)
@@ -525,7 +557,7 @@ namespace AmbienteRPB
         //-----------------------------------------------------------------------------------------
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //adiciona novo check box...(Fazer)
+            //adiciona novo check box...(FAZER)
         }
         //------------------------------------------------------------------------------------------
         //                              ->   Ferramenta ativa <-
@@ -1082,5 +1114,6 @@ namespace AmbienteRPB
             FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
             correlacaoForm.ShowDialog();
         }
+        //------------------------------------------------------------------------
     }
 }
