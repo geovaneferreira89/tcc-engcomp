@@ -283,7 +283,17 @@ namespace AmbienteRPB
         //---------------------------------------------------------------------------------------
         //                               ##   Definir Padrões  ##
         //---------------------------------------------------------------------------------------
+        private void btn_MarcarPadroes_Click(object sender, EventArgs e)
+        {
+            BTNs_MarcarEnvetos();
+        }
+        //-----------------------------------------------------------------------------
         private void marcarPadrõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BTNs_MarcarEnvetos();
+        }
+        //-----------------------------------------------------------------------------
+        void BTNs_MarcarEnvetos()
         {
             if (marcarEventos.Checked == false)
             {
@@ -1072,7 +1082,5 @@ namespace AmbienteRPB
             FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
             correlacaoForm.ShowDialog();
         }
-        //------------------------------------------------------------------------
-
     }
 }
