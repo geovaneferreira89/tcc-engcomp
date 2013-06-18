@@ -70,6 +70,9 @@ namespace AmbienteRPB
 
                 if (Opcao == "CarregarTodoSinal")
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
+
+                if (Opcao == "Correlacao_AGAIN")
+                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
             }
         }
        
@@ -392,6 +395,68 @@ namespace AmbienteRPB
                         }
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);
+                        break;
+                    }
+                    case ("Correlacao_AGAIN"):
+                    {
+                        //canal + 1 = canal + 2
+                        //e refaz a corrlação... 
+                        prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                        prb.Series[canal + 1].Points.Clear();
+                        for (int i = 0; i < prb.Series[canal + 2].Points.Count; i++)
+                        {
+                            prb.Series[canal + 1].Points.AddY(prb.Series[canal + 2].Points[i].YValues[0]);
+                        }
+                        
+                        load_progress_bar(0, 4);
+                        load_progress_bar(vector_evento.Count(), 2);
+                        float res = 0;
+                        float MaxY = 0;
+                        float MinY = 0;
+                        float MaxX = 0;
+
+                        float Media = 0;
+                        prb.Series[canal + 2].Points.Clear();
+                        //===================================================================
+                        //                nova correlação
+                        //===================================================================   
+                        //Calculo do fator de normalização (K)
+                        //Igual à soma dos quadrados dos valores da réplica armazenada.
+                        double K = 0;
+                        load_progress_bar(0, 4);
+                        load_progress_bar(vector_evento.Count(), 2);
+                        load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
+                        //Canal que está sendo amostrado
+                        res = 0;
+                        for (int i = 0; i < vector_evento.Count(); i++)
+                        {
+                            double valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + i].YValues[0];
+                            K = (valor * valor) + K;
+                        }
+                        //Este vetor evento tem que ser referente a correlação...
+                        //ta... mais se nao existir em outro canal? 
+                        //talvez, fazer uma marcação?  
+                        for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
+                        {
+                            //Vetor do Evento
+                            for (int j = 0; j < vector_evento.Count(); j++)
+                            {
+                                double valor;
+                                //Se j+1 tem que ser menor que o tamanho do canal... 
+                                if ((j + i) < prb.Series[canal + 1].Points.Count)
+                                {
+                                    valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + j].YValues[0];
+                                    res = (float)((prb.Series[canal + 1].Points[i+j].YValues[0] * valor) + res);
+                                }
+                                //Incrementa a barra de progresso
+                                load_progress_bar(0, 1);
+                            }
+                            res = (float)((1 / K) * res);
+                            //Vai Plotando o resultado...
+                            prb.Series[canal + 2].Points.AddY(res);
+                            Media = Media + res;
+                            res = 0;
+                        }
                         break;
                     }
                     //-----------------------------------------
