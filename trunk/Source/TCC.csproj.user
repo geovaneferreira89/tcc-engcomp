@@ -4,7 +4,7 @@
     <PublishUrlHistory>ftp://ftp.novoindustrial.com.br/|http://eeg.novoindustrial.com.br/|publish\</PublishUrlHistory>
     <InstallUrlHistory>http://eeg.novoindustrial.com.br/|http://eeg.novoindustrial.com.br/Site/|http://gejota.novoindustrial.com.br/Ge_e_Jota/</InstallUrlHistory>
     <SupportUrlHistory>http://eeg.novoindustrial.com.br/suport</SupportUrlHistory>
-    <UpdateUrlHistory>http://eeg.novoindustrial.com.br/SW.html/</UpdateUrlHistory>
+    <UpdateUrlHistory>http://eeg.novoindustrial.com.br/|http://eeg.novoindustrial.com.br/SW.html/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory>http://eeg.novoindustrial.com.br/|http://gejota.novoindustrial.com.br/Ge_e_Jota/</ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
