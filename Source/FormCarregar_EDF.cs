@@ -140,84 +140,91 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void btn_derivacao_Click(object sender, EventArgs e)
         {
-            NumeroDeCanais = listBox2.Items.Count/2;
-            int ItemAtual = 0;
-            edfComMontagem = new EdfFile(dirArquivo, false, true, false, true);
-            float []vector1;
-            float []vector2;
-            int count = 0;
-            int countT = 0;
-            vector1 = new float[edfFileInput.SignalInfo[1].BufferOffset * edfFileInput.FileInfo.NrDataRecords];
-            vector2 = new float[edfFileInput.SignalInfo[1].BufferOffset * edfFileInput.FileInfo.NrDataRecords];
-            int bloco1 = 0;
-            int bloco2 = 0;
-            int loop = 0;
-
-            for(ItemAtual = 0; ItemAtual < listBox2.Items.Count; )
+            if (listBox2.Items.Count != 0)
             {
-                //==============================
-                //   Derivação com o canal par
-                //==============================
-                count = 0;
-                for(bloco1 = 0; bloco1 < edfFileInput.FileInfo.NrDataRecords; bloco1++)
-                {
-                    edfFileInput.ReadDataBlock(bloco1);
-                    for (int j = 0; j < edfFileInput.SignalInfo.Count; j++)
-                    {
-                        if (edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
-                        {
-                            for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
-                            {
-                                vector1[count] = edfFileInput.DataBuffer[edfFileInput.SignalInfo[j].BufferOffset + i];
-                                count++;
-                            }
-                        }
-                    }
-                }
-                ItemAtual++;
-                //===================================
-                //Derivação com o canal impar (baixo)
-                //===================================
-                count = 0;
-                for(bloco2 = 0; bloco2 < edfFileInput.FileInfo.NrDataRecords; bloco2++)
-                {
-                    edfFileInput.ReadDataBlock(bloco2);
-                    for (int j = 0; j < edfFileInput.SignalInfo.Count; j++)
-                    {
-                        if (edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
-                        {
-                            for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
-                            {
-                                vector2[count] = edfFileInput.DataBuffer[edfFileInput.SignalInfo[j].BufferOffset + i];
-                                count++;
-                            }
-                        }
-                    }
-                }
-                ItemAtual++;
-                //======================================
-                //Realiza a derivação e salva no arquivo
-                //======================================
-                float inverter = 1;
-                if (checkInverter.Checked == true)
-                    inverter = -1;
+                NumeroDeCanais = listBox2.Items.Count / 2;
+                int ItemAtual = 0;
+                edfComMontagem = new EdfFile(dirArquivo, false, true, false, true);
+                float[] vector1;
+                float[] vector2;
+                int count = 0;
+                int countT = 0;
+                vector1 = new float[edfFileInput.SignalInfo[1].BufferOffset * edfFileInput.FileInfo.NrDataRecords];
+                vector2 = new float[edfFileInput.SignalInfo[1].BufferOffset * edfFileInput.FileInfo.NrDataRecords];
+                int bloco1 = 0;
+                int bloco2 = 0;
+                int loop = 0;
 
-                countT = 0;
-                for (bloco2 = 0; bloco2 < edfFileInput.FileInfo.NrDataRecords; bloco2++)
+                for (ItemAtual = 0; ItemAtual < listBox2.Items.Count; )
                 {
-                    edfComMontagem.ReadDataBlock(bloco2);
-                    for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
+                    //==============================
+                    //   Derivação com o canal par
+                    //==============================
+                    count = 0;
+                    for (bloco1 = 0; bloco1 < edfFileInput.FileInfo.NrDataRecords; bloco1++)
                     {
-                        edfComMontagem.DataBuffer[edfFileInput.SignalInfo[loop].BufferOffset + i] = (short)((inverter) * (vector1[countT] - vector2[countT]));
-                        countT++;
+                        edfFileInput.ReadDataBlock(bloco1);
+                        for (int j = 0; j < edfFileInput.SignalInfo.Count; j++)
+                        {
+                            if (edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
+                            {
+                                for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
+                                {
+                                    vector1[count] = edfFileInput.DataBuffer[edfFileInput.SignalInfo[j].BufferOffset + i];
+                                    count++;
+                                }
+                            }
+                        }
                     }
-                    edfComMontagem.WriteDataBlock(bloco2);
+                    ItemAtual++;
+                    //===================================
+                    //Derivação com o canal impar (baixo)
+                    //===================================
+                    count = 0;
+                    for (bloco2 = 0; bloco2 < edfFileInput.FileInfo.NrDataRecords; bloco2++)
+                    {
+                        edfFileInput.ReadDataBlock(bloco2);
+                        for (int j = 0; j < edfFileInput.SignalInfo.Count; j++)
+                        {
+                            if (edfFileInput.SignalInfo[j].SignalLabel == listBox2.Items[ItemAtual].ToString())
+                            {
+                                for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
+                                {
+                                    vector2[count] = edfFileInput.DataBuffer[edfFileInput.SignalInfo[j].BufferOffset + i];
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                    ItemAtual++;
+                    //======================================
+                    //Realiza a derivação e salva no arquivo
+                    //======================================
+                    float inverter = 1;
+                    if (checkInverter.Checked == true)
+                        inverter = -1;
+
+                    countT = 0;
+                    for (bloco2 = 0; bloco2 < edfFileInput.FileInfo.NrDataRecords; bloco2++)
+                    {
+                        edfComMontagem.ReadDataBlock(bloco2);
+                        for (int i = 0; i < edfFileInput.SignalInfo[1].BufferOffset; i++)
+                        {
+                            edfComMontagem.DataBuffer[edfFileInput.SignalInfo[loop].BufferOffset + i] = (short)((inverter) * (vector1[countT] - vector2[countT]));
+                            countT++;
+                        }
+                        edfComMontagem.WriteDataBlock(bloco2);
+                    }
+                    loop++;
                 }
-                loop++;
+                //Fim das derivações
+                edfFileInput = edfComMontagem;
+                this.Close();
             }
-            //Fim das derivações
-            edfFileInput = edfComMontagem;
-            this.Close();
+            else
+                MessageBox.Show("Nenhuma montagem criada ou selecionada",
+                  "Reconhecimento Automatizado de Padrões em EEG",
+                      MessageBoxButtons.OK, MessageBoxIcon.Information);   
         }
         //=------------------------------------------------------------------------------
         //Carrega somente os canais selecionados

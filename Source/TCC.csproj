@@ -132,6 +132,12 @@
       <DependentUpon>Form_Site.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenArquivos.cs" />
+    <Compile Include="InfoEDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoEDF.Designer.cs">
+      <DependentUpon>InfoEDF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Site.resx">
       <DependentUpon>Form_Site.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoEDF.resx">
+      <DependentUpon>InfoEDF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenca.resx">
       <DependentUpon>Licenca.cs</DependentUpon>
