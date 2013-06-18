@@ -47,6 +47,7 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.CorrelAgain = new System.Windows.Forms.ToolStripButton();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -86,7 +87,7 @@
             // 
             this.lbl_ferramentaAtiva.ForeColor = System.Drawing.Color.Brown;
             this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
-            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(44, 17);
+            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(49, 17);
             this.lbl_ferramentaAtiva.Text = "Iniciado";
             // 
             // lbl_x
@@ -108,14 +109,14 @@
             // 
             this.lbl_mouseX.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbl_mouseX.Name = "lbl_mouseX";
-            this.lbl_mouseX.Size = new System.Drawing.Size(54, 17);
+            this.lbl_mouseX.Size = new System.Drawing.Size(59, 17);
             this.lbl_mouseX.Text = "Mouse X: ";
             // 
             // lbl_mouseY
             // 
             this.lbl_mouseY.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbl_mouseY.Name = "lbl_mouseY";
-            this.lbl_mouseY.Size = new System.Drawing.Size(51, 17);
+            this.lbl_mouseY.Size = new System.Drawing.Size(56, 17);
             this.lbl_mouseY.Text = "Mouse Y:";
             // 
             // toolInfo
@@ -173,7 +174,8 @@
             this.btn_SinalAnterior,
             this.toolStripSeparator1,
             this.toolStripButton3,
-            this.btn_Suspender});
+            this.btn_Suspender,
+            this.CorrelAgain});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(668, 25);
@@ -182,7 +184,7 @@
             // 
             // btn_SinalProximo
             // 
-            this.btn_SinalProximo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_SinalProximo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btn_SinalProximo.Image = ((System.Drawing.Image)(resources.GetObject("btn_SinalProximo.Image")));
             this.btn_SinalProximo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_SinalProximo.Name = "btn_SinalProximo";
@@ -192,7 +194,8 @@
             // 
             // btn_SinalAnterior
             // 
-            this.btn_SinalAnterior.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_SinalAnterior.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_SinalAnterior.Image = ((System.Drawing.Image)(resources.GetObject("btn_SinalAnterior.Image")));
             this.btn_SinalAnterior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_SinalAnterior.Name = "btn_SinalAnterior";
             this.btn_SinalAnterior.Size = new System.Drawing.Size(23, 22);
@@ -233,6 +236,16 @@
             this.progressBar.Size = new System.Drawing.Size(240, 19);
             this.progressBar.TabIndex = 19;
             this.progressBar.Visible = false;
+            // 
+            // CorrelAgain
+            // 
+            this.CorrelAgain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CorrelAgain.Image = ((System.Drawing.Image)(resources.GetObject("CorrelAgain.Image")));
+            this.CorrelAgain.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CorrelAgain.Name = "CorrelAgain";
+            this.CorrelAgain.Size = new System.Drawing.Size(23, 22);
+            this.CorrelAgain.Text = "toolStripButton1";
+            this.CorrelAgain.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // FormResultados
             // 
@@ -281,5 +294,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton btn_Suspender;
+        private System.Windows.Forms.ToolStripButton CorrelAgain;
     }
 }

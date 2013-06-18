@@ -352,6 +352,7 @@ namespace AmbienteRPB
                     Thread_.Start();
                     inicia_correlacao();
                 }
+                CorrelAgain.Enabled = true;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -368,6 +369,13 @@ namespace AmbienteRPB
         private void btn_Suspender_Click(object sender, EventArgs e)
         {
             Thread_.Suspend();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
+            Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
+            Thread_.Start();
         }
         //------------------------------------------------------------------------------------------
      }
