@@ -215,6 +215,14 @@ namespace AmbienteRPB
                         }
                         edfComMontagem.WriteDataBlock(bloco2);
                     }
+                    string dados1, dados2;
+                    dados1 = listBox2.Items[(ItemAtual-2)].ToString();
+                    dados1 = dados1.Substring(4);
+                    dados1 = dados1.Substring(0, dados1.Length - 4);
+                    dados2 = listBox2.Items[(ItemAtual-1)].ToString();
+                    dados2 = dados2.Substring(4);
+                    dados2 = dados2.Substring(0, dados2.Length - 4);
+                    edfComMontagem.SignalInfo[loop].SignalLabel = dados1+"-"+dados2;
                     loop++;
                 }
                 //Fim das derivações
