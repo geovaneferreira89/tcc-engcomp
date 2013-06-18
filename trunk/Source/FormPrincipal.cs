@@ -110,6 +110,7 @@ namespace AmbienteRPB
                 inserirComent.Enabled = true;
                 btn_Importar.Enabled = false;
                 canaisCTRL = new int[23];
+                this.Text = edfFileOutput.FileInfo.Patient; 
             }
             else
                 AtualizaFerramentaAtiva("Nenhum sinal selecionado!", 2, Color.Red);
@@ -897,13 +898,8 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void informaçõesEDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nome Paciente:\n"+edfFileOutput.FileInfo.PatientName
-                + "\nData\n" + edfFileOutput.FileInfo.DataExists
-                    + "\nHora\n" + edfFileOutput.FileInfo.StartDate
-                      + "\nDuração\n" + edfFileOutput.FileInfo.NrDataRecords
-                             + "\nVersion\n" + edfFileOutput.FileInfo.Version
-                , "Reconhecimento Automatizado de Padrões em EEG",
-                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            InfoEDF formINFO = new InfoEDF(edfFileOutput);
+            formINFO.ShowDialog();
         }
         //------------------------------------------------------------------------------------------
         private void canal1Canal2ToolStripMenuItem_Click(object sender, EventArgs e)

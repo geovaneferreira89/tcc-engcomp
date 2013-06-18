@@ -916,8 +916,8 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(736, 414);
-            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tool_ControlesProjeto);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lbl_tempo_s);
             this.Controls.Add(this.gbxChart);
             this.Controls.Add(this.gbxEventos);

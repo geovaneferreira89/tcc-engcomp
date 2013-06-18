@@ -55,16 +55,16 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Location = new System.Drawing.Point(122, 5);
+            this.groupBox1.Location = new System.Drawing.Point(109, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 383);
+            this.groupBox1.Size = new System.Drawing.Size(347, 390);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Canais";
             // 
             // btn_Montagem1
             // 
-            this.btn_Montagem1.Location = new System.Drawing.Point(154, 347);
+            this.btn_Montagem1.Location = new System.Drawing.Point(154, 86);
             this.btn_Montagem1.Name = "btn_Montagem1";
             this.btn_Montagem1.Size = new System.Drawing.Size(41, 23);
             this.btn_Montagem1.TabIndex = 16;
@@ -76,9 +76,9 @@
             // 
             this.listBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(201, 28);
+            this.listBox2.Location = new System.Drawing.Point(200, 28);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(140, 342);
+            this.listBox2.Size = new System.Drawing.Size(140, 355);
             this.listBox2.TabIndex = 12;
             this.listBox2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox2_DrawItem);
             // 
@@ -88,14 +88,14 @@
             this.listBox1.Location = new System.Drawing.Point(6, 28);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(144, 342);
+            this.listBox1.Size = new System.Drawing.Size(144, 355);
             this.listBox1.TabIndex = 9;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(198, 12);
+            this.label1.Location = new System.Drawing.Point(197, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 15;
@@ -105,7 +105,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label2.Location = new System.Drawing.Point(6, 12);
+            this.label2.Location = new System.Drawing.Point(3, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 10;
@@ -114,7 +114,7 @@
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(154, 40);
+            this.button1.Location = new System.Drawing.Point(154, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 23);
             this.button1.TabIndex = 2;
@@ -124,7 +124,7 @@
             // button2
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(154, 69);
+            this.button2.Location = new System.Drawing.Point(154, 57);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(41, 23);
             this.button2.TabIndex = 2;
@@ -166,9 +166,9 @@
             this.groupBox2.Controls.Add(this.btn_OK_EDF);
             this.groupBox2.Controls.Add(this.btn_derivacao);
             this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 5);
+            this.groupBox2.Location = new System.Drawing.Point(3, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(104, 383);
+            this.groupBox2.Size = new System.Drawing.Size(104, 390);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Carregar";
@@ -189,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 392);
+            this.ClientSize = new System.Drawing.Size(460, 392);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
