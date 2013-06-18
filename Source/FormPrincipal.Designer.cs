@@ -509,13 +509,13 @@
             // btn_MarcarPadroes
             // 
             this.btn_MarcarPadroes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_MarcarPadroes.Enabled = false;
             this.btn_MarcarPadroes.Image = ((System.Drawing.Image)(resources.GetObject("btn_MarcarPadroes.Image")));
             this.btn_MarcarPadroes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_MarcarPadroes.Name = "btn_MarcarPadroes";
             this.btn_MarcarPadroes.Size = new System.Drawing.Size(23, 22);
             this.btn_MarcarPadroes.Text = "btn_MarcarPadrões";
             this.btn_MarcarPadroes.ToolTipText = "Marcar Padroes";
+            this.btn_MarcarPadroes.Click += new System.EventHandler(this.btn_MarcarPadroes_Click);
             // 
             // toolStripSeparator5
             // 
