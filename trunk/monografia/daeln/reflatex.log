@@ -1,0 +1,14 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2013.6.19)  2 JUL 2013 10:32
+entering extended mode
+**C:/Users/Ge/Desktop/daeln/reflatex.bib
+(C:/Users/Ge/Desktop/daeln/reflatex.bib
+! Undefined control sequence.
+l.25   title = {\LaTeX
+                      \ for scientists and engineers},
+? 
+! Emergency stop.
+l.25   title = {\LaTeX
+                      \ for scientists and engineers},
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!
