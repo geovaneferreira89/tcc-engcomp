@@ -46,8 +46,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.CorrelAgain = new System.Windows.Forms.ToolStripButton();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.BTN_Kohonen = new System.Windows.Forms.ToolStripButton();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -175,7 +176,8 @@
             this.toolStripSeparator1,
             this.toolStripButton3,
             this.btn_Suspender,
-            this.CorrelAgain});
+            this.CorrelAgain,
+            this.BTN_Kohonen});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(668, 25);
@@ -227,6 +229,16 @@
             this.btn_Suspender.Text = "btn_Suspender";
             this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click);
             // 
+            // CorrelAgain
+            // 
+            this.CorrelAgain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CorrelAgain.Image = ((System.Drawing.Image)(resources.GetObject("CorrelAgain.Image")));
+            this.CorrelAgain.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CorrelAgain.Name = "CorrelAgain";
+            this.CorrelAgain.Size = new System.Drawing.Size(23, 22);
+            this.CorrelAgain.Text = "toolStripButton1";
+            this.CorrelAgain.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -237,15 +249,15 @@
             this.progressBar.TabIndex = 19;
             this.progressBar.Visible = false;
             // 
-            // CorrelAgain
+            // BTN_Kohonen
             // 
-            this.CorrelAgain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CorrelAgain.Image = ((System.Drawing.Image)(resources.GetObject("CorrelAgain.Image")));
-            this.CorrelAgain.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CorrelAgain.Name = "CorrelAgain";
-            this.CorrelAgain.Size = new System.Drawing.Size(23, 22);
-            this.CorrelAgain.Text = "toolStripButton1";
-            this.CorrelAgain.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.BTN_Kohonen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BTN_Kohonen.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Kohonen.Image")));
+            this.BTN_Kohonen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BTN_Kohonen.Name = "BTN_Kohonen";
+            this.BTN_Kohonen.Size = new System.Drawing.Size(59, 22);
+            this.BTN_Kohonen.Text = "Kohonen";
+            this.BTN_Kohonen.Click += new System.EventHandler(this.BTN_Kohonen_Click);
             // 
             // FormResultados
             // 
@@ -295,5 +307,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton btn_Suspender;
         private System.Windows.Forms.ToolStripButton CorrelAgain;
+        private System.Windows.Forms.ToolStripButton BTN_Kohonen;
     }
 }
