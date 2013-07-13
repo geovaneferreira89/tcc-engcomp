@@ -138,6 +138,7 @@
     <Compile Include="InfoEDF.Designer.cs">
       <DependentUpon>InfoEDF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kohonen.cs" />
     <Compile Include="Licenca.cs">
       <SubType>Form</SubType>
     </Compile>

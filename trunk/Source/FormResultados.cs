@@ -377,6 +377,11 @@ namespace AmbienteRPB
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
+
+        private void BTN_Kohonen_Click(object sender, EventArgs e)
+        {
+            new Kohonen(4, 10, "DATA.txt");
+        }
         //------------------------------------------------------------------------------------------
      }
 }
