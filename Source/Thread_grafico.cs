@@ -108,14 +108,13 @@ namespace thread_chart
                                 {
                                     if (SinalEEG.SignalInfo[j].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
                                     { //Histograma
-                                        for (int Histo = 0; Histo < (SinalEEG.SignalInfo[0].NrSamples / SinalEEG.SignalInfo[j].NrSamples); Histo++)
+                                      for (int Histo = 0; Histo < (SinalEEG.SignalInfo[0].NrSamples / SinalEEG.SignalInfo[j].NrSamples); Histo++)
                                             prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                     }
                                     else
                                         prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                 }
                             }
-                            load_progress_bar(0, 1);
                         }
                     }
                     for (int i = 0; i < NumeroDeCanais; i++)
@@ -219,11 +218,20 @@ namespace thread_chart
             {
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
                 ScrollBar.Enabled = true;
+
+                int valor = SinalEEG.SignalInfo[0].NrSamples * 10;
+                if (7 <= _NumCanais)
+                {
+                    if (SinalEEG.SignalInfo[4].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
+                        valor = (SinalEEG.FileInfo.NrDataRecords / 7) * 5;
+                }
+             
                 for (int i = 0; i < _NumCanais; i++)
                 {
-                    prb.ChartAreas[i].AxisX.ScaleView.Size = 2500;
-                    prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
+                     prb.ChartAreas[i].AxisX.ScaleView.Size = valor;
+                     prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
                 }
+             
                 ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords);
                 ScrollBar.SmallChange = 10;//segundos
                 ScrollBar.LargeChange = 10;//segundos            

@@ -603,7 +603,6 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].Position.Y     = _aux * i;
             }
             AdicionaData(0);
-            Adiciona_linhas_de_tempo();
             if (status_projeto == "Projeto_EDF")
             {
                 atualiza_sinal objCliente = new atualiza_sinal(chart1, numeroDeCanais, progressBar, tool_ControlesProjeto, Box_Status, status_projeto, edfFileOutput, ScrollBar);
@@ -624,6 +623,7 @@ namespace AmbienteRPB
                     }
                 }
             }
+            Adiciona_linhas_de_tempo();
         }
         //------------------------------------------------------------------------------------------
         //Diminui o tamanho de largura de todas as séries, (diminuindo a sobreposição entre canais)
