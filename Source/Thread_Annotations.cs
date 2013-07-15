@@ -98,7 +98,7 @@ namespace AmbienteRPB
                             annotationRectangle.AnchorX = PosX;
                             annotationRectangle.Y = chart1.ChartAreas[_vectorCTRL_[0]].AxisY.Maximum;
                             annotationRectangle.Height = _Altura_;
-                            annotationRectangle.Width = _Comprimento_ / 26.1;
+                            annotationRectangle.Width = _Comprimento_ *100; // 26.1;
                     
                             annotationRectangle.LineColor = CorDeFundo;
                             annotationRectangle.Font = new Font("Arial", 10, FontStyle.Bold);

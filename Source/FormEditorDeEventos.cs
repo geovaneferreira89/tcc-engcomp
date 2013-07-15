@@ -159,7 +159,7 @@ namespace AmbienteRPB
                                 tempo_X++;
                             }
                             else
-                                aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                               aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                         }
                     }
                 }

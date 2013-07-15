@@ -223,12 +223,12 @@ namespace thread_chart
                 if (7 <= _NumCanais)
                 {
                     if (SinalEEG.SignalInfo[4].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
-                        valor = (SinalEEG.FileInfo.NrDataRecords / 7) * 5;
+                        valor = 1000;
                 }
-             
+                
                 for (int i = 0; i < _NumCanais; i++)
                 {
-                     prb.ChartAreas[i].AxisX.ScaleView.Size = valor;
+                    prb.ChartAreas[i].AxisX.ScaleView.Size = valor;
                      prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
                 }
              
