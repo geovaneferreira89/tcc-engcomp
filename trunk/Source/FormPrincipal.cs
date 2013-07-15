@@ -848,16 +848,29 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void AddSegInChart()
         {
+            float valor=0;
             for(int k=0; k < Scroll_Click_Escala_Seg; k++){
                 if(DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
                 {
-                    int tempo = DataRecords_lidos * edfFileOutput.SignalInfo[1].BufferOffset;
                     edfFileOutput.ReadDataBlock(DataRecords_lidos);
                     DataRecords_lidos++;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < __numeroDeCanais; j++)
-                        for (int i = 0; i < edfFileOutput.SignalInfo[1].BufferOffset; i++)
-                            chart1.Series["canal" + j].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                    {
+                        for (int i = 0; i < edfFileOutput.SignalInfo[j].NrSamples; i++)
+                        {
+                            valor = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
+                            if (edfFileOutput.SignalInfo[j].NrSamples != edfFileOutput.SignalInfo[0].NrSamples)
+                            { //Histograma
+                               //(MELHORAR) este for está muito lendo... 
+                                int Repticaoes = (edfFileOutput.SignalInfo[0].NrSamples / edfFileOutput.SignalInfo[j].NrSamples);
+                                for (int Histo = 0; Histo < Repticaoes; Histo++)
+                                    chart1.Series["canal" + j].Points.AddY(valor);
+                            }
+                            else
+                                chart1.Series["canal" + j].Points.AddY(valor);
+                        }
+                    }
                 }
             }
         }

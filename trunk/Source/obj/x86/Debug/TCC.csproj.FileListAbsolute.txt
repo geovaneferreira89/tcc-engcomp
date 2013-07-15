@@ -98,3 +98,4 @@ C:\Users\geovane.v.ferreira.CWBDIS\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug
 C:\Users\geovane.v.ferreira.CWBDIS\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.InfoEDF.resources
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Modelo1.EDF
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
