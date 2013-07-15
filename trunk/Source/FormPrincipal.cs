@@ -469,7 +469,7 @@ namespace AmbienteRPB
                 aux_x_pos = aux_x_pos + (float)Padrao_Inicio.X;
               
                 Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar,aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2],
-                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height, (float)Padrao_Fim.X - Padrao_Inicio.X/*(e.X-x_Pos)*/, true, null, countCTRL, canaisCTRL);
+                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size), true, null, countCTRL, canaisCTRL);
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
                 
