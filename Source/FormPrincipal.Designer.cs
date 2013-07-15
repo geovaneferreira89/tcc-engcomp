@@ -408,7 +408,7 @@
             // 
             // openFileEDF
             // 
-            this.openFileEDF.Filter = "Arquivos EDF (*.edf)|*.edf|All files (*.*)|*.*\"";
+            this.openFileEDF.Filter = "Arquivos EDF (*.edf)|*.edf|REC Files (*.rec)|*.rec\"";
             // 
             // ScrollBar
             // 

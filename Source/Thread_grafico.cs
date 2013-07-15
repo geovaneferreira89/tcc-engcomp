@@ -94,7 +94,6 @@ namespace thread_chart
             }
             else
             {
-                int tempo = 0;
                 if (caso == 1)
                 {
                     if (prb != null)
@@ -104,9 +103,18 @@ namespace thread_chart
                         {
                             edfFileOutput.ReadDataBlock(k);
                             for (int j = 0; j < NumeroDeCanais; j++)
-                                for (int i = 0; i < edfFileOutput.SignalInfo[1].BufferOffset; i++)
-                                    prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                            tempo = edfFileOutput.SignalInfo[1].BufferOffset + tempo;
+                            {
+                                for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+                                {
+                                    if (SinalEEG.SignalInfo[j].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
+                                    { //Histograma
+                                        for (int Histo = 0; Histo < (SinalEEG.SignalInfo[0].NrSamples / SinalEEG.SignalInfo[j].NrSamples); Histo++)
+                                            prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                    }
+                                    else
+                                        prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                }
+                            }
                             load_progress_bar(0, 1);
                         }
                     }
