@@ -391,7 +391,12 @@ namespace AmbienteRPB
 
             GerArquivos = new GerenArquivos();
             int numeroLinhas = System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
-            Kohonen objKohonen = new Kohonen(vector_evento.Count(), numeroLinhas, GerArquivos.getPathUser() + "arquivo.txt", chart1,  progressBar, SMS_Box);
+            FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
+            FormDadosInput.opcao = 1;
+            FormDadosInput.Vetores = numeroLinhas;
+            FormDadosInput.TamVetores = vector_evento.Count();
+            FormDadosInput.ShowDialog();
+            Kohonen objKohonen = new Kohonen(FormDadosInput.TamVetores, FormDadosInput.Vetores, GerArquivos.getPathUser() + "arquivo.txt", chart1, progressBar, SMS_Box);
             ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
             ThreadKohonen.Start();           
         }
