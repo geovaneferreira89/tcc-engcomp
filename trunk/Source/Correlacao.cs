@@ -176,6 +176,20 @@ namespace AmbienteRPB
                         String line = null;
                         int cont = 0;
 
+                        //se tem um arquivo velho lá... apaga
+                        if(System.IO.File.Exists(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt"))
+                        {
+                            try
+                            {
+                                System.IO.File.Delete(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt");
+                            }
+                            catch (System.IO.IOException e)
+                            {
+                                Console.WriteLine(e.Message);
+                                return;
+                            }
+                        }
+
                         //===================================================================
                         //                  Primeira etapa de correlação
                         //===================================================================   
@@ -193,6 +207,7 @@ namespace AmbienteRPB
                         //Canal que está sendo amostrado
                         for (int i = 0; i < prb.Series[canal].Points.Count; i++)
                         {
+
                             //Vetor do Evento
                             for (int j = 0; j < vector_evento.Count(); j++)
                             {
@@ -231,19 +246,25 @@ namespace AmbienteRPB
                             //então construo um vetor do tamanho do padrão selecionado
                             //e salvo em txt
 
-                            line = line + res;
-                            cont++;
+                            string resultado = res.ToString();
+                            resultado.Replace(",", ".");
+
+
+                            line = line + ", " + resultado;
+                            
+
                             if (cont == vector_evento.Count())
                             {
 
                                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt", true))
                                 {
+                                    line = "vetor" + cont + line;
                                     file.WriteLine(line);
                                 }
-                                cont = 0;
                                 line = null;
                             }
-                            
+
+                            cont++;
 
                             //Vai Plotando o resultado...
                             prb.Series[canal + 1].Points.AddY(res);
