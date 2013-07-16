@@ -33,6 +33,7 @@ namespace AmbienteRPB
         public PointF ValorInicio;
         public PointF ValorFim;
         private Thread Thread_;
+        private Thread ThreadKohonen;
         private GerenArquivos GerArquivos;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
@@ -384,17 +385,20 @@ namespace AmbienteRPB
         {
             //aqui envio a path do novo arquivo
             //new Kohonen(TamanhoDosVetores, numeroDeLinhas, "DATA.txt");
-            GerArquivos = new GerenArquivos();
-            int numeroLinhas = System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
-            new Kohonen(vector_evento.Count(), numeroLinhas, GerArquivos.getPathUser() + "arquivo.txt");
-            gbxChart.Height = gbxChart.Height - SMS_Box.Height;//105;
+            gbxChart.Height = gbxChart.Height - SMS_Box.Height;
             btn_Close.Visible = true;
             SMS_Box.Visible = true;
+
+            GerArquivos = new GerenArquivos();
+            int numeroLinhas = System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
+            Kohonen objKohonen = new Kohonen(vector_evento.Count(), numeroLinhas, GerArquivos.getPathUser() + "arquivo.txt", chart1,  progressBar, SMS_Box);
+            ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
+            ThreadKohonen.Start();           
         }
 
         private void btn_Close_Click(object sender, EventArgs e)
         {
-            gbxChart.Height = gbxChart.Height + SMS_Box.Height;//105;
+            gbxChart.Height = gbxChart.Height + SMS_Box.Height;
             btn_Close.Visible = false;
             SMS_Box.Visible = false;
         }
