@@ -251,7 +251,7 @@ namespace AmbienteRPB
 
                             resultado = res.ToString();
                            
-                            resultado.Replace(",", ".");
+                            resultado = resultado.Replace("," , ".");
                             line = line + ", " + resultado;
                            
                             if (cont == vector_evento.Count())
