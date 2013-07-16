@@ -598,6 +598,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].BackColor      = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled  = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled  = AxisEnabled.False;
+                chart1.ChartAreas[i].AxisY.IsStartedFromZero = false;
                 if (numeroDeCanais != 1)
                 {
                     chart1.ChartAreas[i].Position.Height = _aux + 2;//+10 os sinais sobreescrevem
@@ -605,7 +606,7 @@ namespace AmbienteRPB
                 }
                 else
                 {
-                    chart1.ChartAreas[i].Position.Height = 50;
+                    chart1.ChartAreas[i].Position.Height = 100;
                     chart1.ChartAreas[i].Position.Y = 0;
                 }
                 chart1.ChartAreas[i].Position.Width = 96;
@@ -620,6 +621,7 @@ namespace AmbienteRPB
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
                 AmplitudeCombo.Enabled = true;
+                Adiciona_linhas_de_tempo();
                 //Tread responsavel por marcar os eventos caso eles já existam
                 if (ListaExiste)
                 {
@@ -632,7 +634,9 @@ namespace AmbienteRPB
                     }
                 }
             }
-            Adiciona_linhas_de_tempo();
+            if (__numeroDeCanais == 1)
+                DataRecords_lidos = edfFileOutput.DataBuffer.Count();
+           // AmplitudeCombo.Text = Convert.ToString(chart1.ChartAreas[0].AxisY.ScaleView.Size);
         }
         //------------------------------------------------------------------------------------------
         //Diminui o tamanho de largura de todas as séries, (diminuindo a sobreposição entre canais)
@@ -872,7 +876,7 @@ namespace AmbienteRPB
                             if (edfFileOutput.SignalInfo[j].NrSamples != edfFileOutput.SignalInfo[0].NrSamples)
                             { //Histograma
                                //(MELHORAR) este for está muito lendo... 
-                                int Repticaoes = (edfFileOutput.SignalInfo[0].NrSamples / edfFileOutput.SignalInfo[j].NrSamples);
+                               int Repticaoes = (edfFileOutput.SignalInfo[0].NrSamples / edfFileOutput.SignalInfo[j].NrSamples);
                                 for (int Histo = 0; Histo < Repticaoes; Histo++)
                                     chart1.Series["canal" + j].Points.AddY(valor);
                             }
@@ -927,28 +931,82 @@ namespace AmbienteRPB
         //Auto sets
         private void autoFreqToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                chart1.ChartAreas[0].AxisY.Maximum = 250;
-                for (int i = 0; i < __numeroDeCanais; i++)
+            for (int i = 0; i < __numeroDeCanais; i++)
+            {
+                double max = chart1.ChartAreas[i].AxisY.Maximum;
+                double min = chart1.ChartAreas[i].AxisY.Minimum;
+                chart1.ChartAreas[i].AxisY.Maximum = max - 2;
+            }
+            
+           for (int i = 0; i < __numeroDeCanais; i++)
+           {
                     chart1.ChartAreas[i].Position.Y = 100 / __numeroDeCanais * i;
+           }
         }
         //------------------------------------------------------------------------------------------
         //Somente Numeros
         private void AmplitudeCombo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != 8)
-                e.Handled = true;
+           // char ch = e.KeyChar;
+           //  if (!Char.IsDigit(ch) && ch != 8)
+           //     e.Handled = true;
         }
         //------------------------------------------------------------------------------------------
         private void AmplitudeCombo_TextChanged(object sender, EventArgs e)
         {        
+            //if (AmplitudeCombo.Text != "")
+           // {
+             //  for (int i = 0; i < __numeroDeCanais; i++){
+              //       chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+               //}
+            //}   
+        }
+        //------------------------------------------------------------------------------------------
+        private void AmplitudeCombo_KeyDown(object sender, KeyEventArgs e)
+        {
             if (AmplitudeCombo.Text != "")
             {
-               //chart1.ChartAreas[0].AxisY.Maximum = 250;
-               for (int i = 0; i < __numeroDeCanais; i++){
-                     chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
-               }
-            }
+                     switch (e.KeyCode)
+                    {
+                        case Keys.Up:
+                         {
+                             for (int i = 0; i < __numeroDeCanais; i++)
+                             {
+                                 AmplitudeCombo.Text = Convert.ToString(Convert.ToDouble(AmplitudeCombo.Text) + 1);
+                                 chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+                                 //chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;
+                             }
+                             break;
+                         }
+                        case Keys.Down:
+                         {
+                             for (int i = 0; i < __numeroDeCanais; i++)
+                             {
+                                 AmplitudeCombo.Text = Convert.ToString(Convert.ToDouble(AmplitudeCombo.Text) - 1);
+                                 chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+                                 //chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height - 1;
+                             }
+                             break;
+                         }
+                    }
+                
+            }   
+        }
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            int divisao = __numeroDeCanais / 100;
+          /*  for (int i = 0; i < __numeroDeCanais; i++)
+            {//chart1.ChartAreas[i].Position.Y = divisao*i;
+
+            }*/
+           // chart1.ChartAreas[0].Position.Y = 100;//(float)(chart1.ChartAreas[0].AxisY.Maximum);
+           // chart1.ChartAreas[1].Position.Y = 0; //(float)(chart1.ChartAreas[1].AxisY.Minimum);
+          // chart1.ChartAreas[0].Position.Bottom = 10;
+        }
+        //------------------------------------------------------------------------------------------
+        private void AmplitudeCombo_KeyUp(object sender, KeyEventArgs e)
+        {
+      
         }
         //------------------------------------------------------------------------------------------
         private void FrequenciaCombo_TextChanged(object sender, EventArgs e)
@@ -1136,6 +1194,7 @@ namespace AmbienteRPB
             FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
             correlacaoForm.ShowDialog();
         }
-        //------------------------------------------------------------------------
+
+   
     }
 }

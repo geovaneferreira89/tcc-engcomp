@@ -108,6 +108,7 @@
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -449,7 +450,8 @@
             this.toolStripSeparator2,
             this.btnTela10S,
             this.btnTela5S,
-            this.toolStripSeparator3});
+            this.toolStripSeparator3,
+            this.toolStripButton4});
             this.tool_ControlesProjeto.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
@@ -561,26 +563,12 @@
             // 
             // AmplitudeCombo
             // 
-            this.AmplitudeCombo.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "10",
-            "20",
-            "30",
-            "40",
-            "50",
-            "80",
-            "100",
-            "150",
-            "200",
-            "2000",
-            "2500",
-            "3000"});
             this.AmplitudeCombo.Name = "AmplitudeCombo";
             this.AmplitudeCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.AmplitudeCombo.Size = new System.Drawing.Size(75, 25);
-            this.AmplitudeCombo.Text = "1000";
+            this.AmplitudeCombo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AmplitudeCombo_KeyDown);
             this.AmplitudeCombo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmplitudeCombo_KeyPress);
+            this.AmplitudeCombo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AmplitudeCombo_KeyUp);
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
             // lbl_V
@@ -908,6 +896,16 @@
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
             // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1032,6 +1030,7 @@
         private System.Windows.Forms.ToolStripButton btnTela5S;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem btn_Correlacao;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
     }
 }
 
