@@ -46,6 +46,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void FormResultados_Shown(object sender, EventArgs e)
         {
+            gbxChart.Height = gbxChart.Height + SMS_Box.Height;
             AdicionaCanais();
             Adiciona_linhas_de_tempo();
 
@@ -382,10 +383,20 @@ namespace AmbienteRPB
         private void BTN_Kohonen_Click(object sender, EventArgs e)
         {
             //aqui envio a path do novo arquivo
-            //new Kohonen(4, 10, "DATA.txt");
+            //new Kohonen(TamanhoDosVetores, numeroDeLinhas, "DATA.txt");
             GerArquivos = new GerenArquivos();
             int numeroLinhas = System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
-            new Kohonen(numeroLinhas, 10, GerArquivos.getPathUser() + "arquivo.txt");
+            new Kohonen(vector_evento.Count(), numeroLinhas, GerArquivos.getPathUser() + "arquivo.txt");
+            gbxChart.Height = gbxChart.Height - SMS_Box.Height;//105;
+            btn_Close.Visible = true;
+            SMS_Box.Visible = true;
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            gbxChart.Height = gbxChart.Height + SMS_Box.Height;//105;
+            btn_Close.Visible = false;
+            SMS_Box.Visible = false;
         }
         //------------------------------------------------------------------------------------------
      }
