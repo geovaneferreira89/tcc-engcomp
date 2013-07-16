@@ -61,6 +61,7 @@ namespace AmbienteRPB
                 lbl_digiteONomeDoPadrao.Text = "Num Vet";
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(TamVetores);
+                this.Text = "Dados de Entrada";
             }
         }
     }
