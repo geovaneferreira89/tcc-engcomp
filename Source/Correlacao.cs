@@ -177,7 +177,8 @@ namespace AmbienteRPB
 
                         String line = null;
                         int cont = 0;
-
+                        int vetores = 0;
+                        string resultado;
                         //se tem um arquivo velho lá... apaga
                         if(System.IO.File.Exists(GerArquivos.getPathUser() + "arquivo.txt"))
                         {
@@ -248,22 +249,22 @@ namespace AmbienteRPB
                             //então construo um vetor do tamanho do padrão selecionado
                             //e salvo em txt
 
-                            string resultado = res.ToString();
+                            resultado = res.ToString();
+                           
                             resultado.Replace(",", ".");
-
-
                             line = line + ", " + resultado;
-                            
-
+                           
                             if (cont == vector_evento.Count())
                             {
 
                                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(GerArquivos.getPathUser() + "arquivo.txt", true))
                                 {
-                                    line = "vetor" + cont + line;
+                                    line = "vetor" + vetores + line;
                                     file.WriteLine(line);
                                 }
                                 line = null;
+                                cont = 0;
+                                vetores++;
                             }
 
                             cont++;
