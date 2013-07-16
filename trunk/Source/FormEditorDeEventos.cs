@@ -146,7 +146,7 @@ namespace AmbienteRPB
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < NumeroDeCanais; j++)
                     {
-                        for (int i = 0; i < 256; i++)
+                        for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                         {
                             if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
                             {
