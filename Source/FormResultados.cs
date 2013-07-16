@@ -380,7 +380,10 @@ namespace AmbienteRPB
 
         private void BTN_Kohonen_Click(object sender, EventArgs e)
         {
-            new Kohonen(4, 10, "DATA.txt");
+            //aqui envio a path do novo arquivo
+            //new Kohonen(4, 10, "DATA.txt");
+            int numeroLinhas = System.IO.File.ReadAllLines(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt").Length;
+            new Kohonen(numeroLinhas, 10, @"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt");
         }
         //------------------------------------------------------------------------------------------
      }

@@ -19,11 +19,13 @@ namespace AmbienteRPB
         private List<string> labels = new List<string>();
         private List<double[]> patterns = new List<double[]>();
 
+        //Ok: cria um kohonen, mandar sinal no lugar do arquivo
         public Kohonen(int dimensions, int length, string file)
         {
             this.length = length;
             this.dimensions = dimensions;
             Initialise();
+
             LoadData(file);
             NormalisePatterns();
             Train(0.0000001);
