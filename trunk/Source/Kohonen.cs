@@ -60,7 +60,7 @@ namespace AmbienteRPB
                 double[] inputs = new double[dimensions];
                 for (int i = 0; i < dimensions; i++)
                 {
-                    inputs[i] = double.Parse(line[i + 1]);
+                    inputs[i] = double.Parse(line[i+1]);
                 }
                 patterns.Add(inputs);
             }
