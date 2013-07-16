@@ -591,16 +591,25 @@ namespace AmbienteRPB
             double Divisao = 100 / (double)numeroDeCanais;
             float _aux;
             _aux = (float)Divisao;
+
             for (int i = 0; i < numeroDeCanais; i++)
             {   //Propriedades de cada sinal
                 chart1.ChartAreas.Add("canal" + i);
                 chart1.ChartAreas[i].BackColor      = Color.Transparent;
                 chart1.ChartAreas[i].AxisX.Enabled  = AxisEnabled.False;
                 chart1.ChartAreas[i].AxisY.Enabled  = AxisEnabled.False;
-                chart1.ChartAreas[i].Position.Height= _aux+2;//+10 os sinais sobreescrevem
+                if (numeroDeCanais != 1)
+                {
+                    chart1.ChartAreas[i].Position.Height = _aux + 2;//+10 os sinais sobreescrevem
+                    chart1.ChartAreas[i].Position.Y = _aux * i;
+                }
+                else
+                {
+                    chart1.ChartAreas[i].Position.Height = 50;
+                    chart1.ChartAreas[i].Position.Y = 0;
+                }
                 chart1.ChartAreas[i].Position.Width = 96;
-                chart1.ChartAreas[i].Position.X     = 4;
-                chart1.ChartAreas[i].Position.Y     = _aux * i;
+                chart1.ChartAreas[i].Position.X = 4;
             }
             AdicionaData(0);
             if (status_projeto == "Projeto_EDF")
@@ -629,10 +638,10 @@ namespace AmbienteRPB
         //Diminui o tamanho de largura de todas as séries, (diminuindo a sobreposição entre canais)
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            double Divisao = 100 / 23;
+            double Divisao = 100 / __numeroDeCanais;
             float _aux;
             _aux = (float)Divisao;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < __numeroDeCanais; i++)
             {   //Propriedades de cada sinal
                 if (chart1.ChartAreas[i].Position.Height > 1)
                 {
@@ -645,10 +654,10 @@ namespace AmbienteRPB
         //Aumenta o tamanho de largura de todas as séries, (aumentando a sobreposição entre canais)
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            double Divisao = 100 / 23;
+            double Divisao = 100 / __numeroDeCanais;
             float _aux;
             _aux = (float)Divisao;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < __numeroDeCanais; i++)
             {   //Propriedades de cada sinal
                 chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;
                 chart1.ChartAreas[i].Position.Y = _aux * i;
