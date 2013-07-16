@@ -39,6 +39,7 @@ namespace AmbienteRPB
         private double[] Vector_evento;
         private float inicio;
         private float fim;
+        private GerenArquivos GerArquivos;
         //-----------------------------------------------------------------------------------------
         public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, float _inicio, float _fim, int _NumeroDeCanais)
         {
@@ -57,6 +58,7 @@ namespace AmbienteRPB
         //-----------------------------------------------------------------------------------------
         public void Inicializa()
         {
+            GerArquivos = new GerenArquivos();
             if (edfFileOutput != null)
             {
                 if (Opcao == "PlotaSinalEEG")
@@ -177,11 +179,11 @@ namespace AmbienteRPB
                         int cont = 0;
 
                         //se tem um arquivo velho lá... apaga
-                        if(System.IO.File.Exists(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt"))
+                        if(System.IO.File.Exists(GerArquivos.getPathUser() + "arquivo.txt"))
                         {
                             try
                             {
-                                System.IO.File.Delete(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt");
+                                System.IO.File.Delete(GerArquivos.getPathUser() + "arquivo.txt");
                             }
                             catch (System.IO.IOException e)
                             {
@@ -256,7 +258,7 @@ namespace AmbienteRPB
                             if (cont == vector_evento.Count())
                             {
 
-                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt", true))
+                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(GerArquivos.getPathUser() + "arquivo.txt", true))
                                 {
                                     line = "vetor" + cont + line;
                                     file.WriteLine(line);

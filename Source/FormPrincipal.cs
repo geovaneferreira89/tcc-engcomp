@@ -995,10 +995,10 @@ namespace AmbienteRPB
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             int divisao = __numeroDeCanais / 100;
-          /*  for (int i = 0; i < __numeroDeCanais; i++)
+            for (int i = 0; i < chart1.Series[0].Points.Count; i++)
             {//chart1.ChartAreas[i].Position.Y = divisao*i;
-
-            }*/
+                chart1.Series[0].Points[i].SetValueY(chart1.Series[0].Points[i].YValues[0] + 10000);
+            }
            // chart1.ChartAreas[0].Position.Y = 100;//(float)(chart1.ChartAreas[0].AxisY.Maximum);
            // chart1.ChartAreas[1].Position.Y = 0; //(float)(chart1.ChartAreas[1].AxisY.Minimum);
           // chart1.ChartAreas[0].Position.Bottom = 10;
