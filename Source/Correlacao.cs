@@ -90,7 +90,6 @@ namespace AmbienteRPB
                     case("PlotaSinalEEG"):
                         {
                             float excluir;
-                            int tempo = 0;
                             if (caso == 1)
                             {
                                 if (prb != null)
@@ -101,14 +100,13 @@ namespace AmbienteRPB
                                         edfFileOutput.ReadDataBlock(k);
                                         for (int j = 0; j < numeroDeCanais_; j++)
                                         {
-                                            for (int i = 0; i < 256; i++)
+                                            for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                             {
                                                 if (j == (canal/3))
                                                     prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                                 else
                                                    excluir = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]; 
                                             }
-                                            tempo = 256 + tempo;
                                             load_progress_bar(0, 1);
                                         }
                                     }
