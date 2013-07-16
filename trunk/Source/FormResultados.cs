@@ -33,6 +33,7 @@ namespace AmbienteRPB
         public PointF ValorInicio;
         public PointF ValorFim;
         private Thread Thread_;
+        private GerenArquivos GerArquivos;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
         {
@@ -382,8 +383,9 @@ namespace AmbienteRPB
         {
             //aqui envio a path do novo arquivo
             //new Kohonen(4, 10, "DATA.txt");
-            int numeroLinhas = System.IO.File.ReadAllLines(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt").Length;
-            new Kohonen(numeroLinhas, 10, @"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt");
+            GerArquivos = new GerenArquivos();
+            int numeroLinhas = System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
+            new Kohonen(numeroLinhas, 10, GerArquivos.getPathUser() + "arquivo.txt");
         }
         //------------------------------------------------------------------------------------------
      }
