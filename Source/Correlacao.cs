@@ -172,6 +172,10 @@ namespace AmbienteRPB
                         float MaxX = 0;
 
                         float Media = 0;
+
+                        String line = null;
+                        int cont = 0;
+
                         //===================================================================
                         //                  Primeira etapa de correlação
                         //===================================================================   
@@ -220,6 +224,27 @@ namespace AmbienteRPB
                             }
                             if (MinY > res)
                                 MinY = res;
+                            
+
+                            //res contém o resultado da correlação, ponto a ponto
+                            //que eu quero escrever num arquivo
+                            //então construo um vetor do tamanho do padrão selecionado
+                            //e salvo em txt
+
+                            line = line + res;
+                            cont++;
+                            if (cont == vector_evento.Count())
+                            {
+
+                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Ge\Desktop\tcc\arquivos\arquivo.txt", true))
+                                {
+                                    file.WriteLine(line);
+                                }
+                                cont = 0;
+                                line = null;
+                            }
+                            
+
                             //Vai Plotando o resultado...
                             prb.Series[canal + 1].Points.AddY(res);
                             Media = Media + res;
