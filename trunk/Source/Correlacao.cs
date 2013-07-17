@@ -251,7 +251,7 @@ namespace AmbienteRPB
                         
                         //Salva no arquivo os vetores, para o kohonei
                         //desabilita a barra de progresso
-                        bool passagemPorParametros = false;
+                        /*bool passagemPorParametros = false;
                         if (!passagemPorParametros)
                         {
                             load_progress_bar(1, 3);
@@ -281,7 +281,7 @@ namespace AmbienteRPB
                                 load_progress_bar(0, 1);
                             }
                         }
-
+                        */
                         
                         //Adiciona linha vertical em zero
                         HorizontalLineAnnotation Zero_correla = new HorizontalLineAnnotation();
