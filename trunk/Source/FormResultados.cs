@@ -320,7 +320,7 @@ namespace AmbienteRPB
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < numeroDeCanais; j++)
                     {
-                        for (int i = 0; i < edfFileOutput.SignalInfo[1].BufferOffset; i++)
+                        for (int i = 0; i < edfFileOutput.SignalInfo[j].NrSamples; i++)
                         {
                             if (j == (CanalAtual/3))
                                 chart1.Series[CanalAtual].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
