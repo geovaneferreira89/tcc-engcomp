@@ -35,6 +35,7 @@ namespace AmbienteRPB
         private Thread Thread_;
         private Thread ThreadKohonen;
         private GerenArquivos GerArquivos;
+        private bool SMS_Zoom = false;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
         {
@@ -386,8 +387,10 @@ namespace AmbienteRPB
             //aqui envio a path do novo arquivo
             //new Kohonen(TamanhoDosVetores, numeroDeLinhas, "DATA.txt");
             gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+            btn_Aumentar.Visible = true;
             btn_Close.Visible = true;
             SMS_Box.Visible = true;
+
 
             GerArquivos = new GerenArquivos();
             int numeroLinhas = System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
@@ -401,14 +404,6 @@ namespace AmbienteRPB
             ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
             ThreadKohonen.Start();           
         }
-
-        private void btn_Close_Click(object sender, EventArgs e)
-        {
-            gbxChart.Height = gbxChart.Height + SMS_Box.Height;
-            btn_Close.Visible = false;
-            SMS_Box.Visible = false;
-        }
-
         private void comboAmplitude_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -420,7 +415,39 @@ namespace AmbienteRPB
             {
                 for (int i = 0; i < 4; i++)
                     chart1.ChartAreas[i].AxisX.ScaleView.Size = Convert.ToDouble(comboFrequencia.Text) * 1000;
+                chart1.ChartAreas[3].AxisX.ScaleView.Size = Convert.ToDouble(comboFrequencia.Text);
             }
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            if (!SMS_Zoom)
+            {
+                gbxChart.Height = gbxChart.Height + SMS_Box.Height;
+                btn_Close.Visible = false;
+                SMS_Box.Visible = false;
+                btn_Aumentar.Visible = false;
+            }
+            else
+            {
+                SMS_Zoom = false;
+                gbxChart.Visible = true;
+                SMS_Box.Location = new Point(this.SMS_Box.Location.X, gbxChart.Height+33);
+                SMS_Box.Height = SMS_Box.Height + gbxChart.Height;
+                btn_Aumentar.Location = new Point(this.btn_Aumentar.Location.X, this.SMS_Box.Location.Y + 4);
+                btn_Close.Location = new Point(this.btn_Close.Location.X, this.SMS_Box.Location.Y + 4);
+            }
+        }
+
+        private void btn_Aumentar_Click(object sender, EventArgs e)
+        {
+            SMS_Zoom = true;
+            gbxChart.Visible = false;
+            SMS_Box.Location = new Point(this.SMS_Box.Location.X, gbxChart.Location.Y);
+            SMS_Box.Height = SMS_Box.Height + gbxChart.Height;
+            btn_Aumentar.Location = new Point(this.btn_Aumentar.Location.X, 30);
+            btn_Close.Location = new Point(this.btn_Close.Location.X, 30);
+
         }
         //------------------------------------------------------------------------------------------
      }
