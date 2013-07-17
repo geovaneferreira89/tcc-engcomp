@@ -72,14 +72,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="539136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="540672">
       <assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yybInCu6HCUVH3BOp5GlGmoCvs4=</dsig:DigestValue>
+        <dsig:DigestValue>KWKbgXc0vp6FkKyNjrTdCABMYa4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

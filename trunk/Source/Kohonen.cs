@@ -20,7 +20,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(int Opcao, double valor);
+        private delegate void AtualizaChart(string opcao, double dadoX,double dadoY, int canal);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor_vertical_Inicio;
         private VerticalLineAnnotation Cursor_vertical_Corr2;
@@ -61,6 +61,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         public void Init()
         {
+            Plotar("Criar Chart de Barras", 0,0, 2);
             send_SmS(1, "Inicializando...");
             Initialise();
             send_SmS(1, "Carregando Arquivo de Vetores");
@@ -171,6 +172,7 @@ namespace AmbienteRPB
                 Neuron n = Winner(patterns[i]);
               //  Console.WriteLine("{0},{1},{2}", labels[i], n.X, n.Y);
                 string saida = labels[i] + " " + n.X + " " + n.Y;
+                Plotar("AddDado", n.X,n.Y,2); // tem o n.x tbm para no caso o Mapa mesmo... 
                 send_SmS(1, saida);
             }
         }
@@ -200,6 +202,63 @@ namespace AmbienteRPB
                 value += Math.Pow((vector1[i] - vector2[i]), 2);
             }
             return Math.Sqrt(value);
+        }
+        //Usar canal 2
+        private void Plotar(string opcao, double dadoX, double dadoY, int canal)
+        {
+            if (_Grafico.InvokeRequired)
+            {
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dadoX, dadoY, canal });
+            }
+            else
+            {
+                switch (opcao)
+                {
+                    case ("AddDado"):
+                        {
+                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            prb.Series["canal" + canal].Points.AddY(dadoY);
+
+                            prb.Series["canal" + 4].Points.AddXY(dadoX,dadoY);
+                            break;
+                        }
+                    case ("Criar Chart de Barras"):
+                        {
+                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            if (prb.Series.Count != 3)
+                            {
+                                prb.Series.Add("canal" + canal);
+                                prb.Series["canal" + canal].ChartArea = "canal" + canal;
+                                prb.Titles.Add("canal" + canal);
+
+                                prb.Titles[canal].Position.Height = 3;
+                                prb.Titles[canal].Position.Width = 40;
+                                prb.Titles[canal].Alignment = ContentAlignment.MiddleLeft;
+                                prb.Titles[canal].Position.X = 0;
+                                prb.Titles[canal].Position.Y = (33 * canal) + ((100 - (33 * canal)) / 2);
+                            }
+                            prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+                            prb.Titles[canal].Text = "Kohonen" + ((canal / 3) + 2);
+                            prb.Series["canal" + canal].Color = Color.LightBlue;
+
+                            //mapa de kohonei
+                            prb.Series.Add("canal" + 4);
+                            prb.Series["canal" + 4].ChartArea = "canal" + 3;
+                            prb.Titles.Add("canal" +4);
+
+                            prb.Titles[3].Position.Height = 3;
+                            prb.Titles[3].Position.Width = 40;
+                            prb.Titles[3].Alignment = ContentAlignment.MiddleLeft;
+                            prb.Titles[3].Position.X = 0;
+                            prb.Titles[3].Position.Y = (33 * 3) + ((100 - (33 * 3)) / 2);
+
+                            prb.Series["canal" + 4].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bubble;
+                            prb.Titles[3].Text = "Mapa" + ((4 / 3) + 2);
+                            prb.Series["canal" + 4].Color = Color.Red;
+                            break;
+                        }
+                }
+            }
         }
         //-------------------------------------------------------------------------------
         //Saida de Dados

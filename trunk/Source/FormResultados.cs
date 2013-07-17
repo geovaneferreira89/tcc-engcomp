@@ -59,12 +59,12 @@ namespace AmbienteRPB
         //-----------------------------------------------------------------------------------------
         private void AdicionaCanais()
         {
-            double Divisao = 100 / (double)3;
+            double Divisao = 100 / (double)4;
             float _aux;
             _aux = (float)Divisao;
             // Primeira serie é o canal 
             // Segundo serie é para a correlação deste canal
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {   //Propriedades de cada sinal
                 int _pos = (CanalAtual + i);
                 chart1.ChartAreas.Add("canal" + _pos);
