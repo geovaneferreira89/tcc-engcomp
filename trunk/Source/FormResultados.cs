@@ -396,50 +396,13 @@ namespace AmbienteRPB
         {
             if (SelecionaEventoDasLista())
             {
-                //aqui envio a path do novo arquivo
-                //new Kohonen(TamanhoDosVetores, numeroDeLinhas, "DATA.txt");
                 gbxChart.Height = gbxChart.Height - SMS_Box.Height;
                 btn_Aumentar.Visible = true;
                 btn_Close.Visible = true;
                 SMS_Box.Visible = true;
 
-
                 GerArquivos = new GerenArquivos();
-
-                //Prepara para passar dados por parametros
-                //Salva no arquivo os vetores, para o kohonei
-                //desabilita a barra de progresso
-                /* bool passagemPorParametros = true;
-                 int canal = 0; //0 - Sem Correlação, 1 - Com correlação 
-                 bool adicionarPadrao = false;
-                 int cont = 0;
-                 if (passagemPorParametros)
-                 {
-                     for (int i = 0; i < chart1.Series[canal + 1].Points.Count; i++)
-                     {
-                         while (cont < vector_evento.Count())
-                         {
-                             if ((cont + i) < chart1.Series[canal + 1].Points.Count)
-                                 resultado = Convert.ToString(chart1.Series[canal + 1].Points[cont + i].YValues[0]);
-                             else
-                                 resultado = "0.0";
-
-                             resultado = resultado.Replace(",", ".");
-                             line = line + ", " + resultado;
-                             cont++;
-                         }
-                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(GerArquivos.getPathUser() + "arquivo.txt", true))
-                         {
-                             line = "vetor" + vetores + line;
-                             file.WriteLine(line);
-                         }
-                         line = null;
-                         cont = 0;
-                         vetores++;
-                         load_progress_bar(0, 1);
-                     }
-                 }*/
-                int CanalKohonen = CanalAtual;
+                int CanalKohonen = CanalAtual;//+1 - Usa correlação
                 int numeroLinhas = chart1.Series[CanalKohonen].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 1;
