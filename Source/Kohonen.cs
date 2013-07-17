@@ -20,7 +20,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(string opcao, double dadoX,double dadoY, int canal);
+        private delegate void AtualizaChart(string opcao, double dadoX, double dadoY, int canal);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor_vertical_Inicio;
         private VerticalLineAnnotation Cursor_vertical_Corr2;
@@ -37,8 +37,8 @@ namespace AmbienteRPB
         private delegate void SMS_Propriedades(int opcao, string texto);
         private System.Windows.Forms.RichTextBox TextBox;
         //Variaveis do kohoney -------------------------------------------------------------------
-        private Neuron[,] outputs;  // Collection of weights.
-        private int iteration;      // Current iteration.
+        private Neuron[,] outputs; // Collection of weights.
+        private int iteration;     // Current iteration.
         private int length;        // Side length of output grid.
         private int dimensions;    // Number of input dimensions.
         private Random rnd = new Random();
@@ -47,8 +47,10 @@ namespace AmbienteRPB
         private List<double[]> patterns = new List<double[]>();
         string file;
         int VetTreinamento;
+        double []VetorEvento;
+        double[] Sinal;
         //Ok: cria um kohonen, mandar sinal no lugar do arquivo
-        public Kohonen(int _dimensions, int _length, int _VetTreinamento,string _file,Control Grafico, Control BarraDeProgresso, Control _SMS_)
+        public Kohonen(int _dimensions, int _length, int _VetTreinamento,string _file,Control Grafico, Control BarraDeProgresso, Control _SMS_, double []_VetorEvento, double []_Sinal)
         {
             _Grafico          = Grafico;
             _BarraDeProgresso = BarraDeProgresso;
@@ -58,6 +60,8 @@ namespace AmbienteRPB
             file = _file;
             SMS = _SMS_;
             VetTreinamento = _length;
+            VetorEvento = _VetorEvento;
+            Sinal = _Sinal;
         }
         //------------------------------------------------------------------------------------------
         public void Init()
@@ -96,7 +100,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void LoadData(string file)
         {
-            StreamReader reader = File.OpenText(file);
+            /*StreamReader reader = File.OpenText(file);
             reader.ReadLine(); // Ignore first line.
             int count = 1;
             while (count != VetTreinamento)///!reader.EndOfStream)
@@ -111,7 +115,42 @@ namespace AmbienteRPB
                 patterns.Add(inputs);
                 count++;
             }
-            reader.Close();
+            reader.Close();*/
+            load_progress_bar(1, 3);
+            load_progress_bar(0, 4);
+            load_progress_bar(VetTreinamento, 2);
+            int cont = 0;
+            string resultado;
+            int canal = 0;
+            string line= null;
+            int vetores = 0;
+            for (int i = 0; i < VetTreinamento; i++)
+            {
+                while (cont < VetTreinamento)
+                {
+                    if ((cont + i) < Sinal[canal])
+                        resultado = Convert.ToString(Sinal[canal+i]);
+                    else
+                        resultado = "0.0";
+                    resultado = resultado.Replace(",", ".");
+                    line = line + ", " + resultado;
+                    cont++;
+                }
+                string[] _line = line.Split(',');
+                labels.Add(_line[0]);
+                double[] inputs = new double[dimensions];
+                for (int j = 0; j < dimensions; j++)
+                {
+                    inputs[j] = double.Parse(_line[j + 1]);
+                }
+                patterns.Add(inputs);
+                line = null;
+                cont = 0;
+                vetores++;
+                line = "vetor" + vetores;
+                load_progress_bar(0, 1);
+            }
+            load_progress_bar(1, 3);
         }
  
         private void NormalisePatterns()
@@ -260,7 +299,8 @@ namespace AmbienteRPB
                             prb.Series["canal" + 4].Color = Color.Red;
                             break;
                         }
-                }
+                 
+               }
             }
         }
         //-------------------------------------------------------------------------------
