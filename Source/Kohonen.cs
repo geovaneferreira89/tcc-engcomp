@@ -97,7 +97,8 @@ namespace AmbienteRPB
         {
             StreamReader reader = File.OpenText(file);
             reader.ReadLine(); // Ignore first line.
-            while (!reader.EndOfStream)
+            int count = 0;
+            while (count != length)///!reader.EndOfStream)
             {
                 string[] line = reader.ReadLine().Split(',');
                 labels.Add(line[0]);
@@ -107,6 +108,7 @@ namespace AmbienteRPB
                     inputs[i] = double.Parse(line[i+1]);
                 }
                 patterns.Add(inputs);
+                count++;
             }
             reader.Close();
         }
