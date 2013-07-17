@@ -581,15 +581,19 @@ namespace AmbienteRPB
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
                 ScrollBar.Enabled = true;
 
-                prb.ChartAreas[_canal].AxisX.ScaleView.Size = 2500;
+                int valor = SinalEEG.SignalInfo[0].NrSamples * 10;
+                prb.ChartAreas[_canal].AxisX.ScaleView.Size = valor;
                 prb.ChartAreas[_canal].AxisX.ScrollBar.Enabled = false;
 
-                prb.ChartAreas[_canal + 1].AxisX.ScaleView.Size = 2500;
+                prb.ChartAreas[_canal + 1].AxisX.ScaleView.Size = valor;
                 prb.ChartAreas[_canal + 1].AxisX.ScrollBar.Enabled = false;
 
-                prb.ChartAreas[_canal + 2].AxisX.ScaleView.Size = 2500;
+                prb.ChartAreas[_canal + 2].AxisX.ScaleView.Size = valor;
                 prb.ChartAreas[_canal + 2].AxisX.ScrollBar.Enabled = false;
-               
+
+                prb.ChartAreas[_canal + 3].AxisX.ScaleView.Size = valor;
+                prb.ChartAreas[_canal + 3].AxisX.ScrollBar.Enabled = false;
+
                 ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords);
                 ScrollBar.SmallChange = 10;//segundos
                 ScrollBar.LargeChange = 10;//segundos       
