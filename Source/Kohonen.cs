@@ -237,7 +237,7 @@ namespace AmbienteRPB
                                 prb.Titles[canal].Position.X = 0;
                                 prb.Titles[canal].Position.Y = (33 * canal) + ((100 - (33 * canal)) / 2);
                             }
-                            prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+                            prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                             prb.Titles[canal].Text = "Kohonen" + ((canal / 3) + 2);
                             prb.Series["canal" + canal].Color = Color.LightBlue;
 
