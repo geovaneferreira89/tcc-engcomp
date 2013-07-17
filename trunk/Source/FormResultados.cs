@@ -311,7 +311,7 @@ namespace AmbienteRPB
         {
             for (int k = 0; k < Scroll_Click_Escala_Seg; k++)
             {
-                if (DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
+                if (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
                 {
                     int excluir;
                     int tempo = DataRecords_lidos * edfFileOutput.SignalInfo[1].BufferOffset;
