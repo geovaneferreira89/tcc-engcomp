@@ -394,9 +394,10 @@ namespace AmbienteRPB
             FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
             FormDadosInput.opcao = 1;
             FormDadosInput.Vetores = numeroLinhas;
-            FormDadosInput.TamVetores = vector_evento.Count();
+            if(vector_evento != null)
+              FormDadosInput.TamVetores = vector_evento.Count();
             FormDadosInput.ShowDialog();
-            Kohonen objKohonen = new Kohonen(FormDadosInput.TamVetores, FormDadosInput.Vetores, GerArquivos.getPathUser() + "arquivo.txt", chart1, progressBar, SMS_Box);
+            Kohonen objKohonen = new Kohonen(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, progressBar, SMS_Box);
             ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
             ThreadKohonen.Start();           
         }

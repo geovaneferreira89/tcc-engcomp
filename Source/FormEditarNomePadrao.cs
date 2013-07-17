@@ -33,6 +33,11 @@ namespace AmbienteRPB
             get;
             set;
         }
+        public int TreinamentoCom
+        {
+            get;
+            set;
+        }
         public FormEditarNomePadrao()
         {
             InitializeComponent();
@@ -44,6 +49,7 @@ namespace AmbienteRPB
             {
                 Vetores = Convert.ToInt16(text_NomePadrao.Text);
                 TamVetores = Convert.ToInt16(txt_VetorTamanho.Text);
+                TreinamentoCom = Convert.ToInt16(TxtTreinarCom.Text);
                 this.Close();
             }
             else if (text_NomePadrao.Text != "")
@@ -57,10 +63,11 @@ namespace AmbienteRPB
         {
             if (opcao == 1)
             {
-                this.Height = 93;
+                this.Height = 121;
                 lbl_digiteONomeDoPadrao.Text = "Num Vet";
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(TamVetores);
+                TxtTreinarCom.Text = Convert.ToString(Vetores);
                 this.Text = "Dados de Entrada";
             }
         }

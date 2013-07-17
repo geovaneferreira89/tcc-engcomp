@@ -33,6 +33,8 @@
             this.lbl_digiteONomeDoPadrao = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_VetorTamanho = new System.Windows.Forms.TextBox();
+            this.TxtTreinarCom = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_salvar
@@ -77,11 +79,29 @@
             this.txt_VetorTamanho.Size = new System.Drawing.Size(146, 20);
             this.txt_VetorTamanho.TabIndex = 3;
             // 
+            // TxtTreinarCom
+            // 
+            this.TxtTreinarCom.Location = new System.Drawing.Point(69, 58);
+            this.TxtTreinarCom.Name = "TxtTreinarCom";
+            this.TxtTreinarCom.Size = new System.Drawing.Size(146, 20);
+            this.TxtTreinarCom.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Treinar Com";
+            // 
             // FormEditarNomePadrao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 34);
+            this.ClientSize = new System.Drawing.Size(277, 33);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TxtTreinarCom);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_VetorTamanho);
             this.Controls.Add(this.lbl_digiteONomeDoPadrao);
@@ -104,5 +124,7 @@
         private System.Windows.Forms.Label lbl_digiteONomeDoPadrao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_VetorTamanho;
+        private System.Windows.Forms.TextBox TxtTreinarCom;
+        private System.Windows.Forms.Label label2;
     }
 }
