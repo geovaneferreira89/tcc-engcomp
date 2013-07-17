@@ -259,7 +259,6 @@ namespace AmbienteRPB
                             load_progress_bar(prb.Series[canal + 1].Points.Count, 2);
                             for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
                             {
-
                                 while (cont < vector_evento.Count())
                                 {
                                     if ((cont + i) < prb.Series[canal + 1].Points.Count)
