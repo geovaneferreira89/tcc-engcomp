@@ -408,6 +408,20 @@ namespace AmbienteRPB
             btn_Close.Visible = false;
             SMS_Box.Visible = false;
         }
+
+        private void comboAmplitude_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void comboFrequencia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (comboFrequencia.Text != "")
+            {
+                for (int i = 0; i < 4; i++)
+                    chart1.ChartAreas[i].AxisX.ScaleView.Size = Convert.ToDouble(comboFrequencia.Text) * 1000;
+            }
+        }
         //------------------------------------------------------------------------------------------
      }
 }

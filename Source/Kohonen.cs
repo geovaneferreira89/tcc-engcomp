@@ -98,7 +98,7 @@ namespace AmbienteRPB
         {
             StreamReader reader = File.OpenText(file);
             reader.ReadLine(); // Ignore first line.
-            int count = 0;
+            int count = 1;
             while (count != VetTreinamento)///!reader.EndOfStream)
             {
                 string[] line = reader.ReadLine().Split(',');
