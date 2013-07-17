@@ -52,7 +52,6 @@
             this.SMS_Box = new System.Windows.Forms.RichTextBox();
             this.btn_Close = new System.Windows.Forms.Button();
             this.comboFrequencia = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
@@ -183,8 +182,7 @@
             this.btn_Suspender,
             this.CorrelAgain,
             this.BTN_Kohonen,
-            this.comboFrequencia,
-            this.toolStripButton1});
+            this.comboFrequencia});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(740, 25);
@@ -295,15 +293,6 @@
             this.comboFrequencia.Size = new System.Drawing.Size(75, 25);
             this.comboFrequencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboFrequencia_KeyDown);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
             // btn_Aumentar
             // 
             this.btn_Aumentar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -371,7 +360,6 @@
         private System.Windows.Forms.RichTextBox SMS_Box;
         private System.Windows.Forms.Button btn_Close;
         private System.Windows.Forms.ToolStripComboBox comboFrequencia;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Button btn_Aumentar;
     }
 }
