@@ -53,6 +53,7 @@
             this.btn_Close = new System.Windows.Forms.Button();
             this.comboFrequencia = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btn_Aumentar = new System.Windows.Forms.Button();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -64,10 +65,10 @@
             this.ScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScrollBar.LargeChange = 900;
-            this.ScrollBar.Location = new System.Drawing.Point(0, 376);
+            this.ScrollBar.Location = new System.Drawing.Point(0, 396);
             this.ScrollBar.Maximum = 20000;
             this.ScrollBar.Name = "ScrollBar";
-            this.ScrollBar.Size = new System.Drawing.Size(717, 20);
+            this.ScrollBar.Size = new System.Drawing.Size(740, 20);
             this.ScrollBar.SmallChange = 900;
             this.ScrollBar.TabIndex = 16;
             this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
@@ -82,9 +83,9 @@
             this.lbl_mouseX,
             this.lbl_mouseY,
             this.toolInfo});
-            this.Box_Status.Location = new System.Drawing.Point(0, 396);
+            this.Box_Status.Location = new System.Drawing.Point(0, 416);
             this.Box_Status.Name = "Box_Status";
-            this.Box_Status.Size = new System.Drawing.Size(717, 22);
+            this.Box_Status.Size = new System.Drawing.Size(740, 22);
             this.Box_Status.TabIndex = 15;
             this.Box_Status.Text = "statusStrip1";
             // 
@@ -140,7 +141,7 @@
             this.gbxChart.Controls.Add(this.chart1);
             this.gbxChart.Location = new System.Drawing.Point(0, 22);
             this.gbxChart.Name = "gbxChart";
-            this.gbxChart.Size = new System.Drawing.Size(715, 245);
+            this.gbxChart.Size = new System.Drawing.Size(738, 265);
             this.gbxChart.TabIndex = 17;
             this.gbxChart.TabStop = false;
             // 
@@ -150,7 +151,7 @@
             this.lbl_Tempo.AutoSize = true;
             this.lbl_Tempo.BackColor = System.Drawing.Color.White;
             this.lbl_Tempo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Tempo.Location = new System.Drawing.Point(3, 227);
+            this.lbl_Tempo.Location = new System.Drawing.Point(3, 247);
             this.lbl_Tempo.Name = "lbl_Tempo";
             this.lbl_Tempo.Size = new System.Drawing.Size(102, 14);
             this.lbl_Tempo.TabIndex = 18;
@@ -168,7 +169,7 @@
             this.chart1.Location = new System.Drawing.Point(1, 7);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(712, 236);
+            this.chart1.Size = new System.Drawing.Size(735, 256);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
@@ -186,7 +187,7 @@
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(717, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(740, 25);
             this.toolStrip1.TabIndex = 18;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -259,7 +260,7 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar.Location = new System.Drawing.Point(474, 398);
+            this.progressBar.Location = new System.Drawing.Point(497, 418);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(240, 19);
             this.progressBar.TabIndex = 19;
@@ -269,9 +270,9 @@
             // 
             this.SMS_Box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SMS_Box.Location = new System.Drawing.Point(2, 269);
+            this.SMS_Box.Location = new System.Drawing.Point(2, 289);
             this.SMS_Box.Name = "SMS_Box";
-            this.SMS_Box.Size = new System.Drawing.Size(711, 105);
+            this.SMS_Box.Size = new System.Drawing.Size(734, 105);
             this.SMS_Box.TabIndex = 20;
             this.SMS_Box.Text = "";
             this.SMS_Box.Visible = false;
@@ -279,11 +280,11 @@
             // btn_Close
             // 
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.Location = new System.Drawing.Point(656, 273);
+            this.btn_Close.Location = new System.Drawing.Point(659, 293);
             this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(49, 19);
+            this.btn_Close.Size = new System.Drawing.Size(23, 19);
             this.btn_Close.TabIndex = 21;
-            this.btn_Close.Text = "Fechar";
+            this.btn_Close.Text = "↓";
             this.btn_Close.UseVisualStyleBackColor = true;
             this.btn_Close.Visible = false;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
@@ -303,12 +304,25 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
+            // btn_Aumentar
+            // 
+            this.btn_Aumentar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Aumentar.Location = new System.Drawing.Point(688, 293);
+            this.btn_Aumentar.Name = "btn_Aumentar";
+            this.btn_Aumentar.Size = new System.Drawing.Size(23, 19);
+            this.btn_Aumentar.TabIndex = 22;
+            this.btn_Aumentar.Text = "↑";
+            this.btn_Aumentar.UseVisualStyleBackColor = true;
+            this.btn_Aumentar.Visible = false;
+            this.btn_Aumentar.Click += new System.EventHandler(this.btn_Aumentar_Click);
+            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 418);
+            this.ClientSize = new System.Drawing.Size(740, 438);
             this.Controls.Add(this.btn_Close);
+            this.Controls.Add(this.btn_Aumentar);
             this.Controls.Add(this.SMS_Box);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.toolStrip1);
@@ -358,5 +372,6 @@
         private System.Windows.Forms.Button btn_Close;
         private System.Windows.Forms.ToolStripComboBox comboFrequencia;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Button btn_Aumentar;
     }
 }
