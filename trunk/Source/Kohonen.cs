@@ -46,17 +46,18 @@ namespace AmbienteRPB
         private List<string> labels = new List<string>();
         private List<double[]> patterns = new List<double[]>();
         string file;
-
+        int VetTreinamento;
         //Ok: cria um kohonen, mandar sinal no lugar do arquivo
-        public Kohonen(int _dimensions, int _length, string _file,Control Grafico, Control BarraDeProgresso, Control _SMS_)
+        public Kohonen(int _dimensions, int _length, int _VetTreinamento,string _file,Control Grafico, Control BarraDeProgresso, Control _SMS_)
         {
             _Grafico          = Grafico;
             _BarraDeProgresso = BarraDeProgresso;
-            _ScrollBar        = ScrollBar;  
-            length = _length;
+            _ScrollBar        = ScrollBar;
+            length = _VetTreinamento;
             dimensions = _dimensions;
             file = _file;
             SMS = _SMS_;
+            VetTreinamento = _length;
         }
         //------------------------------------------------------------------------------------------
         public void Init()
@@ -98,7 +99,7 @@ namespace AmbienteRPB
             StreamReader reader = File.OpenText(file);
             reader.ReadLine(); // Ignore first line.
             int count = 0;
-            while (count != length)///!reader.EndOfStream)
+            while (count != VetTreinamento)///!reader.EndOfStream)
             {
                 string[] line = reader.ReadLine().Split(',');
                 labels.Add(line[0]);
@@ -254,7 +255,7 @@ namespace AmbienteRPB
                             prb.Titles[3].Position.X = 0;
                             prb.Titles[3].Position.Y = (33 * 3) + ((100 - (33 * 3)) / 2);
 
-                            prb.Series["canal" + 4].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bubble;
+                            prb.Series["canal" + 4].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
                             prb.Titles[3].Text = "Mapa" + ((4 / 3) + 2);
                             prb.Series["canal" + 4].Color = Color.Red;
                             break;
