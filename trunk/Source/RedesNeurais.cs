@@ -442,12 +442,14 @@ namespace AmbienteRPB
                                 prb.Series["canal" + (canal + 3)].Points.Clear();
                             }
                             prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                            prb.Titles[canal + 2].Text = "Kohonen" + (((canal+2) / 3) + 2);
+                            prb.Titles[canal + 2].Text = "Kohonen";
                             prb.Series["canal" + (canal + 2)].Color = Color.LightBlue;
 
                             prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-                            prb.Titles[(canal + 3)].Text = "Mapa" + ((4 / 3) + 2);
+                            prb.Titles[(canal + 3)].Text = "Mapa";
                             prb.Series["canal" + (canal + 3)].Color = Color.Red;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisY.Enabled = AxisEnabled.True;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisX.Enabled = AxisEnabled.True;
                             break;
                         }
 
