@@ -167,11 +167,11 @@ namespace AmbienteRPB
             string resultado;
   
             string line = null;
-            int vetores = 0;      
+            int vetores = 0;
             for (int i = 0; i < VetTreinamento; i++)
             {
                 inputs = new ArrayList();
-                while (cont < VetTreinamento)
+                while (cont < VetorEvento.Count())
                 {
                     if ((cont + i) < Sinal.Count())
                         inputs.Add(Sinal[cont + i]);
@@ -184,7 +184,7 @@ namespace AmbienteRPB
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
                 //foreach (Object obj in outputs_)
                 send_SmS(1, Convert.ToString(outputs_[0]));
-                    Plotar("AddDadoKohonen", null, CanalAtual, selecaoAtual, outputs_); // tem o n.x tbm para no caso o Mapa mesmo... 
+                Plotar("AddDadoBKP", null, CanalAtual, selecaoAtual, outputs_); // tem o n.x tbm para no caso o Mapa mesmo... 
                 load_progress_bar(0, 1);
             }
 
@@ -227,7 +227,7 @@ namespace AmbienteRPB
             int vetores = 0;
             for (int i = 0; i < VetTreinamento; i++)
             {
-                while (cont < VetTreinamento)
+                while (cont < VetorEvento.Count())
                 {
                     if ((cont + i) < Sinal.Count())
                         resultado = Convert.ToString(Sinal[cont + i]);
