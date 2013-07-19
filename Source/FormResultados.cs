@@ -72,7 +72,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[_pos].BackColor = Color.Transparent;
                 chart1.ChartAreas[_pos].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas[_pos].AxisY.Enabled = AxisEnabled.False;
-                chart1.ChartAreas[_pos].Position.Height = _aux + 3;//+10 os sinais sobreescrevem
+                chart1.ChartAreas[_pos].Position.Height = _aux;//+10 os sinais sobreescrevem
                 chart1.ChartAreas[_pos].Position.Width = 96;
                 chart1.ChartAreas[_pos].Position.X = 4;
                 chart1.ChartAreas[_pos].Position.Y = _aux * i;
@@ -234,18 +234,18 @@ namespace AmbienteRPB
         //Mudança de sinal
         private void btn_SinalProximo_Click(object sender, EventArgs e)
         {
-            if ((CanalAtual/3) < (numeroDeCanais-1))
+            if ((CanalAtual/4) < (numeroDeCanais-1))
             {
                 //Desabilita o canal que está sendo exibido... 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     chart1.ChartAreas[CanalAtual + i].Visible = false;
                     chart1.Titles[CanalAtual + i].Visible = false;
                 }
                 //Incrementa o canal...
-                CanalAtual = CanalAtual + 3;
+                CanalAtual = CanalAtual + 4;
                 //Cria as séries para o novo canal, se ela não existe (incrementa CanaisCriados)
-                if (CanaisCriados <= (CanalAtual / 3))
+                if (CanaisCriados <= (CanalAtual / 4))
                 {
                     AdicionaCanais();
                     Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X,ValorFim.X,numeroDeCanais);
@@ -256,7 +256,7 @@ namespace AmbienteRPB
                 //Se exite exibe o canal
                 else
                 {
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         chart1.ChartAreas[CanalAtual + i].Visible = true;
                         chart1.Titles[CanalAtual + i].Visible = true;
@@ -270,14 +270,14 @@ namespace AmbienteRPB
             if (CanalAtual != 0)
             {
                 //Desabilita o canal que está sendo exibido... 
-                for(int i=0;i<3;i++)
+                for(int i=0;i<4;i++)
                 {
                     chart1.ChartAreas[CanalAtual+i].Visible = false;
                     chart1.Titles[CanalAtual + i].Visible = false;
                 }
                 //Carrega o canal inferior, o qual já está cirado
-                CanalAtual = CanalAtual - 3;
-                for (int i = 0; i < 3; i++)
+                CanalAtual = CanalAtual - 4;
+                for (int i = 0; i < 4; i++)
                 {
                     chart1.ChartAreas[CanalAtual + i].Visible = true;
                     chart1.Titles[CanalAtual + i].Visible = true;
@@ -323,7 +323,7 @@ namespace AmbienteRPB
                     {
                         for (int i = 0; i < edfFileOutput.SignalInfo[j].NrSamples; i++)
                         {
-                            if (j == (CanalAtual/3))
+                            if (j == (CanalAtual/4))
                                 chart1.Series[CanalAtual].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                             else
                                 excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
@@ -414,7 +414,7 @@ namespace AmbienteRPB
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                Kohonen objKohonen = new Kohonen(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, progressBar, SMS_Box, vector_evento, vectorSignal);
+                RedesNeurais objKohonen = new RedesNeurais(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, "Kohonen");
                 ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
                 ThreadKohonen.Start();
             }
@@ -447,7 +447,7 @@ namespace AmbienteRPB
             {
                 SMS_Zoom = false;
                 gbxChart.Visible = true;
-                SMS_Box.Location = new Point(this.SMS_Box.Location.X, gbxChart.Height+33);
+                SMS_Box.Location = new Point(this.SMS_Box.Location.X, gbxChart.Height+25);
                 SMS_Box.Height = SMS_Box.Height + gbxChart.Height;
                 btn_Aumentar.Location = new Point(this.btn_Aumentar.Location.X, this.SMS_Box.Location.Y + 4);
                 btn_Close.Location = new Point(this.btn_Close.Location.X, this.SMS_Box.Location.Y + 4);

@@ -104,22 +104,28 @@ namespace AmbienteRPB
                                         {
                                             for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                             {
-                                                if (j == (canal/3))
+                                                if (j == (canal / 4))
+                                                {
                                                     prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                    prb.Series["canal" + (canal+1)].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                    prb.Series["canal" + (canal+2)].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                    prb.Series["canal" + (canal+3)].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                
+                                                }
                                                 else
-                                                   excluir = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]; 
+                                                    excluir = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]; 
                                             }
                                             load_progress_bar(0, 1);
                                         }
                                     }
                                 }
-                                prb.Titles[canal].Text = SinalEEG.SignalInfo[(canal/3)].SignalLabel;
+                                prb.Titles[canal].Text = SinalEEG.SignalInfo[(canal/4)].SignalLabel;
                                 prb.Series["canal" + canal].Color = Color.FromName("Black");
 
-                                prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/3) + 1);
+                                prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/4) + 1);
                                 prb.Series["canal" + (canal + 1)].Color = Color.Green;
 
-                                prb.Titles[(canal + 2)].Text = "CORRL" + ((canal/3) + 2);
+                                prb.Titles[(canal + 2)].Text = "CORRL" + ((canal/4) + 2);
                                 prb.Series["canal" + (canal + 2)].Color = Color.Red;
                   
                                 load_progress_bar(1, 3);
@@ -132,34 +138,41 @@ namespace AmbienteRPB
                                 prb.Series["canal" + canal].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Legends.Clear();
                                 prb.Titles.Add("canal" + canal);
-                               // prb.Titles[canal].DockedToChartArea = "canal" + canal;
                                 prb.Titles[canal].Position.Height = 3;
                                 prb.Titles[canal].Position.Width = 40;
                                 prb.Titles[canal].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[canal].Position.X = 0;
-                                prb.Titles[canal].Position.Y = (prb.ChartAreas[canal].Position.Bottom - prb.ChartAreas[canal].Position.Y)/2;
+                                prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Y;
 
                                 prb.Series.Add("canal" + (canal + 1));
                                 prb.Series["canal" + (canal+1)].ChartArea = "canal" + (canal+1);
                                 prb.Series["canal" + (canal + 1)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Titles.Add("canal" + (canal + 1));
-                               // prb.Titles[(canal + 1)].DockedToChartArea = "canal" + (canal +1);
                                 prb.Titles[(canal + 1)].Position.Height = 3;
                                 prb.Titles[(canal + 1)].Position.Width = 40;
                                 prb.Titles[(canal + 1)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 1)].Position.X = 0;
-                                prb.Titles[(canal + 1)].Position.Y = 33+(66-33)/2;
+                                prb.Titles[(canal + 1)].Position.Y = prb.ChartAreas[canal+1].Position.Y;
 
                                 prb.Series.Add("canal" + (canal + 2));
                                 prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
                                 prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Titles.Add("canal" + (canal + 2));
-                                ///prb.Titles[(canal + 2)].DockedToChartArea = "canal" + (canal + 2);
                                 prb.Titles[(canal + 2)].Position.Height = 3;
                                 prb.Titles[(canal + 2)].Position.Width = 40;
                                 prb.Titles[(canal + 2)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 2)].Position.X = 0;
-                                prb.Titles[(canal + 2)].Position.Y = 66+((100-66)/2);
+                                prb.Titles[(canal + 2)].Position.Y = prb.ChartAreas[canal+2].Position.Y;
+
+                                prb.Series.Add("canal" + (canal + 3));
+                                prb.Series["canal" + (canal + 3)].ChartArea = "canal" + (canal + 3);
+                                prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                                prb.Titles.Add("canal" + (canal + 3));
+                                prb.Titles[(canal + 3)].Position.Height = 3;
+                                prb.Titles[(canal + 3)].Position.Width = 40;
+                                prb.Titles[(canal + 3)].Alignment = ContentAlignment.MiddleLeft;
+                                prb.Titles[(canal + 3)].Position.X = 0;
+                                prb.Titles[(canal + 3)].Position.Y = prb.ChartAreas[canal+3].Position.Y;
                             }
                             break;
                     }
