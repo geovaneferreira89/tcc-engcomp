@@ -52,9 +52,9 @@ namespace AmbienteRPB
         {
             if (opcao == 1)
             {
-                Vetores = Convert.ToInt16(text_NomePadrao.Text);
-                TamVetores = Convert.ToInt16(txt_VetorTamanho.Text);
-                TreinamentoCom = Convert.ToInt16(TxtTreinarCom.Text);
+                Vetores = Convert.ToInt32(text_NomePadrao.Text);
+                TamVetores = Convert.ToInt32(txt_VetorTamanho.Text);
+                TreinamentoCom = Convert.ToInt32(TxtTreinarCom.Text);
                 UsarCorrelacao = ckb_UseCorrel.Checked;
                 this.Close();
             }
