@@ -416,32 +416,17 @@ namespace AmbienteRPB
                             //Mapa
                             prb.Series["canal" + (canal+3)].Points.AddXY(dados[0], dados[1]);
 
-                            if (prb.Annotations.Count == 10)
-                                prb.Annotations.Remove(prb.Annotations[9]);
-                         
-                             selecaoAtual = new RectangleAnnotation();
+                            PointF zero = new PointF(0,0);
 
-                            selecaoAtual.Text = "";//Texto dentro da seleção 
-                            selecaoAtual.BackColor = Color.FromArgb(128, Color.Yellow);
+                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
+                            prb.ChartAreas[canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow); 
+                            prb.ChartAreas[canal].CursorX.IsUserEnabled = true;
+                            prb.ChartAreas[canal].CursorX.IsUserSelectionEnabled = true;
 
-                            selecaoAtual.AxisX = prb.ChartAreas[canal].AxisX;
-                            selecaoAtual.AxisY = prb.ChartAreas[canal].AxisY;
-
-                            selecaoAtual.X = (int)dados[2] + 4;
-                            selecaoAtual.Y = prb.ChartAreas[canal].AxisY.Maximum;
-
-                            selecaoAtual.LineColor = Color.Yellow;
-                            selecaoAtual.Font = new Font("Arial", 10, FontStyle.Bold);
-                            //Altura
-                            selecaoAtual.Height = prb.ChartAreas[canal].Position.Height;
-                            //Comprimento
-                            selecaoAtual.Width = (dados[2]-dados[3])/ 26.1;
-                            // Prevent moving or selecting
-                            selecaoAtual.AllowMoving = false;
-                            selecaoAtual.AllowAnchorMoving = false;
-                            selecaoAtual.AllowSelecting = false;
-                            // Add the annotation to the collection
-                            prb.Annotations.Add(selecaoAtual);
+                            PointF Padrao_Inicio = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[2]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[2]));
+                            PointF Padrao_Fim = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[3]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[3]));
+                            //Colore a região do evento
+                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
 
                             break;
                         }
