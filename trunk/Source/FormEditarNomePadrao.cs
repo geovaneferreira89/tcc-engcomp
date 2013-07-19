@@ -38,6 +38,11 @@ namespace AmbienteRPB
             get;
             set;
         }
+        public bool UsarCorrelacao
+        {
+            get;
+            set;
+        }
         public FormEditarNomePadrao()
         {
             InitializeComponent();
@@ -50,6 +55,7 @@ namespace AmbienteRPB
                 Vetores = Convert.ToInt16(text_NomePadrao.Text);
                 TamVetores = Convert.ToInt16(txt_VetorTamanho.Text);
                 TreinamentoCom = Convert.ToInt16(TxtTreinarCom.Text);
+                UsarCorrelacao = ckb_UseCorrel.Checked;
                 this.Close();
             }
             else if (text_NomePadrao.Text != "")

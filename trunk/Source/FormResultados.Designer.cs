@@ -384,7 +384,7 @@
             this.Controls.Add(this.Box_Status);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormResultados";
-            this.Text = "Técnica de Reconhecimento";
+            this.Text = "Técnicas de Reconhecimento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.FormResultados_Shown);
             this.Box_Status.ResumeLayout(false);

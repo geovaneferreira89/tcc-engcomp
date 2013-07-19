@@ -105,13 +105,7 @@ namespace AmbienteRPB
                                             for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                             {
                                                 if (j == (canal / 4))
-                                                {
                                                     prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                    prb.Series["canal" + (canal+1)].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                    prb.Series["canal" + (canal+2)].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                    prb.Series["canal" + (canal+3)].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                
-                                                }
                                                 else
                                                     excluir = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]; 
                                             }
