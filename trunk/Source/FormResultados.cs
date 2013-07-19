@@ -505,6 +505,13 @@ namespace AmbienteRPB
             btn_Close.Location = new Point(this.btn_Close.Location.X, 30);
 
         }
+
+        private void comboFrequencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             char ch = e.KeyChar;
+              if (!Char.IsDigit(ch) && ch != 8)
+                 e.Handled = true;
+        }
         //------------------------------------------------------------------------------------------
      }
 }
