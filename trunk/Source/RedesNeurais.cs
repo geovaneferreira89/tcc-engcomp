@@ -21,7 +21,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual);
+        private delegate void AtualizaChart(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, ArrayList myArray);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor_vertical_Inicio;
         private VerticalLineAnnotation Cursor_vertical_Corr2;
@@ -82,7 +82,7 @@ namespace AmbienteRPB
             //Kohonen
             if (tipoDeRede == "Kohonen")
             {
-                Plotar("Criar Chart de Barras", null, CanalAtual, selecaoAtual);
+                Plotar("Criar Chart de Barras", null, CanalAtual, selecaoAtual,null);
                 send_SmS(1, "Inicializando...");
                 Initialise_KHn();
                 send_SmS(1, "Carregando Arquivo de Vetores");
@@ -101,19 +101,12 @@ namespace AmbienteRPB
                 newRede();
                 for (int i = 0; i < 1000; i++)
                 {
-                    TreinodaRede(1, 1, 1);
-                    TreinodaRede(0, 1, 0);
-                    TreinodaRede(0, 0, 0);
-                    TreinodaRede(1, 0, 0);
-                    TreinodaRede(4, 4, 10);
+                    TreinodaRede(VetorEvento, 1);
+
                 }
                 send_SmS(1, "Treinada");
-
-                Rodar(1, 1);
-                Rodar(0, 1);
-                Rodar(0, 0);
-                Rodar(1, 0);
-                Rodar(4, 4);
+                Rodar(Sinal);
+              
                 send_SmS(1, "Fim");
             }
         }
@@ -124,8 +117,8 @@ namespace AmbienteRPB
             strategy = new BrainNet.NeuralFramework.BackPropNeuronStrategy();
 
             layers = new ArrayList();
-            layers.Add(2);
-            layers.Add(2);
+            layers.Add(VetorEvento.Count());
+            layers.Add(VetorEvento.Count());
             layers.Add(1);
             //long neurons = 0;
             network = new BrainNet.NeuralFramework.NeuralNetwork();
@@ -149,27 +142,54 @@ namespace AmbienteRPB
             }
             network.ConnectLayers();
         }
-        public void TreinodaRede(double input1, double input2, double output)
+        public void TreinodaRede(double[] input1, double output)
         {
             //'Create a training data object
             td = new TrainingData();
             //Add inputs to the training data object
-            td.Inputs.Add(input1);
-            td.Inputs.Add(input2);
+            for(int i=0;i<input1.Count();i++)
+                td.Inputs.Add(input1[i]);
             //Add expected output to the training data object
             td.Outputs.Add(output);
             //Train the network one time
             network.TrainNetwork(td);
         }
 
-        public void Rodar(double input1, double input2)
+        public void Rodar(double[] input1)
         {
             //'Declare an arraylist to provide as input to the Run method
-            inputs = new ArrayList();
+
             // 'Add the first input
-            inputs.Add(input1);
+            load_progress_bar(0, 4);
+            load_progress_bar(VetorEvento.Count(), 2);
+
+            int cont = 0;
+            string resultado;
+  
+            string line = null;
+            int vetores = 0;      
+            for (int i = 0; i < VetTreinamento; i++)
+            {
+                inputs = new ArrayList();
+                while (cont < VetTreinamento)
+                {
+                    if ((cont + i) < Sinal.Count())
+                        inputs.Add(Sinal[cont + i]);
+                    else
+                        inputs.Add(0.0);
+                    cont++;
+
+                }
+                cont = 0;
+                outputs_ = new ArrayList(network.RunNetwork(inputs));
+                //foreach (Object obj in outputs_)
+                send_SmS(1, Convert.ToString(outputs_[0]));
+                    Plotar("AddDadoKohonen", null, CanalAtual, selecaoAtual, outputs_); // tem o n.x tbm para no caso o Mapa mesmo... 
+                load_progress_bar(0, 1);
+            }
+
             //'Add the second input
-            inputs.Add(input2);
+ 
             //'Get the output, by calling the network's RunNetwork method
             outputs_ = new ArrayList(network.RunNetwork(inputs));
 
@@ -209,8 +229,8 @@ namespace AmbienteRPB
             {
                 while (cont < VetTreinamento)
                 {
-                    if ((cont + i) < Sinal[canal])
-                        resultado = Convert.ToString(Sinal[canal + i]);
+                    if ((cont + i) < Sinal.Count())
+                        resultado = Convert.ToString(Sinal[cont + i]);
                     else
                         resultado = "0.0";
                     resultado = resultado.Replace(",", ".");
@@ -303,7 +323,7 @@ namespace AmbienteRPB
                 dados[1] = n.Y;
                 dados[2] = i;
                 dados[3] = VetorEvento.Count() + i;
-                Plotar("AddDadoKohonen", dados, CanalAtual, selecaoAtual); // tem o n.x tbm para no caso o Mapa mesmo... 
+                Plotar("AddDadoKohonen", dados, CanalAtual, selecaoAtual,null); // tem o n.x tbm para no caso o Mapa mesmo... 
                 send_SmS(1, saida);
                 if (chave)
                 {
@@ -398,16 +418,23 @@ namespace AmbienteRPB
 
         //----------------------------------
         //Usar canal 2
-        private void Plotar(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual)
+        private void Plotar(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, ArrayList myArray)
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dados, canal, selecaoAtual });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dados, canal, selecaoAtual, myArray});
             }
             else
             {
                 switch (opcao)
                 {
+                    case ("AddDadoBKP"):
+                        {
+                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            foreach (Object obj in myArray)
+                                prb.Series["canal" + (canal + 2)].Points.AddY(obj);
+                            break;
+                        }
                     case ("AddDadoKohonen"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
