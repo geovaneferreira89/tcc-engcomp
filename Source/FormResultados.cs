@@ -403,7 +403,7 @@ namespace AmbienteRPB
 
                 GerArquivos = new GerenArquivos();
                 int CanalKohonen;
-                int numeroLinhas = chart1.Series[CanalAtual].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
+                double numeroLinhas = chart1.Series[CanalAtual].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 1;
                 FormDadosInput.Vetores = numeroLinhas;
@@ -435,7 +435,7 @@ namespace AmbienteRPB
                 SMS_Box.Visible = true;
 
                 GerArquivos = new GerenArquivos();
-                int numeroLinhas = chart1.Series[0].Points.Count;
+                double numeroLinhas = chart1.Series[0].Points.Count;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 1;
                 FormDadosInput.Vetores = numeroLinhas;

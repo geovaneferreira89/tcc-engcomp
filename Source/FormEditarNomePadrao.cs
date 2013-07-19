@@ -23,17 +23,17 @@ namespace AmbienteRPB
             get;
             set;
         }
-        public int Vetores
+        public double Vetores
         {
             get;
             set;
         }
-        public int TamVetores
+        public double TamVetores
         {
             get;
             set;
         }
-        public int TreinamentoCom
+        public double TreinamentoCom
         {
             get;
             set;
@@ -52,9 +52,9 @@ namespace AmbienteRPB
         {
             if (opcao == 1)
             {
-                Vetores = Convert.ToInt32(text_NomePadrao.Text);
-                TamVetores = Convert.ToInt32(txt_VetorTamanho.Text);
-                TreinamentoCom = Convert.ToInt32(TxtTreinarCom.Text);
+                Vetores = Convert.ToDouble(text_NomePadrao.Text);
+                TamVetores = Convert.ToDouble(txt_VetorTamanho.Text);
+                TreinamentoCom = Convert.ToDouble(TxtTreinarCom.Text);
                 UsarCorrelacao = ckb_UseCorrel.Checked;
                 this.Close();
             }
