@@ -102,7 +102,6 @@ namespace AmbienteRPB
                 for (int i = 0; i < 1000; i++)
                 {
                     TreinodaRede(VetorEvento, 1);
-
                 }
                 send_SmS(1, "Treinada");
                 Rodar(Sinal);
@@ -192,9 +191,9 @@ namespace AmbienteRPB
                 send_SmS(1, Convert.ToString(outputs_[0]));
                 Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, outputs_); 
                 load_progress_bar(0, 1);
-                Thread.Sleep(1);
                 if (chave)
                 {
+                    Thread.Sleep(1);
                     DialogResult resposta = MessageBox.Show("Dado: " + i, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     if (resposta == DialogResult.Cancel)
                         chave = false;
