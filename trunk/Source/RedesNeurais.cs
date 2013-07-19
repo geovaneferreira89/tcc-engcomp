@@ -165,9 +165,11 @@ namespace AmbienteRPB
 
             int cont = 0;
             string resultado;
-  
+            bool chave = true;
+
             string line = null;
             int vetores = 0;
+            double[] dados = new double[2];
             for (int i = 0; i < VetTreinamento; i++)
             {
                 inputs = new ArrayList();
@@ -180,18 +182,26 @@ namespace AmbienteRPB
                     cont++;
 
                 }
+
+                dados[0] = i;
+                dados[1] = VetorEvento.Count() + i;
+
                 cont = 0;
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
                 //foreach (Object obj in outputs_)
                 send_SmS(1, Convert.ToString(outputs_[0]));
-                Plotar("AddDadoBKP", null, CanalAtual, selecaoAtual, outputs_); // tem o n.x tbm para no caso o Mapa mesmo... 
+                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, outputs_); 
                 load_progress_bar(0, 1);
+                Thread.Sleep(1);
+                if (chave)
+                {
+                    DialogResult resposta = MessageBox.Show("Dado: " + i, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
+                    if (resposta == DialogResult.Cancel)
+                        chave = false;
+                }
             }
-
+            load_progress_bar(1, 3);
             //'Add the second input
- 
-            //'Get the output, by calling the network's RunNetwork method
-            outputs_ = new ArrayList(network.RunNetwork(inputs));
 
         }
         //====================================================================================================
@@ -433,6 +443,17 @@ namespace AmbienteRPB
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             foreach (Object obj in myArray)
                                 prb.Series["canal" + (canal + 2)].Points.AddY(obj);
+
+                            PointF zero = new PointF(0, 0);
+                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
+                            prb.ChartAreas[canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);
+                            prb.ChartAreas[canal].CursorX.IsUserEnabled = true;
+                            prb.ChartAreas[canal].CursorX.IsUserSelectionEnabled = true;
+
+                            PointF Padrao_Inicio = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[0]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[0]));
+                            PointF Padrao_Fim = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[1]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[1]));
+                            //Colore a região do evento
+                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                             break;
                         }
                     case ("AddDadoKohonen"):
