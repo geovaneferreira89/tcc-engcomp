@@ -1192,7 +1192,7 @@ namespace AmbienteRPB
         private void btn_Correlacao_Click(object sender, EventArgs e)
         {
             FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
-            correlacaoForm.ShowDialog();
+            correlacaoForm.Show();
         }
 
    

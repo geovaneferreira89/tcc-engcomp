@@ -21,11 +21,12 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(string opcao, double dadoX, double dadoY, int canal);
+        private delegate void AtualizaChart(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor_vertical_Inicio;
         private VerticalLineAnnotation Cursor_vertical_Corr2;
         private int CanalAtual;
+        private RectangleAnnotation selecaoAtual;
         //Controles Progress Bar-------------------------------------------------------------------
         private Control _BarraDeProgresso = null;
         private delegate void AtualizaPloter(int valor, int caso);
@@ -81,7 +82,7 @@ namespace AmbienteRPB
             //Kohonen
             if (tipoDeRede == "Kohonen")
             {
-                Plotar("Criar Chart de Barras", 0, 0, CanalAtual);
+                Plotar("Criar Chart de Barras", null, CanalAtual, selecaoAtual);
                 send_SmS(1, "Inicializando...");
                 Initialise_KHn();
                 send_SmS(1, "Carregando Arquivo de Vetores");
@@ -290,12 +291,18 @@ namespace AmbienteRPB
         private void DumpCoordinates_KHn()
         {
             bool chave = true;
+            double[] dados = new double[10];
+
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
                 //  Console.WriteLine("{0},{1},{2}", labels[i], n.X, n.Y);
                 string saida = labels[i] + " " + n.X + " " + n.Y;
-                Plotar("AddDadoKohonen", n.X, n.Y, CanalAtual); // tem o n.x tbm para no caso o Mapa mesmo... 
+                dados[0] = n.X;
+                dados[1] = n.Y;
+                dados[2] = i;
+                dados[3] = VetorEvento.Count() + i;
+                Plotar("AddDadoKohonen", dados, CanalAtual, selecaoAtual); // tem o n.x tbm para no caso o Mapa mesmo... 
                 send_SmS(1, saida);
                 if (chave)
                 {
@@ -390,11 +397,11 @@ namespace AmbienteRPB
 
         //----------------------------------
         //Usar canal 2
-        private void Plotar(string opcao, double dadoX, double dadoY, int canal)
+        private void Plotar(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual)
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dadoX, dadoY, canal });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dados, canal, selecaoAtual });
             }
             else
             {
@@ -403,9 +410,39 @@ namespace AmbienteRPB
                     case ("AddDadoKohonen"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            prb.Series["canal" + (canal+2)].Points.AddY(dadoY);
+                           
+                            
+                            prb.Series["canal" + (canal+2)].Points.AddY(dados[1]);
                             //Mapa
-                            prb.Series["canal" + (canal+3)].Points.AddXY(dadoX, dadoY);
+                            prb.Series["canal" + (canal+3)].Points.AddXY(dados[0], dados[1]);
+
+                            if (prb.Annotations.Count == 10)
+                                prb.Annotations.Remove(prb.Annotations[9]);
+                         
+                             selecaoAtual = new RectangleAnnotation();
+
+                            selecaoAtual.Text = "";//Texto dentro da seleção 
+                            selecaoAtual.BackColor = Color.FromArgb(128, Color.Yellow);
+
+                            selecaoAtual.AxisX = prb.ChartAreas[canal].AxisX;
+                            selecaoAtual.AxisY = prb.ChartAreas[canal].AxisY;
+
+                            selecaoAtual.X = (int)dados[2] + 4;
+                            selecaoAtual.Y = prb.ChartAreas[canal].AxisY.Maximum;
+
+                            selecaoAtual.LineColor = Color.Yellow;
+                            selecaoAtual.Font = new Font("Arial", 10, FontStyle.Bold);
+                            //Altura
+                            selecaoAtual.Height = prb.ChartAreas[canal].Position.Height;
+                            //Comprimento
+                            selecaoAtual.Width = (dados[2]-dados[3])/ 26.1;
+                            // Prevent moving or selecting
+                            selecaoAtual.AllowMoving = false;
+                            selecaoAtual.AllowAnchorMoving = false;
+                            selecaoAtual.AllowSelecting = false;
+                            // Add the annotation to the collection
+                            prb.Annotations.Add(selecaoAtual);
+
                             break;
                         }
                     case ("Criar Chart de Barras"):
