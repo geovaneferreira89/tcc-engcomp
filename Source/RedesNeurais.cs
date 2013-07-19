@@ -254,6 +254,7 @@ namespace AmbienteRPB
         private void Train_KHn(double maxError)
         {
             double currentError = double.MaxValue;
+            int count = 0 ;
             while (currentError > maxError)
             {
                 currentError = 0;
@@ -269,7 +270,8 @@ namespace AmbienteRPB
                     TrainingSet.Remove(pattern);
                 }
                 // Console.WriteLine(currentError.ToString("0.0000000"));
-                send_SmS(1, "0.0000000");
+                send_SmS(1, Convert.ToString(count));
+                count++;
             }
         }
         //----------------------------------
@@ -296,7 +298,6 @@ namespace AmbienteRPB
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
-                //  Console.WriteLine("{0},{1},{2}", labels[i], n.X, n.Y);
                 string saida = labels[i] + " " + n.X + " " + n.Y;
                 dados[0] = n.X;
                 dados[1] = n.Y;
@@ -472,6 +473,9 @@ namespace AmbienteRPB
                             prb.Series["canal" + (canal + 3)].Color = Color.Red;
                             prb.ChartAreas["canal" + (canal + 3)].AxisY.Enabled = AxisEnabled.True;
                             prb.ChartAreas["canal" + (canal + 3)].AxisX.Enabled = AxisEnabled.True;
+                            prb.ChartAreas["canal" + (canal + 3)].Axes[1].MajorGrid.LineColor = Color.Gainsboro;
+                            prb.ChartAreas["canal" + (canal + 3)].Axes[0].MajorGrid.LineColor = Color.Gainsboro;
+
                             break;
                         }
 
