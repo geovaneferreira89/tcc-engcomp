@@ -61,18 +61,18 @@ namespace AmbienteRPB
         private ArrayList inputs;
         private ArrayList outputs_;
 
-        public RedesNeurais(int _dimensions, int _length, int _VetTreinamento, string _file, Control Grafico,int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, string _TipoDeRede)
+        public RedesNeurais(double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, string _TipoDeRede)
         {
             _Grafico = Grafico;
             CanalAtual = _CanalAtual;
             _BarraDeProgresso = BarraDeProgresso;
             _ScrollBar = ScrollBar;
             tipoDeRede = _TipoDeRede;
-            length = _VetTreinamento;
-            dimensions = _dimensions;
+            length = (int)_VetTreinamento;
+            dimensions = (int)_dimensions;
             file = _file;
             SMS = _SMS_;
-            VetTreinamento = _length;
+            VetTreinamento = (int)_length;
             VetorEvento = _VetorEvento;
             Sinal = _Sinal;
         }
