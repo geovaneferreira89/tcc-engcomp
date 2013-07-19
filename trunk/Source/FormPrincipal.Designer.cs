@@ -169,7 +169,7 @@
             this.verToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(246, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(154, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -902,6 +902,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(736, 414);
+            this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lbl_tempo_s);
             this.Controls.Add(this.gbxChart);
@@ -909,7 +910,6 @@
             this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.Box_Status);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.tool_ControlesProjeto);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(744, 441);
