@@ -85,6 +85,10 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BrainNet.NeuralFramework, Version=1.0.2333.25298, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>BrainNetLibrary\BrainNet.NeuralFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -138,7 +142,7 @@
     <Compile Include="InfoEDF.Designer.cs">
       <DependentUpon>InfoEDF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Kohonen.cs" />
+    <Compile Include="RedesNeurais.cs" />
     <Compile Include="Licenca.cs">
       <SubType>Form</SubType>
     </Compile>
