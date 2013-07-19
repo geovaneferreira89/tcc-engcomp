@@ -92,7 +92,6 @@ namespace AmbienteRPB
                 Train_KHn(0.0000001);
                 send_SmS(1, "Resultados:");
                 DumpCoordinates_KHn();
-                //load_progress_bar(10, 2);
                 send_SmS(1, "Fim...");
             }
             else if (tipoDeRede == "BackPropagation")

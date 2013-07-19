@@ -108,7 +108,6 @@
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -170,7 +169,7 @@
             this.verToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 1);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(154, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(246, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -253,8 +252,8 @@
             // btn_Correlacao
             // 
             this.btn_Correlacao.Name = "btn_Correlacao";
-            this.btn_Correlacao.Size = new System.Drawing.Size(212, 22);
-            this.btn_Correlacao.Text = "Correlação ";
+            this.btn_Correlacao.Size = new System.Drawing.Size(229, 22);
+            this.btn_Correlacao.Text = "Técnicas de Reconhecimento";
             this.btn_Correlacao.Click += new System.EventHandler(this.btn_Correlacao_Click);
             // 
             // verToolStripMenuItem
@@ -450,8 +449,7 @@
             this.toolStripSeparator2,
             this.btnTela10S,
             this.btnTela5S,
-            this.toolStripSeparator3,
-            this.toolStripButton4});
+            this.toolStripSeparator3});
             this.tool_ControlesProjeto.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.tool_ControlesProjeto.Location = new System.Drawing.Point(0, 0);
             this.tool_ControlesProjeto.Name = "tool_ControlesProjeto";
@@ -896,16 +894,6 @@
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
             // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -914,7 +902,6 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(736, 414);
-            this.Controls.Add(this.tool_ControlesProjeto);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lbl_tempo_s);
             this.Controls.Add(this.gbxChart);
@@ -922,6 +909,7 @@
             this.Controls.Add(this.ScrollBar);
             this.Controls.Add(this.Box_Status);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tool_ControlesProjeto);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(744, 441);
@@ -1030,7 +1018,6 @@
         private System.Windows.Forms.ToolStripButton btnTela5S;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem btn_Correlacao;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
     }
 }
 
