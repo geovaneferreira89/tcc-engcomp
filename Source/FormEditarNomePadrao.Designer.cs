@@ -35,6 +35,7 @@
             this.txt_VetorTamanho = new System.Windows.Forms.TextBox();
             this.TxtTreinarCom = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.ckb_UseCorrel = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btn_salvar
@@ -42,7 +43,7 @@
             this.btn_salvar.Location = new System.Drawing.Point(219, 7);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(51, 22);
-            this.btn_salvar.TabIndex = 0;
+            this.btn_salvar.TabIndex = 4;
             this.btn_salvar.Text = "Ok";
             this.btn_salvar.UseVisualStyleBackColor = true;
             this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
@@ -52,54 +53,65 @@
             this.text_NomePadrao.Location = new System.Drawing.Point(69, 9);
             this.text_NomePadrao.Name = "text_NomePadrao";
             this.text_NomePadrao.Size = new System.Drawing.Size(146, 20);
-            this.text_NomePadrao.TabIndex = 1;
+            this.text_NomePadrao.TabIndex = 0;
             // 
             // lbl_digiteONomeDoPadrao
             // 
             this.lbl_digiteONomeDoPadrao.AutoSize = true;
-            this.lbl_digiteONomeDoPadrao.Location = new System.Drawing.Point(9, 13);
+            this.lbl_digiteONomeDoPadrao.Location = new System.Drawing.Point(5, 12);
             this.lbl_digiteONomeDoPadrao.Name = "lbl_digiteONomeDoPadrao";
             this.lbl_digiteONomeDoPadrao.Size = new System.Drawing.Size(44, 13);
-            this.lbl_digiteONomeDoPadrao.TabIndex = 2;
+            this.lbl_digiteONomeDoPadrao.TabIndex = 7;
             this.lbl_digiteONomeDoPadrao.Text = "Padrão ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 37);
+            this.label1.Location = new System.Drawing.Point(5, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Tam Vetor";
             // 
             // txt_VetorTamanho
             // 
-            this.txt_VetorTamanho.Location = new System.Drawing.Point(69, 34);
+            this.txt_VetorTamanho.Location = new System.Drawing.Point(69, 61);
             this.txt_VetorTamanho.Name = "txt_VetorTamanho";
-            this.txt_VetorTamanho.Size = new System.Drawing.Size(146, 20);
-            this.txt_VetorTamanho.TabIndex = 3;
+            this.txt_VetorTamanho.Size = new System.Drawing.Size(93, 20);
+            this.txt_VetorTamanho.TabIndex = 2;
             // 
             // TxtTreinarCom
             // 
-            this.TxtTreinarCom.Location = new System.Drawing.Point(69, 58);
+            this.TxtTreinarCom.Location = new System.Drawing.Point(69, 35);
             this.TxtTreinarCom.Name = "TxtTreinarCom";
             this.TxtTreinarCom.Size = new System.Drawing.Size(146, 20);
-            this.TxtTreinarCom.TabIndex = 5;
+            this.TxtTreinarCom.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 61);
+            this.label2.Location = new System.Drawing.Point(5, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Treinar Com";
             // 
+            // ckb_UseCorrel
+            // 
+            this.ckb_UseCorrel.AutoSize = true;
+            this.ckb_UseCorrel.Location = new System.Drawing.Point(178, 64);
+            this.ckb_UseCorrel.Name = "ckb_UseCorrel";
+            this.ckb_UseCorrel.Size = new System.Drawing.Size(102, 17);
+            this.ckb_UseCorrel.TabIndex = 3;
+            this.ckb_UseCorrel.Text = "Usar Correlação";
+            this.ckb_UseCorrel.UseVisualStyleBackColor = true;
+            // 
             // FormEditarNomePadrao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 33);
+            this.ClientSize = new System.Drawing.Size(281, 35);
+            this.Controls.Add(this.ckb_UseCorrel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtTreinarCom);
             this.Controls.Add(this.label1);
@@ -126,5 +138,6 @@
         private System.Windows.Forms.TextBox txt_VetorTamanho;
         private System.Windows.Forms.TextBox TxtTreinarCom;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox ckb_UseCorrel;
     }
 }

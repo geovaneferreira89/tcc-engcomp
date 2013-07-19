@@ -402,13 +402,18 @@ namespace AmbienteRPB
                 SMS_Box.Visible = true;
 
                 GerArquivos = new GerenArquivos();
-                int CanalKohonen = CanalAtual;//+1 - Usa correlação
-                int numeroLinhas = chart1.Series[CanalKohonen].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
+                int CanalKohonen;
+                int numeroLinhas = chart1.Series[CanalAtual].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 1;
                 FormDadosInput.Vetores = numeroLinhas;
                 if (vector_evento != null)
                     FormDadosInput.TamVetores = vector_evento.Count();
+
+                if (FormDadosInput.UsarCorrelacao == true)
+                    CanalKohonen = CanalAtual + 1;
+                else
+                    CanalKohonen = CanalAtual;
 
                 FormDadosInput.ShowDialog();
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
@@ -430,20 +435,27 @@ namespace AmbienteRPB
                 SMS_Box.Visible = true;
 
                 GerArquivos = new GerenArquivos();
-                int CanalKohonen = CanalAtual;//+1 - Usa correlação
-                int numeroLinhas = chart1.Series[CanalKohonen].Points.Count;
+                int numeroLinhas = chart1.Series[0].Points.Count;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 1;
                 FormDadosInput.Vetores = numeroLinhas;
                 if (vector_evento != null)
                     FormDadosInput.TamVetores = vector_evento.Count();
 
+
+                int canalDados;
+                if (FormDadosInput.UsarCorrelacao == true)
+                    canalDados = CanalAtual + 1;
+                else
+                    canalDados = CanalAtual;
+
                 FormDadosInput.ShowDialog();
-                double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
-                for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
-                    vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objKohonen = new RedesNeurais(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, "BackPropagation");
-                ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
+                double[] vectorSignal = new double[chart1.Series[canalDados].Points.Count];
+                for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
+                    vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
+
+                RedesNeurais objBKP = new RedesNeurais(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, "BackPropagation");
+                ThreadKohonen = new Thread(new ThreadStart(objBKP.Init));
                 ThreadKohonen.Start();
             }
         }
