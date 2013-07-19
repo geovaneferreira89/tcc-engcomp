@@ -289,6 +289,7 @@ namespace AmbienteRPB
         //----------------------------------
         private void DumpCoordinates_KHn()
         {
+            bool chave = true;
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
@@ -296,6 +297,13 @@ namespace AmbienteRPB
                 string saida = labels[i] + " " + n.X + " " + n.Y;
                 Plotar("AddDadoKohonen", n.X, n.Y, CanalAtual); // tem o n.x tbm para no caso o Mapa mesmo... 
                 send_SmS(1, saida);
+                if (chave)
+                {
+                    Thread.Sleep(2);
+                    DialogResult resposta = MessageBox.Show("Dado: " + i + "\nPlotado\nX: " + n.X + "\nY: " + n.Y, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
+                    if (resposta == DialogResult.Cancel)
+                        chave = false;
+                }
             }
         }
         //----------------------------------
