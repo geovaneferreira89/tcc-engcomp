@@ -45,14 +45,23 @@
             this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.CorrelAgain = new System.Windows.Forms.ToolStripButton();
             this.BTN_Kohonen = new System.Windows.Forms.ToolStripButton();
+            this.comboFrequencia = new System.Windows.Forms.ToolStripComboBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.SMS_Box = new System.Windows.Forms.RichTextBox();
             this.btn_Close = new System.Windows.Forms.Button();
-            this.comboFrequencia = new System.Windows.Forms.ToolStripComboBox();
             this.btn_Aumentar = new System.Windows.Forms.Button();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_BackPropagation = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -177,11 +186,20 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_SinalProximo,
             this.btn_SinalAnterior,
+            this.toolStripSeparator9,
             this.toolStripSeparator1,
             this.toolStripButton3,
-            this.btn_Suspender,
             this.CorrelAgain,
+            this.toolStripSeparator8,
+            this.toolStripSeparator2,
             this.BTN_Kohonen,
+            this.toolStripSeparator3,
+            this.toolStripSeparator7,
+            this.btn_BackPropagation,
+            this.toolStripSeparator4,
+            this.toolStripSeparator5,
+            this.toolStripSeparator6,
+            this.toolStripLabel1,
             this.comboFrequencia});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -216,23 +234,13 @@
             // 
             // toolStripButton3
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(68, 22);
+            this.toolStripButton3.Text = "Correlação";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
-            // btn_Suspender
-            // 
-            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
-            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Suspender.Name = "btn_Suspender";
-            this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
-            this.btn_Suspender.Text = "btn_Suspender";
-            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click);
             // 
             // CorrelAgain
             // 
@@ -253,6 +261,12 @@
             this.BTN_Kohonen.Size = new System.Drawing.Size(59, 22);
             this.BTN_Kohonen.Text = "Kohonen";
             this.BTN_Kohonen.Click += new System.EventHandler(this.BTN_Kohonen_Click);
+            // 
+            // comboFrequencia
+            // 
+            this.comboFrequencia.Name = "comboFrequencia";
+            this.comboFrequencia.Size = new System.Drawing.Size(75, 25);
+            this.comboFrequencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboFrequencia_KeyDown);
             // 
             // progressBar
             // 
@@ -287,12 +301,6 @@
             this.btn_Close.Visible = false;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
-            // comboFrequencia
-            // 
-            this.comboFrequencia.Name = "comboFrequencia";
-            this.comboFrequencia.Size = new System.Drawing.Size(75, 25);
-            this.comboFrequencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboFrequencia_KeyDown);
-            // 
             // btn_Aumentar
             // 
             this.btn_Aumentar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -304,6 +312,62 @@
             this.btn_Aumentar.UseVisualStyleBackColor = true;
             this.btn_Aumentar.Visible = false;
             this.btn_Aumentar.Click += new System.EventHandler(this.btn_Aumentar_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btn_BackPropagation
+            // 
+            this.btn_BackPropagation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_BackPropagation.Image = ((System.Drawing.Image)(resources.GetObject("btn_BackPropagation.Image")));
+            this.btn_BackPropagation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_BackPropagation.Name = "btn_BackPropagation";
+            this.btn_BackPropagation.Size = new System.Drawing.Size(101, 22);
+            this.btn_BackPropagation.Text = "BackPropagation";
+            this.btn_BackPropagation.Click += new System.EventHandler(this.btn_BackPropagation_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(65, 22);
+            this.toolStripLabel1.Text = "Frequência";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
             // 
             // FormResultados
             // 
@@ -320,7 +384,7 @@
             this.Controls.Add(this.Box_Status);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormResultados";
-            this.Text = "Técnica de Reconhecimento -- Correlação ";
+            this.Text = "Técnica de Reconhecimento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.FormResultados_Shown);
             this.Box_Status.ResumeLayout(false);
@@ -354,12 +418,21 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton btn_Suspender;
         private System.Windows.Forms.ToolStripButton CorrelAgain;
         private System.Windows.Forms.ToolStripButton BTN_Kohonen;
         private System.Windows.Forms.RichTextBox SMS_Box;
         private System.Windows.Forms.Button btn_Close;
         private System.Windows.Forms.ToolStripComboBox comboFrequencia;
         private System.Windows.Forms.Button btn_Aumentar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton btn_BackPropagation;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }

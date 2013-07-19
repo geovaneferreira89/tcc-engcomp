@@ -419,6 +419,35 @@ namespace AmbienteRPB
                 ThreadKohonen.Start();
             }
         }
+        //------------------------------------------------------------------------------
+        private void btn_BackPropagation_Click(object sender, EventArgs e)
+        {
+            if (SelecionaEventoDasLista())
+            {
+                gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                btn_Aumentar.Visible = true;
+                btn_Close.Visible = true;
+                SMS_Box.Visible = true;
+
+                GerArquivos = new GerenArquivos();
+                int CanalKohonen = CanalAtual;//+1 - Usa correlação
+                int numeroLinhas = chart1.Series[CanalKohonen].Points.Count;
+                FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
+                FormDadosInput.opcao = 1;
+                FormDadosInput.Vetores = numeroLinhas;
+                if (vector_evento != null)
+                    FormDadosInput.TamVetores = vector_evento.Count();
+
+                FormDadosInput.ShowDialog();
+                double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
+                for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
+                    vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
+                RedesNeurais objKohonen = new RedesNeurais(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, "BackPropagation");
+                ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
+                ThreadKohonen.Start();
+            }
+        }
+
         private void comboAmplitude_KeyDown(object sender, KeyEventArgs e)
         {
 
