@@ -947,9 +947,9 @@ namespace AmbienteRPB
         //Somente Numeros
         private void AmplitudeCombo_KeyPress(object sender, KeyPressEventArgs e)
         {
-           // char ch = e.KeyChar;
-           //  if (!Char.IsDigit(ch) && ch != 8)
-           //     e.Handled = true;
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+               e.Handled = true;
         }
         //------------------------------------------------------------------------------------------
         private void AmplitudeCombo_TextChanged(object sender, EventArgs e)
