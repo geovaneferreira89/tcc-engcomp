@@ -154,11 +154,11 @@
             // 
             this.checkCorrela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkCorrela.AutoSize = true;
-            this.checkCorrela.Location = new System.Drawing.Point(531, 477);
+            this.checkCorrela.Location = new System.Drawing.Point(495, 477);
             this.checkCorrela.Name = "checkCorrela";
-            this.checkCorrela.Size = new System.Drawing.Size(77, 17);
+            this.checkCorrela.Size = new System.Drawing.Size(113, 17);
             this.checkCorrela.TabIndex = 33;
-            this.checkCorrela.Text = "Correlação";
+            this.checkCorrela.Text = "Selecionar Padrão";
             this.checkCorrela.UseVisualStyleBackColor = true;
             this.checkCorrela.Click += new System.EventHandler(this.checkCorrela_CheckedChanged);
             // 
