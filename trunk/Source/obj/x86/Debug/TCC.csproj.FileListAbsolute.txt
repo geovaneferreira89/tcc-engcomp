@@ -100,3 +100,5 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.In
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Modelo1.EDF
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\BrainNet.NeuralFramework.dll
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\BrainNet.NeuralFramework.pdb
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\BrainNet.NeuralFramework.xml

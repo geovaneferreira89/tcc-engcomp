@@ -23,8 +23,7 @@ namespace AmbienteRPB
         private Control _Grafico = null;
         private delegate void AtualizaChart(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, ArrayList myArray);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
-        private VerticalLineAnnotation Cursor_vertical_Inicio;
-        private VerticalLineAnnotation Cursor_vertical_Corr2;
+        private VerticalLineAnnotation Cursor;        
         private int CanalAtual;
         private RectangleAnnotation selecaoAtual;
         //Controles Progress Bar-------------------------------------------------------------------
@@ -37,7 +36,7 @@ namespace AmbienteRPB
         private System.Windows.Forms.ScrollBar ScrollBar;
         //Saida de dados -------------------------------------------------------------------------
         private Control SMS = null;
-        private delegate void SMS_Propriedades(int opcao, string texto);
+        private delegate void SMS_Propriedades(int opcao, string texto, bool AutScroll);
         private System.Windows.Forms.RichTextBox TextBox;
         private string tipoDeRede;
         //Variaveis do kohoney -------------------------------------------------------------------
@@ -61,20 +60,28 @@ namespace AmbienteRPB
         private ArrayList inputs;
         private ArrayList outputs_;
 
-        public RedesNeurais(double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, string _TipoDeRede)
+        private ListaPadroesEventos[] ListasPadrEvents;
+        private EdfFile SinalEEG;
+
+        private int ID_PadraoAtual;
+        private int MenorTamanho = 0;
+        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int _ID_PadraoAtual, string _TipoDeRede)
         {
-            _Grafico = Grafico;
-            CanalAtual = _CanalAtual;
+            SinalEEG        =  _SinalEEG;
+            ListasPadrEvents = _Listas;
+            ID_PadraoAtual = _ID_PadraoAtual;
+            _Grafico        = Grafico;
+            CanalAtual      = _CanalAtual;
             _BarraDeProgresso = BarraDeProgresso;
-            _ScrollBar = ScrollBar;
-            tipoDeRede = _TipoDeRede;
-            length = (int)_VetTreinamento;
-            dimensions = (int)_dimensions;
-            file = _file;
-            SMS = _SMS_;
+            _ScrollBar     = ScrollBar;
+            tipoDeRede     = _TipoDeRede;
+            length         = (int)_VetTreinamento;
+            dimensions     = (int)_dimensions;
+            file           = _file;
+            SMS            = _SMS_;
             VetTreinamento = (int)_length;
-            VetorEvento = _VetorEvento;
-            Sinal = _Sinal;
+            VetorEvento    = _VetorEvento;
+            Sinal          = _Sinal;
         }
         //------------------------------------------------------------------------------------------
         public void Init()
@@ -83,30 +90,46 @@ namespace AmbienteRPB
             if (tipoDeRede == "Kohonen")
             {
                 Plotar("Criar Chart de Barras", null, CanalAtual, selecaoAtual,null);
-                send_SmS(1, "Inicializando...");
+                send_SmS(1, "Inicializando...",false);
                 Initialise_KHn();
-                send_SmS(1, "Carregando Arquivo de Vetores");
+                send_SmS(1, "Carregando Arquivo de Vetores", false);
                 LoadData_KHn(file);
-                send_SmS(1, "Init NormalisePatterns");
+                send_SmS(1, "Init NormalisePatterns", false);
                 NormalisePatterns_KHn();
-                send_SmS(1, "Treinando a rede com 0.0000001");
+                send_SmS(1, "Treinando a rede com 0.0000001", false);
                 Train_KHn(0.0000001);
-                send_SmS(1, "Resultados:");
+                send_SmS(1, "Resultados:", false);
                 DumpCoordinates_KHn();
-                send_SmS(1, "Fim...");
+                send_SmS(1, "Fim...", false);
             }
             else if (tipoDeRede == "BackPropagation")
             {
                 //Utilizando o backPropagation 
-                newRede();
-                for (int i = 0; i < 1000; i++)
+                send_SmS(1, "Inicializando...", false);
+                string tipo = "TodosEventos";
+                if (tipo == "TodosEventos")
                 {
-                    TreinodaRede(VetorEvento, 1);
+                    //busca pelo menor tamanho do dos eventos deste padrao... 
+                    for (int cont = 0; cont < ListasPadrEvents[ID_PadraoAtual].NumeroEventos; cont++)
+                    {
+                        int aux = (int)(ListasPadrEvents[ID_PadraoAtual].GetValorFim(cont).X - ListasPadrEvents[ID_PadraoAtual].GetValorInicio(cont).X);
+                        if (cont == 0 || MenorTamanho > aux)
+                            MenorTamanho = aux;
+                    }
                 }
-                send_SmS(1, "Treinada");
+                else
+                    MenorTamanho = VetorEvento.Count();
+
+                newRede();
+                TreinodaRede(VetorEvento, 1, tipo); //null - somente o evento marcado 
+                send_SmS(1, "Treinada", false);
                 Rodar(Sinal);
-              
-                send_SmS(1, "Fim");
+
+                send_SmS(1, "Fim", false);
+            }
+            else if (tipoDeRede == "BKP2")
+            {
+
             }
         }
         //------------------------------------------------------------------------------------------
@@ -116,9 +139,9 @@ namespace AmbienteRPB
             strategy = new BrainNet.NeuralFramework.BackPropNeuronStrategy();
 
             layers = new ArrayList();
-            layers.Add(VetorEvento.Count());
-            layers.Add(VetorEvento.Count());
-            layers.Add(1);
+            layers.Add(MenorTamanho);
+            layers.Add(MenorTamanho);
+            layers.Add(8);
             //long neurons = 0;
             network = new BrainNet.NeuralFramework.NeuralNetwork();
             foreach (int neurons in layers)
@@ -127,52 +150,115 @@ namespace AmbienteRPB
                 for (int i = 0; i <= neurons - 1; i++)
                 {
                     layer = new BrainNet.NeuralFramework.NeuronLayer();
-
                     for (i = 0; i <= neurons - 1; i++)
                     {
                         BrainNet.NeuralFramework.INeuron ass = new BrainNet.NeuralFramework.Neuron(strategy);
-
                         layer.Add(ref ass);
                     }
                     network.Layers.Add(layer);
-
-
                 }
             }
             network.ConnectLayers();
         }
-        public void TreinodaRede(double[] input1, double output)
+        public void TreinodaRede(double[] input1, double output,string tipoDeTreinamento)
         {
-            //'Create a training data object
-            td = new TrainingData();
-            //Add inputs to the training data object
-            for(int i=0;i<input1.Count();i++)
-                td.Inputs.Add(input1[i]);
-            //Add expected output to the training data object
-            td.Outputs.Add(output);
-            //Train the network one time
-            network.TrainNetwork(td);
+            BrainNet.NeuralFramework.NetworkHelper helper;
+            helper = new BrainNet.NeuralFramework.NetworkHelper(network);
+            ArrayList entrada = new ArrayList();
+            ArrayList saida = new ArrayList();
+            switch (tipoDeTreinamento)
+            {
+                case ("TodosEventos"):
+                    {
+                        saida.Add(1);
+                        saida.Add(0);
+                        saida.Add(0);
+                        saida.Add(0);
+                        saida.Add(0);
+                        saida.Add(1);
+                        saida.Add(1);
+                        saida.Add(0);
+                        for (int cont = 0; cont < ListasPadrEvents[ID_PadraoAtual].NumeroEventos; cont++)
+                        {
+                             entrada = new ArrayList();
+                            string nome_canal = ListasPadrEvents[ID_PadraoAtual].GetNomesEvento(cont);
+                            int X_ = nome_canal.IndexOf("_");
+                            nome_canal = nome_canal.Substring(X_ + 1);
+                            //Inicio do enveto
+                            float x = ListasPadrEvents[ID_PadraoAtual].GetValorInicio(cont).X;
+                            float aux;
+                            int DataRecords_lidos = 0;
+                            int tempo_X = 0;
+                            while (tempo_X <= (int)x + MenorTamanho)
+                            {
+
+                                SinalEEG.ReadDataBlock(DataRecords_lidos);
+                                DataRecords_lidos++;
+                                //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                                for (int j = 0; j < SinalEEG.FileInfo.NrSignals; j++)
+                                {
+                                    for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+                                    {
+                                        if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
+                                        {
+                                            if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho+x))
+                                            {
+                                                entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                            }
+                                            else
+                                                aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                        }
+                                        else
+                                            aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                        tempo_X++;
+                                    }
+                                }
+                            }
+                            helper.AddTrainingData(entrada, saida);
+                        }
+                        helper.Train(1000);
+                        break;
+                    }
+                case ("SomenteUm"):
+                    {
+                        saida.Add(1);
+                        saida.Add(0);
+                        saida.Add(0);
+                        saida.Add(0);
+                        saida.Add(0);
+                        saida.Add(1);
+                        saida.Add(1);
+                        saida.Add(0);
+                        for (int i = 0; i < input1.Count(); i++)
+                            entrada.Add(input1[i]);
+                        helper.AddTrainingData(entrada, saida);
+                        helper.Train(1000);
+                        break;
+                    }
+            }
+         
         }
 
         public void Rodar(double[] input1)
         {
-            //'Declare an arraylist to provide as input to the Run method
-
-            // 'Add the first input
             load_progress_bar(0, 4);
             load_progress_bar(VetorEvento.Count(), 2);
 
             int cont = 0;
-            string resultado;
             bool chave = true;
-
-            string line = null;
-            int vetores = 0;
             double[] dados = new double[2];
+
+            //Corrige o problema de deslocamento do sinal para esquerda... 
+            dados[1] = 0;
+            dados[0] = 0;
+            outputs_ = new ArrayList();
+            outputs_.Add(0.0);
+            for (int i = 0; i < (MenorTamanho/ 2); i++)
+                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, outputs_);
             for (int i = 0; i < VetTreinamento; i++)
             {
                 inputs = new ArrayList();
-                while (cont < VetorEvento.Count())
+                while (cont < MenorTamanho)
                 {
                     if ((cont + i) < Sinal.Count())
                         inputs.Add(Sinal[cont + i]);
@@ -181,27 +267,32 @@ namespace AmbienteRPB
                     cont++;
 
                 }
-
+            
                 dados[0] = i;
-                dados[1] = VetorEvento.Count() + i;
+                dados[1] = MenorTamanho + i;
 
                 cont = 0;
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
+            
+               BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
+               char character = (char)(patternHelper.NumberFromArraylist(outputs_));
+                string saida =  Convert.ToString(outputs_[0]) + "  ------ " + character;  
                 //foreach (Object obj in outputs_)
-                send_SmS(1, Convert.ToString(outputs_[0]));
+                if(!chave)
+                 send_SmS(1, Convert.ToString(outputs_[0]),false);
                 Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, outputs_); 
                 load_progress_bar(0, 1);
                 if (chave)
                 {
+                    send_SmS(1, Convert.ToString(outputs_[0]), true);
                     Thread.Sleep(1);
-                    DialogResult resposta = MessageBox.Show("Dado: " + i, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
+                    DialogResult resposta = MessageBox.Show("Dado: " + i + " " + character, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     if (resposta == DialogResult.Cancel)
                         chave = false;
                 }
             }
             load_progress_bar(1, 3);
             //'Add the second input
-
         }
         //====================================================================================================
         //                                        KOHONEN
@@ -299,7 +390,7 @@ namespace AmbienteRPB
                     TrainingSet.Remove(pattern);
                 }
                 // Console.WriteLine(currentError.ToString("0.0000000"));
-                send_SmS(1, Convert.ToString(count));
+                send_SmS(1, Convert.ToString(count),true);
                 count++;
             }
         }
@@ -323,7 +414,6 @@ namespace AmbienteRPB
         {
             bool chave = true;
             double[] dados = new double[10];
-
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
@@ -333,10 +423,12 @@ namespace AmbienteRPB
                 dados[2] = i;
                 dados[3] = VetorEvento.Count() + i;
                 Plotar("AddDadoKohonen", dados, CanalAtual, selecaoAtual,null); // tem o n.x tbm para no caso o Mapa mesmo... 
-                send_SmS(1, saida);
+                if(!chave)
+                    send_SmS(1, saida,false);
                 if (chave)
                 {
-                    Thread.Sleep(2);
+                    send_SmS(1, saida, true);
+                    Thread.Sleep(1);
                     DialogResult resposta = MessageBox.Show("Dado: " + i + "\nPlotado\nX: " + n.X + "\nY: " + n.Y, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     if (resposta == DialogResult.Cancel)
                         chave = false;
@@ -377,12 +469,12 @@ namespace AmbienteRPB
         //====================================================================================================
         //-------------------------------------------------------------------------------
         //Saida de Dados
-        private void send_SmS(int opcao, string texto)
+        private void send_SmS(int opcao, string texto, bool AutScrool)
         {
 
             if (SMS.InvokeRequired)
             {
-                SMS.BeginInvoke(new SMS_Propriedades(send_SmS), new Object[] { opcao, texto });
+                SMS.BeginInvoke(new SMS_Propriedades(send_SmS), new Object[] { opcao, texto, AutScrool });
             }
             else
             {
@@ -390,6 +482,11 @@ namespace AmbienteRPB
                 if (opcao == 1)
                 {
                     TextBox.Text = TextBox.Text + "\n" + texto;
+                    if (AutScrool)
+                    {
+                        TextBox.SelectionStart = TextBox.Text.Length;
+                        TextBox.ScrollToCaret();
+                    }
                 }
 
             }
@@ -440,9 +537,12 @@ namespace AmbienteRPB
                     case ("AddDadoBKP"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            foreach (Object obj in myArray)
-                                prb.Series["canal" + (canal + 2)].Points.AddY(obj);
 
+                            if (Convert.ToInt16(myArray[0]) == 1 && Convert.ToInt16(myArray[2]) == 0 && Convert.ToInt16(myArray[3]) == 0 &&Convert.ToInt16(myArray[4]) == 0 &&Convert.ToInt16(myArray[5]) == 1 &&Convert.ToInt16(myArray[6]) == 1 &&
+                                Convert.ToInt16(myArray[7]) == 0)
+                                    prb.Series["canal" + (canal + 2)].Points.AddY(1);
+                            else
+                                    prb.Series["canal" + (canal + 2)].Points.AddY(0);
                             PointF zero = new PointF(0, 0);
                             prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
                             prb.ChartAreas[canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);

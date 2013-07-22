@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>7.0.9466</ProductVersion>
+    <SchemaVersion>1.0</SchemaVersion>
+    <ProjectGuid>{60788E18-4370-40B6-A230-686D79BFD029}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon />
+    <AssemblyKeyContainerName />
+    <AssemblyName>BrainNet.NeuralFramework</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>BrainNet.NeuralFramework</RootNamespace>
+    <StartupObject>BrainNet.NeuralFramework.%28None%29</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>BrainNet.NeuralFramework.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile />
+    <DefineConstants />
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>BrainNet.NeuralFramework.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile />
+    <DefineConstants />
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BackPropNetworkFactory.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BackPropNeuronStrategy.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageProcessingHelper.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="INetworkFactory.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="INeuralNetwork.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="INeuron.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="INeuronStrategy.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkDataModel\Network.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkDataModel\NeuralXML.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkHelper.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkSerializer.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NeuralFrameworkException.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NeuralNetwork.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NeuralNetworkCollection.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Neuron.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NeuronCollection.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NeuronConnections.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NeuronLayer.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NeuronLayerCollection.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NXMLInterpreter.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PatternProcessingHelper.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrainingData.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrainingDataCollection.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UtilityModule.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Content Include="NetworkDataModel\Network.xsd" />
+    <Content Include="NetworkDataModel\NeuralXML.xsd" />
+    <None Include="NetworkDataModel\Network.xsx">
+      <DependentUpon>Network.xsd</DependentUpon>
+    </None>
+    <None Include="NetworkDataModel\NeuralXML.xsx">
+      <DependentUpon>NeuralXML.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>

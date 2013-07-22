@@ -36,6 +36,7 @@ namespace AmbienteRPB
         private Thread ThreadKohonen;
         private GerenArquivos GerArquivos;
         private bool SMS_Zoom = false;
+        private int ID_PadraoAtual;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
         {
@@ -51,11 +52,14 @@ namespace AmbienteRPB
             gbxChart.Height = gbxChart.Height + SMS_Box.Height;
             AdicionaCanais();
             Adiciona_linhas_de_tempo();
+            SMS_Box.SelectionStart = SMS_Box.Text.Length;
+            SMS_Box.ScrollToCaret();
 
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar,edfFileOutput, CanalAtual,"PlotaSinalEEG",vector_evento, ValorInicio.X, ValorFim.X,  numeroDeCanais);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
+
         }
         //-----------------------------------------------------------------------------------------
         private void AdicionaCanais()
@@ -305,6 +309,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
                 chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
                 chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
+                //chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -363,6 +368,7 @@ namespace AmbienteRPB
                 vector_evento = selecionar_evento.vector;
                 ValorInicio = selecionar_evento.ValorInicio;
                 ValorFim = selecionar_evento.ValorFim;
+                ID_PadraoAtual = selecionar_evento.itemLista;
                 return true;
             }
             else
@@ -419,7 +425,7 @@ namespace AmbienteRPB
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objKohonen = new RedesNeurais(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, "Kohonen");
+                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput,ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, "Kohonen");
                 ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
                 ThreadKohonen.Start();
             }
@@ -454,7 +460,7 @@ namespace AmbienteRPB
                 for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
 
-                RedesNeurais objBKP = new RedesNeurais(FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, "BackPropagation");
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos,FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, "BackPropagation");
                 ThreadKohonen = new Thread(new ThreadStart(objBKP.Init));
                 ThreadKohonen.Start();
             }
@@ -511,6 +517,10 @@ namespace AmbienteRPB
              char ch = e.KeyChar;
               if (!Char.IsDigit(ch) && ch != 8)
                  e.Handled = true;
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
         }
         //------------------------------------------------------------------------------------------
      }

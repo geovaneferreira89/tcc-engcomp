@@ -19,7 +19,7 @@ namespace AmbienteRPB
 
         private ListaPadroesEventos[] Listas;
         private GerenArquivos Arquivos;
-        EdfFile SinalEEG;
+        private EdfFile SinalEEG;
         private int NumeroDeCanais;
 
         public PointF ValorInicio;
@@ -52,6 +52,11 @@ namespace AmbienteRPB
             set;
         }
         public int vectorFim
+        {
+            get;
+            set;
+        }
+        public int itemLista
         {
             get;
             set;
@@ -308,6 +313,7 @@ namespace AmbienteRPB
             {
                 if (chart1.ChartAreas.Count != 0)
                 {
+                    itemLista = comboTiposDeEventos.SelectedIndex;
                     vector = new double[chart1.Series[0].Points.Count];
                     for (int i = 0; i < chart1.Series[0].Points.Count; i++)
                         vector[i] = chart1.Series[0].Points[i].YValues[0];
