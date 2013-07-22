@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="Network" targetNamespace="http://tempuri.org/Network.xsd" elementFormDefault="qualified" xmlns="http://tempuri.org/Network.xsd" xmlns:mstns="http://tempuri.org/Network.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Layer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Neuron" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Neuron">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Bias" type="xs:double" />
+				<xs:element name="Output" type="xs:double" />
+				<xs:element name="Delta" type="xs:double" />
+				<xs:element ref="Connections" />
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Input">
+		<xs:complexType>
+			<xs:sequence></xs:sequence>
+			<xs:attribute name="Layer" type="xs:long" />
+			<xs:attribute name="Neuron" type="xs:long" />
+			<xs:attribute name="Weight" type="xs:double" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Connections">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Input" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="ConnectionInitMode" default="Custom">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="All" />
+						<xs:enumeration value="Custom" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="WeightInitMode" default="Custom">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Random" />
+						<xs:enumeration value="Custom" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Network">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Layer" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

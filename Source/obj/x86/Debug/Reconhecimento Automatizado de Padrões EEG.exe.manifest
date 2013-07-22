@@ -48,14 +48,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="65536">
-      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.2333.25298" language="neutral" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="70144">
+      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.4951.29536" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pnTFFqEsgPCSsx5Z7ENzpeDLKP8=</dsig:DigestValue>
+        <dsig:DigestValue>zkEE6YcEiy5XS6TlNW5hTaw2dik=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -84,14 +84,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="548352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="550400">
       <assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/4DYFDEutTENQqqruZiadQirKnM=</dsig:DigestValue>
+        <dsig:DigestValue>k8UmA6qKyciaznygXJgysnO54MQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

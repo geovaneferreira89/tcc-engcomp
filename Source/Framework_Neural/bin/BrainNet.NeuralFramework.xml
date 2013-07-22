@@ -1,0 +1,284 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+BrainNet.NeuralFramework
+</name>
+</assembly>
+<members>
+<member name="T:BrainNet.NeuralFramework.NeuralNetworkCollection">
+	<summary>A collection of neural networks </summary>
+</member><member name="T:BrainNet.NeuralFramework.StrategyNotInitializedException">
+	<summary> Exception that may be thrown when the strategy is not initialized </summary>
+</member><member name="M:BrainNet.NeuralFramework.Neuron.#ctor">
+	<summary> Default constructor</summary>
+</member><member name="M:BrainNet.NeuralFramework.Neuron.#ctor(BrainNet.NeuralFramework.INeuronStrategy)">
+	<summary> A constructor to initialize a neuron with its strategy </summary>
+</member><member name="P:BrainNet.NeuralFramework.Neuron.BiasValue">
+	<summary> Gets the current bias this neuron</summary>
+</member><member name="P:BrainNet.NeuralFramework.Neuron.OutputValue">
+	<summary> Gets the current output of this neuron</summary>
+</member><member name="P:BrainNet.NeuralFramework.Neuron.DeltaValue">
+	<summary> Gets the current delta value of this neuron</summary>
+</member><member name="P:BrainNet.NeuralFramework.Neuron.Inputs">
+	<summary> Gets a list of neurons connected to this neuron </summary>
+</member><member name="P:BrainNet.NeuralFramework.Neuron.Strategy">
+	<summary> Gets or Sets the strategy of this neuron </summary>
+</member><member name="M:BrainNet.NeuralFramework.Neuron.UpdateDelta(System.Single)">
+	<summary> Calculate the error value </summary>
+</member><member name="M:BrainNet.NeuralFramework.Neuron.UpdateOutput">
+	<summary> Calculate the output </summary>
+</member><member name="M:BrainNet.NeuralFramework.Neuron.UpdateFreeParams">
+	<summary> Calculate the free parameters </summary>
+</member><member name="P:BrainNet.NeuralFramework.Neuron.ForwardConnections">
+	<summary> Returns a list of all neurons to which this neuron is connected </summary>
+</member><member name="T:BrainNet.NeuralFramework.Neuron">
+	<summary>A concrete implementation of INeuron </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuronCollection">
+	<summary>A collection of INeurons </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuronConnections.WeightMapping">
+	<summary>This class wraps a weight value holded by a neuron </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuronConnections">
+	<summary>This is a hashtable to keep track of all neurons connected to a neuron,
+ and its related weights</summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuronLayer">
+	<summary>A neuron layer, which is basically a collection of neurons</summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuralXML.InterpreterException">
+	<summary> Exception thrown when there is a problem in interpreter </summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralXML.NXMLInterpreter.Load(System.String)">
+	<summary>Interpret a neural xml file</summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralXML.NXMLInterpreter.Save(System.String,BrainNet.NeuralFramework.NeuralXML.DataModel.NXML)">
+	<summary>Save the nxml file</summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralXML.NXMLInterpreter.Interpret(System.String)">
+	<summary>Start Interpretation of the document</summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuralXML.NXMLInterpreter">
+	<summary>Neural XML Interpreter </summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNetworkFactory.CreateNetwork(System.Collections.ArrayList)">
+	<summary> Method to create a network. The input is a list of long values that represent the number
+of neurons in each layer</summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNetworkFactory.CreateNetwork(System.Int64,System.Int64)">
+	<summary> Build a simple back prop neural network</summary>
+</member><member name="T:BrainNet.NeuralFramework.BackPropNetworkFactory">
+	<summary> A Factory for creating a backward propagation neural network</summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuralNetwork.TrainNetwork(BrainNet.NeuralFramework.TrainingData)">
+	<summary>Method to train a network </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuralNetwork.ConnectNeurons(BrainNet.NeuralFramework.INeuron,BrainNet.NeuralFramework.INeuron,System.Single)">
+	<summary>This function can be used for connecting two neurons together </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuralNetwork.ConnectNeurons(BrainNet.NeuralFramework.INeuron,BrainNet.NeuralFramework.INeuron)">
+	<summary>This function can be used for connecting two neurons together with random weight </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuralNetwork.ConnectLayers(BrainNet.NeuralFramework.NeuronLayer,BrainNet.NeuralFramework.NeuronLayer)">
+	<summary>This function can be used for connecting neurons in two layers together with random weights </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuralNetwork.ConnectLayers">
+	<summary>This function can be used for connecting all layers together </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuralNetwork.RunNetwork(System.Collections.ArrayList)">
+	<summary>This function may be used for running the network </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuralNetwork.GetOutput">
+	<summary>This function may be used to obtain the output list </summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuralNetwork.InputLayer">
+	<summary>Gets the first (input) layer</summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuralNetwork.OutputLayer">
+	<summary>Gets the last (output) layer</summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.ArrayListFromPattern(System.String)">
+	<summary> Convert a binary string to an arraylist </summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.PatternFromArraylist(System.Collections.ArrayList)">
+	<summary> Convert an arraylist by rounding each value to a pattern of 0s and 1s </summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.NumberFromArraylist(System.Collections.ArrayList)">
+	<summary> Convert an arraylist by rounding each value to a pattern of 0s and 1s </summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.CharFromArraylist(System.Collections.ArrayList)">
+	<summary> Convert an arraylist to a character </summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.ArrayListFromChar(System.String)">
+	<summary>Arraylist to a character </summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.ArrayListFromNumber(System.Int64,System.Int64)">
+	<summary> Convert a binary string to an arraylist </summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.NumberFromPattern(System.String)">
+	<summary> Convert a binary string to decimal value </summary>
+</member><member name="M:BrainNet.NeuralFramework.PatternProcessingHelper.PatternFromNumber(System.Int32,System.Int64)">
+	<summary> Get an string pattern of 0s and 1s corresponding to a value. Eg. 1 
+will be converted to 01, 2 to 10 and so on </summary>
+</member><member name="T:BrainNet.NeuralFramework.PatternProcessingHelper">
+	<summary> The class provides some basic image processing methods
+and conversions required for neural network image processing  </summary>
+</member><member name="M:BrainNet.NeuralFramework.ImageProcessingHelper.ImageToMonochrome(System.Drawing.Image)">
+	<summary> Convert a color image to monochrome </summary>
+</member><member name="M:BrainNet.NeuralFramework.ImageProcessingHelper.ArrayListFromImage(System.Drawing.Image)">
+	<summary> Converts an image of any size to a pattern that
+can be feeded to the network.  </summary>
+	<remarks> The product of width and height should be equal
+to the number of neurons in input or output layer. Basically
+only the monochrome version of image is converted to pattern </remarks>
+</member><member name="M:BrainNet.NeuralFramework.ImageProcessingHelper.DrawImage(System.Windows.Forms.PictureBox,System.Windows.Forms.PictureBox,System.Boolean)">
+	<summary> Shrinks an image in one picture box to another, using AntiAliasing </summary>
+</member><member name="M:BrainNet.NeuralFramework.ImageProcessingHelper.DrawImage(System.Drawing.Bitmap,System.Windows.Forms.PictureBox,System.Boolean)">
+	<summary> Shrinks a bitmap and draw it to a picture box, using AntiAliasing </summary>
+</member><member name="M:BrainNet.NeuralFramework.ImageProcessingHelper.ShrinkImage(System.Drawing.Bitmap,System.Int32,System.Int32,System.Boolean)">
+	<summary> Shrinks a bitmap and returns the shrinked version </summary>
+</member><member name="M:BrainNet.NeuralFramework.ImageProcessingHelper.ImageFromArraylist(System.Collections.ArrayList,System.Int32,System.Int32)">
+	<summary> Create an image from a given pattern </summary>
+</member><member name="T:BrainNet.NeuralFramework.ImageProcessingHelper">
+	<summary> The class provides some basic image processing methods
+and conversions required for neural network image processing  </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.FindDelta(System.Single,System.Single)">
+	<summary>Function to find the delta or error rate of this INeuron </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.Activation(System.Single)">
+	<summary>Activation Function, or ThreshHold function</summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.FindNetValue(BrainNet.NeuralFramework.NeuronConnections,System.Single)">
+	<summary>Summation Function for finding the net value</summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.FindNewBias(System.Single,System.Single)">
+	<summary>Function for calculating new bias</summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.UpdateWeights(BrainNet.NeuralFramework.NeuronConnections@,System.Single)">
+	<summary>Function for updating weights</summary>
+</member><member name="T:BrainNet.NeuralFramework.INeuronStrategy">
+	<summary>The interface for defining the strategy of a neuron </summary>
+</member><member name="T:BrainNet.NeuralFramework.NotInitializedException">
+	<summary> Exception thrown when a function is called with out intializing
+the helper </summary>
+</member><member name="T:BrainNet.NeuralFramework.NetworkHelperException">
+	<summary> Exception thrown when a helper error occurs </summary>
+</member><member name="E:BrainNet.NeuralFramework.NetworkHelper.TrainingProgress">
+	<summary> This event will be raised after each training </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.#ctor(BrainNet.NeuralFramework.INeuralNetwork)">
+	<summary> Initialize with an existing neural network </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.#ctor">
+	<summary> Default constructor </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.Initialize(BrainNet.NeuralFramework.INeuralNetwork)">
+	<summary> Re-Initialize this network manager with a network </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(BrainNet.NeuralFramework.TrainingData)">
+	<summary> This function takes a training data object  </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(System.Collections.ArrayList,System.Collections.ArrayList)">
+	<summary> This function takes a list of Single values as input and output </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(System.String,System.String)">
+	<summary> This function takes a string pattern consists of 1s and 0s
+ as input and output </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(System.Int64,System.Int64)">
+	<summary> This function takes numbers as inputs and outputs, convert it to binary strig 
+pattern, and add it to the training queue. Eg. 2 will be converted to 10 </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(System.Drawing.Image,System.Drawing.Image)">
+	<summary> This function takes images as inputs and outputs. The images will be
+resized based on the number of inputs and outputs </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(System.Drawing.Image,System.Collections.ArrayList)">
+	<summary> This function takes an image as input and arraylist as output </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(System.Drawing.Image,System.String)">
+	<summary> This function takes an image as input and a pattern as output </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.AddTrainingData(System.Drawing.Image,System.Int64)">
+	<summary> This function takes an image as input and a value as output </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.Train(System.Int64,System.Boolean)">
+	<summary> This function trains the network using the training data queue the 
+ specified number of rounds </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkHelper.ClearTrainingData">
+	<summary> This function will clear the training data queue  </summary>
+</member><member name="P:BrainNet.NeuralFramework.NetworkHelper.TrainingDataQueue">
+	<summary> Training data queue </summary>
+</member><member name="T:BrainNet.NeuralFramework.NetworkHelper">
+	<summary> The class is to help you to initialize,train and run the network. It maintains
+a list of training data elements. </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuralFrameworkException">
+	<summary> Exception from which other neural framework exceptions inherit </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuralNetworkException">
+	<summary> Exception that may be thrown by INeuralNetwork class </summary>
+</member><member name="T:BrainNet.NeuralFramework.NotEnoughLayersException">
+	<summary> Exception that may be thrown when there are not enough layers </summary>
+</member><member name="T:BrainNet.NeuralFramework.TrainingException">
+	<summary> Exception that may be thrown when training function fails </summary>
+</member><member name="T:BrainNet.NeuralFramework.InvalidInputException">
+	<summary> Exception that may be thrown when the number of inputs doesn'''t match number of input neurons </summary>
+</member><member name="T:BrainNet.NeuralFramework.InvalidOutputException">
+	<summary> Exception that may be thrown when the number of outputs doesn'''t match number of output neurons </summary>
+</member><member name="T:BrainNet.NeuralFramework.RunningException">
+	<summary> Exception that may be thrown when we running the neural network fails </summary>
+</member><member name="F:BrainNet.NeuralFramework.NeuralNetwork._layers">
+Layer Collections
+
+</member><member name="M:BrainNet.NeuralFramework.NeuralNetwork.TrainNetwork(BrainNet.NeuralFramework.TrainingData)">
+	<summary>Method to train a network </summary>
+</member><member name="P:BrainNet.NeuralFramework.NeuralNetwork.InputLayer">
+	<summary>Gets the first (input) layer</summary>
+</member><member name="P:BrainNet.NeuralFramework.NeuralNetwork.OutputLayer">
+	<summary>Gets the last (output) layer</summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralNetwork.ConnectNeurons(BrainNet.NeuralFramework.INeuron,BrainNet.NeuralFramework.INeuron,System.Single)">
+	<summary>This function can be used for connecting two neurons together </summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralNetwork.ConnectNeurons(BrainNet.NeuralFramework.INeuron,BrainNet.NeuralFramework.INeuron)">
+	<summary>This function can be used for connecting two neurons together with random weight </summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralNetwork.ConnectLayers(BrainNet.NeuralFramework.NeuronLayer,BrainNet.NeuralFramework.NeuronLayer)">
+	<summary>This function can be used for connecting neurons in two layers together with random weights </summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralNetwork.ConnectLayers">
+	<summary>This function can be used for connecting all neurons in all layers together </summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralNetwork.RunNetwork(System.Collections.ArrayList)">
+	<summary>This function may be used for running the network. It returns the output list </summary>
+</member><member name="M:BrainNet.NeuralFramework.NeuralNetwork.GetOutput">
+	<summary>This function may be used to obtain the output vector </summary>
+</member><member name="P:BrainNet.NeuralFramework.NeuralNetwork.Layers">
+	<summary>This property returns the Output layer </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuralNetwork">
+	<summary>A generic neural network </summary>
+</member><member name="T:BrainNet.NeuralFramework.TrainigDataCollection">
+	<summary>
+This class is can hold a collection of training data objects
+ </summary>
+</member><member name="T:BrainNet.NeuralFramework.NetworkSerializerException">
+	<summary> 
+ Exception that may be thrown by NeuronStrategy class 
+ </summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkSerializer.SaveNetwork(System.String,BrainNet.NeuralFramework.INeuralNetwork)">
+	<summary> The method will serialize a network to a given file as xml</summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkSerializer.FindNeuronPosition(BrainNet.NeuralFramework.INeuron,BrainNet.NeuralFramework.INeuralNetwork)">
+	<summary> The method will find a neuron'''s position from the layer</summary>
+</member><member name="M:BrainNet.NeuralFramework.NetworkSerializer.LoadNetwork(System.String,BrainNet.NeuralFramework.INeuralNetwork@)">
+	<summary> The method will dserialize a network from a given xml file</summary>
+</member><member name="T:BrainNet.NeuralFramework.NetworkSerializer">
+	<summary> 
+ The class can serialize and deserialize a neural network 
+ </summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuron.BiasValue">
+	<summary> Gets the current bias this neuron</summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuron.OutputValue">
+	<summary> Gets the current output this neuron</summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuron.DeltaValue">
+	<summary> Gets the current delta value this neuron</summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuron.ForwardConnections">
+	<summary> Gets a list of neurons to which this neuron is connected</summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuron.Inputs">
+	<summary> Gets a list of neurons connected to this neuron</summary>
+</member><member name="P:BrainNet.NeuralFramework.INeuron.Strategy">
+	<summary> Gets or sets the strategy of this neuron</summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuron.UpdateOutput">
+	<summary> Method to update the output of a neuron</summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuron.UpdateDelta(System.Single)">
+	<summary> Method to find new delta value</summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuron.UpdateFreeParams">
+	<summary> Method to update free parameters</summary>
+</member><member name="T:BrainNet.NeuralFramework.INeuron">
+	<summary>The interface for defining a neuron </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuronLayerCollection">
+	<summary>A collection of Neuron Layers </summary>
+</member><member name="M:BrainNet.NeuralFramework.Utility.Rand">
+	<summary>Function used to generate a random number </summary>
+</member><member name="M:BrainNet.NeuralFramework.Utility.PrintArr(System.String,System.Collections.ArrayList)">
+	<summary>Print an array </summary>
+</member><member name="M:BrainNet.NeuralFramework.Utility.Report(System.Windows.Forms.ListView,BrainNet.NeuralFramework.INeuralNetwork)">
+	<summary>This function can be used to report the status of a neural network to a listview </summary>
+</member><member name="T:BrainNet.NeuralFramework.NeuronStrategyException">
+	<summary> Exception that may be thrown by NeuronStrategy class </summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.FindDelta(System.Single,System.Single)">
+	<summary> Implementation of Find Delta </summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.Activation(System.Single)">
+	<summary> Implementation of activation function </summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.FindNetValue(BrainNet.NeuralFramework.NeuronConnections,System.Single)">
+	<summary> Implementation of finding net value </summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.FindNewBias(System.Single,System.Single)">
+	<summary> Implementation of Finding new bias value</summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.UpdateWeights(BrainNet.NeuralFramework.NeuronConnections@,System.Single)">
+	<summary> Calculating the new weight values</summary>
+</member><member name="T:BrainNet.NeuralFramework.BackPropNeuronStrategy">
+	<summary> A backward propagation neuron strategy. This is a concrete implementation of INeuronStrategy </summary>
+</member><member name="M:BrainNet.NeuralFramework.INetworkFactory.CreateNetwork(System.Int64,System.Int64)">
+	<summary> Create a neural Network. </summary>
+</member><member name="T:BrainNet.NeuralFramework.INetworkFactory">
+	<summary> An interface for a neural network factory </summary>
+</member><member name="T:BrainNet.NeuralFramework.TrainingData">
+	<summary>
+This class provides a vector consists of inputs and outputs, for training
+ the network
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="NeuralXML" targetNamespace="http://tempuri.org/NeuralXML.xsd" elementFormDefault="qualified" xmlns="http://tempuri.org/NeuralXML.xsd" xmlns:mstns="http://tempuri.org/NeuralXML.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="NXML">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Network" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Network">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DataBlock" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="LoadPath" use="required" type="xs:string"></xs:attribute>
+			<xs:attribute name="SaveOnFinish" type="xs:boolean" default="true"></xs:attribute>
+			<xs:attribute name="SavePath" type="xs:string"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DataBlock">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PatternData" maxOccurs="unbounded" />
+				<xs:element ref="ImageData" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="Type" use="required" type="BlockType"></xs:attribute>
+			<xs:attribute name="TrainCount" type="xs:long" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PatternData">
+		<xs:complexType>
+			<xs:attribute name="InputType" default="Pattern" type="DataType"></xs:attribute>
+			<xs:attribute name="InputValue" type="xs:string" use="required" />
+			<xs:attribute name="OutputType" default="Pattern" type="DataType"></xs:attribute>
+			<xs:attribute name="OutputValue" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ImageData">
+		<xs:complexType>
+			<xs:attribute name="InputFile" type="xs:string" use="required" />
+			<xs:attribute name="OutputFile" type="xs:string" use="required" />
+			<xs:attribute name="InputWidth" type="xs:long" />
+			<xs:attribute name="InputHeight" type="xs:long" />
+			<xs:attribute name="OutputWidth" type="xs:long" />
+			<xs:attribute name="OutputHeight" type="xs:long" />
+			<xs:attribute name="OutputValue" type="xs:string" />
+			<xs:attribute name="OutputType" type="DataType" default="Pattern" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BlockType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Train" />
+			<xs:enumeration value="Run" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DataType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Pattern" />
+			<xs:enumeration value="Char" />
+			<xs:enumeration value="Number" />
+			<xs:enumeration value="Array" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
