@@ -36,11 +36,12 @@
             this.TxtTreinarCom = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ckb_UseCorrel = new System.Windows.Forms.CheckBox();
+            this.ckb_ListaToda = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btn_salvar
             // 
-            this.btn_salvar.Location = new System.Drawing.Point(219, 7);
+            this.btn_salvar.Location = new System.Drawing.Point(224, 7);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(51, 22);
             this.btn_salvar.TabIndex = 4;
@@ -77,7 +78,7 @@
             // 
             this.txt_VetorTamanho.Location = new System.Drawing.Point(69, 61);
             this.txt_VetorTamanho.Name = "txt_VetorTamanho";
-            this.txt_VetorTamanho.Size = new System.Drawing.Size(93, 20);
+            this.txt_VetorTamanho.Size = new System.Drawing.Size(146, 20);
             this.txt_VetorTamanho.TabIndex = 2;
             // 
             // TxtTreinarCom
@@ -99,18 +100,29 @@
             // ckb_UseCorrel
             // 
             this.ckb_UseCorrel.AutoSize = true;
-            this.ckb_UseCorrel.Location = new System.Drawing.Point(178, 64);
+            this.ckb_UseCorrel.Location = new System.Drawing.Point(8, 112);
             this.ckb_UseCorrel.Name = "ckb_UseCorrel";
             this.ckb_UseCorrel.Size = new System.Drawing.Size(102, 17);
             this.ckb_UseCorrel.TabIndex = 3;
             this.ckb_UseCorrel.Text = "Usar Correlação";
             this.ckb_UseCorrel.UseVisualStyleBackColor = true;
             // 
+            // ckb_ListaToda
+            // 
+            this.ckb_ListaToda.AutoSize = true;
+            this.ckb_ListaToda.Location = new System.Drawing.Point(8, 89);
+            this.ckb_ListaToda.Name = "ckb_ListaToda";
+            this.ckb_ListaToda.Size = new System.Drawing.Size(219, 17);
+            this.ckb_ListaToda.TabIndex = 8;
+            this.ckb_ListaToda.Text = "Utilizar dos os eventos do mesmo padrão";
+            this.ckb_ListaToda.UseVisualStyleBackColor = true;
+            // 
             // FormEditarNomePadrao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 35);
+            this.ClientSize = new System.Drawing.Size(287, 35);
+            this.Controls.Add(this.ckb_ListaToda);
             this.Controls.Add(this.ckb_UseCorrel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtTreinarCom);
@@ -139,5 +151,6 @@
         private System.Windows.Forms.TextBox TxtTreinarCom;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox ckb_UseCorrel;
+        private System.Windows.Forms.CheckBox ckb_ListaToda;
     }
 }
