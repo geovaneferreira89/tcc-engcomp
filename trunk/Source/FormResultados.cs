@@ -37,6 +37,9 @@ namespace AmbienteRPB
         private GerenArquivos GerArquivos;
         private bool SMS_Zoom = false;
         private int ID_PadraoAtual;
+        private int numCursor = 0;
+        private HitTestResult var_result;
+        private double x_Pos, y_Pos;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
         {
@@ -526,12 +529,64 @@ namespace AmbienteRPB
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
         }
+        //================================================================================================
+        //                              Marcar padrao pela correlação 
+        //================================================================================================
 
         private void chart1_MouseClick(object sender, MouseEventArgs e)
         {
             HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
             if (result.Series != null)
                 ExecutaSelecao(result, e, 0);
+        }
+        private void ExecutaSelecao(HitTestResult result, MouseEventArgs e, int offsetX)
+        {
+            bool chave = true;
+            bool fimDeEvent = false;
+            if (numCursor == 0)
+            {
+                var_result = result;
+                x_Pos = (e.X);
+                y_Pos = (e.Y);
+
+                numCursor++;
+            }
+            else
+            {
+                PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
+                PointF Padrao_Fim = new PointF((e.X + offsetX), e.Y);
+
+                PointF zero = new PointF(0, 0);
+
+                result.ChartArea.CursorX.SetSelectionPixelPosition(zero, zero, true);
+                result.ChartArea.CursorX.SelectionColor = Color.FromArgb(128, Color.Green);
+                result.ChartArea.CursorX.IsUserEnabled = true;
+                result.ChartArea.CursorX.IsUserSelectionEnabled = true;
+
+                //Colore a região do evento
+                result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+
+
+                Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
+                Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX);
+
+                Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
+                Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
+
+                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, "", (float)Padrao_Fim.X - Padrao_Inicio.X);
+                numCursor = 0;
+            }
+        }
+        //------------------------------------------------------------------------------------------
+        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment, float Comprimento)
+        {
+            int i = ID_PadraoAtual;
+            ListaDeEventos[i].SetValorInicio(ListaDeEventos[i].GetNumeroEventos(), Padrao_Inicio);
+            ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
+            ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
+            ListaDeEventos[i].SetWidth(ListaDeEventos[i].GetNumeroEventos(), Comprimento);
+            ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), "Correlacao" + "-" + ListaDeEventos[i].GetNumeroEventos());
+            ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
         }
         //------------------------------------------------------------------------------------------
      }

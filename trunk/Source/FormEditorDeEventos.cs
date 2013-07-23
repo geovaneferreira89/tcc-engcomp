@@ -143,34 +143,53 @@ namespace AmbienteRPB
                 float aux;
                 int DataRecords_lidos = 0;
                 int tempo_X = 0;
-                while (tempo_X <= (int)x_max)
+                bool ok = true;
+                if (nome_canal != "Correlacao")
                 {
-
-                    SinalEEG.ReadDataBlock(DataRecords_lidos);
-                    DataRecords_lidos++;
-                    //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                    for (int j = 0; j < NumeroDeCanais; j++)
+                    while (tempo_X <= (int)x_max)
                     {
-                        for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+                        if (SinalEEG.FileInfo.NrDataRecords > DataRecords_lidos)
+                            SinalEEG.ReadDataBlock(DataRecords_lidos);
+                        else
+                        { //nao pertence a este arquivo 
+                            ok = false;
+                            break;
+                        }
+                        DataRecords_lidos++;
+                        //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                        for (int j = 0; j < NumeroDeCanais; j++)
                         {
-                            if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
+                            for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                             {
-                                if (tempo_X >= (int)x && tempo_X <= (int)x_max)
+                                if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
                                 {
-                                    chart1.Series[0].Points.AddXY(tempo_X, SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                    if (tempo_X >= (int)x && tempo_X <= (int)x_max)
+                                    {
+                                        chart1.Series[0].Points.AddXY(tempo_X, SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                    }
+                                    else
+                                        aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                    tempo_X++;
                                 }
                                 else
                                     aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
-                                tempo_X++;
                             }
-                            else
-                               aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                         }
                     }
+                    if (ok)
+                    {
+                        AtualizarRefInChart oAlpha = new AtualizarRefInChart(chart1, Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex).X);
+                        Thread oThread = new Thread(new ThreadStart(oAlpha.Init));
+                        oThread.Start();
+                    }
+                    else
+                        MessageBox.Show("O padrão: '" + edtEvento_Nome.Text + "'\n\nNão pertence a este edf: \n\n" + SinalEEG.FileName, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                AtualizarRefInChart oAlpha = new AtualizarRefInChart(chart1, Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex).X);
-                Thread oThread = new Thread(new ThreadStart(oAlpha.Init));
-                oThread.Start();
+                else
+                {
+
+                }
+  
             }
         }
         private void add_Ref()
