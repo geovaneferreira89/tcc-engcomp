@@ -190,30 +190,41 @@ namespace AmbienteRPB
                             float aux;
                             int DataRecords_lidos = 0;
                             int tempo_X = 0;
-                            while (tempo_X <= (int)x + MenorTamanho)
+                            if (nome_canal != "Correlacao")
                             {
-
-                                SinalEEG.ReadDataBlock(DataRecords_lidos);
-                                DataRecords_lidos++;
-                                //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                                for (int j = 0; j < SinalEEG.FileInfo.NrSignals; j++)
+                                while (tempo_X <= (int)x + MenorTamanho)
                                 {
-                                    for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+
+                                    SinalEEG.ReadDataBlock(DataRecords_lidos);
+                                    DataRecords_lidos++;
+                                    //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                                    for (int j = 0; j < SinalEEG.FileInfo.NrSignals; j++)
                                     {
-                                        if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
+                                        for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                         {
-                                            if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho+x))
+                                            if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
                                             {
-                                                entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho + x))
+                                                {
+                                                    entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                }
+                                                else
+                                                    aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                                             }
                                             else
                                                 aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                            tempo_X++;
                                         }
-                                        else
-                                            aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
-                                        tempo_X++;
                                     }
                                 }
+                            }
+                            else
+                            {
+                                double[] sinal;
+                                GerenArquivos Arquivos = new GerenArquivos();
+                                sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[ID_PadraoAtual].GetNomesEvento(cont));
+                                for (int i = 0; i < sinal.Count(); i++)
+                                    entrada.Add(sinal[i]);
                             }
                             helper.AddTrainingData(entrada, saida);
                         }
