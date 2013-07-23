@@ -1,0 +1,10 @@
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Core\bin\Debug\AForge.dll
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Core\bin\Debug\AForge.pdb
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Core\bin\Debug\AForge.Core.xml
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Core\obj\Debug\AForge.dll
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Core\obj\Debug\AForge.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Core\bin\Debug\AForge.dll
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Core\bin\Debug\AForge.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Core\bin\Debug\AForge.Core.xml
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Core\obj\Debug\AForge.dll
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Core\obj\Debug\AForge.pdb

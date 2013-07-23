@@ -1,0 +1,11 @@
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Neuro\bin\Debug\AForge.Neuro.dll
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Neuro\bin\Debug\AForge.Neuro.pdb
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Neuro\bin\Debug\AForge.Neuro.xml
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Neuro\bin\Debug\AForge.dll
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Neuro\obj\Debug\AForge.Neuro.dll
+C:\Users\Ge\Downloads\neuro_src\neuro_src\Sources\Neuro\obj\Debug\AForge.Neuro.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Neuro\bin\Debug\AForge.Neuro.dll
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Neuro\bin\Debug\AForge.Neuro.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Neuro\bin\Debug\AForge.Neuro.xml
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Neuro\obj\Debug\AForge.Neuro.dll
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\sorce\Neuro\obj\Debug\AForge.Neuro.pdb
