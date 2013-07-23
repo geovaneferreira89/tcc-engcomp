@@ -187,7 +187,11 @@ namespace AmbienteRPB
                 }
                 else
                 {
-
+                   double [] sinal;
+                   Arquivos = new GerenArquivos();
+                   sinal =Arquivos.ImportaPadraoCorrelacao(Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex));
+                   for (int i = 0; i < sinal.Count(); i++)
+                       chart1.Series[0].Points.AddY(sinal[i]);
                 }
   
             }
