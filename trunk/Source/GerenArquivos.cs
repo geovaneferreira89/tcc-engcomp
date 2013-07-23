@@ -116,7 +116,36 @@ namespace AmbienteRPB
             NumeroDeCanais = formEDF.NumeroDeCanais;
             return edfFileOutput;
         }
-        //Exportao Padrao & Eventos-----------------------------------------------------------
+        //Exportar Padroes de Correlação ------------------------------------------------------
+        public void SalvaPadraoCorrelacao(string NomePadrao, double[] sinal)
+        {
+            string Dados_Saida;
+            Dados_Saida = "[NumeroDePontos = " + sinal.Count() + "]";
+            fileW = new System.IO.StreamWriter(getPathUser() + NomePadrao + ".txt", true);
+            fileW.WriteLine(Dados_Saida);
+            for (int i = 0; i < sinal.Count(); i++)
+            {
+                Dados_Saida = Convert.ToString(sinal[i]);
+                fileW.WriteLine(Dados_Saida);
+            }
+            fileW.Close();
+        }
+        //Importar Padrão  de Correlação ------------------------------------------------------
+        public double [] ImportaPadraoCorrelacao(string NomePadrao)
+        {
+            double[] sinal;
+            string dados;
+
+            fileR = new System.IO.StreamReader(getPathUser() + NomePadrao + ".txt");
+            dados = LerLinha(18);
+            sinal = new double[Convert.ToInt32(dados)];
+            
+            for (int i = 0; i < sinal.Count(); i++)
+                sinal[i] = Convert.ToDouble(fileR.ReadLine());
+            fileR.Close();
+            return sinal;
+        }
+        //Exportar  Padrao & Eventos-----------------------------------------------------------
         public void Exportar_Padroes_Eventos(ListaPadroesEventos[] Lista)
         {
             PathUser();

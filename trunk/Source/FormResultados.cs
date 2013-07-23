@@ -573,8 +573,13 @@ namespace AmbienteRPB
                 Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
                 Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
 
-                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, "", (float)Padrao_Fim.X - Padrao_Inicio.X);
                 numCursor = 0;
+
+                vector_evento = new double[(int)(Padrao_Fim.X - Padrao_Inicio.X)];
+                for(int i=0;i<vector_evento.Count();i++)
+                    vector_evento[i] = result.Series.Points[Convert.ToInt32(Padrao_Inicio.X) + i].YValues[0];
+
+                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, "", (float)Padrao_Fim.X - Padrao_Inicio.X);
             }
         }
         //------------------------------------------------------------------------------------------
@@ -585,7 +590,9 @@ namespace AmbienteRPB
             ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
             ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
             ListaDeEventos[i].SetWidth(ListaDeEventos[i].GetNumeroEventos(), Comprimento);
-            ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), "Correlacao" + "-" + ListaDeEventos[i].GetNumeroEventos());
+            ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
+            Arquivos.SalvaPadraoCorrelacao(i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
+            ListaDeEventos[i].SetCorDeFundo(ListaDeEventos[i].GetNumeroEventos(), Color.Green);
             ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
         }
         //------------------------------------------------------------------------------------------
