@@ -180,6 +180,7 @@
             this.chart1.Size = new System.Drawing.Size(735, 256);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
+            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             // 
             // toolStrip1
             // 

@@ -526,6 +526,13 @@ namespace AmbienteRPB
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
         }
+
+        private void chart1_MouseClick(object sender, MouseEventArgs e)
+        {
+            HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            if (result.Series != null)
+                ExecutaSelecao(result, e, 0);
+        }
         //------------------------------------------------------------------------------------------
      }
 }
