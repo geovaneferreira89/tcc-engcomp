@@ -460,7 +460,11 @@ namespace AmbienteRPB
                 for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
 
-                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos,FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, "BackPropagation");
+                string TipoBkP = "BackPropagation";
+                if (FormDadosInput.UsarListaDeTodosEnventos)
+                    TipoBkP = "BackPropagation_AllEvnts";
+
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos,FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, TipoBkP);
                 ThreadKohonen = new Thread(new ThreadStart(objBKP.Init));
                 ThreadKohonen.Start();
             }

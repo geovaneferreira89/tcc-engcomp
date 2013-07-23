@@ -43,6 +43,11 @@ namespace AmbienteRPB
             get;
             set;
         }
+        public bool UsarListaDeTodosEnventos
+        {
+            get;
+            set;
+        }
         public FormEditarNomePadrao()
         {
             InitializeComponent();
@@ -55,7 +60,10 @@ namespace AmbienteRPB
                 Vetores = Convert.ToDouble(text_NomePadrao.Text);
                 TamVetores = Convert.ToDouble(txt_VetorTamanho.Text);
                 TreinamentoCom = Convert.ToDouble(TxtTreinarCom.Text);
-                UsarCorrelacao = ckb_UseCorrel.Checked;
+                if (ckb_UseCorrel.Checked) 
+                   UsarCorrelacao = true;
+                if( ckb_ListaToda.Checked ) 
+                  UsarListaDeTodosEnventos = true;
                 this.Close();
             }
             else if (text_NomePadrao.Text != "")
@@ -69,7 +77,7 @@ namespace AmbienteRPB
         {
             if (opcao == 1)
             {
-                this.Height = 121;
+                this.Height = 172;
                 lbl_digiteONomeDoPadrao.Text = "Num Vet";
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(TamVetores);

@@ -106,30 +106,31 @@ namespace AmbienteRPB
             {
                 //Utilizando o backPropagation 
                 send_SmS(1, "Inicializando...", false);
-                string tipo = "TodosEventos";
-                if (tipo == "TodosEventos")
-                {
-                    //busca pelo menor tamanho do dos eventos deste padrao... 
-                    for (int cont = 0; cont < ListasPadrEvents[ID_PadraoAtual].NumeroEventos; cont++)
-                    {
-                        int aux = (int)(ListasPadrEvents[ID_PadraoAtual].GetValorFim(cont).X - ListasPadrEvents[ID_PadraoAtual].GetValorInicio(cont).X);
-                        if (cont == 0 || MenorTamanho > aux)
-                            MenorTamanho = aux;
-                    }
-                }
-                else
-                    MenorTamanho = VetorEvento.Count();
-
+                //Define o tamanho do vetor evento
+                MenorTamanho = VetorEvento.Count();
                 newRede();
-                TreinodaRede(VetorEvento, 1, tipo); //null - somente o evento marcado 
+                TreinodaRede(VetorEvento, 1, "SomenteUm"); //null - somente o evento marcado 
+                send_SmS(1, "Treinada", false);
+                Rodar(Sinal);
+                send_SmS(1, "Fim", false);
+            }
+            else if (tipoDeRede == "BackPropagation_AllEvnts")
+            {
+                //Utilizando o backPropagation 
+                send_SmS(1, "Inicializando...", false);
+                //busca pelo menor tamanho do dos eventos deste padrao... 
+                for (int cont = 0; cont < ListasPadrEvents[ID_PadraoAtual].NumeroEventos; cont++)
+                {
+                    int aux = (int)(ListasPadrEvents[ID_PadraoAtual].GetValorFim(cont).X - ListasPadrEvents[ID_PadraoAtual].GetValorInicio(cont).X);
+                    if (cont == 0 || MenorTamanho > aux)
+                        MenorTamanho = aux;
+                }
+                newRede();
+                TreinodaRede(VetorEvento, 1, "TodosEventos"); //null - somente o evento marcado 
                 send_SmS(1, "Treinada", false);
                 Rodar(Sinal);
 
                 send_SmS(1, "Fim", false);
-            }
-            else if (tipoDeRede == "BKP2")
-            {
-
             }
         }
         //------------------------------------------------------------------------------------------
