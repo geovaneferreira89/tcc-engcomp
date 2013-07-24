@@ -406,29 +406,30 @@ namespace AmbienteRPB
             if (SelecionaEventoDasLista())
             {
                 gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                SMS_Box.Visible = true;
                 btn_Aumentar.Visible = true;
                 btn_Close.Visible = true;
-                SMS_Box.Visible = true;
 
                 GerArquivos = new GerenArquivos();
                 int CanalKohonen;
                 double numeroLinhas = chart1.Series[CanalAtual].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 1;
-                FormDadosInput.Vetores = numeroLinhas;
+                FormDadosInput.Vetores = numeroLinhas;                
                 if (vector_evento != null)
                     FormDadosInput.TamVetores = vector_evento.Count();
+                FormDadosInput.ShowDialog();
 
                 if (FormDadosInput.UsarCorrelacao == true)
                     CanalKohonen = CanalAtual + 1;
                 else
                     CanalKohonen = CanalAtual;
 
-                FormDadosInput.ShowDialog();
+       
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput,ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, "Kohonen");
+                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, "Kohonen");
                 ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
                 ThreadKohonen.Start();
             }
@@ -439,9 +440,10 @@ namespace AmbienteRPB
             if (SelecionaEventoDasLista())
             {
                 gbxChart.Height = gbxChart.Height - SMS_Box.Height;
-                btn_Aumentar.Visible = true;
-                btn_Close.Visible = true;
                 SMS_Box.Visible = true;
+                btn_Aumentar.Visible = true;
+                btn_Close.Visible    = true;
+               
 
                 GerArquivos = new GerenArquivos();
                 double numeroLinhas = chart1.Series[0].Points.Count;
@@ -450,15 +452,13 @@ namespace AmbienteRPB
                 FormDadosInput.Vetores = numeroLinhas;
                 if (vector_evento != null)
                     FormDadosInput.TamVetores = vector_evento.Count();
-
+                FormDadosInput.ShowDialog();
 
                 int canalDados;
                 if (FormDadosInput.UsarCorrelacao == true)
                     canalDados = CanalAtual + 1;
                 else
                     canalDados = CanalAtual;
-
-                FormDadosInput.ShowDialog();
                 double[] vectorSignal = new double[chart1.Series[canalDados].Points.Count];
                 for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
@@ -467,7 +467,7 @@ namespace AmbienteRPB
                 if (FormDadosInput.UsarListaDeTodosEnventos)
                     TipoBkP = "BackPropagation_AllEvnts";
 
-                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos,FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, CanalAtual, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, TipoBkP);
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, TipoBkP);
                 ThreadKohonen = new Thread(new ThreadStart(objBKP.Init));
                 ThreadKohonen.Start();
             }
