@@ -125,7 +125,7 @@ namespace AmbienteRPB
                             annotationRectangle.LineColor = CorDeFundo;
                             annotationRectangle.Font = new Font("Arial", 10, FontStyle.Bold);
                             annotationRectangle.Height = _Altura_;
-                            annotationRectangle.Width = _Comprimento_ / 26.1;
+                            annotationRectangle.Width = _Comprimento_ * 100;// 26.1;
                             annotationRectangle.AllowMoving = false;
                             annotationRectangle.AllowAnchorMoving = false;
                             annotationRectangle.AllowSelecting = false;
@@ -155,7 +155,7 @@ namespace AmbienteRPB
                             //Altura
                             annotationRectangle.Height = chart1.ChartAreas[_Lista_[i].GetChartDataPoint(j)].Position.Height;
                             //Comprimento
-                            annotationRectangle.Width = _Lista_[i].GetWidth(j) / 26.1;
+                            annotationRectangle.Width = _Lista_[i].GetWidth(j) * 100;/// 26.1;
                             // Prevent moving or selecting
                             annotationRectangle.AllowMoving = false;
                             annotationRectangle.AllowAnchorMoving = false;
