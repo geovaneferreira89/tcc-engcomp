@@ -493,6 +493,8 @@ namespace AmbienteRPB
                         //===================================================================
                         //                nova correlação
                         //===================================================================   
+                        for (int i = 0; i < (vector_evento.Count() / 2); i++)
+                            prb.Series[canal + 2].Points.AddY(0);
                         //Calculo do fator de normalização (K)
                         //Igual à soma dos quadrados dos valores da réplica armazenada.
                         double K = 0;

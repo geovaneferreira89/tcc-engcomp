@@ -21,7 +21,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, ArrayList myArray);
+        private delegate void AtualizaChart(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, int [] myArray);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor;        
         private int CanalAtual;
@@ -266,9 +266,10 @@ namespace AmbienteRPB
             dados[1] = 0;
             dados[0] = 0;
             outputs_ = new ArrayList();
+            int[] saidaInt = new int[8];
             outputs_.Add(0.0);
             for (int i = 0; i < (MenorTamanho/ 2); i++)
-                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, outputs_);
+                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, saidaInt);
             for (int i = 0; i < VetTreinamento; i++)
             {
                 inputs = new ArrayList();
@@ -291,19 +292,18 @@ namespace AmbienteRPB
                 BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
                 char character = (char)(patternHelper.NumberFromArraylist(outputs_));
 
-                int[] saidaInt = new int[8];
                 for (int kk = 0; kk < 8; kk++)
                     saidaInt[kk] = Convert.ToInt16(outputs_[kk]);
                 string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
                 //string saida2 =  Convert.ToString(outputs_[7]) + "\t" + Convert.ToString(outputs_[6]) + "\t" + Convert.ToString(outputs_[5]) + "\t" + Convert.ToString(outputs_[4]) + "\t" + Convert.ToString(outputs_[3]) + "\t" + Convert.ToString(outputs_[2]) + "\t" + Convert.ToString(outputs_[1]) + "\t" + Convert.ToString(outputs_[0]) + "\t-> " + character;  
-                string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t| " + character;  
+                string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;  
                 if(character == 'a')
                     MessageBox.Show("a", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
 
                 if(!chave)
                     send_SmS(1, saida2, false);
 
-                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, outputs_); 
+                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, saidaInt); 
                 load_progress_bar(0, 1);
                 if (chave)
                 {
@@ -313,6 +313,8 @@ namespace AmbienteRPB
                     if (resposta == DialogResult.Cancel)
                         chave = false;
                 }
+                if (i == 540)
+                    chave = true;
             }
             load_progress_bar(1, 3);
             //'Add the second input
@@ -546,7 +548,7 @@ namespace AmbienteRPB
 
         //-------------------------------------------------------------------
         //Saida pelo Grafico 
-        private void Plotar(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, ArrayList myArray)
+        private void Plotar(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, int[] myArray)
         {
             if (_Grafico.InvokeRequired)
             {
@@ -560,8 +562,7 @@ namespace AmbienteRPB
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
 
-                            if (Convert.ToInt16(myArray[0]) == 1 && Convert.ToInt16(myArray[2]) == 0 && Convert.ToInt16(myArray[3]) == 0 &&Convert.ToInt16(myArray[4]) == 0 &&Convert.ToInt16(myArray[5]) == 1 &&Convert.ToInt16(myArray[6]) == 1 &&
-                                Convert.ToInt16(myArray[7]) == 0)
+                            if (myArray[7] == 0 && myArray[6] == 0 && myArray[5] == 0 && myArray[4] == 1 && myArray[3] == 1 && myArray[2] == 0 && myArray[1] == 0 && myArray[0] == 0)
                                     prb.Series["canal" + (canal + 2)].Points.AddY(1);
                             else
                                     prb.Series["canal" + (canal + 2)].Points.AddY(0);
