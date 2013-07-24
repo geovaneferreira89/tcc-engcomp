@@ -16,7 +16,6 @@ namespace AmbienteRPB
         {
             get;
             set;
-
         }
         public String NomePadrao
         {
@@ -48,6 +47,11 @@ namespace AmbienteRPB
             get;
             set;
         }
+        public int NumPadroes
+        {
+            get;
+            set;
+        }
         public FormEditarNomePadrao()
         {
             InitializeComponent();
@@ -62,8 +66,13 @@ namespace AmbienteRPB
                 TreinamentoCom = Convert.ToDouble(TxtTreinarCom.Text);
                 if (ckb_UseCorrel.Checked) 
                    UsarCorrelacao = true;
-                if( ckb_ListaToda.Checked ) 
-                  UsarListaDeTodosEnventos = true;
+                if (ckb_ListaToda.Checked)
+                {
+                    UsarListaDeTodosEnventos = true;
+                    NumPadroes = Convert.ToInt32(txtPadroes.Text);
+                }
+                else
+                    NumPadroes = 1;
                 this.Close();
             }
             else if (text_NomePadrao.Text != "")
@@ -77,12 +86,24 @@ namespace AmbienteRPB
         {
             if (opcao == 1)
             {
-                this.Height = 172;
+                this.Height = 196;
                 lbl_digiteONomeDoPadrao.Text = "Num Vet";
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(TamVetores);
                 TxtTreinarCom.Text = Convert.ToString(Vetores);
+                txtPadroes.Text = "1";
                 this.Text = "Dados de Entrada";
+            }
+        }
+
+        private void ckb_ListaToda_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckb_ListaToda.Checked)
+                txtPadroes.Enabled = true;
+            else
+            {
+                txtPadroes.Text = "1";
+                txtPadroes.Enabled = false;
             }
         }
     }

@@ -37,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ckb_UseCorrel = new System.Windows.Forms.CheckBox();
             this.ckb_ListaToda = new System.Windows.Forms.CheckBox();
+            this.txtPadroes = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_salvar
@@ -100,7 +102,7 @@
             // ckb_UseCorrel
             // 
             this.ckb_UseCorrel.AutoSize = true;
-            this.ckb_UseCorrel.Location = new System.Drawing.Point(8, 112);
+            this.ckb_UseCorrel.Location = new System.Drawing.Point(8, 136);
             this.ckb_UseCorrel.Name = "ckb_UseCorrel";
             this.ckb_UseCorrel.Size = new System.Drawing.Size(102, 17);
             this.ckb_UseCorrel.TabIndex = 3;
@@ -110,18 +112,38 @@
             // ckb_ListaToda
             // 
             this.ckb_ListaToda.AutoSize = true;
-            this.ckb_ListaToda.Location = new System.Drawing.Point(8, 89);
+            this.ckb_ListaToda.Location = new System.Drawing.Point(8, 113);
             this.ckb_ListaToda.Name = "ckb_ListaToda";
-            this.ckb_ListaToda.Size = new System.Drawing.Size(219, 17);
+            this.ckb_ListaToda.Size = new System.Drawing.Size(148, 17);
             this.ckb_ListaToda.TabIndex = 8;
-            this.ckb_ListaToda.Text = "Utilizar dos os eventos do mesmo padrão";
+            this.ckb_ListaToda.Text = "Todos eventos do padrão";
             this.ckb_ListaToda.UseVisualStyleBackColor = true;
+            this.ckb_ListaToda.CheckedChanged += new System.EventHandler(this.ckb_ListaToda_CheckedChanged);
+            // 
+            // txtPadroes
+            // 
+            this.txtPadroes.Enabled = false;
+            this.txtPadroes.Location = new System.Drawing.Point(69, 87);
+            this.txtPadroes.Name = "txtPadroes";
+            this.txtPadroes.Size = new System.Drawing.Size(146, 20);
+            this.txtPadroes.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Padrões";
             // 
             // FormEditarNomePadrao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 35);
+            this.ClientSize = new System.Drawing.Size(287, 34);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtPadroes);
             this.Controls.Add(this.ckb_ListaToda);
             this.Controls.Add(this.ckb_UseCorrel);
             this.Controls.Add(this.label2);
@@ -152,5 +174,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox ckb_UseCorrel;
         private System.Windows.Forms.CheckBox ckb_ListaToda;
+        private System.Windows.Forms.TextBox txtPadroes;
+        private System.Windows.Forms.Label label3;
     }
 }
