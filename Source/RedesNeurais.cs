@@ -341,8 +341,8 @@ namespace AmbienteRPB
                 string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
                 //string saida2 =  Convert.ToString(outputs_[7]) + "\t" + Convert.ToString(outputs_[6]) + "\t" + Convert.ToString(outputs_[5]) + "\t" + Convert.ToString(outputs_[4]) + "\t" + Convert.ToString(outputs_[3]) + "\t" + Convert.ToString(outputs_[2]) + "\t" + Convert.ToString(outputs_[1]) + "\t" + Convert.ToString(outputs_[0]) + "\t-> " + character;  
                 string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;  
-                if(character == 'a')
-                    MessageBox.Show("a", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+                //if(character == 'a')
+                 //   MessageBox.Show("a", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
 
                 if(!chave)
                     send_SmS(1, saida2, false);
@@ -607,9 +607,14 @@ namespace AmbienteRPB
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
 
                             if (myArray[7] == 0 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 0 && myArray[2] == 0 && myArray[1] == 0 && myArray[0] == 1)
-                                    prb.Series["canal" + (canal + 2)].Points.AddY(1);
+                                    prb.Series["canal" + (canal + 2)].Points.AddY(0.35);
+                            else if (myArray[7] == 0 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 0 && myArray[2] == 0 && myArray[1] == 1 && myArray[0] == 0)
+                                    prb.Series["canal" + (canal + 2)].Points.AddY(0.65);
+                            else if (myArray[7] == 0 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 0 && myArray[0] == 1)
+                                prb.Series["canal" + (canal + 2)].Points.AddY(1);
                             else
-                                    prb.Series["canal" + (canal + 2)].Points.AddY(0);
+                                prb.Series["canal" + (canal + 2)].Points.AddY(0);
+
                             PointF zero = new PointF(0, 0);
                             prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
                             prb.ChartAreas[canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);

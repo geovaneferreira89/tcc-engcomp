@@ -462,7 +462,7 @@ namespace AmbienteRPB
                 if (adicionarComentario)
                     string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
 
-                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment, (float)Padrao_Fim.X - Padrao_Inicio.X);
+                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
 
                 float aux_x_pos = (float)Padrao_Fim.X - (float)Padrao_Inicio.X;
                 aux_x_pos = aux_x_pos / 2;
