@@ -41,9 +41,9 @@ namespace AmbienteRPB
         private string tipoDeRede;
         //Variaveis do kohoney -------------------------------------------------------------------
         private Neuron_KHn[,] outputs_KHn; // Collection of weights.
-        private int iteration;     // Current iteration.
-        private int length;        // Side length of output grid.
-        private int dimensions;    // Number of input dimensions.
+        private int iteration;             // Current iteration.
+        private int length;                // Side length of output grid.
+        private int dimensions;            // Number of input dimensions.
         private Random rnd = new Random();
 
         private List<string> labels = new List<string>();
@@ -65,6 +65,7 @@ namespace AmbienteRPB
 
         private int ID_PadraoAtual;
         private int MenorTamanho = 0;
+        //------------------------------------------------------------------------------------------
         public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int _ID_PadraoAtual, string _TipoDeRede)
         {
             SinalEEG        =  _SinalEEG;
@@ -287,19 +288,28 @@ namespace AmbienteRPB
                 cont = 0;
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
             
-               BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
-               char character = (char)(patternHelper.NumberFromArraylist(outputs_));
-                string saida =  Convert.ToString(outputs_[0]) + "  ------ " + character;  
-                //foreach (Object obj in outputs_)
+                BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
+                char character = (char)(patternHelper.NumberFromArraylist(outputs_));
+
+                int[] saidaInt = new int[8];
+                for (int kk = 0; kk < 8; kk++)
+                    saidaInt[kk] = Convert.ToInt16(outputs_[kk]);
+                string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
+                //string saida2 =  Convert.ToString(outputs_[7]) + "\t" + Convert.ToString(outputs_[6]) + "\t" + Convert.ToString(outputs_[5]) + "\t" + Convert.ToString(outputs_[4]) + "\t" + Convert.ToString(outputs_[3]) + "\t" + Convert.ToString(outputs_[2]) + "\t" + Convert.ToString(outputs_[1]) + "\t" + Convert.ToString(outputs_[0]) + "\t-> " + character;  
+                string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t| " + character;  
+                if(character == 'a')
+                    MessageBox.Show("a", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+
                 if(!chave)
-                 send_SmS(1, Convert.ToString(outputs_[0]),false);
+                    send_SmS(1, saida2, false);
+
                 Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, outputs_); 
                 load_progress_bar(0, 1);
                 if (chave)
                 {
-                    send_SmS(1, Convert.ToString(outputs_[0]), true);
+                    send_SmS(1, saida2, true);
                     Thread.Sleep(1);
-                    DialogResult resposta = MessageBox.Show("Dado: " + i + " " + character, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
+                    DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     if (resposta == DialogResult.Cancel)
                         chave = false;
                 }
@@ -480,7 +490,6 @@ namespace AmbienteRPB
         //                                ...Funções de saida do sistema... 
         // (Gráficos, Mensagem pelo RichText..)
         //====================================================================================================
-        //-------------------------------------------------------------------------------
         //Saida de Dados
         private void send_SmS(int opcao, string texto, bool AutScrool)
         {
@@ -535,8 +544,8 @@ namespace AmbienteRPB
             }
         }
 
-        //----------------------------------
-        //Usar canal 2
+        //-------------------------------------------------------------------
+        //Saida pelo Grafico 
         private void Plotar(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, ArrayList myArray)
         {
             if (_Grafico.InvokeRequired)
