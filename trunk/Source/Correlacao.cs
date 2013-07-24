@@ -202,7 +202,10 @@ namespace AmbienteRPB
 
                         //===================================================================
                         //                  Primeira etapa de correlação
-                        //===================================================================   
+                        //===================================================================
+                        //Corrige o problema do sinal ficar estar defasado
+                        for (int i = 0; i < (vector_evento.Count()/2); i++)
+                            prb.Series[canal + 1].Points.AddY(0);
                         //Calculo do fator de normalização (K)
                         //Igual à soma dos quadrados dos valores da réplica armazenada.
                         double K = 0;
@@ -352,6 +355,8 @@ namespace AmbienteRPB
                         //===================================================================                        
                         if (resposta == DialogResult.Yes)
                         {
+                            for (int i = 0; i < (vector_evento.Count() / 2); i++)
+                                prb.Series[canal + 2].Points.AddY(0);
                             MaxX = 0;
                             MaxY = 0;
                             Media = 0;
