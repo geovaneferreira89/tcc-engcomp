@@ -40,6 +40,7 @@ namespace AmbienteRPB
         private int numCursor = 0;
         private HitTestResult var_result;
         private double x_Pos, y_Pos;
+        private int[] PadroesATreinar;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
         {
@@ -425,11 +426,26 @@ namespace AmbienteRPB
                 else
                     CanalKohonen = CanalAtual;
 
-       
+                if (FormDadosInput.NumPadroes > 1)
+                {
+                    PadroesATreinar = new int[FormDadosInput.NumPadroes];
+                    PadroesATreinar[0] = ID_PadraoAtual;
+                    for (int i = 1; i < FormDadosInput.NumPadroes; i++)
+                    {
+                        SelecionaEventoDasLista();
+                        PadroesATreinar[i] = ID_PadraoAtual;
+                    }
+                }
+                else
+                {
+                    PadroesATreinar = new int[1];
+                    PadroesATreinar[0] = ID_PadraoAtual;
+                }
+
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, "Kohonen");
+                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen");
                 ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
                 ThreadKohonen.Start();
             }
@@ -463,11 +479,26 @@ namespace AmbienteRPB
                 for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
 
+                if (FormDadosInput.NumPadroes > 1)
+                {
+                    PadroesATreinar = new int[FormDadosInput.NumPadroes];
+                    PadroesATreinar[0] = ID_PadraoAtual;
+                    for (int i = 1; i < FormDadosInput.NumPadroes; i++)
+                    {
+                        SelecionaEventoDasLista();
+                        PadroesATreinar[i] = ID_PadraoAtual;
+                    }
+                }
+                else
+                {
+                    PadroesATreinar = new int[1];
+                    PadroesATreinar[0] = ID_PadraoAtual;
+                }
                 string TipoBkP = "BackPropagation";
                 if (FormDadosInput.UsarListaDeTodosEnventos)
                     TipoBkP = "BackPropagation_AllEvnts";
 
-                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, progressBar, SMS_Box, vector_evento, vectorSignal, ID_PadraoAtual, TipoBkP);
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP);
                 ThreadKohonen = new Thread(new ThreadStart(objBKP.Init));
                 ThreadKohonen.Start();
             }

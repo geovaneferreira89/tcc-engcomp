@@ -63,14 +63,14 @@ namespace AmbienteRPB
         private ListaPadroesEventos[] ListasPadrEvents;
         private EdfFile SinalEEG;
 
-        private int ID_PadraoAtual;
+        private int [] PadroesATreinar;
         private int MenorTamanho = 0;
         //------------------------------------------------------------------------------------------
-        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int _ID_PadraoAtual, string _TipoDeRede)
+        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede)
         {
             SinalEEG        =  _SinalEEG;
             ListasPadrEvents = _Listas;
-            ID_PadraoAtual = _ID_PadraoAtual;
+            PadroesATreinar = _PadroesATreinar;
             _Grafico        = Grafico;
             CanalAtual      = _CanalAtual;
             _BarraDeProgresso = BarraDeProgresso;
@@ -120,11 +120,14 @@ namespace AmbienteRPB
                 //Utilizando o backPropagation 
                 send_SmS(1, "Inicializando...", false);
                 //busca pelo menor tamanho do dos eventos deste padrao... 
-                for (int cont = 0; cont < ListasPadrEvents[ID_PadraoAtual].NumeroEventos; cont++)
+                for (int i = 0; i < PadroesATreinar.Count(); i++)
                 {
-                    int aux = (int)(ListasPadrEvents[ID_PadraoAtual].GetValorFim(cont).X - ListasPadrEvents[ID_PadraoAtual].GetValorInicio(cont).X);
-                    if (cont == 0 || MenorTamanho > aux)
-                        MenorTamanho = aux;
+                    for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[i]].NumeroEventos; cont++)
+                    {
+                        int aux = (int)(ListasPadrEvents[PadroesATreinar[i]].GetValorFim(cont).X - ListasPadrEvents[PadroesATreinar[i]].GetValorInicio(cont).X);
+                        if ((cont == 0 && i ==0) || MenorTamanho > aux)
+                            MenorTamanho = aux;
+                    }
                 }
                 newRede();
                 TreinodaRede(VetorEvento, 1, "TodosEventos"); //null - somente o evento marcado 
@@ -134,6 +137,7 @@ namespace AmbienteRPB
                 send_SmS(1, "Fim", false);
             }
         }
+        
         //------------------------------------------------------------------------------------------
         //#Funçao responsavel por criar a rede
         public void newRede()
@@ -163,6 +167,46 @@ namespace AmbienteRPB
             network.ConnectLayers();
         }
         //-----------------------------------------------------------------------------------------
+        public int [] ConvertToBinary(int n)
+        {
+            int[] bits = new int[8];
+            int i = 0;
+            if (n == 0)
+            {
+                bits[7] = 0;
+                bits[6] = 1;
+                bits[5] = 1;
+                bits[4] = 0; 
+                bits[3] = 0;
+                bits[2] = 0;
+                bits[1] = 0;
+                bits[0] = 1;
+            }
+            if (n == 1)
+            {
+                bits[7] = 0;
+                bits[6] = 1;
+                bits[5] = 1;
+                bits[4] = 0;
+                bits[3] = 0;
+                bits[2] = 0;
+                bits[1] = 1;
+                bits[0] = 0;
+            }
+            if (n == 2)
+            {
+                bits[7] = 0;
+                bits[6] = 1;
+                bits[5] = 1;
+                bits[4] = 0;
+                bits[3] = 1;
+                bits[2] = 1;
+                bits[1] = 0;
+                bits[0] = 1;
+            }
+            return bits;
+        }
+        //-----------------------------------------------------------------------------------------
         public void TreinodaRede(double[] input1, double output,string tipoDeTreinamento)
         {
             BrainNet.NeuralFramework.NetworkHelper helper;
@@ -173,62 +217,62 @@ namespace AmbienteRPB
             {
                 case ("TodosEventos"):
                     {
-                        saida.Add(1);
-                        saida.Add(0);
-                        saida.Add(0);
-                        saida.Add(0);
-                        saida.Add(0);
-                        saida.Add(1);
-                        saida.Add(1);
-                        saida.Add(0);
-                        for (int cont = 0; cont < ListasPadrEvents[ID_PadraoAtual].NumeroEventos; cont++)
+                        for (int PadraoAtual = 0; PadraoAtual < PadroesATreinar.Count(); PadraoAtual++)
                         {
-                             entrada = new ArrayList();
-                            string nome_canal = ListasPadrEvents[ID_PadraoAtual].GetNomesEvento(cont);
-                            int X_ = nome_canal.IndexOf("_");
-                            nome_canal = nome_canal.Substring(X_ + 1);
-                            //Inicio do enveto
-                            float x = ListasPadrEvents[ID_PadraoAtual].GetValorInicio(cont).X;
-                            float aux;
-                            int DataRecords_lidos = 0;
-                            int tempo_X = 0;
-                            if (nome_canal != "Correlacao")
-                            {
-                                while (tempo_X <= (int)x + MenorTamanho)
-                                {
+                            int [] saidaB = ConvertToBinary(PadraoAtual);
+                            saida = new ArrayList();
+                            for (int addSaida = 0; addSaida < 8; addSaida++)
+                                saida.Add(saidaB[addSaida]);
 
-                                    SinalEEG.ReadDataBlock(DataRecords_lidos);
-                                    DataRecords_lidos++;
-                                    //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                                    for (int j = 0; j < SinalEEG.FileInfo.NrSignals; j++)
+                            for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[PadraoAtual]].NumeroEventos; cont++)
+                            {
+                                entrada = new ArrayList();
+                                string nome_canal = ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont);
+                                int X_ = nome_canal.IndexOf("_");
+                                nome_canal = nome_canal.Substring(X_ + 1);
+                                //Inicio do enveto
+                                float x = ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorInicio(cont).X;
+                                float aux;
+                                int DataRecords_lidos = 0;
+                                int tempo_X = 0;
+                                if (nome_canal != "Correlacao")
+                                {
+                                    while (tempo_X <= (int)x + MenorTamanho)
                                     {
-                                        for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+
+                                        SinalEEG.ReadDataBlock(DataRecords_lidos);
+                                        DataRecords_lidos++;
+                                        //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                                        for (int j = 0; j < SinalEEG.FileInfo.NrSignals; j++)
                                         {
-                                            if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
+                                            for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                             {
-                                                if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho + x))
+                                                if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
                                                 {
-                                                    entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                    if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho + x))
+                                                    {
+                                                        entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                    }
+                                                    else
+                                                        aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                                                 }
                                                 else
                                                     aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                                tempo_X++;
                                             }
-                                            else
-                                                aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
-                                            tempo_X++;
                                         }
                                     }
                                 }
+                                else
+                                {
+                                    double[] sinal;
+                                    GerenArquivos Arquivos = new GerenArquivos();
+                                    sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont));
+                                    for (int i = 0; i < sinal.Count(); i++)
+                                        entrada.Add(sinal[i]);
+                                }
+                                helper.AddTrainingData(entrada, saida);
                             }
-                            else
-                            {
-                                double[] sinal;
-                                GerenArquivos Arquivos = new GerenArquivos();
-                                sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[ID_PadraoAtual].GetNomesEvento(cont));
-                                for (int i = 0; i < sinal.Count(); i++)
-                                    entrada.Add(sinal[i]);
-                            }
-                            helper.AddTrainingData(entrada, saida);
                         }
                         helper.Train(1000);
                         break;
@@ -288,7 +332,7 @@ namespace AmbienteRPB
 
                 cont = 0;
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
-            
+                
                 BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
                 char character = (char)(patternHelper.NumberFromArraylist(outputs_));
 
@@ -562,7 +606,7 @@ namespace AmbienteRPB
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
 
-                            if (myArray[7] == 0 && myArray[6] == 0 && myArray[5] == 0 && myArray[4] == 1 && myArray[3] == 1 && myArray[2] == 0 && myArray[1] == 0 && myArray[0] == 0)
+                            if (myArray[7] == 0 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 0 && myArray[2] == 0 && myArray[1] == 0 && myArray[0] == 1)
                                     prb.Series["canal" + (canal + 2)].Points.AddY(1);
                             else
                                     prb.Series["canal" + (canal + 2)].Points.AddY(0);
