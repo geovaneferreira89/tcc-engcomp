@@ -161,6 +161,7 @@ namespace AmbienteRPB
             }
             network.ConnectLayers();
         }
+        //-----------------------------------------------------------------------------------------
         public void TreinodaRede(double[] input1, double output,string tipoDeTreinamento)
         {
             BrainNet.NeuralFramework.NetworkHelper helper;
@@ -250,7 +251,7 @@ namespace AmbienteRPB
             }
          
         }
-
+        //-----------------------------------------------------------------------------------------
         public void Rodar(double[] input1)
         {
             load_progress_bar(0, 4);
