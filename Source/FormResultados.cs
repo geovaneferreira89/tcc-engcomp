@@ -585,7 +585,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment, float Comprimento)
         {
-            int i = ID_PadraoAtual;
+            int i = ID_PadraoAtual + 1;//salva acima!!!
             ListaDeEventos[i].SetValorInicio(ListaDeEventos[i].GetNumeroEventos(), Padrao_Inicio);
             ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
             ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
