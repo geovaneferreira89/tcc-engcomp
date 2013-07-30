@@ -21,7 +21,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, int [] myArray);
+        private delegate void AtualizaChart(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int [] myArray);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor;        
         private int CanalAtual;
@@ -65,8 +65,9 @@ namespace AmbienteRPB
 
         private int [] PadroesATreinar;
         private int MenorTamanho = 0;
+        private int CanalParaPlotar = 2;
         //------------------------------------------------------------------------------------------
-        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede)
+        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual,int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede)
         {
             SinalEEG        =  _SinalEEG;
             ListasPadrEvents = _Listas;
@@ -83,6 +84,7 @@ namespace AmbienteRPB
             VetTreinamento = (int)_length;
             VetorEvento    = _VetorEvento;
             Sinal          = _Sinal;
+            CanalParaPlotar = _CanalParaPlotar;
         }
         //------------------------------------------------------------------------------------------
         public void Init()
@@ -90,7 +92,7 @@ namespace AmbienteRPB
             //Kohonen
             if (tipoDeRede == "Kohonen")
             {
-                Plotar("Criar Chart de Barras", null, CanalAtual, selecaoAtual,null);
+                Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null);
                 send_SmS(1, "Inicializando...",false);
                 Initialise_KHn();
                 send_SmS(1, "Carregando Arquivo de Vetores", false);
@@ -173,36 +175,37 @@ namespace AmbienteRPB
             int i = 0;
             if (n == 0)
             {
-                bits[7] = 0;
-                bits[6] = 1;
-                bits[5] = 1;
-                bits[4] = 0; 
-                bits[3] = 0;
-                bits[2] = 0;
-                bits[1] = 0;
-                bits[0] = 1;
+                //a
+                bits[0] = 0;
+                bits[1] = 1;
+                bits[2] = 1;
+                bits[3] = 0; 
+                bits[4] = 0;
+                bits[5] = 0;
+                bits[6] = 0;
+                bits[7] = 1;
             }
             if (n == 1)
-            {
-                bits[7] = 0;
-                bits[6] = 1;
-                bits[5] = 1;
-                bits[4] = 0;
-                bits[3] = 0;
-                bits[2] = 0;
-                bits[1] = 1;
+            {//0111 0000 - p
                 bits[0] = 0;
+                bits[1] = 1;
+                bits[2] = 1;
+                bits[3] = 1;
+                bits[4] = 0;
+                bits[5] = 0;
+                bits[6] = 0;
+                bits[7] = 0;
             }
             if (n == 2)
-            {
-                bits[7] = 0;
-                bits[6] = 1;
-                bits[5] = 1;
-                bits[4] = 0;
-                bits[3] = 1;
+            {//0111 0111 w
+                bits[0] = 0;
+                bits[1] = 1;
                 bits[2] = 1;
-                bits[1] = 0;
-                bits[0] = 1;
+                bits[3] = 1;
+                bits[4] = 0;
+                bits[5] = 1;
+                bits[6] = 1;
+                bits[7] = 1;
             }
             return bits;
         }
@@ -279,14 +282,15 @@ namespace AmbienteRPB
                     }
                 case ("SomenteUm"):
                     {
-                        saida.Add(1);
-                        saida.Add(0);
-                        saida.Add(0);
-                        saida.Add(0);
-                        saida.Add(0);
-                        saida.Add(1);
-                        saida.Add(1);
-                        saida.Add(0);
+                        //a
+                        saida.Add(0);//0
+                        saida.Add(1);//1
+                        saida.Add(1);//2
+                        saida.Add(0);//3
+                        saida.Add(0);//4
+                        saida.Add(0);//5
+                        saida.Add(0);//6
+                        saida.Add(1);//7
                         for (int i = 0; i < input1.Count(); i++)
                             entrada.Add(input1[i]);
                         helper.AddTrainingData(entrada, saida);
@@ -305,7 +309,7 @@ namespace AmbienteRPB
             int cont = 0;
             bool chave = true;
             double[] dados = new double[2];
-
+            char descartar = 'a';
             //Corrige o problema de deslocamento do sinal para esquerda... 
             dados[1] = 0;
             dados[0] = 0;
@@ -313,7 +317,7 @@ namespace AmbienteRPB
             int[] saidaInt = new int[8];
             outputs_.Add(0.0);
             for (int i = 0; i < (MenorTamanho/ 2); i++)
-                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, saidaInt);
+                Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
             for (int i = 0; i < VetTreinamento; i++)
             {
                 inputs = new ArrayList();
@@ -330,6 +334,7 @@ namespace AmbienteRPB
                 dados[0] = i;
                 dados[1] = MenorTamanho + i;
 
+
                 cont = 0;
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
                 
@@ -341,18 +346,51 @@ namespace AmbienteRPB
                 string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
                 //string saida2 =  Convert.ToString(outputs_[7]) + "\t" + Convert.ToString(outputs_[6]) + "\t" + Convert.ToString(outputs_[5]) + "\t" + Convert.ToString(outputs_[4]) + "\t" + Convert.ToString(outputs_[3]) + "\t" + Convert.ToString(outputs_[2]) + "\t" + Convert.ToString(outputs_[1]) + "\t" + Convert.ToString(outputs_[0]) + "\t-> " + character;  
                 string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;  
-                //if(character == 'a')
-                 //   MessageBox.Show("a", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
 
                 if(!chave)
                     send_SmS(1, saida2, false);
+                //!!!!!!GAMBIARRA
+                /*if (i == 0)
+                    descartar = character;
 
-                Plotar("AddDadoBKP", dados, CanalAtual, selecaoAtual, saidaInt); 
+                if (character != descartar)
+                {
+                    for (int kk = 0; kk < 8; kk++)
+                        saidaInt[kk] = 1;
+                }
+                else
+                {
+                    for (int kk = 0; kk < 8; kk++)
+                        saidaInt[kk] = 0;
+                }*/
+                if (character == 'a')
+                {
+                    for (int kk = 0; kk < 8; kk++)
+                        saidaInt[kk] = 1;
+                }
+                else if (character == 'p')
+                {
+                    for (int kk = 0; kk < 8; kk++)
+                        saidaInt[kk] = 2;
+                }
+                else if (character == 'w')
+                {
+                    for (int kk = 0; kk < 8; kk++)
+                        saidaInt[kk] = 3;
+                }
+                else
+                {
+                    for (int kk = 0; kk < 8; kk++)
+                        saidaInt[kk] = 0;
+                }
+                //!!!!!!!!!!!!!!
+                Plotar("AddDadoBKP", dados,CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
+                Thread.Sleep(1);
                 load_progress_bar(0, 1);
                 if (chave)
                 {
                     send_SmS(1, saida2, true);
-                    Thread.Sleep(1);
+                   // Thread.Sleep(1);
                     DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     if (resposta == DialogResult.Cancel)
                         chave = false;
@@ -491,7 +529,7 @@ namespace AmbienteRPB
                 dados[1] = n.Y;
                 dados[2] = i;
                 dados[3] = VetorEvento.Count() + i;
-                Plotar("AddDadoKohonen", dados, CanalAtual, selecaoAtual,null); // tem o n.x tbm para no caso o Mapa mesmo... 
+                Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null); // tem o n.x tbm para no caso o Mapa mesmo... 
                 if(!chave)
                     send_SmS(1, saida,false);
                 if (chave)
@@ -592,11 +630,11 @@ namespace AmbienteRPB
 
         //-------------------------------------------------------------------
         //Saida pelo Grafico 
-        private void Plotar(string opcao, double[] dados, int canal, RectangleAnnotation selecaoAtual, int[] myArray)
+        private void Plotar(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int[] myArray)
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dados, canal, selecaoAtual, myArray});
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dados, canal, CanalParaPlotar, selecaoAtual, myArray });
             }
             else
             {
@@ -605,15 +643,17 @@ namespace AmbienteRPB
                     case ("AddDadoBKP"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-
-                            if (myArray[7] == 0 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 0 && myArray[2] == 0 && myArray[1] == 0 && myArray[0] == 1)
-                                    prb.Series["canal" + (canal + 2)].Points.AddY(0.35);
-                            else if (myArray[7] == 0 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 0 && myArray[2] == 0 && myArray[1] == 1 && myArray[0] == 0)
-                                    prb.Series["canal" + (canal + 2)].Points.AddY(0.65);
-                            else if (myArray[7] == 0 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 0 && myArray[0] == 1)
-                                prb.Series["canal" + (canal + 2)].Points.AddY(1);
+                            //w
+                             if (myArray[7] == 3 && myArray[6] == 3 && myArray[5] == 3 && myArray[4] == 3 && myArray[3] == 3 && myArray[2] == 3 && myArray[1] == 3 && myArray[0] == 3)
+                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.35);
+                            //p
+                            else if (myArray[7] == 2 && myArray[6] == 2 && myArray[5] == 2 && myArray[4] == 2 && myArray[3] == 2 && myArray[2] == 2 && myArray[1] == 2 && myArray[0] == 2)
+                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.65);
+                            //a
+                            else if (myArray[7] == 1 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 1 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 1)
+                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(1);
                             else
-                                prb.Series["canal" + (canal + 2)].Points.AddY(0);
+                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0);
 
                             PointF zero = new PointF(0, 0);
                             prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
