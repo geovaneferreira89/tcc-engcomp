@@ -271,7 +271,7 @@ namespace AmbienteRPB
                                     double[] sinal;
                                     GerenArquivos Arquivos = new GerenArquivos();
                                     sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont));
-                                    for (int i = 0; i < sinal.Count(); i++)
+                                    for (int i = 0; i < MenorTamanho; i++)
                                         entrada.Add(sinal[i]);
                                 }
                                 helper.AddTrainingData(entrada, saida);
@@ -309,7 +309,6 @@ namespace AmbienteRPB
             int cont = 0;
             bool chave = true;
             double[] dados = new double[2];
-            char descartar = 'a';
             //Corrige o problema de deslocamento do sinal para esquerda... 
             dados[1] = 0;
             dados[0] = 0;
@@ -334,7 +333,6 @@ namespace AmbienteRPB
                 dados[0] = i;
                 dados[1] = MenorTamanho + i;
 
-
                 cont = 0;
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
                 
@@ -344,25 +342,11 @@ namespace AmbienteRPB
                 for (int kk = 0; kk < 8; kk++)
                     saidaInt[kk] = Convert.ToInt16(outputs_[kk]);
                 string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
-                //string saida2 =  Convert.ToString(outputs_[7]) + "\t" + Convert.ToString(outputs_[6]) + "\t" + Convert.ToString(outputs_[5]) + "\t" + Convert.ToString(outputs_[4]) + "\t" + Convert.ToString(outputs_[3]) + "\t" + Convert.ToString(outputs_[2]) + "\t" + Convert.ToString(outputs_[1]) + "\t" + Convert.ToString(outputs_[0]) + "\t-> " + character;  
                 string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;  
 
                 if(!chave)
                     send_SmS(1, saida2, false);
-                //!!!!!!GAMBIARRA
-                /*if (i == 0)
-                    descartar = character;
 
-                if (character != descartar)
-                {
-                    for (int kk = 0; kk < 8; kk++)
-                        saidaInt[kk] = 1;
-                }
-                else
-                {
-                    for (int kk = 0; kk < 8; kk++)
-                        saidaInt[kk] = 0;
-                }*/
                 if (character == 'a')
                 {
                     for (int kk = 0; kk < 8; kk++)
@@ -383,7 +367,7 @@ namespace AmbienteRPB
                     for (int kk = 0; kk < 8; kk++)
                         saidaInt[kk] = 0;
                 }
-                //!!!!!!!!!!!!!!
+
                 Plotar("AddDadoBKP", dados,CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
                 Thread.Sleep(1);
                 load_progress_bar(0, 1);
@@ -399,7 +383,6 @@ namespace AmbienteRPB
                     chave = true;
             }
             load_progress_bar(1, 3);
-            //'Add the second input
         }
         //====================================================================================================
         //                                        KOHONEN
@@ -670,7 +653,6 @@ namespace AmbienteRPB
                     case ("AddDadoKohonen"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                           
                             
                             prb.Series["canal" + (canal+2)].Points.AddY(dados[1]);
                             //Mapa
@@ -737,7 +719,6 @@ namespace AmbienteRPB
 
                             break;
                         }
-
                 }
             }
         }
