@@ -88,6 +88,8 @@ namespace AmbienteRPB
                 chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
+                lblTamanho.Text = "Tam: ";
+                btnExcluir.Enabled = false;
             }
             lbxEventosPorTipo.Items.Clear();
             for (int i = 0; i < Listas[comboTiposDeEventos.SelectedIndex].NumeroEventos; i++)
@@ -105,6 +107,7 @@ namespace AmbienteRPB
             }
             if (lbxEventosPorTipo.SelectedItem != null)
             {
+                btnExcluir.Enabled = true;
                 chart1.ChartAreas.Add("Padrao");
                 chart1.Series.Add("Serie01");
                 chart1.Series["Serie01"].ChartArea = "Padrao";
@@ -129,6 +132,7 @@ namespace AmbienteRPB
                 ValorReferencia = new PointF();
                 ValorReferencia = Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex);
 
+                lblTamanho.Text = "Tam: " + Convert.ToString(ValorFim.X - ValorInicio.X);
                 //Nome do canal
                 string nome_canal = Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex);
                 int X_ = nome_canal.IndexOf("_");
@@ -426,6 +430,44 @@ namespace AmbienteRPB
         private void groupBox2_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
 
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (Listas[comboTiposDeEventos.SelectedIndex].GetNumeroEventos() == 1){
+                Listas[comboTiposDeEventos.SelectedIndex].SetNumeroEventos(0);
+            }
+            else
+            {
+                for (int i = lbxEventosPorTipo.SelectedIndex+1; i < Listas[comboTiposDeEventos.SelectedIndex].GetNumeroEventos(); i++)
+                {
+                    Arquivos = new GerenArquivos();
+                    Listas[comboTiposDeEventos.SelectedIndex].SetValorInicio(i - 1, Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(i));
+                    Listas[comboTiposDeEventos.SelectedIndex].SetValorFim(i - 1, Listas[comboTiposDeEventos.SelectedIndex].GetValorFim(i));
+                    Listas[comboTiposDeEventos.SelectedIndex].SetValorMeio(i - 1, Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(i));
+                    Listas[comboTiposDeEventos.SelectedIndex].SetComentario(i - 1, Listas[comboTiposDeEventos.SelectedIndex].GetComentario(i));
+                    Listas[comboTiposDeEventos.SelectedIndex].SetChartDataPoint(i - 1, Listas[comboTiposDeEventos.SelectedIndex].GetChartDataPoint(i));
+                    Listas[comboTiposDeEventos.SelectedIndex].SetCorDeFundo(i - 1, Listas[comboTiposDeEventos.SelectedIndex].GetCorDeFundo(i));
+                    Listas[comboTiposDeEventos.SelectedIndex].SetNomesEvento(i - 1, Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(i));
+                }
+                Listas[comboTiposDeEventos.SelectedIndex].SetNumeroEventos(Listas[comboTiposDeEventos.SelectedIndex].GetNumeroEventos() - 1);
+            }
+            Arquivos = new GerenArquivos();
+            Arquivos.Exportar_Padroes_Eventos(Listas);
+
+            MessageBox.Show("Deletado!");
+            txtComents.Text = "";
+            chart1.Annotations.Clear();
+            chart1.Series.Remove(chart1.Series["Serie01"]);
+            chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
+            btnSalvar.Enabled = false;
+            btnExcluir.Enabled = false;
+            chart1.Annotations.Clear();
+            lblTamanho.Text = "Tam: ";
+            lbxEventosPorTipo.Items.Clear();
+           
+            for (int i = 0; i < Listas[comboTiposDeEventos.SelectedIndex].NumeroEventos; i++)
+                lbxEventosPorTipo.Items.Add(Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(i));
         }
     }
     //--------------------------------

@@ -645,10 +645,10 @@ namespace AmbienteRPB
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             //w
                              if (myArray[7] == 3 && myArray[6] == 3 && myArray[5] == 3 && myArray[4] == 3 && myArray[3] == 3 && myArray[2] == 3 && myArray[1] == 3 && myArray[0] == 3)
-                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.35);
+                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.30);
                             //p
                             else if (myArray[7] == 2 && myArray[6] == 2 && myArray[5] == 2 && myArray[4] == 2 && myArray[3] == 2 && myArray[2] == 2 && myArray[1] == 2 && myArray[0] == 2)
-                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.65);
+                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.60);
                             //a
                             else if (myArray[7] == 1 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 1 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 1)
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(1);

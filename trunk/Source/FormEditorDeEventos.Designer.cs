@@ -45,6 +45,8 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lblTamanho = new System.Windows.Forms.Label();
+            this.btnExcluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,7 +156,7 @@
             // 
             this.checkCorrela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkCorrela.AutoSize = true;
-            this.checkCorrela.Location = new System.Drawing.Point(495, 477);
+            this.checkCorrela.Location = new System.Drawing.Point(574, 504);
             this.checkCorrela.Name = "checkCorrela";
             this.checkCorrela.Size = new System.Drawing.Size(113, 17);
             this.checkCorrela.TabIndex = 33;
@@ -166,7 +168,7 @@
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalvar.Enabled = false;
-            this.btnSalvar.Location = new System.Drawing.Point(614, 474);
+            this.btnSalvar.Location = new System.Drawing.Point(450, 472);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(77, 22);
             this.btnSalvar.TabIndex = 26;
@@ -177,7 +179,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(614, 501);
+            this.button1.Location = new System.Drawing.Point(614, 472);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(77, 22);
             this.button1.TabIndex = 27;
@@ -234,11 +236,35 @@
             this.lineShape1.Y1 = -2;
             this.lineShape1.Y2 = 532;
             // 
+            // lblTamanho
+            // 
+            this.lblTamanho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTamanho.AutoSize = true;
+            this.lblTamanho.Location = new System.Drawing.Point(447, 505);
+            this.lblTamanho.Name = "lblTamanho";
+            this.lblTamanho.Size = new System.Drawing.Size(34, 13);
+            this.lblTamanho.TabIndex = 35;
+            this.lblTamanho.Text = "Tam: ";
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluir.Enabled = false;
+            this.btnExcluir.Location = new System.Drawing.Point(533, 472);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 22);
+            this.btnExcluir.TabIndex = 36;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // FormEditorDeEventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 530);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.lblTamanho);
             this.Controls.Add(this.edtEvento_Nome);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbxEventosPorTipo);
@@ -285,6 +311,8 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        private System.Windows.Forms.Label lblTamanho;
+        private System.Windows.Forms.Button btnExcluir;
 
 
     }
