@@ -421,10 +421,13 @@ namespace AmbienteRPB
                     FormDadosInput.TamVetores = vector_evento.Count();
                 FormDadosInput.ShowDialog();
 
+                //Dados sobre os charts, onde plotar
                 if (FormDadosInput.UsarCorrelacao == true)
                     CanalKohonen = CanalAtual + 1;
                 else
                     CanalKohonen = CanalAtual;
+                //Canal de saida de resultados
+                int canalParaPlotar = CanalAtual + 2;
 
                 if (FormDadosInput.NumPadroes > 1)
                 {
@@ -445,7 +448,7 @@ namespace AmbienteRPB
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen");
+                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen");
                 ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
                 ThreadKohonen.Start();
             }
@@ -470,11 +473,16 @@ namespace AmbienteRPB
                     FormDadosInput.TamVetores = vector_evento.Count();
                 FormDadosInput.ShowDialog();
 
+                //Dados sobre os charts, onde plotar
                 int canalDados;
                 if (FormDadosInput.UsarCorrelacao == true)
                     canalDados = CanalAtual + 1;
                 else
                     canalDados = CanalAtual;
+                
+                //Canal de saida de resultados
+                int canalParaPlotar = CanalAtual + 2;
+
                 double[] vectorSignal = new double[chart1.Series[canalDados].Points.Count];
                 for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
@@ -498,7 +506,7 @@ namespace AmbienteRPB
                 if (FormDadosInput.UsarListaDeTodosEnventos)
                     TipoBkP = "BackPropagation_AllEvnts";
 
-                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP);
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP);
                 ThreadKohonen = new Thread(new ThreadStart(objBKP.Init));
                 ThreadKohonen.Start();
             }
