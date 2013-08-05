@@ -121,6 +121,7 @@ namespace AmbienteRPB
 
                                 prb.Titles[(canal + 2)].Text = "CORRL" + ((canal/4) + 2);
                                 prb.Series["canal" + (canal + 2)].Color = Color.Red;
+
                   
                                 load_progress_bar(1, 3);
                             }
@@ -137,6 +138,7 @@ namespace AmbienteRPB
                                 prb.Titles[canal].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[canal].Position.X = 0;
                                 prb.Titles[canal].Position.Y = prb.ChartAreas[canal].Position.Y;
+                                prb.ChartAreas[canal].AxisX.ScrollBar.Enabled = false;
 
                                 prb.Series.Add("canal" + (canal + 1));
                                 prb.Series["canal" + (canal+1)].ChartArea = "canal" + (canal+1);
@@ -147,6 +149,8 @@ namespace AmbienteRPB
                                 prb.Titles[(canal + 1)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 1)].Position.X = 0;
                                 prb.Titles[(canal + 1)].Position.Y = prb.ChartAreas[canal+1].Position.Y;
+                                prb.ChartAreas[canal+1].AxisX.ScrollBar.Enabled = false;
+
 
                                 prb.Series.Add("canal" + (canal + 2));
                                 prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
@@ -157,6 +161,8 @@ namespace AmbienteRPB
                                 prb.Titles[(canal + 2)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 2)].Position.X = 0;
                                 prb.Titles[(canal + 2)].Position.Y = prb.ChartAreas[canal+2].Position.Y;
+                                prb.ChartAreas[canal+2].AxisX.ScrollBar.Enabled = false;
+
 
                                 prb.Series.Add("canal" + (canal + 3));
                                 prb.Series["canal" + (canal + 3)].ChartArea = "canal" + (canal + 3);
@@ -167,6 +173,8 @@ namespace AmbienteRPB
                                 prb.Titles[(canal + 3)].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[(canal + 3)].Position.X = 0;
                                 prb.Titles[(canal + 3)].Position.Y = prb.ChartAreas[canal+3].Position.Y;
+                                prb.ChartAreas[canal+3].AxisX.ScrollBar.Enabled = false;
+
                             }
                             break;
                     }
