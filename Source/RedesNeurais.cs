@@ -148,7 +148,7 @@ namespace AmbienteRPB
 
             layers = new ArrayList();
             layers.Add(MenorTamanho);
-            layers.Add(MenorTamanho);
+            layers.Add((int)Math.Sqrt(MenorTamanho));
             layers.Add(8);
             //long neurons = 0;
             network = new BrainNet.NeuralFramework.NeuralNetwork();
@@ -340,46 +340,42 @@ namespace AmbienteRPB
                 char character = (char)(patternHelper.NumberFromArraylist(outputs_));
 
                 for (int kk = 0; kk < 8; kk++)
-                    saidaInt[kk] = Convert.ToInt16(outputs_[kk]);
+                {
+                    if(0.99 < Convert.ToDouble(outputs_[kk]))
+                        saidaInt[kk] = 1;
+                    else
+                        saidaInt[kk] = 0;
+                }
+                if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                    character = 'a';
+                else
+                    character = 'E';
+                
                 string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
-                string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;  
+                string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;
 
+                
                 if(!chave)
                     send_SmS(1, saida2, false);
 
-                if (character == 'a')
-                {
-                    for (int kk = 0; kk < 8; kk++)
-                        saidaInt[kk] = 1;
-                }
-                else if (character == 'p')
-                {
-                    for (int kk = 0; kk < 8; kk++)
-                        saidaInt[kk] = 2;
-                }
-                else if (character == 'w')
-                {
-                    for (int kk = 0; kk < 8; kk++)
-                        saidaInt[kk] = 3;
-                }
-                else
-                {
-                    for (int kk = 0; kk < 8; kk++)
-                        saidaInt[kk] = 0;
-                }
-
-                Plotar("AddDadoBKP", dados,CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
-                Thread.Sleep(1);
+                Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
                 load_progress_bar(0, 1);
+                Thread.Sleep(20);
                 if (chave)
                 {
                     send_SmS(1, saida2, true);
-                   // Thread.Sleep(1);
+                    Thread.Sleep(2);
                     DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     if (resposta == DialogResult.Cancel)
                         chave = false;
                 }
-                if (i == 540)
+                if (i == 600)//540
+                    chave = true;
+                if (i == 1300)//1150
+                    chave = true;
+                if (i == 1940)//1700
+                    chave = true;
+                if (i == 2600)
                     chave = true;
             }
             load_progress_bar(1, 3);
@@ -627,13 +623,13 @@ namespace AmbienteRPB
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             //w
-                             if (myArray[7] == 3 && myArray[6] == 3 && myArray[5] == 3 && myArray[4] == 3 && myArray[3] == 3 && myArray[2] == 3 && myArray[1] == 3 && myArray[0] == 3)
+                            if (myArray[7] == 1 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 0)
                                  prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.30);
                             //p
-                            else if (myArray[7] == 2 && myArray[6] == 2 && myArray[5] == 2 && myArray[4] == 2 && myArray[3] == 2 && myArray[2] == 2 && myArray[1] == 2 && myArray[0] == 2)
+                            else if (myArray[7] == 0 && myArray[6] == 0 && myArray[5] == 0 && myArray[4] == 0 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 0)
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.60);
                             //a
-                            else if (myArray[7] == 1 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 1 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 1)
+                            else if (myArray[7] == 1 && myArray[6] == 0 && myArray[5] == 0 && myArray[4] == 0 && myArray[3] == 0 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 0)
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(1);
                             else
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0);
