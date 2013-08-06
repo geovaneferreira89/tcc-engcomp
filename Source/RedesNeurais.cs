@@ -172,7 +172,6 @@ namespace AmbienteRPB
         public int [] ConvertToBinary(int n)
         {
             int[] bits = new int[8];
-            int i = 0;
             if (n == 0)
             {
                 //a
@@ -258,10 +257,10 @@ namespace AmbienteRPB
                                                     }
                                                     else
                                                         aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                                    tempo_X++;
                                                 }
                                                 else
                                                     aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
-                                                tempo_X++;
                                             }
                                         }
                                     }
@@ -360,7 +359,7 @@ namespace AmbienteRPB
 
                 Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
                 load_progress_bar(0, 1);
-                Thread.Sleep(20);
+                Thread.Sleep(10);
                 if (chave)
                 {
                     send_SmS(1, saida2, true);
