@@ -397,6 +397,7 @@ namespace AmbienteRPB
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            SelecionaEventoDasLista();
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
@@ -580,15 +581,15 @@ namespace AmbienteRPB
         }
         private void ExecutaSelecao(HitTestResult result, MouseEventArgs e, int offsetX)
         {
-            bool chave = true;
-            bool fimDeEvent = false;
             if (numCursor == 0)
             {
                 var_result = result;
                 x_Pos = (e.X);
                 y_Pos = (e.Y);
+                PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
 
                 numCursor++;
+                result.ChartArea.CursorX.SetCursorPixelPosition(Padrao_Inicio, true);
             }
             else
             {
@@ -599,12 +600,9 @@ namespace AmbienteRPB
 
                 result.ChartArea.CursorX.SetSelectionPixelPosition(zero, zero, true);
                 result.ChartArea.CursorX.SelectionColor = Color.FromArgb(128, Color.Green);
-                result.ChartArea.CursorX.IsUserEnabled = true;
-                result.ChartArea.CursorX.IsUserSelectionEnabled = true;
 
                 //Colore a região do evento
                 result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-
 
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX);
@@ -613,27 +611,33 @@ namespace AmbienteRPB
                 Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
 
                 numCursor = 0;
-
-                vector_evento = new double[(int)(Padrao_Fim.X - Padrao_Inicio.X)];
-                for(int i=0;i<vector_evento.Count();i++)
-                    vector_evento[i] = result.Series.Points[Convert.ToInt32(Padrao_Inicio.X) + i].YValues[0];
-
-                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, "", (float)Padrao_Fim.X - Padrao_Inicio.X);
+                if (Padrao_Inicio.X < Padrao_Fim.X)
+                {
+                    vector_evento = new double[(int)(Padrao_Fim.X - Padrao_Inicio.X)];
+                    for (int i = 0; i < vector_evento.Count(); i++)
+                        vector_evento[i] = result.Series.Points[Convert.ToInt32(Padrao_Inicio.X) + i].YValues[0];
+                    Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, "", (float)Padrao_Fim.X - Padrao_Inicio.X);
+                }
+                else
+                    result.ChartArea.CursorX.SelectionColor = Color.FromArgb(128, Color.Red);
             }
         }
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment, float Comprimento)
         {
             string Resultado = Interaction.InputBox("Em qual padrao deseja salvar?", "Salvar Evento", Convert.ToString(ID_PadraoAtual));
-            int i = Convert.ToInt32(Resultado);//salva acima!!!
-            ListaDeEventos[i].SetValorInicio(ListaDeEventos[i].GetNumeroEventos(), Padrao_Inicio);
-            ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
-            ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
-            ListaDeEventos[i].SetWidth(ListaDeEventos[i].GetNumeroEventos(), Comprimento);
-            ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
-            Arquivos.SalvaPadraoCorrelacao(i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
-            ListaDeEventos[i].SetCorDeFundo(ListaDeEventos[i].GetNumeroEventos(), Color.Green);
-            ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
+            if (Resultado != "")
+            {
+                int i = Convert.ToInt32(Resultado);//salva acima!!!
+                ListaDeEventos[i].SetValorInicio(ListaDeEventos[i].GetNumeroEventos(), Padrao_Inicio);
+                ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
+                ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
+                ListaDeEventos[i].SetWidth(ListaDeEventos[i].GetNumeroEventos(), Comprimento);
+                ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
+                Arquivos.SalvaPadraoCorrelacao(i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
+                ListaDeEventos[i].SetCorDeFundo(ListaDeEventos[i].GetNumeroEventos(), Color.Green);
+                ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
+            }
         }
         //------------------------------------------------------------------------------------------
      }
