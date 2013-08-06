@@ -518,6 +518,14 @@ namespace AmbienteRPB
                     if (resposta == DialogResult.Cancel)
                         chave = false;
                 }
+                if (i == 520)
+                    chave = true;
+                if (i == 1300)
+                    chave = true;
+                if (i == 2000)
+                    chave = true;
+                if (i == 2200)
+                    chave = true;
             }
         }
         //----------------------------------
