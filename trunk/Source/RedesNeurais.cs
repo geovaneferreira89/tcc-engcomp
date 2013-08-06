@@ -313,6 +313,11 @@ namespace AmbienteRPB
             dados[0] = 0;
             outputs_ = new ArrayList();
             int[] saidaInt = new int[8];
+            //Opção de ir Debugando a saida da RN
+            bool it_is_debug = false;
+            int []vetorDeResultados;
+                vetorDeResultados = new int[Sinal.Count()];
+            //---------------------------------
             outputs_.Add(0.0);
             for (int i = 0; i < (MenorTamanho/ 2); i++)
                 Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
@@ -345,38 +350,52 @@ namespace AmbienteRPB
                     else
                         saidaInt[kk] = 0;
                 }
-                if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
-                    character = 'a';
-                else
-                    character = 'E';
-                
-                string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
-                string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;
-
-                
-                if(!chave)
-                    send_SmS(1, saida2, false);
-
-                Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
-                load_progress_bar(0, 1);
-                Thread.Sleep(10);
-                if (chave)
+      
+                if (it_is_debug)
                 {
-                    send_SmS(1, saida2, true);
-                    Thread.Sleep(2);
-                    DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
-                    if (resposta == DialogResult.Cancel)
-                        chave = false;
+                    if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                        character = 'a';
+                    else
+                        character = 'E';
+
+                    string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
+                    string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;
+                    if (!chave)
+                        send_SmS(1, saida2, false);
+
+                    Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
+                    load_progress_bar(0, 1);
+                    Thread.Sleep(10);
+                    if (chave)
+                    {
+                        send_SmS(1, saida2, true);
+                        Thread.Sleep(2);
+                        DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
+                        if (resposta == DialogResult.Cancel)
+                            chave = false;
+                    }
+                    if (i == 600)//540
+                        chave = true;
+                    if (i == 1300)//1150
+                        chave = true;
+                    if (i == 1940)//1700
+                        chave = true;
+                    if (i == 2600)
+                        chave = true;
                 }
-                if (i == 600)//540
-                    chave = true;
-                if (i == 1300)//1150
-                    chave = true;
-                if (i == 1940)//1700
-                    chave = true;
-                if (i == 2600)
-                    chave = true;
+                else
+                {
+                    if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                        vetorDeResultados[i] = 1;
+                    else
+                        vetorDeResultados[i] = 0;
+                    
+                }
             }
+            //imprime os resultados caso nao esteja no modo debug... 
+            if (!it_is_debug)
+                    Plotar("BKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+            
             load_progress_bar(1, 3);
         }
         //====================================================================================================
@@ -626,6 +645,16 @@ namespace AmbienteRPB
             {
                 switch (opcao)
                 {
+                    case ("BKP"):
+                        {
+                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            for (int i = 0; i < myArray.Count(); i++)
+                            {
+                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(myArray[i]);
+                                load_progress_bar(0, 1);
+                            }
+                            break;
+                        }
                     case ("AddDadoBKP"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;

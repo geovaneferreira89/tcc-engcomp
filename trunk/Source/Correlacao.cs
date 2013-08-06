@@ -267,40 +267,6 @@ namespace AmbienteRPB
                             res = 0;
                         }
                         
-                        //Salva no arquivo os vetores, para o kohonei
-                        //desabilita a barra de progresso
-                        /*bool passagemPorParametros = false;
-                        if (!passagemPorParametros)
-                        {
-                            load_progress_bar(1, 3);
-                            load_progress_bar(0, 4);
-                            load_progress_bar(prb.Series[canal + 1].Points.Count, 2);
-                            for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
-                            {
-                                while (cont < vector_evento.Count())
-                                {
-                                    if ((cont + i) < prb.Series[canal + 1].Points.Count)
-                                        resultado = Convert.ToString(prb.Series[canal + 1].Points[cont + i].YValues[0]);
-                                    else
-                                        resultado = "0.0";
-
-                                    resultado = resultado.Replace(",", ".");
-                                    line = line + ", " + resultado;
-                                    cont++;
-                                }
-                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(GerArquivos.getPathUser() + "arquivo.txt", true))
-                                {
-                                    line = "vetor" + vetores + line;
-                                    file.WriteLine(line);
-                                }
-                                line = null;
-                                cont = 0;
-                                vetores++;
-                                load_progress_bar(0, 1);
-                            }
-                        }
-                        */
-                        
                         //Adiciona linha vertical em zero
                         HorizontalLineAnnotation Zero_correla = new HorizontalLineAnnotation();
                         Zero_correla.AnchorDataPoint = prb.Series[canal+1].Points[1];
@@ -357,7 +323,7 @@ namespace AmbienteRPB
 
                         //Inicia a segunda tecnica de correlação... 
                         //FAZER  prb.Series[canal + 2].Points.AddY(res);
-                        DialogResult resposta = MessageBox.Show("Deseja iniciar a segunda correlação?\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                        /*DialogResult resposta = MessageBox.Show("Deseja iniciar a segunda correlação?\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
                         //===================================================================
                         //                  Segunda etapa de correlação
                         //===================================================================                        
@@ -473,41 +439,26 @@ namespace AmbienteRPB
                             Med_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
                             Med_correla2.AnchorY = Media / prb.Series[canal + 2].Points.Count;
                             prb.Annotations.Add(Med_correla2);
-                        }
+                        }*/
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);
                         break;
                     }
                     case ("Correlacao_AGAIN"):
                     {
-                        //canal + 1 = canal + 2
-                        //e refaz a corrlação... 
                         prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                        prb.Series[canal + 1].Points.Clear();
-                        for (int i = 0; i < prb.Series[canal + 2].Points.Count; i++)
-                        {
-                            prb.Series[canal + 1].Points.AddY(prb.Series[canal + 2].Points[i].YValues[0]);
-                        }
-                        
-                        load_progress_bar(0, 4);
                         load_progress_bar(vector_evento.Count(), 2);
+                        
                         float res = 0;
-                        float MaxY = 0;
-                        float MinY = 0;
-                        float MaxX = 0;
-
                         float Media = 0;
-                        prb.Series[canal + 2].Points.Clear();
+                        double[] SaidaDeDados = new double[prb.Series[canal + 1].Points.Count];
                         //===================================================================
-                        //                nova correlação
+                        //                     nova correlação
                         //===================================================================   
-                        for (int i = 0; i < (vector_evento.Count() / 2); i++)
-                            prb.Series[canal + 2].Points.AddY(0);
                         //Calculo do fator de normalização (K)
                         //Igual à soma dos quadrados dos valores da réplica armazenada.
                         double K = 0;
                         load_progress_bar(0, 4);
-                        load_progress_bar(vector_evento.Count(), 2);
                         load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
                         //Canal que está sendo amostrado
                         res = 0;
@@ -517,8 +468,6 @@ namespace AmbienteRPB
                             K = (valor * valor) + K;
                         }
                         //Este vetor evento tem que ser referente a correlação...
-                        //ta... mais se nao existir em outro canal? 
-                        //talvez, fazer uma marcação?  
                         for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
                         {
                             //Vetor do Evento
@@ -536,10 +485,24 @@ namespace AmbienteRPB
                             }
                             res = (float)((1 / K) * res);
                             //Vai Plotando o resultado...
-                            prb.Series[canal + 2].Points.AddY(res);
+                            SaidaDeDados[i] = res;
                             Media = Media + res;
                             res = 0;
                         }
+                        load_progress_bar(1, 3);
+                        load_progress_bar(0, 4);
+                        load_progress_bar(prb.Series[canal + 1].Points.Count(), 2);
+                        //Saida dos Resultados da correlação pela correlação!
+                        //Limpa o canal da correlação e ajuste o offset
+                        prb.Series[canal + 1].Points.Clear();
+                        for (int i = 0; i < (vector_evento.Count() / 2); i++)
+                            prb.Series[canal + 1].Points.AddY(0);
+                        //Imprime o resultado final
+                        for (int i = 0; i < SaidaDeDados.Count(); i++){
+                            prb.Series[canal + 1].Points.AddY(SaidaDeDados[i]);
+                            load_progress_bar(0, 1);
+                        }
+                        load_progress_bar(1, 3);
                         break;
                     }
                     //-----------------------------------------
