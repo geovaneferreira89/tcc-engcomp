@@ -876,9 +876,9 @@ namespace AmbienteRPB
                             if (edfFileOutput.SignalInfo[j].NrSamples != edfFileOutput.SignalInfo[0].NrSamples)
                             { //Histograma
                                //(MELHORAR) este for está muito lendo... 
-                               int Repticaoes = (edfFileOutput.SignalInfo[0].NrSamples / edfFileOutput.SignalInfo[j].NrSamples);
-                                for (int Histo = 0; Histo < Repticaoes; Histo++)
-                                    chart1.Series["canal" + j].Points.AddY(valor);
+                               //int Repticaoes = (edfFileOutput.SignalInfo[0].NrSamples / edfFileOutput.SignalInfo[j].NrSamples);
+                               // for (int Histo = 0; Histo < Repticaoes; Histo++)
+                               //     chart1.Series["canal" + j].Points.AddY(valor);
                             }
                             else
                                 chart1.Series["canal" + j].Points.AddY(valor);
