@@ -109,10 +109,10 @@ namespace thread_chart
                             {
                                 for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                 {
-                                    if (SinalEEG.SignalInfo[j].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
-                                    { //hypnograma
-                                       for (int Histo = 0; Histo < (SinalEEG.SignalInfo[0].NrSamples / SinalEEG.SignalInfo[j].NrSamples); Histo++)
-                                            prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                   if (SinalEEG.SignalInfo[j].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
+                                   {  //Hypnograma (MELHORAR) este for está muito lendo... 
+                                      // for (int Histo = 0; Histo < (SinalEEG.SignalInfo[0].NrSamples / SinalEEG.SignalInfo[j].NrSamples); Histo++)
+                                      //      prb.Series["canal" + j].Points.AddY(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                       // i = SinalEEG.SignalInfo[j].NrSamples;
                                     }
                                     else
