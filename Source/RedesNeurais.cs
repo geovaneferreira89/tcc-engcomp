@@ -313,14 +313,24 @@ namespace AmbienteRPB
             dados[0] = 0;
             outputs_ = new ArrayList();
             int[] saidaInt = new int[8];
+
             //Opção de ir Debugando a saida da RN
-            bool it_is_debug = false;
+            DialogResult debug = MessageBox.Show("Modo debug?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+              bool it_is_debug= false;
+              if (debug == DialogResult.No)
+                  it_is_debug = false;
+              else
+                  it_is_debug = true;
             int []vetorDeResultados;
                 vetorDeResultados = new int[Sinal.Count()];
-            //---------------------------------
+            //----------------------------------------------------------------------------------
+            //limpa os dados se existirem
+            Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, saidaInt);
+            
             outputs_.Add(0.0);
             for (int i = 0; i < (MenorTamanho/ 2); i++)
-                Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
+                Plotar("BKP", dados, 2, CanalParaPlotar, selecaoAtual, saidaInt);
+
             for (int i = 0; i < VetTreinamento; i++)
             {
                 inputs = new ArrayList();
@@ -394,186 +404,11 @@ namespace AmbienteRPB
             }
             //imprime os resultados caso nao esteja no modo debug... 
             if (!it_is_debug)
-                    Plotar("BKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                    Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
             
             load_progress_bar(1, 3);
         }
-        //====================================================================================================
-        //                                        KOHONEN
-        //====================================================================================================
-        private void Initialise_KHn()
-        {
-            outputs_KHn = new Neuron_KHn[length, length];
-            for (int i = 0; i < length; i++)
-            {
-                for (int j = 0; j < length; j++)
-                {
-                    outputs_KHn[i, j] = new Neuron_KHn(i, j, length);
-                    outputs_KHn[i, j].Weights = new double[dimensions];
-                    for (int k = 0; k < dimensions; k++)
-                    {
-                        outputs_KHn[i, j].Weights[k] = rnd.NextDouble();
-                    }
-                }
-            }
-        }
-        //----------------------------------
-        private void LoadData_KHn(string file)
-        {
-            load_progress_bar(1, 3);
-            load_progress_bar(0, 4);
-            load_progress_bar(VetTreinamento, 2);
-
-            int cont = 0;
-            string resultado;
-            int canal = 0;
-            string line = null;
-            int vetores = 0;
-            for (int i = 0; i < VetTreinamento; i++)
-            {
-                while (cont < VetorEvento.Count())
-                {
-                    if ((cont + i) < Sinal.Count())
-                        resultado = Convert.ToString(Sinal[cont + i]);
-                    else
-                        resultado = "0.0";
-                    resultado = resultado.Replace(",", ".");
-                    line = line + ", " + resultado;
-                    cont++;
-                }
-                string[] _line = line.Split(',');
-                labels.Add(_line[0]);
-                double[] inputs = new double[dimensions];
-                for (int j = 0; j < dimensions; j++)
-                {
-                    inputs[j] = double.Parse(_line[j + 1]);
-                }
-                patterns.Add(inputs);
-                line = null;
-                cont = 0;
-                vetores++;
-                line = "vetor" + vetores;
-                load_progress_bar(0, 1);
-            }
-            load_progress_bar(1, 3);
-        }
-        //----------------------------------
-        private void NormalisePatterns_KHn()
-        {
-            for (int j = 0; j < dimensions; j++)
-            {
-                double sum = 0;
-                for (int i = 0; i < patterns.Count; i++)
-                {
-                    sum += patterns[i][j];
-                }
-                double average = sum / patterns.Count;
-                for (int i = 0; i < patterns.Count; i++)
-                {
-                    patterns[i][j] = patterns[i][j] / average;
-                }
-            }
-        }
-        //----------------------------------
-        private void Train_KHn(double maxError)
-        {
-            double currentError = double.MaxValue;
-            int count = 0 ;
-            while (currentError > maxError)
-            {
-                currentError = 0;
-                List<double[]> TrainingSet = new List<double[]>();
-                foreach (double[] pattern in patterns)
-                {
-                    TrainingSet.Add(pattern);
-                }
-                for (int i = 0; i < patterns.Count; i++)
-                {
-                    double[] pattern = TrainingSet[rnd.Next(patterns.Count - i)];
-                    currentError += TrainPattern_KHn(pattern);
-                    TrainingSet.Remove(pattern);
-                }
-                // Console.WriteLine(currentError.ToString("0.0000000"));
-                send_SmS(1, Convert.ToString(count),true);
-                count++;
-            }
-        }
-        //----------------------------------
-        private double TrainPattern_KHn(double[] pattern)
-        {
-            double error = 0;
-            Neuron_KHn winner = Winner_KHn(pattern);
-            for (int i = 0; i < length; i++)
-            {
-                for (int j = 0; j < length; j++)
-                {
-                    error += outputs_KHn[i, j].UpdateWeights_KHn(pattern, winner, iteration);
-                }
-            }
-            iteration++;
-            return Math.Abs(error / (length * length));
-        }
-        //----------------------------------
-        private void DumpCoordinates_KHn()
-        {
-            bool chave = true;
-            double[] dados = new double[10];
-            for (int i = 0; i < patterns.Count; i++)
-            {
-                Neuron_KHn n = Winner_KHn(patterns[i]);
-                string saida = labels[i] + " " + n.X + " " + n.Y;
-                dados[0] = n.X;
-                dados[1] = n.Y;
-                dados[2] = i;
-                dados[3] = VetorEvento.Count() + i;
-                Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null); // tem o n.x tbm para no caso o Mapa mesmo... 
-                if(!chave)
-                    send_SmS(1, saida,false);
-                if (chave)
-                {
-                    send_SmS(1, saida, true);
-                    Thread.Sleep(1);
-                    DialogResult resposta = MessageBox.Show("Dado: " + i + "\nPlotado\nX: " + n.X + "\nY: " + n.Y, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
-                    if (resposta == DialogResult.Cancel)
-                        chave = false;
-                }
-                if (i == 520)
-                    chave = true;
-                if (i == 1300)
-                    chave = true;
-                if (i == 2000)
-                    chave = true;
-                if (i == 2200)
-                    chave = true;
-            }
-        }
-        //----------------------------------
-        private Neuron_KHn Winner_KHn(double[] pattern)
-        {
-            Neuron_KHn winner = null;
-            double min = double.MaxValue;
-            for (int i = 0; i < length; i++)
-                for (int j = 0; j < length; j++)
-                {
-                    double d = Distance_KHn(pattern, outputs_KHn[i, j].Weights);
-                    if (d < min)
-                    {
-                        min = d;
-                        winner = outputs_KHn[i, j];
-                    }
-                }
-            return winner;
-        }
-        //----------------------------------
-        private double Distance_KHn(double[] vector1, double[] vector2)
-        {
-            double value = 0;
-            for (int i = 0; i < vector1.Length; i++)
-            {
-                value += Math.Pow((vector1[i] - vector2[i]), 2);
-            }
-            return Math.Sqrt(value);
-        }
+       
 
         //====================================================================================================
         //                                ...Funções de saida do sistema... 
@@ -648,11 +483,19 @@ namespace AmbienteRPB
                     case ("BKP"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            for (int i = 0; i < myArray.Count(); i++)
+                            if (canal == 0)
                             {
-                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(myArray[i]);
-                                load_progress_bar(0, 1);
+                                for (int i = 0; i < myArray.Count(); i++)
+                                {
+                                    prb.Series["canal" + (CanalParaPlotar)].Points.AddY(myArray[i]);
+                                    load_progress_bar(0, 1);
+                                }
                             }
+                            else if(canal == 2)
+                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0);
+                            else
+                                prb.Series["canal" + (CanalParaPlotar)].Points.Clear();
+
                             break;
                         }
                     case ("AddDadoBKP"):
@@ -754,7 +597,184 @@ namespace AmbienteRPB
                 }
             }
         }
+        //====================================================================================================
+        //                                        KOHONEN
+        //====================================================================================================
+        private void Initialise_KHn()
+        {
+            outputs_KHn = new Neuron_KHn[length, length];
+            for (int i = 0; i < length; i++)
+            {
+                for (int j = 0; j < length; j++)
+                {
+                    outputs_KHn[i, j] = new Neuron_KHn(i, j, length);
+                    outputs_KHn[i, j].Weights = new double[dimensions];
+                    for (int k = 0; k < dimensions; k++)
+                    {
+                        outputs_KHn[i, j].Weights[k] = rnd.NextDouble();
+                    }
+                }
+            }
+        }
+        //----------------------------------
+        private void LoadData_KHn(string file)
+        {
+            load_progress_bar(1, 3);
+            load_progress_bar(0, 4);
+            load_progress_bar(VetTreinamento, 2);
+
+            int cont = 0;
+            string resultado;
+            int canal = 0;
+            string line = null;
+            int vetores = 0;
+            for (int i = 0; i < VetTreinamento; i++)
+            {
+                while (cont < VetorEvento.Count())
+                {
+                    if ((cont + i) < Sinal.Count())
+                        resultado = Convert.ToString(Sinal[cont + i]);
+                    else
+                        resultado = "0.0";
+                    resultado = resultado.Replace(",", ".");
+                    line = line + ", " + resultado;
+                    cont++;
+                }
+                string[] _line = line.Split(',');
+                labels.Add(_line[0]);
+                double[] inputs = new double[dimensions];
+                for (int j = 0; j < dimensions; j++)
+                {
+                    inputs[j] = double.Parse(_line[j + 1]);
+                }
+                patterns.Add(inputs);
+                line = null;
+                cont = 0;
+                vetores++;
+                line = "vetor" + vetores;
+                load_progress_bar(0, 1);
+            }
+            load_progress_bar(1, 3);
+        }
+        //----------------------------------
+        private void NormalisePatterns_KHn()
+        {
+            for (int j = 0; j < dimensions; j++)
+            {
+                double sum = 0;
+                for (int i = 0; i < patterns.Count; i++)
+                {
+                    sum += patterns[i][j];
+                }
+                double average = sum / patterns.Count;
+                for (int i = 0; i < patterns.Count; i++)
+                {
+                    patterns[i][j] = patterns[i][j] / average;
+                }
+            }
+        }
+        //----------------------------------
+        private void Train_KHn(double maxError)
+        {
+            double currentError = double.MaxValue;
+            int count = 0;
+            while (currentError > maxError)
+            {
+                currentError = 0;
+                List<double[]> TrainingSet = new List<double[]>();
+                foreach (double[] pattern in patterns)
+                {
+                    TrainingSet.Add(pattern);
+                }
+                for (int i = 0; i < patterns.Count; i++)
+                {
+                    double[] pattern = TrainingSet[rnd.Next(patterns.Count - i)];
+                    currentError += TrainPattern_KHn(pattern);
+                    TrainingSet.Remove(pattern);
+                }
+                // Console.WriteLine(currentError.ToString("0.0000000"));
+                send_SmS(1, Convert.ToString(count), true);
+                count++;
+            }
+        }
+        //----------------------------------
+        private double TrainPattern_KHn(double[] pattern)
+        {
+            double error = 0;
+            Neuron_KHn winner = Winner_KHn(pattern);
+            for (int i = 0; i < length; i++)
+            {
+                for (int j = 0; j < length; j++)
+                {
+                    error += outputs_KHn[i, j].UpdateWeights_KHn(pattern, winner, iteration);
+                }
+            }
+            iteration++;
+            return Math.Abs(error / (length * length));
+        }
+        //----------------------------------
+        private void DumpCoordinates_KHn()
+        {
+            bool chave = true;
+            double[] dados = new double[10];
+            for (int i = 0; i < patterns.Count; i++)
+            {
+                Neuron_KHn n = Winner_KHn(patterns[i]);
+                string saida = labels[i] + " " + n.X + " " + n.Y;
+                dados[0] = n.X;
+                dados[1] = n.Y;
+                dados[2] = i;
+                dados[3] = VetorEvento.Count() + i;
+                Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null); // tem o n.x tbm para no caso o Mapa mesmo... 
+                if (!chave)
+                    send_SmS(1, saida, false);
+                if (chave)
+                {
+                    send_SmS(1, saida, true);
+                    Thread.Sleep(1);
+                    DialogResult resposta = MessageBox.Show("Dado: " + i + "\nPlotado\nX: " + n.X + "\nY: " + n.Y, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
+                    if (resposta == DialogResult.Cancel)
+                        chave = false;
+                }
+                if (i == 520)
+                    chave = true;
+                if (i == 1300)
+                    chave = true;
+                if (i == 2000)
+                    chave = true;
+                if (i == 2200)
+                    chave = true;
+            }
+        }
+        //----------------------------------
+        private Neuron_KHn Winner_KHn(double[] pattern)
+        {
+            Neuron_KHn winner = null;
+            double min = double.MaxValue;
+            for (int i = 0; i < length; i++)
+                for (int j = 0; j < length; j++)
+                {
+                    double d = Distance_KHn(pattern, outputs_KHn[i, j].Weights);
+                    if (d < min)
+                    {
+                        min = d;
+                        winner = outputs_KHn[i, j];
+                    }
+                }
+            return winner;
+        }
+        //----------------------------------
+        private double Distance_KHn(double[] vector1, double[] vector2)
+        {
+            double value = 0;
+            for (int i = 0; i < vector1.Length; i++)
+            {
+                value += Math.Pow((vector1[i] - vector2[i]), 2);
+            }
+            return Math.Sqrt(value);
+        }
     }
+
     //========================================================================================================
     //                                             Classe Neuron
     //========================================================================================================

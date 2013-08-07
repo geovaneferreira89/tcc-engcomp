@@ -121,7 +121,7 @@ namespace AmbienteRPB
         {
             string Dados_Saida;
             Dados_Saida = "[NumeroDePontos = " + sinal.Count() + "]";
-            fileW = new System.IO.StreamWriter(getPathUser() + NomePadrao + ".txt", true);
+            fileW = new System.IO.StreamWriter(getPathUser() + NomePadrao + ".txt", false);
             fileW.WriteLine(Dados_Saida);
             for (int i = 0; i < sinal.Count(); i++)
             {

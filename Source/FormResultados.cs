@@ -41,6 +41,7 @@ namespace AmbienteRPB
         private HitTestResult var_result;
         private double x_Pos, y_Pos;
         private int[] PadroesATreinar;
+        private bool visivel;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
         {
@@ -54,6 +55,7 @@ namespace AmbienteRPB
         private void FormResultados_Shown(object sender, EventArgs e)
         {
             gbxChart.Height = gbxChart.Height + SMS_Box.Height;
+            visivel = false;
             AdicionaCanais();
             Adiciona_linhas_de_tempo();
             SMS_Box.SelectionStart = SMS_Box.Text.Length;
@@ -407,7 +409,11 @@ namespace AmbienteRPB
         {
             if (SelecionaEventoDasLista())
             {
-                gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                if (visivel == false)
+                {
+                    gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                    visivel = true;
+                }
                 SMS_Box.Visible = true;
                 btn_Aumentar.Visible = true;
                 btn_Close.Visible = true;
@@ -459,7 +465,11 @@ namespace AmbienteRPB
         {
             if (SelecionaEventoDasLista())
             {
-                gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                if (visivel == false)
+                {
+                    gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                    visivel = true;
+                }
                 SMS_Box.Visible = true;
                 btn_Aumentar.Visible = true;
                 btn_Close.Visible    = true;
@@ -545,6 +555,8 @@ namespace AmbienteRPB
                 SMS_Box.Height = SMS_Box.Height + gbxChart.Height;
                 btn_Aumentar.Location = new Point(this.btn_Aumentar.Location.X, this.SMS_Box.Location.Y + 4);
                 btn_Close.Location = new Point(this.btn_Close.Location.X, this.SMS_Box.Location.Y + 4);
+                visivel = false;
+          
             }
         }
 
@@ -556,7 +568,7 @@ namespace AmbienteRPB
             SMS_Box.Height = SMS_Box.Height + gbxChart.Height;
             btn_Aumentar.Location = new Point(this.btn_Aumentar.Location.X, 30);
             btn_Close.Location = new Point(this.btn_Close.Location.X, 30);
-
+            visivel = false;
         }
 
         private void comboFrequencia_KeyPress(object sender, KeyPressEventArgs e)
@@ -625,16 +637,17 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment, float Comprimento)
         {
-            string Resultado = Interaction.InputBox("Em qual padrao deseja salvar?", "Salvar Evento", Convert.ToString(ID_PadraoAtual));
+            string Resultado = Interaction.InputBox("Em qual padrao deseja salvar?", "Salvar Evento", Convert.ToString(ID_PadraoAtual + 1));
             if (Resultado != "")
             {
-                int i = Convert.ToInt32(Resultado);//salva acima!!!
+                int i = Convert.ToInt32(Resultado);
+                i--;
                 ListaDeEventos[i].SetValorInicio(ListaDeEventos[i].GetNumeroEventos(), Padrao_Inicio);
                 ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
                 ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
                 ListaDeEventos[i].SetWidth(ListaDeEventos[i].GetNumeroEventos(), Comprimento);
-                ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
-                Arquivos.SalvaPadraoCorrelacao(i + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
+                ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), (i+1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
+                Arquivos.SalvaPadraoCorrelacao((i+1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
                 ListaDeEventos[i].SetCorDeFundo(ListaDeEventos[i].GetNumeroEventos(), Color.Green);
                 ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
             }
