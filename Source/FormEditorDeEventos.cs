@@ -194,6 +194,10 @@ namespace AmbienteRPB
                    sinal =Arquivos.ImportaPadraoCorrelacao(Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex));
                    for (int i = 0; i < sinal.Count(); i++)
                        chart1.Series[0].Points.AddY(sinal[i]);
+
+                   AtualizarRefInChart oAlpha = new AtualizarRefInChart(chart1, Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex).X);
+                   Thread oThread = new Thread(new ThreadStart(oAlpha.Init));
+                   oThread.Start();
                 }
   
             }
