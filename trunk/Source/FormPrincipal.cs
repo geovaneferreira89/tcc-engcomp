@@ -875,7 +875,7 @@ namespace AmbienteRPB
                             valor = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
                             if (edfFileOutput.SignalInfo[j].NrSamples != edfFileOutput.SignalInfo[0].NrSamples)
                             { //Histograma
-                               //(MELHORAR) este for está muito lendo... 
+                               //(MELHORAR) este for está muito lendo...  
                                //int Repticaoes = (edfFileOutput.SignalInfo[0].NrSamples / edfFileOutput.SignalInfo[j].NrSamples);
                                // for (int Histo = 0; Histo < Repticaoes; Histo++)
                                //     chart1.Series["canal" + j].Points.AddY(valor);
