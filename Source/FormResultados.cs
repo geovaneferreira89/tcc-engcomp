@@ -301,7 +301,7 @@ namespace AmbienteRPB
             //Atualizar o tempo
             if (e.Type == ScrollEventType.SmallIncrement)
             {
-                //"Apaga" 1s Primeiro de sinal, 256 em x
+                //"Apaga" 10s ou dependendo da ecala definida em "Scroll_Click_Escala_Seg"
                 AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
                 AddSegInChart();
             }
@@ -312,9 +312,9 @@ namespace AmbienteRPB
             //Atualizar o chart
             for (int i = 0; i < chart1.ChartAreas.Count(); i++)
             {
-                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
-                chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
-                chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
+                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+                chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset/ (int)edfFileOutput.FileInfo.SampleRecDuration);
+                chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset/ (int)edfFileOutput.FileInfo.SampleRecDuration);
                 //chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
             }
         }

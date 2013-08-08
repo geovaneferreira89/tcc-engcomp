@@ -222,8 +222,8 @@ namespace thread_chart
             {
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
                 ScrollBar.Enabled = true;
-
-                int valor = SinalEEG.SignalInfo[0].NrSamples * 10;
+               
+                int valor = (SinalEEG.SignalInfo[0].NrSamples * 10 )/ (int)SinalEEG.FileInfo.SampleRecDuration;
                 if (7 <= _NumCanais)
                 {
                     if (SinalEEG.SignalInfo[4].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
@@ -235,8 +235,8 @@ namespace thread_chart
                      prb.ChartAreas[i].AxisX.ScaleView.Size = valor;
                      prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
                 }
-             
-                ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords);
+
+                ScrollBar.Maximum = (SinalEEG.FileInfo.NrDataRecords) * (int)SinalEEG.FileInfo.SampleRecDuration;
                 ScrollBar.SmallChange = 10;//segundos
                 ScrollBar.LargeChange = 10;//segundos            
             }
