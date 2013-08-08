@@ -215,6 +215,7 @@ namespace AmbienteRPB
             helper = new BrainNet.NeuralFramework.NetworkHelper(network);
             ArrayList entrada = new ArrayList();
             ArrayList saida = new ArrayList();
+            bool PadraoDescatardo = false;
             switch (tipoDeTreinamento)
             {
                 case ("TodosEventos"):
@@ -239,6 +240,7 @@ namespace AmbienteRPB
                                 int tempo_X = 0;
                                 if (nome_canal != "Correlacao")
                                 {
+                                    PadraoDescatardo = false;
                                     while (tempo_X <= (int)x + MenorTamanho)
                                     {
 
@@ -272,8 +274,28 @@ namespace AmbienteRPB
                                     sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont));
                                     for (int i = 0; i < MenorTamanho; i++)
                                         entrada.Add(sinal[i]);
+                                    PadraoDescatardo = false;
+                                    //Pegando pela referencia
+                                    /*
+                                    int Deslocamento = MenorTamanho/2;
+                                    if (ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X + Deslocamento <= ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorFim(cont).X 
+                                        && (ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X - Deslocamento) >= ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorInicio(cont).X)
+                                    {
+                                        sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont));
+                                        for (int i = (int)(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X - Deslocamento); i <= Convert.ToInt16(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X); i++)
+                                            entrada.Add(sinal[i]);
+
+                                        for (int i = (int)(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X) + 1; i <= Convert.ToInt16(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X + Deslocamento); i++)
+                                            entrada.Add(sinal[i]);
+
+                                        PadraoDescatardo = false;
+                                    }
+                                    else//padrao descartado
+                                        PadraoDescatardo = true;
+                                    */
                                 }
-                                helper.AddTrainingData(entrada, saida);
+                                if(!PadraoDescatardo)
+                                    helper.AddTrainingData(entrada, saida);
                             }
                         }
                         helper.Train(1000);
