@@ -515,13 +515,12 @@ namespace AmbienteRPB
                         while (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
                         {
                             int excluir;
-                            int tempo = DataRecords_lidos * 256;
                             edfFileOutput.ReadDataBlock(DataRecords_lidos);
                             DataRecords_lidos++;
                             //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                             for (int j = 0; j < numeroDeCanais_; j++)
                             {
-                                for (int i = 0; i < 256; i++)
+                                for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                 {
                                     if (j == (canal/3))
                                         prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
@@ -580,7 +579,7 @@ namespace AmbienteRPB
                 ScrollBar = _ScrollBar as System.Windows.Forms.ScrollBar;
                 ScrollBar.Enabled = true;
 
-                int valor = SinalEEG.SignalInfo[0].NrSamples * 10;
+                int valor = (SinalEEG.SignalInfo[0].NrSamples * 10)/ (int)SinalEEG.FileInfo.SampleRecDuration;
                 prb.ChartAreas[_canal].AxisX.ScaleView.Size = valor;
                 prb.ChartAreas[_canal].AxisX.ScrollBar.Enabled = false;
 
@@ -593,7 +592,7 @@ namespace AmbienteRPB
                 //prb.ChartAreas[_canal + 3].AxisX.ScaleView.Size = valor;
                 //prb.ChartAreas[_canal + 3].AxisX.ScrollBar.Enabled = false;
 
-                ScrollBar.Maximum =  (SinalEEG.FileInfo.NrDataRecords);
+                ScrollBar.Maximum = (SinalEEG.FileInfo.NrDataRecords) * (int)SinalEEG.FileInfo.SampleRecDuration;
                 ScrollBar.SmallChange = 10;//segundos
                 ScrollBar.LargeChange = 10;//segundos       
                 ScrollBar.Value = 0;

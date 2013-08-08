@@ -801,7 +801,7 @@ namespace AmbienteRPB
             //Atualizar o chart
             for (int i = 0; i < __numeroDeCanais; i++)
             {
-                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset; //* Scroll_Click_Escala_Seg;
+                chart1.ChartAreas[i].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration); //* Scroll_Click_Escala_Seg;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -824,7 +824,7 @@ namespace AmbienteRPB
                //Atualizar o chart
                for (int i = 0; i < __numeroDeCanais; i++)
                {
-                   chart1.ChartAreas[i].AxisX.ScaleView.Position = ValueNew * edfFileOutput.SignalInfo[1].BufferOffset; 
+                   chart1.ChartAreas[i].AxisX.ScaleView.Position = ValueNew * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration); //* Scroll_Click_Escala_Seg;
                }
         }
         //-----------------------------------------------------------------------------------------

@@ -84,6 +84,7 @@
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "&Novo";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // toolStripSeparator5
             // 
@@ -201,6 +202,7 @@
             this.TransparencyKey = System.Drawing.Color.White;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDIPrincipalForm_Load);
+            this.Click += new System.EventHandler(this.ShowNewForm);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
