@@ -417,7 +417,15 @@ namespace AmbienteRPB
                 }
                 else
                 {
+                    //a
                     if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                        vetorDeResultados[i] = 10;
+                    //w
+                    else if (saidaInt[7] == 1 && saidaInt[6] == 1 && saidaInt[5] == 1 && saidaInt[4] == 0 && saidaInt[3] == 1 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                        vetorDeResultados[i] = 5;
+
+                    //p
+                    else if (saidaInt[7] == 0 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 1 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
                         vetorDeResultados[i] = 1;
                     else
                         vetorDeResultados[i] = 0;
