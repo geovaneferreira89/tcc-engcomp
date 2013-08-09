@@ -66,6 +66,10 @@ namespace AmbienteRPB
         private int [] PadroesATreinar;
         private int MenorTamanho = 0;
         private int CanalParaPlotar = 2;
+
+        private int[] vetorDeResultados;
+        private bool it_is_debug = false;
+
         //------------------------------------------------------------------------------------------
         public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual,int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede)
         {
@@ -89,6 +93,13 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         public void Init()
         {
+            //Opção de ir Debugando a saida da RN
+            DialogResult debug = MessageBox.Show("Modo debug?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+            if (debug == DialogResult.No)
+                it_is_debug = false;
+            else
+                it_is_debug = true;
+            //----------------------------------------------------------------------------------
             //Kohonen
             if (tipoDeRede == "Kohonen")
             {
@@ -112,31 +123,46 @@ namespace AmbienteRPB
                 //Define o tamanho do vetor evento
                 MenorTamanho = VetorEvento.Count();
                 newRede();
-                TreinodaRede(VetorEvento, 1, "SomenteUm"); //null - somente o evento marcado 
+                TreinodaRede(VetorEvento, 1, "SomenteUm", 0); //null - somente o evento marcado 
                 send_SmS(1, "Treinada", false);
-                Rodar(Sinal);
+                vetorDeResultados = new int[Sinal.Count()];
+                Rodar(Sinal, 0);
                 send_SmS(1, "Fim", false);
             }
             else if (tipoDeRede == "BackPropagation_AllEvnts")
             {
+
                 //Utilizando o backPropagation 
                 send_SmS(1, "Inicializando...", false);
+                vetorDeResultados = new int[Sinal.Count()];
                 //busca pelo menor tamanho do dos eventos deste padrao... 
                 for (int i = 0; i < PadroesATreinar.Count(); i++)
                 {
+                    send_SmS(1, "Treinando a rede de '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                    
                     for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[i]].NumeroEventos; cont++)
                     {
                         int aux = (int)(ListasPadrEvents[PadroesATreinar[i]].GetValorFim(cont).X - ListasPadrEvents[PadroesATreinar[i]].GetValorInicio(cont).X);
                         if ((cont == 0 && i ==0) || MenorTamanho > aux)
                             MenorTamanho = aux;
                     }
+                    newRede();
+                    TreinodaRede(VetorEvento, 1, "TodosEventos", i);                    
+                    send_SmS(1, "Treinada", false);
+                    send_SmS(1, "Reconhecendo padrões iniciado em: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    Rodar(Sinal,i);
+                    send_SmS(1, "Fim " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
                 }
-                newRede();
-                TreinodaRede(VetorEvento, 1, "TodosEventos"); //null - somente o evento marcado 
-                send_SmS(1, "Treinada", false);
-                Rodar(Sinal);
-
-                send_SmS(1, "Fim", false);
+                //imprime os resultados caso nao esteja no modo debug... 
+                send_SmS(1, "Imprimindo resultados.", false);
+                if (!it_is_debug)
+                {
+                    //limpa os dados se existirem
+                    double[] dados = new double[1];
+                    Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                    Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                }
+               send_SmS(1, "..Fim..", false);                  
             }
         }
         
@@ -209,7 +235,7 @@ namespace AmbienteRPB
             return bits;
         }
         //-----------------------------------------------------------------------------------------
-        public void TreinodaRede(double[] input1, double output,string tipoDeTreinamento)
+        public void TreinodaRede(double[] input1, double output,string tipoDeTreinamento, int RedeAtual)
         {
             BrainNet.NeuralFramework.NetworkHelper helper;
             helper = new BrainNet.NeuralFramework.NetworkHelper(network);
@@ -220,21 +246,21 @@ namespace AmbienteRPB
             {
                 case ("TodosEventos"):
                     {
-                        for (int PadraoAtual = 0; PadraoAtual < PadroesATreinar.Count(); PadraoAtual++)
-                        {
-                            int [] saidaB = ConvertToBinary(PadraoAtual);
+                       // for (int PadraoAtual = 0; PadraoAtual < PadroesATreinar.Count(); PadraoAtual++)
+                        //{
+                            int [] saidaB = ConvertToBinary(0);
                             saida = new ArrayList();
                             for (int addSaida = 0; addSaida < 8; addSaida++)
                                 saida.Add(saidaB[addSaida]);
 
-                            for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[PadraoAtual]].NumeroEventos; cont++)
+                            for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
                             {
                                 entrada = new ArrayList();
-                                string nome_canal = ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont);
+                                string nome_canal = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont);
                                 int X_ = nome_canal.IndexOf("_");
                                 nome_canal = nome_canal.Substring(X_ + 1);
                                 //Inicio do enveto
-                                float x = ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorInicio(cont).X;
+                                float x = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorInicio(cont).X;
                                 float aux;
                                 int DataRecords_lidos = 0;
                                 int tempo_X = 0;
@@ -271,7 +297,7 @@ namespace AmbienteRPB
                                 {
                                     double[] sinal;
                                     GerenArquivos Arquivos = new GerenArquivos();
-                                    sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont));
+                                    sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont));
                                     for (int i = 0; i < MenorTamanho; i++)
                                         entrada.Add(sinal[i]);
                                     PadraoDescatardo = false;
@@ -297,7 +323,7 @@ namespace AmbienteRPB
                                 if(!PadraoDescatardo)
                                     helper.AddTrainingData(entrada, saida);
                             }
-                        }
+                      //  }
                         helper.Train(1000);
                         break;
                     }
@@ -322,10 +348,10 @@ namespace AmbienteRPB
          
         }
         //-----------------------------------------------------------------------------------------
-        public void Rodar(double[] input1)
+        public void Rodar(double[] input1, int RedeAtual)
         {
             load_progress_bar(0, 4);
-            load_progress_bar(VetorEvento.Count(), 2);
+            load_progress_bar(VetTreinamento, 2);
 
             int cont = 0;
             bool chave = true;
@@ -336,24 +362,9 @@ namespace AmbienteRPB
             outputs_ = new ArrayList();
             int[] saidaInt = new int[8];
 
-            //Opção de ir Debugando a saida da RN
-            DialogResult debug = MessageBox.Show("Modo debug?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-              bool it_is_debug= false;
-              if (debug == DialogResult.No)
-                  it_is_debug = false;
-              else
-                  it_is_debug = true;
-            int []vetorDeResultados;
-                vetorDeResultados = new int[Sinal.Count()];
-            //----------------------------------------------------------------------------------
-            //limpa os dados se existirem
-            Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, saidaInt);
-            
-            outputs_.Add(0.0);
-            for (int i = 0; i < (MenorTamanho/ 2); i++)
-                Plotar("BKP", dados, 2, CanalParaPlotar, selecaoAtual, saidaInt);
 
-            for (int i = 0; i < VetTreinamento; i++)
+            outputs_.Add(0.0);
+            for (int i = 0; i < VetTreinamento - (MenorTamanho / 2); i++)
             {
                 inputs = new ArrayList();
                 while (cont < MenorTamanho)
@@ -417,26 +428,16 @@ namespace AmbienteRPB
                 }
                 else
                 {
-                    //a
                     if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
-                        vetorDeResultados[i] = 10;
-                    //w
-                    else if (saidaInt[7] == 1 && saidaInt[6] == 1 && saidaInt[5] == 1 && saidaInt[4] == 0 && saidaInt[3] == 1 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
-                        vetorDeResultados[i] = 5;
-
-                    //p
-                    else if (saidaInt[7] == 0 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 1 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
-                        vetorDeResultados[i] = 1;
+                        vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + RedeAtual + 1;     
                     else
-                        vetorDeResultados[i] = 0;
-                    
+                        vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
+                    load_progress_bar(0, 1);
                 }
             }
-            //imprime os resultados caso nao esteja no modo debug... 
-            if (!it_is_debug)
-                    Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-            
             load_progress_bar(1, 3);
+            
+     
         }
        
 
@@ -513,6 +514,7 @@ namespace AmbienteRPB
                     case ("BKP"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            //Primeira saida da RN
                             if (canal == 0)
                             {
                                 for (int i = 0; i < myArray.Count(); i++)
@@ -521,7 +523,8 @@ namespace AmbienteRPB
                                     load_progress_bar(0, 1);
                                 }
                             }
-                            else if(canal == 2)
+                            //Adiciona Zeros Offset
+                            else if(canal == 3)
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0);
                             else
                                 prb.Series["canal" + (CanalParaPlotar)].Points.Clear();
