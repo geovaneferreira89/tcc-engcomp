@@ -190,10 +190,6 @@ namespace AmbienteRPB
 
                         float Media = 0;
 
-                        String line = null;
-                        int cont = 0;
-                        int vetores = 0;
-                        string resultado;
                         //se tem um arquivo velho lá... apaga
                         if(System.IO.File.Exists(GerArquivos.getPathUser() + "arquivo.txt"))
                         {
