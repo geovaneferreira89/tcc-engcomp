@@ -69,7 +69,6 @@ namespace AmbienteRPB
 
         private int[] vetorDeResultados;
         private bool it_is_debug = false;
-
         //------------------------------------------------------------------------------------------
         public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual,int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede)
         {
@@ -171,7 +170,6 @@ namespace AmbienteRPB
         public void newRede()
         {
             strategy = new BrainNet.NeuralFramework.BackPropNeuronStrategy();
-
             layers = new ArrayList();
             layers.Add(MenorTamanho);
             layers.Add((int)Math.Sqrt(MenorTamanho));
@@ -246,8 +244,6 @@ namespace AmbienteRPB
             {
                 case ("TodosEventos"):
                     {
-                       // for (int PadraoAtual = 0; PadraoAtual < PadroesATreinar.Count(); PadraoAtual++)
-                        //{
                             int [] saidaB = ConvertToBinary(0);
                             saida = new ArrayList();
                             for (int addSaida = 0; addSaida < 8; addSaida++)
@@ -323,7 +319,6 @@ namespace AmbienteRPB
                                 if(!PadraoDescatardo)
                                     helper.AddTrainingData(entrada, saida);
                             }
-                      //  }
                         helper.Train(1000);
                         break;
                     }
@@ -362,7 +357,6 @@ namespace AmbienteRPB
             outputs_ = new ArrayList();
             int[] saidaInt = new int[8];
 
-
             outputs_.Add(0.0);
             for (int i = 0; i < VetTreinamento - (MenorTamanho / 2); i++)
             {
@@ -376,7 +370,6 @@ namespace AmbienteRPB
                     cont++;
 
                 }
-            
                 dados[0] = i;
                 dados[1] = MenorTamanho + i;
 
@@ -436,11 +429,7 @@ namespace AmbienteRPB
                 }
             }
             load_progress_bar(1, 3);
-            
-     
         }
-       
-
         //====================================================================================================
         //                                ...Funções de saida do sistema... 
         // (Gráficos, Mensagem pelo RichText..)
@@ -448,7 +437,6 @@ namespace AmbienteRPB
         //Saida de Dados
         private void send_SmS(int opcao, string texto, bool AutScrool)
         {
-
             if (SMS.InvokeRequired)
             {
                 SMS.BeginInvoke(new SMS_Propriedades(send_SmS), new Object[] { opcao, texto, AutScrool });
@@ -465,14 +453,12 @@ namespace AmbienteRPB
                         TextBox.ScrollToCaret();
                     }
                 }
-
             }
         }
         //-------------------------------------------------------------------------------
         //Barra de progresso
         private void load_progress_bar(int valor, int caso)
         {
-
             if (_BarraDeProgresso.InvokeRequired)
             {
                 _BarraDeProgresso.BeginInvoke(new AtualizaPloter(load_progress_bar), new Object[] { valor, caso });
@@ -498,7 +484,6 @@ namespace AmbienteRPB
                     prgbar.Value = 0;
             }
         }
-
         //-------------------------------------------------------------------
         //Saida pelo Grafico 
         private void Plotar(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int[] myArray)
@@ -561,13 +546,11 @@ namespace AmbienteRPB
                     case ("AddDadoKohonen"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            
                             prb.Series["canal" + (canal+2)].Points.AddY(dados[1]);
                             //Mapa
                             prb.Series["canal" + (canal+3)].Points.AddXY(dados[0], dados[1]);
 
                             PointF zero = new PointF(0,0);
-
                             prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
                             prb.ChartAreas[canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow); 
                             prb.ChartAreas[canal].CursorX.IsUserEnabled = true;
@@ -606,7 +589,6 @@ namespace AmbienteRPB
                                 prb.Titles[canal + 3].Alignment = ContentAlignment.MiddleLeft;
                                 prb.Titles[canal + 3].Position.X = 0;
                                 prb.Titles[canal + 3].Position.Y = (25 * 4) + ((100 - (25 * 4)) / 2);
-
                             }
                             else
                             {
@@ -624,7 +606,6 @@ namespace AmbienteRPB
                             prb.ChartAreas["canal" + (canal + 3)].AxisX.Enabled = AxisEnabled.True;
                             prb.ChartAreas["canal" + (canal + 3)].Axes[1].MajorGrid.LineColor = Color.Gainsboro;
                             prb.ChartAreas["canal" + (canal + 3)].Axes[0].MajorGrid.LineColor = Color.Gainsboro;
-
                             break;
                         }
                 }
@@ -725,7 +706,6 @@ namespace AmbienteRPB
                     currentError += TrainPattern_KHn(pattern);
                     TrainingSet.Remove(pattern);
                 }
-                // Console.WriteLine(currentError.ToString("0.0000000"));
                 send_SmS(1, Convert.ToString(count), true);
                 count++;
             }
@@ -807,7 +787,6 @@ namespace AmbienteRPB
             return Math.Sqrt(value);
         }
     }
-
     //========================================================================================================
     //                                             Classe Neuron
     //========================================================================================================
@@ -837,8 +816,8 @@ namespace AmbienteRPB
         {
             return Math.Exp(-it / 1000) * 0.1;
         }
-
-        private double Strength_KHn(int it)
+       
+       private double Strength_KHn(int it)
         {
             return Math.Exp(-it / nf) * length;
         }
