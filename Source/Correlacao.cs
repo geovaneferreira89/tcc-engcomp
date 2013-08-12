@@ -122,7 +122,6 @@ namespace AmbienteRPB
                                 prb.Titles[(canal + 2)].Text = "CORRL" + ((canal/4) + 2);
                                 prb.Series["canal" + (canal + 2)].Color = Color.Red;
 
-                  
                                 load_progress_bar(1, 3);
                             }
                             if (caso == 2)
@@ -187,9 +186,7 @@ namespace AmbienteRPB
                         float MaxY = 0;
                         float MinY = 0;
                         float MaxX = 0;
-
                         float Media = 0;
-
                         //se tem um arquivo velho lá... apaga
                         if(System.IO.File.Exists(GerArquivos.getPathUser() + "arquivo.txt"))
                         {
@@ -203,7 +200,6 @@ namespace AmbienteRPB
                                 return;
                             }
                         }
-
                         //===================================================================
                         //                  Primeira etapa de correlação
                         //===================================================================
@@ -255,14 +251,11 @@ namespace AmbienteRPB
                             }
                             if (MinY > res)
                                 MinY = res;
-                            
-
                             //Vai Plotando o resultado...
                             prb.Series[canal + 1].Points.AddY(res);
                             Media = Media + res;
                             res = 0;
                         }
-                        
                         //Adiciona linha vertical em zero
                         HorizontalLineAnnotation Zero_correla = new HorizontalLineAnnotation();
                         Zero_correla.AnchorDataPoint = prb.Series[canal+1].Points[1];
@@ -310,132 +303,6 @@ namespace AmbienteRPB
                         Med_correla.AnchorY = Media/prb.Series[canal+1].Points.Count;
                         prb.Annotations.Add(Med_correla);
 
-                        //desabilita a barra de progresso
-                        load_progress_bar(1, 3);
-
-                        //Numero de pontos da correlação tem que ser igual ao numero de pontos do sinal original...
-                        //MessageBox.Show("Prontos 1 : " + prb.Series[canal].Points.Count +
-                        //     "\nPontos 2: " + prb.Series[canal+1].Points.Count, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-
-                        //Inicia a segunda tecnica de correlação... 
-                        //FAZER  prb.Series[canal + 2].Points.AddY(res);
-                        /*DialogResult resposta = MessageBox.Show("Deseja iniciar a segunda correlação?\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                        //===================================================================
-                        //                  Segunda etapa de correlação
-                        //===================================================================                        
-                        if (resposta == DialogResult.Yes)
-                        {
-                            for (int i = 0; i < (vector_evento.Count() / 2); i++)
-                                prb.Series[canal + 2].Points.AddY(0);
-                            MaxX = 0;
-                            MaxY = 0;
-                            Media = 0;
-                            MinY = 0;
-                            load_progress_bar(0, 4);
-                            load_progress_bar(vector_evento.Count(), 2);
-                            load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
-                            //Canal que está sendo amostrado
-                            res = 0;
-                            K = 0;
-                            for (int i = 0; i < vector_evento.Count(); i++)
-                            {
-                                double valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + i].YValues[0];
-                                K = (valor * valor) + K;
-                            }
-                            //Este vetor evento tem que ser referente a correlação...
-                            //ta... mais se nao existir em outro canal? 
-                            //talvez, fazer uma marcação?  
-                            for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
-                            {
-                                //Vetor do Evento
-                                for (int j = 0; j < vector_evento.Count(); j++)
-                                {
-                                    double valor;
-                                    //Se j+1 tem que ser menor que o tamanho do canal... 
-                                    if ((j + i) < prb.Series[canal + 1].Points.Count)
-                                    {
-                                        valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + j].YValues[0];
-                                        res = (float)((prb.Series[canal + 1].Points[j + i].YValues[0] * valor) + res);
-                                    }
-                                    //Incrementa a barra de progresso
-                                    load_progress_bar(0, 1);
-                                }
-                                res = (float)((1 / K) * res);
-                                if (MaxY < res)
-                                {
-                                    MaxY = res;
-                                    MaxX = i;
-                                    //Deleta linha se já tiver, ou cria uma nova
-                                    if (Cursor_vertical_Corr2 == null)
-                                        Cursor_vertical_Corr2 = new VerticalLineAnnotation();
-                                    else
-                                        prb.Annotations.Remove(Cursor_vertical_Corr2);
-                                    //Linha no Chart
-                                    Cursor_vertical_Corr2.AnchorDataPoint = prb.Series[canal].Points[1];
-                                    Cursor_vertical_Corr2.Height = prb.ChartAreas[canal].Position.Height * 3;
-                                    Cursor_vertical_Corr2.LineDashStyle = ChartDashStyle.DashDot;
-                                    Cursor_vertical_Corr2.LineColor = Color.Orange;
-                                    Cursor_vertical_Corr2.LineWidth = 1;
-                                    Cursor_vertical_Corr2.AnchorX = MaxX;
-                                    Cursor_vertical_Corr2.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
-                                    prb.Annotations.Add(Cursor_vertical_Corr2);
-                                }
-                                //Vai Plotando o resultado...
-                                if (MinY > res)
-                                    MinY = res;
-                                //Vai Plotando o resultado...
-                                prb.Series[canal + 2].Points.AddY(res);
-                                Media = Media + res;
-                                res = 0;
-                            }
-
-                            //Adiciona linha vertical em zero
-                            HorizontalLineAnnotation Zero_correla2 = new HorizontalLineAnnotation();
-                            Zero_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
-                            Zero_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
-                            Zero_correla2.Height = 2;
-                            Zero_correla2.LineDashStyle = ChartDashStyle.Dot;
-                            Zero_correla2.LineColor = System.Drawing.Color.SkyBlue;
-                            Zero_correla2.LineWidth = 1;
-                            Zero_correla2.AnchorX = prb.ChartAreas[canal+2].AxisX.Minimum;
-                            Zero_correla2.AnchorY = 0;
-                            prb.Annotations.Add(Zero_correla2);
-                            //Adiciona linha vertical Maximo em Y
-                            HorizontalLineAnnotation Max_correla2 = new HorizontalLineAnnotation();
-                            Max_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
-                            Max_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
-                            Max_correla2.Height = 2;
-                            Max_correla2.LineDashStyle = ChartDashStyle.Dot;
-                            Max_correla2.LineColor = System.Drawing.Color.SkyBlue;
-                            Max_correla2.LineWidth = 1;
-                            Max_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
-                            Max_correla2.AnchorY = MaxY;
-                            prb.Annotations.Add(Max_correla2);
-
-                            //Adiciona linha vertical Minimo em Y
-                            HorizontalLineAnnotation Min_correla2 = new HorizontalLineAnnotation();
-                            Min_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
-                            Min_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
-                            Min_correla2.Height = 2;
-                            Min_correla2.LineDashStyle = ChartDashStyle.Dot;
-                            Min_correla2.LineColor = System.Drawing.Color.SkyBlue;
-                            Min_correla2.LineWidth = 1;
-                            Min_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
-                            Min_correla2.AnchorY = MinY;
-                            prb.Annotations.Add(Min_correla2);
-
-                            //Adiciona linha vertical Média em Y
-                            HorizontalLineAnnotation Med_correla2 = new HorizontalLineAnnotation();
-                            Med_correla2.AnchorDataPoint = prb.Series[canal + 2].Points[1];
-                            Med_correla2.Width = prb.ChartAreas[canal + 2].Position.Width;
-                            Med_correla2.Height = 2;
-                            Med_correla2.LineDashStyle = ChartDashStyle.Dash;
-                            Med_correla2.LineColor = System.Drawing.Color.Orange;
-                            Med_correla2.LineWidth = 1;
-                            Med_correla2.AnchorX = prb.ChartAreas[canal].AxisX.Minimum;
-                            Med_correla2.AnchorY = Media / prb.Series[canal + 2].Points.Count;
-                            prb.Annotations.Add(Med_correla2);
-                        }*/
                         //desabilita a barra de progresso
                         load_progress_bar(1, 3);
                         break;
@@ -537,7 +404,6 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void load_progress_bar(int valor, int caso)
         {
-
             if (_BarraDeProgresso.InvokeRequired)
             {
                 _BarraDeProgresso.BeginInvoke(new AtualizaPloter(load_progress_bar), new Object[] { valor, caso });
@@ -584,9 +450,6 @@ namespace AmbienteRPB
 
                 prb.ChartAreas[_canal + 2].AxisX.ScaleView.Size = valor;
                 prb.ChartAreas[_canal + 2].AxisX.ScrollBar.Enabled = false;
-
-                //prb.ChartAreas[_canal + 3].AxisX.ScaleView.Size = valor;
-                //prb.ChartAreas[_canal + 3].AxisX.ScrollBar.Enabled = false;
 
                 ScrollBar.Maximum = (SinalEEG.FileInfo.NrDataRecords) * (int)SinalEEG.FileInfo.SampleRecDuration;
                 ScrollBar.SmallChange = 10;//segundos
