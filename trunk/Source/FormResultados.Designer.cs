@@ -62,6 +62,7 @@
             this.SMS_Box = new System.Windows.Forms.RichTextBox();
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
+            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -198,6 +199,7 @@
             this.toolStripSeparator7,
             this.btn_BackPropagation,
             this.toolStripSeparator4,
+            this.btn_Suspender,
             this.toolStripSeparator5,
             this.toolStripSeparator6,
             this.toolStripLabel1,
@@ -371,6 +373,16 @@
             this.btn_Aumentar.Visible = false;
             this.btn_Aumentar.Click += new System.EventHandler(this.btn_Aumentar_Click);
             // 
+            // btn_Suspender
+            // 
+            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
+            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Suspender.Name = "btn_Suspender";
+            this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
+            this.btn_Suspender.Text = "toolStripButton1";
+            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click_1);
+            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,5 +448,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton btn_Suspender;
     }
 }

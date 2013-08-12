@@ -1191,7 +1191,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------
         private void btn_Correlacao_Click(object sender, EventArgs e)
         {
-            FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
+            FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput, chart1.BackColor, chart1.Series[0].Color);
             correlacaoForm.Show();
         }
         //------------------------------------------------------------------------

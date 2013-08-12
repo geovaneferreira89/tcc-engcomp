@@ -8,13 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using NeuroLoopGainLibrary.Edf;
 using Microsoft.VisualBasic;
-using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
-using NeuroLoopGainLibrary.Edf;
 
 namespace AmbienteRPB
 {
@@ -33,7 +31,7 @@ namespace AmbienteRPB
         public PointF ValorInicio;
         public PointF ValorFim;
         private Thread Thread_;
-        private Thread ThreadKohonen;
+        private Thread Thread_RN;
         private GerenArquivos GerArquivos;
         private bool SMS_Zoom = false;
         private int ID_PadraoAtual;
@@ -42,12 +40,16 @@ namespace AmbienteRPB
         private double x_Pos, y_Pos;
         private int[] PadroesATreinar;
         private bool visivel;
+        private  Color CorDeFundo; 
+        private Color CorDaSerie;
         //-------------------------------------------
-        public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF)
+        public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF, Color _CorDeFundo, Color _CorDaSerie)
         {
             ListaDeEventos = _ListaDeEventos;
             numeroDeCanais = _numDeCanais;
             edfFileOutput  = _EDF;
+            CorDeFundo     = _CorDeFundo;
+            CorDaSerie     = _CorDaSerie;
             Arquivos       = new GerenArquivos();
             InitializeComponent();
         }
@@ -65,7 +67,8 @@ namespace AmbienteRPB
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
-
+            chart1.BackColor = CorDeFundo;
+            while (Thread_.IsAlive) { }
         }
         //-----------------------------------------------------------------------------------------
         private void AdicionaCanais()
@@ -294,7 +297,6 @@ namespace AmbienteRPB
                 }
             }
         }
-        
         //------------------------------------------------------------------------------------------
         private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
@@ -380,7 +382,6 @@ namespace AmbienteRPB
             else
                 return false;
         }
-
         //------------------------------------------------------------------------------------------
         //Passar para thread depois... 
         private void inicia_correlacao()
@@ -392,9 +393,17 @@ namespace AmbienteRPB
             Thread_.Start();
         }
 
-        private void btn_Suspender_Click(object sender, EventArgs e)
+        private void btn_Suspender_Click_1(object sender, EventArgs e)
         {
-            Thread_.Suspend();
+            if (Thread_RN.IsAlive)
+            {
+                Thread_RN.Abort();
+                MessageBox.Show("Operação Abortada!\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+                progressBar.Value = 0;
+                progressBar.Enabled = false;
+            }
+            else
+                MessageBox.Show("Nenhuma operação no momento está sendo executada!\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -455,9 +464,9 @@ namespace AmbienteRPB
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objKohonen = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen");
-                ThreadKohonen = new Thread(new ThreadStart(objKohonen.Init));
-                ThreadKohonen.Start();
+                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen");
+                Thread_RN = new Thread(new ThreadStart(objRMP.Init));
+                Thread_RN.Start();
             }
         }
         //------------------------------------------------------------------------------
@@ -473,7 +482,6 @@ namespace AmbienteRPB
                 SMS_Box.Visible = true;
                 btn_Aumentar.Visible = true;
                 btn_Close.Visible    = true;
-               
 
                 GerArquivos = new GerenArquivos();
                 double numeroLinhas = chart1.Series[0].Points.Count;
@@ -518,8 +526,8 @@ namespace AmbienteRPB
                     TipoBkP = "BackPropagation_AllEvnts";
 
                 RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP);
-                ThreadKohonen = new Thread(new ThreadStart(objBKP.Init));
-                ThreadKohonen.Start();
+                Thread_RN = new Thread(new ThreadStart(objBKP.Init));
+                Thread_RN.Start();
             }
         }
 
@@ -582,9 +590,8 @@ namespace AmbienteRPB
         {
         }
         //================================================================================================
-        //                              Marcar padrao pela correlação 
+        //                                   Marcar padrao pela correlação 
         //================================================================================================
-
         private void chart1_MouseClick(object sender, MouseEventArgs e)
         {
             HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
@@ -652,6 +659,5 @@ namespace AmbienteRPB
                 ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
             }
         }
-        //------------------------------------------------------------------------------------------
-     }
+       }
 }
