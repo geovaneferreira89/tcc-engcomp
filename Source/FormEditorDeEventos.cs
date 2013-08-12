@@ -16,7 +16,6 @@ namespace AmbienteRPB
 {
     public partial class FormEditorDeEventos : Form
     {
-
         private ListaPadroesEventos[] Listas;
         private GerenArquivos Arquivos;
         private EdfFile SinalEEG;
@@ -27,7 +26,6 @@ namespace AmbienteRPB
         public PointF ValorReferencia;
 
         public double[] Vector;
-
         VerticalLineAnnotation Cursor_vertical_Inicio;
         VerticalLineAnnotation Cursor_vertical_Fim;
         VerticalLineAnnotation Cursor_vertical_Referencia;
@@ -77,7 +75,6 @@ namespace AmbienteRPB
                 lbxEventosPorTipo.Items.Clear();
                 for (int i = 0; i < Listas[0].NumeroEventos; i++)
                     lbxEventosPorTipo.Items.Add(Listas[0].GetNomesEvento(i));
-
             }
         }
         //---------------------------------------------------------------------------

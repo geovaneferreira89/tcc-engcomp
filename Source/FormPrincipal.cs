@@ -1194,7 +1194,59 @@ namespace AmbienteRPB
             FormResultados correlacaoForm = new FormResultados(ListaPadroes, __numeroDeCanais, edfFileOutput);
             correlacaoForm.Show();
         }
+        //------------------------------------------------------------------------
+        //------------------------ Altera Cores dos Charts -----------------------
+        //------------------------------------------------------------------------
+        private void brancoPretoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.Black, Color.White);
+        }
+        private void pretoBrancoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.White, Color.Black);
+        }
+        private void azulPretoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.Black, Color.Blue);
+        }
+        private void azulPretoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.White, Color.Blue);
+        }
+        private void azul2CinzaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.DarkGray, Color.Blue);
+        }
+        private void vermelhoPretoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.Black, Color.Red);
+        }
+        private void vermelhoBrancoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.White, Color.Red);
+        }
+        private void vermelhoCinzaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetCoresChart(Color.DarkGray, Color.Red);
+        }
+        private void SetCoresChart(Color CorDeFundo, Color CorDeSerie)
+        {
+            chart1.BackColor = CorDeFundo;
+            if (CorDeFundo == Color.Black)
+                CorDeFundo = Color.White;
+            else
+                CorDeFundo = Color.Black;
 
+            for (int i = 0; i < chart1.Series.Count(); i++)
+            {
+                chart1.Series[i].Color = CorDeSerie;
+                chart1.Titles[i].ForeColor = CorDeFundo;
+            }
+        }
+
+    
+
+       
    
     }
 }
