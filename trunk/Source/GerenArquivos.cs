@@ -68,7 +68,6 @@ namespace AmbienteRPB
             PathUser();
             return path;
         }
-
         //Salvar Projeto Como ----------------------------------------------------------------
         public void Salva_Projeto(string diretorio, int __numeroDeCanais, Control _Chart)
         {

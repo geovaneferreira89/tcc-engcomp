@@ -625,12 +625,20 @@ namespace AmbienteRPB
                 //Tread responsavel por marcar os eventos caso eles já existam
                 if (ListaExiste)
                 {
-                    DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                    if (resposta == DialogResult.Yes)
+                    if(!Arquivos.ArquivoExiste("NO_Anotations.inf"))
                     {
-                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, "CarregaLista", ListaPadroes, 0, canaisCTRL);
-                        Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
-                        oThread.Start();
+                        DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?\n\n\nCancel - Não mostrar novamente.", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
+                        if (resposta == DialogResult.Yes)
+                        {
+                            Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, "CarregaLista", ListaPadroes, 0, canaisCTRL);
+                            Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
+                            oThread.Start();
+                        }
+                        else if (resposta == DialogResult.Cancel)
+                        {
+                            System.IO.StreamWriter fileSalve = new System.IO.StreamWriter("NO_Anotations.inf", false);
+                            fileSalve.Close();
+                        }
                     }
                 }
                 if (Arquivos.ArquivoExiste(edfFileOutput.FileName + ".rec"))
@@ -648,6 +656,27 @@ namespace AmbienteRPB
                 DataRecords_lidos = edfFileOutput.DataBuffer.Count();
            // AmplitudeCombo.Text = Convert.ToString(chart1.ChartAreas[0].AxisY.ScaleView.Size);
         }
+        //------------------------------------------------------------------------------------------
+        //Carrega a lista de enventos marcados e plota no form principal
+        private void exibirEventosMarcadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, "CarregaLista", ListaPadroes, 0, canaisCTRL);
+            Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
+            oThread.Start();
+        }
+        //------------------------------------------------------------------------------------------
+        //Carrega os resultados da Rede Neural se o arquivo existir
+        private void carregarResultadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Arquivos.ArquivoExiste(edfFileOutput.FileName + ".rec"))
+            {
+                    Annotations_Chart Marcacoes = new Annotations_Chart(chart1, progressBar, 0, 0, Color.Red, edfFileOutput.FileName, null, false, "", 0, 0, "CarregaDaRN", ListaPadroes, 0, canaisCTRL);
+                    Thread MarcThread = new Thread(new ThreadStart(Marcacoes.Init));
+                    MarcThread.Start();
+            }
+            else
+                MessageBox.Show("Não existe nenhum resultado para este arquivo!", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+        } 
         //------------------------------------------------------------------------------------------
         //Diminui o tamanho de largura de todas as séries, (diminuindo a sobreposição entre canais)
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -1252,11 +1281,6 @@ namespace AmbienteRPB
                 chart1.Series[i].Color = CorDeSerie;
                 chart1.Titles[i].ForeColor = CorDeFundo;
             }
-        }
-
-    
-
-       
-   
+        }   
     }
 }

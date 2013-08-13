@@ -198,7 +198,7 @@ namespace AmbienteRPB
                             //Altura
                             annotationRectangle.Height = chart1.ChartAreas[CanalAtual].Position.Height;
                             //Comprimento
-                            annotationRectangle.Width = (Xf- Xi) * 100;/// 26.1;
+                            annotationRectangle.Width = ((Xf - Xi) / chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Size) * 100;/// 26.1;
                             // Prevent moving or selecting
                             annotationRectangle.AllowMoving = false;
                             annotationRectangle.AllowAnchorMoving = false;
