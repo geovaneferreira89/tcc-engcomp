@@ -130,7 +130,6 @@ namespace AmbienteRPB
             }
             else if (tipoDeRede == "BackPropagation_AllEvnts")
             {
-
                 //Utilizando o backPropagation 
                 send_SmS(1, "Inicializando...", false);
                 vetorDeResultados = new int[Sinal.Count()];
@@ -265,7 +264,6 @@ namespace AmbienteRPB
                                     PadraoDescatardo = false;
                                     while (tempo_X <= (int)x + MenorTamanho)
                                     {
-
                                         SinalEEG.ReadDataBlock(DataRecords_lidos);
                                         DataRecords_lidos++;
                                         //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
@@ -340,7 +338,6 @@ namespace AmbienteRPB
                         break;
                     }
             }
-         
         }
         //-----------------------------------------------------------------------------------------
         public void Rodar(double[] input1, int RedeAtual)

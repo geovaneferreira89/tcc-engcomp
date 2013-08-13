@@ -116,6 +116,28 @@ namespace AmbienteRPB
             NumeroDeCanais = formEDF.NumeroDeCanais;
             return edfFileOutput;
         }
+        //Exportar Saida Da Rede Neural------------------------------------------------------
+        public void Exportar_RN(string NomeArquivo, string[] eventos, int [] CountMarcacoes_Por_Evento, double [] Marcacoes)
+        {
+            string Dados_Saida;//hours
+            Dados_Saida = "[TamList= " + eventos.Count() + "]";
+            System.IO.StreamWriter fileSalve = new System.IO.StreamWriter(NomeArquivo + ".rec", false);
+            fileSalve.WriteLine(Dados_Saida);
+            for (int i = 0; i < eventos.Count(); i++)
+            {
+                fileSalve.WriteLine("[Padrao = " + eventos[i] + "]");
+                fileSalve.WriteLine("[CountP = " + CountMarcacoes_Por_Evento[i] + "]");
+                int count = 0;
+                for (int j = 0; j < CountMarcacoes_Por_Evento[i]; j++)
+                {
+                    fileSalve.WriteLine("[Inicio   = " + Marcacoes[count] + "]");
+                    count++;
+                    fileSalve.WriteLine("[Fim      = " + Marcacoes[count] + "]");
+                    count++;
+                }
+            }
+            fileSalve.Close();
+        }
         //Exportar Padroes de Correlação ------------------------------------------------------
         public void SalvaPadraoCorrelacao(string NomePadrao, double[] sinal)
         {

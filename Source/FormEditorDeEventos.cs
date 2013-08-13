@@ -129,7 +129,7 @@ namespace AmbienteRPB
                 ValorReferencia = new PointF();
                 ValorReferencia = Listas[comboTiposDeEventos.SelectedIndex].GetValorMeio(lbxEventosPorTipo.SelectedIndex);
 
-                lblTamanho.Text = "Tam: " + Convert.ToString(ValorFim.X - ValorInicio.X);
+                lblTamanho.Text = "Tam: " + Convert.ToString((int)(ValorFim.X - ValorInicio.X));
                 //Nome do canal
                 string nome_canal = Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex);
                 int X_ = nome_canal.IndexOf("_");

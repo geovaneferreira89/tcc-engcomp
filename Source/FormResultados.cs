@@ -18,6 +18,16 @@ namespace AmbienteRPB
 {
     public partial class FormResultados : Form
     {
+        public string ArquivoDeSaida
+        {
+            get;
+            set;
+        }
+        public bool OP_Salvar
+        {
+            get;
+            set;
+        }
         //-------------------------------------------
         private ListaPadroesEventos[] ListaDeEventos;
         private int numeroDeCanais;
@@ -42,6 +52,10 @@ namespace AmbienteRPB
         private bool visivel;
         private  Color CorDeFundo; 
         private Color CorDaSerie;
+        private bool RN_Rodou;
+        private string[] eventos;
+        private int [] CountMarcacoes_Por_Evento;
+        private double[] Marcacoes;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF, Color _CorDeFundo, Color _CorDaSerie)
         {
@@ -68,7 +82,8 @@ namespace AmbienteRPB
             Thread_.Start();
             chart1.Enabled = true;
             chart1.BackColor = CorDeFundo;
-            while (Thread_.IsAlive) { }
+            OP_Salvar = false;
+            RN_Rodou  = false;
         }
         //-----------------------------------------------------------------------------------------
         private void AdicionaCanais()
@@ -449,16 +464,22 @@ namespace AmbienteRPB
                 {
                     PadroesATreinar = new int[FormDadosInput.NumPadroes];
                     PadroesATreinar[0] = ID_PadraoAtual;
+                    eventos = new string[FormDadosInput.NumPadroes];
+                    eventos[0] = Convert.ToString(ID_PadraoAtual);
+
                     for (int i = 1; i < FormDadosInput.NumPadroes; i++)
                     {
                         SelecionaEventoDasLista();
                         PadroesATreinar[i] = ID_PadraoAtual;
+                        eventos[i] = Convert.ToString(ID_PadraoAtual);
                     }
                 }
                 else
                 {
                     PadroesATreinar = new int[1];
                     PadroesATreinar[0] = ID_PadraoAtual;
+                    eventos = new string[FormDadosInput.NumPadroes];
+                    eventos[0] = Convert.ToString(ID_PadraoAtual);
                 }
 
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
@@ -467,6 +488,8 @@ namespace AmbienteRPB
                 RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen");
                 Thread_RN = new Thread(new ThreadStart(objRMP.Init));
                 Thread_RN.Start();
+                //Habilita a opção de poder exportar para o form principal
+                RN_Rodou = true;
             }
         }
         //------------------------------------------------------------------------------
@@ -508,18 +531,24 @@ namespace AmbienteRPB
 
                 if (FormDadosInput.NumPadroes > 1)
                 {
+                    eventos         = new string[FormDadosInput.NumPadroes];
                     PadroesATreinar = new int[FormDadosInput.NumPadroes];
                     PadroesATreinar[0] = ID_PadraoAtual;
+                    eventos[0] = Convert.ToString(ID_PadraoAtual);
                     for (int i = 1; i < FormDadosInput.NumPadroes; i++)
                     {
                         SelecionaEventoDasLista();
                         PadroesATreinar[i] = ID_PadraoAtual;
+                        eventos[i] = Convert.ToString(ID_PadraoAtual);
+
                     }
                 }
                 else
                 {
                     PadroesATreinar = new int[1];
                     PadroesATreinar[0] = ID_PadraoAtual;
+                    eventos = new string[FormDadosInput.NumPadroes];
+                    eventos[0] = Convert.ToString(ID_PadraoAtual);
                 }
                 string TipoBkP = "BackPropagation";
                 if (FormDadosInput.UsarListaDeTodosEnventos)
@@ -528,6 +557,9 @@ namespace AmbienteRPB
                 RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP);
                 Thread_RN = new Thread(new ThreadStart(objBKP.Init));
                 Thread_RN.Start();
+                //Habilita a opção de poder exportar para o form principal
+                RN_Rodou = true;
+                
             }
         }
 
@@ -657,6 +689,74 @@ namespace AmbienteRPB
                 Arquivos.SalvaPadraoCorrelacao((i+1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
                 ListaDeEventos[i].SetCorDeFundo(ListaDeEventos[i].GetNumeroEventos(), Color.Green);
                 ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
+            }
+        }
+
+        private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
+        {
+        
+        }
+        private void AnaliseDeResultados()
+        {
+            bool iniciou = false;
+            int inicio = 0;
+            int Fim;
+            int count = 0;
+            int valMax = 0;
+            int valMin = 0;
+            int val = 0;
+            CountMarcacoes_Por_Evento = new int[eventos.Count()];
+            Marcacoes = new double[chart1.Series[2].Points.Count()];
+            //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
+            for (int i = 0; i < chart1.Series[2].Points.Count(); i++)
+            {
+                val = (int)chart1.Series[2].Points[i].YValues[0];
+                if (val != 0){
+                    if (iniciou == false)
+                    {
+                        valMax = val;
+                        valMin = val;
+                        inicio = i;
+                        iniciou = true;
+                    }
+                    else if (valMin >= val && iniciou == true)
+                    {
+                        valMin = val;
+                    }
+                    else if (valMax <= val && iniciou == true)
+                    {
+                        valMax = val;
+                    }
+                }
+                else if (iniciou == true)
+                {
+                    // eventos, CountMarcacoes_Por_Evento, Marcacoes
+                    Fim = i;
+                    CountMarcacoes_Por_Evento[valMin - 1] = CountMarcacoes_Por_Evento[valMin - 1] + 1;
+                    Marcacoes[count] = inicio;
+                    count++;
+                    Marcacoes[count] = Fim;
+                    count++;
+                    iniciou = false;
+                    //Salva o dado nos vetores
+                }
+            }
+        }
+
+        private void FormResultados_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (RN_Rodou)
+            {
+                //DialogResult resposta = MessageBox.Show("Deseja mostrar na tela principal os resultados?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                //if (resposta == DialogResult.Yes)
+                //{
+                OP_Salvar = true;
+                ArquivoDeSaida = edfFileOutput.FileName;
+                AnaliseDeResultados();
+                Arquivos = new GerenArquivos();
+                Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes);
+                RN_Rodou = false;
+                //}
             }
         }
        }
