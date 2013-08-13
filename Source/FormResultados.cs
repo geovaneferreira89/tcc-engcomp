@@ -691,11 +691,16 @@ namespace AmbienteRPB
                 ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
             }
         }
-
+        //================================================================================================
+        //                      Fechar o Form E Salvamento de Resultados  Dados Da RN
+        //================================================================================================
+        //------------------------------------------------------------------------------------------
         private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
         {
         
         }
+        //----------------------------------------------------------------------------------------
+        //Função responsavel por analisar os resultados obtidos da RN
         private int AnaliseDeResultados()
         {
             bool iniciou = false;
@@ -733,9 +738,9 @@ namespace AmbienteRPB
                     }
                     else if (iniciou == true)
                     {
-                        // eventos, CountMarcacoes_Por_Evento, Marcacoes
                         Fim = i;
                         CountMarcacoes_Por_Evento[valMin - 1] = CountMarcacoes_Por_Evento[valMin - 1] + 1;
+                        //Salva os dados nos vetores
                         Marcacoes[count] = CanalX;
                         count++;
                         Marcacoes[count] = inicio;
@@ -743,7 +748,6 @@ namespace AmbienteRPB
                         Marcacoes[count] = Fim;
                         count++;
                         iniciou = false;
-                        //Salva o dado nos vetores
                     }
                 }
             }
