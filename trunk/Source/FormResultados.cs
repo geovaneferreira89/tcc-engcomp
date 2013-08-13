@@ -754,16 +754,16 @@ namespace AmbienteRPB
         {
             if (RN_Rodou)
             {
-                //DialogResult resposta = MessageBox.Show("Deseja mostrar na tela principal os resultados?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                //if (resposta == DialogResult.Yes)
-                //{
-                OP_Salvar = true;
-                ArquivoDeSaida = edfFileOutput.FileName;
-                int count = AnaliseDeResultados();
-                Arquivos = new GerenArquivos();
-                Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
-                RN_Rodou = false;
-                //}
+                DialogResult resposta = MessageBox.Show("Deseja salvar os resultados?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                if (resposta == DialogResult.Yes)
+                {
+                    OP_Salvar = true;
+                    ArquivoDeSaida = edfFileOutput.FileName;
+                    int count = AnaliseDeResultados();
+                    Arquivos = new GerenArquivos();
+                    Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
+                    RN_Rodou = false;
+                }
             }
         }
        }
