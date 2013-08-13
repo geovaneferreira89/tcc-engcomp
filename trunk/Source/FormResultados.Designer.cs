@@ -54,6 +54,7 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btn_BackPropagation = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -62,7 +63,6 @@
             this.SMS_Box = new System.Windows.Forms.RichTextBox();
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
-            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -305,6 +305,16 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
+            // btn_Suspender
+            // 
+            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
+            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Suspender.Name = "btn_Suspender";
+            this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
+            this.btn_Suspender.Text = "toolStripButton1";
+            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click_1);
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -373,16 +383,6 @@
             this.btn_Aumentar.Visible = false;
             this.btn_Aumentar.Click += new System.EventHandler(this.btn_Aumentar_Click);
             // 
-            // btn_Suspender
-            // 
-            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
-            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Suspender.Name = "btn_Suspender";
-            this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
-            this.btn_Suspender.Text = "toolStripButton1";
-            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click_1);
-            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,6 +400,8 @@
             this.Name = "FormResultados";
             this.Text = "Técnicas de Reconhecimento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormResultados_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormResultados_FormClosed);
             this.Shown += new System.EventHandler(this.FormResultados_Shown);
             this.Box_Status.ResumeLayout(false);
             this.Box_Status.PerformLayout();
