@@ -85,7 +85,7 @@ namespace AmbienteRPB
                 chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
-                lblTamanho.Text = "Tam: ";
+                lblTamanho.Text = "Tamanho: ";
                 btnExcluir.Enabled = false;
             }
             lbxEventosPorTipo.Items.Clear();

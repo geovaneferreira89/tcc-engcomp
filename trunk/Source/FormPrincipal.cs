@@ -469,7 +469,7 @@ namespace AmbienteRPB
                 aux_x_pos = aux_x_pos + (float)Padrao_Inicio.X;
               
                 Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar,aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2],
-                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size), true, null, countCTRL, canaisCTRL);
+                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size), "AddMarcacao", null, countCTRL, canaisCTRL);
                 Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                 oThread.Start();
                 
@@ -628,9 +628,19 @@ namespace AmbienteRPB
                     DialogResult resposta = MessageBox.Show("Deseja carregar no sinal a lista de eventos já existentes?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
                     if (resposta == DialogResult.Yes)
                     {
-                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1,progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, false, ListaPadroes,0, canaisCTRL);
+                        Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar, 0, 0, Color.Red, "", null, false, "", 0, 0, "CarregaLista", ListaPadroes, 0, canaisCTRL);
                         Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                         oThread.Start();
+                    }
+                }
+                if (Arquivos.ArquivoExiste(edfFileOutput.FileName + ".rec"))
+                {
+                    DialogResult resposta = MessageBox.Show("Existe um arquivo de marcações, deseja carregar?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                    if (resposta == DialogResult.Yes)
+                    {
+                        Annotations_Chart Marcacoes = new Annotations_Chart(chart1, progressBar, 0, 0, Color.Red, edfFileOutput.FileName, null, false, "", 0, 0, "CarregaDaRN", ListaPadroes, 0, canaisCTRL);
+                        Thread MarcThread = new Thread(new ThreadStart(Marcacoes.Init));
+                        MarcThread.Start();
                     }
                 }
             }
