@@ -27,7 +27,7 @@ namespace AmbienteRPB
     public class Annotations_Chart
     {
         private Control _Grafico = null;
-        private delegate void Anotation(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, bool _opcao_, ListaPadroesEventos[] _Lista_, int _countCRTL_, int[] _vectorCTRL_);
+        private delegate void Anotation(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, string _opcao_, ListaPadroesEventos[] _Lista_, int _countCRTL_, int[] _vectorCTRL_);
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1 = null;
         private float ValX;
         private float ValY;
@@ -39,7 +39,7 @@ namespace AmbienteRPB
         private float Altura; 
         private float Comprimento;
         private ListaPadroesEventos[] ListaPadroes;
-        private bool opcao;
+        private string opcao;
         private int countCRTL; 
         private int[] vectorCTRL;
         //Controles Progress Bar--------------------------------------------------------------------
@@ -48,7 +48,7 @@ namespace AmbienteRPB
         private System.Windows.Forms.ProgressBar prgbar = null;
         //-----------------------------------------------------------------------------------------
         // This method that will be called when the thread is started
-        public Annotations_Chart(Control Chart, Control BarraDeProgresso, float _ValX, float _ValY, Color _Cor, string _Evento, DataPoint _Canal, bool _comentOn, string _coment, float _Altura, float _Comprimento, bool _Opcao, ListaPadroesEventos[] _ListaPadroes,int _countCRTL, int[] _vectorCTRL)
+        public Annotations_Chart(Control Chart, Control BarraDeProgresso, float _ValX, float _ValY, Color _Cor, string _Evento, DataPoint _Canal, bool _comentOn, string _coment, float _Altura, float _Comprimento, string _Opcao, ListaPadroesEventos[] _ListaPadroes,int _countCRTL, int[] _vectorCTRL)
         {
             _Grafico     = Chart;
             ValX         = _ValX;
@@ -73,7 +73,7 @@ namespace AmbienteRPB
             Add_Comentario(ValX, ValY, Cor, Evento, Canal, comentOn, coment, Altura, Comprimento, opcao, ListaPadroes, countCRTL, vectorCTRL);
         }
         //----------------------------------------------
-        private void Add_Comentario(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, bool _opcao_, ListaPadroesEventos[] _Lista_, int _countCRTL_, int[] _vectorCTRL_)
+        private void Add_Comentario(float PosX, float PosY, Color CorDeFundo, string nomeEvento, DataPoint _Canal_, bool _comentOn_, string _coment_, float _Altura_, float _Comprimento_, string _opcao_, ListaPadroesEventos[] _Lista_, int _countCRTL_, int[] _vectorCTRL_)
         {
             if (_Grafico.InvokeRequired)
             {
@@ -82,7 +82,7 @@ namespace AmbienteRPB
             else
             {
                 chart1 = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                if (opcao)
+                if (opcao == "AddMarcacao")
                 {
                     if (_countCRTL_ == 0)
                     {
@@ -133,7 +133,7 @@ namespace AmbienteRPB
                         }
                     }
                 }
-                else
+                else if(opcao == "CarregaLista")
                 {//Carrega do arquivo... 
                     load_progress_bar(_Lista_.Count(), 2);
                     for (int i = 0; i < _Lista_.Count(); i++)
@@ -166,6 +166,47 @@ namespace AmbienteRPB
                         load_progress_bar(0, 1);
                     }
                     load_progress_bar(0, 3);
+                }
+                else if (opcao == "CarregaDaRN")
+                {//Carrega do arquivo gerado pela rede neural... 
+                    GerenArquivos Arquivo = new GerenArquivos();
+                    Arquivo.Importar_RN(nomeEvento);
+                    int count = 0;
+                    for (int i = 0; i < Arquivo.RN_eventos.Count(); i++)
+                    {
+                        for (int j = 0; j < Arquivo.RN_CountMarcacoes_Por_Evento[i]; j++)
+                        {
+                            RectangleAnnotation annotationRectangle = new RectangleAnnotation();
+                            annotationRectangle.Text = "";
+                            annotationRectangle.BackColor = Color.FromArgb(128, Color.Yellow);
+
+                            int CanalAtual = (int)Arquivo.RN_Marcacoes[count];
+                            count++;
+                            int Xi = (int)Arquivo.RN_Marcacoes[count];
+                            count++;                            
+                            int Xf = (int)Arquivo.RN_Marcacoes[count];
+                            count++;
+
+                            annotationRectangle.AxisX = chart1.ChartAreas[CanalAtual].AxisX;
+                            annotationRectangle.AxisY = chart1.ChartAreas[CanalAtual].AxisY;
+
+                            annotationRectangle.X = Xi;
+                            annotationRectangle.Y = chart1.ChartAreas[CanalAtual].AxisY.Maximum;
+
+                            annotationRectangle.LineColor =  Color.FromArgb(128, Color.Yellow);
+                            annotationRectangle.Font = new Font("Arial", 10, FontStyle.Bold);
+                            //Altura
+                            annotationRectangle.Height = chart1.ChartAreas[CanalAtual].Position.Height;
+                            //Comprimento
+                            annotationRectangle.Width = (Xf- Xi) * 100;/// 26.1;
+                            // Prevent moving or selecting
+                            annotationRectangle.AllowMoving = false;
+                            annotationRectangle.AllowAnchorMoving = false;
+                            annotationRectangle.AllowSelecting = false;
+                            // Add the annotation to the collection
+                            chart1.Annotations.Add(annotationRectangle);
+                        }
+                    }
                 }
             }
         }

@@ -29,6 +29,9 @@ namespace AmbienteRPB
         private EdfFile edfFileOutput;
         public string path;
         public int NumeroDeCanais;
+        public string[] RN_eventos;
+        public int[] RN_CountMarcacoes_Por_Evento;
+        public double[] RN_Marcacoes;
         //Verifica se o Arquivo existe----------------------------------------------------------
         public bool ArquivoExiste(string Arquivo_Nome)
         {
@@ -117,11 +120,13 @@ namespace AmbienteRPB
             return edfFileOutput;
         }
         //Exportar Saida Da Rede Neural------------------------------------------------------
-        public void Exportar_RN(string NomeArquivo, string[] eventos, int [] CountMarcacoes_Por_Evento, double [] Marcacoes)
+        public void Exportar_RN(string NomeArquivo, string[] eventos, int [] CountMarcacoes_Por_Evento, double [] Marcacoes, int TotalDeMarcacoes)
         {
             string Dados_Saida;//hours
             Dados_Saida = "[TamList= " + eventos.Count() + "]";
             System.IO.StreamWriter fileSalve = new System.IO.StreamWriter(NomeArquivo + ".rec", false);
+            fileSalve.WriteLine(Dados_Saida);
+            Dados_Saida = "[TotalMC= " + TotalDeMarcacoes + "]";
             fileSalve.WriteLine(Dados_Saida);
             for (int i = 0; i < eventos.Count(); i++)
             {
@@ -130,13 +135,47 @@ namespace AmbienteRPB
                 int count = 0;
                 for (int j = 0; j < CountMarcacoes_Por_Evento[i]; j++)
                 {
-                    fileSalve.WriteLine("[Inicio   = " + Marcacoes[count] + "]");
+                    fileSalve.WriteLine("[Canal  = " + Marcacoes[count] + "]");
                     count++;
-                    fileSalve.WriteLine("[Fim      = " + Marcacoes[count] + "]");
+                    fileSalve.WriteLine("[Inicio = " + Marcacoes[count] + "]");
+                    count++;
+                    fileSalve.WriteLine("[Fim    = " + Marcacoes[count] + "]");
                     count++;
                 }
             }
             fileSalve.Close();
+        }
+        //Importar Saida Da Rede Neural------------------------------------------------------
+        public void Importar_RN(string NomeArquivo)
+        {
+            string Dados;
+            fileR = new System.IO.StreamReader(NomeArquivo + ".rec");
+            Dados = LerLinha(10);
+            RN_eventos                   = new string[Convert.ToInt16(Dados)];
+            RN_CountMarcacoes_Por_Evento = new int[Convert.ToInt16(Dados)];
+            Dados = LerLinha(10);
+            RN_Marcacoes = new double[Convert.ToInt16(Dados)*3];
+            for (int i = 0; i < RN_eventos.Count(); i++)
+            {
+                Dados = LerLinha(10);
+                RN_eventos[i] = Dados;
+                Dados = LerLinha(10);
+                RN_CountMarcacoes_Por_Evento[i] = Convert.ToInt16(Dados);
+                int count = 0;
+                for (int j = 0; j < RN_CountMarcacoes_Por_Evento[i]; j++)
+                {
+                    Dados = LerLinha(10);
+                    RN_Marcacoes[count] = Convert.ToDouble(Dados);
+                    count++;
+                    Dados = LerLinha(10);
+                    RN_Marcacoes[count] = Convert.ToDouble(Dados);
+                    count++;
+                    Dados = LerLinha(10);
+                    RN_Marcacoes[count] = Convert.ToDouble(Dados);
+                    count++;
+                }
+            } 
+            fileR.Close();
         }
         //Exportar Padroes de Correlação ------------------------------------------------------
         public void SalvaPadraoCorrelacao(string NomePadrao, double[] sinal)

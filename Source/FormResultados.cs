@@ -696,7 +696,7 @@ namespace AmbienteRPB
         {
         
         }
-        private void AnaliseDeResultados()
+        private int AnaliseDeResultados()
         {
             bool iniciou = false;
             int inicio = 0;
@@ -708,39 +708,46 @@ namespace AmbienteRPB
             CountMarcacoes_Por_Evento = new int[eventos.Count()];
             Marcacoes = new double[chart1.Series[2].Points.Count()];
             //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
-            for (int i = 0; i < chart1.Series[2].Points.Count(); i++)
+            for (int CanalX = 0; CanalX < CanaisCriados; CanalX++)
             {
-                val = (int)chart1.Series[2].Points[i].YValues[0];
-                if (val != 0){
-                    if (iniciou == false)
-                    {
-                        valMax = val;
-                        valMin = val;
-                        inicio = i;
-                        iniciou = true;
-                    }
-                    else if (valMin >= val && iniciou == true)
-                    {
-                        valMin = val;
-                    }
-                    else if (valMax <= val && iniciou == true)
-                    {
-                        valMax = val;
-                    }
-                }
-                else if (iniciou == true)
+                for (int i = 0; i < chart1.Series[(CanalX*4) + 2].Points.Count(); i++)
                 {
-                    // eventos, CountMarcacoes_Por_Evento, Marcacoes
-                    Fim = i;
-                    CountMarcacoes_Por_Evento[valMin - 1] = CountMarcacoes_Por_Evento[valMin - 1] + 1;
-                    Marcacoes[count] = inicio;
-                    count++;
-                    Marcacoes[count] = Fim;
-                    count++;
-                    iniciou = false;
-                    //Salva o dado nos vetores
+                    val = (int)chart1.Series[(CanalX * 4) + 2].Points[i].YValues[0];
+                    if (val != 0)
+                    {
+                        if (iniciou == false)
+                        {
+                            valMax = val;
+                            valMin = val;
+                            inicio = i;
+                            iniciou = true;
+                        }
+                        else if (valMin >= val && iniciou == true)
+                        {
+                            valMin = val;
+                        }
+                        else if (valMax <= val && iniciou == true)
+                        {
+                            valMax = val;
+                        }
+                    }
+                    else if (iniciou == true)
+                    {
+                        // eventos, CountMarcacoes_Por_Evento, Marcacoes
+                        Fim = i;
+                        CountMarcacoes_Por_Evento[valMin - 1] = CountMarcacoes_Por_Evento[valMin - 1] + 1;
+                        Marcacoes[count] = CanalX;
+                        count++;
+                        Marcacoes[count] = inicio;
+                        count++;
+                        Marcacoes[count] = Fim;
+                        count++;
+                        iniciou = false;
+                        //Salva o dado nos vetores
+                    }
                 }
             }
+            return count;
         }
 
         private void FormResultados_FormClosed(object sender, FormClosedEventArgs e)
@@ -752,9 +759,9 @@ namespace AmbienteRPB
                 //{
                 OP_Salvar = true;
                 ArquivoDeSaida = edfFileOutput.FileName;
-                AnaliseDeResultados();
+                int count = AnaliseDeResultados();
                 Arquivos = new GerenArquivos();
-                Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes);
+                Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
                 RN_Rodou = false;
                 //}
             }
