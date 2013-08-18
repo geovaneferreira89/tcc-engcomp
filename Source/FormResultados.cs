@@ -56,6 +56,8 @@ namespace AmbienteRPB
         private string[] eventos;
         private int [] CountMarcacoes_Por_Evento;
         private double[] Marcacoes;
+        private bool SetMax = true;
+        private float[] ValsMAX_MIN;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF, Color _CorDeFundo, Color _CorDaSerie)
         {
@@ -329,9 +331,9 @@ namespace AmbienteRPB
             //Atualizar o chart
             for (int i = 0; i < chart1.ChartAreas.Count(); i++)
             {
-                chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-                chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset/ (int)edfFileOutput.FileInfo.SampleRecDuration);
-                chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset/ (int)edfFileOutput.FileInfo.SampleRecDuration);
+                    chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+                chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+                chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
                 //chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
             }
         }
@@ -342,6 +344,13 @@ namespace AmbienteRPB
             {
                 if (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
                 {
+                    if (SetMax)
+                    {
+                        SetMax = false;
+                        ValsMAX_MIN = new float[2];
+                        ValsMAX_MIN[0] = (float)chart1.ChartAreas[0].AxisY.Maximum;
+                        ValsMAX_MIN[1] = (float)chart1.ChartAreas[0].AxisY.Minimum;
+                    }
                     int excluir;
                     int tempo = DataRecords_lidos * edfFileOutput.SignalInfo[1].BufferOffset;
                     edfFileOutput.ReadDataBlock(DataRecords_lidos);
@@ -356,6 +365,8 @@ namespace AmbienteRPB
                             else
                                 excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
                         }
+                        chart1.ChartAreas[numeroDeCanais].AxisY.Maximum = ValsMAX_MIN[0];
+                        chart1.ChartAreas[numeroDeCanais].AxisY.Minimum = ValsMAX_MIN[1];
                     }
                 }
             }
