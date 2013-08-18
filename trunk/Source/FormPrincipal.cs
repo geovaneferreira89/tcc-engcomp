@@ -57,6 +57,9 @@ namespace AmbienteRPB
         private int countCTRL = 0;
         //Scroll Bar
         private int ScrollBarValue = 0;
+
+        private bool testeT = true;
+        private float t1, t2;
         //-----------------------------------------------------------------------------------------
         public FormPrincipal(string _nomeProject)
         {
@@ -301,16 +304,22 @@ namespace AmbienteRPB
         private void mouse_Mover(object sender, MouseEventArgs e)
         {
             //Mostra X e Y do grafico onde o mouse está, (Função deixa o SW lento)
-            /*HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
             if (result.ChartArea != null)
             {
                 double pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
                 double pointYPixel = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
                 lbl_x.Text = "Valor X: " +  pointXPixel.ToString("f4");
                 lbl_Y.Text = "Valor Y: " + pointYPixel.ToString("f4");
-            }*/
+            }
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
+            if (testeT)
+            {
+                testeT = false;
+                t1 = (float)chart1.ChartAreas[0].AxisY.Maximum;
+                t2 = (float)chart1.ChartAreas[0].AxisY.Minimum;
+            }
         }
         //---------------------------------------------------------------------------------------
         //                               ##   Definir Padrões  ##
@@ -922,6 +931,8 @@ namespace AmbienteRPB
                             else
                                 chart1.Series["canal" + j].Points.AddY(valor);
                         }
+                        chart1.ChartAreas[j].AxisY.Maximum = t1;
+                        chart1.ChartAreas[j].AxisY.Minimum = t2;
                     }
                 }
             }
@@ -1000,6 +1011,13 @@ namespace AmbienteRPB
                //}
             //}   
         }
+        private void AmplitudeCombo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (AmplitudeCombo.Text != "")
+            {
+                AmplitudeCombo.Text = Convert.ToString(chart1.ChartAreas[0].AxisY.ScaleView.Size);
+            }
+        }   
         //------------------------------------------------------------------------------------------
         private void AmplitudeCombo_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1012,7 +1030,8 @@ namespace AmbienteRPB
                              for (int i = 0; i < __numeroDeCanais; i++)
                              {
                                  AmplitudeCombo.Text = Convert.ToString(Convert.ToDouble(AmplitudeCombo.Text) + 1);
-                                 chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+                                 chart1.ChartAreas[i].AxisY.ScaleView.Position = Convert.ToDouble(AmplitudeCombo.Text);
+                                 //chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
                                  //chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;
                              }
                              break;
@@ -1022,7 +1041,7 @@ namespace AmbienteRPB
                              for (int i = 0; i < __numeroDeCanais; i++)
                              {
                                  AmplitudeCombo.Text = Convert.ToString(Convert.ToDouble(AmplitudeCombo.Text) - 1);
-                                 chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
+                                 chart1.ChartAreas[i].AxisY.ScaleView.Position = Convert.ToDouble(AmplitudeCombo.Text);
                                  //chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height - 1;
                              }
                              break;
@@ -1031,13 +1050,19 @@ namespace AmbienteRPB
                 
             }   
         }
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void lblAmpli_Click(object sender, EventArgs e)
         {
             int divisao = __numeroDeCanais / 100;
-            for (int i = 0; i < chart1.Series[0].Points.Count; i++)
-            {//chart1.ChartAreas[i].Position.Y = divisao*i;
-                chart1.Series[0].Points[i].SetValueY(chart1.Series[0].Points[i].YValues[0] + 10000);
+            for (int j = 0; j < __numeroDeCanais; j++)
+            {
+                for (int i = 0; i < chart1.Series[0].Points.Count; i++)
+                {//chart1.ChartAreas[i].Position.Y = divisao*i;
+                    chart1.Series[j].Points[i].SetValueY(chart1.Series[j].Points[i].YValues[0] + 10000);
+                }
             }
+        }
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
            // chart1.ChartAreas[0].Position.Y = 100;//(float)(chart1.ChartAreas[0].AxisY.Maximum);
            // chart1.ChartAreas[1].Position.Y = 0; //(float)(chart1.ChartAreas[1].AxisY.Minimum);
           // chart1.ChartAreas[0].Position.Bottom = 10;
@@ -1281,6 +1306,6 @@ namespace AmbienteRPB
                 chart1.Series[i].Color = CorDeSerie;
                 chart1.Titles[i].ForeColor = CorDeFundo;
             }
-        }   
+        }    
     }
 }

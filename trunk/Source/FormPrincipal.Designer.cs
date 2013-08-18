@@ -43,6 +43,10 @@
             this.inserirComent = new System.Windows.Forms.ToolStripMenuItem();
             this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_Correlacao = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.exibirEventosMarcadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.carregarResultadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.brancoPretoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,10 +122,6 @@
             this.Evento2 = new System.Windows.Forms.CheckBox();
             this.lbl_tempo_s = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.carregarResultadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exibirEventosMarcadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -273,6 +273,30 @@
             this.btn_Correlacao.Size = new System.Drawing.Size(229, 22);
             this.btn_Correlacao.Text = "Técnicas de Reconhecimento";
             this.btn_Correlacao.Click += new System.EventHandler(this.btn_Correlacao_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(226, 6);
+            // 
+            // exibirEventosMarcadosToolStripMenuItem
+            // 
+            this.exibirEventosMarcadosToolStripMenuItem.Name = "exibirEventosMarcadosToolStripMenuItem";
+            this.exibirEventosMarcadosToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.exibirEventosMarcadosToolStripMenuItem.Text = "Exibir Eventos Marcados";
+            this.exibirEventosMarcadosToolStripMenuItem.Click += new System.EventHandler(this.exibirEventosMarcadosToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(226, 6);
+            // 
+            // carregarResultadosToolStripMenuItem
+            // 
+            this.carregarResultadosToolStripMenuItem.Name = "carregarResultadosToolStripMenuItem";
+            this.carregarResultadosToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.carregarResultadosToolStripMenuItem.Text = "Carregar Resultados";
+            this.carregarResultadosToolStripMenuItem.Click += new System.EventHandler(this.carregarResultadosToolStripMenuItem_Click);
             // 
             // verToolStripMenuItem
             // 
@@ -654,6 +678,7 @@
             this.lblAmpli.Name = "lblAmpli";
             this.lblAmpli.Size = new System.Drawing.Size(36, 22);
             this.lblAmpli.Text = "Amp.";
+            this.lblAmpli.Click += new System.EventHandler(this.lblAmpli_Click);
             // 
             // AmplitudeCombo
             // 
@@ -663,6 +688,7 @@
             this.AmplitudeCombo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AmplitudeCombo_KeyDown);
             this.AmplitudeCombo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmplitudeCombo_KeyPress);
             this.AmplitudeCombo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AmplitudeCombo_KeyUp);
+            this.AmplitudeCombo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AmplitudeCombo_MouseDown);
             this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
             // 
             // lbl_V
@@ -989,30 +1015,6 @@
             this.lbl_tempo_s.Size = new System.Drawing.Size(26, 14);
             this.lbl_tempo_s.TabIndex = 17;
             this.lbl_tempo_s.Text = "10s";
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(226, 6);
-            // 
-            // carregarResultadosToolStripMenuItem
-            // 
-            this.carregarResultadosToolStripMenuItem.Name = "carregarResultadosToolStripMenuItem";
-            this.carregarResultadosToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.carregarResultadosToolStripMenuItem.Text = "Carregar Resultados";
-            this.carregarResultadosToolStripMenuItem.Click += new System.EventHandler(this.carregarResultadosToolStripMenuItem_Click);
-            // 
-            // exibirEventosMarcadosToolStripMenuItem
-            // 
-            this.exibirEventosMarcadosToolStripMenuItem.Name = "exibirEventosMarcadosToolStripMenuItem";
-            this.exibirEventosMarcadosToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.exibirEventosMarcadosToolStripMenuItem.Text = "Exibir Eventos Marcados";
-            this.exibirEventosMarcadosToolStripMenuItem.Click += new System.EventHandler(this.exibirEventosMarcadosToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(226, 6);
             // 
             // FormPrincipal
             // 

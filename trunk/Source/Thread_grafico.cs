@@ -234,8 +234,10 @@ namespace thread_chart
                 {
                      prb.ChartAreas[i].AxisX.ScaleView.Size = valor;
                      prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
+                    // prb.ChartAreas[0].Position.Auto = false;
+                   //  prb.ChartAreas[i].AxisX.ScaleView.Size = prb.ChartAreas[i].AxisX.Maximum;
+                  //   prb.ChartAreas[i].AxisX.ScaleView.
                 }
-
                 ScrollBar.Maximum = (SinalEEG.FileInfo.NrDataRecords) * (int)SinalEEG.FileInfo.SampleRecDuration;
                 ScrollBar.SmallChange = 10;//segundos
                 ScrollBar.LargeChange = 10;//segundos            
