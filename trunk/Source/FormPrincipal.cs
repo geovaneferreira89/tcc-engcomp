@@ -610,7 +610,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[i].AxisY.IsStartedFromZero = false;
                 if (numeroDeCanais != 1)
                 {
-                    chart1.ChartAreas[i].Position.Height = _aux + 2;//+10 os sinais sobreescrevem
+                    chart1.ChartAreas[i].Position.Height = _aux + 4;//+10 os sinais sobreescrevem
                     chart1.ChartAreas[i].Position.Y = _aux * i;
                 }
                 else

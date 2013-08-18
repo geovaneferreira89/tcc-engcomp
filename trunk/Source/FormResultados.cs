@@ -106,6 +106,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[_pos].Position.Width = 96;
                 chart1.ChartAreas[_pos].Position.X = 4;
                 chart1.ChartAreas[_pos].Position.Y = _aux * i;
+                chart1.ChartAreas[_pos].AxisY.IsStartedFromZero = false;
             }
             AdicionaData(0);
         }
