@@ -63,6 +63,7 @@
             this.SMS_Box = new System.Windows.Forms.RichTextBox();
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
+            this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -203,7 +204,8 @@
             this.toolStripSeparator5,
             this.toolStripSeparator6,
             this.toolStripLabel1,
-            this.comboFrequencia});
+            this.comboFrequencia,
+            this.btnMarcacoes});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(777, 25);
@@ -383,6 +385,16 @@
             this.btn_Aumentar.Visible = false;
             this.btn_Aumentar.Click += new System.EventHandler(this.btn_Aumentar_Click);
             // 
+            // btnMarcacoes
+            // 
+            this.btnMarcacoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnMarcacoes.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcacoes.Image")));
+            this.btnMarcacoes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMarcacoes.Name = "btnMarcacoes";
+            this.btnMarcacoes.Size = new System.Drawing.Size(77, 22);
+            this.btnMarcacoes.Text = "Marcacaoes ";
+            this.btnMarcacoes.Click += new System.EventHandler(this.btnMarcacoes_Click);
+            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,5 +463,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton btn_Suspender;
+        private System.Windows.Forms.ToolStripButton btnMarcacoes;
     }
 }
