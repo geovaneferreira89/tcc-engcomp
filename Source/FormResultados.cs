@@ -366,6 +366,9 @@ namespace AmbienteRPB
                             else
                                 excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
                         }
+                    }
+                    for (int j = 0; j < numeroDeCanais; j++)
+                    {
                         chart1.ChartAreas[numeroDeCanais].AxisY.Maximum = ValsMAX_MIN[0];
                         chart1.ChartAreas[numeroDeCanais].AxisY.Minimum = ValsMAX_MIN[1];
                     }
