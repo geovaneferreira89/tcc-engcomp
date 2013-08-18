@@ -149,7 +149,6 @@ namespace thread_chart
         //------------------------------------------------------------------------------------------
         private void load_progress_bar(int valor, int caso)
         {
-
             if (_BarraDeProgresso.InvokeRequired)
             {
                 _BarraDeProgresso.BeginInvoke(new AtualizaPloter(load_progress_bar), new Object[] { valor, caso });
@@ -229,14 +228,13 @@ namespace thread_chart
                     if (SinalEEG.SignalInfo[4].NrSamples != SinalEEG.SignalInfo[0].NrSamples)
                         valor = 1000;
                 }
-                
                 for (int i = 0; i < _NumCanais; i++)
                 {
                      prb.ChartAreas[i].AxisX.ScaleView.Size = valor;
                      prb.ChartAreas[i].AxisX.ScrollBar.Enabled = false;
-                    // prb.ChartAreas[0].Position.Auto = false;
-                   //  prb.ChartAreas[i].AxisX.ScaleView.Size = prb.ChartAreas[i].AxisX.Maximum;
-                  //   prb.ChartAreas[i].AxisX.ScaleView.
+                    //prb.ChartAreas[0].Position.Auto = false;
+                    //prb.ChartAreas[i].AxisX.ScaleView.Size = prb.ChartAreas[i].AxisX.Maximum;
+                    //prb.ChartAreas[i].AxisX.ScaleView.
                 }
                 ScrollBar.Maximum = (SinalEEG.FileInfo.NrDataRecords) * (int)SinalEEG.FileInfo.SampleRecDuration;
                 ScrollBar.SmallChange = 10;//segundos
@@ -244,7 +242,5 @@ namespace thread_chart
             }
         }
         //------------------------------------------------------------------------------------------
-
     }
-
 }
