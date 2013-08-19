@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using NeuroLoopGainLibrary.Edf;
+using System.Text.RegularExpressions;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
 using System.IO;
@@ -32,6 +33,12 @@ namespace AmbienteRPB
         public string[] RN_eventos;
         public int[] RN_CountMarcacoes_Por_Evento;
         public double[] RN_Marcacoes;
+
+        private System.IO.StreamReader fileM; //marcações
+        public float[] Samples;
+        public int[] Sub;
+        public string[] Times;
+
         //Verifica se o Arquivo existe----------------------------------------------------------
         public bool ArquivoExiste(string Arquivo_Nome)
         {
@@ -355,5 +362,39 @@ namespace AmbienteRPB
 
         }
         //---------------------------------------------------------------------
+        // vai lendo o arquivo e salvando Sample e Sub
+        public void LerMarcacao(string diretorio)
+        {
+            //System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Ge\Desktop\testeFile\marcaçoes.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(diretorio);
+
+            string[] separators = new string[] { "\r\n" };
+            string text = file.ReadToEnd();
+            // quebra o seu conteudo por linhas
+            string[] lines = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            float[] Samples = new float[lines.Length];
+            int[] Sub = new int[lines.Length];
+            string[] Times = new string[lines.Length];
+
+            string header = lines[0];
+
+            string[] words = new string[6];
+            string[] sep = new string[] { "  " };
+
+            for (int i = 1; i < lines.Length; i++) //execeto a primeira, que é cabeçalho
+            {
+                words = lines[i].Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+                Times[i - 1] = words[0];
+                Samples[i - 1] = float.Parse(words[1]);
+                Sub[i - 1] = int.Parse(words[3]);
+
+            }
+
+            file.Close();
+            file.Dispose();
+            
+        }
     }
 }
