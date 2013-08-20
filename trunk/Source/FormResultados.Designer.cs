@@ -59,11 +59,12 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.comboFrequencia = new System.Windows.Forms.ToolStripComboBox();
+            this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.SMS_Box = new System.Windows.Forms.RichTextBox();
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
-            this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -183,6 +184,7 @@
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // toolStrip1
             // 
@@ -340,6 +342,16 @@
             this.comboFrequencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboFrequencia_KeyDown);
             this.comboFrequencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboFrequencia_KeyPress);
             // 
+            // btnMarcacoes
+            // 
+            this.btnMarcacoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnMarcacoes.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcacoes.Image")));
+            this.btnMarcacoes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMarcacoes.Name = "btnMarcacoes";
+            this.btnMarcacoes.Size = new System.Drawing.Size(77, 22);
+            this.btnMarcacoes.Text = "Marcacaoes ";
+            this.btnMarcacoes.Click += new System.EventHandler(this.btnMarcacoes_Click);
+            // 
             // progressBar
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -385,15 +397,9 @@
             this.btn_Aumentar.Visible = false;
             this.btn_Aumentar.Click += new System.EventHandler(this.btn_Aumentar_Click);
             // 
-            // btnMarcacoes
+            // openFileDialog1
             // 
-            this.btnMarcacoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnMarcacoes.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcacoes.Image")));
-            this.btnMarcacoes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMarcacoes.Name = "btnMarcacoes";
-            this.btnMarcacoes.Size = new System.Drawing.Size(77, 22);
-            this.btnMarcacoes.Text = "Marcacaoes ";
-            this.btnMarcacoes.Click += new System.EventHandler(this.btnMarcacoes_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FormResultados
             // 
@@ -464,5 +470,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton btn_Suspender;
         private System.Windows.Forms.ToolStripButton btnMarcacoes;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
