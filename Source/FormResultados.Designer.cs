@@ -74,7 +74,7 @@
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.segundaCorrelaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segundaCorrelacao = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
@@ -266,7 +266,7 @@
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.correlaçãoToolStripMenuItem,
-            this.segundaCorrelaçãoToolStripMenuItem,
+            this.segundaCorrelacao,
             this.toolStripSeparator10,
             this.kohonenToolStripMenuItem,
             this.redeMLPToolStripMenuItem});
@@ -479,12 +479,13 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // segundaCorrelaçãoToolStripMenuItem
+            // segundaCorrelacao
             // 
-            this.segundaCorrelaçãoToolStripMenuItem.Name = "segundaCorrelaçãoToolStripMenuItem";
-            this.segundaCorrelaçãoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.segundaCorrelaçãoToolStripMenuItem.Text = "2ª Correlação ";
-            this.segundaCorrelaçãoToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.segundaCorrelacao.Enabled = false;
+            this.segundaCorrelacao.Name = "segundaCorrelacao";
+            this.segundaCorrelacao.Size = new System.Drawing.Size(152, 22);
+            this.segundaCorrelacao.Text = "2ª Correlação ";
+            this.segundaCorrelacao.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripSeparator10
             // 
@@ -570,7 +571,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripTextBox opcCANAL;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem segundaCorrelaçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segundaCorrelacao;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
     }
 }
