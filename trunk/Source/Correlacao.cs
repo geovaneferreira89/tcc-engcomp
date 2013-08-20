@@ -203,9 +203,7 @@ namespace AmbienteRPB
                         //===================================================================
                         //                  Primeira etapa de correlação
                         //===================================================================
-                        //Corrige o problema do sinal ficar estar defasado
-                        for (int i = 0; i < (vector_evento.Count()/2); i++)
-                            prb.Series[canal + 1].Points.AddY(0);
+                        bool first = true;
                         //Calculo do fator de normalização (K)
                         //Igual à soma dos quadrados dos valores da réplica armazenada.
                         double K = 0;
@@ -218,7 +216,7 @@ namespace AmbienteRPB
                         load_progress_bar(0, 4);
                         load_progress_bar(vector_evento.Count() * prb.Series[canal].Points.Count(), 2);
                         //Canal que está sendo amostrado
-                        for (int i = 0; i < prb.Series[canal].Points.Count; i++)
+                        for (int i = 0; i < (prb.Series[canal].Points.Count - vector_evento.Count()); i++)
                         {
                             //Vetor do Evento
                             for (int j = 0; j < vector_evento.Count(); j++)
@@ -230,27 +228,14 @@ namespace AmbienteRPB
                                 load_progress_bar(0, 1);
                             }
                             res = (float)((1/K)*res);
-                            if (MaxY < res)
+                            //Vai Plotando o resultado...
+                            if (first)
                             {
-                                MaxY = res;
-                                MaxX = i;
-                                //Deleta linha se já tiver, ou cria uma nova
-                                if (Cursor_vertical_Inicio == null)
-                                    Cursor_vertical_Inicio = new VerticalLineAnnotation();
-                                else
-                                    prb.Annotations.Remove(Cursor_vertical_Inicio);
-                                //Linha no Chart
-                                Cursor_vertical_Inicio.AnchorDataPoint = prb.Series[canal].Points[1];
-                                Cursor_vertical_Inicio.Height = prb.ChartAreas[canal].Position.Height * 2;
-                                Cursor_vertical_Inicio.LineColor = Color.Blue;
-                                Cursor_vertical_Inicio.LineDashStyle = ChartDashStyle.DashDot;
-                                Cursor_vertical_Inicio.LineWidth = 1;
-                                Cursor_vertical_Inicio.AnchorX = MaxX;
-                                Cursor_vertical_Inicio.AnchorY = prb.ChartAreas[canal].AxisY.Maximum;
-                                prb.Annotations.Add(Cursor_vertical_Inicio);
+                                //Corrige o problema do sinal ficar estar defasado
+                                for (int kk = 0; kk < (vector_evento.Count()/2); kk++)
+                                    prb.Series[canal + 1].Points.AddY(res);
+                                first = false;
                             }
-                            if (MinY > res)
-                                MinY = res;
                             //Vai Plotando o resultado...
                             prb.Series[canal + 1].Points.AddY(res);
                             Media = Media + res;
@@ -311,7 +296,6 @@ namespace AmbienteRPB
                     {
                         prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                         load_progress_bar(vector_evento.Count(), 2);
-                        
                         float res = 0;
                         float Media = 0;
                         double[] SaidaDeDados = new double[prb.Series[canal + 1].Points.Count];
@@ -331,7 +315,7 @@ namespace AmbienteRPB
                             K = (valor * valor) + K;
                         }
                         //Este vetor evento tem que ser referente a correlação...
-                        for (int i = 0; i < prb.Series[canal + 1].Points.Count; i++)
+                        for (int i = 0; i < prb.Series[canal + 1].Points.Count - vector_evento.Count(); i++)
                         {
                             //Vetor do Evento
                             for (int j = 0; j < vector_evento.Count(); j++)
@@ -359,12 +343,14 @@ namespace AmbienteRPB
                         //Limpa o canal da correlação e ajuste o offset
                         prb.Series[canal + 1].Points.Clear();
                         for (int i = 0; i < (vector_evento.Count() / 2); i++)
-                            prb.Series[canal + 1].Points.AddY(0);
+                            prb.Series[canal + 1].Points.AddY(SaidaDeDados[0]);
                         //Imprime o resultado final
-                        for (int i = 0; i < SaidaDeDados.Count(); i++){
+                        for (int i = 0; i < (SaidaDeDados.Count() -vector_evento.Count()); i++)
+                        {
                             prb.Series[canal + 1].Points.AddY(SaidaDeDados[i]);
                             load_progress_bar(0, 1);
                         }
+
                         load_progress_bar(1, 3);
                         break;
                     }

@@ -1145,7 +1145,7 @@ namespace AmbienteRPB
                     if (chebox_events.Checked)
                     {
                         chebox_events.Text = NomeEvento.NomePadrao;
-                        ListaPadroes[i].SetNomePadrao(NomeEvento.NomePadrao);
+                        ListaPadroes[i-1].SetNomePadrao(NomeEvento.NomePadrao);
                         i = 30;
                     }
                 }

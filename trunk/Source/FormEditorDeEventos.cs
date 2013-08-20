@@ -115,7 +115,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas["Padrao"].BackColor = Color.Transparent;
                 chart1.ChartAreas["Padrao"].AxisX.Enabled = AxisEnabled.False;
                 chart1.ChartAreas["Padrao"].AxisY.Enabled = AxisEnabled.False;
-
+                chart1.ChartAreas["Padrao"].AxisY.IsStartedFromZero = false;
                 edtEvento_Nome.Text = lbxEventosPorTipo.SelectedItem.ToString();
                 //Mostra valores ao lado dos labels
                 //cbx_Inicio.Text = "Início " +  Listas[comboTiposDeEventos.SelectedIndex].GetValorInicio(lbxEventosPorTipo.SelectedIndex);

@@ -202,14 +202,24 @@ namespace AmbienteRPB
         {
             double[] sinal;
             string dados;
+            string Arquivo_Nome = getPathUser() + NomePadrao + ".txt";
+            if (ArquivoExiste(Arquivo_Nome))
+            {
+                fileR = new System.IO.StreamReader(Arquivo_Nome);
+                dados = LerLinha(18);
+                sinal = new double[Convert.ToInt32(dados)];
 
-            fileR = new System.IO.StreamReader(getPathUser() + NomePadrao + ".txt");
-            dados = LerLinha(18);
-            sinal = new double[Convert.ToInt32(dados)];
-            
-            for (int i = 0; i < sinal.Count(); i++)
-                sinal[i] = Convert.ToDouble(fileR.ReadLine());
-            fileR.Close();
+                for (int i = 0; i < sinal.Count(); i++)
+                    sinal[i] = Convert.ToDouble(fileR.ReadLine());
+                fileR.Close();
+            }
+            else
+            {
+                sinal = new double[10];
+                for (int i = 0; i < 10; i++)
+                    sinal[i] = 0;
+
+            } 
             return sinal;
         }
         //Exportar  Padrao & Eventos-----------------------------------------------------------
