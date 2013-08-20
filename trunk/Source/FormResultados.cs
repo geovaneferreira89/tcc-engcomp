@@ -58,7 +58,6 @@ namespace AmbienteRPB
         private double[] Marcacoes;
         private bool SetMax = true;
         private float[] ValsMAX_MIN;
-        private bool MarcacoesOrigDoArquivo = false;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF, Color _CorDeFundo, Color _CorDaSerie)
         {
@@ -331,12 +330,10 @@ namespace AmbienteRPB
                 AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
             }
             //Atualizar o chart
-         
             chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
             chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
             chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-            if(MarcacoesOrigDoArquivo)
-                chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            //chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
         }
         //------------------------------------------------------------------------------------------
         private void AddSegInChart()
@@ -365,13 +362,10 @@ namespace AmbienteRPB
                                 chart1.Series[CanalAtual].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                             else
                                 excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
-                        }
+                        } 
                     }
-                    for (int j = 0; j < numeroDeCanais; j++)
-                    {
-                        chart1.ChartAreas[numeroDeCanais].AxisY.Maximum = ValsMAX_MIN[0];
-                        chart1.ChartAreas[numeroDeCanais].AxisY.Minimum = ValsMAX_MIN[1];
-                    }
+                    chart1.ChartAreas[0].AxisY.Maximum = ValsMAX_MIN[0];
+                    chart1.ChartAreas[0].AxisY.Minimum = ValsMAX_MIN[1];
                 }
             }
         }
@@ -792,7 +786,7 @@ namespace AmbienteRPB
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //Carrega todo sinal... 
-                double[] Parametros;
+               /* double[] Parametros;
                 Parametros = new double[3];
                 Parametros[0] = DataRecords_lidos;
                 Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais);
@@ -801,7 +795,7 @@ namespace AmbienteRPB
                 
                 while (Thread_.ThreadState == ThreadState.Running)
                 {
-                }
+                }*/
 
                 dir = openFileDialog1.FileName;
                 Arquivos = new GerenArquivos();
@@ -811,15 +805,23 @@ namespace AmbienteRPB
                 {
                     if (Arquivos.Samples[countArquivo] == i)
                     {
-                        chart1.Series[CanalAtual + 3].Points.AddY(Arquivos.Sub[countArquivo]);
+                        LineAnnotation annotationRectangle = new LineAnnotation();
+                        annotationRectangle.BackColor = Color.FromArgb(128, Color.Red);
+                        annotationRectangle.AxisX = chart1.ChartAreas[CanalAtual].AxisX;
+                        annotationRectangle.AxisY = chart1.ChartAreas[CanalAtual].AxisY;
+                        annotationRectangle.X = Arquivos.Samples[countArquivo];
+                        annotationRectangle.Y = chart1.ChartAreas[CanalAtual].AxisY.Maximum;
+                        annotationRectangle.LineColor = Color.FromArgb(128, Color.Red);
+                        annotationRectangle.ToolTip = "1";
+                        annotationRectangle.Height = chart1.ChartAreas[CanalAtual].Position.Height;
+                        annotationRectangle.Width = 0;/// 26.1;
+                        annotationRectangle.AllowMoving = false;
+                        annotationRectangle.AllowAnchorMoving = false;
+                        annotationRectangle.AllowSelecting = false;
+                        chart1.Annotations.Add(annotationRectangle);
                         countArquivo++;
-                        if (i == 644151)
-                            i = 644151;
                     }
-                    else
-                        chart1.Series[CanalAtual + 3].Points.AddY(0);
                 }
-                MarcacoesOrigDoArquivo = true;
             }
         }
 

@@ -385,16 +385,12 @@ namespace AmbienteRPB
             for (int i = 1; i < lines.Length; i++) //execeto a primeira, que é cabeçalho
             {
                 words = lines[i].Split(sep, StringSplitOptions.RemoveEmptyEntries);
-
                 Times[i - 1] = words[0];
                 Samples[i - 1] = float.Parse(words[1]);
                 Sub[i - 1] = int.Parse(words[3]);
-
             }
-
             file.Close();
             file.Dispose();
-            
         }
     }
 }
