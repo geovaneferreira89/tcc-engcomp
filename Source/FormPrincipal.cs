@@ -1,8 +1,8 @@
 ﻿//#########################################################################################
 //-----------------------------------------------------------------------------------------
 //                          UNIVERSIDADE TECNOLÓGICA FEDERAL DO PARANÁ
-//                              Trabalho de Conclusão de Curso
-//                                Engenharia de Computação 
+//                                Trabalho de Conclusão de Curso
+//                                  Engenharia de Computação 
 //
 // Geovane Vinicius Ferreira (geovanevinicius89@gmail.com)
 // Georgia D
