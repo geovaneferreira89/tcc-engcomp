@@ -102,6 +102,7 @@ O presente documento .... (introdução normal, 2 parágrafos chega)
 
 \section{Motivação e Justificativa}
 
+Como nasceu a necessidade deste projeto.
 Uma das principais vantagens do uso do estilo de formatação {\ttfamily abnt-UTFPR.cls} para \LaTeX\ é a formatação \textit{automática} dos elementos que compõem um documento acadêmico, tais como capa, folha de rosto, dedicatória, agradecimentos, epígrafe, resumo, abstract, listas de figuras, tabelas, siglas e símbolos, sumário, capítulos, referências, etc. Outras grandes vantagens do uso do \LaTeX\ para formatação de documentos acadêmicos dizem respeito à facilidade de gerenciamento de referências cruzadas e bibliográficas, além da formatação~-- inclusive de equações  matemáticas~-- correta e esteticamente perfeita.
 
 \section{Objetivos}
@@ -165,18 +166,7 @@ Também é apresentado o exemplo da tabela~\ref{tab:correlacao}, que aparece autom
 \end{table}
 
 \section{Equipamento de Eletrocardiografia}
-
-A transformada de Laplace é dada na equação~(\ref{eq:laplace}), enquanto a equação~(\ref{eq:dft}) apresenta a formulação da transformada discreta de Fourier bidimensional\footnote{Deve-se reparar na formatação esteticamente perfeita destas equações!}.
-
-\begin{equation}
-X(s) = \int\limits_{t = -\infty}^{\infty} x(t) \, \text{e}^{-st} \, dt
-\label{eq:laplace}
-\end{equation}
-
-\begin{equation}
-F(u, v) = \sum_{m = 0}^{M - 1} \sum_{n = 0}^{N - 1} f(m, n) \exp \left[ -j 2 \pi \left( \frac{u m}{M} + \frac{v n}{N} \right) \right]
-\label{eq:dft}
-\end{equation}
+Mais um item.
 
 \section{Ritmos e Padrões de sinais de Eletrocardiografia}
 
@@ -184,6 +174,7 @@ O título desta seção poderá mudar.
 QRS e também arritmias.
 
 \section{Análise de sinais de Eletrocardiografia}
+Não sei ainda o que vai aqui.
 
 \section{Avaliação de Sistemas Classificadores}
 Nesta seção serão apresentados alguns itens pertinentes a compreensão de formas de avaliação de sistemas classificadores.
@@ -205,7 +196,12 @@ Incluir a figura da Curva ROC.
 Talvez não seja possível traçar a curva ROC. Para isso, sensibilidade e especificidade precisam variar.
 
 \section{Extração de Características}
-Explicar sobre a correlação matemática. Colocar a fórmula.
+Explicar sobre a correlação matemática dada na equação ~(\ref{eq:correlacao}).
+
+\begin{equation}
+ R_{r,a} (\tau )= \frac{1}{K}\sum_{n=0}^{N-1} f_{r}(n)f_{s}(\tau + n)
+\label{eq:correlacao}
+\end{equation}
 
 \section{Reconhecimento de Padrões}
 Falar sobre as Redes Neurais. Tem muita coisa pra falar disso aqui. Citar o Haykin.
@@ -221,6 +217,9 @@ Explicitar que a base é pública.
 Pode citar a norma do CONEP.
 Dizer que vem com as marcações. 
 Se formos usar um arquivo só, o 105, então dizer a duração e quantos eventos possui.
+
+PESQUISAS QUE ENVOLVAM SOMENTE DADOS DE DOMÍNIO PÚBLICO DEVEM SER ANALISADAS PELO SISTEMA CEP/CONEP?
+As pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP-CONEP. 
 
 \section{Desenvolvimento do Software}
 
@@ -281,6 +280,37 @@ Curva ROC.
 \section{Considerações sobre os Resultados Obtidos}
 Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
 Aqui podemos colocar a tabela comparativa do arquivo 105 do Aratã.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Exemplo de uma tabela]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de Zhang e Lian (2009) acrescido das quatro últimas linhas com resultados obtidos no trabalho de ARATÃ}
+	\label{tab:correlacao}
+	\begin{tabular}{cccccc}
+		\hline 
+		Método & Total de eventos QRS & FP & FN & DER & Referências\\
+		\hline
+		\hline
+		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 \\
+		Filtro passa banda & 2572 & 3 \\
+		Wavelet denoising & 2572 & 3 \\
+		Bancos de filtragem & 2139 & 3 \\
+		BPF/search-back & 2564 & 3 \\
+		Filtro adaptativo linear & 2572 & 3 \\
+		Filtragem otimizada & 2572 & 3 \\
+		Topological mapping & 2572 & 3 \\
+		Transformada wavelet & 2572 & 3 \\
+		Filtro adaptativo e rede neural artificial & 2572 & 3 \\
+		Morfologia 1M & 2572 & 3 \\
+		Morfologia 2M & 2572 & 3 \\
+		Morfologia 3M & 2572 & 3 \\
+		Morfologia 1M & 2690 & 3 \\
+		Morfologia 2M & 2690 & 3 \\
+		Morfologia 3M & 2690 & 3 \\
+		Morfologia 4M & 2690 & 3 \\
+		\hline 
+	\end{tabular}
+	\fonte{Aratã}
+\end{table}
 
 %------------------Capitulo 5 ----------------------
 \chapter{Considerações Finais}

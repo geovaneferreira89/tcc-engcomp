@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  19 AUG 2013 21:41
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  20 AUG 2013 11:26
 entering extended mode
 **modelo_daeln.tex
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.tex
@@ -347,7 +347,11 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen123
 \Gin@req@width=\dimen124
 )
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux)
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux
+
+LaTeX Warning: Label `tab:correlacao' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
@@ -361,8 +365,7 @@ LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 44.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 Package lastpage Info: Please have a look at the pageslts package at
@@ -468,13 +471,13 @@ ento de Padr[]oes em Si-nais Biom[]edicos
 
 ]
 Cap\'{\i }tulo 1.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 112.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 113.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 113.
  [11
 
 
@@ -483,23 +486,19 @@ Cap\'{\i }tulo 2.
 <./figs/heart.png, id=48, 313.17pt x 430.60875pt>
 File: ./figs/heart.png Graphic file (type png)
  <use ./figs/heart.png>
-Package pdftex.def Info: ./figs/heart.png used on input line 139.
+Package pdftex.def Info: ./figs/heart.png used on input line 140.
 (pdftex.def)             Requested size: 182.09486pt x 250.39058pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 140.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 141.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 140.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 141.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 140.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 169.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 169.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 141.
 
 [12
 
 ]
-Overfull \hbox (9.35199pt too wide) in paragraph at lines 189--190
+Overfull \hbox (9.35199pt too wide) in paragraph at lines 180--181
 []\OT1/ptm/m/n/12 Nesta se[][]ao ser[]ao apre-sen-ta-dos al-guns itens per-ti-n
 en-tes a com-pre-ens[]ao de for-mas de avalia[][]ao
  []
@@ -510,49 +509,57 @@ Cap\'{\i }tulo 3.
 
 ] [16]
 Cap\'{\i }tulo 4.
+
+Overfull \hbox (17.38338pt too wide) in paragraph at lines 285--309
+ [][] 
+ []
+
 [17
 
-]
+] [18]
 Cap\'{\i }tulo 5.
-[18
+[19
 
 ]
 Cap\'{\i }tulo 6.
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [19
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [20
 
 ])
 
 AED: lastpage setting LastPage
-[20
+[21
 
 ]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux) ) 
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3771 strings out of 493921
- 52722 string characters out of 3144885
- 117412 words of memory out of 3000000
- 6907 multiletter control sequences out of 15000+200000
- 50625 words of font info for 115 fonts, out of 3000000 for 9000
+ 3746 strings out of 493921
+ 52382 string characters out of 3144885
+ 117442 words of memory out of 3000000
+ 6885 multiletter control sequences out of 15000+200000
+ 40547 words of font info for 93 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,8n,43p,2087b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/Ge/AppData/Roaming/MiKTeX/2.9/f
-onts/type1/urw/symbol/usyr.pfb><C:/Users/Ge/AppData/Roaming/MiKTeX/2.9/fonts/ty
-pe1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/time
-s/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on modelo_daeln.pdf (22 pages, 137050 bytes).
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/Ge/AppDat
+a/Roaming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Ge/AppData/Roami
+ng/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/time
+s/utmri8a.pfb>
+Output written on modelo_daeln.pdf (23 pages, 128177 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
+ 114 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
