@@ -416,7 +416,7 @@ namespace AmbienteRPB
                     Thread_.Start();
                     inicia_correlacao();
                 }
-                CorrelAgain.Enabled = true;
+                segundaCorrelacao.Enabled = true;
             }
         }
         private bool SelecionaEventoDasLista()
