@@ -629,7 +629,6 @@ namespace AmbienteRPB
                 ThreadChart.Start();
                 chart1.Enabled = true;
                 FrequenciaCombo.Enabled = true;
-                AmplitudeCombo.Enabled = true;
                 Adiciona_linhas_de_tempo();
                 //Tread responsavel por marcar os eventos caso eles já existam
                 if (ListaExiste)
@@ -687,32 +686,21 @@ namespace AmbienteRPB
                 MessageBox.Show("Não existe nenhum resultado para este arquivo!", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
         } 
         //------------------------------------------------------------------------------------------
-        //Diminui o tamanho de largura de todas as séries, (diminuindo a sobreposição entre canais)
+        //Diminui a Amplitude
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            double Divisao = 100 / __numeroDeCanais;
-            float _aux;
-            _aux = (float)Divisao;
             for (int i = 0; i < __numeroDeCanais; i++)
-            {   //Propriedades de cada sinal
-                if (chart1.ChartAreas[i].Position.Height > 1)
-                {
-                    chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height - 1;
-                    chart1.ChartAreas[i].Position.Y = _aux * i;
-                }
+            {
+                chart1.ChartAreas[i].AxisY.Maximum = chart1.ChartAreas[i].AxisY.Maximum + 10;
             }
         }
         //------------------------------------------------------------------------------------------
-        //Aumenta o tamanho de largura de todas as séries, (aumentando a sobreposição entre canais)
+        //Aumenta a Amplitude
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            double Divisao = 100 / __numeroDeCanais;
-            float _aux;
-            _aux = (float)Divisao;
             for (int i = 0; i < __numeroDeCanais; i++)
-            {   //Propriedades de cada sinal
-                chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;
-                chart1.ChartAreas[i].Position.Y = _aux * i;
+            {
+                chart1.ChartAreas[i].AxisY.Maximum = chart1.ChartAreas[i].AxisY.Maximum - 10;
             }
         }
         //------------------------------------------------------------------------------------------
@@ -1013,42 +1001,10 @@ namespace AmbienteRPB
         }
         private void AmplitudeCombo_MouseDown(object sender, MouseEventArgs e)
         {
-            if (AmplitudeCombo.Text != "")
-            {
-                AmplitudeCombo.Text = Convert.ToString(chart1.ChartAreas[0].AxisY.ScaleView.Size);
-            }
         }   
         //------------------------------------------------------------------------------------------
         private void AmplitudeCombo_KeyDown(object sender, KeyEventArgs e)
         {
-            if (AmplitudeCombo.Text != "")
-            {
-                     switch (e.KeyCode)
-                    {
-                        case Keys.Up:
-                         {
-                             for (int i = 0; i < __numeroDeCanais; i++)
-                             {
-                                 AmplitudeCombo.Text = Convert.ToString(Convert.ToDouble(AmplitudeCombo.Text) + 1);
-                                 chart1.ChartAreas[i].AxisY.ScaleView.Position = Convert.ToDouble(AmplitudeCombo.Text);
-                                 //chart1.ChartAreas[i].AxisY.ScaleView.Size = Convert.ToDouble(AmplitudeCombo.Text);
-                                 //chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height + 1;
-                             }
-                             break;
-                         }
-                        case Keys.Down:
-                         {
-                             for (int i = 0; i < __numeroDeCanais; i++)
-                             {
-                                 AmplitudeCombo.Text = Convert.ToString(Convert.ToDouble(AmplitudeCombo.Text) - 1);
-                                 chart1.ChartAreas[i].AxisY.ScaleView.Position = Convert.ToDouble(AmplitudeCombo.Text);
-                                 //chart1.ChartAreas[i].Position.Height = chart1.ChartAreas[i].Position.Height - 1;
-                             }
-                             break;
-                         }
-                    }
-                
-            }   
         }
         private void lblAmpli_Click(object sender, EventArgs e)
         {

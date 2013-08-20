@@ -90,9 +90,6 @@
             this.FrequenciaCombo = new System.Windows.Forms.ToolStripComboBox();
             this.lbl_cm = new System.Windows.Forms.ToolStripLabel();
             this.lblAmpli = new System.Windows.Forms.ToolStripLabel();
-            this.AmplitudeCombo = new System.Windows.Forms.ToolStripComboBox();
-            this.lbl_V = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -561,9 +558,6 @@
             this.FrequenciaCombo,
             this.lbl_cm,
             this.lblAmpli,
-            this.AmplitudeCombo,
-            this.lbl_V,
-            this.toolStripSeparator4,
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripSeparator2,
@@ -679,28 +673,6 @@
             this.lblAmpli.Size = new System.Drawing.Size(36, 22);
             this.lblAmpli.Text = "Amp.";
             this.lblAmpli.Click += new System.EventHandler(this.lblAmpli_Click);
-            // 
-            // AmplitudeCombo
-            // 
-            this.AmplitudeCombo.Name = "AmplitudeCombo";
-            this.AmplitudeCombo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.AmplitudeCombo.Size = new System.Drawing.Size(75, 25);
-            this.AmplitudeCombo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AmplitudeCombo_KeyDown);
-            this.AmplitudeCombo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmplitudeCombo_KeyPress);
-            this.AmplitudeCombo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AmplitudeCombo_KeyUp);
-            this.AmplitudeCombo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AmplitudeCombo_MouseDown);
-            this.AmplitudeCombo.TextChanged += new System.EventHandler(this.AmplitudeCombo_TextChanged);
-            // 
-            // lbl_V
-            // 
-            this.lbl_V.Name = "lbl_V";
-            this.lbl_V.Size = new System.Drawing.Size(21, 22);
-            this.lbl_V.Text = "uV";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton1
             // 
@@ -1085,9 +1057,7 @@
         private System.Windows.Forms.ToolStripLabel lblFreq;
         private System.Windows.Forms.ToolStripComboBox FrequenciaCombo;
         private System.Windows.Forms.ToolStripLabel lblAmpli;
-        private System.Windows.Forms.ToolStripComboBox AmplitudeCombo;
         private System.Windows.Forms.ToolStripLabel lbl_cm;
-        private System.Windows.Forms.ToolStripLabel lbl_V;
         private System.Windows.Forms.ToolStripMenuItem marcarEventos;
         private System.Windows.Forms.GroupBox gbxEventos;
         private System.Windows.Forms.CheckBox Evento10;
@@ -1134,7 +1104,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnTela10S;
         private System.Windows.Forms.ToolStripButton btnTela5S;
