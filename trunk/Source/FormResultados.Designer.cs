@@ -65,6 +65,13 @@
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.ampliMAIS = new System.Windows.Forms.ToolStripButton();
+            this.ampliMENOS = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.offsetCIMA = new System.Windows.Forms.ToolStripButton();
+            this.offsetBAIXO = new System.Windows.Forms.ToolStripButton();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -79,7 +86,7 @@
             this.ScrollBar.Location = new System.Drawing.Point(0, 515);
             this.ScrollBar.Maximum = 20000;
             this.ScrollBar.Name = "ScrollBar";
-            this.ScrollBar.Size = new System.Drawing.Size(777, 20);
+            this.ScrollBar.Size = new System.Drawing.Size(923, 20);
             this.ScrollBar.SmallChange = 900;
             this.ScrollBar.TabIndex = 16;
             this.ScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
@@ -96,7 +103,7 @@
             this.toolInfo});
             this.Box_Status.Location = new System.Drawing.Point(0, 535);
             this.Box_Status.Name = "Box_Status";
-            this.Box_Status.Size = new System.Drawing.Size(777, 22);
+            this.Box_Status.Size = new System.Drawing.Size(923, 22);
             this.Box_Status.TabIndex = 15;
             this.Box_Status.Text = "statusStrip1";
             // 
@@ -152,7 +159,7 @@
             this.gbxChart.Controls.Add(this.chart1);
             this.gbxChart.Location = new System.Drawing.Point(0, 22);
             this.gbxChart.Name = "gbxChart";
-            this.gbxChart.Size = new System.Drawing.Size(775, 384);
+            this.gbxChart.Size = new System.Drawing.Size(921, 384);
             this.gbxChart.TabIndex = 17;
             this.gbxChart.TabStop = false;
             // 
@@ -180,7 +187,7 @@
             this.chart1.Location = new System.Drawing.Point(1, 7);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart1.Size = new System.Drawing.Size(772, 375);
+            this.chart1.Size = new System.Drawing.Size(918, 375);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
@@ -201,16 +208,23 @@
             this.toolStripSeparator3,
             this.toolStripSeparator7,
             this.btn_BackPropagation,
-            this.toolStripSeparator4,
             this.btn_Suspender,
+            this.toolStripSeparator4,
             this.toolStripSeparator5,
+            this.btnMarcacoes,
+            this.toolStripSeparator10,
             this.toolStripSeparator6,
             this.toolStripLabel1,
             this.comboFrequencia,
-            this.btnMarcacoes});
+            this.toolStripLabel2,
+            this.ampliMAIS,
+            this.ampliMENOS,
+            this.toolStripLabel3,
+            this.offsetCIMA,
+            this.offsetBAIXO});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(777, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(923, 25);
             this.toolStrip1.TabIndex = 18;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -356,7 +370,7 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar.Location = new System.Drawing.Point(534, 537);
+            this.progressBar.Location = new System.Drawing.Point(680, 537);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(240, 19);
             this.progressBar.TabIndex = 19;
@@ -368,7 +382,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SMS_Box.Location = new System.Drawing.Point(2, 408);
             this.SMS_Box.Name = "SMS_Box";
-            this.SMS_Box.Size = new System.Drawing.Size(771, 105);
+            this.SMS_Box.Size = new System.Drawing.Size(917, 105);
             this.SMS_Box.TabIndex = 20;
             this.SMS_Box.Text = "";
             this.SMS_Box.Visible = false;
@@ -376,7 +390,7 @@
             // btn_Close
             // 
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.Location = new System.Drawing.Point(696, 412);
+            this.btn_Close.Location = new System.Drawing.Point(842, 412);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(23, 19);
             this.btn_Close.TabIndex = 21;
@@ -388,7 +402,7 @@
             // btn_Aumentar
             // 
             this.btn_Aumentar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Aumentar.Location = new System.Drawing.Point(725, 412);
+            this.btn_Aumentar.Location = new System.Drawing.Point(871, 412);
             this.btn_Aumentar.Name = "btn_Aumentar";
             this.btn_Aumentar.Size = new System.Drawing.Size(23, 19);
             this.btn_Aumentar.TabIndex = 22;
@@ -401,11 +415,68 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(63, 22);
+            this.toolStripLabel2.Text = "Amplitude";
+            // 
+            // ampliMAIS
+            // 
+            this.ampliMAIS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ampliMAIS.Image = ((System.Drawing.Image)(resources.GetObject("ampliMAIS.Image")));
+            this.ampliMAIS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ampliMAIS.Name = "ampliMAIS";
+            this.ampliMAIS.Size = new System.Drawing.Size(23, 22);
+            this.ampliMAIS.Text = "toolStripButton1";
+            this.ampliMAIS.Click += new System.EventHandler(this.toolStripButton1_Click_2);
+            // 
+            // ampliMENOS
+            // 
+            this.ampliMENOS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ampliMENOS.Image = ((System.Drawing.Image)(resources.GetObject("ampliMENOS.Image")));
+            this.ampliMENOS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ampliMENOS.Name = "ampliMENOS";
+            this.ampliMENOS.Size = new System.Drawing.Size(23, 22);
+            this.ampliMENOS.Text = "toolStripButton2";
+            this.ampliMENOS.Click += new System.EventHandler(this.ampliMENOS_Click);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(39, 22);
+            this.toolStripLabel3.Text = "Offset";
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+            // 
+            // offsetCIMA
+            // 
+            this.offsetCIMA.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.offsetCIMA.Image = ((System.Drawing.Image)(resources.GetObject("offsetCIMA.Image")));
+            this.offsetCIMA.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.offsetCIMA.Name = "offsetCIMA";
+            this.offsetCIMA.Size = new System.Drawing.Size(23, 22);
+            this.offsetCIMA.Text = "toolStripButton1";
+            this.offsetCIMA.Click += new System.EventHandler(this.offsetCIMA_Click);
+            // 
+            // offsetBAIXO
+            // 
+            this.offsetBAIXO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.offsetBAIXO.Image = ((System.Drawing.Image)(resources.GetObject("offsetBAIXO.Image")));
+            this.offsetBAIXO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.offsetBAIXO.Name = "offsetBAIXO";
+            this.offsetBAIXO.Size = new System.Drawing.Size(23, 22);
+            this.offsetBAIXO.Text = "toolStripButton2";
+            this.offsetBAIXO.Click += new System.EventHandler(this.offsetBAIXO_Click);
+            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 557);
+            this.ClientSize = new System.Drawing.Size(923, 557);
             this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.btn_Aumentar);
             this.Controls.Add(this.progressBar);
@@ -471,5 +542,12 @@
         private System.Windows.Forms.ToolStripButton btn_Suspender;
         private System.Windows.Forms.ToolStripButton btnMarcacoes;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton ampliMAIS;
+        private System.Windows.Forms.ToolStripButton ampliMENOS;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripButton offsetCIMA;
+        private System.Windows.Forms.ToolStripButton offsetBAIXO;
     }
 }
