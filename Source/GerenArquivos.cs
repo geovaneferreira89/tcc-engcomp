@@ -373,9 +373,9 @@ namespace AmbienteRPB
             // quebra o seu conteudo por linhas
             string[] lines = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
-            float[] Samples = new float[lines.Length];
-            int[] Sub = new int[lines.Length];
-            string[] Times = new string[lines.Length];
+             Samples = new float[lines.Length];
+             Sub     = new int[lines.Length];
+             Times   = new string[lines.Length];
 
             string header = lines[0];
 

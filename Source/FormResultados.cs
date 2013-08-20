@@ -58,6 +58,7 @@ namespace AmbienteRPB
         private double[] Marcacoes;
         private bool SetMax = true;
         private float[] ValsMAX_MIN;
+        private bool MarcacoesOrigDoArquivo = false;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF, Color _CorDeFundo, Color _CorDaSerie)
         {
@@ -330,13 +331,12 @@ namespace AmbienteRPB
                 AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
             }
             //Atualizar o chart
-            for (int i = 0; i < chart1.ChartAreas.Count(); i++)
-            {
-                    chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-                chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-                chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-                //chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * edfFileOutput.SignalInfo[1].BufferOffset;
-            }
+         
+            chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            if(MarcacoesOrigDoArquivo)
+                chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
         }
         //------------------------------------------------------------------------------------------
         private void AddSegInChart()
@@ -788,7 +788,53 @@ namespace AmbienteRPB
 
         private void btnMarcacoes_Click(object sender, EventArgs e)
         {
+            string dir;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //Carrega todo sinal... 
+                double[] Parametros;
+                Parametros = new double[3];
+                Parametros[0] = DataRecords_lidos;
+                Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais);
+                Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
+                Thread_.Start();
+                
+                while (Thread_.ThreadState == ThreadState.Running)
+                {
+                }
 
+                dir = openFileDialog1.FileName;
+                Arquivos = new GerenArquivos();
+                Arquivos.LerMarcacao(dir);
+                int countArquivo = 0;
+                for (long i = 0; i < chart1.Series[CanalAtual].Points.Count(); i++)
+                {
+                    if (Arquivos.Samples[countArquivo] == i)
+                    {
+                        chart1.Series[CanalAtual + 3].Points.AddY(Arquivos.Sub[countArquivo]);
+                        countArquivo++;
+                        if (i == 644151)
+                            i = 644151;
+                    }
+                    else
+                        chart1.Series[CanalAtual + 3].Points.AddY(0);
+                }
+                MarcacoesOrigDoArquivo = true;
+            }
+        }
+
+        private void chart1_MouseMove(object sender, MouseEventArgs e)
+        {
+            HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
+            if (result.ChartArea != null)
+            {
+                double pointXPixel = result.ChartArea.AxisX.PixelPositionToValue(e.X);
+                double pointYPixel = result.ChartArea.AxisY.PixelPositionToValue(e.Y);
+                lbl_x.Text = "Valor X: " + pointXPixel.ToString("f4");
+                lbl_Y.Text = "Valor Y: " + pointYPixel.ToString("f4");
+            }
+            lbl_mouseX.Text = "Mouse X: " + e.Location.X;
+            lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
        }
 }
