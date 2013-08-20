@@ -45,35 +45,37 @@
             this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.CorrelAgain = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.correlaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kohonenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redeMLPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.BTN_Kohonen = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.btn_BackPropagation = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.btn_Suspender = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.opcCANAL = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.comboFrequencia = new System.Windows.Forms.ToolStripComboBox();
-            this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.ampliMAIS = new System.Windows.Forms.ToolStripButton();
+            this.ampliMENOS = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.offsetCIMA = new System.Windows.Forms.ToolStripButton();
+            this.offsetBAIXO = new System.Windows.Forms.ToolStripButton();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.SMS_Box = new System.Windows.Forms.RichTextBox();
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.ampliMAIS = new System.Windows.Forms.ToolStripButton();
-            this.ampliMENOS = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.segundaCorrelaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.offsetCIMA = new System.Windows.Forms.ToolStripButton();
-            this.offsetBAIXO = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -202,19 +204,16 @@
             this.btn_SinalAnterior,
             this.toolStripSeparator9,
             this.toolStripSeparator1,
-            this.toolStripButton3,
-            this.CorrelAgain,
+            this.toolStripDropDownButton1,
+            this.btnMarcacoes,
             this.toolStripSeparator8,
             this.toolStripSeparator2,
-            this.BTN_Kohonen,
             this.toolStripSeparator3,
             this.toolStripSeparator7,
-            this.btn_BackPropagation,
-            this.btn_Suspender,
             this.toolStripSeparator4,
             this.toolStripSeparator5,
-            this.btnMarcacoes,
-            this.toolStripSeparator10,
+            this.toolStripLabel4,
+            this.opcCANAL,
             this.toolStripSeparator6,
             this.toolStripLabel1,
             this.comboFrequencia,
@@ -262,25 +261,51 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton3
+            // toolStripDropDownButton1
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(68, 22);
-            this.toolStripButton3.Text = "Correlação";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.correlaçãoToolStripMenuItem,
+            this.segundaCorrelaçãoToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.kohonenToolStripMenuItem,
+            this.redeMLPToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(66, 22);
+            this.toolStripDropDownButton1.Text = "Técnicas";
             // 
-            // CorrelAgain
+            // correlaçãoToolStripMenuItem
             // 
-            this.CorrelAgain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CorrelAgain.Image = ((System.Drawing.Image)(resources.GetObject("CorrelAgain.Image")));
-            this.CorrelAgain.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CorrelAgain.Name = "CorrelAgain";
-            this.CorrelAgain.Size = new System.Drawing.Size(23, 22);
-            this.CorrelAgain.Text = "toolStripButton1";
-            this.CorrelAgain.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.correlaçãoToolStripMenuItem.Name = "correlaçãoToolStripMenuItem";
+            this.correlaçãoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.correlaçãoToolStripMenuItem.Text = "Correlação";
+            this.correlaçãoToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // kohonenToolStripMenuItem
+            // 
+            this.kohonenToolStripMenuItem.Name = "kohonenToolStripMenuItem";
+            this.kohonenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kohonenToolStripMenuItem.Text = "Kohonen";
+            this.kohonenToolStripMenuItem.Click += new System.EventHandler(this.BTN_Kohonen_Click);
+            // 
+            // redeMLPToolStripMenuItem
+            // 
+            this.redeMLPToolStripMenuItem.Name = "redeMLPToolStripMenuItem";
+            this.redeMLPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redeMLPToolStripMenuItem.Text = "Rede MLP";
+            this.redeMLPToolStripMenuItem.Click += new System.EventHandler(this.btn_BackPropagation_Click);
+            // 
+            // btnMarcacoes
+            // 
+            this.btnMarcacoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnMarcacoes.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcacoes.Image")));
+            this.btnMarcacoes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMarcacoes.Name = "btnMarcacoes";
+            this.btnMarcacoes.Size = new System.Drawing.Size(71, 22);
+            this.btnMarcacoes.Text = "Marcações ";
+            this.btnMarcacoes.Click += new System.EventHandler(this.btnMarcacoes_Click);
             // 
             // toolStripSeparator8
             // 
@@ -292,16 +317,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // BTN_Kohonen
-            // 
-            this.BTN_Kohonen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BTN_Kohonen.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Kohonen.Image")));
-            this.BTN_Kohonen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BTN_Kohonen.Name = "BTN_Kohonen";
-            this.BTN_Kohonen.Size = new System.Drawing.Size(59, 22);
-            this.BTN_Kohonen.Text = "Kohonen";
-            this.BTN_Kohonen.Click += new System.EventHandler(this.BTN_Kohonen_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -312,35 +327,27 @@
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
-            // btn_BackPropagation
-            // 
-            this.btn_BackPropagation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_BackPropagation.Image = ((System.Drawing.Image)(resources.GetObject("btn_BackPropagation.Image")));
-            this.btn_BackPropagation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_BackPropagation.Name = "btn_BackPropagation";
-            this.btn_BackPropagation.Size = new System.Drawing.Size(101, 22);
-            this.btn_BackPropagation.Text = "BackPropagation";
-            this.btn_BackPropagation.Click += new System.EventHandler(this.btn_BackPropagation_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // btn_Suspender
-            // 
-            this.btn_Suspender.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Suspender.Image = ((System.Drawing.Image)(resources.GetObject("btn_Suspender.Image")));
-            this.btn_Suspender.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Suspender.Name = "btn_Suspender";
-            this.btn_Suspender.Size = new System.Drawing.Size(23, 22);
-            this.btn_Suspender.Text = "toolStripButton1";
-            this.btn_Suspender.Click += new System.EventHandler(this.btn_Suspender_Click_1);
-            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(37, 22);
+            this.toolStripLabel4.Text = "Canal";
+            // 
+            // opcCANAL
+            // 
+            this.opcCANAL.Name = "opcCANAL";
+            this.opcCANAL.Size = new System.Drawing.Size(20, 25);
+            this.opcCANAL.Text = "1";
             // 
             // toolStripSeparator6
             // 
@@ -349,9 +356,10 @@
             // 
             // toolStripLabel1
             // 
+            this.toolStripLabel1.BackColor = System.Drawing.SystemColors.Menu;
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(65, 22);
-            this.toolStripLabel1.Text = "Frequência";
+            this.toolStripLabel1.Size = new System.Drawing.Size(33, 22);
+            this.toolStripLabel1.Text = "Freq.";
             // 
             // comboFrequencia
             // 
@@ -360,15 +368,67 @@
             this.comboFrequencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboFrequencia_KeyDown);
             this.comboFrequencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboFrequencia_KeyPress);
             // 
-            // btnMarcacoes
+            // toolStripSeparator11
             // 
-            this.btnMarcacoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnMarcacoes.Image = ((System.Drawing.Image)(resources.GetObject("btnMarcacoes.Image")));
-            this.btnMarcacoes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnMarcacoes.Name = "btnMarcacoes";
-            this.btnMarcacoes.Size = new System.Drawing.Size(77, 22);
-            this.btnMarcacoes.Text = "Marcacaoes ";
-            this.btnMarcacoes.Click += new System.EventHandler(this.btnMarcacoes_Click);
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(36, 22);
+            this.toolStripLabel2.Text = "Amp.";
+            // 
+            // ampliMAIS
+            // 
+            this.ampliMAIS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ampliMAIS.Image = ((System.Drawing.Image)(resources.GetObject("ampliMAIS.Image")));
+            this.ampliMAIS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ampliMAIS.Name = "ampliMAIS";
+            this.ampliMAIS.Size = new System.Drawing.Size(23, 22);
+            this.ampliMAIS.Text = "toolStripButton1";
+            this.ampliMAIS.Click += new System.EventHandler(this.toolStripButton1_Click_2);
+            // 
+            // ampliMENOS
+            // 
+            this.ampliMENOS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ampliMENOS.Image = ((System.Drawing.Image)(resources.GetObject("ampliMENOS.Image")));
+            this.ampliMENOS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ampliMENOS.Name = "ampliMENOS";
+            this.ampliMENOS.Size = new System.Drawing.Size(23, 22);
+            this.ampliMENOS.Text = "toolStripButton2";
+            this.ampliMENOS.Click += new System.EventHandler(this.ampliMENOS_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(39, 22);
+            this.toolStripLabel3.Text = "Offset";
+            // 
+            // offsetCIMA
+            // 
+            this.offsetCIMA.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.offsetCIMA.Image = ((System.Drawing.Image)(resources.GetObject("offsetCIMA.Image")));
+            this.offsetCIMA.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.offsetCIMA.Name = "offsetCIMA";
+            this.offsetCIMA.Size = new System.Drawing.Size(23, 22);
+            this.offsetCIMA.Text = "toolStripButton1";
+            this.offsetCIMA.Click += new System.EventHandler(this.offsetCIMA_Click);
+            // 
+            // offsetBAIXO
+            // 
+            this.offsetBAIXO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.offsetBAIXO.Image = ((System.Drawing.Image)(resources.GetObject("offsetBAIXO.Image")));
+            this.offsetBAIXO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.offsetBAIXO.Name = "offsetBAIXO";
+            this.offsetBAIXO.Size = new System.Drawing.Size(23, 22);
+            this.offsetBAIXO.Text = "toolStripButton2";
+            this.offsetBAIXO.Click += new System.EventHandler(this.offsetBAIXO_Click);
             // 
             // progressBar
             // 
@@ -419,72 +479,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // toolStripLabel2
+            // segundaCorrelaçãoToolStripMenuItem
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(63, 22);
-            this.toolStripLabel2.Text = "Amplitude";
-            // 
-            // ampliMAIS
-            // 
-            this.ampliMAIS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ampliMAIS.Image = ((System.Drawing.Image)(resources.GetObject("ampliMAIS.Image")));
-            this.ampliMAIS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ampliMAIS.Name = "ampliMAIS";
-            this.ampliMAIS.Size = new System.Drawing.Size(23, 22);
-            this.ampliMAIS.Text = "toolStripButton1";
-            this.ampliMAIS.Click += new System.EventHandler(this.toolStripButton1_Click_2);
-            // 
-            // ampliMENOS
-            // 
-            this.ampliMENOS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ampliMENOS.Image = ((System.Drawing.Image)(resources.GetObject("ampliMENOS.Image")));
-            this.ampliMENOS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ampliMENOS.Name = "ampliMENOS";
-            this.ampliMENOS.Size = new System.Drawing.Size(23, 22);
-            this.ampliMENOS.Text = "toolStripButton2";
-            this.ampliMENOS.Click += new System.EventHandler(this.ampliMENOS_Click);
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(39, 22);
-            this.toolStripLabel3.Text = "Offset";
+            this.segundaCorrelaçãoToolStripMenuItem.Name = "segundaCorrelaçãoToolStripMenuItem";
+            this.segundaCorrelaçãoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.segundaCorrelaçãoToolStripMenuItem.Text = "2ª Correlação ";
+            this.segundaCorrelaçãoToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
-            // 
-            // offsetCIMA
-            // 
-            this.offsetCIMA.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.offsetCIMA.Image = ((System.Drawing.Image)(resources.GetObject("offsetCIMA.Image")));
-            this.offsetCIMA.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.offsetCIMA.Name = "offsetCIMA";
-            this.offsetCIMA.Size = new System.Drawing.Size(23, 22);
-            this.offsetCIMA.Text = "toolStripButton1";
-            this.offsetCIMA.Click += new System.EventHandler(this.offsetCIMA_Click);
-            // 
-            // offsetBAIXO
-            // 
-            this.offsetBAIXO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.offsetBAIXO.Image = ((System.Drawing.Image)(resources.GetObject("offsetBAIXO.Image")));
-            this.offsetBAIXO.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.offsetBAIXO.Name = "offsetBAIXO";
-            this.offsetBAIXO.Size = new System.Drawing.Size(23, 22);
-            this.offsetBAIXO.Text = "toolStripButton2";
-            this.offsetBAIXO.Click += new System.EventHandler(this.offsetBAIXO_Click);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
             // 
             // FormResultados
             // 
@@ -536,9 +541,6 @@
         private System.Windows.Forms.ToolStripButton btn_SinalAnterior;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton CorrelAgain;
-        private System.Windows.Forms.ToolStripButton BTN_Kohonen;
         private System.Windows.Forms.RichTextBox SMS_Box;
         private System.Windows.Forms.Button btn_Close;
         private System.Windows.Forms.ToolStripComboBox comboFrequencia;
@@ -548,22 +550,27 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripButton btn_BackPropagation;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripButton btn_Suspender;
         private System.Windows.Forms.ToolStripButton btnMarcacoes;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripButton ampliMAIS;
         private System.Windows.Forms.ToolStripButton ampliMENOS;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripButton offsetCIMA;
         private System.Windows.Forms.ToolStripButton offsetBAIXO;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem correlaçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kohonenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redeMLPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripTextBox opcCANAL;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem segundaCorrelaçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
     }
 }

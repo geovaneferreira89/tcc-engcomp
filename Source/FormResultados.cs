@@ -373,26 +373,30 @@ namespace AmbienteRPB
         //Ajustes de Amplitude 
         private void toolStripButton1_Click_2(object sender, EventArgs e)
         {
-            chart1.ChartAreas[CanalAtual].AxisY.Maximum = chart1.ChartAreas[CanalAtual].AxisY.Maximum + 10;
+            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum + 1;
         }
         //------------------------------------------------------------------------------------------
 
         private void ampliMENOS_Click(object sender, EventArgs e)
         {
-            chart1.ChartAreas[CanalAtual].AxisY.Maximum = chart1.ChartAreas[CanalAtual].AxisY.Maximum - 10;
+            double Max = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum;
+            if ((Max - 10) >= 0)
+                chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 10;
+            else if ((Max - 1) >= 0)
+                chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 1;
         }
         //------------------------------------------------------------------------------------------
         //Ajustes de Offset 
         private void offsetCIMA_Click(object sender, EventArgs e)
         {
-            chart1.ChartAreas[CanalAtual].AxisY.Maximum = chart1.ChartAreas[CanalAtual].AxisY.Maximum - 10;
-            chart1.ChartAreas[CanalAtual].AxisY.Minimum = chart1.ChartAreas[CanalAtual].AxisY.Minimum - 10;
+             chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 1;
+             chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum - 1;
         }
         //------------------------------------------------------------------------------------------
         private void offsetBAIXO_Click(object sender, EventArgs e)
         {
-            chart1.ChartAreas[CanalAtual].AxisY.Maximum = chart1.ChartAreas[CanalAtual].AxisY.Maximum + 10;
-            chart1.ChartAreas[CanalAtual].AxisY.Minimum = chart1.ChartAreas[CanalAtual].AxisY.Minimum + 10;
+            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum + 1;
+            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum + 1;
         }
         //------------------------------------------------------------------------------------------
         private void toolStripButton3_Click(object sender, EventArgs e)

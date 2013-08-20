@@ -172,7 +172,8 @@ namespace AmbienteRPB
             layers = new ArrayList();
             layers.Add(MenorTamanho);
             layers.Add((int)Math.Sqrt(MenorTamanho));
-            layers.Add(8);
+            //layers.Add(8);
+            layers.Add(1);
             //long neurons = 0;
             network = new BrainNet.NeuralFramework.NeuralNetwork();
             foreach (int neurons in layers)
@@ -245,9 +246,9 @@ namespace AmbienteRPB
                     {
                             int [] saidaB = ConvertToBinary(0);
                             saida = new ArrayList();
-                            for (int addSaida = 0; addSaida < 8; addSaida++)
-                                saida.Add(saidaB[addSaida]);
-
+                            //for (int addSaida = 0; addSaida < 8; addSaida++)
+                                //saida.Add(saidaB[addSaida]);
+                            saida.Add(1);
                             for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
                             {
                                 entrada = new ArrayList();
@@ -352,10 +353,10 @@ namespace AmbienteRPB
             dados[1] = 0;
             dados[0] = 0;
             outputs_ = new ArrayList();
-            int[] saidaInt = new int[8];
+            int[] saidaInt = new int[1];//8];
 
             outputs_.Add(0.0);
-            for (int i = 0; i < VetTreinamento - (MenorTamanho / 2); i++)
+            for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
             {
                 inputs = new ArrayList();
                 while (cont < MenorTamanho)
@@ -376,9 +377,9 @@ namespace AmbienteRPB
                 BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
                 char character = (char)(patternHelper.NumberFromArraylist(outputs_));
 
-                for (int kk = 0; kk < 8; kk++)
+                for (int kk = 0; kk < 1; kk++)//8; kk++)
                 {
-                    if(0.99 < Convert.ToDouble(outputs_[kk]))
+                    if(0.994 <= Convert.ToDouble(outputs_[kk]))
                         saidaInt[kk] = 1;
                     else
                         saidaInt[kk] = 0;
@@ -386,13 +387,13 @@ namespace AmbienteRPB
       
                 if (it_is_debug)
                 {
-                    if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                    if (saidaInt[0] == 1)// && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
                         character = 'a';
                     else
                         character = 'E';
 
-                    string saida = i + "\n\n" + Convert.ToString(outputs_[0]) + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
-                    string saida2 = Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" + Convert.ToString(saidaInt[0]) + "\t||   " + character;
+                    string saida = i + "\n\n" + Convert.ToString(outputs_[0]);// + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
+                    string saida2 = /*Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" +*/ Convert.ToString(saidaInt[0]) + "\t||   " + character;
                     if (!chave)
                         send_SmS(1, saida2, false);
 
@@ -418,7 +419,7 @@ namespace AmbienteRPB
                 }
                 else
                 {
-                    if (saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                    if (/*saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 &&*/ saidaInt[0] == 1)
                         vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + RedeAtual + 1;     
                     else
                         vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
@@ -517,14 +518,17 @@ namespace AmbienteRPB
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             //w
-                            if (myArray[7] == 1 && myArray[6] == 1 && myArray[5] == 1 && myArray[4] == 0 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 0)
-                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.30);
+                            if (myArray[0] == 1)
+                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(1);
                             //p
+                            /*
                             else if (myArray[7] == 0 && myArray[6] == 0 && myArray[5] == 0 && myArray[4] == 0 && myArray[3] == 1 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 0)
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0.60);
                             //a
                             else if (myArray[7] == 1 && myArray[6] == 0 && myArray[5] == 0 && myArray[4] == 0 && myArray[3] == 0 && myArray[2] == 1 && myArray[1] == 1 && myArray[0] == 0)
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(1);
+                            
+                             */
                             else
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0);
 
