@@ -58,8 +58,9 @@ Texto dos agradecimentos.
 \end{agradecimentos}
 
 % epigrafe (opcional)
+% citação, seguida de indicação de autoria e ano, relacionada com a matéria tratada no corpo do trabalho
 \begin{epigrafe}
-Texto da epígrafe.
+"The human heart is not unchanging (nay, changes almost out of recognition in the twinkling of an eye)..." ? C.S. Lewis
 \end{epigrafe}
 
 %resumo
@@ -212,14 +213,13 @@ Falar sobre as Redes Neurais. Tem muita coisa pra falar disso aqui. Citar o Hayk
 \chapter{Desenvolvimento} %ou Materiais e Métodos
 
 \section{Base de Dados}
+
 Falar da base de dados Physionet. 
 Explicitar que a base é pública.
-Pode citar a norma do CONEP.
 Dizer que vem com as marcações. 
 Se formos usar um arquivo só, o 105, então dizer a duração e quantos eventos possui.
 
-PESQUISAS QUE ENVOLVAM SOMENTE DADOS DE DOMÍNIO PÚBLICO DEVEM SER ANALISADAS PELO SISTEMA CEP/CONEP?
-As pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP-CONEP. 
+
 
 \section{Desenvolvimento do Software}
 
@@ -285,28 +285,28 @@ Aqui podemos colocar a tabela comparativa do arquivo 105 do Aratã.
 	\centering
 	\caption[Exemplo de uma tabela]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de Zhang e Lian (2009) acrescido das quatro últimas linhas com resultados obtidos no trabalho de ARATÃ}
 	\label{tab:correlacao}
-	\begin{tabular}{cccccc}
+	\begin{tabular}{llllll}
 		\hline 
-		Método & Total de eventos QRS & FP & FN & DER & Referências\\
+		Método & QRS & FP & FN & DER & Referências\\
 		\hline
 		\hline
-		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 \\
-		Filtro passa banda & 2572 & 3 \\
-		Wavelet denoising & 2572 & 3 \\
-		Bancos de filtragem & 2139 & 3 \\
-		BPF/search-back & 2564 & 3 \\
-		Filtro adaptativo linear & 2572 & 3 \\
-		Filtragem otimizada & 2572 & 3 \\
-		Topological mapping & 2572 & 3 \\
-		Transformada wavelet & 2572 & 3 \\
-		Filtro adaptativo e rede neural artificial & 2572 & 3 \\
-		Morfologia 1M & 2572 & 3 \\
-		Morfologia 2M & 2572 & 3 \\
-		Morfologia 3M & 2572 & 3 \\
-		Morfologia 1M & 2690 & 3 \\
-		Morfologia 2M & 2690 & 3 \\
-		Morfologia 3M & 2690 & 3 \\
-		Morfologia 4M & 2690 & 3 \\
+		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 & Poli, Cagnoni e Valli (1995) \\
+		Filtro passa banda & 2572 & 67 & 22 & 3,46 & Pan e Tompkins (1985) \\
+		Wavelet denoising & 2572 & 78 & 5 & 3,23 & Chen, Chen e Chan (2006) \\
+		Bancos de filtragem & 2139 & 53 & 16 & 3,22 & Afonso et al. (1999)\\
+		BPF/search-back & 2564 & 53 & 22 & 2,95 & Hamilton e Tompkins (1986)\\
+		Filtro adaptativo linear & 2572 & 40 & 22 & 2,40 & Xue, Hu e Tompkins (1992) \\
+		Filtragem otimizada & 2572 & 35 & 21 & 2,18 & Ruha, Sallinen e Nissilä (1997) \\
+		Topological mapping & 2572 & 41 & 4 & 1,75 & Lee et al. (1996)\\
+		Transformada wavelet & 2572 & 15 & 12 & 1,09 & Li, Zheng e Tai (1995) \\
+		Filtro adaptativo e rede neural artificial & 2572 & 10 & 4 & 0,5 & Xue, Hu e Tompkins (1992)\\
+		Morfologia 1M & 2572 & 49 & 10 & 2,29 & Zhang e Lian (2009)\\
+		Morfologia 2M & 2572 & 27 & 9 & 1,40 & Zhang e Lian (2009)\\
+		Morfologia 3M & 2572 & 19 & 7 & 1,01 & Zhang e Lian (2009)\\
+		Morfologia 1M & 2690 & 40 & 2 & 1,56 & Saraiva (2012)\\
+		Morfologia 2M & 2690 & 41 & 2 & 1,60 & Saraiva (2012)\\
+		Morfologia 3M & 2690 & 40 & 0 & 1,49 & Saraiva (2012)\\
+		Morfologia 4M & 2690 & 39 & 0 & 1,45 & Saraiva (2012)\\
 		\hline 
 	\end{tabular}
 	\fonte{Aratã}
