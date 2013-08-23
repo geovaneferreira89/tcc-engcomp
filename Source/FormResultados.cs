@@ -13,6 +13,8 @@ using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.Runtime.InteropServices;
+using BrainNet.NeuralFramework;
+using System.Collections;
 
 namespace AmbienteRPB
 {
@@ -50,23 +52,28 @@ namespace AmbienteRPB
         private double x_Pos, y_Pos;
         private int[] PadroesATreinar;
         private bool visivel;
-        private  Color CorDeFundo; 
+        private Color CorDeFundo;
         private Color CorDaSerie;
         private bool RN_Rodou;
         private string[] eventos;
-        private int [] CountMarcacoes_Por_Evento;
+        private int[] CountMarcacoes_Por_Evento;
         private double[] Marcacoes;
         private bool SetMax = true;
         private float[] ValsMAX_MIN;
+        //Rede Neural
+        private bool RN_Importada = false;
+        //private NeuralNetwork network;
+        private INeuralNetwork network;
+        private int MenorTamanho;
         //-------------------------------------------
         public FormResultados(ListaPadroesEventos[] _ListaDeEventos, int _numDeCanais, EdfFile _EDF, Color _CorDeFundo, Color _CorDaSerie)
         {
             ListaDeEventos = _ListaDeEventos;
             numeroDeCanais = _numDeCanais;
-            edfFileOutput  = _EDF;
-            CorDeFundo     = _CorDeFundo;
-            CorDaSerie     = _CorDaSerie;
-            Arquivos       = new GerenArquivos();
+            edfFileOutput = _EDF;
+            CorDeFundo = _CorDeFundo;
+            CorDaSerie = _CorDaSerie;
+            Arquivos = new GerenArquivos();
             InitializeComponent();
         }
         //------------------------------------------------------------------------------------------
@@ -79,13 +86,13 @@ namespace AmbienteRPB
             SMS_Box.SelectionStart = SMS_Box.Text.Length;
             SMS_Box.ScrollToCaret();
 
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar,edfFileOutput, CanalAtual,"PlotaSinalEEG",vector_evento, ValorInicio.X, ValorFim.X,  numeroDeCanais);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
             chart1.BackColor = CorDeFundo;
             OP_Salvar = false;
-            RN_Rodou  = false;
+            RN_Rodou = false;
         }
         //-----------------------------------------------------------------------------------------
         private void AdicionaCanais()
@@ -125,26 +132,26 @@ namespace AmbienteRPB
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation9 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
             System.Windows.Forms.DataVisualization.Charting.LineAnnotation lineAnnotation10 = new System.Windows.Forms.DataVisualization.Charting.LineAnnotation();
 
-            lineAnnotation1.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation2.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation3.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation4.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation5.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation6.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation7.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation8.LineColor  = System.Drawing.Color.LightGray;
-            lineAnnotation9.LineColor  = System.Drawing.Color.LightGray;
+            lineAnnotation1.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation2.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation3.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation4.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation5.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation6.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation7.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation8.LineColor = System.Drawing.Color.LightGray;
+            lineAnnotation9.LineColor = System.Drawing.Color.LightGray;
             lineAnnotation10.LineColor = System.Drawing.Color.LightGray;
 
-            lineAnnotation1.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation2.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation3.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation4.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation5.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation6.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation7.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation8.LineDashStyle  = ChartDashStyle.Dash;
-            lineAnnotation9.LineDashStyle  = ChartDashStyle.Dash;
+            lineAnnotation1.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation2.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation3.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation4.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation5.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation6.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation7.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation8.LineDashStyle = ChartDashStyle.Dash;
+            lineAnnotation9.LineDashStyle = ChartDashStyle.Dash;
             lineAnnotation10.LineDashStyle = ChartDashStyle.Dash;
 
             lineAnnotation1.ToolTip = "1";
@@ -265,7 +272,7 @@ namespace AmbienteRPB
         //Mudança de sinal
         private void btn_SinalProximo_Click(object sender, EventArgs e)
         {
-            if ((CanalAtual/4) < (numeroDeCanais-1))
+            if ((CanalAtual / 4) < (numeroDeCanais - 1))
             {
                 //Desabilita o canal que está sendo exibido... 
                 for (int i = 0; i < 4; i++)
@@ -279,7 +286,7 @@ namespace AmbienteRPB
                 if (CanaisCriados <= (CanalAtual / 4))
                 {
                     AdicionaCanais();
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X,ValorFim.X,numeroDeCanais);
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
                     Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                     Thread_.Start();
                     CanaisCriados++;
@@ -301,9 +308,9 @@ namespace AmbienteRPB
             if (CanalAtual != 0)
             {
                 //Desabilita o canal que está sendo exibido... 
-                for(int i=0;i<4;i++)
+                for (int i = 0; i < 4; i++)
                 {
-                    chart1.ChartAreas[CanalAtual+i].Visible = false;
+                    chart1.ChartAreas[CanalAtual + i].Visible = false;
                     chart1.Titles[CanalAtual + i].Visible = false;
                 }
                 //Carrega o canal inferior, o qual já está cirado
@@ -358,11 +365,11 @@ namespace AmbienteRPB
                     {
                         for (int i = 0; i < edfFileOutput.SignalInfo[j].NrSamples; i++)
                         {
-                            if (j == (CanalAtual/4))
+                            if (j == (CanalAtual / 4))
                                 chart1.Series[CanalAtual].Points.AddY(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
                             else
                                 excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
-                        } 
+                        }
                     }
                     chart1.ChartAreas[CanalAtual].AxisY.Maximum = ValsMAX_MIN[0];
                     chart1.ChartAreas[CanalAtual].AxisY.Minimum = ValsMAX_MIN[1];
@@ -389,8 +396,8 @@ namespace AmbienteRPB
         //Ajustes de Offset 
         private void offsetCIMA_Click(object sender, EventArgs e)
         {
-             chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 1;
-             chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum - 1;
+            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 1;
+            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum - 1;
         }
         //------------------------------------------------------------------------------------------
         private void offsetBAIXO_Click(object sender, EventArgs e)
@@ -411,7 +418,7 @@ namespace AmbienteRPB
                     double[] Parametros;
                     Parametros = new double[3];
                     Parametros[0] = DataRecords_lidos;
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros,ValorInicio.X,ValorFim.X,numeroDeCanais);
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais);
                     Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                     Thread_.Start();
                     inicia_correlacao();
@@ -439,9 +446,9 @@ namespace AmbienteRPB
         //Passar para thread depois... 
         private void inicia_correlacao()
         {
-            chart1.Series[CanalAtual+1].Points.Clear();
-            chart1.Series[CanalAtual+2].Points.Clear();
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento,ValorInicio.X,ValorFim.X,numeroDeCanais);
+            chart1.Series[CanalAtual + 1].Points.Clear();
+            chart1.Series[CanalAtual + 2].Points.Clear();
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
@@ -485,7 +492,7 @@ namespace AmbienteRPB
                 double numeroLinhas = chart1.Series[CanalAtual].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 1;
-                FormDadosInput.Vetores = numeroLinhas;                
+                FormDadosInput.Vetores = numeroLinhas;
                 if (vector_evento != null)
                     FormDadosInput.TamVetores = vector_evento.Count();
                 FormDadosInput.ShowDialog();
@@ -523,7 +530,7 @@ namespace AmbienteRPB
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen");
+                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objRMP.Init));
                 Thread_RN.Start();
                 //Habilita a opção de poder exportar para o form principal
@@ -533,7 +540,12 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------
         private void btn_BackPropagation_Click(object sender, EventArgs e)
         {
-            if (SelecionaEventoDasLista())
+            bool verifica = false;
+            if (RN_Importada)
+                verifica = true;
+            else
+                verifica = SelecionaEventoDasLista();
+            if (verifica)
             {
                 if (visivel == false)
                 {
@@ -542,7 +554,7 @@ namespace AmbienteRPB
                 }
                 SMS_Box.Visible = true;
                 btn_Aumentar.Visible = true;
-                btn_Close.Visible    = true;
+                btn_Close.Visible = true;
 
                 GerArquivos = new GerenArquivos();
                 double numeroLinhas = chart1.Series[0].Points.Count;
@@ -559,7 +571,7 @@ namespace AmbienteRPB
                     canalDados = CanalAtual + 1;
                 else
                     canalDados = CanalAtual;
-                
+
                 //Canal de saida de resultados
                 int canalParaPlotar = CanalAtual + 2;
 
@@ -567,40 +579,96 @@ namespace AmbienteRPB
                 for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
 
-                if (FormDadosInput.NumPadroes > 1)
-                {
-                    eventos         = new string[FormDadosInput.NumPadroes];
-                    PadroesATreinar = new int[FormDadosInput.NumPadroes];
-                    PadroesATreinar[0] = ID_PadraoAtual;
-                    eventos[0] = Convert.ToString(ID_PadraoAtual);
-                    for (int i = 1; i < FormDadosInput.NumPadroes; i++)
-                    {
-                        SelecionaEventoDasLista();
-                        PadroesATreinar[i] = ID_PadraoAtual;
-                        eventos[i] = Convert.ToString(ID_PadraoAtual);
+                /* if (FormDadosInput.NumPadroes > 1)
+                 {
+                     eventos         = new string[FormDadosInput.NumPadroes];
+                     PadroesATreinar = new int[FormDadosInput.NumPadroes];
+                     PadroesATreinar[0] = ID_PadraoAtual;
+                     eventos[0] = Convert.ToString(ID_PadraoAtual);
+                     for (int i = 1; i < FormDadosInput.NumPadroes; i++)
+                     {
+                         SelecionaEventoDasLista();
+                         PadroesATreinar[i] = ID_PadraoAtual;
+                         eventos[i] = Convert.ToString(ID_PadraoAtual);
 
-                    }
-                }
-                else
+                     }
+                 }
+                 else
+                 {*/
+                string TipoBkP;
+                //Verifica se a RN foi criada
+                if (!RN_Importada)
                 {
+                    novaRedeMLP();
+                    salvarRedeToolStripMenuItem.Enabled = true;
                     PadroesATreinar = new int[1];
                     PadroesATreinar[0] = ID_PadraoAtual;
                     eventos = new string[FormDadosInput.NumPadroes];
                     eventos[0] = Convert.ToString(ID_PadraoAtual);
+                    TipoBkP = "BackPropagation";
+                    if (FormDadosInput.UsarListaDeTodosEnventos)
+                    {
+                        TipoBkP = "BackPropagation_AllEvnts";
+                        for (int i = 0; i < PadroesATreinar.Count(); i++)
+                        {
+                            for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
+                            {
+                                int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
+                                if ((cont == 0 && i == 0) || MenorTamanho > aux)
+                                    MenorTamanho = aux;
+                            }
+                        }
+                    }
+                    else
+                        MenorTamanho = vector_evento.Count();
                 }
-                string TipoBkP = "BackPropagation";
-                if (FormDadosInput.UsarListaDeTodosEnventos)
+                //Pergunta se quer treinar novamente a rede neural... algo assim
+                else
+                {
+                    //So para nao dar erro na classe RedesNeurais
                     TipoBkP = "BackPropagation_AllEvnts";
+                    PadroesATreinar = new int[1];
+                    PadroesATreinar[0] = 1;
+                    eventos = new string[1];
+                }
 
-                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados,canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP);
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objBKP.Init));
                 Thread_RN.Start();
                 //Habilita a opção de poder exportar para o form principal
                 RN_Rodou = true;
-                
+
             }
         }
-
+        //---------------------------------------------------------------------------
+        //Função responsavel por criar a Rede Neural
+        public void novaRedeMLP()
+        {
+            BackPropNeuronStrategy strategy = new BrainNet.NeuralFramework.BackPropNeuronStrategy();
+            ArrayList layers = new ArrayList();
+            layers.Add(MenorTamanho);
+            layers.Add((int)Math.Sqrt(MenorTamanho));
+            //layers.Add(8);
+            layers.Add(1);
+            //long neurons = 0;
+            network = new BrainNet.NeuralFramework.NeuralNetwork();
+            foreach (int neurons in layers)
+            {
+                BrainNet.NeuralFramework.NeuronLayer layer;
+                for (int i = 0; i <= neurons - 1; i++)
+                {
+                    layer = new BrainNet.NeuralFramework.NeuronLayer();
+                    for (i = 0; i <= neurons - 1; i++)
+                    {
+                        BrainNet.NeuralFramework.INeuron ass = new BrainNet.NeuralFramework.Neuron(strategy);
+                        layer.Add(ref ass);
+                    }
+                    network.Layers.Add(layer);
+                }
+            }
+            network.ConnectLayers();
+        }
+        //---------------------------------------------------------------------------
         private void comboAmplitude_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -629,12 +697,12 @@ namespace AmbienteRPB
             {
                 SMS_Zoom = false;
                 gbxChart.Visible = true;
-                SMS_Box.Location = new Point(this.SMS_Box.Location.X, gbxChart.Height+25);
+                SMS_Box.Location = new Point(this.SMS_Box.Location.X, gbxChart.Height + 25);
                 SMS_Box.Height = SMS_Box.Height + gbxChart.Height;
                 btn_Aumentar.Location = new Point(this.btn_Aumentar.Location.X, this.SMS_Box.Location.Y + 4);
                 btn_Close.Location = new Point(this.btn_Close.Location.X, this.SMS_Box.Location.Y + 4);
                 visivel = false;
-          
+
             }
         }
 
@@ -651,9 +719,9 @@ namespace AmbienteRPB
 
         private void comboFrequencia_KeyPress(object sender, KeyPressEventArgs e)
         {
-             char ch = e.KeyChar;
-              if (!Char.IsDigit(ch) && ch != 8)
-                 e.Handled = true;
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+                e.Handled = true;
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
@@ -723,8 +791,8 @@ namespace AmbienteRPB
                 ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
                 ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
                 ListaDeEventos[i].SetWidth(ListaDeEventos[i].GetNumeroEventos(), Comprimento);
-                ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), (i+1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
-                Arquivos.SalvaPadraoCorrelacao((i+1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
+                ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), (i + 1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
+                Arquivos.SalvaPadraoCorrelacao((i + 1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao", vector_evento);
                 ListaDeEventos[i].SetCorDeFundo(ListaDeEventos[i].GetNumeroEventos(), Color.Green);
                 ListaDeEventos[i].SetNumeroEventos(ListaDeEventos[i].GetNumeroEventos() + 1);
             }
@@ -735,7 +803,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
         {
-        
+
         }
         //----------------------------------------------------------------------------------------
         //Função responsavel por analisar os resultados obtidos da RN
@@ -753,7 +821,7 @@ namespace AmbienteRPB
             //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
             for (int CanalX = 0; CanalX < CanaisCriados; CanalX++)
             {
-                for (int i = 0; i < chart1.Series[(CanalX*4) + 2].Points.Count(); i++)
+                for (int i = 0; i < chart1.Series[(CanalX * 4) + 2].Points.Count(); i++)
                 {
                     val = (int)chart1.Series[(CanalX * 4) + 2].Points[i].YValues[0];
                     if (val != 0)
@@ -812,19 +880,20 @@ namespace AmbienteRPB
         private void btnMarcacoes_Click(object sender, EventArgs e)
         {
             string dir;
+            openFileDialog1.Filter = "TXT Files|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //Carrega todo sinal... 
-               /* double[] Parametros;
-                Parametros = new double[3];
-                Parametros[0] = DataRecords_lidos;
-                Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais);
-                Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
-                Thread_.Start();
+                /* double[] Parametros;
+                 Parametros = new double[3];
+                 Parametros[0] = DataRecords_lidos;
+                 Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais);
+                 Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
+                 Thread_.Start();
                 
-                while (Thread_.ThreadState == ThreadState.Running)
-                {
-                }*/
+                 while (Thread_.ThreadState == ThreadState.Running)
+                 {
+                 }*/
 
                 dir = openFileDialog1.FileName;
                 Arquivos = new GerenArquivos();
@@ -867,5 +936,36 @@ namespace AmbienteRPB
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
-       }
+
+        private void salvarRedeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string nomeArquivo = saveFileDialog1.FileName;
+                NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
+                ser.SaveNetwork(nomeArquivo + ".xml", network);
+            }
+
+        }
+
+        private void importarRedeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
+            openFileDialog1.Filter = "XML Files|*.xml";
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    network = new BrainNet.NeuralFramework.NeuralNetwork();
+                    ser.LoadNetwork(openFileDialog1.FileName, ref network);
+                    MessageBox.Show("Rede Neural " + openFileDialog1.FileName + " carregada com sucesso!", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+                    RN_Importada = true;
+                }
+                catch
+                {
+                    MessageBox.Show("Erro Arquivo invalido", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+    }
 }

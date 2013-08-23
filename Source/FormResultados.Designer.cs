@@ -47,6 +47,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.correlaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segundaCorrelacao = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.kohonenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redeMLPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
@@ -74,8 +76,9 @@
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.segundaCorrelacao = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.salvarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -283,6 +286,19 @@
             this.correlaçãoToolStripMenuItem.Text = "Correlação";
             this.correlaçãoToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // segundaCorrelacao
+            // 
+            this.segundaCorrelacao.Enabled = false;
+            this.segundaCorrelacao.Name = "segundaCorrelacao";
+            this.segundaCorrelacao.Size = new System.Drawing.Size(152, 22);
+            this.segundaCorrelacao.Text = "2ª Correlação ";
+            this.segundaCorrelacao.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
+            // 
             // kohonenToolStripMenuItem
             // 
             this.kohonenToolStripMenuItem.Name = "kohonenToolStripMenuItem";
@@ -292,6 +308,9 @@
             // 
             // redeMLPToolStripMenuItem
             // 
+            this.redeMLPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salvarRedeToolStripMenuItem,
+            this.importarRedeToolStripMenuItem});
             this.redeMLPToolStripMenuItem.Name = "redeMLPToolStripMenuItem";
             this.redeMLPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redeMLPToolStripMenuItem.Text = "Rede MLP";
@@ -479,18 +498,24 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // segundaCorrelacao
+            // salvarRedeToolStripMenuItem
             // 
-            this.segundaCorrelacao.Enabled = false;
-            this.segundaCorrelacao.Name = "segundaCorrelacao";
-            this.segundaCorrelacao.Size = new System.Drawing.Size(152, 22);
-            this.segundaCorrelacao.Text = "2ª Correlação ";
-            this.segundaCorrelacao.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.salvarRedeToolStripMenuItem.Enabled = false;
+            this.salvarRedeToolStripMenuItem.Name = "salvarRedeToolStripMenuItem";
+            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salvarRedeToolStripMenuItem.Text = "Salvar Rede";
+            this.salvarRedeToolStripMenuItem.Click += new System.EventHandler(this.salvarRedeToolStripMenuItem_Click);
             // 
-            // toolStripSeparator10
+            // importarRedeToolStripMenuItem
             // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
+            this.importarRedeToolStripMenuItem.Name = "importarRedeToolStripMenuItem";
+            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importarRedeToolStripMenuItem.Text = "Importar Rede";
+            this.importarRedeToolStripMenuItem.Click += new System.EventHandler(this.importarRedeToolStripMenuItem_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Arquivos XML (*.xml)|*xml";
             // 
             // FormResultados
             // 
@@ -573,5 +598,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem segundaCorrelacao;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem salvarRedeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importarRedeToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

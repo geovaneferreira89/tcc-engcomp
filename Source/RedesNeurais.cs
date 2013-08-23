@@ -53,10 +53,8 @@ namespace AmbienteRPB
         private double[] VetorEvento;
         private double[] Sinal;
         //Varivais por backpropagation ------------------------------------------------------------
-        private BackPropNeuronStrategy strategy;
-        private BrainNet.NeuralFramework.NeuralNetwork network;
-        private ArrayList layers;
-        private TrainingData td;
+        private bool RNImportada;
+        private INeuralNetwork network;
         private ArrayList inputs;
         private ArrayList outputs_;
 
@@ -70,7 +68,7 @@ namespace AmbienteRPB
         private int[] vetorDeResultados;
         private bool it_is_debug = false;
         //------------------------------------------------------------------------------------------
-        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual,int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede)
+        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede, INeuralNetwork _network, bool _RNImportada, int _MenorTamanho)
         {
             SinalEEG        =  _SinalEEG;
             ListasPadrEvents = _Listas;
@@ -88,6 +86,9 @@ namespace AmbienteRPB
             VetorEvento    = _VetorEvento;
             Sinal          = _Sinal;
             CanalParaPlotar = _CanalParaPlotar;
+            RNImportada     = _RNImportada;
+            network         = _network;
+            MenorTamanho    = _MenorTamanho;
         }
         //------------------------------------------------------------------------------------------
         public void Init()
@@ -121,8 +122,10 @@ namespace AmbienteRPB
                 send_SmS(1, "Inicializando...", false);
                 //Define o tamanho do vetor evento
                 MenorTamanho = VetorEvento.Count();
-                newRede();
-                TreinodaRede(VetorEvento, 1, "SomenteUm", 0); //null - somente o evento marcado 
+              
+                if(!RNImportada)
+                    TreinodaRede(VetorEvento, 1, "SomenteUm", 0); //null - somente o evento marcado 
+                
                 send_SmS(1, "Treinada", false);
                 vetorDeResultados = new int[Sinal.Count()];
                 Rodar(Sinal, 0);
@@ -132,106 +135,36 @@ namespace AmbienteRPB
             {
                 //Utilizando o backPropagation 
                 send_SmS(1, "Inicializando...", false);
-                vetorDeResultados = new int[Sinal.Count()];
                 //busca pelo menor tamanho do dos eventos deste padrao... 
-                for (int i = 0; i < PadroesATreinar.Count(); i++)
+                vetorDeResultados = new int[Sinal.Count()];
+                for(int i=0; i< PadroesATreinar.Count();i++)
                 {
-                    send_SmS(1, "Treinando a rede de '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
-                    
-                    for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[i]].NumeroEventos; cont++)
+                    if (!RNImportada)
                     {
-                        int aux = (int)(ListasPadrEvents[PadroesATreinar[i]].GetValorFim(cont).X - ListasPadrEvents[PadroesATreinar[i]].GetValorInicio(cont).X);
-                        if ((cont == 0 && i ==0) || MenorTamanho > aux)
-                            MenorTamanho = aux;
+                        send_SmS(1, "Treinando a rede de '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                        TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                        send_SmS(1, "Treinada", false);
                     }
-                    newRede();
-                    TreinodaRede(VetorEvento, 1, "TodosEventos", i);                    
-                    send_SmS(1, "Treinada", false);
+                    else
+                    {
+                        MenorTamanho = network.InputLayer.Count;
+                    }
                     send_SmS(1, "Reconhecendo padrões iniciado em: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     Rodar(Sinal,i);
                     send_SmS(1, "Fim " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
-                }
-                //imprime os resultados caso nao esteja no modo debug... 
-                send_SmS(1, "Imprimindo resultados.", false);
-                if (!it_is_debug)
-                {
-                    //limpa os dados se existirem
-                    double[] dados = new double[1];
-                    Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                    Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                }
-               send_SmS(1, "..Fim..", false);                  
-            }
-        }
-        
-        //------------------------------------------------------------------------------------------
-        //#Funçao responsavel por criar a rede
-        public void newRede()
-        {
-            strategy = new BrainNet.NeuralFramework.BackPropNeuronStrategy();
-            layers = new ArrayList();
-            layers.Add(MenorTamanho);
-            layers.Add((int)Math.Sqrt(MenorTamanho));
-            //layers.Add(8);
-            layers.Add(1);
-            //long neurons = 0;
-            network = new BrainNet.NeuralFramework.NeuralNetwork();
-            foreach (int neurons in layers)
-            {
-                BrainNet.NeuralFramework.NeuronLayer layer;
-                for (int i = 0; i <= neurons - 1; i++)
-                {
-                    layer = new BrainNet.NeuralFramework.NeuronLayer();
-                    for (i = 0; i <= neurons - 1; i++)
+                    //imprime os resultados caso nao esteja no modo debug... 
+                    send_SmS(1, "Imprimindo resultados.", false);
+                    if (!it_is_debug)
                     {
-                        BrainNet.NeuralFramework.INeuron ass = new BrainNet.NeuralFramework.Neuron(strategy);
-                        layer.Add(ref ass);
+                        //limpa os dados se existirem
+                        double[] dados = new double[1];
+                        Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                        Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                     }
-                    network.Layers.Add(layer);
                 }
+                send_SmS(1, "..Fim..", false);                  
             }
-            network.ConnectLayers();
-        }
-        //-----------------------------------------------------------------------------------------
-        public int [] ConvertToBinary(int n)
-        {
-            int[] bits = new int[8];
-            if (n == 0)
-            {
-                //a
-                bits[0] = 0;
-                bits[1] = 1;
-                bits[2] = 1;
-                bits[3] = 0; 
-                bits[4] = 0;
-                bits[5] = 0;
-                bits[6] = 0;
-                bits[7] = 1;
-            }
-            if (n == 1)
-            {//0111 0000 - p
-                bits[0] = 0;
-                bits[1] = 1;
-                bits[2] = 1;
-                bits[3] = 1;
-                bits[4] = 0;
-                bits[5] = 0;
-                bits[6] = 0;
-                bits[7] = 0;
-            }
-            if (n == 2)
-            {//0111 0111 w
-                bits[0] = 0;
-                bits[1] = 1;
-                bits[2] = 1;
-                bits[3] = 1;
-                bits[4] = 0;
-                bits[5] = 1;
-                bits[6] = 1;
-                bits[7] = 1;
-            }
-            return bits;
-        }
+        }    
         //-----------------------------------------------------------------------------------------
         public void TreinodaRede(double[] input1, double output,string tipoDeTreinamento, int RedeAtual)
         {
@@ -244,10 +177,7 @@ namespace AmbienteRPB
             {
                 case ("TodosEventos"):
                     {
-                            int [] saidaB = ConvertToBinary(0);
                             saida = new ArrayList();
-                            //for (int addSaida = 0; addSaida < 8; addSaida++)
-                                //saida.Add(saidaB[addSaida]);
                             saida.Add(1);
                             for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
                             {
@@ -323,15 +253,7 @@ namespace AmbienteRPB
                     }
                 case ("SomenteUm"):
                     {
-                        //a
-                        saida.Add(0);//0
-                        saida.Add(1);//1
-                        saida.Add(1);//2
-                        saida.Add(0);//3
-                        saida.Add(0);//4
-                        saida.Add(0);//5
-                        saida.Add(0);//6
-                        saida.Add(1);//7
+                        saida.Add(1);
                         for (int i = 0; i < input1.Count(); i++)
                             entrada.Add(input1[i]);
                         helper.AddTrainingData(entrada, saida);
@@ -353,7 +275,7 @@ namespace AmbienteRPB
             dados[1] = 0;
             dados[0] = 0;
             outputs_ = new ArrayList();
-            int[] saidaInt = new int[1];//8];
+            int[] saidaInt = new int[1];
 
             outputs_.Add(0.0);
             for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
@@ -377,7 +299,7 @@ namespace AmbienteRPB
                 BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
                 char character = (char)(patternHelper.NumberFromArraylist(outputs_));
 
-                for (int kk = 0; kk < 1; kk++)//8; kk++)
+                for (int kk = 0; kk < 1; kk++)
                 {
                     if(0.994 <= Convert.ToDouble(outputs_[kk]))
                         saidaInt[kk] = 1;
@@ -387,13 +309,13 @@ namespace AmbienteRPB
       
                 if (it_is_debug)
                 {
-                    if (saidaInt[0] == 1)// && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 && saidaInt[0] == 0)
+                    if (saidaInt[0] == 1)
                         character = 'a';
                     else
                         character = 'E';
 
-                    string saida = i + "\n\n" + Convert.ToString(outputs_[0]);// + "\n" + Convert.ToString(outputs_[1]) + "\n" + Convert.ToString(outputs_[2]) + "\n" + Convert.ToString(outputs_[3]) + "\n" + Convert.ToString(outputs_[4]) + "\n" + Convert.ToString(outputs_[5]) + "\n" + Convert.ToString(outputs_[6]) + "\n" + Convert.ToString(outputs_[7]) + "\n ------ \n" + character;
-                    string saida2 = /*Convert.ToString(saidaInt[7]) + "\t" + Convert.ToString(saidaInt[6]) + "\t" + Convert.ToString(saidaInt[5]) + "\t" + Convert.ToString(saidaInt[4]) + "\t" + Convert.ToString(saidaInt[3]) + "\t" + Convert.ToString(saidaInt[2]) + "\t" + Convert.ToString(saidaInt[1]) + "\t" +*/ Convert.ToString(saidaInt[0]) + "\t||   " + character;
+                    string saida = i + "\n\n" + Convert.ToString(outputs_[0]);
+                    string saida2 = Convert.ToString(saidaInt[0]) + "\t||   " + character;
                     if (!chave)
                         send_SmS(1, saida2, false);
 
@@ -412,14 +334,10 @@ namespace AmbienteRPB
                         chave = true;
                     if (i == 1300)//1150
                         chave = true;
-                    if (i == 1940)//1700
-                        chave = true;
-                    if (i == 2600)
-                        chave = true;
                 }
                 else
                 {
-                    if (/*saidaInt[7] == 1 && saidaInt[6] == 0 && saidaInt[5] == 0 && saidaInt[4] == 0 && saidaInt[3] == 0 && saidaInt[2] == 1 && saidaInt[1] == 1 &&*/ saidaInt[0] == 1)
+                    if (saidaInt[0] == 1)
                         vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + RedeAtual + 1;     
                     else
                         vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
