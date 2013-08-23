@@ -379,12 +379,12 @@ namespace AmbienteRPB
                   case("CorrigirAmplitude"):{
                       //Corrige a amplitude
                       prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                      if (prb.Series[Canal + 1].Points.Count >= 2000)
+                      if (prb.Series[Canal + 1].Points.Count >= 6000)
                       {
                           double MaxY=0, MinY=0;
-                          for (int i = 0; i < 2000; i++)
+                          for (int i = 0; i < 6000; i++)
                           {
-                              if (i <= 2000)
+                              if (i <= 6000)
                               {
                                   if (MaxY < prb.Series[Canal + 1].Points[i].YValues[0] || i == 0)
                                       MaxY = prb.Series[Canal + 1].Points[i].YValues[0];
