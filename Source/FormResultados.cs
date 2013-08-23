@@ -560,7 +560,7 @@ namespace AmbienteRPB
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", network, RN_Importada, MenorTamanho);
+                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", ref network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objRMP.Init));
                 Thread_RN.Start();
                 //Habilita a opção de poder exportar para o form principal
@@ -575,6 +575,7 @@ namespace AmbienteRPB
                 verifica = true;
             else
                 verifica = SelecionaEventoDasLista();
+
             if (verifica)
             {
                 if (visivel == false)
@@ -609,28 +610,10 @@ namespace AmbienteRPB
                 for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
 
-                /* if (FormDadosInput.NumPadroes > 1)
-                 {
-                     eventos         = new string[FormDadosInput.NumPadroes];
-                     PadroesATreinar = new int[FormDadosInput.NumPadroes];
-                     PadroesATreinar[0] = ID_PadraoAtual;
-                     eventos[0] = Convert.ToString(ID_PadraoAtual);
-                     for (int i = 1; i < FormDadosInput.NumPadroes; i++)
-                     {
-                         SelecionaEventoDasLista();
-                         PadroesATreinar[i] = ID_PadraoAtual;
-                         eventos[i] = Convert.ToString(ID_PadraoAtual);
-
-                     }
-                 }
-                 else
-                 {*/
                 string TipoBkP;
                 //Verifica se a RN foi criada
                 if (!RN_Importada)
                 {
-                    novaRedeMLP();
-                    salvarRedeToolStripMenuItem.Enabled = true;
                     PadroesATreinar = new int[1];
                     PadroesATreinar[0] = ID_PadraoAtual;
                     eventos = new string[FormDadosInput.NumPadroes];
@@ -651,6 +634,8 @@ namespace AmbienteRPB
                     }
                     else
                         MenorTamanho = vector_evento.Count();
+                    novaRedeMLP();
+                    salvarRedeToolStripMenuItem.Enabled = true;
                 }
                 //Pergunta se quer treinar novamente a rede neural... algo assim
                 else
@@ -662,7 +647,7 @@ namespace AmbienteRPB
                     eventos = new string[1];
                 }
 
-                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, network, RN_Importada, MenorTamanho);
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objBKP.Init));
                 Thread_RN.Start();
                 //Habilita a opção de poder exportar para o form principal

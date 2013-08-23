@@ -68,7 +68,7 @@ namespace AmbienteRPB
         private int[] vetorDeResultados;
         private bool it_is_debug = false;
         //------------------------------------------------------------------------------------------
-        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede, INeuralNetwork _network, bool _RNImportada, int _MenorTamanho)
+        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede, ref INeuralNetwork _network, bool _RNImportada, int _MenorTamanho)
         {
             SinalEEG        =  _SinalEEG;
             ListasPadrEvents = _Listas;
