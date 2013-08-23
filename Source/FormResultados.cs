@@ -37,7 +37,7 @@ namespace AmbienteRPB
         private EdfFile edfFileOutput;
         private int CanalAtual = 0;
         private int CanaisCriados = 1;
-        private int DataRecords_lidos = 10;
+        private int [] DataRecords_lidos;
         private int Scroll_Click_Escala_Seg = 10; //tempo em segundos de tela
         private double[] vector_evento;
         public PointF ValorInicio;
@@ -93,6 +93,8 @@ namespace AmbienteRPB
             chart1.BackColor = CorDeFundo;
             OP_Salvar = false;
             RN_Rodou = false;
+            DataRecords_lidos = new int[numeroDeCanais];
+            DataRecords_lidos[0] = 10; //primeiro canal que vem carregado já por default quando abre a tela
         }
         //-----------------------------------------------------------------------------------------
         private void AdicionaCanais()
@@ -347,7 +349,7 @@ namespace AmbienteRPB
         {
             for (int k = 0; k < Scroll_Click_Escala_Seg; k++)
             {
-                if (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
+                if (DataRecords_lidos[CanalAtual/4] < edfFileOutput.FileInfo.NrDataRecords)
                 {
                     if (SetMax)
                     {
@@ -357,9 +359,9 @@ namespace AmbienteRPB
                         ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
                     }
                     int excluir;
-                    int tempo = DataRecords_lidos * edfFileOutput.SignalInfo[1].BufferOffset;
-                    edfFileOutput.ReadDataBlock(DataRecords_lidos);
-                    DataRecords_lidos++;
+                    int tempo = DataRecords_lidos[CanalAtual / 4] * edfFileOutput.SignalInfo[1].BufferOffset;
+                    edfFileOutput.ReadDataBlock(DataRecords_lidos[CanalAtual / 4]);
+                    DataRecords_lidos[CanalAtual / 4] = DataRecords_lidos[CanalAtual / 4] + 1;
                     //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
                     for (int j = 0; j < numeroDeCanais; j++)
                     {
@@ -410,7 +412,7 @@ namespace AmbienteRPB
         {
             if (SelecionaEventoDasLista())
             {
-                if (DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
+                if (DataRecords_lidos[CanalAtual / 4] <= edfFileOutput.FileInfo.NrDataRecords)
                 {
                     DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?\nSim - Todo o sinal\nNão - Somente 10s de sinal\nCancel - Aborta a operação\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
                     if (resposta == DialogResult.No)
@@ -419,7 +421,7 @@ namespace AmbienteRPB
                     {
                         double[] Parametros;
                         Parametros = new double[3];
-                        Parametros[0] = DataRecords_lidos;
+                        Parametros[0] = DataRecords_lidos[CanalAtual / 4];
                         //Escalas Máxima e minima
                         if (SetMax)
                         {
@@ -437,7 +439,7 @@ namespace AmbienteRPB
                         Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
                         Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                         Thread_.Start();
-                        DataRecords_lidos = edfFileOutput.FileInfo.NrDataRecords + 10;
+                        DataRecords_lidos[CanalAtual / 4] = edfFileOutput.FileInfo.NrDataRecords + 10;
                     }
                     segundaCorrelacao.Enabled = true;
                 }
