@@ -86,7 +86,7 @@ namespace AmbienteRPB
             SMS_Box.SelectionStart = SMS_Box.Text.Length;
             SMS_Box.ScrollToCaret();
 
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, null);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
@@ -286,7 +286,7 @@ namespace AmbienteRPB
                 if (CanaisCriados <= (CanalAtual / 4))
                 {
                     AdicionaCanais();
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais,null);
                     Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                     Thread_.Start();
                     CanaisCriados++;
@@ -418,10 +418,23 @@ namespace AmbienteRPB
                     double[] Parametros;
                     Parametros = new double[3];
                     Parametros[0] = DataRecords_lidos;
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais);
+                    //Escalas Máxima e minima
+                    if (SetMax)
+                    {
+                        SetMax = false;
+                        ValsMAX_MIN = new float[2];
+                        ValsMAX_MIN[0] = (float)chart1.ChartAreas[CanalAtual].AxisY.Maximum;
+                        ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
+                    }
+                    Parametros[1] = ValsMAX_MIN[0];//max
+                    Parametros[2] = ValsMAX_MIN[1];//min
+
+                    chart1.Series[CanalAtual + 1].Points.Clear();
+                    chart1.Series[CanalAtual + 2].Points.Clear();
+
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
                     Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                     Thread_.Start();
-                    inicia_correlacao();
                 }
                 segundaCorrelacao.Enabled = true;
             }
@@ -448,7 +461,9 @@ namespace AmbienteRPB
         {
             chart1.Series[CanalAtual + 1].Points.Clear();
             chart1.Series[CanalAtual + 2].Points.Clear();
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
+            double[] Parametros;
+            Parametros = new double[3];
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
@@ -469,7 +484,9 @@ namespace AmbienteRPB
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             SelecionaEventoDasLista();
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais);
+            double[] Parametros;
+            Parametros = new double[3];
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }

@@ -40,8 +40,9 @@ namespace AmbienteRPB
         private float inicio;
         private float fim;
         private GerenArquivos GerArquivos;
+        private double[] Escala;
         //-----------------------------------------------------------------------------------------
-        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, float _inicio, float _fim, int _NumeroDeCanais)
+        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, float _inicio, float _fim, int _NumeroDeCanais, double[] _Escala)
         {
             _Grafico          = Grafico;
             _BarraDeProgresso = BarraDeProgresso;
@@ -53,7 +54,7 @@ namespace AmbienteRPB
             NumeroDeCanais    = _NumeroDeCanais;
             inicio            = _inicio;
             fim               = _fim;
-            
+            Escala            = _Escala; 
         }
         //-----------------------------------------------------------------------------------------
         public void Inicializa()
@@ -71,8 +72,10 @@ namespace AmbienteRPB
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio,fim, NumeroDeCanais);
 
                 if (Opcao == "CarregarTodoSinal")
-                    Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
-
+                {
+                    Plotar(0, Canal, edfFileOutput, Opcao, Escala, inicio, fim, NumeroDeCanais);
+                    Plotar(0, Canal, edfFileOutput, "Correlacao", Vector_evento, inicio, fim, NumeroDeCanais);
+                }
                 if (Opcao == "Correlacao_AGAIN")
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
             }
@@ -380,6 +383,8 @@ namespace AmbienteRPB
                             //Incrementa a barra de progresso
                             load_progress_bar(0, 1);
                         }
+                        prb.ChartAreas[canal].AxisY.Maximum = vector_evento[1];
+                        prb.ChartAreas[canal].AxisY.Minimum = vector_evento[2];
                         load_progress_bar(1, 3);
                        break;
                     }
