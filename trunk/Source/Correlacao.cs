@@ -74,7 +74,8 @@ namespace AmbienteRPB
                 if (Opcao == "CarregarTodoSinal")
                 {
                     Plotar(0, Canal, edfFileOutput, Opcao, Escala, inicio, fim, NumeroDeCanais);
-                    Plotar(0, Canal, edfFileOutput, "Correlacao", Vector_evento, inicio, fim, NumeroDeCanais);
+                    Plotar(0, Canal, edfFileOutput, "Correlacao", Vector_evento, inicio, fim, NumeroDeCanais);    
+                    Plotar(0, Canal, edfFileOutput, "CorrigirAmplitude", Vector_evento, inicio, fim, NumeroDeCanais);
                 }
                 if (Opcao == "Correlacao_AGAIN")
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
@@ -188,21 +189,8 @@ namespace AmbienteRPB
                         float res = 0;
                         float MaxY = 0;
                         float MinY = 0;
-                        float MaxX = 0;
                         float Media = 0;
-                        //se tem um arquivo velho lá... apaga
-                        if(System.IO.File.Exists(GerArquivos.getPathUser() + "arquivo.txt"))
-                        {
-                            try
-                            {
-                                System.IO.File.Delete(GerArquivos.getPathUser() + "arquivo.txt");
-                            }
-                            catch (System.IO.IOException e)
-                            {
-                                Console.WriteLine(e.Message);
-                                return;
-                            }
-                        }
+                        double[] Amplitude = new double[2];
                         //===================================================================
                         //                  Primeira etapa de correlação
                         //===================================================================
@@ -388,6 +376,27 @@ namespace AmbienteRPB
                         load_progress_bar(1, 3);
                        break;
                     }
+                  case("CorrigirAmplitude"):{
+                      //Corrige a amplitude
+                      prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                      if (prb.Series[Canal + 1].Points.Count >= 2000)
+                      {
+                          double MaxY=0, MinY=0;
+                          for (int i = 0; i < 2000; i++)
+                          {
+                              if (i <= 2000)
+                              {
+                                  if (MaxY < prb.Series[Canal + 1].Points[i].YValues[0] || i == 0)
+                                      MaxY = prb.Series[Canal + 1].Points[i].YValues[0];
+                                  if (MinY > prb.Series[Canal + 1].Points[i].YValues[0] || i == 0)
+                                      MinY = prb.Series[Canal + 1].Points[i].YValues[0];
+                              }
+                              prb.ChartAreas[canal + 1].AxisY.Maximum = MaxY;
+                              prb.ChartAreas[canal + 1].AxisY.Minimum = MinY;
+                          }
+                      }
+                      break;  
+                  }
                 
                 }
             }

@@ -410,33 +410,44 @@ namespace AmbienteRPB
         {
             if (SelecionaEventoDasLista())
             {
-                DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?\nSim - Todo o sinal\nNão - Somente 10s de sinal\nCancel - Aborta a operação\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
-                if (resposta == DialogResult.No)
-                    inicia_correlacao();
-                if (resposta == DialogResult.Yes)
+                if (DataRecords_lidos <= edfFileOutput.FileInfo.NrDataRecords)
                 {
-                    double[] Parametros;
-                    Parametros = new double[3];
-                    Parametros[0] = DataRecords_lidos;
-                    //Escalas Máxima e minima
-                    if (SetMax)
+                    DialogResult resposta = MessageBox.Show("Deseja iniciar a correlação?\nSim - Todo o sinal\nNão - Somente 10s de sinal\nCancel - Aborta a operação\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
+                    if (resposta == DialogResult.No)
+                        inicia_correlacao();
+                    if (resposta == DialogResult.Yes)
                     {
-                        SetMax = false;
-                        ValsMAX_MIN = new float[2];
-                        ValsMAX_MIN[0] = (float)chart1.ChartAreas[CanalAtual].AxisY.Maximum;
-                        ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
-                    }
-                    Parametros[1] = ValsMAX_MIN[0];//max
-                    Parametros[2] = ValsMAX_MIN[1];//min
+                        double[] Parametros;
+                        Parametros = new double[3];
+                        Parametros[0] = DataRecords_lidos;
+                        //Escalas Máxima e minima
+                        if (SetMax)
+                        {
+                            SetMax = false;
+                            ValsMAX_MIN = new float[2];
+                            ValsMAX_MIN[0] = (float)chart1.ChartAreas[CanalAtual].AxisY.Maximum;
+                            ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
+                        }
+                        Parametros[1] = ValsMAX_MIN[0];//max
+                        Parametros[2] = ValsMAX_MIN[1];//min
 
+                        chart1.Series[CanalAtual + 1].Points.Clear();
+                        chart1.Series[CanalAtual + 2].Points.Clear();
+
+                        Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
+                        Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
+                        Thread_.Start();
+                        DataRecords_lidos = edfFileOutput.FileInfo.NrDataRecords + 10;
+                    }
+                    segundaCorrelacao.Enabled = true;
+                }
+                else
+                {
                     chart1.Series[CanalAtual + 1].Points.Clear();
                     chart1.Series[CanalAtual + 2].Points.Clear();
-
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
-                    Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
-                    Thread_.Start();
+                    inicia_correlacao();
+                    segundaCorrelacao.Enabled = true;
                 }
-                segundaCorrelacao.Enabled = true;
             }
         }
         private bool SelecionaEventoDasLista()
