@@ -86,7 +86,7 @@ namespace AmbienteRPB
             SMS_Box.SelectionStart = SMS_Box.Text.Length;
             SMS_Box.ScrollToCaret();
 
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, null);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, null,null);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             chart1.Enabled = true;
@@ -288,7 +288,7 @@ namespace AmbienteRPB
                 if (CanaisCriados <= (CanalAtual / 4))
                 {
                     AdicionaCanais();
-                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais,null);
+                    Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais,null,null);
                     Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                     Thread_.Start();
                     CanaisCriados++;
@@ -436,7 +436,7 @@ namespace AmbienteRPB
                         chart1.Series[CanalAtual + 1].Points.Clear();
                         chart1.Series[CanalAtual + 2].Points.Clear();
 
-                        Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
+                        Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, null);
                         Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
                         Thread_.Start();
                         DataRecords_lidos[CanalAtual / 4] = edfFileOutput.FileInfo.NrDataRecords + 10;
@@ -476,7 +476,7 @@ namespace AmbienteRPB
             chart1.Series[CanalAtual + 2].Points.Clear();
             double[] Parametros;
             Parametros = new double[3];
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, null);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
@@ -499,7 +499,7 @@ namespace AmbienteRPB
             SelecionaEventoDasLista();
             double[] Parametros;
             Parametros = new double[3];
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, null);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
@@ -905,50 +905,29 @@ namespace AmbienteRPB
                 }
             }
         }
-
+        //Carrega o arquivo de marcacoes existente, arquivo este gerado pelo MIT e editado por nós... 
         private void btnMarcacoes_Click(object sender, EventArgs e)
         {
-            string dir;
             openFileDialog1.Filter = "TXT Files|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                //Carrega todo sinal... 
-                /* double[] Parametros;
+                 double[] Parametros;
                  Parametros = new double[3];
-                 Parametros[0] = DataRecords_lidos;
-                 Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais);
-                 Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
-                 Thread_.Start();
-                
-                 while (Thread_.ThreadState == ThreadState.Running)
+                 Parametros[0] = DataRecords_lidos[CanalAtual / 4];
+                 if (SetMax)
                  {
-                 }*/
+                     SetMax = false;
+                     ValsMAX_MIN = new float[2];
+                     ValsMAX_MIN[0] = (float)chart1.ChartAreas[CanalAtual].AxisY.Maximum;
+                     ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
+                 }
+                 Parametros[1] = ValsMAX_MIN[0];//max
+                 Parametros[2] = ValsMAX_MIN[1];//min
 
-                dir = openFileDialog1.FileName;
-                Arquivos = new GerenArquivos();
-                Arquivos.LerMarcacao(dir);
-                int countArquivo = 0;
-                for (long i = 0; i < chart1.Series[CanalAtual].Points.Count(); i++)
-                {
-                    if (Arquivos.Samples[countArquivo] == i)
-                    {
-                        LineAnnotation annotationRectangle = new LineAnnotation();
-                        annotationRectangle.BackColor = Color.FromArgb(128, Color.Red);
-                        annotationRectangle.AxisX = chart1.ChartAreas[CanalAtual].AxisX;
-                        annotationRectangle.AxisY = chart1.ChartAreas[CanalAtual].AxisY;
-                        annotationRectangle.X = Arquivos.Samples[countArquivo];
-                        annotationRectangle.Y = chart1.ChartAreas[CanalAtual].AxisY.Maximum;
-                        annotationRectangle.LineColor = Color.FromArgb(128, Color.Red);
-                        annotationRectangle.ToolTip = "1";
-                        annotationRectangle.Height = chart1.ChartAreas[CanalAtual].Position.Height;
-                        annotationRectangle.Width = 0;/// 26.1;
-                        annotationRectangle.AllowMoving = false;
-                        annotationRectangle.AllowAnchorMoving = false;
-                        annotationRectangle.AllowSelecting = false;
-                        chart1.Annotations.Add(annotationRectangle);
-                        countArquivo++;
-                    }
-                }
+                 Correlacao carregarMarcacoes = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Marcacoes", Parametros, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, openFileDialog1.FileName);
+                 Thread_ = new Thread(new ThreadStart(carregarMarcacoes.Inicializa));
+                 Thread_.Start();
+                 DataRecords_lidos[CanalAtual / 4] = edfFileOutput.FileInfo.NrDataRecords + 10;
             }
         }
 
