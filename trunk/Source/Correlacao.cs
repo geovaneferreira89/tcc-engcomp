@@ -358,28 +358,31 @@ namespace AmbienteRPB
 
                         prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                         load_progress_bar(0, 4);
-                        load_progress_bar(edfFileOutput.FileInfo.NrDataRecords - DataRecords_lidos, 2);
-                        while (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
+                        if (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
                         {
-                            int excluir;
-                            edfFileOutput.ReadDataBlock(DataRecords_lidos);
-                            DataRecords_lidos++;
-                            //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                            for (int j = 0; j < numeroDeCanais_; j++)
+                            load_progress_bar(edfFileOutput.FileInfo.NrDataRecords - DataRecords_lidos, 2);
+                            while (DataRecords_lidos < edfFileOutput.FileInfo.NrDataRecords)
                             {
-                                for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+                                int excluir;
+                                edfFileOutput.ReadDataBlock(DataRecords_lidos);
+                                DataRecords_lidos++;
+                                //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                                for (int j = 0; j < numeroDeCanais_; j++)
                                 {
-                                    if (j == (canal/3))
-                                        prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
-                                    else
-                                        excluir = edfFileOutput.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                    for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+                                    {
+                                        if (j == (canal / 3))
+                                            prb.Series["canal" + canal].Points.AddY(SinalEEG.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                                        else
+                                            excluir = edfFileOutput.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                    }
                                 }
+                                //Incrementa a barra de progresso
+                                load_progress_bar(0, 1);
                             }
-                            //Incrementa a barra de progresso
-                            load_progress_bar(0, 1);
+                            prb.ChartAreas[canal].AxisY.Maximum = vector_evento[1];
+                            prb.ChartAreas[canal].AxisY.Minimum = vector_evento[2];
                         }
-                        prb.ChartAreas[canal].AxisY.Maximum = vector_evento[1];
-                        prb.ChartAreas[canal].AxisY.Minimum = vector_evento[2];
                         load_progress_bar(1, 3);
                        break;
                     }
