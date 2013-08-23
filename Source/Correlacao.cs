@@ -41,8 +41,9 @@ namespace AmbienteRPB
         private float fim;
         private GerenArquivos GerArquivos;
         private double[] Escala;
+        private string auxString;
         //-----------------------------------------------------------------------------------------
-        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, float _inicio, float _fim, int _NumeroDeCanais, double[] _Escala)
+        public Correlacao(Control Grafico, Control BarraDeProgresso, Control ScrollBar, EdfFile _edfFileOutput, int _Canal, string _opcao, double[] _vector_evento, float _inicio, float _fim, int _NumeroDeCanais, double[] _Escala, string _auxString)
         {
             _Grafico          = Grafico;
             _BarraDeProgresso = BarraDeProgresso;
@@ -54,7 +55,8 @@ namespace AmbienteRPB
             NumeroDeCanais    = _NumeroDeCanais;
             inicio            = _inicio;
             fim               = _fim;
-            Escala            = _Escala; 
+            Escala            = _Escala;
+            auxString = _auxString;
         }
         //-----------------------------------------------------------------------------------------
         public void Inicializa()
@@ -79,6 +81,11 @@ namespace AmbienteRPB
                 }
                 if (Opcao == "Correlacao_AGAIN")
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
+                if (Opcao == "Marcacoes")
+                {
+                    Plotar(0, Canal, edfFileOutput, "CarregarTodoSinal", Vector_evento, inicio, fim, NumeroDeCanais);
+                    Plotar(0, Canal, edfFileOutput, Opcao, Escala, inicio, fim, NumeroDeCanais);                    
+                }
             }
         }
        
@@ -376,8 +383,9 @@ namespace AmbienteRPB
                         load_progress_bar(1, 3);
                        break;
                     }
+                   //-----------------------------------------
+                   //Corrige a amplitude
                   case("CorrigirAmplitude"):{
-                      //Corrige a amplitude
                       prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                       if (prb.Series[Canal + 1].Points.Count >= 6000)
                       {
@@ -397,7 +405,36 @@ namespace AmbienteRPB
                       }
                       break;  
                   }
-                
+                  //-----------------------------------------
+                  case ("Marcacoes"):
+                  {
+                       prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                        GerenArquivos Arquivos = new GerenArquivos();
+                        Arquivos.LerMarcacao(auxString);
+                        load_progress_bar(0, 4);
+                        load_progress_bar(Arquivos.Samples.Count(), 2);
+                        for (long i = 0; i <Arquivos.Samples.Count(); i++)
+                        {
+                            LineAnnotation annotationRectangle = new LineAnnotation();
+                            annotationRectangle.BackColor = Color.FromArgb(128, Color.Red);
+                            annotationRectangle.AxisX = prb.ChartAreas[Canal].AxisX;
+                            annotationRectangle.AxisY = prb.ChartAreas[Canal].AxisY;
+                            annotationRectangle.X = Arquivos.Samples[i];
+                            annotationRectangle.Y = prb.ChartAreas[Canal].AxisY.Maximum;
+                            annotationRectangle.LineColor = Color.FromArgb(128, Color.Red);
+                            annotationRectangle.ToolTip = "1";
+                            annotationRectangle.Height = prb.ChartAreas[Canal].Position.Height;
+                            annotationRectangle.Width = 0;
+                            annotationRectangle.AllowMoving = false;
+                            annotationRectangle.AllowAnchorMoving = false;
+                            annotationRectangle.AllowSelecting = false;
+                            prb.Annotations.Add(annotationRectangle);
+                            //Incrementa a barra de progresso
+                            load_progress_bar(0, 1);
+                        }
+                        load_progress_bar(1, 3);
+                        break;
+                    }
                 }
             }
         }
