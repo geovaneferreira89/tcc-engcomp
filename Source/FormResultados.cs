@@ -730,7 +730,6 @@ namespace AmbienteRPB
                 btn_Aumentar.Location = new Point(this.btn_Aumentar.Location.X, this.SMS_Box.Location.Y + 4);
                 btn_Close.Location = new Point(this.btn_Close.Location.X, this.SMS_Box.Location.Y + 4);
                 visivel = false;
-
             }
         }
 
@@ -973,7 +972,6 @@ namespace AmbienteRPB
                 NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
                 ser.SaveNetwork(nomeArquivo + ".xml", network);
             }
-
         }
 
         private void importarRedeToolStripMenuItem_Click(object sender, EventArgs e)
