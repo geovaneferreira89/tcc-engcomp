@@ -240,6 +240,7 @@ namespace AmbienteRPB
                     Cursor_vertical_Inicio.AnchorX = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                     Cursor_vertical_Inicio.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
                     chart1.Annotations.Add(Cursor_vertical_Inicio);
+                    cbx_Inicio.Text = "Inicio X: " + ValorInicio.X.ToString();
                     btnSalvar.Enabled = true;
                 }
                 if (cbx_Fim.Checked == true)
@@ -263,6 +264,7 @@ namespace AmbienteRPB
                     Cursor_vertical_Fim.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
                     chart1.Annotations.Add(Cursor_vertical_Fim);
                     btnSalvar.Enabled = true;
+                    cbx_Fim.Text = "Fim X: " + ValorFim.X.ToString();
                 }
                 if (cbx_Referencia.Checked == true)
                 {
@@ -285,7 +287,7 @@ namespace AmbienteRPB
                     Cursor_vertical_Referencia.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
                     chart1.Annotations.Add(Cursor_vertical_Referencia);
 
-                    cbx_Referencia.Text = "Referência : " + ValorReferencia.Y.ToString();
+                    cbx_Referencia.Text = "Referência Y: " + ValorReferencia.Y.ToString() + " X: " + ValorReferencia.X.ToString();
                     //Habilita opção de salvar
                     btnSalvar.Enabled = true;
                 }
