@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  21 AUG 2013 14:31
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  25 AUG 2013 18:48
 entering extended mode
 **modelo_daeln.tex
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.tex
@@ -429,105 +429,101 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 ] [2
 
 
-] [3
-
-
 ]
-Overfull \hbox (12.27132pt too wide) in paragraph at lines 67--67
-\OT1/ptm/m/n/12 e FER-REIRA, Ge-o-vane Vin[]cius. Sis-tema para Re-co-nhe-ci-m
-ento de Padr[]oes em Si-nais Biom[]edicos
- []
 
-[4
+LaTeX Warning: Citation `CONEP' on page  undefined on input line 77.
+
+[3
 
 
-] [5
+] [4
 
 
 ] (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.lof)
 \tf@lof=\write3
- [6
+ [5
 
 ]
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.lot)
 \tf@lot=\write4
- [7
+ [6
 
 ]
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.lsg)
 \tf@lsg=\write5
- [8
+ [7
 
 ]
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.lsb)
 \tf@lsb=\write6
- [9
+ [8
 
 ]
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.toc)
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.toc [9
+
+
+])
 \tf@toc=\write7
- [10
-
-
-]
+ [10]
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\intro.tex
 Cap\'{\i }tulo 1.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 114.
-
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 15.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
- [11
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
+)
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\fund.tex [11
 
 
 ]
 Cap\'{\i }tulo 2.
-<./figs/heart.png, id=48, 313.17pt x 430.60875pt>
+<./figs/heart.png, id=46, 313.17pt x 430.60875pt>
 File: ./figs/heart.png Graphic file (type png)
  <use ./figs/heart.png>
-Package pdftex.def Info: ./figs/heart.png used on input line 141.
+Package pdftex.def Info: ./figs/heart.png used on input line 15.
 (pdftex.def)             Requested size: 182.09486pt x 250.39058pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 142.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
 
 [12
 
-]
-Overfull \hbox (9.35199pt too wide) in paragraph at lines 181--182
+ <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/heart.png>]
+Overfull \hbox (9.35199pt too wide) in paragraph at lines 55--56
 []\OT1/ptm/m/n/12 Nesta se[][]ao ser[]ao apre-sen-ta-dos al-guns itens per-ti-n
 en-tes a com-pre-ens[]ao de for-mas de avalia[][]ao
  []
 
-[13 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/heart.png>] [14]
+[13]) [14]
 Cap\'{\i }tulo 3.
 [15
 
-] [16]
+] [16] [17]
 Cap\'{\i }tulo 4.
 
-Overfull \hbox (30.84744pt too wide) in paragraph at lines 288--312
+Overfull \hbox (30.84744pt too wide) in paragraph at lines 205--229
  [][] 
  []
 
-[17
+[18
 
-] [18]
+] [19]
 Cap\'{\i }tulo 5.
-[19
+[20
 
 ]
 Cap\'{\i }tulo 6.
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [20
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [21
 
 ])
 
 AED: lastpage setting LastPage
-[21
+[22
 
 ]
 +-------------------------------------------------------------------+
@@ -536,30 +532,32 @@ AED: lastpage setting LastPage
 +-------------------------------------------------------------------+
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux)
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3751 strings out of 493921
- 52451 string characters out of 3144885
- 117442 words of memory out of 3000000
- 6890 multiletter control sequences out of 15000+200000
- 40547 words of font info for 93 fonts, out of 3000000 for 9000
+ 3705 strings out of 493921
+ 51637 string characters out of 3144885
+ 117000 words of memory out of 3000000
+ 6840 multiletter control sequences out of 15000+200000
+ 39271 words of font info for 91 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,8n,43p,2087b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,43p,539b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/Ge/AppDat
-a/Roaming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Ge/AppData/Roami
-ng/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/time
-s/utmri8a.pfb>
-Output written on modelo_daeln.pdf (23 pages, 128954 bytes).
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ge/AppD
+ata/Roaming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Ge/AppData/Roa
+ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
+mes/utmri8a.pfb>
+Output written on modelo_daeln.pdf (24 pages, 121698 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
