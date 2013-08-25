@@ -5,96 +5,32 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.52 }
 
-\bibitem[abnTeX 2009]{abnTeX2009}
-\abntrefinfo{abnTeX}{ABNTEX}{2009}
-{ABNTEX. \textbf{Absurdas normas para \TeX}. 2009.
-Dispon{\'\i}vel em: $<$http://sourceforge.net/apps/
-  mediawiki/abntex/index.php$>$. Acesso em: 8 de novembro de 2009.}
+\bibitem[Gacek e Predycz 2011]{GACEK2011}
+\abntrefinfo{Gacek e Predycz}{GACEK; PREDYCZ}{2011}
+{GACEK, A.; PREDYCZ, W. \textbf{ECG Signal Processing, Classification and
+  Interpretation: A Comprehensive Framework of Computational Intelligence}.
+  [S.l.]: Springer, 2011.}
 
-\bibitem[BibTeX 2009]{BibTeX2009}
-\abntrefinfo{BibTeX}{BIBTEX}{2009}
-{BIBTEX. \textbf{Bib\TeX.org}. 2009.
-Dispon{\'\i}vel em: $<$http://www.bibtex.org$>$. Acesso em: 8 de novembro de
-  2009.}
+\bibitem[Haykin 2011]{HAYKIN2011}
+\abntrefinfo{Haykin}{HAYKIN}{2011}
+{HAYKIN, S. \textbf{Neural Networks: A Comprehensive Foundation}. 2nd. ed.
+  [S.l.]: Pearson Prentice Hall, 2011. 823~p.}
 
-\bibitem[Buerger 1989]{Buerger1989}
-\abntrefinfo{Buerger}{BUERGER}{1989}
-{BUERGER, D.~J. \textbf{\LaTeX\ for scientists and engineers}. Singapura:
-  McGraw-Hill, 1989.}
+\bibitem[Malmivuo e R. 1995]{MALMIVUO1995}
+\abntrefinfo{Malmivuo e R.}{MALMIVUO; R.}{1995}
+{MALMIVUO, J.; R., P. \textbf{Bioelectromagnetism - Principles and Applications
+  of Bioelectric and Biomagnetic Fields}. New York: Oxford University Press,
+  1995. Dispon{\'\i}vel em: $<$http://www.bem.fi/book/$>$.}
 
-\bibitem[CTAN 2009]{CTAN2009}
-\abntrefinfo{CTAN}{CTAN}{2009}
-{CTAN. \textbf{The comprehensive \TeX\ archive network}. 2009.
-Dispon{\'\i}vel em: $<$http://www.ctan. org$>$. Acesso em: 8 de novembro de
-  2009.}
+\bibitem[Moody e Mark 1990]{MOODY1990}
+\abntrefinfo{Moody e Mark}{MOODY; MARK}{1990}
+{MOODY, G.; MARK, R. The mit-bih arrhythmia database on cd-rom and software for
+  use with it. In:  \textbf{Computers in Cardiology 1990, Proceedings.} [S.l.:
+  s.n.], 1990. p. 185--188.}
 
-\bibitem[Goossens et al. 2007]{Goossens2007}
-\abntrefinfo{Goossens et al.}{GOOSSENS et al.}{2007}
-{GOOSSENS, M. et al. \textbf{The \LaTeX\ graphics companion}. 2. ed. Boston:
-  Addison-Wesley, 2007.}
-
-\bibitem[JabRef 2009]{JabRef2009}
-\abntrefinfo{JabRef}{JABREF}{2009}
-{JABREF. \textbf{JabRef reference manager}. 2009.
-Dispon{\'\i}vel em: $<$http://jabref.sourceforge.net$>$. Acesso em: 8 de
-  novembro de 2009.}
-
-\bibitem[Kopka e Daly 2003]{Kopka2003}
-\abntrefinfo{Kopka e Daly}{KOPKA; DALY}{2003}
-{KOPKA, H.; DALY, P.~W. \textbf{Guide to \LaTeX}. 4. ed. Boston:
-  Addison-Wesley, 2003.}
-
-\bibitem[Lamport 1986]{Lamport1986}
-\abntrefinfo{Lamport}{LAMPORT}{1986}
-{LAMPORT, L. \textbf{\LaTeX: \normalfont a document preparation system}.
-  Boston: Addison-Wesley, 1986.}
-
-\bibitem[LaTeX 2009]{LaTeX2009}
-\abntrefinfo{LaTeX}{LATEX}{2009}
-{LATEX. \textbf{The \LaTeX\ project}. 2009.
-Dispon{\'\i}vel em: $<$http://www.latex-project.org$>$. Acesso em: 8 de
-  novembro de 2009.}
-
-\bibitem[Mendeley 2009]{Mendeley2009}
-\abntrefinfo{Mendeley}{MENDELEY}{2009}
-{MENDELEY. \textbf{Mendeley: \normalfont academic software for research
-  papers}. 2009.
-Dispon{\'\i}vel em: $<$http://www.mendeley.com$>$. Acesso em: 8 de novembro de
-  2009.}
-
-\bibitem[MiKTeX 2009]{MiKTeX2009}
-\abntrefinfo{MiKTeX}{MIKTEX}{2009}
-{MIKTEX. \textbf{The MiK\TeX\ project}. 2009.
-Dispon{\'\i}vel em: $<$http://www.miktex.org$>$. Acesso em: 8 de novembro de
-  2009.}
-
-\bibitem[Mittelbach et al. 2004]{Mittelbach2004}
-\abntrefinfo{Mittelbach et al.}{MITTELBACH et al.}{2004}
-{MITTELBACH, F. et al. \textbf{The \LaTeX\ companion}. 2. ed. Boston:
-  Addison-Wesley, 2004.}
-
-\bibitem[Pillai e Sperling 2006]{pillai2006interictal}
+\bibitem[Pillai e Sperling 2006]{PILLAI2006}
 \abntrefinfo{Pillai e Sperling}{PILLAI; SPERLING}{2006}
 {PILLAI, J.; SPERLING, M.~R. Interictal {EEG} and the diagnosis of epilepsy.
-\textbf{Epilepsia}, 10, doi, v.~47, p. 14--22, 2006.}
-
-\bibitem[TeX-BR 2009]{TeX-Br2009}
-\abntrefinfo{TeX-BR}{TEX-BR}{2009}
-{TEX-BR. \textbf{Comunidade \TeX-Br}. 2009.
-Dispon{\'\i}vel em: $<$http://www.tex-br.org/index.php$>$. Acesso em: 8 de
-  novembro de 2009.}
-
-\bibitem[TeXnicCenter 2009]{TeXnicCenter2009}
-\abntrefinfo{TeXnicCenter}{TEXNICCENTER}{2009}
-{TEXNICCENTER. \textbf{\TeX nicCenter: \normalfont the center of your \LaTeX\
-  universe}. 2009.
-Dispon{\'\i}vel em: $<$http://www.texniccenter.org$>$. Acesso em: 8 de novembro
-  de 2009.}
-
-\bibitem[Wikibooks 2009]{Wikibooks2009}
-\abntrefinfo{Wikibooks}{WIKIBOOKS}{2009}
-{WIKIBOOKS. \textbf{\LaTeX}. 2009.
-Dispon{\'\i}vel em: $<$http://en.wikibooks.org/wiki/LaTeX$>$. Acesso em: 8 de
-  novembro de 2009.}
+\textbf{Epilepsia}, v.~47, n.~10, p. 14--22, 2006.}
 
 \end{thebibliography}
