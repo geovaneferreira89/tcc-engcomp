@@ -5,22 +5,29 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.52 }
 
+\bibitem[CONEP 2011]{CONEP}
+\abntrefinfo{CONEP}{CONEP}{2011}
+{CONEP. \textbf{Perguntas e Respostas Frequentes}. 2011.}
+
 \bibitem[Gacek e Predycz 2011]{GACEK2011}
 \abntrefinfo{Gacek e Predycz}{GACEK; PREDYCZ}{2011}
 {GACEK, A.; PREDYCZ, W. \textbf{ECG Signal Processing, Classification and
   Interpretation: A Comprehensive Framework of Computational Intelligence}.
   [S.l.]: Springer, 2011.}
 
+\bibitem[Goldberger et al. 2000 (June 13)]{PhysioNet}
+\abntrefinfo{Goldberger et al.}{GOLDBERGER et al.}{2000 (June 13)}
+{GOLDBERGER, A.~L. et al. {PhysioBank, PhysioToolkit, and PhysioNet}:
+  Components of a new research resource for complex physiologic signals.
+\textbf{Circulation}, v.~101, n.~23, p. e215--e220, 2000 (June 13).
+Circulation Electronic Pages:
+  http://circ.ahajournals.org/cgi/content/full/101/23/e215 PMID:1085218; doi:
+  10.1161/01.CIR.101.23.e215.}
+
 \bibitem[Haykin 2011]{HAYKIN2011}
 \abntrefinfo{Haykin}{HAYKIN}{2011}
 {HAYKIN, S. \textbf{Neural Networks: A Comprehensive Foundation}. 2nd. ed.
   [S.l.]: Pearson Prentice Hall, 2011. 823~p.}
-
-\bibitem[Malmivuo e R. 1995]{MALMIVUO1995}
-\abntrefinfo{Malmivuo e R.}{MALMIVUO; R.}{1995}
-{MALMIVUO, J.; R., P. \textbf{Bioelectromagnetism - Principles and Applications
-  of Bioelectric and Biomagnetic Fields}. New York: Oxford University Press,
-  1995. Dispon{\'\i}vel em: $<$http://www.bem.fi/book/$>$.}
 
 \bibitem[Moody e Mark 1990]{MOODY1990}
 \abntrefinfo{Moody e Mark}{MOODY; MARK}{1990}
@@ -28,9 +35,9 @@
   use with it. In:  \textbf{Computers in Cardiology 1990, Proceedings.} [S.l.:
   s.n.], 1990. p. 185--188.}
 
-\bibitem[Pillai e Sperling 2006]{PILLAI2006}
-\abntrefinfo{Pillai e Sperling}{PILLAI; SPERLING}{2006}
-{PILLAI, J.; SPERLING, M.~R. Interictal {EEG} and the diagnosis of epilepsy.
-\textbf{Epilepsia}, v.~47, n.~10, p. 14--22, 2006.}
+\bibitem[Saraiva 2012]{SARAIVA2012}
+\abntrefinfo{Saraiva}{SARAIVA}{2012}
+{SARAIVA, A.~A. \textbf{Detecção do Complexo QRS através de Morfologia
+  Matemática Multiescalar}. 2012.}
 
 \end{thebibliography}
