@@ -16,9 +16,9 @@
 \programa{Curso Superior de Engenharia de Computação} % nome do curso
 
 \documento{Trabalho de Conclusão de Curso} % tipo de documento
-\titulacao{Engenheiro de Computação} % [Técnico], [Tecn\'ologo] ou [Engenheiro]
+\titulacao{Engenheiro} % [Técnico], [Tecn\'ologo] ou [Engenheiro]
 
-\titulo{Sistema para Detecção de Complexo QRS em Sinais Eletrocardioografia} % titulo do trabalho em portugues
+\titulo{Sistema para Detecção de Complexo QRS em Sinais de Eletrocardiografia} % titulo do trabalho em portugues
 \title{System for QRS Complex Detection in Electrocardiographical Signals } % titulo do trabalho em ingles
 
 \autor{Georgea Danielewicz \protect\\ Geovane Vinícius Ferreira} % autor do trabalho
@@ -54,7 +54,9 @@
 
 % agradecimentos (opcional)
 \begin{agradecimentos}
-Nossos sinceros agradecimentos ao Professor Miguel Sovierzoski, por ter orientado este trabalho com dedicação, estando sempre presente. Agradecemos de coração a todos os nossos familiares, pois sem eles esta realização jamais seria possível. E também a nossos amigos e colegas, pelos incentivos e pela torcida. 
+Nossos sinceros agradecimentos ao Professor Miguel Antonio Sovierzoski, por ter orientado este trabalho com grande dedicação, estando sempre presente. 
+
+Agradecemos de coração a todos os nossos familiares, pois sem eles esta realização jamais teria sido possível. E também a nossos amigos e colegas, pelos incentivos e pela torcida. 
 \end{agradecimentos}
 
 % epigrafe (opcional)
@@ -62,20 +64,15 @@ Nossos sinceros agradecimentos ao Professor Miguel Sovierzoski, por ter orientad
 \begin{epigrafe}
 "The human heart is not unchanging (nay, changes almost out of recognition in the twinkling of an eye) \dots" ~-- C.S. Lewis
 
-"O coração humano não é imutável (ou melhor, muda quase que irreconhecivelmente em um piscar de olhos) \dots" ~-- C.S. Lewis
+"O coração humano não é imutável (ou melhor, muda quase que irreconhecivelmente no piscar de um olho) \dots" ~-- C.S. Lewis
 
 \end{epigrafe}
 
 %resumo
 \begin{resumo}
 
-Segundo \cite{PILLAI2006}, 
-Segundo \cite{MALMIVUO1995},
-Segundo \cite{GACEK2011},
-Segundo \cite{HAYKIN2011},
-Segundo \cite{MOODY1990},
-Segundo \cite{CONEP},
-%Segundo \cite{PILLAI2006},
+Segundo 
+
 
 
 \end{resumo}
@@ -105,32 +102,37 @@ Abstract text (maximum of 500 words).
 %Considerações: 
 %1. não ultrapassar 100 páginas
 %2. introdução 5%, considerações finais 5%, fundamentação, materiais e métodos e resultados obtidos 90%
-
+%3. 3 páginas, 2 páginas, 15 páginas, 20 páginas , 5 páginas
 % -------------------------------------------
-\chapter{Materiais e Métodos} %ou Desenvolvimento
+\chapter{Desenvolvimento} %ou Desenvolvimento 
 
-Introdução do Capítulo... Para que serve este capítulo
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, seguida da seção de Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Processo de Detecção \ref{sec:Proc}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o Desenvolvimento \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
+\label{sec:BD}
 
-De acordo com informações disponibilizadas pela Comissão Nacional de Ética em Pesquisa (), "as pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP-CONEP." Por esta razão, a equipe optou por utilizar na etapa de testes do projeto a base de dados pública MIT-BIH Arrhythmia Database. 
+De acordo com informações disponibilizadas pela \sigla{CONEP}{Comissão Nacional de Ética em Pesquisa} ~\cite{CONEP}, ``as pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP-CONEP.'' Por esta razão, a equipe optou por utilizar a base de dados pública MIT-BIH Arrhythmia Database. 
 
-A base de dados MIT-BIH Arrhythmia Database foi desenvolvida pelo Beth Israel Hospital de Boston em parceria com o MIT durante uma pesquisa sobre arritmia e temas relacionados. Tem sido utilizada como um conjunto de dados padrão para testes de avaliação para sistemas detectores de arritmias e pesquisa em dinâmica cardíaca.
+A MIT-BIH Arrhythmia Database foi desenvolvida pelo Beth Israel Hospital de Boston em parceria com o \sigla{MIT}{Massachusetts Institute of Technology} durante uma pesquisa sobre arritmia e temas correlatos. Tem sido utilizada como um conjunto de dados padrão para testes e avaliação para sistemas detectores de arritmias e pesquisa em dinâmica cardíaca ~\cite{MOODY1990}.
 
-Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. com dois canais, 
+Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São apresentados dois sinais, \textit {modified limb lead II (MLII)}  e \textit{lead V1}  (podendo ser ocasionalmente V2, V5 ou V4), ambos obtidos com os eletrodos colocados no peito. Esta é a configuração padrão utilizada pelo BIH Arrhythmia Laboratory. Pode-se observar maior proeminência dos complexos QRS no sinal superior ~\cite{PhysioNet}. A figura ~\ref{105} mostra parte da gravação do exame 105.
 
-Os exames foram realizados com 47 pacientes acompanhados pelo BIH Arrhythmia Laboratory entre os anos de 1975 e 1979. Vinte e três gravações foram aleatoriamente de um conjunto de 4000 exames ambulatoriais de ECG com duração de 24 horas coletadas de pacientes internos (cerca de 60) e pacientes ambulatoriais (cerca de 40) do Boston's Beth Israel Hospital. Os outros 25 exames foram selecionados do mesmo conjunto para incluir arritmias clinicamente incomuns.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./figs/105.png} % <- formatos PNG, JPG e PDF
+	\caption[Figura]{Parte da gravação 105 da base de dados MIT-BIH Arrhythmia Database.}
+	\fonte{Autoria própria}
+	\label{105}
+\end{figure}
 
-Uma equipe com dois cardiologistas realizou anotações dos batimentos em cada uma das gravações, resultando em aproximadamente 110 mil marcações. Estas foram incluídas na base de dados. A base completa tem sido disponibilizada gratuitamente pelo PhysioNet desde 2005.
+Os exames foram realizados com 47 pacientes acompanhados pelo BIH Arrhythmia Laboratory entre os anos de 1975 e 1979. Vinte e três gravações foram aleatoriamente de um conjunto de 4000 exames ambulatoriais de ECG com duração de 24 horas coletadas de pacientes internos (cerca de 60\%) e pacientes ambulatoriais (cerca de 40\%) do Boston's Beth Israel Hospital. Os outros 25 exames foram selecionados do mesmo conjunto para incluir arritmias clinicamente incomuns ~\cite{MOODY1990}.
 
+Uma equipe com dois cardiologistas realizou anotações dos batimentos em cada uma das gravações, resultando em aproximadamente 110 mil marcações. Estas foram incluídas na base de dados. A base completa tem sido disponibilizada gratuitamente pelo desde 2005 ~\cite{MOODY1990}.
 
-Quantos canais?
-Falar do 105
-
-Figura com o Exame aqui
-
+Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por apresentar maior dificuldade na detecção do complexo QRS ~\cite{SARAIVA2012}.
 
 \section{Desenvolvimento do Software}
+\label{sec:DSW}
 
 \subsection{Formato EDF}
 Falar sobre o formato EDF. Como surgiu. Para que serve
@@ -148,6 +150,7 @@ Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
 
 \section{Módulos do sistema} 
 Eu consigo antever quatro módulos (Aí explica o que cada um faz):
+Telas do sistema vão aqui.
 
 \subsection{Visualização do sinal}
 Explicar por exemplo, a duração do exame, quantos canais, a frequência e amplitude.
@@ -162,15 +165,21 @@ Correlação de um evento marcado com o sinal inteiro, gerando um novo sinal... co
 \subsection{Reconhecimento de padrões}
 No caso utilizamos a Rede Neural MultiLayer Perceptron.
 
-\section{Processo de Detecção}
-
-Pode ser um diagrama de blocos.
+\subsection{Avaliação de Resultados}
+Módulo que compara marcações com os resultados obtidos.
 
 \section{Modelagem UML}
+\label{sec:UML}
 
 Usamos algum padrão, MVC, etc....
 
+\section{Processo de Detecção}
+\label{sec:Proc}
+
+Pode ser um diagrama de blocos.
+
 \section{Metodologia de Testes}
+\label{sec:Met-Testes}
 
 Achei que já tínhamos explicado isso aqui na Fundamentação Teórica.
 Mas se não foi o suficiente explicamos melhor aqui...
@@ -178,9 +187,10 @@ O que são os VP, VN, FP, e FN no nosso caso (complexo QRS, arritmias...). E o qu
 Podemos colocar umas telas, comparando o resultado obtido com a marcação que já vem com a base de dados.
 
 \section{Considerações sobre o Desenvolvimento}
+\label{sec:Cons-Des}
 
 % -------------------------------------------
-\chapter{Resultados Obtidos}
+\chapter{Resultados Obtidos} % 3 a 4 páginas
 Introdução do Capítulo. Um parágrafo basta. 
 
 \section{Testes}
@@ -195,11 +205,11 @@ Curva ROC. Curva ROC comparativa.
 
 \section{Considerações sobre os Resultados Obtidos}
 Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
-Aqui podemos colocar a tabela comparativa do arquivo 105 do Aratã.
+Compara a outros trabalhos
 
 \begin{table}[!htb]
 	\centering
-	\caption[Exemplo de uma tabela]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de Zhang e Lian (2009) acrescido das quatro últimas linhas com resultados obtidos no trabalho de ARATÃ}
+	\caption[Exemplo de uma tabela]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de Zhang e Lian (2009) acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
 	\label{tab:correlacao}
 	\begin{tabular}{llllll}
 		\hline 
@@ -215,7 +225,7 @@ Aqui podemos colocar a tabela comparativa do arquivo 105 do Aratã.
 		Filtragem otimizada & 2572 & 35 & 21 & 2,18 & Ruha, Sallinen e Nissilä (1997) \\
 		Topological mapping & 2572 & 41 & 4 & 1,75 & Lee et al. (1996)\\
 		Transformada wavelet & 2572 & 15 & 12 & 1,09 & Li, Zheng e Tai (1995) \\
-		Filtro adaptativo e rede neural artificial & 2572 & 10 & 4 & 0,5 & Xue, Hu e Tompkins (1992)\\
+		Filtro adaptativo e rede neural & 2572 & 10 & 4 & 0,5 & Xue, Hu e Tompkins (1992)\\
 		Morfologia 1M & 2572 & 49 & 10 & 2,29 & Zhang e Lian (2009)\\
 		Morfologia 2M & 2572 & 27 & 9 & 1,40 & Zhang e Lian (2009)\\
 		Morfologia 3M & 2572 & 19 & 7 & 1,01 & Zhang e Lian (2009)\\
@@ -225,17 +235,17 @@ Aqui podemos colocar a tabela comparativa do arquivo 105 do Aratã.
 		Morfologia 4M & 2690 & 39 & 0 & 1,45 & Saraiva (2012)\\
 		\hline 
 	\end{tabular}
-	\fonte{modificada de Aratã}
+	\fonte{Modificada de \cite{SARAIVA2012}}
 \end{table}
 
 %----------------------------------------
-\chapter{Considerações Finais}
+\chapter{Considerações Finais} % 1 página
 
 Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? Cada seção teve a sua conclusão, então completa a discussão. Elementos resultantes do processo de união. Não apresentar nenhum dado novo! 1 folha e meia no máximo. Propostas futuras? Resultados futuros.~\cite{HAYKIN2011}.
 
 Com redes SOM, ou com outras bases de dados.
 
-\chapter{Gestão do Projeto}
+\chapter{Gestão do Projeto} % 1 página
 
 O Dario mandou ter este capítulo aqui.
 Fala dos esforços e das etapas.
