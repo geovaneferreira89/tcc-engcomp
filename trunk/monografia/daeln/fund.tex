@@ -6,50 +6,96 @@ Acho que um parágrafo é o bastante.
 A seguir serão apresentados os Fundamentos Teóricos. Começamos abordando o tema dos sinais eletroencefalográficos, considerando sua aquisição e as características do sinal. Em seguida, serão tratados assuntos relativos à Análise dos Resultados do Sistema. Para isso... 
 Por fim, encerramos o Capítulo com uma Considerações acerca do mesmo.
 
-\section{Sinal Eletrocardiográfico}
+\section{Fisiologia do Coração}
 
-Na figura ~\ref{fig:heart} é apresentado um exemplo de gráfico flutuante. 
+O coração humano possui paredes compostas por músculos cardíacos estriados, chamadas de miocárdio, formando quatro compartimentos: o átrio direito, o átrio esquerdo, o ventrículo direito e o ventrículo esquerdo.  A figura ~\ref{fig:heart} mostra o coração com indicações dos respectivos átrios e ventrículos \cite{MALMIVUO1995}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.4\textwidth]{./figs/heart.png} % <- formatos PNG, JPG e PDF
-	\caption[Exemplo de uma figura]{Exemplo de uma figura onde aparece uma imagem sem nenhum significado especial.}
-	\fonte{\cite{GACEK2011}}
+	\includegraphics[width=0.7\textwidth]{./figs/heart.png} % <- formatos PNG, JPG e PDF
+		\caption[Exemplo de uma figura]{Anatomia de um coração.}
+	\fonte{\cite{MALMIVUO1995}}
 	\label{fig:heart}
 \end{figure}
 
-\section{Geração do sinal de Eletrocardiografia}
+O coração possui ainda quatro válvulas. Entre o átrio direito e o ventrículo direito se encontra a válvula tricúspide, e entre o átrio esquerdo e o ventrículo esquerdo fica a válvula mitral. A válvula pulmonar fica entre o ventrículo direito e a artéria pulmonar, enquanto a válvula aorta está no trato de saída do ventrículo esquerdo, e controla o fluxo para a aorta \cite{MALMIVUO1995}.
 
-Também é apresentado o exemplo da tabela~\ref{tab:correlacao}, que aparece automaticamente na lista de tabelas. Informações sobre a construção de tabelas no \LaTeX\ podem ser encontradas na literatura %especializada~\cite{Lamport1986,Buerger1989,Kopka2003,Mittelbach2004}.
+Para retornar da circulação sistêmica, o sangue chega ao átrio direito e dele segue pela válvula tricúspide para o ventrículo direito. Então é ejetado do ventrículo direito para os pulmões, pela válvula pulmonar. Dos pulmões, o sangue oxigenado retorna para o átrio esquerdo, e passa pela válvula mitral até o ventrículo esquerdo. Finalmente, é bombeado pela válvula aorta para a aorta e para a circulação sistêmica \cite{MALMIVUO1995}.
 
-\begin{table}[!htb]
+A fibra muscular do coração é orientada em espiral. O fato das células musculares cardíacas permanecerem tangencialmente e radialmente, como mostra a figura ~\ref{fig:muscle}, e a resistência do músculo ser mais baixa em direção as fibras é importante na área da eletrocardiografia, pois a atividade elétrica pode se propagar de uma célula para outra em qualquer direção. Como resultado, as formas de onda de ativação são bastante complexas \cite{MALMIVUO1995}.
+
+\begin{figure}[!htb]
 	\centering
-	\caption[Exemplo de uma tabela]{Exemplo de uma tabela mostrando a correlação entre x e y.}
-	\label{tab:correlacao}
-	\begin{tabular}{cc}
-		\hline 
-		x & y \\
-		\hline
-		\hline
-		1 & 2 \\
-		3 & 4 \\
-		5 & 6 \\
-		7 & 8 \\
-		\hline 
-	\end{tabular}
-	\fonte{Autoria Própria.}
-\end{table}
+	\includegraphics[width=0.6\textwidth]{./figs/muscle.png} % <- formatos PNG, JPG e PDF
+		\caption[Exemplo de uma figura]{Coração humano evidenciando as fibras musculares}
+	\fonte{\cite{MALMIVUO1995}}
+	\label{fig:muscle}
+\end{figure}
 
-\section{Equipamento de Eletrocardiografia}
-Mais um item.
+\section{Formação do Sinal de Eletrocardiografia}
 
-\section{Ritmos e Padrões de sinais de Eletrocardiografia}
+O músculo cardíaco, miocárdio, é composto por células geradoras de potencial elétricas denominadas cardiomiócitos. Em repouso, estas células especializadas em atividade elétrica permanecem polarizadas em sua membrana com um potencial elétrico de aproximadamente -90 mV. No entanto, qualquer excitação por estímulo externo pode rapidamente reverter o potencial elétrico das células miocardiais, a este processo é dado o nome de despolarização \cite{GACEK2011}. 
 
-O título desta seção poderá mudar. 
-QRS e também arritmias.
+A despolarização geralmente é ocasionada pelo aumento da permeabilidade da membrana ao sódio, permitindo assim que íons positivamente carregados de sódio entrem na célula. Algumas células cardíacas podem ser carregadas com íons de cálcio no lugar de íons de sódio \cite{GACEK2011}. 
 
-\section{Análise de sinais de Eletrocardiografia}
-Não sei ainda o que vai aqui.
+A variação negativa do potencial elétrico é chamada de fase de repolarização. Ocorre devido ao movimento de íons de potássio para fora da célula, considerando que após a despolarização, o músculo retorna a seu estado elétrico original. Durante a repolarização, o músculo cardíaco é incapaz de ser estimulado, o que o protege de alguma eventual estimulação prematura \cite{GACEK2011}, evitando danos ao sistema cardíaco.
+
+Estas mudanças no potencial elétrico durante os processos de despolarização e repolarização das fibras do miocárdio são registradas com a colocação de eletrodos posicionados na superfície do peito e nas derivações dos membros, e constituem os sinais de Eletroencefalografia (ECG). A forma de onda do ECG pode ser impressa em papel ou mostrada na tela do computador \cite{GACEK2011}.
+
+\section{Exame de Eletrocardiografia}
+
+Falar do equipamento para aquisição do ECG
+
+Podem ser citadas como vantagens dos exames de ECG seu baixo custo, facilidade de implementação, o fato de ser um procedimento não invasivo e a obtenção imediata dos resultados \cite{GACEK2011}.
+
+Os exames de ECG podem auxiliar em diagnósticos cardiológicos tais como \cite{MALMIVUO1995}:
+
+\begin{enumerate}
+  \item Eixo elétrico do coração
+  \item Monitoramento de frequência cardíaca
+  \item Arritmias
+  \begin{enumerate}
+      \item Arritmias supraventriculares 
+      \item Arritmias ventriculares
+  \end{enumerate}
+  \item Desordens na sequência de ativação
+  \begin{enumerate}
+      \item Defeitos na condução atrioventricular
+      \item Bloqueio atrioventricular de primeiro grau
+      \item Síndrome de Wolff-Parkinson-White 
+  \end{enumerate} 
+  \item Aumento da espessura das paredes ou do tamanho dos átrios e ventrículos 
+  \begin{enumerate}
+      \item Hipertrofia atrial
+      \item Hipertrofia ventricular
+  \end{enumerate}
+  \item Isquemia e infarto do miocárdio
+  \begin{enumerate}
+      \item Isquemia
+      \item Infarto 
+  \end{enumerate}
+  \item Efeito de drogas
+  \item Desequilíbrio eletrolítico
+  \begin{enumerate}
+      \item Potássio
+      \item Cálcio 
+  \end{enumerate}
+  \item Cardite
+  \begin{enumerate}
+      \item Pericardite
+      \item Miocardite
+  \end{enumerate}
+  \item Monitoramento de marca-passo
+\end{enumerate}
+
+Falar de artefatos (1 parágrafo)
+
+\section{Sistemas de Derivação}
+
+\section{Ondas, Segmentos e Intervalos dos Sinais de Eletrocardiografia}
+
+QRS
+
 
 \section{Avaliação de Sistemas Classificadores}
 Nesta seção serão apresentados alguns itens pertinentes a compreensão de formas de avaliação de sistemas classificadores.
@@ -70,7 +116,7 @@ Possivelmente também algum gráfico.
 Incluir a figura da Curva ROC.
 Talvez não seja possível traçar a curva ROC. Para isso, sensibilidade e especificidade precisam variar.
 
-\section{Extração de Características}
+\section{Correlação Discreta}
 Explicar sobre a correlação matemática dada na equação ~(\ref{eq:correlacao}).
 
 \begin{equation}
@@ -78,7 +124,7 @@ Explicar sobre a correlação matemática dada na equação ~(\ref{eq:correlacao}).
 \label{eq:correlacao}
 \end{equation}
 
-\section{Reconhecimento de Padrões}
+\section{Redes Neurais Artificiais}
 Falar sobre as Redes Neurais. Tem muita coisa pra falar disso aqui. Citar o Haykin.
 
 \section{Considerações sobre a Fundamentação Teórica}
