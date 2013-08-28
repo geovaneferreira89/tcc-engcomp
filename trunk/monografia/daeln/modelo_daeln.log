@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  27 AUG 2013 19:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  27 AUG 2013 22:00
 entering extended mode
 **modelo_daeln.tex
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.tex
@@ -347,20 +347,26 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen123
 \Gin@req@width=\dimen124
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fixltx2e.sty"
+Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
+LaTeX Info: Redefining \em on input line 420.
+LaTeX Info: The control sequence `\[' is already robust on input line 471.
+LaTeX Info: The control sequence `\]' is already robust on input line 472.
+)
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 45.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -371,7 +377,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 44.
+(lastpage)             ! on input line 45.
 
 (C:\Users\Ge\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -388,36 +394,36 @@ Package lastpage Info: Please have a look at the pageslts package at
 \everyMPtoPDFconversion=\toks24
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 46
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 47
 .
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ztmcm.fd"
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 46
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 47
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlztmcm.fd"
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 46
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 47
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsztmcm.fd"
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 46
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 47
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxztmcm.fd"
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [1] [1
@@ -477,7 +483,7 @@ Cap\'{\i }tulo 2.
 File: ./figs/heart.png Graphic file (type png)
  <use ./figs/heart.png>
 Package pdftex.def Info: ./figs/heart.png used on input line 15.
-(pdftex.def)             Requested size: 318.66948pt x 309.1272pt.
+(pdftex.def)             Requested size: 273.14923pt x 264.96999pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
@@ -500,32 +506,39 @@ Overfull \hbox (0.95213pt too wide) in paragraph at lines 43--44
  []
 
 [14 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/muscle.png>] [15]
-Overfull \hbox (9.35199pt too wide) in paragraph at lines 100--101
+<./figs/leads.png, id=60, 275.52937pt x 271.0125pt>
+File: ./figs/leads.png Graphic file (type png)
+ <use ./figs/leads.png>
+Package pdftex.def Info: ./figs/leads.png used on input line 107.
+(pdftex.def)             Requested size: 273.14923pt x 268.69604pt.
+
+[16 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/leads.png>]
+Overfull \hbox (9.35199pt too wide) in paragraph at lines 122--123
 []\OT1/ptm/m/n/12 Nesta se[][]ao ser[]ao apre-sen-ta-dos al-guns itens per-ti-n
 en-tes a com-pre-ens[]ao de for-mas de avalia[][]ao
  []
 
-[16]) [17]
+[17]) [18]
 Cap\'{\i }tulo 3.
-<./figs/105.png, id=72, 464.4853pt x 252.945pt>
+<./figs/105.png, id=76, 464.4853pt x 252.945pt>
 File: ./figs/105.png Graphic file (type png)
  <use ./figs/105.png>
-Package pdftex.def Info: ./figs/105.png used on input line 122.
+Package pdftex.def Info: ./figs/105.png used on input line 123.
 (pdftex.def)             Requested size: 318.66948pt x 173.54031pt.
- [18
+ [19
 
 ]
-[19 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>] [20] [21]
+[20 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>] [21] [22]
 Cap\'{\i }tulo 4.
-[22
+[23
 
-] [23]
+] [24]
 Cap\'{\i }tulo 5.
-[24
+[25
 
 ]
 Cap\'{\i }tulo 6.
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [25
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [26
 
 ]
 Underfull \hbox (badness 5667) in paragraph at lines 20--26
@@ -551,50 +564,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--26
 MID:1085218; doi:
  []
 
-
-LaTeX Font Warning: Font shape `OMS/ptm/bx/n' undefined
-(Font)              using `OMS/ptm/m/n' instead
-(Font)              for symbol `textsection' on input line 47.
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/ui' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 47.
-LaTeX Font Info:    Font shape `OMS/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
 ) 
 AED: lastpage setting LastPage
-[26
+[27
 
 ]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
- ) 
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux) ) 
 Here is how much of TeX's memory you used:
- 3737 strings out of 493921
- 52093 string characters out of 3144885
- 117149 words of memory out of 3000000
- 6868 multiletter control sequences out of 15000+200000
- 40393 words of font info for 92 fonts, out of 3000000 for 9000
+ 3755 strings out of 493921
+ 52371 string characters out of 3144885
+ 117628 words of memory out of 3000000
+ 6884 multiletter control sequences out of 15000+200000
+ 39271 words of font info for 91 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,8n,43p,518b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ge/AppD
-ata/Roaming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Ge/AppData/Roa
-ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/t
-imes/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8
-a.pfb>
-Output written on modelo_daeln.pdf (28 pages, 181153 bytes).
+ 36i,8n,43p,652b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ge/AppData/Roaming/MiKTeX/2
+.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Ge/AppData/Roaming/MiKTeX/2.9/font
+s/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/
+times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8
+a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on modelo_daeln.pdf (29 pages, 211673 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
