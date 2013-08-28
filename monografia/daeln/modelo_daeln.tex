@@ -8,6 +8,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb} % pacote matematico
 \usepackage{graphicx} % pacote grafico
+\usepackage{fixltx2e}
 
 
 % ---------- Preambulo ----------
@@ -106,7 +107,7 @@ Abstract text (maximum of 500 words).
 % -------------------------------------------
 \chapter{Desenvolvimento} %ou Desenvolvimento 
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, seguida da seção de Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Processo de Detecção \ref{sec:Proc}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o Desenvolvimento \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, seguida da seção de Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o Desenvolvimento \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
@@ -120,7 +121,7 @@ Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./figs/105.png} % <- formatos PNG, JPG e PDF
-	\caption[Figura]{Parte da gravação 105 da base de dados MIT-BIH Arrhythmia Database.}
+	\caption[Parte da gravação 105 da base de ECG]{Parte da gravação 105 da base de dados MIT-BIH Arrhythmia Database.}
 	\fonte{Autoria própria}
 	\label{105}
 \end{figure}
@@ -152,6 +153,8 @@ Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
 Eu consigo antever cinco módulos (Aí explica o que cada um faz):
 Telas do sistema vão aqui.
 
+Pode ser um diagrama de blocos. Processo de detecção.
+
 \subsection{Visualização do sinal}
 Explicar por exemplo, a duração do exame, quantos canais, a frequência e amplitude.
 
@@ -173,10 +176,8 @@ Módulo que compara marcações com os resultados obtidos.
 
 Usamos algum padrão, MVC, etc....
 
-\section{Processo de Detecção}
-\label{sec:Proc}
-
-Pode ser um diagrama de blocos.
+%\section{Processo de Detecção}
+%\label{sec:Proc}
 
 \section{Metodologia de Testes}
 \label{sec:Met-Testes}
@@ -194,20 +195,19 @@ Podemos colocar umas telas, comparando o resultado obtido com a marcação que já 
 \chapter{Resultados Obtidos} % 3 a 4 páginas
 Introdução do Capítulo. Um parágrafo basta. 
 
-\section{Testes}
 Muitos Gráficos!
 
-\subsection{Raw ECG}
+\section{Testes com Raw ECG}
 Tabela de contingência/confusão: VP, VN, FP, e FN.
 Aqui vai a análise de sensibilidade, especificidade.
 Curva ROC. 
 
-\subsection{ECG com correlação}
+\section{Testes com ECG com correlação}
 Tabela de contingência/confusão: VP, VN, FP, e FN.
 Aqui vai a análise de sensibilidade, especificidade.
 Curva ROC. 
 
-\subsection{Comparativo dos Resultados}
+\section{Comparativo dos Resultados}
 Curva ROC comparativa.
 
 \section{Considerações sobre os Resultados Obtidos}
@@ -248,7 +248,7 @@ Compara a outros trabalhos
 %----------------------------------------
 \chapter{Considerações Finais} % 1 página
 
-Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? Cada seção teve a sua conclusão, então completa a discussão. Elementos resultantes do processo de união. Não apresentar nenhum dado novo! 1 folha e meia no máximo. Propostas futuras? Resultados futuros.~\cite{HAYKIN2011}.
+Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? Cada seção teve a sua conclusão, então completa a discussão. Elementos resultantes do processo de união. Não apresentar nenhum dado novo! 1 folha e meia no máximo. Propostas futuras? Resultados futuros.
 
 Com redes SOM, ou com outras bases de dados.
 
