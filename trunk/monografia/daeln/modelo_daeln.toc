@@ -1,37 +1,35 @@
 \select@language {brazil}
-\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{11}
-\contentsline {section}{\numberline {1.1}Motiva\c c\~ao e Justificativa}{11}
-\contentsline {section}{\numberline {1.2}Objetivos}{11}
-\contentsline {section}{\numberline {1.3}Estrutura do Trabalho}{11}
-\contentsline {chapter}{\numberline {2}Fundamenta\c c\~ao Te\'orica}{12}
-\contentsline {section}{\numberline {2.1}Fisiologia do Cora\c c\~ao}{12}
-\contentsline {section}{\numberline {2.2}Forma\c c\~ao do Sinal de Eletrocardiografia}{13}
-\contentsline {section}{\numberline {2.3}Exame de Eletrocardiografia}{14}
-\contentsline {section}{\numberline {2.4}Sistema de Deriva\c c\~oes}{16}
-\contentsline {section}{\numberline {2.5}Ondas, Segmentos e Intervalos dos Sinais de ECG}{17}
+\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{10}
+\contentsline {section}{\numberline {1.1}Motiva\c c\~ao e Justificativa}{10}
+\contentsline {section}{\numberline {1.2}Objetivos}{10}
+\contentsline {section}{\numberline {1.3}Estrutura do Trabalho}{10}
+\contentsline {chapter}{\numberline {2}Fundamenta\c c\~ao Te\'orica}{11}
+\contentsline {section}{\numberline {2.1}Fisiologia do Cora\c c\~ao}{11}
+\contentsline {section}{\numberline {2.2}Forma\c c\~ao do Sinal de Eletrocardiografia}{12}
+\contentsline {section}{\numberline {2.3}Exame de Eletrocardiografia}{13}
+\contentsline {section}{\numberline {2.4}Sistema de Deriva\c c\~oes}{15}
+\contentsline {section}{\numberline {2.5}Ondas, Segmentos e Intervalos dos Sinais de ECG}{16}
 \contentsline {section}{\numberline {2.6}Avalia\c c\~ao de Sistemas Classificadores}{17}
 \contentsline {subsection}{\numberline {2.6.1}Teste Diagn\'ostico}{17}
 \contentsline {subsection}{\numberline {2.6.2}Sensibilidade}{17}
-\contentsline {subsection}{\numberline {2.6.3}Especifidade}{17}
-\contentsline {subsection}{\numberline {2.6.4}Curva ROC}{17}
-\contentsline {section}{\numberline {2.7}Correla\c c\~ao Discreta}{17}
+\contentsline {subsection}{\numberline {2.6.3}Especifidade}{18}
+\contentsline {subsection}{\numberline {2.6.4}Curva ROC}{18}
+\contentsline {section}{\numberline {2.7}Correla\c c\~ao Discreta}{18}
 \contentsline {section}{\numberline {2.8}Redes Neurais Artificiais}{18}
-\contentsline {section}{\numberline {2.9}Considera\c c\~oes sobre a Fundamenta\c c\~ao Te\'orica}{18}
+\contentsline {section}{\numberline {2.9}Considera\c c\~oes}{18}
 \contentsline {chapter}{\numberline {3}Desenvolvimento}{19}
 \contentsline {section}{\numberline {3.1}Base de Dados}{19}
 \contentsline {section}{\numberline {3.2}Desenvolvimento do Software}{20}
 \contentsline {subsection}{\numberline {3.2.1}Formato EDF}{20}
-\contentsline {subsection}{\numberline {3.2.2}Linguagens de Programa\c c\~ao}{20}
-\contentsline {subsection}{\numberline {3.2.3}IDE Utilizada}{21}
-\contentsline {subsection}{\numberline {3.2.4}Bibliotecas}{21}
+\contentsline {subsection}{\numberline {3.2.2}Bibliotecas}{20}
 \contentsline {section}{\numberline {3.3}M\'odulos do sistema}{21}
 \contentsline {subsection}{\numberline {3.3.1}Visualiza\c c\~ao do sinal}{21}
 \contentsline {subsection}{\numberline {3.3.2}Marca\c c\~ao de eventos}{21}
 \contentsline {subsection}{\numberline {3.3.3}Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{21}
 \contentsline {subsection}{\numberline {3.3.4}Reconhecimento de padr\~oes}{21}
 \contentsline {subsection}{\numberline {3.3.5}Avalia\c c\~ao de Resultados}{21}
-\contentsline {section}{\numberline {3.4}Modelagem UML}{22}
-\contentsline {section}{\numberline {3.5}Metodologia de Testes}{22}
+\contentsline {section}{\numberline {3.4}Modelagem UML}{21}
+\contentsline {section}{\numberline {3.5}Metodologia de Testes}{21}
 \contentsline {section}{\numberline {3.6}Considera\c c\~oes sobre o Desenvolvimento}{22}
 \contentsline {chapter}{\numberline {4}Resultados Obtidos}{23}
 \contentsline {section}{\numberline {4.1}Testes com Raw ECG}{23}

@@ -115,7 +115,31 @@ Mais de 90\% da atividade elétrica cardíaca pode ser explicada com a medição de 
 
 \section{Ondas, Segmentos e Intervalos dos Sinais de ECG}
 
-QRS
+Além das ondas, os elementos existentes na forma de onda do ECG são \cite{GACEK2011}:
+
+\begin{itemize}
+	\item Linha isoelétrica: a linha horizontal quando não há atividade elétrica no ECG;
+	\item Segmentos: a duração da linha isoelétrica entre as ondas;
+	\item Intervalos: o tempo entre dois segmentos de ondas adjacentes
+\end{itemize}
+
+A onda P é a primeira deflexão do ECG e resulta da despolarização dos átrios, que ocorre durante a despolarização ventricular. É positiva na maioria das derivações, mesmo sendo pouco evidente. Sua amplitude não excede 0,15 mV e 0,25 mV nas derivações precordiais, e dura no máximo 0,12 segundos \cite{GACEK2011}.
+
+A onda T, por sua vez, representa a repolarização ventricular, a restauração do repouso no potencial da membrana. As ondas T se diferenciam das ondas P, por seguirem o complexo QRS após cerca de 0,2 segundos. Após a onda T, ocorre a onda U, com a mesma polaridade da onda T que a precede. Ondas U invertidas podem aparecer na presença de hipertrofia do ventrículo esquerdo ou isquemia \cite{GACEK2011}.
+
+O segmento PQ expressa tempo decorrido entre a despolarização atrial e o começo da despolarização ventricular, durando entre 0,12 e 0,2 segundos. O intervalo ventricular ST-T coincide com a repolarização do músculo ventricular. O intervalo QT corresponde à duração do potencial de ação ventricular e da repolarização. O intervalo TP é o período em que os átrios e ventrículos estão na diástole. O intervalo RR corresponde um ciclo cardíaco e é utilizado para o cálculo da frequência cardíaca \cite{GACEK2011}.
+
+A identificação do complexo QRS não apresenta grandes dificuldades, uma vez que possui forma de onda característica e amplitude dominante. Esta amplitude mede cerca de 1 mV em um coração normal, mas pode ser muito maior em uma hipertrofia ventricular. O complexo QRS é o maior grupo de ondas no ECG e corresponde à despolarização ventricular.  A primeira deflexão negativa é a onda Q. Seguida de uma deflexão positiva, a onda R, sendo finalizada com uma última deflexão negativa denominada de onda S, completando um complexo QRS \cite{GACEK2011}.
+
+A duração normal do QRS fica entre 0.08 e 0,09 segundos. Durações maiores são geralmente devidas à despolarização assíncrona dos dois ventrículos. Isto ocorre em casos de bloqueio atrioventricular de primeiro grau, síndromes de pré-excitação ou contração ventricular prematura. Nestas situações, um ventrículo é despolarizado mais cedo que o outro, fazendo com que o complexo QRS apresente uma onda R seguida de outra onda R. Estas ondas correspondem à despolarização dos dois ventrículos \cite{GACEK2011}. A figura ~\ref{fig:QRS} mostra as formas de onda características de um ciclo cardíaco.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/QRS.png} % <- formatos PNG, JPG e PDF
+		\caption[Ondas, Segmentos e Intervalos dos Sinais de ECG]{Ondas, segmentos e intervalos dos sinais de eletrocardiografia}
+	\fonte{\cite{GACEK2011}}
+	\label{fig:QRS}
+\end{figure}
 
 
 \section{Avaliação de Sistemas Classificadores}
@@ -147,5 +171,6 @@ Explicar sobre a correlação matemática dada na equação ~(\ref{eq:correlacao}).
 
 \section{Redes Neurais Artificiais}
 Falar sobre as Redes Neurais. Tem muita coisa pra falar disso aqui. Citar o Haykin.
+2.8.1 mlp
 
-\section{Considerações sobre a Fundamentação Teórica}
+\section{Considerações}
