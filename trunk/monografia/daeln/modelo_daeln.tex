@@ -9,6 +9,7 @@
 \usepackage{amsmath,amsfonts,amssymb} % pacote matematico
 \usepackage{graphicx} % pacote grafico
 \usepackage{fixltx2e}
+\usepackage{multirow} %pacote tabela
 
 
 % ---------- Preambulo ----------
@@ -105,7 +106,7 @@ Abstract text (maximum of 500 words).
 %2. introdução 5%, considerações finais 5%, fundamentação, materiais e métodos e resultados obtidos 90%
 %3. 3 páginas, 2 páginas, 					15 páginas, 	20 páginas ,		 5 páginas
 % -------------------------------------------
-\chapter{Desenvolvimento} %ou Desenvolvimento 
+\chapter{Desenvolvimento} %ou Materiais e Métodos 
 
 Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, seguida da seção de Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o Desenvolvimento \ref{sec:Cons-Des}.
 
@@ -138,13 +139,6 @@ Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por a
 \subsection{Formato EDF}
 Falar sobre o formato EDF. Como surgiu. Para que serve
 Podemos colocar o cabeçalho do arquivo. 
-
-%\subsection{Linguagens de Programação}
-O software foi desenvolvido na linguagem C Sharp.
-
-%\subsection{IDE Utilizada}
-O ambiente de desenvolvimento utilizado foi o Visual Studio versão X.
-Para a licença deste produto a equipe participou do DreamSpark.
 
 \subsection{Bibliotecas}
 Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
@@ -188,7 +182,7 @@ O que são os VP, VN, FP, e FN no nosso caso (complexo QRS, arritmias...).
 E o que precisou ser variado para gerar a curva ROC. Threshold
 Podemos colocar umas telas, comparando o resultado obtido com a marcação que já vem com a base de dados.
 
-\section{Considerações sobre o Desenvolvimento}
+\section{Considerações}
 \label{sec:Cons-Des}
 
 % -------------------------------------------
@@ -210,7 +204,7 @@ Curva ROC.
 \section{Comparativo dos Resultados}
 Curva ROC comparativa.
 
-\section{Considerações sobre os Resultados Obtidos}
+\section{Considerações}
 Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
 Compara a outros trabalhos
 
@@ -256,9 +250,23 @@ Com redes SOM, ou com outras bases de dados.
 
 O Dario mandou ter este capítulo aqui.
 Fala dos esforços e das etapas.
+Cronograma de Gantt.
 Quantidade de horas trabalhadas.
 Gráfico com barras comparando o esperado com o real.
 Falar da mudança de base de dados.
+
+\section{Recursos de Hardware}
+Nossos computadores.
+
+\section{Recursos de Software}
+
+Linguagens de Programação
+O software foi desenvolvido na linguagem C Sharp.
+
+IDE Utilizada
+O ambiente de desenvolvimento utilizado foi o Visual Studio versão X.
+Para a licença deste produto a equipe participou do DreamSpark.
+
 
 %------------------ Referencias --------------------
 \bibliography{reflatex} % geracao automatica das referencias a partir do arquivo reflatex.bib
