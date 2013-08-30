@@ -1,12 +1,9 @@
 \chapter{Fundamentação Teórica}
 
-Pequena Introdução da Fundamentação Teórica. Dizer para que serve este Capítulo, como foi estruturado.
-Acho que um parágrafo é o bastante.
-
-A seguir serão apresentados os Fundamentos Teóricos. Começamos abordando o tema dos sinais eletroencefalográficos, considerando sua aquisição e as características do sinal. Em seguida, serão tratados assuntos relativos à Análise dos Resultados do Sistema. Para isso... 
-Por fim, encerramos o Capítulo com uma Considerações acerca do mesmo.
+O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de \sigla{ECG}{Eletrocardiografia}, englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos dos Sinais de ECG \ref{sec:Ondas}. Em seguida, a seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. As seções Correlação Discreta \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. O capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
 
 \section{Fisiologia do Coração}
+\label{sec:Fisiologia}
 
 O coração humano possui paredes compostas por músculos cardíacos estriados, chamadas de miocárdio, formando quatro compartimentos: o átrio direito, o átrio esquerdo, o ventrículo direito e o ventrículo esquerdo.  A figura ~\ref{fig:heart} mostra o coração com indicações dos respectivos átrios e ventrículos \cite{MALMIVUO1995}.
 
@@ -33,6 +30,7 @@ A fibra muscular do coração é orientada em espiral. O fato das células musculare
 \end{figure}
 
 \section{Formação do Sinal de Eletrocardiografia}
+\label{sec:FormaSinal}
 
 O músculo cardíaco, miocárdio, é composto por células geradoras de potencial elétricas denominadas cardiomiócitos. Em repouso, estas células especializadas em atividade elétrica permanecem polarizadas em sua membrana com um potencial elétrico de aproximadamente -90 mV. No entanto, qualquer excitação por estímulo externo pode rapidamente reverter o potencial elétrico das células miocardiais, a este processo é dado o nome de despolarização \cite{GACEK2011}. 
 
@@ -43,6 +41,7 @@ A variação negativa do potencial elétrico é chamada de fase de repolarização. Oc
 Estas mudanças no potencial elétrico durante os processos de despolarização e repolarização das fibras do miocárdio são registradas com a colocação de eletrodos posicionados na superfície do peito e nas derivações dos membros, e constituem os sinais de Eletroencefalografia (ECG). A forma de onda do ECG pode ser impressa em papel ou mostrada na tela do computador \cite{GACEK2011}.
 
 \section{Exame de Eletrocardiografia}
+\label{sec:Exame}
 
 Falar do equipamento para aquisição do ECG
 
@@ -91,6 +90,7 @@ Os exames de ECG podem auxiliar em diagnósticos cardiológicos tais como \cite{MA
 Falar de artefatos (1 parágrafo)
 
 \section{Sistema de Derivações}
+\label{sec:SistemaDer}
 
 O sistema de configuração mais comum em exames ambulatoriais de ECG é o sistema 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
 
@@ -112,8 +112,8 @@ As seis primeiras derivações, I, II, III, aV\textsubscript{R}, aV\textsubscript{
 
 Mais de 90\% da atividade elétrica cardíaca pode ser explicada com a medição de três componentes independentes. A princípio, duas das derivações límbicas I II III devem ser suficiente para descrever completamente o vetor elétrico cardíaco. A principal razão para que sejam gravadas as 12 derivações é porque enriquece o reconhecimento dos padrões. Esta combinação de derivações fornece ao medico a oportunidade de observar diversas projeções do vetor elétrico cardíaco, que consiste em um modo de visualizar o gerador de potencial elétrico do coração como um dipolo elétrico \cite{MALMIVUO1995}. 
 
-
 \section{Ondas, Segmentos e Intervalos dos Sinais de ECG}
+\label{sec:Ondas}
 
 Além das ondas, os elementos existentes na forma de onda do ECG são \cite{GACEK2011}:
 
@@ -141,27 +141,108 @@ A duração normal do QRS fica entre 0.08 e 0,09 segundos. Durações maiores são ge
 	\label{fig:QRS}
 \end{figure}
 
-
 \section{Avaliação de Sistemas Classificadores}
+\label{sec:AvaliaSis}
 Nesta seção serão apresentados alguns itens pertinentes a compreensão de formas de avaliação de sistemas classificadores.
 
 \subsection{Teste Diagnóstico}
 Tabela de contingência.
 Verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos.
+Citar Massad
 
-\subsection{Sensibilidade}
-Explica o que é. E coloca a fórmula.
-Possivelmente também algum gráfico.
+\begin{tabular}{cc|c|c|c|}
+\cline{3-4}
+ & & \multicolumn{2}{|c|}{indivíduos} \\ \cline{3-4}
+ & & doentes & sadios &  \multicolumn{1}{r}{}  \\ \cline{1-5}
+ \multicolumn{1}{ |c| }{\multirow{2}{*}{indicação do exame} } &
+ \multicolumn{1}{ |c| }{positivo} & VP & FP &  total de positivos  \\ \cline{2-5}
+ \multicolumn{1}{ |c  }{}                        &
+ \multicolumn{1}{ |c| }{negativo} & FN & VN &  total de negativos   \\ \cline{1-5}
+  & & total de doentes & total de sadios &  total \\ \cline{3-5}
+\end{tabular}
 
-\subsection{Especifidade}
-Explica o que é. E coloca a fórmula.
-Possivelmente também algum gráfico.
+
+
+A figura ~\ref{fig:TesteDiag}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/TesteDiag.png} % <- formatos PNG, JPG e PDF
+		\caption[Exemplo de sinal e padrão de classificação]{Exemplo de sinal e padrão de classificação considerando o nível de decisão}
+	\fonte{\cite{SARAIVA2012}}
+	\label{fig:TesteDiag}
+\end{figure}
+
+\subsection{Sensibilidade e Especificidade}
+
+Citar Massad
+Sensibilidade é dada na equação ~(\ref{eq:sensibilidade}).
+
+\begin{equation}
+sensibilidade = \frac{VP}{VP + FN}
+\label{eq:sensibilidade}
+\end{equation}
+
+Especificidade é dada na equação ~(\ref{eq:especificidade}).
+
+\begin{equation}
+especificidade = \frac{VN}{VN + FP}
+\label{eq:especificidade}
+\end{equation}
+
+A figura ~\ref{fig:SensibEspec}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/SensibEspec.png} % <- formatos PNG, JPG e PDF
+		\caption[Gráficos de Sensibilidade e Especificidade]{Gráficos de Sensibilidade e Especificidade em função do nível de decisão}
+	\fonte{\cite{SARAIVA2012}}
+	\label{fig:SensibEspec}
+\end{figure}
 
 \subsection{Curva ROC}
-Incluir a figura da Curva ROC.
-Talvez não seja possível traçar a curva ROC. Para isso, sensibilidade e especificidade precisam variar.
+
+A Curva \sigla{ROC}{Receiving Operating Characteristic}.
+Citar prof. Miguel.
+
+A figura ~\ref{fig:ROC}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/ROC.png} % <- formatos PNG, JPG e PDF
+		\caption[Curva ROC]{Curva ROC}
+	\fonte{\cite{MALMIVUO1995}} %arrumar isso - - > Prof. Miguel
+	\label{fig:ROC}
+\end{figure}
+
+
+\subsection{Outros Índices Estatísticos}
+Outros índices...
+Nosso trabalho focara apenas em mais dois.
+
+\textbf{DER} 
+
+Fórmula \cite{Zhang2007}
+
+\sigla{DER}{Detection Error Rate} é dada na equação ~(\ref{eq:DER}).
+
+\begin{equation}
+DER = \frac{FP +FN}{\textrm{Total de eventos QRS}}
+\label{eq:DER}
+\end{equation}
+
+\textbf{Eficiência}
+
+Eficiência \textit{accuracy} é dada na equação ~(\ref{eq:accuracy}).
+citar Prof. Miguel.
+
+\begin{equation}
+accuracy = \frac{VP + VN}{VP + VN + FP + FN}
+\label{eq:accuracy}
+\end{equation}
 
 \section{Correlação Discreta}
+\label{sec:Correl}
 Explicar sobre a correlação matemática dada na equação ~(\ref{eq:correlacao}).
 
 \begin{equation}
@@ -170,7 +251,9 @@ Explicar sobre a correlação matemática dada na equação ~(\ref{eq:correlacao}).
 \end{equation}
 
 \section{Redes Neurais Artificiais}
+\label{sec:RNA}
 Falar sobre as Redes Neurais. Tem muita coisa pra falar disso aqui. Citar o Haykin.
 2.8.1 mlp
 
 \section{Considerações}
+\label{sec:Consid}

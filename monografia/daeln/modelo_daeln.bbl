@@ -41,4 +41,12 @@ Circulation Electronic Pages:
 {SARAIVA, A.~A. \textbf{Detec\c{c}\~ao do Complexo QRS atrav\'es de Morfologia
   Matem\'atica Multiescalar}. 2012.}
 
+\bibitem[Zhang e Lian 2007]{Zhang2007}
+\abntrefinfo{Zhang e Lian}{ZHANG; LIAN}{2007}
+{ZHANG, F.; LIAN, Y. Electrocardiogram qrs detection using multiscale filtering
+  based on mathematical morphology. In:  \textbf{Engineering in Medicine and
+  Biology Society, 2007. EMBS 2007. 29th Annual International Conference of the
+  IEEE}. [S.l.: s.n.], 2007. p. 3196--3199.
+ISSN 1557-170X.}
+
 \end{thebibliography}
