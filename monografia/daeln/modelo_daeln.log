@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  1 SEP 2013 01:13
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  1 SEP 2013 20:07
 entering extended mode
 **modelo_daeln.tex
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.tex
@@ -557,81 +557,87 @@ File: ./figs/ROC.png Graphic file (type png)
 Package pdftex.def Info: ./figs/ROC.png used on input line 224.
 (pdftex.def)             Requested size: 182.09486pt x 173.11864pt.
  [20] [21 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/SensibEspec.png> <C:/U
-sers/Ge/Desktop/tcc/monografia/daeln/figs/ROC.png>])
-[22]
+sers/Ge/Desktop/tcc/monografia/daeln/figs/ROC.png>]
+<./figs/corre.png, id=86, 636.12656pt x 261.97874pt>
+File: ./figs/corre.png Graphic file (type png)
+ <use ./figs/corre.png>
+Package pdftex.def Info: ./figs/corre.png used on input line 264.
+(pdftex.def)             Requested size: 364.19667pt x 149.98502pt.
+
+[22]) [23 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/corre.png>]
 Cap\'{\i }tulo 3.
-<./figs/105.png, id=92, 464.4853pt x 252.945pt>
+<./figs/105.png, id=97, 464.4853pt x 252.945pt>
 File: ./figs/105.png Graphic file (type png)
  <use ./figs/105.png>
 Package pdftex.def Info: ./figs/105.png used on input line 124.
 (pdftex.def)             Requested size: 318.66948pt x 173.54031pt.
- [23
+ [24
 
 ]
-[24 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>] [25] [26]
+[25 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>] [26] [27]
 Cap\'{\i }tulo 4.
-[27
+[28
 
-] [28]
+] [29]
 Cap\'{\i }tulo 5.
-[29
+[30
 
 ]
 Cap\'{\i }tulo 6.
-[30
+[31
 
-] <./figs/horas.png, id=119, 361.35pt x 216.81pt>
+] <./figs/horas.png, id=123, 361.35pt x 216.81pt>
 File: ./figs/horas.png Graphic file (type png)
  <use ./figs/horas.png>
 Package pdftex.def Info: ./figs/horas.png used on input line 318.
 (pdftex.def)             Requested size: 364.19667pt x 218.51982pt.
 
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [31 <C:/Users/Ge/Des
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [32 <C:/Users/Ge/Des
 ktop/tcc/monografia/daeln/figs/horas.png>]
-Underfull \hbox (badness 4353) in paragraph at lines 10--17
+Underfull \hbox (badness 4353) in paragraph at lines 15--22
 []\OT1/ptm/m/n/12 BROWN, C. D.; DA-VIS, H. T. Re-cei-ver ope-ra-ting cha-rac-te
 -ris-tics cur-ves and re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--17
+Underfull \hbox (badness 10000) in paragraph at lines 15--22
 \OT1/ptm/m/n/12 la-ted de-ci-sion me-a-su-res: A tu-to-rial. \OT1/ptm/b/n/12 Ch
 e-mo-me-trics and In-tel-li-gent La-bo-ra-
  []
 
 
-Underfull \hbox (badness 3209) in paragraph at lines 10--17
+Underfull \hbox (badness 3209) in paragraph at lines 15--22
 \OT1/ptm/b/n/12 tory Sys-tems\OT1/ptm/m/n/12 , v. 80, n. 1, p. 24 -- 38, 2006. 
 ISSN 0169-7439. Dis-pon[]vel em:
  []
 
 
-Underfull \hbox (badness 5667) in paragraph at lines 38--44
+Underfull \hbox (badness 5667) in paragraph at lines 43--49
 []\OT1/ptm/m/n/12 GOLDBERGER, A. L. et al. Phy-si-o-Bank, Phy-si-o-To-ol-kit, a
 nd Phy-si-o-Net: Com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--44
+Underfull \hbox (badness 10000) in paragraph at lines 43--49
 \OT1/ptm/m/n/12 po-nents of a new re-se-arch re-source for com-plex phy-si-o-lo
 -gic sig-nals. \OT1/ptm/b/n/12 Cir-cu-la-
  []
 
 
-Underfull \hbox (badness 5726) in paragraph at lines 38--44
+Underfull \hbox (badness 5726) in paragraph at lines 43--49
 \OT1/ptm/b/n/12 tion\OT1/ptm/m/n/12 , v. 101, n. 23, p. e215--e220, 2000 (June 
 13). Cir-cu-la-tion Elec-tro-nic Pa-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--44
+Underfull \hbox (badness 10000) in paragraph at lines 43--49
 \OT1/ptm/m/n/12 ges: http://circ.ahajournals.org/cgi/content/full/101/23/e215 P
 MID:1085218; doi:
  []
 
 ) 
 AED: lastpage setting LastPage
-[32
+[33
 
 ]
 +-------------------------------------------------------------------+
@@ -644,13 +650,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3838 strings out of 493921
- 53879 string characters out of 3144885
- 128361 words of memory out of 3000000
- 6958 multiletter control sequences out of 15000+200000
+ 3855 strings out of 493921
+ 54139 string characters out of 3144885
+ 128443 words of memory out of 3000000
+ 6974 multiletter control sequences out of 15000+200000
  39778 words of font info for 92 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,13n,43p,943b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,13n,43p,941b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
@@ -660,9 +666,9 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (34 pages, 366448 bytes).
+Output written on modelo_daeln.pdf (35 pages, 377564 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
+ 157 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

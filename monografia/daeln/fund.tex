@@ -1,6 +1,6 @@
 \chapter{Fundamentação Teórica}
 
-O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de \sigla{ECG}{Eletrocardiografia}, englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos dos Sinais de ECG \ref{sec:Ondas}. Em seguida, a seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. As seções Correlação Discreta \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. O capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
+O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de \sigla{ECG}{Eletrocardiografia}, englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos dos Sinais de ECG \ref{sec:Ondas}. Em seguida, a seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. As seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. O capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
 
 \section{Fisiologia do Coração}
 \label{sec:Fisiologia}
@@ -252,14 +252,29 @@ accuracy = \frac{VP + VN}{VP + VN + FP + FN}
 \label{eq:accuracy}
 \end{equation}
 
-\section{Correlação Discreta}
+\section{Função Correlação}
 \label{sec:Correl}
-Explicar sobre a correlação matemática dada na equação ~(\ref{eq:correlacao}).
+
+O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um padrão sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas e determinar que arma disparou um projétil, mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema \sigla{GPS}{Global Positioning System} e na análise de DNA \cite{bloch2004l}. 
+
+A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/corre.png} 
+		\caption[Exemplo de aplicação da função correlação]{Exemplo de aplicação da função correlação}
+	\fonte{Modificado de \cite{smith}}
+	\label{fig:corre}
+\end{figure}
+
+No domínio discreto de dados a função correlação pode ser calculada na equação ~(\ref{eq:correlacao}), em que o índice \textit{r} refere-se ao sinal recebido e o índice \textit{a} se refere ao padrão armazenado. O fator de normalização K é igual à soma dos quadrados dos valores do padrão armazenado \cite{bloch2004l}.
 
 \begin{equation}
  R_{r,a} (\tau )= \frac{1}{K}\sum_{n=0}^{N-1} f_{r}(n)f_{s}(\tau + n)
 \label{eq:correlacao}
 \end{equation}
+
+O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que se pretende identificar, pode ser uma estimativa do que imagina que o sinal original seja, ou uma réplica. Pode ser utilizado um conjunto de padrões de sinais similares ao que se deseja buscar. É com base neste tipo de estimativas que operam astrônomos, peritos em criptografia e especialistas em supervisão eletrônica \cite{bloch2004l}.
 
 \section{Redes Neurais Artificiais}
 \label{sec:RNA}
