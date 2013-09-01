@@ -19,7 +19,7 @@ O coração possui ainda quatro válvulas. Entre o átrio direito e o ventrículo dir
 
 Para retornar da circulação sistêmica, o sangue chega ao átrio direito e dele segue pela válvula tricúspide para o ventrículo direito. Então é ejetado do ventrículo direito para os pulmões, pela válvula pulmonar. Dos pulmões, o sangue oxigenado retorna para o átrio esquerdo, e passa pela válvula mitral até o ventrículo esquerdo. Finalmente, é bombeado pela válvula aorta para a aorta e para a circulação sistêmica \cite{MALMIVUO1995}.
 
-A fibra muscular do coração é orientada em espiral. O fato das células musculares cardíacas permanecerem tangencialmente e radialmente, como mostra a figura ~\ref{fig:muscle}, e a resistência do músculo ser mais baixa em direção as fibras é importante na área da eletrocardiografia, pois a atividade elétrica pode se propagar de uma célula para outra em qualquer direção. Como resultado, as formas de onda de ativação são bastante complexas \cite{MALMIVUO1995}.
+A fibra muscular do coração é orientada em espiral. O fato das células musculares cardíacas permanecerem tangencialmente e radialmente, como mostra a figura ~\ref{fig:muscle}, e a resistência do músculo ser mais baixa em direção as fibras é importante na área da eletrocardiografia, pois a atividade elétrica pode se propagar de uma célula para outra em qualquer direção. Como resultado disso, as formas de onda de ativação são bastante complexas \cite{MALMIVUO1995}.
 
 \begin{figure}[!htb]
 	\centering
@@ -143,27 +143,39 @@ A duração normal do QRS fica entre 0.08 e 0,09 segundos. Durações maiores são ge
 
 \section{Avaliação de Sistemas Classificadores}
 \label{sec:AvaliaSis}
-Nesta seção serão apresentados alguns itens pertinentes a compreensão de formas de avaliação de sistemas classificadores.
 
-\subsection{Teste Diagnóstico}
-Tabela de contingência.
-Verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos.
-Citar Massad
+Nesta seção vamos nos concentrar em formas de avaliar o desempenho de sistemas classificadores.
 
-\begin{tabular}{cc|c|c|c|}
-\cline{3-4}
- & & \multicolumn{2}{|c|}{indivíduos} \\ \cline{3-4}
- & & doentes & sadios &  \multicolumn{1}{r}{}  \\ \cline{1-5}
- \multicolumn{1}{ |c| }{\multirow{2}{*}{indicação do exame} } &
- \multicolumn{1}{ |c| }{positivo} & VP & FP &  total de positivos  \\ \cline{2-5}
- \multicolumn{1}{ |c  }{}                        &
- \multicolumn{1}{ |c| }{negativo} & FN & VN &  total de negativos   \\ \cline{1-5}
-  & & total de doentes & total de sadios &  total \\ \cline{3-5}
-\end{tabular}
+\subsection{Tabela de Contingência}
 
+A tabela de contingência, também chamada de tabela de confusão, é descrita como uma ferramenta capaz de representar, dentro de uma população, os indivíduos doentes, indivíduos sadios, indivíduos com teste positivo e indivíduos com teste negativo \cite{massad2004}, como mostrado na tabela~\ref{tab:confusao}.
 
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de Contingência 2x2]{Tabela de Contingência 2x2}
+	\label{tab:confusao}
+		\begin{tabular}{cc|c|c|c|}
+		\cline{3-4}
+		 & & \multicolumn{2}{|c|}{indivíduos} \\ \cline{3-4}
+		 & & doentes & sadios &  \multicolumn{1}{r}{}  \\ \cline{1-5}
+		 \multicolumn{1}{ |c| }{\multirow{2}{*}{indicação do exame} } &
+		 \multicolumn{1}{ |c| }{positivo} & VP  & FP &  total de positivos  \\ \cline{2-5}
+		 \multicolumn{1}{ |c  }{}                        &
+		 \multicolumn{1}{ |c| }{negativo} & FN & VN &  total de negativos   \\ \cline{1-5}
+		  & & total de doentes & total de sadios &  total \\ \cline{3-5}
+		\end{tabular}
+	\fonte{modificado de \cite{SOVIERZOSKI2009}}
+\end{table}
 
-A figura ~\ref{fig:TesteDiag}.
+A partir da tabela de contingência, podem ser observados os seguintes índices: 
+\begin{itemize}
+	\item Verdadeiro positivo (VP): doente com resultado positivo;  
+	\item Falso positivo (FP): sadio com resultado positivo;
+	\item Falso negativo (FN): doente com resultado negativo; 
+	\item Verdadeiro negativo (VN): sadio com resultado negativo.
+\end{itemize}
+
+Como este projeto pretende obter a identificação do complexo QRS em exames de ECG, a etapa de testes trata como verdadeiro positivo o complexo QRS indicado como positivo, falso positivo como padrão diferente do complexo QRS indicado como positivo, falso negativo como um complexo QRS não identificado e verdadeiro negativo como um padrão diferente do complexo QRS não identificado pelo sistema \cite{SARAIVA2012}. A lógica desta avaliação é expressa pela figura ~\ref{fig:TesteDiag}.
 
 \begin{figure}[!htb]
 	\centering
@@ -173,28 +185,29 @@ A figura ~\ref{fig:TesteDiag}.
 	\label{fig:TesteDiag}
 \end{figure}
 
+Os índices da tabela de contingência são utilizados para o cálculo de outros índices, tais como sensibilidade, especificidade, eficiência e o índice \sigla{DER}{Detection Error Rate}.
+
 \subsection{Sensibilidade e Especificidade}
 
-Citar Massad
-Sensibilidade é dada na equação ~(\ref{eq:sensibilidade}).
+A sensibilidade pode ser descrita como a medida da capacidade de um sistema em identificar indivíduos com exame positivo entre os indivíduos verdadeiramente doentes, levando em conta outros indivíduos doentes com exames negativos, como evidencia a equação ~(\ref{eq:sensibilidade}). Logo, quanto maior a sensibilidade de um sistema, menor o número de falsos negativos \cite{massad2004}.
 
 \begin{equation}
 sensibilidade = \frac{VP}{VP + FN}
 \label{eq:sensibilidade}
 \end{equation}
 
-Especificidade é dada na equação ~(\ref{eq:especificidade}).
+Especificidade mede a capacidade do sistema em identificar os indivíduos negativos entre os verdadeiramente não doentes, representada pela equação ~(\ref{eq:especificidade}). Assim, quanto menor o número de falsos positivos identificados pelo sistema, maior será sua especificidade \cite{massad2004}.
 
 \begin{equation}
 especificidade = \frac{VN}{VN + FP}
 \label{eq:especificidade}
 \end{equation}
 
-A figura ~\ref{fig:SensibEspec}.
+A sensibilidade e especificidade costumam retornar diferentes valores de acordo com a variação em algum atributo do sistema \cite{SOVIERZOSKI2009}. A figura ~\ref{fig:SensibEspec} mostra o comportamento dos índices de sensibilidade e especificidade em função do limiar de decisão da rede neural, ferramenta utilizada no reconhecimento de padrões a ser discutida na seção X.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/SensibEspec.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.5\textwidth]{./figs/SensibEspec.png} % <- formatos PNG, JPG e PDF
 		\caption[Gráficos de Sensibilidade e Especificidade]{Gráficos de Sensibilidade e Especificidade em função do nível de decisão}
 	\fonte{\cite{SARAIVA2012}}
 	\label{fig:SensibEspec}
@@ -202,39 +215,37 @@ A figura ~\ref{fig:SensibEspec}.
 
 \subsection{Curva ROC}
 
-A Curva \sigla{ROC}{Receiving Operating Characteristic}.
-Citar prof. Miguel.
+A Curva \sigla{ROC}{Receiving Operating Characteristic} é útil para visualização da performance de classificadores. Seu uso vem crescendo em pesquisas nas áreas de \textit{machine learning} e \textit{data mining} \cite{FAWCETT2006}. 
 
-A figura ~\ref{fig:ROC}.
+Os valores de sensibilidade e especificidade são organizados em pares ordenados, e dispostos no primeiro quadrante de um plano cartesiano. Com algum método de interpolação, são interligados desde a origem (sensibilidade = 0 e especificidade = 1), até o extremo oposto do gráfico (sensibilidade = 1 e especificidade = 0), dando origem a curva ROC \cite{massad2004}, conforme ilustra a figura ~\ref{fig:ROC}. 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/ROC.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.4\textwidth]{./figs/ROC.png} 
 		\caption[Curva ROC]{Curva ROC}
-	\fonte{\cite{MALMIVUO1995}} %arrumar isso - - > Prof. Miguel
+	\fonte{\cite{SOVIERZOSKI2009}} 
 	\label{fig:ROC}
 \end{figure}
 
+Cada ponto da curva ROC equivale a um valor diferente do limiar de decisão da rede neural, dessa forma, construindo a relação entre sensibilidade e especificidade \cite{SOVIERZOSKI2009}.
 
+No eixo das ordenadas da curva ROC pode ser observada a fração dos verdadeiros positivos (sensibilidade). E no eixo das abcissas, a fração dos falsos positivos, correspondente ao complemento da especificidade (1 - especificidade) \cite{massad2004}.
+
+A linha tracejada representa um sistema classificador incapaz de discriminar, em outras palavras, um sistema que apresenta o mesmo percentual de verdadeiros positivos e de falsos positivos. Quanto mais afastada da linha tracejada estiver a curva ROC (de modo semelhante à figura ~\ref{fig:ROC}), melhor é o desempenho do sistema. O classificador idel possui sensibilidade = 1 e especificidade = 1 \cite{Brown2006}. 
+ 
+ 
 \subsection{Outros Índices Estatísticos}
-Outros índices...
-Nosso trabalho focara apenas em mais dois.
 
-\textbf{DER} 
+Além de inúmeros outros métodos para medição do desempenho de sistemas classificadores, existem o índice DER e eficiência. 
 
-Fórmula \cite{Zhang2007}
-
-\sigla{DER}{Detection Error Rate} é dada na equação ~(\ref{eq:DER}).
+O índice \sigla{DER}{Detection Error Rate}, dado na equação ~(\ref{eq:DER}) \cite{Zhang2007}, relaciona o número de erros do sistema, soma dos falsos positivos e falsos negativos, com o número total de eventos do sistema.
 
 \begin{equation}
 DER = \frac{FP +FN}{\textrm{Total de eventos QRS}}
 \label{eq:DER}
 \end{equation}
 
-\textbf{Eficiência}
-
-Eficiência \textit{accuracy} é dada na equação ~(\ref{eq:accuracy}).
-citar Prof. Miguel.
+Eficiência ou \textit{accuracy} corresponde a capacidade de um sistema em identificar os verdadeiros doentes e sadios \cite{SOVIERZOSKI2009}. A fórmula para o cálculo da eficiência é dada na equação ~(\ref{eq:accuracy}).
 
 \begin{equation}
 accuracy = \frac{VP + VN}{VP + VN + FP + FN}

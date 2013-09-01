@@ -214,26 +214,26 @@ Compara a outros trabalhos
 	\label{tab:correlacao}
 	\begin{tabular}{llllll}
 		\hline 
-		Método & QRS & FP & FN & DER & Referências\\
+		Método & QRS & FP & FN & DER \\
 		\hline
 		\hline
-		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 & Poli, Cagnoni e Valli (1995) \\
-		Filtro passa banda & 2572 & 67 & 22 & 3,46 & Pan e Tompkins (1985) \\
-		Wavelet denoising & 2572 & 78 & 5 & 3,23 & Chen, Chen e Chan (2006) \\
-		Bancos de filtragem & 2139 & 53 & 16 & 3,22 & Afonso et al. (1999)\\
-		BPF/search-back & 2564 & 53 & 22 & 2,95 & Hamilton e Tompkins (1986)\\
-		Filtro adaptativo linear & 2572 & 40 & 22 & 2,40 & Xue, Hu e Tompkins (1992) \\
-		Filtragem otimizada & 2572 & 35 & 21 & 2,18 & Ruha, Sallinen e Nissilä (1997) \\
-		Topological mapping & 2572 & 41 & 4 & 1,75 & Lee et al. (1996)\\
-		Transformada wavelet & 2572 & 15 & 12 & 1,09 & Li, Zheng e Tai (1995) \\
-		Filtro adaptativo e rede neural & 2572 & 10 & 4 & 0,5 & Xue, Hu e Tompkins (1992)\\
-		Morfologia 1M & 2572 & 49 & 10 & 2,29 & Zhang e Lian (2009)\\
-		Morfologia 2M & 2572 & 27 & 9 & 1,40 & Zhang e Lian (2009)\\
-		Morfologia 3M & 2572 & 19 & 7 & 1,01 & Zhang e Lian (2009)\\
-		Morfologia 1M & 2690 & 40 & 2 & 1,56 & Saraiva (2012)\\
-		Morfologia 2M & 2690 & 41 & 2 & 1,60 & Saraiva (2012)\\
-		Morfologia 3M & 2690 & 40 & 0 & 1,49 & Saraiva (2012)\\
-		Morfologia 4M & 2690 & 39 & 0 & 1,45 & Saraiva (2012)\\
+		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 \\
+		Filtro passa banda & 2572 & 67 & 22 & 3,46 \\
+		Wavelet denoising & 2572 & 78 & 5 & 3,23 \\
+		Bancos de filtragem & 2139 & 53 & 16 & 3,22 \\
+		BPF/search-back & 2564 & 53 & 22 & 2,95 \\
+		Filtro adaptativo linear & 2572 & 40 & 22 & 2,40 \\
+		Filtragem otimizada & 2572 & 35 & 21 & 2,18 \\
+		Topological mapping & 2572 & 41 & 4 & 1,75\\
+		Transformada wavelet & 2572 & 15 & 12 & 1,09 \\
+		Filtro adaptativo e rede neural & 2572 & 10 & 4 & 0,5 \\
+		Morfologia 1M & 2572 & 49 & 10 & 2,29 \\
+		Morfologia 2M & 2572 & 27 & 9 & 1,40 \\
+		Morfologia 3M & 2572 & 19 & 7 & 1,01 \\
+		Morfologia 1M & 2690 & 40 & 2 & 1,56 \\
+		Morfologia 2M & 2690 & 41 & 2 & 1,60 \\
+		Morfologia 3M & 2690 & 40 & 0 & 1,49 \\
+		Morfologia 4M & 2690 & 39 & 0 & 1,45 \\
 		\hline 
 	\end{tabular}
 	\fonte{Modificada de \cite{SARAIVA2012}}
@@ -248,25 +248,31 @@ Com redes SOM, ou com outras bases de dados.
 
 \chapter{Gestão do Projeto} % 1 página
 
-O Dario mandou ter este capítulo aqui.
-Fala dos esforços e das etapas.
-Cronograma de Gantt.
-Quantidade de horas trabalhadas.
-Gráfico com barras comparando o esperado com o real.
-Falar da mudança de base de dados.
+Inicialmente, este projeto pretendia utilizar uma base de dados de exames de EEG, obtida em um Hospital, mediante autorização do Comitê de Ética da Instituição. A metodologia de testes seria realizada por um médico neurologista, que avaliaria os resultados do sistema, classificando-os como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. 
+
+Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez de bases de dados de EEG públicas adequadas (o que dispenderia menor tempo, por não necessitar de autorização do Comitê de Ética), a equipe alterou o escopo do projeto, passando a utilizar uma base de dados pública de ECG.
+
+Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria equipe realizar os testes, uma vez que a base de dados já possui marcações dos eventos, bastando apenas compará-las aos eventos identificados pelo sistema.
 
 \section{Recursos de Hardware}
+
 Nossos computadores.
 
 \section{Recursos de Software}
 
 Linguagens de Programação
-O software foi desenvolvido na linguagem C Sharp.
+
+O software foi desenvolvido na linguagem C Sharp versão ?.
 
 IDE Utilizada
+
 O ambiente de desenvolvimento utilizado foi o Visual Studio versão X.
+
 Para a licença deste produto a equipe participou do DreamSpark.
 
+\section{Quantidade de Horas Trabalhadas}
+
+Gráfico com barras comparando o esperado com o real.
 
 %------------------ Referencias --------------------
 \bibliography{reflatex} % geracao automatica das referencias a partir do arquivo reflatex.bib
