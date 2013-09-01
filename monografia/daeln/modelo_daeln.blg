@@ -7,20 +7,30 @@ I was expecting a `,' or a `}'---line 12 of file reflatex.bib
  :   urlaccessdate = {8 de novembro de 2012}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 90 of file reflatex.bib
+You're missing a field name---line 118 of file reflatex.bib
  :   
  :   %url = {http://conselho.saude.gov.br/Web_comissoes/conep/index.html},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 98 of file reflatex.bib
+You're missing a field name---line 126 of file reflatex.bib
  :  
  :  %school
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+"{" immediately follows a field part---line 144 of file reflatex.bib
+ : type = Mestrado
+ :                {},
+I'm skipping whatever remains of this entry
+You're missing a field name---line 151 of file reflatex.bib
+ :   
+ :   %url={http://books.google.com.br/books?id=XdzNEhEX-7oC},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--campo year vazio ou faltando em massad2004
 +---------------------------------------------------------+
 | Estilo bibliografico abnt-alf.bst versao 1.52           |
 | Implementa a NBR6023, NBR10520 e NBR10523               |
 | Em caso de duvidas ou problemas com este estilo procure |
 | http://abntex.codigolivre.org.br                        |
 +---------------------------------------------------------+
-(There were 3 error messages)
+(There were 5 error messages)
