@@ -35,7 +35,7 @@
 \contentsline {section}{\numberline {4.1}Testes com Raw ECG}{27}
 \contentsline {section}{\numberline {4.2}Testes com ECG com correla\c c\~ao}{27}
 \contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{27}
-\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{27}
+\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{28}
 \contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{29}
 \contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{30}
 \contentsline {section}{\numberline {6.1}Recursos de Hardware}{30}
