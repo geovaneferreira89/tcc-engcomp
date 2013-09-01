@@ -122,7 +122,7 @@ Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./figs/105.png} % <- formatos PNG, JPG e PDF
-	\caption[Parte da gravação 105 da base de ECG]{Parte da gravação 105 da base de dados MIT-BIH Arrhythmia Database.}
+	\caption[Parte da gravação 105 da base de ECG]{Parte da gravação 105 da base de dados MIT-BIH Arrhythmia Database}
 	\fonte{Autoria própria}
 	\label{105}
 \end{figure}
@@ -192,13 +192,52 @@ Introdução do Capítulo. Um parágrafo basta.
 Muitos Gráficos!
 
 \section{Testes com Raw ECG}
-Tabela de contingência/confusão: VP, VN, FP, e FN.
-Aqui vai a análise de sensibilidade, especificidade.
 Curva ROC. 
 
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de Resultados Obtidos com Raw ECG]{Tabela de Resultados Obtidos com Raw ECG}
+	\label{tab:rawECG}
+		    \begin{tabular}{|c|c|c|c|c|c|c|}
+		    \hline
+		    Threshold & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    0         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,1       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,2       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,3       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,4       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,5       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,6       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,7       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,8       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,9       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    1         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    \end{tabular}
+\end{table}
+
 \section{Testes com ECG com correlação}
-Tabela de contingência/confusão: VP, VN, FP, e FN.
-Aqui vai a análise de sensibilidade, especificidade.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de Resultados utilizando correlação]{Tabela de Resultados utilizando correlação}
+	\label{tab:rawECG}
+		    \begin{tabular}{|c|c|c|c|c|c|c|}
+		    \hline
+		    Threshold & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    0         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,1       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,2       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,3       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,4       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,5       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,6       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,7       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,8       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,9       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    1         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    \end{tabular}
+\end{table}
+
 Curva ROC. 
 
 \section{Comparativo dos Resultados}
@@ -210,7 +249,7 @@ Compara a outros trabalhos
 
 \begin{table}[!htb]
 	\centering
-	\caption[Exemplo de uma tabela]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de Zhang e Lian (2009) acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
+	\caption[Tabela Comparativa de métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de Zhang e Lian (2009) acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
 	\label{tab:correlacao}
 	\begin{tabular}{llllll}
 		\hline 
@@ -256,7 +295,7 @@ Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria 
 
 \section{Recursos de Hardware}
 
-Nossos computadores.
+Os recursos de \textit{Hardware} correspondem às duas máquinas utilizadas pelos membros da equipe durante o desenvolvimento do projeto: um \textit{notebook} Dell Inspiron 14R-3440 com processador Intel Core i5, memória RAM de 6GB e HD com 1TB, e um... computador do Geovane.
 
 \section{Recursos de Software}
 
@@ -272,7 +311,15 @@ Para a licença deste produto a equipe participou do DreamSpark.
 
 \section{Quantidade de Horas Trabalhadas}
 
-Gráfico com barras comparando o esperado com o real.
+Gráfico com barras comparando o esperado com o real na figura ~\ref{horas}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/horas.png} % <- formatos PNG, JPG e PDF
+	\caption[Gráfico da Quantidade de Horas Trabalhadas]{Gráfico da Quantidade de Horas Trabalhadas}
+	\fonte{Autoria própria}
+	\label{horas}
+\end{figure}
 
 %------------------ Referencias --------------------
 \bibliography{reflatex} % geracao automatica das referencias a partir do arquivo reflatex.bib
