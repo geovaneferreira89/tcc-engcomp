@@ -5,6 +5,11 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.52 }
 
+\bibitem[Bloch 2004]{bloch2004l}
+\abntrefinfo{Bloch}{BLOCH}{2004}
+{BLOCH, S. \textbf{Excel para engenheiros e cientistas}. [S.l.]: Livros
+  T{\'e}cnicos e Cient{\'\i}ficos, 2004.}
+
 \bibitem[Brown e Davis 2006]{Brown2006}
 \abntrefinfo{Brown e Davis}{BROWN; DAVIS}{2006}
 {BROWN, C.~D.; DAVIS, H.~T. Receiver operating characteristics curves and
@@ -64,6 +69,12 @@ ISBN 9788520414125.}
 \abntrefinfo{Saraiva}{SARAIVA}{2012}
 {SARAIVA, A.~A. \textbf{Detec\c{c}\~ao do Complexo QRS atrav\'es de Morfologia
   Matem\'atica Multiescalar}. 2012.}
+
+\bibitem[Smith 1997]{smith}
+\abntrefinfo{Smith}{SMITH}{1997}
+{SMITH, S.~W. \textbf{The scientist and engineer's guide to digital signal
+  processing}. San Diego, CA, USA: California Technical Publishing, 1997.
+ISBN 0-9660176-3-3.}
 
 \bibitem[Sovierzoski 2009]{SOVIERZOSKI2009}
 \abntrefinfo{Sovierzoski}{SOVIERZOSKI}{2009}
