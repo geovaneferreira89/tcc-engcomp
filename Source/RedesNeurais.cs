@@ -187,6 +187,9 @@ namespace AmbienteRPB
                                 nome_canal = nome_canal.Substring(X_ + 1);
                                 //Inicio do enveto
                                 float x = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorInicio(cont).X;
+                                float x_fim = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorFim(cont).X;
+                                float referencia = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorMeio(cont).X;
+
                                 float aux;
                                 int DataRecords_lidos = 0;
                                 int tempo_X = 0;
@@ -204,48 +207,61 @@ namespace AmbienteRPB
                                             {
                                                 if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
                                                 {
-                                                    if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho + x))
+                                                    //Pela Referencia
+                                                    if ((x_fim-x) >= MenorTamanho && 
+                                                        (referencia-x) >= (MenorTamanho/2) &&
+                                                        (x_fim - referencia) >= (MenorTamanho / 2) &&
+                                                        tempo_X >= (referencia - (MenorTamanho / 2)) &&
+                                                        tempo_X < (referencia + (MenorTamanho / 2)))
+                                                    {
+                                                        entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                        //send_SmS(1, Convert.ToString(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]), false);     
+                                                    }
+                                                    else
+                                                        aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                                    tempo_X++;
+                                                    //Sem refencia
+                                                    /*if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho + x))
                                                     {
                                                         entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                                     }
                                                     else
                                                         aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
+                                                    
                                                     tempo_X++;
+                                                     */
                                                 }
                                                 else
                                                     aux = SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i];
                                             }
                                         }
                                     }
+                                   //send_SmS(1, "\n----------\n", false);     
+             
                                 }
                                 else
                                 {
                                     double[] sinal;
                                     GerenArquivos Arquivos = new GerenArquivos();
                                     sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont));
-                                    for (int i = 0; i < MenorTamanho; i++)
+                                    /*for (int i = 0; i < MenorTamanho; i++)
                                         entrada.Add(sinal[i]);
                                     PadraoDescatardo = false;
+                                    
+                                     */
                                     //Pegando pela referencia
-                                    /*
-                                    int Deslocamento = MenorTamanho/2;
-                                    if (ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X + Deslocamento <= ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorFim(cont).X 
-                                        && (ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X - Deslocamento) >= ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorInicio(cont).X)
+                                    if (sinal.Count() >= 50 && (referencia - x) >= 25 && (x_fim - referencia) >= 25)
                                     {
-                                        sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetNomesEvento(cont));
-                                        for (int i = (int)(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X - Deslocamento); i <= Convert.ToInt16(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X); i++)
+                                        for (int i = (int)(referencia-25); i <=referencia; i++)
                                             entrada.Add(sinal[i]);
-
-                                        for (int i = (int)(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X) + 1; i <= Convert.ToInt16(ListasPadrEvents[PadroesATreinar[PadraoAtual]].GetValorMeio(cont).X + Deslocamento); i++)
+                                        for (int i = (int)(referencia); i < (referencia+25); i++)
                                             entrada.Add(sinal[i]);
-
                                         PadraoDescatardo = false;
                                     }
                                     else//padrao descartado
                                         PadraoDescatardo = true;
-                                    */
                                 }
-                                if(!PadraoDescatardo)
+                                if (!PadraoDescatardo)
                                     helper.AddTrainingData(entrada, saida);
                             }
                         helper.Train(1000);
