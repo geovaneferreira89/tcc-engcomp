@@ -50,14 +50,19 @@ Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1016/j.patrec.2005.10.010$>$.}
   Interpretation: A Comprehensive Framework of Computational Intelligence}.
   [S.l.]: Springer, 2011.}
 
-\bibitem[Goldberger et al. 2000 (June 13)]{PhysioNet}
-\abntrefinfo{Goldberger et al.}{GOLDBERGER et al.}{2000 (June 13)}
+\bibitem[Goldberger et al. 2000]{PhysioNet}
+\abntrefinfo{Goldberger et al.}{GOLDBERGER et al.}{2000}
 {GOLDBERGER, A.~L. et al. {PhysioBank, PhysioToolkit, and PhysioNet}:
   Components of a new research resource for complex physiologic signals.
-\textbf{Circulation}, v.~101, n.~23, p. e215--e220, 2000 (June 13).
+\textbf{Circulation}, v.~101, n.~23, p. e215--e220, 2000.
 Circulation Electronic Pages:
   http://circ.ahajournals.org/cgi/content/full/101/23/e215 PMID:1085218; doi:
   10.1161/01.CIR.101.23.e215.}
+
+\bibitem[Haykin 2011]{HAYKIN2011}
+\abntrefinfo{Haykin}{HAYKIN}{2011}
+{HAYKIN, S. \textbf{Neural Networks: A Comprehensive Foundation}. 2nd. ed.
+  [S.l.]: Pearson Prentice Hall, 2011. 823~p.}
 
 \bibitem[Malmivuo e Plonsey 1995]{MALMIVUO1995}
 \abntrefinfo{Malmivuo e Plonsey}{MALMIVUO; PLONSEY}{1995}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  2 SEP 2013 17:53
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  2 SEP 2013 18:45
 entering extended mode
 **modelo_daeln.tex
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.tex
@@ -392,19 +392,19 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 LaTeX Warning: Label `tab:rawECG' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 52.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -414,7 +414,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 53.
+(lastpage)             ! on input line 52.
 
 (C:\Users\Ge\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -431,36 +431,36 @@ Package lastpage Info: Please have a look at the pageslts package at
 \everyMPtoPDFconversion=\toks27
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 55
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 54
 .
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ztmcm.fd"
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 55
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 54
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlztmcm.fd"
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 55
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 54
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsztmcm.fd"
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 55
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 54
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxztmcm.fd"
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [1] [1
@@ -522,7 +522,7 @@ Overfull \hbox (4.1126pt too wide) in paragraph at lines 3--4
 e[][]oes Fi-si-o-lo-gia do Cora[][]ao 2.1[], Forma[][]ao
  []
 
-<./figs/heart.png, id=46, 451.6875pt x 438.13687pt>
+<./figs/heart.png, id=47, 451.6875pt x 438.13687pt>
 File: ./figs/heart.png Graphic file (type png)
  <use ./figs/heart.png>
 Package pdftex.def Info: ./figs/heart.png used on input line 12.
@@ -536,7 +536,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 
 [12
 
-] <./figs/muscle.png, id=50, 371.88937pt x 430.60875pt>
+] <./figs/muscle.png, id=51, 371.88937pt x 430.60875pt>
 File: ./figs/muscle.png Graphic file (type png)
 
 <use ./figs/muscle.png>
@@ -549,7 +549,7 @@ Overfull \hbox (0.95213pt too wide) in paragraph at lines 41--42
 -sos de despolariza[][]ao e repolariza[][]ao
  []
 
-[15] <./figs/leads.png, id=60, 275.52937pt x 271.0125pt>
+[15] <./figs/leads.png, id=61, 275.52937pt x 271.0125pt>
 File: ./figs/leads.png Graphic file (type png)
 
 <use ./figs/leads.png>
@@ -580,7 +580,7 @@ File: ./figs/SensibEspec.png Graphic file (type png)
 
 <use ./figs/SensibEspec.png>
 Package pdftex.def Info: ./figs/SensibEspec.png used on input line 208.
-(pdftex.def)             Requested size: 227.62206pt x 226.82133pt.
+(pdftex.def)             Requested size: 273.14923pt x 272.19342pt.
  [21 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/SensibEspec.png>] <./figs/R
 OC.png, id=85, 427.5975pt x 406.51875pt>
 File: ./figs/ROC.png Graphic file (type png)
@@ -595,60 +595,80 @@ File: ./figs/corre.png Graphic file (type png)
 Package pdftex.def Info: ./figs/corre.png used on input line 262.
 (pdftex.def)             Requested size: 364.19667pt x 149.98502pt.
 
-[23 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/corre.png>]) [24]
+[23] <./figs/RN1.png, id=94, 466.74374pt x 80.55093pt>
+File: ./figs/RN1.png Graphic file (type png)
+ <use ./figs/RN1.png>
+Package pdftex.def Info: ./figs/RN1.png used on input line 285.
+(pdftex.def)             Requested size: 318.66948pt x 54.99883pt.
+
+<./figs/RN2.png, id=95, 505.89pt x 342.5297pt>
+File: ./figs/RN2.png Graphic file (type png)
+ <use ./figs/RN2.png>
+Package pdftex.def Info: ./figs/RN2.png used on input line 295.
+(pdftex.def)             Requested size: 273.14923pt x 184.9476pt.
+ [24 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/corre.png> <C:/Users/Ge/Des
+ktop/tcc/monografia/daeln/figs/RN1.png>]
+<./figs/RN4.png, id=102, 703.87968pt x 339.51843pt>
+File: ./figs/RN4.png Graphic file (type png)
+ <use ./figs/RN4.png>
+Package pdftex.def Info: ./figs/RN4.png used on input line 309.
+(pdftex.def)             Requested size: 455.24411pt x 219.58606pt.
+)
+[25 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/RN2.png> <C:/Users/Ge/Deskto
+p/tcc/monografia/daeln/figs/RN4.png>] [26]
 Cap\'{\i }tulo 3.
-<./figs/105.png, id=100, 464.4853pt x 252.945pt>
+<./figs/105.png, id=109, 464.4853pt x 252.945pt>
 File: ./figs/105.png Graphic file (type png)
  <use ./figs/105.png>
-Package pdftex.def Info: ./figs/105.png used on input line 131.
+Package pdftex.def Info: ./figs/105.png used on input line 130.
 (pdftex.def)             Requested size: 318.66948pt x 173.54031pt.
- [25
+ [27
 
 ]
-[26 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>]
-<./figs/ATM.png, id=107, 994.46532pt x 266.49562pt>
+[28 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>]
+<./figs/ATM.png, id=116, 994.46532pt x 266.49562pt>
 File: ./figs/ATM.png Graphic file (type png)
  <use ./figs/ATM.png>
-Package pdftex.def Info: ./figs/ATM.png used on input line 157.
+Package pdftex.def Info: ./figs/ATM.png used on input line 156.
 (pdftex.def)             Requested size: 455.24411pt x 121.99577pt.
 
-<./figs/fluxogramaRaw.png, id=109, 677.35411pt x 836.06471pt>
+<./figs/fluxogramaRaw.png, id=118, 677.35411pt x 836.06471pt>
 File: ./figs/fluxogramaRaw.png Graphic file (type png)
 
 <use ./figs/fluxogramaRaw.png>
-Package pdftex.def Info: ./figs/fluxogramaRaw.png used on input line 175.
+Package pdftex.def Info: ./figs/fluxogramaRaw.png used on input line 174.
 (pdftex.def)             Requested size: 318.66948pt x 393.33319pt.
 
-<./figs/FluxoCorrel.png, id=110, 955.09764pt x 1126.56177pt>
+<./figs/FluxoCorrel.png, id=119, 955.09764pt x 1126.56177pt>
 File: ./figs/FluxoCorrel.png Graphic file (type png)
 
 <use ./figs/FluxoCorrel.png>
-Package pdftex.def Info: ./figs/FluxoCorrel.png used on input line 186.
+Package pdftex.def Info: ./figs/FluxoCorrel.png used on input line 185.
 (pdftex.def)             Requested size: 409.71692pt x 483.26039pt.
- [27 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/ATM.png>] [28 <C:/Users/Ge/
-Desktop/tcc/monografia/daeln/figs/fluxogramaRaw.png>] [29 <C:/Users/Ge/Desktop/
+ [29 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/ATM.png>] [30 <C:/Users/Ge/
+Desktop/tcc/monografia/daeln/figs/fluxogramaRaw.png>] [31 <C:/Users/Ge/Desktop/
 tcc/monografia/daeln/figs/FluxoCorrel.png>]
-[30
-
-] [31]
-Cap\'{\i }tulo 4.
 [32
 
-] [33] [34]
+] [33]
+Cap\'{\i }tulo 4.
+[34
+
+] [35] [36]
 Cap\'{\i }tulo 5.
-[35
+[37
 
 ]
 Cap\'{\i }tulo 6.
-[36
+[38
 
-] <./figs/horas.png, id=144, 361.35pt x 216.81pt>
+] <./figs/horas.png, id=153, 361.35pt x 216.81pt>
 File: ./figs/horas.png Graphic file (type png)
  <use ./figs/horas.png>
-Package pdftex.def Info: ./figs/horas.png used on input line 365.
+Package pdftex.def Info: ./figs/horas.png used on input line 364.
 (pdftex.def)             Requested size: 364.19667pt x 218.51982pt.
 
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [37 <C:/Users/Ge/Des
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [39 <C:/Users/Ge/Des
 ktop/tcc/monografia/daeln/figs/horas.png>]
 Underfull \hbox (badness 4353) in paragraph at lines 20--27
 []\OT1/ptm/m/n/12 BROWN, C. D.; DA-VIS, H. T. Re-cei-ver ope-ra-ting cha-rac-te
@@ -667,35 +687,11 @@ Underfull \hbox (badness 3209) in paragraph at lines 20--27
 ISSN 0169-7439. Dis-pon[]vel em:
  []
 
-
-Underfull \hbox (badness 5667) in paragraph at lines 55--61
-[]\OT1/ptm/m/n/12 GOLDBERGER, A. L. et al. Phy-si-o-Bank, Phy-si-o-To-ol-kit, a
-nd Phy-si-o-Net: Com-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--61
-\OT1/ptm/m/n/12 po-nents of a new re-se-arch re-source for com-plex phy-si-o-lo
--gic sig-nals. \OT1/ptm/b/n/12 Cir-cu-la-
- []
-
-
-Underfull \hbox (badness 5726) in paragraph at lines 55--61
-\OT1/ptm/b/n/12 tion\OT1/ptm/m/n/12 , v. 101, n. 23, p. e215--e220, 2000 (June 
-13). Cir-cu-la-tion Elec-tro-nic Pa-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--61
-\OT1/ptm/m/n/12 ges: http://circ.ahajournals.org/cgi/content/full/101/23/e215 P
-MID:1085218; doi:
- []
-
-[38
+[40
 
 ]) 
 AED: lastpage setting LastPage
-[39]
+[41]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
@@ -706,13 +702,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4063 strings out of 493921
- 57085 string characters out of 3144885
- 123585 words of memory out of 3000000
- 7166 multiletter control sequences out of 15000+200000
+ 4086 strings out of 493921
+ 57445 string characters out of 3144885
+ 123734 words of memory out of 3000000
+ 7186 multiletter control sequences out of 15000+200000
  39778 words of font info for 92 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,13n,43p,941b,315s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,13n,43p,941b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
@@ -722,9 +718,9 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (41 pages, 470065 bytes).
+Output written on modelo_daeln.pdf (43 pages, 517402 bytes).
 PDF statistics:
- 183 PDF objects out of 1000 (max. 8388607)
+ 193 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
