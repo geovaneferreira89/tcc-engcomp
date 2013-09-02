@@ -5,6 +5,11 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.52 }
 
+\bibitem[Anghinah et al.]{ANGHINAH2006}
+\abntrefinfo{Anghinah et al.}{ANGHINAH et al.}{}
+{ANGHINAH, R. et al. {Artefatos bio\'ogicos no EEG quantitativo}.
+\textbf{{Arquivos de Neuro~--Psiquiatria}}.}
+
 \bibitem[Bloch 2004]{bloch2004l}
 \abntrefinfo{Bloch}{BLOCH}{2004}
 {BLOCH, S. \textbf{Excel para engenheiros e cientistas}. [S.l.]: Livros
@@ -23,6 +28,13 @@ Dispon{\'\i}vel em:
 \bibitem[CONEP 2011]{CONEP}
 \abntrefinfo{CONEP}{CONEP}{2011}
 {CONEP. \textbf{Perguntas e Respostas Frequentes}. 2011.}
+
+\bibitem[European data format 'plus' (EDF+), an \{EDF\} alike standard format
+  for the exchange of physiological data 2003]{Kemp20031755}
+\abntrefinfo{European\ldots}{EUROPEAN\ldots}{2003}
+{EUROPEAN data format 'plus' (EDF+), an \{EDF\} alike standard format for the
+  exchange of physiological data.
+\textbf{Clinical Neurophysiology}, v.~114, n.~9, p. 1755 -- 1761, 2003.}
 
 \bibitem[Fawcett 2006]{FAWCETT2006}
 \abntrefinfo{Fawcett}{FAWCETT}{2006}

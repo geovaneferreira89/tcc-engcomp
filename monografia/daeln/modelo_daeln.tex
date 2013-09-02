@@ -99,12 +99,12 @@ Abstract text (maximum of 500 words).
 \input{intro.tex} 
 \input{fund.tex}
 %\input{exper.tex}
-%\input{concl.tex}
+
 
 %Considerações: 
 %1. não ultrapassar 100 páginas
 %2. introdução 5%, considerações finais 5%, fundamentação, materiais e métodos e resultados obtidos 90%
-%3. 3 páginas, 2 páginas, 					15 páginas, 	20 páginas ,		 5 páginas
+%3. 2 páginas, 1 páginas, 					15,16 páginas, 	20 páginas ,		 5 páginas
 % -------------------------------------------
 \chapter{Desenvolvimento} %ou Materiais e Métodos 
 
@@ -133,15 +133,28 @@ Uma equipe com dois cardiologistas realizou anotações dos batimentos em cada uma
 
 Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por apresentar maior dificuldade na detecção do complexo QRS ~\cite{SARAIVA2012}.
 
+O arquivo de texto contendo as anotações do sinal de ECG 105, apresenta 2691 eventos. Destes 2691 eventos, apenas 2572 são relevantes para os testes neste projeto, que correspondem às marcações  de \textit{Normal beat} (2526 ocorrências), \textit{Premature ventricular contraction} (41 ocorrências) e \textit{Unclassifiable beat} (5 ocorrências).
+ 
+\section{European Data Format}
+
+A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \sigla{EDF}{European data format}, um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O EDF é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientifica \cite{Kemp20031755}.
+
+Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado. Este formato de arquivo, no entanto, não suporta anotações de eventos das gravações \cite{Kemp20031755}.
+
+Physiobank ATM (Automated Teller Machine) é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo PhysioBank por meio do navegador de internet. Esta toolbox software oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do Physionet (WFDB ~-- WaveForm DataBase) para texto, CSV, EDF, ou .mat files (para utilização em Matlab ou Octave), entre outras funcionalidades \cite{PhysioNet}.
+
+A figura ~\ref{ATM} mostra a tela de opções da ferramenta Physiobank ATM.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/ATM.png} % <- formatos PNG, JPG e PDF
+	\caption[Physiobank ATM]{Tela de opções do Physiobank ATM}
+	\fonte{Autoria própria}
+	\label{ATM}
+\end{figure}
+
 \section{Desenvolvimento do Software}
 \label{sec:DSW}
-
-\subsection{Formato EDF}
-Falar sobre o formato EDF. Como surgiu. Para que serve
-Podemos colocar o cabeçalho do arquivo. 
-
-\subsection{Bibliotecas}
-Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
 
 \section{Módulos do sistema} 
 Eu consigo antever cinco módulos (Aí explica o que cada um faz):
@@ -170,8 +183,8 @@ Módulo que compara marcações com os resultados obtidos.
 
 Usamos algum padrão, MVC, etc....
 
-%\section{Processo de Detecção}
-%\label{sec:Proc}
+\subsection{Bibliotecas}
+Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
 
 \section{Metodologia de Testes}
 \label{sec:Met-Testes}
@@ -281,7 +294,11 @@ Compara a outros trabalhos
 %----------------------------------------
 \chapter{Considerações Finais} % 1 página
 
-Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? Cada seção teve a sua conclusão, então completa a discussão. Elementos resultantes do processo de união. Não apresentar nenhum dado novo! 1 folha e meia no máximo. Propostas futuras? Resultados futuros.
+Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? 
+
+Cada seção teve a sua conclusão, então completa a discussão. Elementos resultantes do processo de união. Não apresentar nenhum dado novo! 1 folha e meia no máximo. 
+
+Propostas futuras? Resultados futuros.
 
 Com redes SOM, ou com outras bases de dados.
 
@@ -308,6 +325,8 @@ IDE Utilizada
 O ambiente de desenvolvimento utilizado foi o Visual Studio versão X.
 
 Para a licença deste produto a equipe participou do DreamSpark.
+
+Bibliotecas: EDF e RN
 
 \section{Quantidade de Horas Trabalhadas}
 
