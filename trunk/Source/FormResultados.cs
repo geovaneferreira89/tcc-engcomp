@@ -622,7 +622,7 @@ namespace AmbienteRPB
                     if (FormDadosInput.UsarListaDeTodosEnventos)
                     {
                         TipoBkP = "BackPropagation_AllEvnts";
-                        for (int i = 0; i < PadroesATreinar.Count(); i++)
+                        /*for (int i = 0; i < PadroesATreinar.Count(); i++)
                         {
                             for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
                             {
@@ -630,7 +630,8 @@ namespace AmbienteRPB
                                 if ((cont == 0 && i == 0) || MenorTamanho > aux)
                                     MenorTamanho = aux;
                             }
-                        }
+                        }*/
+                        MenorTamanho = 50;
                     }
                     else
                         MenorTamanho = vector_evento.Count();
