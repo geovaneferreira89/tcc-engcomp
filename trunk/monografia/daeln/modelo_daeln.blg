@@ -7,6 +7,11 @@ I was expecting a `,' or a `}'---line 12 of file reflatex.bib
  :   urlaccessdate = {8 de novembro de 2012}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+You're missing a field name---line 92 of file reflatex.bib
+ : 
+ : %note = "",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 You're missing a field name---line 118 of file reflatex.bib
  :   
  :   %url = {http://conselho.saude.gov.br/Web_comissoes/conep/index.html},
@@ -26,6 +31,11 @@ You're missing a field name---line 151 of file reflatex.bib
  :   %url={http://books.google.com.br/books?id=XdzNEhEX-7oC},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+You're missing a field name---line 176 of file reflatex.bib
+ :    
+ :    %URL = {http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0004-282X2006000200017&nrm=iso},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--campo year vazio ou faltando em massad2004
 +---------------------------------------------------------+
 | Estilo bibliografico abnt-alf.bst versao 1.52           |
@@ -33,4 +43,4 @@ Warning--campo year vazio ou faltando em massad2004
 | Em caso de duvidas ou problemas com este estilo procure |
 | http://abntex.codigolivre.org.br                        |
 +---------------------------------------------------------+
-(There were 5 error messages)
+(There were 7 error messages)
