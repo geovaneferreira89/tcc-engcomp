@@ -12,6 +12,12 @@
 \usepackage{multirow} %pacote tabela
 \usepackage[section,subsection,subsubsection]{extraplaceins} %pacote pra figura não sair do lugar!
 
+%tabelas ajustáveis
+\usepackage{tabulary}
+%fixar tabelas no mesmo lugar
+\usepackage{float}
+%\restylefloat{table}
+
 
 % ---------- Preambulo ----------
 \instituicao{Universidade Tecnológica Federal do Paraná} % nome da instituicao
@@ -161,7 +167,28 @@ A figura ~\ref{ATM} mostra a tela de opções da ferramenta Physiobank ATM.
 Eu consigo antever cinco módulos (Aí explica o que cada um faz):
 Telas do sistema vão aqui.
 
-Pode ser um diagrama de blocos. Processo de detecção.
+
+A figura ~\ref{fluxogramaRaw} mostra o processo utilizando raw ECG.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./figs/fluxogramaRaw.png} % <- formatos PNG, JPG e PDF
+	\caption[Fluxograma]{Fluxograma}
+	\fonte{Autoria própria}
+	\label{fluxogramaRaw}
+\end{figure}
+
+
+A figura ~\ref{FluxoCorrel} mostra o processo utilizando correlação.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
+	\caption[Fluxograma da correlação]{Fluxograma da Correlação}
+	\fonte{Autoria própria}
+	\label{FluxoCorrel}
+\end{figure}
+
 
 \subsection{Visualização do sinal}
 Explicar por exemplo, a duração do exame, quantos canais, a frequência e amplitude.
