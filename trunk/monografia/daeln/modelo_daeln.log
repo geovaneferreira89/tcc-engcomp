@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  2 SEP 2013 18:45
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  2 SEP 2013 23:36
 entering extended mode
 **modelo_daeln.tex
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.tex
@@ -595,80 +595,87 @@ File: ./figs/corre.png Graphic file (type png)
 Package pdftex.def Info: ./figs/corre.png used on input line 262.
 (pdftex.def)             Requested size: 364.19667pt x 149.98502pt.
 
-[23] <./figs/RN1.png, id=94, 466.74374pt x 80.55093pt>
-File: ./figs/RN1.png Graphic file (type png)
- <use ./figs/RN1.png>
-Package pdftex.def Info: ./figs/RN1.png used on input line 285.
-(pdftex.def)             Requested size: 318.66948pt x 54.99883pt.
+[23]
+Overfull \hbox (15.19627pt too wide) in paragraph at lines 284--285
+[]\OT1/ptm/m/n/12 As uni-da-des b[]asicas de pro-ces-sa-mento de uma rede neu-r
+al ar-ti-fi-cial s[]ao cha-ma-das de neur[]onios,
+ []
 
-<./figs/RN2.png, id=95, 505.89pt x 342.5297pt>
+[24 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/corre.png>]
+<./figs/RN2.png, id=100, 505.89pt x 342.5297pt>
 File: ./figs/RN2.png Graphic file (type png)
  <use ./figs/RN2.png>
-Package pdftex.def Info: ./figs/RN2.png used on input line 295.
-(pdftex.def)             Requested size: 273.14923pt x 184.9476pt.
- [24 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/corre.png> <C:/Users/Ge/Des
-ktop/tcc/monografia/daeln/figs/RN1.png>]
-<./figs/RN4.png, id=102, 703.87968pt x 339.51843pt>
+Package pdftex.def Info: ./figs/RN2.png used on input line 292.
+(pdftex.def)             Requested size: 227.62206pt x 154.12125pt.
+
+<./figs/limiares.png, id=101, 252.19218pt x 463.7325pt>
+File: ./figs/limiares.png Graphic file (type png)
+
+<use ./figs/limiares.png>
+Package pdftex.def Info: ./figs/limiares.png used on input line 310.
+(pdftex.def)             Requested size: 227.62206pt x 418.5583pt.
+ [25 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/RN2.png>] <./figs/RN4.png, 
+id=105, 703.87968pt x 339.51843pt>
 File: ./figs/RN4.png Graphic file (type png)
- <use ./figs/RN4.png>
-Package pdftex.def Info: ./figs/RN4.png used on input line 309.
-(pdftex.def)             Requested size: 455.24411pt x 219.58606pt.
-)
-[25 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/RN2.png> <C:/Users/Ge/Deskto
-p/tcc/monografia/daeln/figs/RN4.png>] [26]
+
+<use ./figs/RN4.png>
+Package pdftex.def Info: ./figs/RN4.png used on input line 322.
+(pdftex.def)             Requested size: 364.19667pt x 175.66989pt.
+ [26 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/limiares.png>]) [27 <C:/Use
+rs/Ge/Desktop/tcc/monografia/daeln/figs/RN4.png>]
 Cap\'{\i }tulo 3.
-<./figs/105.png, id=109, 464.4853pt x 252.945pt>
+<./figs/105.png, id=112, 464.4853pt x 252.945pt>
 File: ./figs/105.png Graphic file (type png)
  <use ./figs/105.png>
 Package pdftex.def Info: ./figs/105.png used on input line 130.
 (pdftex.def)             Requested size: 318.66948pt x 173.54031pt.
- [27
+ [28
 
 ]
-[28 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>]
-<./figs/ATM.png, id=116, 994.46532pt x 266.49562pt>
+[29 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/105.png>]
+<./figs/ATM.png, id=120, 994.46532pt x 266.49562pt>
 File: ./figs/ATM.png Graphic file (type png)
  <use ./figs/ATM.png>
 Package pdftex.def Info: ./figs/ATM.png used on input line 156.
 (pdftex.def)             Requested size: 455.24411pt x 121.99577pt.
 
-<./figs/fluxogramaRaw.png, id=118, 677.35411pt x 836.06471pt>
+<./figs/fluxogramaRaw.png, id=122, 677.35411pt x 836.06471pt>
 File: ./figs/fluxogramaRaw.png Graphic file (type png)
 
 <use ./figs/fluxogramaRaw.png>
 Package pdftex.def Info: ./figs/fluxogramaRaw.png used on input line 174.
 (pdftex.def)             Requested size: 318.66948pt x 393.33319pt.
 
-<./figs/FluxoCorrel.png, id=119, 955.09764pt x 1126.56177pt>
+<./figs/FluxoCorrel.png, id=123, 955.09764pt x 1126.56177pt>
 File: ./figs/FluxoCorrel.png Graphic file (type png)
 
 <use ./figs/FluxoCorrel.png>
 Package pdftex.def Info: ./figs/FluxoCorrel.png used on input line 185.
 (pdftex.def)             Requested size: 409.71692pt x 483.26039pt.
- [29 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/ATM.png>] [30 <C:/Users/Ge/
-Desktop/tcc/monografia/daeln/figs/fluxogramaRaw.png>] [31 <C:/Users/Ge/Desktop/
+ [30 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/ATM.png>] [31 <C:/Users/Ge/
+Desktop/tcc/monografia/daeln/figs/fluxogramaRaw.png>] [32 <C:/Users/Ge/Desktop/
 tcc/monografia/daeln/figs/FluxoCorrel.png>]
-[32
+[33
 
-] [33]
+] [34]
 Cap\'{\i }tulo 4.
-[34
+[35
 
-] [35] [36]
+] [36] [37]
 Cap\'{\i }tulo 5.
-[37
+[38
 
 ]
 Cap\'{\i }tulo 6.
-[38
+[39
 
-] <./figs/horas.png, id=153, 361.35pt x 216.81pt>
+] <./figs/horas.png, id=156, 361.35pt x 216.81pt>
 File: ./figs/horas.png Graphic file (type png)
  <use ./figs/horas.png>
 Package pdftex.def Info: ./figs/horas.png used on input line 364.
 (pdftex.def)             Requested size: 364.19667pt x 218.51982pt.
 
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [39 <C:/Users/Ge/Des
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [40 <C:/Users/Ge/Des
 ktop/tcc/monografia/daeln/figs/horas.png>]
 Underfull \hbox (badness 4353) in paragraph at lines 20--27
 []\OT1/ptm/m/n/12 BROWN, C. D.; DA-VIS, H. T. Re-cei-ver ope-ra-ting cha-rac-te
@@ -687,11 +694,11 @@ Underfull \hbox (badness 3209) in paragraph at lines 20--27
 ISSN 0169-7439. Dis-pon[]vel em:
  []
 
-[40
+[41
 
 ]) 
 AED: lastpage setting LastPage
-[41]
+[42]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
@@ -703,7 +710,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  4086 strings out of 493921
- 57445 string characters out of 3144885
+ 57475 string characters out of 3144885
  123734 words of memory out of 3000000
  7186 multiletter control sequences out of 15000+200000
  39778 words of font info for 92 fonts, out of 3000000 for 9000
@@ -718,9 +725,9 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (43 pages, 517402 bytes).
+Output written on modelo_daeln.pdf (44 pages, 532079 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
+ 196 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
