@@ -460,7 +460,6 @@ namespace AmbienteRPB
                 PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
                 PointF Padrao_Fim    = new PointF((e.X + offsetX), e.Y);
 
-                AtualizaFerramentaAtiva("Fim de envento marcado", 2,Color.Green);
         
                 Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
                 Padrao_Fim    = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
@@ -468,6 +467,7 @@ namespace AmbienteRPB
 
                 if (Padrao_Fim.X > Padrao_Inicio.X)
                 {
+                    AtualizaFerramentaAtiva("Fim de envento marcado", 2, Color.Green);
                     string string_coment = "";
                     if (adicionarComentario)
                         string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
@@ -483,6 +483,8 @@ namespace AmbienteRPB
                     Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
                     oThread.Start();
                 }
+                else
+                    AtualizaFerramentaAtiva("Padrão Descartado - (Inicio > Fim)", 2, Color.Red);
                 
                 for(int i=0;i<=countCTRL;i++)
                     chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_inicio_evento_" +i));
