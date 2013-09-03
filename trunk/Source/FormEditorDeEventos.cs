@@ -287,7 +287,7 @@ namespace AmbienteRPB
                     Cursor_vertical_Referencia.AnchorY = chart1.ChartAreas[0].AxisY.Maximum;
                     chart1.Annotations.Add(Cursor_vertical_Referencia);
 
-                    cbx_Referencia.Text = "Referência Y: " + ValorReferencia.Y.ToString() + " X: " + ValorReferencia.X.ToString();
+                    cbx_Referencia.Text = "Referência X: " + ValorReferencia.X.ToString() + " Y: " + ValorReferencia.Y.ToString();
                     //Habilita opção de salvar
                     btnSalvar.Enabled = true;
                 }
@@ -314,6 +314,9 @@ namespace AmbienteRPB
                 chart1.Annotations.Clear();
                 chart1.Series.Remove(chart1.Series["Serie01"]);
                 chart1.ChartAreas.Remove(chart1.ChartAreas[0]);
+                cbx_Referencia.Text = "Referência";
+                cbx_Fim.Text = "Fim";
+                cbx_Inicio.Text = "Inicio";
             }
         }
         //---------------------------------------------------------------------------

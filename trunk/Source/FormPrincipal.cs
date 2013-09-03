@@ -460,27 +460,29 @@ namespace AmbienteRPB
                 PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
                 PointF Padrao_Fim    = new PointF((e.X + offsetX), e.Y);
 
-                Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
-                Padrao_Fim.X    = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X+offsetX);
                 AtualizaFerramentaAtiva("Fim de envento marcado", 2,Color.Green);
         
                 Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
                 Padrao_Fim    = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
-                
-                string string_coment = "";
-                if (adicionarComentario)
-                    string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
+                PointF Ref = new PointF((float)Padrao_Inicio.X+(((float)Padrao_Fim.X - (float)Padrao_Inicio.X)/2), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
 
-                Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
+                if (Padrao_Fim.X > Padrao_Inicio.X)
+                {
+                    string string_coment = "";
+                    if (adicionarComentario)
+                        string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
 
-                float aux_x_pos = (float)Padrao_Fim.X - (float)Padrao_Inicio.X;
-                aux_x_pos = aux_x_pos / 2;
-                aux_x_pos = aux_x_pos + (float)Padrao_Inicio.X;
-              
-                Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar,aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2],
-                                                                      adicionarComentario, string_coment, result.ChartArea.Position.Height, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size), "AddMarcacao", null, countCTRL, canaisCTRL);
-                Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
-                oThread.Start();
+                    Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, Ref, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
+
+                    float aux_x_pos = (float)Padrao_Fim.X - (float)Padrao_Inicio.X;
+                    aux_x_pos = aux_x_pos / 2;
+                    aux_x_pos = aux_x_pos + (float)Padrao_Inicio.X;
+
+                    Annotations_Chart oAnnotation = new Annotations_Chart(chart1, progressBar, aux_x_pos, (float)result.ChartArea.AxisY.Minimum, highlightColor, Evento, result.Series.Points[2],
+                                                                          adicionarComentario, string_coment, result.ChartArea.Position.Height, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size), "AddMarcacao", null, countCTRL, canaisCTRL);
+                    Thread oThread = new Thread(new ThreadStart(oAnnotation.Init));
+                    oThread.Start();
+                }
                 
                 for(int i=0;i<=countCTRL;i++)
                     chart1.Annotations.Remove(chart1.Annotations.FindByName("cursor_inicio_evento_" +i));
@@ -492,7 +494,7 @@ namespace AmbienteRPB
                 numCursor++;
         }
         //------------------------------------------------------------------------------------------
-        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, HitTestResult Canal, string coment,float Comprimento)
+        private void Exportar_Padrao_Na_Lista(PointF Padrao_Inicio, PointF Padrao_Fim, PointF Ref,HitTestResult Canal, string coment,float Comprimento)
         {
             if (Evento != null)
             {
@@ -505,6 +507,7 @@ namespace AmbienteRPB
                             for (int j = 0; j < countCTRL; j++)
                             {
                                 ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(), Padrao_Inicio);
+                                ListaPadroes[i].SetValorMeio(ListaPadroes[i].GetNumeroEventos(), Ref);
                                 ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
                                 ListaPadroes[i].SetComentario(ListaPadroes[i].GetNumeroEventos(), coment);
                                 ListaPadroes[i].SetCorDeFundo(ListaPadroes[i].GetNumeroEventos(), highlightColor);
@@ -517,6 +520,7 @@ namespace AmbienteRPB
                         else
                         {
                             ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(), Padrao_Inicio);
+                            ListaPadroes[i].SetValorMeio(ListaPadroes[i].GetNumeroEventos(), Ref);
                             ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
                             ListaPadroes[i].SetComentario(ListaPadroes[i].GetNumeroEventos(), coment);
                             ListaPadroes[i].SetCorDeFundo(ListaPadroes[i].GetNumeroEventos(), highlightColor);
