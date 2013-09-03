@@ -229,31 +229,51 @@ Podemos colocar umas telas, comparando o resultado obtido com a marcação que já 
 \label{sec:Resultaados}
 Introdução do Capítulo. Um parágrafo basta. 
 
-Muitos Gráficos!
+Blá
+
+Blá
+
+Blá
+
+Blá...
+
+Vai texto aqui
 
 \section{Testes com Raw ECG}
-Curva ROC. 
+
+Eis os resultados na tabela.
 
 \begin{table}[!htb]
 	\centering
 	\caption[Tabela de Resultados Obtidos com Raw ECG]{Tabela de Resultados Obtidos com Raw ECG}
 	\label{tab:rawECG}
-		    \begin{tabular}{|c|c|c|c|c|c|c|}
+		    \begin{tabular}{ccccccccc}
 		    \hline
-		    Threshold & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
-		    0         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,1       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,2       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,3       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,4       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,5       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,6       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,7       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,8       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,9       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    1         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    Threshold & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    \hline
+		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
 		    \end{tabular}
 \end{table}
+
+A curva ROC do processo utilizando \textit{raw} ECG é mostrada na figura ~\ref{ROC1}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.3\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\caption[Curva ROC dos resultados]{Curva ROC dos resultados}
+	\fonte{Autoria própria}
+	\label{ROC1}
+\end{figure}
 
 \section{Testes com ECG com correlação}
 
@@ -261,24 +281,33 @@ Curva ROC.
 	\centering
 	\caption[Tabela de Resultados utilizando correlação]{Tabela de Resultados utilizando correlação}
 	\label{tab:rawECG}
-		    \begin{tabular}{|c|c|c|c|c|c|c|}
+		    \begin{tabular}{ccccccccc}
 		    \hline
-		    Threshold & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
-		    0         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,1       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,2       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,3       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,4       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,5       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,6       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,7       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,8       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    0,9       & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    1         & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    \end{tabular}
+		    Threshold & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    \hline
+		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    		    \end{tabular}
 \end{table}
 
-Curva ROC. 
+A curva ROC do processo utilizando correlação é mostrada na figura ~\ref{ROC2}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.3\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\caption[Curva ROC do processo com correlação]{Curva ROC do processo com correlação}
+	\fonte{Autoria própria}
+	\label{ROC2}
+\end{figure}
 
 \section{Comparativo dos Resultados}
 Curva ROC comparativa.

@@ -35,12 +35,12 @@
 \contentsline {section}{\numberline {3.7}Considera\c c\~oes}{33}
 \contentsline {chapter}{\numberline {4}Resultados Obtidos}{34}
 \contentsline {section}{\numberline {4.1}Testes com Raw ECG}{34}
-\contentsline {section}{\numberline {4.2}Testes com ECG com correla\c c\~ao}{34}
-\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{35}
-\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{35}
-\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{37}
-\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{38}
-\contentsline {section}{\numberline {6.1}Recursos de Hardware}{38}
-\contentsline {section}{\numberline {6.2}Recursos de Software}{38}
-\contentsline {section}{\numberline {6.3}Quantidade de Horas Trabalhadas}{39}
-\contentsline {chapter}{REFER\^ENCIAS}{40}
+\contentsline {section}{\numberline {4.2}Testes com ECG com correla\c c\~ao}{35}
+\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{36}
+\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{36}
+\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{38}
+\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{39}
+\contentsline {section}{\numberline {6.1}Recursos de Hardware}{39}
+\contentsline {section}{\numberline {6.2}Recursos de Software}{39}
+\contentsline {section}{\numberline {6.3}Quantidade de Horas Trabalhadas}{40}
+\contentsline {chapter}{REFER\^ENCIAS}{41}
