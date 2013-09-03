@@ -1,6 +1,7 @@
 \chapter{Fundamentação Teórica}
+\label{sec:Fund}
 
-O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de \sigla{ECG}{Eletrocardiografia}, englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos dos Sinais de ECG \ref{sec:Ondas}. Em seguida, a seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. As seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. O capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
+O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de \sigla{ECG}{Eletrocardiografia} (Eletrocardiografia), englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos dos Sinais de ECG \ref{sec:Ondas}. Em seguida, a seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. As seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. O capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
 
 \section{Fisiologia do Coração}
 \label{sec:Fisiologia}
@@ -10,7 +11,7 @@ O coração humano possui paredes compostas por músculos cardíacos estriados, cham
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/heart.png} % <- formatos PNG, JPG e PDF
-		\caption[Anatomia de um coração]{Anatomia de um coração.}
+		\caption[Anatomia de um coração]{Anatomia de um coração}
 	\fonte{\cite{MALMIVUO1995}}
 	\label{fig:heart}
 \end{figure}
@@ -38,7 +39,7 @@ A despolarização geralmente é ocasionada pelo aumento da permeabilidade da membr
 
 A variação negativa do potencial elétrico é chamada de fase de repolarização. Ocorre devido ao movimento de íons de potássio para fora da célula, considerando que após a despolarização, o músculo retorna a seu estado elétrico original. Durante a repolarização, o músculo cardíaco é incapaz de ser estimulado, o que o protege de alguma eventual estimulação prematura \cite{GACEK2011}, evitando danos ao sistema cardíaco.
 
-Estas mudanças no potencial elétrico durante os processos de despolarização e repolarização das fibras do miocárdio são registradas com a colocação de eletrodos posicionados na superfície do peito e nas derivações dos membros, e constituem os sinais de Eletroencefalografia (ECG). A forma de onda do ECG pode ser impressa em papel ou mostrada na tela do computador \cite{GACEK2011}.
+Estas mudanças no potencial elétrico durante os processos de despolarização e repolarização das fibras do miocárdio são registradas com a colocação de eletrodos posicionados na superfície do peito e nas derivações dos membros, e constituem os sinais de ECG (Eletrocardiografia). A forma de onda do ECG pode ser impressa em papel ou mostrada na tela do computador \cite{GACEK2011}.
 
 \section{Exame de Eletrocardiografia}
 \label{sec:Exame}
@@ -90,12 +91,12 @@ Os possíveis artefatos em sinais biomédicos são os instrumentais, como os de ele
 \section{Sistema de Derivações}
 \label{sec:SistemaDer}
 
-O sistema de configuração mais comum em exames ambulatoriais de ECG é o sistema 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
+O sistema de configuração mais comum em exames ambulatoriais de ECG (Eletrocardiografia) é o sistema 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
 
 \begin{itemize}
-	\item Derivações dos membros (\textit{Limb leads}): I, II, III	 
-	\item Derivações aumentadas ou de Goldberger (\textit{Goldberger Augmented Leads}): aV\textsubscript{R}, {aV}\textsubscript{L} %e aV\textsubscript{F} (ou V\textsubscript{R}, V\textsubscript{L} e V\textsubscript{F})
-	\item Derivações Precordiais (\textit{Precordial leads}): V\textsubscript{1}, V\textsubscript{2}, V\textsubscript{3}, V\textsubscript{4}, V\textsubscript{5} e V\textsubscript{6}
+	\item Derivações dos membros (\textit{Limb leads}): I, II, III;	 
+	\item Derivações aumentadas ou de Goldberger (\textit{Goldberger Augmented Leads}): aV\textsubscript{R}, {aV}\textsubscript{L}; %e aV\textsubscript{F} (ou V\textsubscript{R}, V\textsubscript{L} e V\textsubscript{F})
+	\item Derivações Precordiais (\textit{Precordial leads}): V\textsubscript{1}, V\textsubscript{2}, V\textsubscript{3}, V\textsubscript{4}, V\textsubscript{5} e V\textsubscript{6}.
 \end{itemize}
 
 As seis primeiras derivações, I, II, III, aV\textsubscript{R}, aV\textsubscript{L} e aV\textsubscript{F} são derivadas dos mesmos três pontos de medição. Por isso, qualquer par dentre este grupo fornece a mesma informações que os quarto restantes \cite{MALMIVUO1995}. A localização das derivações é ilustrada na figura ~\ref{fig:leads}.
@@ -110,10 +111,10 @@ As seis primeiras derivações, I, II, III, aV\textsubscript{R}, aV\textsubscript{
 
 Mais de 90\% da atividade elétrica cardíaca pode ser explicada com a medição de três componentes independentes. A princípio, duas das derivações límbicas I II III devem ser suficiente para descrever completamente o vetor elétrico cardíaco. A principal razão para que sejam gravadas as 12 derivações é porque enriquece o reconhecimento dos padrões. Esta combinação de derivações fornece ao medico a oportunidade de observar diversas projeções do vetor elétrico cardíaco, que consiste em um modo de visualizar o gerador de potencial elétrico do coração como um dipolo elétrico \cite{MALMIVUO1995}. 
 
-\section{Ondas, Segmentos e Intervalos dos Sinais de ECG}
+\section{Ondas, Segmentos e Intervalos}
 \label{sec:Ondas}
 
-Além das ondas, os elementos existentes na forma de onda do ECG são \cite{GACEK2011}:
+Além das ondas, os elementos existentes na forma de onda do ECG (Eletrocardiografia) são \cite{GACEK2011}:
 
 \begin{itemize}
 	\item Linha isoelétrica: a linha horizontal quando não há atividade elétrica no ECG;
@@ -134,7 +135,7 @@ A duração normal do QRS fica entre 0.08 e 0,09 segundos. Durações maiores são ge
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./figs/QRS.png} % <- formatos PNG, JPG e PDF
-		\caption[Ondas, Segmentos e Intervalos dos Sinais de ECG]{Ondas, segmentos e intervalos dos sinais de eletrocardiografia}
+		\caption[Ondas, segmentos e intervalos dos sinais de ECG]{Ondas, segmentos e intervalos dos sinais de ECG}
 	\fonte{\cite{GACEK2011}}
 	\label{fig:QRS}
 \end{figure}
@@ -167,13 +168,13 @@ A tabela de contingência, também chamada de tabela de confusão, é descrita como 
 
 A partir da tabela de contingência, podem ser observados os seguintes índices: 
 \begin{itemize}
-	\item Verdadeiro positivo (VP): doente com resultado positivo;  
-	\item Falso positivo (FP): sadio com resultado positivo;
-	\item Falso negativo (FN): doente com resultado negativo; 
-	\item Verdadeiro negativo (VN): sadio com resultado negativo.
+	\item \sigla{VP}{Verdadeiro Positivo} (Verdadeiro positivo): doente com resultado positivo;  
+	\item \sigla{FP}{Falso positivo} (Falso positivo): sadio com resultado positivo;
+	\item \sigla{FN}{Falso negativo} (Falso negativo): doente com resultado negativo; 
+	\item \sigla{VN}{Verdadeiro negativo} (Verdadeiro negativo): sadio com resultado negativo.
 \end{itemize}
 
-Como este projeto pretende obter a identificação do complexo QRS em exames de ECG, a etapa de testes trata como verdadeiro positivo o complexo QRS indicado como positivo, falso positivo como padrão diferente do complexo QRS indicado como positivo, falso negativo como um complexo QRS não identificado e verdadeiro negativo como um padrão diferente do complexo QRS não identificado pelo sistema \cite{SARAIVA2012}. A lógica desta avaliação é expressa pela figura ~\ref{fig:TesteDiag}.
+Como este projeto pretende obter a identificação do complexo QRS em exames de ECG (Eletrocardiografia), a etapa de testes trata como verdadeiro positivo o complexo QRS indicado como positivo, falso positivo como padrão diferente do complexo QRS indicado como positivo, falso negativo como um complexo QRS não identificado e verdadeiro negativo como um padrão diferente do complexo QRS não identificado pelo sistema \cite{SARAIVA2012}. A lógica desta avaliação é expressa pela figura ~\ref{fig:TesteDiag}.
 
 \begin{figure}[!htb]
 	\centering
@@ -206,14 +207,14 @@ A sensibilidade e especificidade costumam retornar diferentes valores de acordo 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/SensibEspec.png} % <- formatos PNG, JPG e PDF
-		\caption[Gráficos de Sensibilidade e Especificidade]{Gráficos de Sensibilidade e Especificidade em função do nível de decisão}
+		\caption[Gráficos de Sensibilidade e Especificidade]{Gráficos de Sensibilidade e Especificidade}
 	\fonte{\cite{SARAIVA2012}}
 	\label{fig:SensibEspec}
 \end{figure}
 
 \subsection{Curva ROC}
 
-A Curva \sigla{ROC}{Receiving Operating Characteristic} é útil para visualização da performance de classificadores. Seu uso vem crescendo em pesquisas nas áreas de \textit{machine learning} e \textit{data mining} \cite{FAWCETT2006}. 
+A Curva \sigla{ROC}{Receiving Operating Characteristic} \textit{(Receiving Operating Characteristic)} é útil para visualização da performance de classificadores. Seu uso vem crescendo em pesquisas nas áreas de \textit{machine learning} e \textit{data mining} \cite{FAWCETT2006}. 
 
 Os valores de sensibilidade e especificidade são organizados em pares ordenados, e dispostos no primeiro quadrante de um plano cartesiano. Com algum método de interpolação, são interligados desde a origem (sensibilidade = 0 e especificidade = 1), até o extremo oposto do gráfico (sensibilidade = 1 e especificidade = 0), dando origem a curva ROC \cite{massad2004}, conforme ilustra a figura ~\ref{fig:ROC}. 
 
@@ -236,7 +237,7 @@ A linha tracejada representa um sistema classificador incapaz de discriminar, em
 
 Além de inúmeros outros métodos para medição do desempenho de sistemas classificadores, existem o índice DER e eficiência. 
 
-O índice \sigla{DER}{Detection Error Rate}, dado na equação ~(\ref{eq:DER}) \cite{Zhang2007}, relaciona o número de erros do sistema, soma dos falsos positivos e falsos negativos, com o número total de eventos do sistema.
+O índice DER \textit{(Detection Error Rate)}, dado na equação ~(\ref{eq:DER}) \cite{Zhang2007}, relaciona o número de erros do sistema, soma dos falsos positivos e falsos negativos, com o número total de eventos do sistema.
 
 \begin{equation}
 DER = \frac{FP +FN}{\textrm{Total de eventos QRS}}
@@ -253,13 +254,13 @@ accuracy = \frac{VP + VN}{VP + VN + FP + FN}
 \section{Função Correlação}
 \label{sec:Correl}
 
-O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um padrão sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas e determinar que arma disparou um projétil, mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema \sigla{GPS}{Global Positioning System} e na análise de DNA \cite{bloch2004l}. 
+O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um padrão sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas e determinar que arma disparou um projétil, mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema \sigla{GPS}{Global Positioning System} \textit{(Global Positioning System)} e na análise de \sigla{DNA}{Deoxyribonucleic Acid} \cite{bloch2004l}. 
 
 A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./figs/corre.png} 
+	\includegraphics[width=0.9\textwidth]{./figs/corre.png} 
 		\caption[Exemplo de aplicação da função correlação]{Exemplo de aplicação da função correlação}
 	\fonte{Modificado de \cite{smith}}
 	\label{fig:corre}
@@ -285,11 +286,11 @@ As unidades básicas de processamento de uma rede neural artificial são chamadas 
 
 As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
 
-Um sinal \textit{x\textsubscript{j}} na entrada da sinapse j conectada ao neurônio k, é multiplicada pelo peso sináptico w\textsubscript{kj}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
+Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada ao neurônio \textit{k}, é multiplicada pelo peso sináptico \textit{w\textsubscript{kj}}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/RN2.png} 
+	\includegraphics[width=0.6\textwidth]{./figs/RN2.png} 
 		\caption[Estrutura de uma rede neural artificial]{Estrutura de uma rede neural artificial}
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:RN2}
@@ -298,9 +299,9 @@ Um sinal \textit{x\textsubscript{j}} na entrada da sinapse j conectada ao neurôn
 A função de ativação que limita a saída de um neurônio pode ser de três tipos básicos:
 
 \begin{itemize}
-	\item Função de limiar ou threshold:
-	\item Função Piecewise-contínua:
-	\item Função Sigmoid:
+	\item Função de limiar ou \textit{threshold}:
+	\item Função \textit{Piecewise}~-- contínua:
+	\item Função Sigmóide:
 \end{itemize}
 
 A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
@@ -313,19 +314,19 @@ A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de 
 	\label{fig:limiares}
 \end{figure}
 
-\subsection{Rede Multicamadas ~-- MultiLayer Perceptron}
+\subsection{Rede Multicamadas}
 
-Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes Perceptron Multicamadas (Multilayer Perceptron MLP). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
+Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes Perceptron Multicamadas (Multilayer Perceptron ~-- \sigla{MLP}{Multilayer Perceptron}). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./figs/RN4.png} 
+	\includegraphics[width=0.9\textwidth]{./figs/RN4.png} 
 		\caption[Rede neural do tipo Multilayer Perceptron]{Rede neural do tipo Multilayer Perceptron}
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:RN4}
 \end{figure}
 
-Como mencionado anteriormente, os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes multilayer perceptron podem ser treinadas por meio do algoritmo de aprendizado \textit{backpropagation}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás backpropagation{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
+Como mencionado anteriormente, os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado \textit{backpropagation}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
 
 \subsection{Validação Cruzada}
 
