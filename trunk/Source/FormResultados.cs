@@ -560,7 +560,7 @@ namespace AmbienteRPB
                 double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
                 for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
                     vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", ref network, RN_Importada, MenorTamanho);
+                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", ref network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objRMP.Init));
                 Thread_RN.Start();
                 //Habilita a opção de poder exportar para o form principal
@@ -622,16 +622,20 @@ namespace AmbienteRPB
                     if (FormDadosInput.UsarListaDeTodosEnventos)
                     {
                         TipoBkP = "BackPropagation_AllEvnts";
-                        /*for (int i = 0; i < PadroesATreinar.Count(); i++)
+                        if (!FormDadosInput.UsarReferencia)
                         {
-                            for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
+                            for (int i = 0; i < PadroesATreinar.Count(); i++)
                             {
-                                int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
-                                if ((cont == 0 && i == 0) || MenorTamanho > aux)
-                                    MenorTamanho = aux;
+                                for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
+                                {
+                                    int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
+                                    if ((cont == 0 && i == 0) || MenorTamanho > aux)
+                                        MenorTamanho = aux;
+                                }
                             }
-                        }*/
-                        MenorTamanho = 50;
+                        }
+                        else
+                             MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
                     }
                     else
                         MenorTamanho = vector_evento.Count();
@@ -648,7 +652,7 @@ namespace AmbienteRPB
                     eventos = new string[1];
                 }
 
-                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
+                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objBKP.Init));
                 Thread_RN.Start();
                 //Habilita a opção de poder exportar para o form principal

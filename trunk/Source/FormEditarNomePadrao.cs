@@ -52,6 +52,12 @@ namespace AmbienteRPB
             get;
             set;
         }
+
+        public bool UsarReferencia
+        {
+            get;
+            set;
+        }
         public FormEditarNomePadrao()
         {
             InitializeComponent();
@@ -73,6 +79,8 @@ namespace AmbienteRPB
                 }
                 else
                     NumPadroes = 1;
+                if (ckReferencia.Checked)
+                    UsarReferencia = true;
                 this.Close();
             }
             else if (text_NomePadrao.Text != "")
@@ -86,12 +94,15 @@ namespace AmbienteRPB
         {
             if (opcao == 1)
             {
-                this.Height = 196;
+                this.Height = 219;
+                this.Width = 240;
+                btn_salvar.Location = new Point(164, 153); 
                 lbl_digiteONomeDoPadrao.Text = "Num Vet";
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(TamVetores);
                 TxtTreinarCom.Text = Convert.ToString(Vetores);
                 txtPadroes.Text = "1";
+                UsarReferencia = false;
                 this.Text = "Dados de Entrada";
             }
         }
@@ -105,6 +116,14 @@ namespace AmbienteRPB
                 txtPadroes.Text = "1";
                 txtPadroes.Enabled = false;
             }
+        }
+
+        private void ckReferencia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ckb_ListaToda.Checked)
+                txt_VetorTamanho.Text = Convert.ToString(TamVetores);
+            else
+                txt_VetorTamanho.Text = "50";
         }
     }
 }
