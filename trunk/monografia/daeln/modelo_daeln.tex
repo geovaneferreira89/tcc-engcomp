@@ -31,7 +31,7 @@
 \title{System for QRS Complex Detection in Electrocardiographical Signals } % titulo do trabalho em ingles
 
 \autor{Georgea Danielewicz \protect\\ Geovane Vinicius Ferreira} % autor do trabalho
-\cita{DANIELEWICZ, Georgea \protect\\ e FERREIRA, Geovane Vinícius} % sobrenome (maiusculas), nome do autor do trabalho
+\cita{DANIELEWICZ, Georgea \protect e FERREIRA, Geovane Vinícius} % sobrenome (maiusculas), nome do autor do trabalho
 
 \palavraschave{análise de sinal, reconhecimento de padrões, eletrocardiografia, complexo QRS} % palavras-chave do trabalho
 \keywords{\textit{signal analysis}, \textit{pattern classification}, \textit{electrocardiography}, \textit{QRS-complex}} % palavras-chave do trabalho em ingles
@@ -79,9 +79,7 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 %resumo
 \begin{resumo}
 
-Segundo 
-
-
+Os exames de ECG (Eletrocardiografia) são considerados uma ferramenta de grande auxílio no diagnóstico de problemas cardíacos. E para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de ECG, muitas vezes corrompido por ruídos \cite{Zhang2007}. Consequentemente, a rotina dos profissionais que analisam este tipo de exame pode se tornar bastante desgastante. Em virtude disto, há necessidade de projetos que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema para reconhecimento de do complexo QRS em sinais de ECG. A metodologia adotada é composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes deverão utilizar uma base de dados de exames de ECG de domínio público. A etapa de testes será realizada por pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido será composto por três módulos: o módulo de interface com o usuário, o módulo para reconhecimento de padrões e o módulo de avaliação de resultados. O primeiro é responsável pela visualização do sinal de ECG opções de marcação de eventos para o reconhecimento. O módulo de reconhecimento de padrões aplica a operação de correlação matemática entre o padrão escolhido e o sinal de ECG, detectando eventos no sinal e exibindo graficamente na tela. O módulo de avaliação do sistema compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, são calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática, que como resultado social facilitará a rotina dos médicos.
 
 \end{resumo}
 
@@ -94,7 +92,7 @@ Abstract text (maximum of 500 words).
 \listadefiguras % geracao automatica da lista de figuras
 \listadetabelas % geracao automatica da lista de tabelas
 \listadesiglas % geracao automatica da lista de siglas
-\listadesimbolos % geracao automatica da lista de simbolos
+%\listadesimbolos % geracao automatica da lista de simbolos
 
 % sumario
 \sumario % geracao automatica do sumario
@@ -112,18 +110,19 @@ Abstract text (maximum of 500 words).
 %2. introdução 5%, considerações finais 5%, fundamentação, materiais e métodos e resultados obtidos 90%
 %3. 2 páginas, 1 páginas, 					15,16 páginas, 	20 páginas ,		 5 páginas
 % -------------------------------------------
-\chapter{Desenvolvimento} %ou Materiais e Métodos 
+\chapter{Materiais e Métodos} %ou Materiais e Métodos 
+\label{sec:Materiais}
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, seguida da seção de Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o Desenvolvimento \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, seguida da seção de Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
 
-De acordo com informações disponibilizadas pela \sigla{CONEP}{Comissão Nacional de Ética em Pesquisa} ~\cite{CONEP}, ``as pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP-CONEP.'' Por esta razão, a equipe optou por utilizar a base de dados pública MIT-BIH Arrhythmia Database. 
+De acordo com informações disponibilizadas pela Comissão Nacional de Ética em Pesquisa ~\cite{CONEP}, ``as pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP~--\sigla{CONEP}{Comissão Nacional de Ética em Pesquisa}.'' Por esta razão, a equipe optou por utilizar a base de dados pública MIT-BIH Arrhythmia Database. 
 
 A MIT-BIH Arrhythmia Database foi desenvolvida pelo Beth Israel Hospital de Boston em parceria com o \sigla{MIT}{Massachusetts Institute of Technology} durante uma pesquisa sobre arritmia e temas correlatos. Tem sido utilizada como um conjunto de dados padrão para testes e avaliação para sistemas detectores de arritmias e pesquisa em dinâmica cardíaca ~\cite{MOODY1990}.
 
-Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São apresentados dois sinais, \textit {modified limb lead II (MLII)}  e \textit{lead V1}  (podendo ser ocasionalmente V2, V5 ou V4), ambos obtidos com os eletrodos colocados no peito. Esta é a configuração padrão utilizada pelo BIH Arrhythmia Laboratory. Pode-se observar maior proeminência dos complexos QRS no sinal superior ~\cite{PhysioNet}. A figura ~\ref{105} mostra parte da gravação do exame 105.
+Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São apresentados dois sinais, \textit {modified limb lead II} (MLII) e \textit{lead} V1 (podendo ser ocasionalmente V2, V5 ou V4), ambos obtidos com os eletrodos colocados no peito. Esta é a configuração padrão utilizada pelo BIH Arrhythmia Laboratory. Pode-se observar maior proeminência dos complexos QRS no sinal superior ~\cite{PhysioNet}. A figura ~\ref{105} mostra parte da gravação do exame 105.
 
 \begin{figure}[!htb]
 	\centering
@@ -147,7 +146,7 @@ A existência de diferentes fabricantes de equipamentos para aquisição de sinais 
 
 Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado. Este formato de arquivo, no entanto, não suporta anotações de eventos das gravações \cite{Kemp20031755}.
 
-Physiobank ATM (Automated Teller Machine) é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo PhysioBank por meio do navegador de internet. Esta toolbox software oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do Physionet (WFDB ~-- WaveForm DataBase) para texto, CSV, EDF, ou .mat files (para utilização em Matlab ou Octave), entre outras funcionalidades \cite{PhysioNet}.
+Physiobank \sigla{ATM}{Automated Teller Machine} \textit{(Automated Teller Machine)} é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo PhysioBank por meio do navegador de internet. Esta toolbox software oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do Physionet (\sigla{WFDB}{WaveForm DataBase} ~-- WaveForm DataBase) para texto, CSV, EDF, ou .mat files (para utilização em Matlab ou Octave), entre outras funcionalidades \cite{PhysioNet}.
 
 A figura ~\ref{ATM} mostra a tela de opções da ferramenta Physiobank ATM.
 
@@ -227,6 +226,7 @@ Podemos colocar umas telas, comparando o resultado obtido com a marcação que já 
 
 % -------------------------------------------
 \chapter{Resultados Obtidos} % 3 a 4 páginas
+\label{sec:Resultaados}
 Introdução do Capítulo. Um parágrafo basta. 
 
 Muitos Gráficos!
@@ -320,6 +320,7 @@ Compara a outros trabalhos
 
 %----------------------------------------
 \chapter{Considerações Finais} % 1 página
+\label{sec:CFinais}
 
 Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? 
 
@@ -330,6 +331,7 @@ Propostas futuras? Resultados futuros.
 Com redes SOM, ou com outras bases de dados.
 
 \chapter{Gestão do Projeto} % 1 página
+\label{sec:Gestao}
 
 Inicialmente, este projeto pretendia utilizar uma base de dados de exames de EEG, obtida em um Hospital, mediante autorização do Comitê de Ética da Instituição. A metodologia de testes seria realizada por um médico neurologista, que avaliaria os resultados do sistema, classificando-os como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. 
 
