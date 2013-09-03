@@ -276,44 +276,67 @@ O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que
 
 \section{Redes Neurais Artificiais}
 \label{sec:RNA}
-Falar sobre as Redes Neurais. Tem muita coisa pra falar disso aqui. Citar o Haykin.
 
-na figura ~\ref{fig:RN1}.
+O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado como um computador extremamente complexo, não linear que apresenta paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{./figs/RN1.png} 
-		\caption[Funcionamento do cérebro humano]{Funcionamento do cérebro humano}
-	\fonte{\cite{HAYKIN2011}}
-	\label{fig:RN1}
-\end{figure}
+De certa forma, as redes neurais artificiais foram criadas para realizar atividades mimetizando o cérebro humano. As redes neurais artificiais são modelos matemáticos que podem ser implementadas com componentes eletrônicos ou simuladas em software \cite{HAYKIN2011}.
 
-na figura ~\ref{fig:RN2}.
+As unidades básicas de processamento de uma rede neural artificial são chamadas de neurônios, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
+
+As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
+
+Um sinal \textit{x\textsubscript{j}} na entrada da sinapse j conectada ao neurônio k, é multiplicada pelo peso sináptico w\textsubscript{kj}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/RN2.png} 
+	\includegraphics[width=0.5\textwidth]{./figs/RN2.png} 
 		\caption[Estrutura de uma rede neural artificial]{Estrutura de uma rede neural artificial}
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:RN2}
 \end{figure}
 
-\subsection{Aprendizado}
+A função de ativação que limita a saída de um neurônio pode ser de três tipos básicos:
 
-\subsection{MultiLayer Perceptron}
+\begin{itemize}
+	\item Função de limiar ou threshold:
+	\item Função Piecewise-contínua:
+	\item Função Sigmoid:
+\end{itemize}
 
-na figura ~\ref{fig:RN4}.
+A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=1\textwidth]{./figs/RN4.png} 
-		\caption[Multilayer Perceptron]{Multilayer Perceptron}
+	\includegraphics[width=0.5\textwidth]{./figs/limiares.png} 
+		\caption[Gráficos das funções de ativação]{Gráficos das funções de ativação}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:limiares}
+\end{figure}
+
+\subsection{Rede Multicamadas ~-- MultiLayer Perceptron}
+
+Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes Perceptron Multicamadas (Multilayer Perceptron MLP). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/RN4.png} 
+		\caption[Rede neural do tipo Multilayer Perceptron]{Rede neural do tipo Multilayer Perceptron}
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:RN4}
 \end{figure}
 
+Como mencionado anteriormente, os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes multilayer perceptron podem ser treinadas por meio do algoritmo de aprendizado \textit{backpropagation}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás backpropagation{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
+
 \subsection{Validação Cruzada}
 
+Partindo do princípio de que as redes neurais artificiais passam por um processo de treinamento, é necessário um conjunto de dados para a realização desta etapa. Além disso é necessário testar o funcionamento da rede. Considerada uma padrão pela estatística, a validação cruzada soluciona esta questão ao dividir a base de dados inicial em dois conjuntos \cite{HAYKIN2011}. São eles:
+
+\begin{itemize}
+	\item Conjunto de dados de treinamento;
+	\item Conjunto de dados de testes.
+\end{itemize}
+
+Além destas duas divisões, o conjunto de dados de treinamento pode ser dividido em dados para estimativa e dados para validação \cite{HAYKIN2011}. Contudo, o estudo aprofundado deste tema foge ao escopo do projeto.
 
 \section{Considerações}
 \label{sec:Consid}
