@@ -155,14 +155,10 @@ namespace AmbienteRPB
                     send_SmS(1, "Iniciado : " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     Rodar(Sinal,i);
                     send_SmS(1, "Terminado :" + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
-                    //imprime os resultados caso nao esteja no modo debug... 
-                    if (!it_is_debug)
-                    {
-                        //limpa os dados se existirem
-                        double[] dados = new double[1];
-                        Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                        Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                    }
+                    //limpa os dados se existirem
+                    double[] dados = new double[1];
+                    Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                    Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                 }
             }
         }    
@@ -327,28 +323,24 @@ namespace AmbienteRPB
                     if (!chave)
                         send_SmS(1, saida2, false);
 
-                    Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
-                    load_progress_bar(0, 1);
                     if (chave)
                     {
+                        Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
                         send_SmS(1, saida2, true);
                         Thread.Sleep(12);
                         DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                         if (resposta == DialogResult.Cancel)
                         {
                             chave = false;
-                            i = vetorDeResultados.Count();
+                            it_is_debug = false;
                         }
                     }
                 }
+                if (saidaInt[0] == 1)
+                    vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + RedeAtual + 1;     
                 else
-                {
-                    if (saidaInt[0] == 1)
-                        vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + RedeAtual + 1;     
-                    else
-                        vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
-                    load_progress_bar(0, 1);
-                }
+                    vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
+                 load_progress_bar(0, 1);
             }
             load_progress_bar(1, 3);
         }
@@ -442,13 +434,9 @@ namespace AmbienteRPB
 
                             break;
                         }
-                    case ("AddDadoBKP"):
+                    case ("VectorAtual"):
                         {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            if (myArray[0] == 1)
-                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(1);
-                            else
-                                prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0);
 
                             PointF zero = new PointF(0, 0);
                             prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
