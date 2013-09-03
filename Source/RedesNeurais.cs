@@ -136,14 +136,15 @@ namespace AmbienteRPB
             else if (tipoDeRede == "BackPropagation_AllEvnts")
             {
                 //Utilizando o backPropagation 
-                send_SmS(1, "Inicializando...", false);
+                send_SmS(0, "", false);
+                send_SmS(1, "Inicializando.", false);
                 //busca pelo menor tamanho do dos eventos deste padrao... 
                 vetorDeResultados = new int[Sinal.Count()];
                 for(int i=0; i< PadroesATreinar.Count();i++)
                 {
                     if (!RNImportada)
                     {
-                        send_SmS(1, "Treinando a rede de '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                        send_SmS(1, "Treinando a rede com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
                         TreinodaRede(VetorEvento, 1, "TodosEventos", i);
                         send_SmS(1, "Treinada", false);
                     }
@@ -151,11 +152,10 @@ namespace AmbienteRPB
                     {
                         MenorTamanho = network.InputLayer.Count;
                     }
-                    send_SmS(1, "Reconhecendo padrões iniciado em: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    send_SmS(1, "Iniciado : " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     Rodar(Sinal,i);
-                    send_SmS(1, "Fim " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
+                    send_SmS(1, "Terminado :" + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
                     //imprime os resultados caso nao esteja no modo debug... 
-                    send_SmS(1, "Imprimindo resultados.", false);
                     if (!it_is_debug)
                     {
                         //limpa os dados se existirem
@@ -164,7 +164,6 @@ namespace AmbienteRPB
                         Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                     }
                 }
-                send_SmS(1, "..Fim..", false);                  
             }
         }    
         //-----------------------------------------------------------------------------------------
@@ -223,12 +222,11 @@ namespace AmbienteRPB
                                                              entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                                     }
                                                     tempo_X++;
-
                                                 }
                                             }
                                         }
                                     }
-                                    send_SmS(1, "\n--- "+ Convert.ToString(cont) + " ---\n", false);     
+                                    send_SmS(1, "\n--- " + Convert.ToString(cont) + " de " + ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos + " ---\n", false);     
                                 }
                                 else
                                 {
@@ -287,73 +285,61 @@ namespace AmbienteRPB
         {
             load_progress_bar(0, 4);
             load_progress_bar(VetTreinamento, 2);
-
-            int cont = 0;
+            int [] saidaInt = new int[1];
+            double threshold = 0.99;
+            char character;
             bool chave = true;
             double[] dados = new double[2];
             //Corrige o problema de deslocamento do sinal para esquerda... 
             dados[1] = 0;
             dados[0] = 0;
-            outputs_ = new ArrayList();
-            int[] saidaInt = new int[1];
-
-            outputs_.Add(0.0);
             for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
             {
+                outputs_ = new ArrayList();                
                 inputs = new ArrayList();
-                while (cont < MenorTamanho)
-                {
+                outputs_.Add(0.0);
+
+                for (int cont = 0; cont < MenorTamanho; cont++){
                     if ((cont + i) < Sinal.Count())
                         inputs.Add(Sinal[cont + i]);
-                    else
-                        inputs.Add(0.0);
-                    cont++;
-
                 }
                 dados[0] = i;
                 dados[1] = MenorTamanho + i;
 
-                cont = 0;
+                //RODA A RN
                 outputs_ = new ArrayList(network.RunNetwork(inputs));
-                
                 BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
-                char character = (char)(patternHelper.NumberFromArraylist(outputs_));
 
-                for (int kk = 0; kk < 1; kk++)
-                {
-                    if(0.994 <= Convert.ToDouble(outputs_[kk]))
-                        saidaInt[kk] = 1;
-                    else
-                        saidaInt[kk] = 0;
-                }
+                if (threshold <= Convert.ToDouble(outputs_[0]))
+                     saidaInt[0] = 1;
+                else
+                    saidaInt[0] = 0;
       
                 if (it_is_debug)
                 {
                     if (saidaInt[0] == 1)
-                        character = 'a';
+                        character = '#';
                     else
-                        character = 'E';
+                        character = '.';
 
                     string saida = i + "\n\n" + Convert.ToString(outputs_[0]);
-                    string saida2 = Convert.ToString(saidaInt[0]) + "\t||   " + character;
+                    string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
                     if (!chave)
                         send_SmS(1, saida2, false);
 
                     Plotar("AddDadoBKP", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
                     load_progress_bar(0, 1);
-                    Thread.Sleep(10);
                     if (chave)
                     {
                         send_SmS(1, saida2, true);
-                        Thread.Sleep(2);
+                        Thread.Sleep(12);
                         DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                         if (resposta == DialogResult.Cancel)
+                        {
                             chave = false;
+                            i = vetorDeResultados.Count();
+                        }
                     }
-                    if (i == 600)//540
-                        chave = true;
-                    if (i == 1300)//1150
-                        chave = true;
                 }
                 else
                 {
@@ -388,6 +374,10 @@ namespace AmbienteRPB
                         TextBox.SelectionStart = TextBox.Text.Length;
                         TextBox.ScrollToCaret();
                     }
+                }
+                if (opcao == 0)
+                {
+                    TextBox.Text = "";
                 }
             }
         }
