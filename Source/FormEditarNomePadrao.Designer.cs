@@ -39,11 +39,12 @@
             this.ckb_ListaToda = new System.Windows.Forms.CheckBox();
             this.txtPadroes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.ckReferencia = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btn_salvar
             // 
-            this.btn_salvar.Location = new System.Drawing.Point(224, 7);
+            this.btn_salvar.Location = new System.Drawing.Point(230, 7);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(51, 22);
             this.btn_salvar.TabIndex = 4;
@@ -102,7 +103,7 @@
             // ckb_UseCorrel
             // 
             this.ckb_UseCorrel.AutoSize = true;
-            this.ckb_UseCorrel.Location = new System.Drawing.Point(8, 136);
+            this.ckb_UseCorrel.Location = new System.Drawing.Point(8, 158);
             this.ckb_UseCorrel.Name = "ckb_UseCorrel";
             this.ckb_UseCorrel.Size = new System.Drawing.Size(102, 17);
             this.ckb_UseCorrel.TabIndex = 3;
@@ -112,6 +113,8 @@
             // ckb_ListaToda
             // 
             this.ckb_ListaToda.AutoSize = true;
+            this.ckb_ListaToda.Checked = true;
+            this.ckb_ListaToda.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckb_ListaToda.Location = new System.Drawing.Point(8, 113);
             this.ckb_ListaToda.Name = "ckb_ListaToda";
             this.ckb_ListaToda.Size = new System.Drawing.Size(148, 17);
@@ -137,11 +140,23 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Padrões";
             // 
+            // ckReferencia
+            // 
+            this.ckReferencia.AutoSize = true;
+            this.ckReferencia.Location = new System.Drawing.Point(8, 135);
+            this.ckReferencia.Name = "ckReferencia";
+            this.ckReferencia.Size = new System.Drawing.Size(103, 17);
+            this.ckReferencia.TabIndex = 11;
+            this.ckReferencia.Text = "Usar Referencia";
+            this.ckReferencia.UseVisualStyleBackColor = true;
+            this.ckReferencia.CheckedChanged += new System.EventHandler(this.ckReferencia_CheckedChanged);
+            // 
             // FormEditarNomePadrao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 34);
+            this.ClientSize = new System.Drawing.Size(288, 35);
+            this.Controls.Add(this.ckReferencia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPadroes);
             this.Controls.Add(this.ckb_ListaToda);
@@ -176,5 +191,6 @@
         private System.Windows.Forms.CheckBox ckb_ListaToda;
         private System.Windows.Forms.TextBox txtPadroes;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox ckReferencia;
     }
 }
