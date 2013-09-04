@@ -51,6 +51,8 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.kohonenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redeMLPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,9 +78,10 @@
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.salvarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolAnalise = new System.Windows.Forms.ToolStripSplitButton();
+            this.AnaliseMLP = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -209,6 +212,7 @@
             this.toolStripSeparator1,
             this.toolStripDropDownButton1,
             this.btnMarcacoes,
+            this.toolAnalise,
             this.toolStripSeparator8,
             this.toolStripSeparator2,
             this.toolStripSeparator3,
@@ -310,11 +314,27 @@
             // 
             this.redeMLPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salvarRedeToolStripMenuItem,
-            this.importarRedeToolStripMenuItem});
+            this.importarRedeToolStripMenuItem,
+            this.toolStripSeparator13});
             this.redeMLPToolStripMenuItem.Name = "redeMLPToolStripMenuItem";
             this.redeMLPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redeMLPToolStripMenuItem.Text = "Rede MLP";
             this.redeMLPToolStripMenuItem.Click += new System.EventHandler(this.btn_BackPropagation_Click);
+            // 
+            // salvarRedeToolStripMenuItem
+            // 
+            this.salvarRedeToolStripMenuItem.Enabled = false;
+            this.salvarRedeToolStripMenuItem.Name = "salvarRedeToolStripMenuItem";
+            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salvarRedeToolStripMenuItem.Text = "Salvar Rede";
+            this.salvarRedeToolStripMenuItem.Click += new System.EventHandler(this.salvarRedeToolStripMenuItem_Click);
+            // 
+            // importarRedeToolStripMenuItem
+            // 
+            this.importarRedeToolStripMenuItem.Name = "importarRedeToolStripMenuItem";
+            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importarRedeToolStripMenuItem.Text = "Importar Rede";
+            this.importarRedeToolStripMenuItem.Click += new System.EventHandler(this.importarRedeToolStripMenuItem_Click);
             // 
             // btnMarcacoes
             // 
@@ -498,24 +518,33 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // salvarRedeToolStripMenuItem
-            // 
-            this.salvarRedeToolStripMenuItem.Enabled = false;
-            this.salvarRedeToolStripMenuItem.Name = "salvarRedeToolStripMenuItem";
-            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.salvarRedeToolStripMenuItem.Text = "Salvar Rede";
-            this.salvarRedeToolStripMenuItem.Click += new System.EventHandler(this.salvarRedeToolStripMenuItem_Click);
-            // 
-            // importarRedeToolStripMenuItem
-            // 
-            this.importarRedeToolStripMenuItem.Name = "importarRedeToolStripMenuItem";
-            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.importarRedeToolStripMenuItem.Text = "Importar Rede";
-            this.importarRedeToolStripMenuItem.Click += new System.EventHandler(this.importarRedeToolStripMenuItem_Click);
-            // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Arquivos XML (*.xml)|*xml";
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(149, 6);
+            // 
+            // toolAnalise
+            // 
+            this.toolAnalise.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolAnalise.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AnaliseMLP});
+            this.toolAnalise.Enabled = false;
+            this.toolAnalise.Image = ((System.Drawing.Image)(resources.GetObject("toolAnalise.Image")));
+            this.toolAnalise.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolAnalise.Name = "toolAnalise";
+            this.toolAnalise.Size = new System.Drawing.Size(61, 22);
+            this.toolAnalise.Text = "Análise";
+            // 
+            // AnaliseMLP
+            // 
+            this.AnaliseMLP.Name = "AnaliseMLP";
+            this.AnaliseMLP.Size = new System.Drawing.Size(152, 22);
+            this.AnaliseMLP.Text = "MLP ";
+            this.AnaliseMLP.Click += new System.EventHandler(this.AnaliseMLP_Click);
             // 
             // FormResultados
             // 
@@ -601,5 +630,8 @@
         private System.Windows.Forms.ToolStripMenuItem salvarRedeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importarRedeToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripSplitButton toolAnalise;
+        private System.Windows.Forms.ToolStripMenuItem AnaliseMLP;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
     }
 }
