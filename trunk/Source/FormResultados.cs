@@ -918,6 +918,7 @@ namespace AmbienteRPB
                  Thread_ = new Thread(new ThreadStart(carregarMarcacoes.Inicializa));
                  Thread_.Start();
                  DataRecords_lidos[CanalAtual / 4] = edfFileOutput.FileInfo.NrDataRecords + 10;
+                 toolAnalise.Enabled = true;
             }
         }
 
@@ -963,6 +964,14 @@ namespace AmbienteRPB
                     MessageBox.Show("Erro Arquivo invalido", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        //================================================================================================
+        //                                   INICIO DA ANALISE DA MLP
+        //================================================================================================
+        //------------------------------------------------------------------------------------------
+        private void AnaliseMLP_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
