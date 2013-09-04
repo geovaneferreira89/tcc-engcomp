@@ -664,24 +664,24 @@ namespace AmbienteRPB
         //Função responsavel por criar a Rede Neural
         public void novaRedeMLP()
         {
-            BackPropNeuronStrategy strategy = new BrainNet.NeuralFramework.BackPropNeuronStrategy();
+            BackPropNeuronStrategy strategy = new BackPropNeuronStrategy();
             ArrayList layers = new ArrayList();
+            
             layers.Add(MenorTamanho);
             layers.Add((int)Math.Sqrt(MenorTamanho));
-            //layers.Add(8);
             layers.Add(1);
-            //long neurons = 0;
-            network = new BrainNet.NeuralFramework.NeuralNetwork();
+
+            network = new NeuralNetwork();
             foreach (int neurons in layers)
             {
-                BrainNet.NeuralFramework.NeuronLayer layer;
+                NeuronLayer layer;
                 for (int i = 0; i <= neurons - 1; i++)
                 {
-                    layer = new BrainNet.NeuralFramework.NeuronLayer();
+                    layer = new NeuronLayer();
                     for (i = 0; i <= neurons - 1; i++)
                     {
-                        BrainNet.NeuralFramework.INeuron ass = new BrainNet.NeuralFramework.Neuron(strategy);
-                        layer.Add(ref ass);
+                        INeuron neuronio = new Neuron(strategy);
+                        layer.Add(ref neuronio);
                     }
                     network.Layers.Add(layer);
                 }
@@ -956,8 +956,12 @@ namespace AmbienteRPB
                 {
                     network = new BrainNet.NeuralFramework.NeuralNetwork();
                     ser.LoadNetwork(openFileDialog1.FileName, ref network);
-                    MessageBox.Show("Rede Neural " + openFileDialog1.FileName + " carregada com sucesso!", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+                    //MessageBox.Show("Rede Neural " + openFileDialog1.FileName + " carregada com sucesso!", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+
                     RN_Importada = true;
+                    object senders = new object[1];
+                    EventArgs a = new EventArgs();
+                    btn_BackPropagation_Click( senders,a);
                 }
                 catch
                 {
