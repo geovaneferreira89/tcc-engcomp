@@ -999,7 +999,7 @@ namespace AmbienteRPB
                         }
                         numMAX++;
                     }
-                    else if (iniciou == true && numMAX >= 12)
+                    else if (iniciou == true && numMAX >= 13)
                     {
                         numMAX = 0;
                         Fim = i;
