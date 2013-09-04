@@ -1,22 +1,34 @@
 \chapter{Introdução}
 \label{sec:Intro}
 
-O presente documento .... (introdução normal, 2 parágrafos chega)
+ 
+Esta monografia descreverá o Sistema para Detecção de Complexo QRS em Sinais de Eletrocardiografia, apresentado como Trabalho de Conclusão de Curso dos alunos Georgea Danielewicz e Geovane Vinicius Ferreira do curso de Engenharia de Computação, da Universidade Tecnológica Federal do Paraná, orientados pelo \orientador\.
+
+Este capítulo introdutório é formado pelas seções: Motivação e Justificativa \ref{sec:Mot}, Objetivos \ref{sec:Obj} e Estrutura do Trabalho \ref{sec:Est}.
 
 \section{Motivação e Justificativa}
+\label{sec:Mot}
 
+Os exames de ECG (Eletrocardiografia) atuam como uma ferramenta de grande auxílio no diagnóstico de problemas cardíacos. O sinais de ECG, muitas vezes, encontram-se corrompidos pelo ruído causado por contrações musculares ou interferências na linha de energia e desvio da linha de base devido à respiração e artefatos motores \cite{Zhang2007}. Tais fatores podem dificultar a análise do sinal.
+
+Considerando que a detecção do complexo QRS é essencial para se avaliar adequadamente a situação de um coração, surge a necessidade de pesquisas que busquem continuamente automatizar e aprimorar esta tarefa. Por muitas décadas, a detecção do complexo QRS nos sinais de ECG tem sido tema de pesquisas, pois fornece uma visão geral do funcionamento de algoritmos e técnicas para reconhecimento\cite{Zhang2007}.
 
 \section{Objetivos}
+\label{sec:Obj}
 
 O objetivo geral deste projeto é desenvolver um sistema para reconhecimento do complexo QRS em sinais biomédicos de eletrocardiografia (ECG). Para melhor definição do escopo, separamos nos seguintes objetivos específicos:  
 
 %+ tabulação e - espaçamento
 \begin{itemize}
-	\item Desenvolvimento de um ambiente para visualizar sinais de  ECG armazenados em arquivos digitais;
+	\item Desenvolvimento de um ambiente para visualizar sinais de ECG armazenados em arquivos digitais;
 	\item Implementar no ambiente a funcionalidade de marcar eventos no sinal e salvá-los para uso futuro;
-	\item Reconhecimento de padrões, realizado a partir da extração de características das marcações salvas.
+	\item Reconhecimento de padrões, realizado a partir da extração de características das marcações salvas;
+	\item Avaliar os resultados obtidos pelo sistema.
 \end{itemize}
 
 \section{Estrutura do Trabalho}
+\label{sec:Est}
 
-Este documento é composto pelos seguintes capítulos... (explicar os capítulos)
+Este documento foi estruturado na forma de capítulos, e cada capítulo, por sua vez, é dividido em seções. 
+
+O primeiro capítulo corresponde a Fundamentação Teórica \ref{sec:Fund}, em que são apresentados e devidamente referenciados os princípios teóricos envolvidos no desenvolvimento do trabalho. O capítulo seguinte, Materiais e Métodos \ref{sec:Materiais}, descreve os recursos e metodologias empregados no projeto, cujos resultados observados na etapa de testes são apresentados e representados em gráficos no capítulo Resultados Obtidos \ref{sec:Resultados}. A conclusão sobre todas as informações apresentadas nos capítulos anteriores Considerações Finais \ref{sec:CFinais}. O capítulo de Gestão do Projeto \ref{sec:Gestao} descreve as principais tarefas e horas dedicadas pela equipe a trabalho.
