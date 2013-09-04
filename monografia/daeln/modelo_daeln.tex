@@ -79,7 +79,7 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 %resumo
 \begin{resumo}
 
-Os exames de ECG (Eletrocardiografia) são considerados uma ferramenta de grande auxílio no diagnóstico de problemas cardíacos. E para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de ECG, muitas vezes corrompido por ruídos \cite{Zhang2007}. Consequentemente, a rotina dos profissionais que analisam este tipo de exame pode se tornar bastante desgastante. Em virtude disto, há necessidade de projetos que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema para reconhecimento de do complexo QRS em sinais de ECG. A metodologia adotada é composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes deverão utilizar uma base de dados de exames de ECG de domínio público. A etapa de testes será realizada por pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido será composto por três módulos: o módulo de interface com o usuário, o módulo para reconhecimento de padrões e o módulo de avaliação de resultados. O primeiro é responsável pela visualização do sinal de ECG opções de marcação de eventos para o reconhecimento. O módulo de reconhecimento de padrões aplica a operação de correlação matemática entre o padrão escolhido e o sinal de ECG, detectando eventos no sinal e exibindo graficamente na tela. O módulo de avaliação do sistema compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, são calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática, que como resultado social facilitará a rotina dos médicos.
+Os exames de ECG (Eletrocardiografia) são considerados uma ferramenta de grande auxílio no diagnóstico de problemas cardíacos. E para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de ECG, muitas vezes corrompido por ruídos \cite{Zhang2007}. Consequentemente, tornando mais difícil a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, há necessidade de ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema para reconhecimento de do complexo QRS em sinais de ECG. A metodologia adotada é composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes deverão utilizar uma base de dados de exames de ECG de domínio público. A etapa de testes será realizada por pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido será composto por três módulos: o módulo de interface com o usuário, o módulo para reconhecimento de padrões e o módulo de avaliação de resultados. O primeiro é responsável pela visualização do sinal de ECG opções de marcação de eventos para o reconhecimento. O módulo de reconhecimento de padrões aplica a operação de correlação matemática entre o padrão escolhido e o sinal de ECG, detectando eventos no sinal e exibindo graficamente na tela. O módulo de avaliação do sistema compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, são calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática, que como resultado social facilitará a rotina dos médicos.
 
 \end{resumo}
 
@@ -113,7 +113,7 @@ Abstract text (maximum of 500 words).
 \chapter{Materiais e Métodos} %ou Materiais e Métodos 
 \label{sec:Materiais}
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, seguida da seção de Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Módulos do sistema \ref{sec:MOD}, Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
@@ -141,6 +141,7 @@ Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por a
 O arquivo de texto contendo as anotações do sinal de ECG 105, apresenta 2691 eventos. Destes 2691 eventos, apenas 2572 são relevantes para os testes neste projeto, que correspondem às marcações  de \textit{Normal beat} (2526 ocorrências), \textit{Premature ventricular contraction} (41 ocorrências) e \textit{Unclassifiable beat} (5 ocorrências).
  
 \section{European Data Format}
+\label{sec:EDF}
 
 A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \sigla{EDF}{European data format}, um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O EDF é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientifica \cite{Kemp20031755}.
 
@@ -161,7 +162,8 @@ A figura ~\ref{ATM} mostra a tela de opções da ferramenta Physiobank ATM.
 \section{Desenvolvimento do Software}
 \label{sec:DSW}
 
-\section{Módulos do sistema} 
+\section{Módulos do sistema}
+\label{sec:MOD} 
 Eu consigo antever cinco módulos (Aí explica o que cada um faz):
 Telas do sistema vão aqui.
 
@@ -226,7 +228,7 @@ Podemos colocar umas telas, comparando o resultado obtido com a marcação que já 
 
 % -------------------------------------------
 \chapter{Resultados Obtidos} % 3 a 4 páginas
-\label{sec:Resultaados}
+\label{sec:Resultados}
 Introdução do Capítulo. Um parágrafo basta. 
 
 Blá
