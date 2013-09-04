@@ -81,10 +81,16 @@ namespace AmbienteRPB
                 }
                 if (Opcao == "Correlacao_AGAIN")
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
+              
                 if (Opcao == "Marcacoes")
                 {
                     Plotar(0, Canal, edfFileOutput, "CarregarTodoSinal", Vector_evento, inicio, fim, NumeroDeCanais);
                     Plotar(0, Canal, edfFileOutput, Opcao, Escala, inicio, fim, NumeroDeCanais);                    
+                }
+                
+                if (Opcao == "Resultado")
+                {
+                    Plotar(0, Canal, edfFileOutput, "Resultado", Vector_evento, inicio, fim, NumeroDeCanais);
                 }
             }
         }
@@ -100,6 +106,31 @@ namespace AmbienteRPB
             {
                 switch(opcao)
                 {
+                    case ("Resultado"):
+                        {
+                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            load_progress_bar(0, 4);
+                            load_progress_bar(canal, 2);
+                            for (int CanalX = 0; CanalX < canal; CanalX++)
+                            {
+                                int tam = prb.Series[(CanalX * 4) + 2].Points.Count();
+                                int ponto = 0;
+                                prb.Series[(CanalX * 4) + 3].Color = Color.Blue;
+                                for (int i = 0; i < tam; i++)
+                                {
+                                    if (vector_evento[ponto] == i)
+                                    {
+                                        prb.Series[(CanalX * 4) + 3].Points.AddY(1);
+                                        ponto++;
+                                    }
+                                    else
+                                        prb.Series[(CanalX * 4) + 3].Points.AddY(0);
+                                }
+                                load_progress_bar(0, 1);
+                            }
+                            load_progress_bar(1, 3);
+                            break;
+                        }
                     case("PlotaSinalEEG"):
                         {
                             float excluir;
@@ -490,6 +521,9 @@ namespace AmbienteRPB
 
                 prb.ChartAreas[_canal + 2].AxisX.ScaleView.Size = valor;
                 prb.ChartAreas[_canal + 2].AxisX.ScrollBar.Enabled = false;
+
+                prb.ChartAreas[_canal + 3].AxisX.ScaleView.Size = valor;
+                prb.ChartAreas[_canal + 3].AxisX.ScrollBar.Enabled = false;
 
                 ScrollBar.Maximum = (SinalEEG.FileInfo.NrDataRecords) * (int)SinalEEG.FileInfo.SampleRecDuration;
                 ScrollBar.SmallChange = 10;//segundos

@@ -532,7 +532,6 @@
             this.toolAnalise.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolAnalise.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AnaliseMLP});
-            this.toolAnalise.Enabled = false;
             this.toolAnalise.Image = ((System.Drawing.Image)(resources.GetObject("toolAnalise.Image")));
             this.toolAnalise.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolAnalise.Name = "toolAnalise";

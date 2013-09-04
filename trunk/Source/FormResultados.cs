@@ -342,7 +342,7 @@ namespace AmbienteRPB
             chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
             chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
             chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-            //chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
         }
         //------------------------------------------------------------------------------------------
         private void AddSegInChart()
@@ -826,7 +826,7 @@ namespace AmbienteRPB
         }
         //----------------------------------------------------------------------------------------
         //Função responsavel por analisar os resultados obtidos da RN
-        private int AnaliseDeResultados()
+        private int SalvarResultados()
         {
             bool iniciou = false;
             int inicio = 0;
@@ -888,7 +888,7 @@ namespace AmbienteRPB
                 {
                     OP_Salvar = true;
                     ArquivoDeSaida = edfFileOutput.FileName;
-                    int count = AnaliseDeResultados();
+                    int count = SalvarResultados();
                     Arquivos = new GerenArquivos();
                     Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
                     RN_Rodou = false;
@@ -971,7 +971,56 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void AnaliseMLP_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("QRSs: " + Convert.ToString(ContarQRSs()), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+            //ContarQRSs();
+        }
+        private int ContarQRSs()
+        {
+            bool iniciou = false;
+            int inicio = 0;
+            int Fim;
+            int count = 0;
+            int val = 0;
+            int numMAX = 0;
+            CountMarcacoes_Por_Evento = new int[eventos.Count()];
+            Marcacoes = new double[chart1.Series[2].Points.Count()];
+            //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
+            for (int CanalX = 0; CanalX < CanaisCriados; CanalX++)
+            {
+                for (int i = 0; i < chart1.Series[(CanalX * 4) + 2].Points.Count(); i++)
+                {
+                    val = (int)chart1.Series[(CanalX * 4) + 2].Points[i].YValues[0];
+                    if (val != 0)
+                    {
+                        if (iniciou == false)
+                        {
+                            inicio = i;
+                            iniciou = true;
+                        }
+                        numMAX++;
+                    }
+                    else if (iniciou == true && numMAX >= 12)
+                    {
+                        numMAX = 0;
+                        Fim = i;
+                        //Salva os dados nos vetores
+                        Marcacoes[count] = inicio;
+                        count++;
+                        iniciou = false;
+                    }
+                    else
+                    {
+                        iniciou = false;
+                        numMAX = 0;
+                    }
+                }
+            }
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanaisCriados, "Resultado", Marcacoes, ValorInicio.X, ValorFim.X, numeroDeCanais, null, null);
+            Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
+            Thread_.Start();
 
+
+            return count;
         }
     }
 }
