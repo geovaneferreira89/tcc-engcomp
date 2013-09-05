@@ -270,7 +270,7 @@ namespace AmbienteRPB
                 for (int i = 0; i < NUM; i++)
                 {
                     Lista[i] = new ListaPadroesEventos();
-                    Lista[i].CriarLista(0, "Null", 600);
+                    Lista[i].CriarLista(0, "Null", 6000);
                     //Nome do Padrao
                     Lista[i].SetNomePadrao(LerLinha(10));
                     dados = LerLinha(10);

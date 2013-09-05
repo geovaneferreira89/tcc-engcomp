@@ -227,7 +227,7 @@ namespace AmbienteRPB
                 {
                     str = "Evento" + (i + 1);
                     ListaPadroes[i] = new ListaPadroesEventos();
-                    ListaPadroes[i].CriarLista(20, this.Controls.Find(str, true)[0].Text,600);
+                    ListaPadroes[i].CriarLista(20, this.Controls.Find(str, true)[0].Text,6000);
                 }
             }
             if (OP == 1)
@@ -471,8 +471,8 @@ namespace AmbienteRPB
                     string string_coment = "";
                     if (adicionarComentario)
                         string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
-
-                    Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, Ref, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
+                    //for(int i=0;i<100;i++)
+                      Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, Ref, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
 
                     float aux_x_pos = (float)Padrao_Fim.X - (float)Padrao_Inicio.X;
                     aux_x_pos = aux_x_pos / 2;
