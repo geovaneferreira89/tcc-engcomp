@@ -471,8 +471,8 @@ namespace AmbienteRPB
                     string string_coment = "";
                     if (adicionarComentario)
                         string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
-                    //for(int i=0;i<100;i++)
-                      Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, Ref, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
+                  
+                    Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, Ref, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
 
                     float aux_x_pos = (float)Padrao_Fim.X - (float)Padrao_Inicio.X;
                     aux_x_pos = aux_x_pos / 2;
@@ -500,13 +500,29 @@ namespace AmbienteRPB
         {
             if (Evento != null)
             {
+             
                 for (int i = 0; i < 20; i++) //20 Eventos existentes
                 {
                     if (ListaPadroes[i].NomePadrao == Evento)
                     {
-                        if (countCTRL != 0)
+                        if (ListaPadroes[i].GetNumeroEventos() < 5999)
                         {
-                            for (int j = 0; j < countCTRL; j++)
+                            if (countCTRL != 0)
+                            {
+                                for (int j = 0; j < countCTRL; j++)
+                                {
+                                    ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(), Padrao_Inicio);
+                                    ListaPadroes[i].SetValorMeio(ListaPadroes[i].GetNumeroEventos(), Ref);
+                                    ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
+                                    ListaPadroes[i].SetComentario(ListaPadroes[i].GetNumeroEventos(), coment);
+                                    ListaPadroes[i].SetCorDeFundo(ListaPadroes[i].GetNumeroEventos(), highlightColor);
+                                    ListaPadroes[i].SetWidth(ListaPadroes[i].GetNumeroEventos(), Comprimento);
+                                    ListaPadroes[i].SetChartDataPoint(ListaPadroes[i].GetNumeroEventos(), canaisCTRL[j]);
+                                    ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "-" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[canaisCTRL[j]].Text);
+                                    ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1);
+                                }
+                            }
+                            else
                             {
                                 ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(), Padrao_Inicio);
                                 ListaPadroes[i].SetValorMeio(ListaPadroes[i].GetNumeroEventos(), Ref);
@@ -514,28 +530,19 @@ namespace AmbienteRPB
                                 ListaPadroes[i].SetComentario(ListaPadroes[i].GetNumeroEventos(), coment);
                                 ListaPadroes[i].SetCorDeFundo(ListaPadroes[i].GetNumeroEventos(), highlightColor);
                                 ListaPadroes[i].SetWidth(ListaPadroes[i].GetNumeroEventos(), Comprimento);
-                                ListaPadroes[i].SetChartDataPoint(ListaPadroes[i].GetNumeroEventos(), canaisCTRL[j]);
-                                ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "-" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[canaisCTRL[j]].Text);
+                                string dados = Canal.ChartArea.Name;
+                                dados = dados.Substring(5);
+                                dados = dados.Substring(0, dados.Length);
+                                ListaPadroes[i].SetChartDataPoint(ListaPadroes[i].GetNumeroEventos(), Convert.ToInt16(dados));
+                                ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "-" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[Convert.ToInt16(dados)].Text);
                                 ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1);
                             }
                         }
                         else
-                        {
-                            ListaPadroes[i].SetValorInicio(ListaPadroes[i].GetNumeroEventos(), Padrao_Inicio);
-                            ListaPadroes[i].SetValorMeio(ListaPadroes[i].GetNumeroEventos(), Ref);
-                            ListaPadroes[i].SetValorFim(ListaPadroes[i].GetNumeroEventos(), Padrao_Fim);
-                            ListaPadroes[i].SetComentario(ListaPadroes[i].GetNumeroEventos(), coment);
-                            ListaPadroes[i].SetCorDeFundo(ListaPadroes[i].GetNumeroEventos(), highlightColor);
-                            ListaPadroes[i].SetWidth(ListaPadroes[i].GetNumeroEventos(), Comprimento);
-                            string dados = Canal.ChartArea.Name;
-                            dados = dados.Substring(5);
-                            dados = dados.Substring(0, dados.Length);
-                            ListaPadroes[i].SetChartDataPoint(ListaPadroes[i].GetNumeroEventos(), Convert.ToInt16(dados));
-                            ListaPadroes[i].SetNomesEvento(ListaPadroes[i].GetNumeroEventos(), Evento + "-" + ListaPadroes[i].GetNumeroEventos() + "_" + chart1.Titles[Convert.ToInt16(dados)].Text);
-                            ListaPadroes[i].SetNumeroEventos(ListaPadroes[i].GetNumeroEventos() + 1);
-                        }
+                            MessageBox.Show("Lista cheia!\nPadrão descartado", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+
             }
             else
                 MessageBox.Show("Selecione um tipo de envento antes, Padrão descartado", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
