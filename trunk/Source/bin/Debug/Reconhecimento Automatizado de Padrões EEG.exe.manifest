@@ -72,14 +72,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NeuroLoopGainLibrary.dll" size="162816">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NeuroLoopGainLibrary.dll" size="158208">
       <assemblyIdentity name="NeuroLoopGainLibrary" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dXPp26iL8b7hTZRBh3ocmX/FoSlgrXHYXg1xDoKkBhw=</dsig:DigestValue>
+        <dsig:DigestValue>ixVuZCILCsSoy9AOKjPCH5i8TxRZc3Ohv6Er67X9Gbo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,7 +103,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>7Xu9kNEWBnTKMUvCezET8YLxDjLiyUHz+scI6wDT5VU=</dsig:DigestValue>
+        <dsig:DigestValue>RazMLy1tllxt5V5jtbA62b/Jk9liwStI8ayZ1fwb3GY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
