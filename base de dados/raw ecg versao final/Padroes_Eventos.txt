@@ -1,5 +1,5 @@
-[Num de Padroes = 20]
-[Padrao = Espicula]
+﻿[Num de Padroes = 20]
+[Padrao = QRSs]
 [Eventos= 1661]
 [Evento = 1-2_Correlacao]
 [Inicio = {X=4,994181, Y=941,2855}]

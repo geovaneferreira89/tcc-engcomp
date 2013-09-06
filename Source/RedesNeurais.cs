@@ -56,7 +56,7 @@ namespace AmbienteRPB
         private bool RNImportada;
         private INeuralNetwork network;
         private ArrayList inputs;
-        private ArrayList outputs_;
+        private ArrayList MLP_output;
 
         private ListaPadroesEventos[] ListasPadrEvents;
         private EdfFile SinalEEG;
@@ -313,9 +313,9 @@ namespace AmbienteRPB
             dados[0] = 0;
             for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
             {
-                outputs_ = new ArrayList();                
+                MLP_output = new ArrayList();                
                 inputs = new ArrayList();
-                outputs_.Add(0.0);
+                MLP_output.Add(0.0);
 
                 for (int cont = 0; cont < MenorTamanho; cont++){
                     if ((cont + i) < Sinal.Count())
@@ -325,10 +325,9 @@ namespace AmbienteRPB
                 dados[1] = MenorTamanho + i;
 
                 //RODA A RN
-                outputs_ = new ArrayList(network.RunNetwork(inputs));
-                BrainNet.NeuralFramework.PatternProcessingHelper patternHelper = new PatternProcessingHelper();
+                MLP_output = new ArrayList(network.RunNetwork(inputs));
 
-                if (threshold <= Convert.ToDouble(outputs_[0]))
+                if (threshold <= Convert.ToDouble(MLP_output[0]))
                      saidaInt[0] = 1;
                 else
                     saidaInt[0] = 0;
@@ -340,7 +339,7 @@ namespace AmbienteRPB
                     else
                         character = '.';
 
-                    string saida = i + "\n\n" + Convert.ToString(outputs_[0]);
+                    string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
                     string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
                     if (!chave)
                         send_SmS(1, saida2, false);

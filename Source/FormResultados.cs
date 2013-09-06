@@ -756,7 +756,10 @@ namespace AmbienteRPB
             ArrayList layers = new ArrayList();
             
             layers.Add(MenorTamanho);
-            layers.Add((int)Math.Sqrt(MenorTamanho));
+            int NeuroniosDaCamadaInterm = (int)Math.Sqrt(MenorTamanho);
+            if (NeuroniosDaCamadaInterm < 8)
+                NeuroniosDaCamadaInterm = 8;
+            layers.Add(NeuroniosDaCamadaInterm);
             layers.Add(1);
 
             network = new NeuralNetwork();
@@ -1093,7 +1096,7 @@ namespace AmbienteRPB
                         }
                         numMAX++;
                     }
-                    else if (iniciou == true && numMAX >= 13)
+                    else if (iniciou == true && numMAX >= 2)
                     {
                         numMAX = 0;
                         Fim = i;

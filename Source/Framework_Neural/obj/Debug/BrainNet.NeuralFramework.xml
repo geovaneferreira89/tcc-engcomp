@@ -119,6 +119,8 @@ only the monochrome version of image is converted to pattern </remarks>
 and conversions required for neural network image processing  </summary>
 </member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.FindDelta(System.Single,System.Single)">
 	<summary>Function to find the delta or error rate of this INeuron </summary>
+</member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.HiperbolicaFunc(System.Single)">
+	<summary>Função Hiperbolica </summary>
 </member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.Activation(System.Single)">
 	<summary>Activation Function, or ThreshHold function</summary>
 </member><member name="M:BrainNet.NeuralFramework.INeuronStrategy.FindNetValue(BrainNet.NeuralFramework.NeuronConnections,System.Single)">
@@ -260,6 +262,8 @@ This class is can hold a collection of training data objects
 	<summary> Exception that may be thrown by NeuronStrategy class </summary>
 </member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.FindDelta(System.Single,System.Single)">
 	<summary> Implementation of Find Delta </summary>
+</member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.HiperbolicaFunc(System.Single)">
+	<summary> Implementação da tangente hiperbolica </summary>
 </member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.Activation(System.Single)">
 	<summary> Implementation of activation function </summary>
 </member><member name="M:BrainNet.NeuralFramework.BackPropNeuronStrategy.FindNetValue(BrainNet.NeuralFramework.NeuronConnections,System.Single)">
