@@ -1,7 +1,7 @@
 \chapter{Fundamentação Teórica}
 \label{sec:Fund}
 
-O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de \sigla{ECG}{Eletrocardiografia} (Eletrocardiografia), englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos \ref{sec:Ondas}. Em seguida, a seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. As seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. O capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
+O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de \sigla{ECG}{Eletrocardiografia} (Eletrocardiografia), englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos \ref{sec:Ondas}. Em seguida, as seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. A seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
 
 \section{Fisiologia do Coração}
 \label{sec:Fisiologia}
@@ -140,6 +140,100 @@ A duração normal do QRS fica entre 0.08 e 0,09 segundos. Durações maiores são ge
 	\label{fig:QRS}
 \end{figure}
 
+\section{Função Correlação}
+\label{sec:Correl}
+
+O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um padrão sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas e determinar que arma disparou um projétil, mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema \sigla{GPS}{Global Positioning System} \textit{(Global Positioning System)} e na análise de \sigla{DNA}{Deoxyribonucleic Acid} \cite{bloch2004l}. 
+
+A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figs/corre.png} 
+		\caption[Exemplo de aplicação da função correlação]{Exemplo de aplicação da função correlação}
+	\fonte{Modificado de \cite{smith}}
+	\label{fig:corre}
+\end{figure}
+
+No domínio discreto de dados a função correlação pode ser calculada na equação ~(\ref{eq:correlacao}), em que o índice \textit{r} refere-se ao sinal recebido e o índice \textit{a} se refere ao padrão armazenado. O fator de normalização K é igual à soma dos quadrados dos valores do padrão armazenado \cite{bloch2004l}.
+
+\begin{equation}
+ R_{r,a} (\tau )= \frac{1}{K}\sum_{n=0}^{N-1} f_{r}(n)f_{s}(\tau + n)
+\label{eq:correlacao}
+\end{equation}
+
+O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que se pretende identificar, pode ser uma estimativa do que imagina que o sinal original seja, ou uma réplica. Pode ser utilizado um conjunto de padrões de sinais similares ao que se deseja buscar. É com base neste tipo de estimativas que operam astrônomos, peritos em criptografia e especialistas em supervisão eletrônica \cite{bloch2004l}.
+
+\section{Redes Neurais Artificiais}
+\label{sec:RNA}
+
+O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado como um computador extremamente complexo, não linear que apresenta paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
+
+De certa forma, as redes neurais artificiais foram criadas para realizar atividades mimetizando o cérebro humano. As redes neurais artificiais são modelos matemáticos que podem ser implementadas com componentes eletrônicos ou simuladas em software \cite{HAYKIN2011}.
+
+As unidades básicas de processamento de uma rede neural artificial são chamadas de neurônios, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
+
+As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
+
+Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada ao neurônio \textit{k}, é multiplicada pelo peso sináptico \textit{w\textsubscript{kj}}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/RN2.png} 
+		\caption[Estrutura de uma rede neural artificial]{Estrutura de uma rede neural artificial}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:RN2}
+\end{figure}
+
+A função de ativação que limita a saída de um neurônio pode ser de três tipos básicos:
+
+\begin{itemize}
+	\item Função de limiar ou \textit{threshold};
+	\item Função \textit{Piecewise}~-- contínua;
+	\item Função Sigmóide.
+\end{itemize}
+
+A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/limiares.png} 
+		\caption[Gráficos das funções de ativação]{Gráficos das funções de ativação}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:limiares}
+\end{figure}
+
+\subsection{Rede Multicamadas}
+
+Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes Perceptron Multicamadas (\textit{Multilayer Perceptron} ~-- \sigla{MLP}{Multilayer Perceptron}). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figs/RN4.png} 
+		\caption[Rede neural do tipo Multilayer Perceptron]{Rede neural do tipo Multilayer Perceptron}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:RN4}
+\end{figure}
+
+Como mencionado anteriormente, os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado \textit{backpropagation}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
+
+\subsection{Estratégia de Treinamento}
+
+Gráfico dos erros.
+
+\subsection{Validação Cruzada}
+
+Partindo do princípio de que as redes neurais artificiais passam por um processo de treinamento, é necessário um conjunto de dados para a realização desta etapa. Além disso é necessário testar o funcionamento da rede. Considerada uma padrão pela estatística, a validação cruzada soluciona esta questão ao dividir a base de dados inicial em dois conjuntos \cite{HAYKIN2011}. São eles:
+
+\begin{itemize}
+	\item Conjunto de dados de treinamento;
+	\item Conjunto de dados de testes.
+\end{itemize}
+
+Além destas duas divisões, o conjunto de dados de treinamento pode ser dividido em dados para estimativa e dados para validação \cite{HAYKIN2011}. Contudo, o estudo aprofundado deste tema foge ao escopo do projeto.
+
+Citar KOHAVI!!!!
+
 \section{Avaliação de Sistemas Classificadores}
 \label{sec:AvaliaSis}
 
@@ -152,18 +246,22 @@ A tabela de contingência, também chamada de tabela de confusão, é descrita como 
 \begin{table}[!htb]
 	\centering
 	\caption[Tabela de Contingência 2x2]{Tabela de Contingência 2x2}
-	\label{tab:confusao}
-		\begin{tabular}{cc|c|c|c|}
-		\cline{3-4}
-		 & & \multicolumn{2}{|c|}{indivíduos} \\ \cline{3-4}
-		 & & doentes & sadios &  \multicolumn{1}{r}{}  \\ \cline{1-5}
-		 \multicolumn{1}{ |c| }{\multirow{2}{*}{indicação do exame} } &
-		 \multicolumn{1}{ |c| }{positivo} & VP  & FP &  total de positivos  \\ \cline{2-5}
-		 \multicolumn{1}{ |c  }{}                        &
-		 \multicolumn{1}{ |c| }{negativo} & FN & VN &  total de negativos   \\ \cline{1-5}
-		  & & total de doentes & total de sadios &  total \\ \cline{3-5}
-		\end{tabular}
-	\fonte{modificado de \cite{SOVIERZOSKI2009}}
+	\label{tab:confusao}	
+		\centering
+		\includegraphics[width=0.9\textwidth]{./figs/tab.png} % <- formatos PNG, JPG e PDF
+		
+	%	\begin{tabular}{cc|c|c|c|}
+	%	\cline{3-4}
+	%	 & & \multicolumn{2}{|c|}{indivíduos} \\ \cline{3-4}
+	%	 & & doentes & sadios &  \multicolumn{1}{r}{}  \\ \cline{1-5}
+	%	 \multicolumn{1}{ |c| }{\multirow{2}{*}{indicação do exame} } &
+	%	 \multicolumn{1}{ |c| }{positivo} & VP  & FP &  total de positivos  \\ \cline{2-5}
+	%	 \multicolumn{1}{ |c  }{}                  
+	%	 \multicolumn{1}{ |c| }{negativo} & FN & VN &  total de negativos   \\ \cline{1-5}
+	%	  & & total de doentes & total de sadios &  total \\ \cline{3-5}
+	%	\end{tabular}
+	
+	\fonte{\cite{SOVIERZOSKI2009}}
 \end{table}
 
 A partir da tabela de contingência, podem ser observados os seguintes índices: 
@@ -178,7 +276,7 @@ Como este projeto pretende obter a identificação do complexo QRS em exames de EC
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/TesteDiag.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.7\textwidth]{./figs/TesteDiag.png} % <- formatos PNG, JPG e PDF
 		\caption[Exemplo de sinal e padrão de classificação]{Exemplo de sinal e padrão de classificação considerando o nível de decisão}
 	\fonte{\cite{SARAIVA2012}}
 	\label{fig:TesteDiag}
@@ -250,94 +348,6 @@ Eficiência ou \textit{accuracy} corresponde a capacidade de um sistema em identi
 accuracy = \frac{VP + VN}{VP + VN + FP + FN}
 \label{eq:accuracy}
 \end{equation}
-
-\section{Função Correlação}
-\label{sec:Correl}
-
-O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um padrão sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas e determinar que arma disparou um projétil, mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema \sigla{GPS}{Global Positioning System} \textit{(Global Positioning System)} e na análise de \sigla{DNA}{Deoxyribonucleic Acid} \cite{bloch2004l}. 
-
-A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.9\textwidth]{./figs/corre.png} 
-		\caption[Exemplo de aplicação da função correlação]{Exemplo de aplicação da função correlação}
-	\fonte{Modificado de \cite{smith}}
-	\label{fig:corre}
-\end{figure}
-
-No domínio discreto de dados a função correlação pode ser calculada na equação ~(\ref{eq:correlacao}), em que o índice \textit{r} refere-se ao sinal recebido e o índice \textit{a} se refere ao padrão armazenado. O fator de normalização K é igual à soma dos quadrados dos valores do padrão armazenado \cite{bloch2004l}.
-
-\begin{equation}
- R_{r,a} (\tau )= \frac{1}{K}\sum_{n=0}^{N-1} f_{r}(n)f_{s}(\tau + n)
-\label{eq:correlacao}
-\end{equation}
-
-O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que se pretende identificar, pode ser uma estimativa do que imagina que o sinal original seja, ou uma réplica. Pode ser utilizado um conjunto de padrões de sinais similares ao que se deseja buscar. É com base neste tipo de estimativas que operam astrônomos, peritos em criptografia e especialistas em supervisão eletrônica \cite{bloch2004l}.
-
-\section{Redes Neurais Artificiais}
-\label{sec:RNA}
-
-O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado como um computador extremamente complexo, não linear que apresenta paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
-
-De certa forma, as redes neurais artificiais foram criadas para realizar atividades mimetizando o cérebro humano. As redes neurais artificiais são modelos matemáticos que podem ser implementadas com componentes eletrônicos ou simuladas em software \cite{HAYKIN2011}.
-
-As unidades básicas de processamento de uma rede neural artificial são chamadas de neurônios, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
-
-As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
-
-Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada ao neurônio \textit{k}, é multiplicada pelo peso sináptico \textit{w\textsubscript{kj}}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/RN2.png} 
-		\caption[Estrutura de uma rede neural artificial]{Estrutura de uma rede neural artificial}
-	\fonte{\cite{HAYKIN2011}}
-	\label{fig:RN2}
-\end{figure}
-
-A função de ativação que limita a saída de um neurônio pode ser de três tipos básicos:
-
-\begin{itemize}
-	\item Função de limiar ou \textit{threshold}:
-	\item Função \textit{Piecewise}~-- contínua:
-	\item Função Sigmóide:
-\end{itemize}
-
-A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/limiares.png} 
-		\caption[Gráficos das funções de ativação]{Gráficos das funções de ativação}
-	\fonte{\cite{HAYKIN2011}}
-	\label{fig:limiares}
-\end{figure}
-
-\subsection{Rede Multicamadas}
-
-Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes Perceptron Multicamadas (\textit{Multilayer Perceptron} ~-- \sigla{MLP}{Multilayer Perceptron}). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.9\textwidth]{./figs/RN4.png} 
-		\caption[Rede neural do tipo Multilayer Perceptron]{Rede neural do tipo Multilayer Perceptron}
-	\fonte{\cite{HAYKIN2011}}
-	\label{fig:RN4}
-\end{figure}
-
-Como mencionado anteriormente, os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado \textit{backpropagation}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
-
-\subsection{Validação Cruzada}
-
-Partindo do princípio de que as redes neurais artificiais passam por um processo de treinamento, é necessário um conjunto de dados para a realização desta etapa. Além disso é necessário testar o funcionamento da rede. Considerada uma padrão pela estatística, a validação cruzada soluciona esta questão ao dividir a base de dados inicial em dois conjuntos \cite{HAYKIN2011}. São eles:
-
-\begin{itemize}
-	\item Conjunto de dados de treinamento;
-	\item Conjunto de dados de testes.
-\end{itemize}
-
-Além destas duas divisões, o conjunto de dados de treinamento pode ser dividido em dados para estimativa e dados para validação \cite{HAYKIN2011}. Contudo, o estudo aprofundado deste tema foge ao escopo do projeto.
 
 \section{Considerações}
 \label{sec:Consid}

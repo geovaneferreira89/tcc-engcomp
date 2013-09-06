@@ -9,32 +9,39 @@
 \contentsline {section}{\numberline {2.3}Exame de Eletrocardiografia}{15}
 \contentsline {section}{\numberline {2.4}Sistema de Deriva\c c\~oes}{16}
 \contentsline {section}{\numberline {2.5}Ondas, Segmentos e Intervalos}{17}
-\contentsline {section}{\numberline {2.6}Avalia\c c\~ao de Sistemas Classificadores}{19}
-\contentsline {subsection}{\numberline {2.6.1}Tabela de Conting\^encia}{19}
-\contentsline {subsection}{\numberline {2.6.2}Sensibilidade e Especificidade}{20}
-\contentsline {subsection}{\numberline {2.6.3}Curva ROC}{21}
-\contentsline {subsection}{\numberline {2.6.4}Outros \'Indices Estat\IeC {\'\i }sticos}{22}
-\contentsline {section}{\numberline {2.7}Fun\c c\~ao Correla\c c\~ao}{23}
-\contentsline {section}{\numberline {2.8}Redes Neurais Artificiais}{24}
-\contentsline {subsection}{\numberline {2.8.1}Rede Multicamadas}{26}
-\contentsline {subsection}{\numberline {2.8.2}Valida\c c\~ao Cruzada}{27}
-\contentsline {section}{\numberline {2.9}Considera\c c\~oes}{27}
-\contentsline {chapter}{\numberline {3}Materiais e M\'etodos}{28}
-\contentsline {section}{\numberline {3.1}Base de Dados}{28}
-\contentsline {section}{\numberline {3.2}European Data Format}{29}
-\contentsline {section}{\numberline {3.3}Desenvolvimento do Software}{30}
-\contentsline {section}{\numberline {3.4}M\'odulos do sistema}{30}
-\contentsline {subsection}{\numberline {3.4.1}Visualiza\c c\~ao do sinal}{33}
-\contentsline {subsection}{\numberline {3.4.2}Marca\c c\~ao de eventos}{33}
-\contentsline {subsection}{\numberline {3.4.3}Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{33}
-\contentsline {subsection}{\numberline {3.4.4}Reconhecimento de padr\~oes}{33}
-\contentsline {subsection}{\numberline {3.4.5}Avalia\c c\~ao de Resultados}{33}
-\contentsline {section}{\numberline {3.5}Modelagem UML}{33}
-\contentsline {subsection}{\numberline {3.5.1}Bibliotecas}{33}
-\contentsline {section}{\numberline {3.6}Metodologia de Testes}{33}
+\contentsline {section}{\numberline {2.6}Fun\c c\~ao Correla\c c\~ao}{19}
+\contentsline {section}{\numberline {2.7}Redes Neurais Artificiais}{20}
+\contentsline {subsection}{\numberline {2.7.1}Rede Multicamadas}{22}
+\contentsline {subsection}{\numberline {2.7.2}Estrat\'egia de Treinamento}{23}
+\contentsline {subsection}{\numberline {2.7.3}Valida\c c\~ao Cruzada}{23}
+\contentsline {section}{\numberline {2.8}Avalia\c c\~ao de Sistemas Classificadores}{24}
+\contentsline {subsection}{\numberline {2.8.1}Tabela de Conting\^encia}{24}
+\contentsline {subsection}{\numberline {2.8.2}Sensibilidade e Especificidade}{25}
+\contentsline {subsection}{\numberline {2.8.3}Curva ROC}{26}
+\contentsline {subsection}{\numberline {2.8.4}Outros \'Indices Estat\IeC {\'\i }sticos}{27}
+\contentsline {section}{\numberline {2.9}Considera\c c\~oes}{28}
+\contentsline {chapter}{\numberline {3}Materiais e M\'etodos}{29}
+\contentsline {section}{\numberline {3.1}Base de Dados}{29}
+\contentsline {section}{\numberline {3.2}European Data Format}{30}
+\contentsline {section}{\numberline {3.3}Desenvolvimento do Software}{31}
+\contentsline {subsection}{\numberline {3.3.1}Bibliotecas}{31}
+\contentsline {subsection}{\numberline {3.3.2}An\'alise de Requisitos}{31}
+\contentsline {section}{\numberline {3.4}Sistema}{31}
+\contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{32}
+\contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do sinal}{33}
+\contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de eventos}{33}
+\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{34}
+\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{34}
+\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{34}
+\contentsline {section}{\numberline {3.5}Modelagem UML}{34}
+\contentsline {section}{\numberline {3.6}Metodologia de Testes}{34}
+\contentsline {subsection}{\numberline {3.6.1}Marca\c c\~ao de eventos}{34}
+\contentsline {subsection}{\numberline {3.6.2}Promedi\c c\~ao do Sinal de ECG}{34}
+\contentsline {subsection}{\numberline {3.6.3}Treinamento da Rede Neural Artificial}{34}
+\contentsline {subsection}{\numberline {3.6.4}Avalia\c c\~ao do Classificador}{34}
 \contentsline {section}{\numberline {3.7}Considera\c c\~oes}{34}
 \contentsline {chapter}{\numberline {4}Resultados Obtidos}{35}
-\contentsline {section}{\numberline {4.1}Testes com Raw ECG}{35}
+\contentsline {section}{\numberline {4.1}Testes com Sinal de ECG}{35}
 \contentsline {section}{\numberline {4.2}Testes com ECG com correla\c c\~ao}{36}
 \contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{37}
 \contentsline {section}{\numberline {4.4}Considera\c c\~oes}{37}
