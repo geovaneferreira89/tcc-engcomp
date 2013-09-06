@@ -198,6 +198,7 @@ namespace AmbienteRPB
                     {
                             saida = new ArrayList();
                             saida.Add(1);
+                            List<float> conjTreinado = new List<float>();
                             for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
                             {
                                 entrada = new ArrayList();
@@ -211,6 +212,9 @@ namespace AmbienteRPB
 
                                 int DataRecords_lidos = 0;
                                 int tempo_X = 0;
+                                ///---------------------------------------------------------
+                                ///Seleciona os eventos que foram marcados no form principal
+                                ///---------------------------------------------------------
                                 if (nome_canal != "Correlacao")
                                 {
                                     PadraoDescatardo = false;
@@ -231,7 +235,7 @@ namespace AmbienteRPB
                                                         if ((x_fim - x) >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2) && tempo_X >= (referencia - (MenorTamanho / 2)) && tempo_X < (referencia + (MenorTamanho / 2)))
                                                         {
                                                             entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                            send_SmS(1, Convert.ToString(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]), false);
+                                                            conjTreinado.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                                         }
                                                     }
                                                     else
@@ -244,8 +248,10 @@ namespace AmbienteRPB
                                             }
                                         }
                                     }
-                                    send_SmS(1, "\n--- " + Convert.ToString(cont) + " de " + ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos + " ---\n", false);     
                                 }
+                                ///-------------------------------------------------------------
+                                ///Seleciona os eventos que foram marcados no form de reultados
+                                ///-------------------------------------------------------------
                                 else
                                 {
                                     double[] sinal;
@@ -257,10 +263,16 @@ namespace AmbienteRPB
                                         if (sinal.Count() >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2))
                                         {
                                             for (int i = (int)(referencia - (MenorTamanho / 2)); i < referencia; i++)
+                                            {
                                                 entrada.Add(sinal[i]);
+                                                conjTreinado.Add((float)sinal[i]);
+                                            }
                                             for (int i = (int)(referencia + 1); i < (referencia + (MenorTamanho / 2) - 1); i++)
+                                            {
+                                                conjTreinado.Add((float)sinal[i]);
                                                 entrada.Add(sinal[i]);
-                                            PadraoDescatardo = false;
+                                            }
+                                                PadraoDescatardo = false;
                                         }
                                         else
                                             PadraoDescatardo = true;
@@ -284,6 +296,25 @@ namespace AmbienteRPB
                                     helper.AddTrainingData(entrada, saida);
                                 }
                             }
+                            ///---------------------------------------
+                            ///Gera a saida dos vetores de treinamento
+                            ///---------------------------------------
+                            if (UsarReferencia)
+                            {
+                                string smss = "";
+                                for (int linhas = 0; linhas < MenorTamanho; linhas++)
+                                {
+                                    for (int padrTreinados = 0; padrTreinados < (conjTreinado.Count / 50); padrTreinados++)
+                                    {
+                                        smss += conjTreinado[(padrTreinados * 50) + linhas].ToString() + "\t";
+                                    }
+                                    smss += "\n";
+                                }
+                                send_SmS(1, smss, false);
+                            }
+                        ///---------------------------------------
+                        ///Treina a Rede Neural
+                        ///---------------------------------------
                         helper.Train(1000);
                         break;
                     }
