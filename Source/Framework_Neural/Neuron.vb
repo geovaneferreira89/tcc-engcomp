@@ -119,7 +119,12 @@ Public Class Neuron
 
 
         Dim netValue As Single = Strategy.FindNetValue(Inputs, BiasValue)
-        OutputValue = Strategy.Activation(netValue)
+        ''Aqui definimos a sigmoide se é mais suave ou não... 
+        If Inputs.Count <= 10 Then
+            OutputValue = Strategy.Activation(netValue)
+        Else
+            OutputValue = Strategy.Activation(netValue)
+        End If
     End Sub
 
     '''<summary> Calculate the free parameters </summary>

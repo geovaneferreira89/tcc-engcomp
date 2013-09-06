@@ -11,17 +11,17 @@
     <deploymentProvider codebase="http://eeg.novoindustrial.com.br/Reconhecimento%20Automatizado%20de%20Padr%C3%B5es%20EEG.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Reconhecimento Automatizado de Padrões EEG.exe.manifest" size="7861">
+    <dependentAssembly dependencyType="install" codebase="Reconhecimento Automatizado de Padrões EEG.exe.manifest" size="8713">
       <assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG.exe" version="1.1.1.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>0xOuQM+cj2bWzgbh6OkaMrYwNdI=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Si4Qq0/D0L92UbMoJYnsEO3GlgbxSWEfj+xKTZiZILs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
