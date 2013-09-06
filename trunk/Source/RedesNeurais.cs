@@ -11,8 +11,8 @@ using System.Drawing;
 using NeuroLoopGainLibrary.Edf;
 using System.Windows;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Runtime.InteropServices;
 using BrainNet.NeuralFramework;
+using System.Runtime.InteropServices;
 using System.Collections;
 
 namespace AmbienteRPB
@@ -159,6 +159,28 @@ namespace AmbienteRPB
                     double[] dados = new double[1];
                     Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                     Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                }
+            }
+            
+            else if (tipoDeRede == "BackPropagationTreinar100x")
+            {
+                //Utilizando o backPropagation 
+                send_SmS(0, "", false);
+                send_SmS(1, "Inicializando.", false);
+                //busca pelo menor tamanho do dos eventos deste padrao... 
+                vetorDeResultados = new int[Sinal.Count()];
+                for(int i=0; i< PadroesATreinar.Count();i++)
+                {
+                     send_SmS(1, "Treinando a rede 1000 + com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                     TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                     send_SmS(1, "Treinada", false);
+                    //send_SmS(1, "Iniciado : " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    //Rodar(Sinal,i);
+                    //send_SmS(1, "Terminado :" + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
+                    ////limpa os dados se existirem
+                    //double[] dados = new double[1];
+                    //Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                    //Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                 }
             }
         }    

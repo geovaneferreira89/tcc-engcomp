@@ -48,14 +48,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="70144">
-      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.4951.29536" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="74752">
+      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.4996.41494" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>zkEE6YcEiy5XS6TlNW5hTaw2dik=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>kuaWF0ydJ1sgs9m+8ozVqCZZT0+Njenc+Su9MNusy3U=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.QualityTools.Testing.Fakes.dll" size="304784">
+      <assemblyIdentity name="Microsoft.QualityTools.Testing.Fakes" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>2aXAc03Ww56I38MkPRVaGQQJqzGdFm67XBnnfPy0Nkc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,8 +78,8 @@
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NISOGMD3TGFogHGhmi+mu5cj79o=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>dXPp26iL8b7hTZRBh3ocmX/FoSlgrXHYXg1xDoKkBhw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,20 +90,20 @@
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>rZ+pZT+6iJjJLq0Dg1XzYGPzO6Q=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>9c43Ji/J2jqllfXJac7XYmUoNI9VbBj5Q+7DJbsKB0Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="577536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="579072">
       <assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DFVmuPzIqXEkeTGuYHISGJvuhMo=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>14vXvnGmYxNZ58GIiYwZtHzbO2bjI4jm37Kiq+QRgVs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -100,8 +112,8 @@
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>INMd+Uz2RC7ce2Seiu2wf+Fcbm8=</dsig:DigestValue>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2p7QL22aqMxlRSnz08QW1IYE25XVIyFf4V6Sk4bOlE8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Modelos EDF\Modelo1.EDF" size="2557696">
@@ -109,17 +121,17 @@
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>HjhLnbZ8/BZggBmL+GApIgOEvxs=</dsig:DigestValue>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HV+hoVF4DOZqKsUb6swhHNvKvAF98oEThbQSfPKlrT4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Reconhecimento Automatizado de Padrões EEG.exe.config" size="147">
+  <file name="Reconhecimento Automatizado de Padrões EEG.exe.config" size="144">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>dWs9/tD8+8A2cktfL86cpEru8r4=</dsig:DigestValue>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>jLCHdLm7v47ACsSCc72IOp8bA051ZvlIJCmYB91hk5o=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
