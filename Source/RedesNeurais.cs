@@ -256,9 +256,9 @@ namespace AmbienteRPB
                                     {
                                         if (sinal.Count() >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2))
                                         {
-                                            for (int i = (int)(referencia - (MenorTamanho / 2)); i <= referencia; i++)
+                                            for (int i = (int)(referencia - (MenorTamanho / 2)); i < referencia; i++)
                                                 entrada.Add(sinal[i]);
-                                            for (int i = (int)(referencia); i < (referencia + (MenorTamanho / 2)); i++)
+                                            for (int i = (int)(referencia + 1); i < (referencia + (MenorTamanho / 2) - 1); i++)
                                                 entrada.Add(sinal[i]);
                                             PadraoDescatardo = false;
                                         }
