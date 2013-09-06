@@ -1,0 +1,14 @@
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.Controls.dll
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.dll
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.Neuro.dll
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.Controls.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.Controls.xml
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.Neuro.pdb
+C:\Users\Ge\Desktop\koho\ConsoleApplication1\ConsoleApplication1\bin\Debug\AForge.Neuro.xml
