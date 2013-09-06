@@ -43,7 +43,15 @@ Public Class BackPropNeuronStrategy
             Throw New NeuronStrategyException("Exception in Finding Delta", e)
         End Try
     End Function
+    '''<summary> Implementação da tangente hiperbolica </summary>
+    Public Overridable Function HiperbolicaFunc(ByVal value As Single) As Double Implements NeuralFramework.INeuronStrategy.HiperbolicaFunc
+        Try
+            Return ((Exp(value) - Exp(value * -1)) / (Exp(value) + Exp(value * -1)))
+        Catch e As Exception
+            Throw New NeuronStrategyException("Exception in Hiperbolic function", e)
+        End Try
 
+    End Function
     '''<summary> Implementation of activation function </summary>
     Public Overridable Function Activation(ByVal value As Single) As Single Implements NeuralFramework.INeuronStrategy.Activation
         Try

@@ -21,10 +21,11 @@ Public Interface INeuronStrategy
     '''<summary>Function to find the delta or error rate of this INeuron </summary>
     Function FindDelta(ByVal output As Single, ByVal errorFactor As Single) As Single
 
+    '''<summary>Função Hiperbolica </summary>
+    Function HiperbolicaFunc(ByVal value As Single) As Double
 
     '''<summary>Activation Function, or ThreshHold function</summary>
     Function Activation(ByVal value As Single) As Single
-
 
     '''<summary>Summation Function for finding the net value</summary>
     Function FindNetValue(ByVal inputs As NeuronConnections, ByVal bias As Single) As Single
