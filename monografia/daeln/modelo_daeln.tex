@@ -113,7 +113,7 @@ Abstract text (maximum of 500 words).
 \chapter{Materiais e Métodos} %ou Materiais e Métodos 
 \label{sec:Materiais}
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Módulos do sistema \ref{sec:MOD}, Desenvolvimento do \textit{Software} \ref{sec:DSW}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Desenvolvimento do \textit{Software} \ref{sec:DSW}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
@@ -162,12 +162,17 @@ A figura ~\ref{ATM} mostra a tela de opções da ferramenta Physiobank ATM.
 \section{Desenvolvimento do Software}
 \label{sec:DSW}
 
-\section{Módulos do sistema}
+\subsection{Bibliotecas}
+Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
+
+\subsection{Análise de Requisitos}
+
+\section{Sistema}
 \label{sec:MOD} 
 Eu consigo antever cinco módulos (Aí explica o que cada um faz):
 Telas do sistema vão aqui.
 
-
+\subsection{Visão Geral do Sistema}
 A figura ~\ref{fluxogramaRaw} mostra o processo utilizando raw ECG.
 
 \begin{figure}[!htb]
@@ -190,20 +195,20 @@ A figura ~\ref{FluxoCorrel} mostra o processo utilizando correlação.
 \end{figure}
 
 
-\subsection{Visualização do sinal}
+\subsection{Módulo de Visualização do sinal}
 Explicar por exemplo, a duração do exame, quantos canais, a frequência e amplitude.
 
-\subsection{Marcação de eventos}
+\subsection{Módulo de Marcação de eventos}
 Que tipo de eventos marcamos, em arquivo de texto, seguindo um padrão definido.
 
-\subsection{Extração de Características}
+\subsection{Módulo de Extração de Características}
 Aqui será explicado o modo como foi utilizada a operação da Correlação.
 Correlação de um evento marcado com o sinal inteiro, gerando um novo sinal... com picos onde eventos daquele tipo ocorrem.
 
-\subsection{Reconhecimento de padrões}
+\subsection{Módulo de Reconhecimento de padrões}
 No caso utilizamos a Rede Neural MultiLayer Perceptron.
 
-\subsection{Avaliação de Resultados}
+\subsection{Módulo de Avaliação de Resultados}
 Módulo que compara marcações com os resultados obtidos.
 
 \section{Modelagem UML}
@@ -211,17 +216,17 @@ Módulo que compara marcações com os resultados obtidos.
 
 Usamos algum padrão, MVC, etc....
 
-\subsection{Bibliotecas}
-Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
 
 \section{Metodologia de Testes}
 \label{sec:Met-Testes}
 
-Achei que já tínhamos explicado isso aqui na Fundamentação Teórica.
-Mas se não foi o suficiente explicamos melhor aqui...
-O que são os VP, VN, FP, e FN no nosso caso (complexo QRS, arritmias...). 
-E o que precisou ser variado para gerar a curva ROC. Threshold
-Podemos colocar umas telas, comparando o resultado obtido com a marcação que já vem com a base de dados.
+\subsection{Marcação de eventos}
+
+\subsection{Promedição do Sinal de ECG}
+
+\subsection{Treinamento da Rede Neural Artificial}
+
+\subsection{Avaliação do Classificador}
 
 \section{Considerações}
 \label{sec:Cons-Des}
@@ -241,9 +246,19 @@ Blá...
 
 Vai texto aqui
 
-\section{Testes com Raw ECG}
+\section{Testes com Sinal de ECG}
 
 Eis os resultados na tabela.
+
+Texto
+
+texto
+
+texto
+
+Mais texto.
+
+Mais um pouco de texto.
 
 \begin{table}[!htb]
 	\centering
