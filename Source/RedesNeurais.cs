@@ -301,6 +301,8 @@ namespace AmbienteRPB
                             ///---------------------------------------
                             if (UsarReferencia)
                             {
+                                GerenArquivos dir = new GerenArquivos();
+                                System.IO.StreamWriter fileSalve = new System.IO.StreamWriter(dir.getPathUser() + "ConjTreinado.txt", false);
                                 string smss = "";
                                 for (int linhas = 0; linhas < MenorTamanho; linhas++)
                                 {
@@ -308,9 +310,10 @@ namespace AmbienteRPB
                                     {
                                         smss += conjTreinado[(padrTreinados * 50) + linhas].ToString() + "\t";
                                     }
-                                    smss += "\n";
+                                    fileSalve.WriteLine(smss);
+                                    smss = "";
                                 }
-                                send_SmS(1, smss, false);
+                                fileSalve.Close();
                             }
                         ///---------------------------------------
                         ///Treina a Rede Neural
