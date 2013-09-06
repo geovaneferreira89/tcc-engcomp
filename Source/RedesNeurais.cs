@@ -254,11 +254,11 @@ namespace AmbienteRPB
                                     //Pegando pela referencia
                                     if (UsarReferencia)
                                     {
-                                        if (sinal.Count() >= 50 && (referencia - x) >= 25 && (x_fim - referencia) >= 25)
+                                        if (sinal.Count() >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2))
                                         {
-                                            for (int i = (int)(referencia - 25); i <= referencia; i++)
+                                            for (int i = (int)(referencia - (MenorTamanho / 2)); i <= referencia; i++)
                                                 entrada.Add(sinal[i]);
-                                            for (int i = (int)(referencia); i < (referencia + 25); i++)
+                                            for (int i = (int)(referencia); i < (referencia + (MenorTamanho / 2)); i++)
                                                 entrada.Add(sinal[i]);
                                             PadraoDescatardo = false;
                                         }
