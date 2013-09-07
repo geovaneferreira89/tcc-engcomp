@@ -96,17 +96,17 @@ namespace AmbienteRPB
         public void Init()
         {
             //Opção de ir Debugando a saida da RN
-            DialogResult debug = MessageBox.Show("Modo debug?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-            if (debug == DialogResult.No)
+            //DialogResult debug = MessageBox.Show("Modo debug?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+            //if (debug == DialogResult.No)
                 it_is_debug = false;
-            else
-                it_is_debug = true;
+            //else
+            //    it_is_debug = true;
             //----------------------------------------------------------------------------------
             //Kohonen
             if (tipoDeRede == "Kohonen")
             {
                 Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null);
-                send_SmS(1, "Inicializando...",false);
+                send_SmS(1, "Inicializando",false);
                 Initialise_KHn();
                 send_SmS(1, "Carregando Arquivo de Vetores", false);
                 LoadData_KHn(file);
@@ -121,7 +121,7 @@ namespace AmbienteRPB
             else if (tipoDeRede == "BackPropagation")
             {
                 //Utilizando o backPropagation 
-                send_SmS(1, "Inicializando...", false);
+                send_SmS(1, "Inicializando", false);
                 //Define o tamanho do vetor evento
                 MenorTamanho = VetorEvento.Count();
               
@@ -144,7 +144,7 @@ namespace AmbienteRPB
                 {
                     if (!RNImportada)
                     {
-                        send_SmS(1, "Treinando a rede com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                        send_SmS(1, "Treinando a rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
                         TreinodaRede(VetorEvento, 1, "TodosEventos", i);
                         send_SmS(1, "Treinada", false);
                     }
@@ -167,20 +167,13 @@ namespace AmbienteRPB
                 //Utilizando o backPropagation 
                 send_SmS(0, "", false);
                 send_SmS(1, "Inicializando.", false);
-                //busca pelo menor tamanho do dos eventos deste padrao... 
+                //Busca pelo menor tamanho do dos eventos deste padrao... 
                 vetorDeResultados = new int[Sinal.Count()];
                 for(int i=0; i< PadroesATreinar.Count();i++)
                 {
                      send_SmS(1, "Treinando a rede 1000 + com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
                      TreinodaRede(VetorEvento, 1, "TodosEventos", i);
                      send_SmS(1, "Treinada", false);
-                    //send_SmS(1, "Iniciado : " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                    //Rodar(Sinal,i);
-                    //send_SmS(1, "Terminado :" + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
-                    ////limpa os dados se existirem
-                    //double[] dados = new double[1];
-                    //Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                    //Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                 }
             }
         }    
@@ -191,7 +184,12 @@ namespace AmbienteRPB
             helper = new BrainNet.NeuralFramework.NetworkHelper(network);
             ArrayList entrada = new ArrayList();
             ArrayList saida = new ArrayList();
+
+            List<int> UsadosNoTreino = new List<int>();
+            List<int> DescartadosDoTreino = new List<int>();
+
             bool PadraoDescatardo = false;
+
             switch (tipoDeTreinamento)
             {
                 case ("TodosEventos"):
@@ -262,6 +260,7 @@ namespace AmbienteRPB
                                     {
                                         if (sinal.Count() >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2))
                                         {
+                                            UsadosNoTreino.Add(cont);
                                             for (int i = (int)(referencia - (MenorTamanho / 2)); i < referencia; i++)
                                             {
                                                 entrada.Add(sinal[i]);
@@ -272,10 +271,13 @@ namespace AmbienteRPB
                                                 conjTreinado.Add((float)sinal[i]);
                                                 entrada.Add(sinal[i]);
                                             }
-                                                PadraoDescatardo = false;
+                                            PadraoDescatardo = false;
                                         }
                                         else
+                                        {
                                             PadraoDescatardo = true;
+                                            DescartadosDoTreino.Add(cont);
+                                        }
                                     }
                                     //Sem a referencia
                                     else
@@ -304,6 +306,12 @@ namespace AmbienteRPB
                                 GerenArquivos dir = new GerenArquivos();
                                 System.IO.StreamWriter fileSalve = new System.IO.StreamWriter(dir.getPathUser() + "ConjTreinado.txt", false);
                                 string smss = "";
+
+                                for (int val = 0; val < UsadosNoTreino.Count; val++)
+                                    smss += Convert.ToString(UsadosNoTreino[val]) + "\t";
+                            
+                                fileSalve.WriteLine(smss);
+                                smss = "";
                                 for (int linhas = 0; linhas < MenorTamanho; linhas++)
                                 {
                                     for (int padrTreinados = 0; padrTreinados < (conjTreinado.Count / 50); padrTreinados++)
@@ -314,11 +322,18 @@ namespace AmbienteRPB
                                     smss = "";
                                 }
                                 fileSalve.Close();
+                                send_SmS(1, "Total Usados = " + Convert.ToString(UsadosNoTreino.Count), false);
+                                for(int val = 0; val < UsadosNoTreino.Count; val++)
+                                    send_SmS(1, " " + Convert.ToString(UsadosNoTreino[val]), false);
+
+                                send_SmS(1, "\n\nTotal Descatados = " + Convert.ToString(DescartadosDoTreino.Count), false);
+                                for (int val = 0; val < DescartadosDoTreino.Count; val++)
+                                    send_SmS(1, " " + Convert.ToString(DescartadosDoTreino[val]), false);
                             }
                         ///---------------------------------------
                         ///Treina a Rede Neural
                         ///---------------------------------------
-                        helper.Train(1000);
+                       helper.Train(1000);
                         break;
                     }
                     case ("SomenteUm"):

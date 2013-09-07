@@ -450,12 +450,12 @@ namespace AmbienteRPB
                         for (long i = 0; i <Arquivos.Samples.Count(); i++)
                         {
                             LineAnnotation annotationRectangle = new LineAnnotation();
-                            annotationRectangle.BackColor = Color.FromArgb(128, Color.Red);
+                            annotationRectangle.BackColor = Color.FromArgb(128, Color.GreenYellow);
                             annotationRectangle.AxisX = prb.ChartAreas[Canal].AxisX;
                             annotationRectangle.AxisY = prb.ChartAreas[Canal].AxisY;
                             annotationRectangle.X = Arquivos.Samples[i];
                             annotationRectangle.Y = prb.ChartAreas[Canal].AxisY.Maximum;
-                            annotationRectangle.LineColor = Color.FromArgb(128, Color.Red);
+                            annotationRectangle.LineColor = Color.FromArgb(128, Color.GreenYellow);
                             annotationRectangle.ToolTip = "1";
                             annotationRectangle.Height = prb.ChartAreas[Canal].Position.Height;
                             annotationRectangle.Width = 0;

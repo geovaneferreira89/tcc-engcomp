@@ -470,7 +470,7 @@ namespace AmbienteRPB
                     AtualizaFerramentaAtiva("Fim de envento marcado", 2, Color.Green);
                     string string_coment = "";
                     if (adicionarComentario)
-                        string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "nothing", 10, 10);
+                        string_coment = Interaction.InputBox("Digite o comentário", "Reconhecimento Automatizado de Padrões em EEG", "", 10, 10);
                   
                     Exportar_Padrao_Na_Lista(Padrao_Inicio, Padrao_Fim, Ref, result, string_coment, (float)((Padrao_Fim.X - Padrao_Inicio.X) / chart1.ChartAreas[0].AxisX.ScaleView.Size));
 
