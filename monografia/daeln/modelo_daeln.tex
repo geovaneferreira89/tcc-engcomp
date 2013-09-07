@@ -70,22 +70,30 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 % epigrafe (opcional)
 % citação, seguida de indicação de autoria e ano, relacionada com a matéria tratada no corpo do trabalho
 \begin{epigrafe}
-"The human heart is not unchanging (nay, changes almost out of recognition in the twinkling of an eye) \dots" ~-- C.S. Lewis
+"The human heart is not unchanging (nay, changes almost out of recognition in the twinkling of an eye) \dots" 
+\begin{flushright}
+    C.S. Lewis
+\end{flushright}
 
-"O coração humano não é imutável (ou melhor, muda quase que irreconhecivelmente no piscar de um olho) \dots" ~-- C.S. Lewis
+"O coração humano não é imutável (ou melhor, muda quase que irreconhecivelmente no piscar de um olho) \dots" 
+\begin{flushright}
+    C.S. Lewis
+\end{flushright}
 
 \end{epigrafe}
 
 %resumo
 \begin{resumo}
 
-Os exames de ECG (Eletrocardiografia) são considerados uma ferramenta de grande auxílio no diagnóstico de problemas cardíacos. E para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de ECG, muitas vezes corrompido por ruídos \cite{Zhang2007}. Consequentemente, tornando mais difícil a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, há necessidade de ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema para reconhecimento de do complexo QRS em sinais de ECG. A metodologia adotada é composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes deverão utilizar uma base de dados de exames de ECG de domínio público. A etapa de testes será realizada por pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido será composto por três módulos: o módulo de interface com o usuário, o módulo para reconhecimento de padrões e o módulo de avaliação de resultados. O primeiro é responsável pela visualização do sinal de ECG opções de marcação de eventos para o reconhecimento. O módulo de reconhecimento de padrões aplica a operação de correlação matemática entre o padrão escolhido e o sinal de ECG, detectando eventos no sinal e exibindo graficamente na tela. O módulo de avaliação do sistema compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, são calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática, que como resultado social facilitará a rotina dos médicos.
+De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de ECG (Eletrocardiografia), muitas vezes corrompido por ruídos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de ECG. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização do sinal de ECG, marcação de eventos, extração de características, reconhecimento de padrões e avaliação de resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
 
 \end{resumo}
 
 %abstract
 \begin{abstract}
-Abstract text (maximum of 500 words).
+
+According to \cite{Zhang2007}, electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the ECG signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools are needed that might improve the QRS-complex detection. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module will compare the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
+
 \end{abstract}
 
 % listas (opcionais, mas recomenda-se a partir de 5 elementos)
@@ -236,30 +244,8 @@ Usamos algum padrão, MVC, etc....
 \label{sec:Resultados}
 Introdução do Capítulo. Um parágrafo basta. 
 
-Blá
-
-Blá
-
-Blá
-
-Blá...
-
-Vai texto aqui
-
 \section{Testes com Sinal de ECG}
-
-Eis os resultados na tabela.
-
-Texto
-
-texto
-
-texto
-
-Mais texto.
-
-Mais um pouco de texto.
-
+Total de QRS: 2572
 \begin{table}[!htb]
 	\centering
 	\caption[Tabela de Resultados Obtidos com Raw ECG]{Tabela de Resultados Obtidos com Raw ECG}
@@ -286,7 +272,7 @@ A curva ROC do processo utilizando \textit{raw} ECG é mostrada na figura ~\ref{R
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.3\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.2\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
 	\caption[Curva ROC dos resultados]{Curva ROC dos resultados}
 	\fonte{Autoria própria}
 	\label{ROC1}
@@ -320,7 +306,7 @@ A curva ROC do processo utilizando correlação é mostrada na figura ~\ref{ROC2}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.3\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.2\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
 	\caption[Curva ROC do processo com correlação]{Curva ROC do processo com correlação}
 	\fonte{Autoria própria}
 	\label{ROC2}
@@ -385,11 +371,14 @@ Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez
 
 Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria equipe realizar os testes, uma vez que a base de dados já possui marcações dos eventos, bastando apenas compará-las aos eventos identificados pelo sistema.
 
-\section{Recursos de Hardware}
+Este capítulo apresenta as seções Recursos de Hardware \ref{RecHardware}, Recursos de Software \ref{RecSoftware} e Horas de Trabalho \ref{Horas}.
 
+\section{Recursos de Hardware}
+\label{RecHardware}
 Os recursos de \textit{Hardware} correspondem às duas máquinas utilizadas pelos membros da equipe durante o desenvolvimento do projeto: Macbook Pro 13 polegadas, início de 2011, com processador Intel Core i7 de 2.7 GHz, memória de 16 GB e HD com 1TB e um \textit{notebook} Dell Inspiron 14R-3440 com processador Intel Core i5, memória RAM de 6GB e HD com 1TB.
 
 \section{Recursos de Software}
+\label{RecSoftware}
 
 Linguagens de Programação
 
@@ -403,7 +392,8 @@ Para a licença deste produto a equipe participou do DreamSpark.
 
 Bibliotecas: EDF e RN
 
-\section{Quantidade de Horas Trabalhadas}
+\section{Horas de Trabalho}
+\label{Horas}
 
 Gráfico com barras comparando o esperado com o real na figura ~\ref{horas}.
 
