@@ -137,7 +137,8 @@ namespace AmbienteRPB
             {
                 //Utilizando o backPropagation 
                 send_SmS(0, "", false);
-                send_SmS(2, "Inicializando.", false);
+                send_SmS(1, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                float inicio = DateTime.Now.Minute;
                 //busca pelo menor tamanho do dos eventos deste padrao... 
                 vetorDeResultados = new int[Sinal.Count()];
                 for(int i=0; i< PadroesATreinar.Count();i++)
@@ -152,9 +153,11 @@ namespace AmbienteRPB
                     {
                         MenorTamanho = network.InputLayer.Count;
                     }
-                    send_SmS(1, "Iniciado : " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    send_SmS(1, "Reconhencendo : " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     Rodar(Sinal,i);
-                    send_SmS(1, "Terminado :" + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);                  
+                    float fim = DateTime.Now.Minute;
+                    send_SmS(1, "Terminado :" + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    send_SmS(1, "Duração :" +Convert.ToString(fim-inicio) + " minutos", true);     
                     //limpa os dados se existirem
                     double[] dados = new double[1];
                     Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
@@ -322,16 +325,16 @@ namespace AmbienteRPB
                                 fileSalve.Close();
 
                                 send_SmS(1, "Total Usados = " + Convert.ToString(conjTreinado.Count / 50), false);
-                                send_SmS(1, "Total Descatados = " + Convert.ToString(DescartadosDoTreino.Count), false);
+                                send_SmS(1, "Total Descartados = " + Convert.ToString(DescartadosDoTreino.Count), false);
                                 
                             }
                         ///---------------------------------------
                         ///Treina a Rede Neural
                         ///---------------------------------------
                        send_SmS(1, "Treinando", false);
-                       helper.Train(1000);
                        load_progress_bar(1, 3);
-                        break;
+                       helper.Train(1000);
+                       break;
                     }
                     case ("SomenteUm"):
                     {
