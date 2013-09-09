@@ -258,7 +258,7 @@ namespace AmbienteRPB
                                     //Pegando pela referencia
                                     if (UsarReferencia)
                                     {
-                                        if (sinal.Count() >= MenorTamanho && (referencia -x) >= (MenorTamanho / 2) && (x_fim - (referencia+x)) >= (MenorTamanho / 2))
+                                        if (sinal.Count() >= MenorTamanho && (referencia -x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2))
                                         {
                                             UsadosNoTreino.Add(cont);
                                             for (int i = (int)(referencia - (MenorTamanho / 2)); i < referencia; i++)
