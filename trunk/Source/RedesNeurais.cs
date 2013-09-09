@@ -197,6 +197,8 @@ namespace AmbienteRPB
                             saida = new ArrayList();
                             saida.Add(1);
                             List<float> conjTreinado = new List<float>();
+                            load_progress_bar(0, 4);
+                            load_progress_bar(ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos, 2);
                             for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
                             {
                                 entrada = new ArrayList();
@@ -256,20 +258,17 @@ namespace AmbienteRPB
                                     GerenArquivos Arquivos = new GerenArquivos();
                                     sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont));
                                     //Pegando pela referencia
+                                    if (cont == 1420)
+                                        load_progress_bar(0, 1);
                                     if (UsarReferencia)
                                     {
-                                        if (sinal.Count() >= MenorTamanho && (referencia -x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2))
+                                        if (sinal.Count() > MenorTamanho && ((int)(referencia -x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2))
                                         {
                                             UsadosNoTreino.Add(cont);
-                                            for (int i = (int)(referencia - (MenorTamanho / 2)); i < referencia; i++)
+                                            for (int i = (int)(referencia - (MenorTamanho / 2)); i < (int)(referencia + (MenorTamanho / 2)); i++)
                                             {
                                                 entrada.Add(sinal[i]);
                                                 conjTreinado.Add((float)sinal[i]);
-                                            }
-                                            for (int i = (int)(referencia + 1); i < (referencia + (MenorTamanho / 2) - 1); i++)
-                                            {
-                                                conjTreinado.Add((float)sinal[i]);
-                                                entrada.Add(sinal[i]);
                                             }
                                             PadraoDescatardo = false;
                                         }
@@ -294,9 +293,8 @@ namespace AmbienteRPB
                                     }
                                 }
                                 if (!PadraoDescatardo)
-                                {
                                     helper.AddTrainingData(entrada, saida);
-                                }
+                                load_progress_bar(0, 1);
                             }
                             ///---------------------------------------
                             ///Gera a saida dos vetores de treinamento
@@ -332,6 +330,7 @@ namespace AmbienteRPB
                         ///---------------------------------------
                        send_SmS(1, "Treinando", false);
                        helper.Train(1000);
+                       load_progress_bar(1, 3);
                         break;
                     }
                     case ("SomenteUm"):
