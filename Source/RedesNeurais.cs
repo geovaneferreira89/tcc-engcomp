@@ -334,6 +334,7 @@ namespace AmbienteRPB
                        send_SmS(1, "Treinando", false);
                        load_progress_bar(1, 3);
                        helper.Train(1000);
+                       
                        break;
                     }
                     case ("SomenteUm"):
@@ -375,7 +376,6 @@ namespace AmbienteRPB
 
                 //RODA A RN
                 MLP_output = new ArrayList(network.RunNetwork(inputs));
-
                 if (threshold <= Convert.ToDouble(MLP_output[0]))
                      saidaInt[0] = 1;
                 else
