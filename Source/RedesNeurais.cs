@@ -106,7 +106,7 @@ namespace AmbienteRPB
             if (tipoDeRede == "Kohonen")
             {
                 Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null);
-                send_SmS(1, "Inicializando",false);
+                send_SmS(2, "Inicializando",false);
                 Initialise_KHn();
                 send_SmS(1, "Carregando Arquivo de Vetores", false);
                 LoadData_KHn(file);
@@ -121,7 +121,7 @@ namespace AmbienteRPB
             else if (tipoDeRede == "BackPropagation")
             {
                 //Utilizando o backPropagation 
-                send_SmS(1, "Inicializando", false);
+                send_SmS(2, "Inicializando", false);
                 //Define o tamanho do vetor evento
                 MenorTamanho = VetorEvento.Count();
               
@@ -137,14 +137,14 @@ namespace AmbienteRPB
             {
                 //Utilizando o backPropagation 
                 send_SmS(0, "", false);
-                send_SmS(1, "Inicializando.", false);
+                send_SmS(2, "Inicializando.", false);
                 //busca pelo menor tamanho do dos eventos deste padrao... 
                 vetorDeResultados = new int[Sinal.Count()];
                 for(int i=0; i< PadroesATreinar.Count();i++)
                 {
                     if (!RNImportada)
                     {
-                        send_SmS(1, "Treinando a rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                        send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
                         TreinodaRede(VetorEvento, 1, "TodosEventos", i);
                         send_SmS(1, "Treinada", false);
                     }
@@ -197,7 +197,7 @@ namespace AmbienteRPB
                             saida = new ArrayList();
                             saida.Add(1);
                             List<float> conjTreinado = new List<float>();
-                            for (int cont = 0; cont < 100; cont++)//ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
+                            for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
                             {
                                 entrada = new ArrayList();
                                 string nome_canal = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont);
@@ -258,7 +258,7 @@ namespace AmbienteRPB
                                     //Pegando pela referencia
                                     if (UsarReferencia)
                                     {
-                                        if (sinal.Count() >= MenorTamanho && (referencia) >= (MenorTamanho / 2) && (x_fim - (referencia+x)) >= (MenorTamanho / 2) && cont != 21 && cont != 30 && cont != 48 && cont != 49 && cont != 81 && cont != 88 && cont != 95 && cont != 37 && cont != 80)
+                                        if (sinal.Count() >= MenorTamanho && (referencia -x) >= (MenorTamanho / 2) && (x_fim - (referencia+x)) >= (MenorTamanho / 2))
                                         {
                                             UsadosNoTreino.Add(cont);
                                             for (int i = (int)(referencia - (MenorTamanho / 2)); i < referencia; i++)
@@ -330,6 +330,7 @@ namespace AmbienteRPB
                         ///---------------------------------------
                         ///Treina a Rede Neural
                         ///---------------------------------------
+                       send_SmS(1, "Treinando", false);
                        helper.Train(1000);
                         break;
                     }
@@ -433,6 +434,10 @@ namespace AmbienteRPB
                         TextBox.SelectionStart = TextBox.Text.Length;
                         TextBox.ScrollToCaret();
                     }
+                }
+                if (opcao == 2)
+                {
+                    TextBox.Text = texto;
                 }
                 if (opcao == 0)
                 {
