@@ -55,7 +55,9 @@ Public Class BackPropNeuronStrategy
     '''<summary> Implementation of activation function </summary>
     Public Overridable Function Activation(ByVal value As Single) As Single Implements NeuralFramework.INeuronStrategy.Activation
         Try
-            Return (1 / (1 + Exp(value * -1)))
+            Dim alpha As Integer = 2
+            Return (1 / (1 + Exp(-value * alpha)))
+            ' Return (1 / (1 + Exp(value * -1)))
         Catch e As Exception
             Throw New NeuronStrategyException("Exception in Activation function", e)
         End Try

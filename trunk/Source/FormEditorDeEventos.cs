@@ -300,6 +300,10 @@ namespace AmbienteRPB
                 MessageBox.Show("Marcação errada.\n A posição de inicio está maior que a posição de fim.\n\nNão salvo.", "Reconhecimento Automatizado de Padrões em EEG");
             else
             {
+                string nome_canal = Listas[comboTiposDeEventos.SelectedIndex].GetNomesEvento(lbxEventosPorTipo.SelectedIndex);
+                int X_ = nome_canal.IndexOf("_");
+                nome_canal = nome_canal.Substring(X_ + 1);
+
                 btnSalvar.Enabled = false;
                 Arquivos = new GerenArquivos();
                 Listas[comboTiposDeEventos.SelectedIndex].SetValorInicio(lbxEventosPorTipo.SelectedIndex, ValorInicio);
@@ -318,6 +322,16 @@ namespace AmbienteRPB
                 cbx_Fim.Text = "Fim";
                 cbx_Inicio.Text = "Inicio";
             }
+            /*for (int i = 0; i < Listas[0].GetNumeroEventos(); i++)
+            {
+                ValorInicio = Listas[0].GetValorInicio(i);
+                ValorFim    = Listas[0].GetValorFim(i);
+                ValorFim.X = ValorFim.X - ValorInicio.X;
+                ValorInicio.X = 0;
+                Listas[0].SetValorInicio(i, ValorInicio);
+                Listas[0].SetValorFim(i, ValorFim);
+            }*/
+            MessageBox.Show("Foi", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
         }
         //---------------------------------------------------------------------------
         private void cbx_Inicio_Click(object sender, EventArgs e)
