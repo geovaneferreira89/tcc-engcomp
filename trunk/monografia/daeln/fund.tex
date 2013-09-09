@@ -130,7 +130,7 @@ O segmento PQ expressa tempo decorrido entre a despolarização atrial e o começo 
 
 A identificação do complexo QRS não apresenta grandes dificuldades, uma vez que possui forma de onda característica e amplitude dominante. Esta amplitude mede cerca de 1 mV em um coração normal, mas pode ser muito maior em uma hipertrofia ventricular. O complexo QRS é o maior grupo de ondas no ECG e corresponde à despolarização ventricular.  A primeira deflexão negativa é a onda Q. Seguida de uma deflexão positiva, a onda R, sendo finalizada com uma última deflexão negativa denominada de onda S, completando um complexo QRS \cite{GACEK2011}.
 
-A duração normal do QRS fica entre 0.08 e 0,09 segundos. Durações maiores são geralmente devidas à despolarização assíncrona dos dois ventrículos. Isto ocorre em casos de bloqueio atrioventricular de primeiro grau, síndromes de pré-excitação ou contração ventricular prematura. Nestas situações, um ventrículo é despolarizado mais cedo que o outro, fazendo com que o complexo QRS apresente uma onda R seguida de outra onda R. Estas ondas correspondem à despolarização dos dois ventrículos \cite{GACEK2011}. A figura ~\ref{fig:QRS} mostra as formas de onda características de um ciclo cardíaco.
+A duração normal do QRS fica entre 0,08 e 0,09 segundos. Durações maiores são geralmente devidas à despolarização assíncrona dos dois ventrículos. Isto ocorre em casos de bloqueio atrioventricular de primeiro grau, síndromes de pré-excitação ou contração ventricular prematura. Nestas situações, um ventrículo é despolarizado mais cedo que o outro, fazendo com que o complexo QRS apresente uma onda R seguida de outra onda R. Estas ondas correspondem à despolarização dos dois ventrículos \cite{GACEK2011}. A figura ~\ref{fig:QRS} mostra as formas de onda características de um ciclo cardíaco.
 
 \begin{figure}[!htb]
 	\centering
@@ -219,7 +219,17 @@ Como mencionado anteriormente, os neurônios formam conexões representadas pelos 
 
 \subsection{Estratégia de Treinamento}
 
-Gráfico dos erros.
+A rede multicamadas é treinada com o algoritmo \textit{backpropagation}, em estágios, produzindo funções de mapeamento complexas. Observa-se que o erro médio quadrado diminui com o aumento do número de épocas durante um treinamento. No início apresenta um valor elevado, diminui rapidamente, e então começa a diminuir lentamente até o valor do mínimo local na superfície de erro \cite{HAYKIN2011}. A figura \ref{parada} mostra a relação entre o erro médio quadrado e as épocas de treinamento.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./figs/parada3.png} 
+		\caption[Relação entre o erro médio quadrado e treinamento]{Relação entre o erro médio quadrado e treinamento}
+	\fonte{Modificado de \cite{HAYKIN2011}}
+	\label{parada}
+\end{figure}
+
+É possível, portanto, acabar treinando a rede em excesso, se o treinamento não for interrompido no instante certo. Para identificar este instante, a cada período de treinamento, a rede é testada e o erro médio quadrado monitorado. A este procedimento dá-se o nome de método de treinamento de parada antecipada. O menor erro médio indica qual a melhor época de treinamento, com base nos testes \cite{HAYKIN2011}.
 
 \subsection{Validação Cruzada}
 
