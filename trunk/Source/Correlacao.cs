@@ -161,8 +161,11 @@ namespace AmbienteRPB
                                 prb.Titles[(canal + 1)].Text = "CORRL" + ((canal/4) + 1);
                                 prb.Series["canal" + (canal + 1)].Color = Color.Green;
 
-                                prb.Titles[(canal + 2)].Text = "CORRL" + ((canal/4) + 2);
+                                prb.Titles[(canal + 2)].Text = "RN" + ((canal/4) + 1);
                                 prb.Series["canal" + (canal + 2)].Color = Color.Red;
+
+                                prb.Titles[(canal + 3)].Text = "RN" + ((canal / 4) + 2);
+                                prb.Series["canal" + (canal + 3)].Color = Color.Red;
 
                                 load_progress_bar(1, 3);
                             }
@@ -450,14 +453,14 @@ namespace AmbienteRPB
                         for (long i = 0; i <Arquivos.Samples.Count(); i++)
                         {
                             LineAnnotation annotationRectangle = new LineAnnotation();
-                            annotationRectangle.BackColor = Color.FromArgb(128, Color.GreenYellow);
+                            annotationRectangle.BackColor = Color.FromArgb(128, Color.Green);
                             annotationRectangle.AxisX = prb.ChartAreas[Canal].AxisX;
                             annotationRectangle.AxisY = prb.ChartAreas[Canal].AxisY;
                             annotationRectangle.X = Arquivos.Samples[i];
                             annotationRectangle.Y = prb.ChartAreas[Canal].AxisY.Maximum;
-                            annotationRectangle.LineColor = Color.FromArgb(128, Color.GreenYellow);
+                            annotationRectangle.LineColor = Color.FromArgb(128, Color.Green);
                             annotationRectangle.ToolTip = "1";
-                            annotationRectangle.Height = prb.ChartAreas[Canal].Position.Height;
+                            annotationRectangle.Height = prb.ChartAreas[Canal].Position.Height * 4;
                             annotationRectangle.Width = 0;
                             annotationRectangle.AllowMoving = false;
                             annotationRectangle.AllowAnchorMoving = false;
