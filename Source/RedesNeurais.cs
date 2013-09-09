@@ -197,7 +197,7 @@ namespace AmbienteRPB
                             saida = new ArrayList();
                             saida.Add(1);
                             List<float> conjTreinado = new List<float>();
-                            for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
+                            for (int cont = 0; cont < 100; cont++)//ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
                             {
                                 entrada = new ArrayList();
                                 string nome_canal = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont);
@@ -258,7 +258,7 @@ namespace AmbienteRPB
                                     //Pegando pela referencia
                                     if (UsarReferencia)
                                     {
-                                        if (sinal.Count() >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2))
+                                        if (sinal.Count() >= MenorTamanho && (referencia) >= (MenorTamanho / 2) && (x_fim - (referencia+x)) >= (MenorTamanho / 2) && cont != 21 && cont != 30 && cont != 48 && cont != 49 && cont != 81 && cont != 88 && cont != 95 && cont != 37 && cont != 80)
                                         {
                                             UsadosNoTreino.Add(cont);
                                             for (int i = (int)(referencia - (MenorTamanho / 2)); i < referencia; i++)
@@ -322,13 +322,10 @@ namespace AmbienteRPB
                                     smss = "";
                                 }
                                 fileSalve.Close();
+                                
                                 send_SmS(1, "Total Usados = " + Convert.ToString(UsadosNoTreino.Count), false);
-                                for(int val = 0; val < UsadosNoTreino.Count; val++)
-                                    send_SmS(1, " " + Convert.ToString(UsadosNoTreino[val]), false);
-
-                                send_SmS(1, "\n\nTotal Descatados = " + Convert.ToString(DescartadosDoTreino.Count), false);
-                                for (int val = 0; val < DescartadosDoTreino.Count; val++)
-                                    send_SmS(1, " " + Convert.ToString(DescartadosDoTreino[val]), false);
+                                send_SmS(1, "Total Descatados = " + Convert.ToString(DescartadosDoTreino.Count), false);
+                                
                             }
                         ///---------------------------------------
                         ///Treina a Rede Neural
