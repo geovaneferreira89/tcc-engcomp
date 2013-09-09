@@ -322,8 +322,8 @@ namespace AmbienteRPB
                                     smss = "";
                                 }
                                 fileSalve.Close();
-                                
-                                send_SmS(1, "Total Usados = " + Convert.ToString(UsadosNoTreino.Count), false);
+
+                                send_SmS(1, "Total Usados = " + Convert.ToString(conjTreinado.Count / 50), false);
                                 send_SmS(1, "Total Descatados = " + Convert.ToString(DescartadosDoTreino.Count), false);
                                 
                             }
