@@ -330,8 +330,10 @@ namespace AmbienteRPB
                 ValorInicio.X = 0;
                 Listas[0].SetValorInicio(i, ValorInicio);
                 Listas[0].SetValorFim(i, ValorFim);
-            }*/
-            MessageBox.Show("Foi", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+            }
+               MessageBox.Show("Foi", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+             */
+
         }
         //---------------------------------------------------------------------------
         private void cbx_Inicio_Click(object sender, EventArgs e)

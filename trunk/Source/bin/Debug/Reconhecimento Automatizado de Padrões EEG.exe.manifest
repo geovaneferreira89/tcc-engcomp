@@ -49,13 +49,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="74752">
-      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.5000.27157" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.5000.36445" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>d9AQxQXGTHrqBcyXmCq0x30Q2LHAABBU3n52ZvMveZ0=</dsig:DigestValue>
+        <dsig:DigestValue>FFIzvvQCOLPkCbh6snNyWcDBXWKlH3Iq/00slyWOPwY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,7 +103,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>G5rnSuYeh36FR8ygDF+Vz5RW/ZTtT2z+eN0BlHUtnxE=</dsig:DigestValue>
+        <dsig:DigestValue>fp5p3JeblqSR6jqVCApnA4OwatGK81BJqlK2w9mQUck=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
