@@ -907,8 +907,12 @@ namespace AmbienteRPB
             {
                 int i = Convert.ToInt32(Resultado);
                 i--;
+                Padrao_Fim.X = Padrao_Fim.X - Padrao_Inicio.X;
+                Padrao_Inicio.X = 0;
+                PointF Padrao_Ref = new PointF(Padrao_Fim.X/2, 0);
                 ListaDeEventos[i].SetValorInicio(ListaDeEventos[i].GetNumeroEventos(), Padrao_Inicio);
                 ListaDeEventos[i].SetValorFim(ListaDeEventos[i].GetNumeroEventos(), Padrao_Fim);
+                ListaDeEventos[i].SetValorMeio(ListaDeEventos[i].GetNumeroEventos(), Padrao_Ref);
                 ListaDeEventos[i].SetComentario(ListaDeEventos[i].GetNumeroEventos(), coment);
                 ListaDeEventos[i].SetWidth(ListaDeEventos[i].GetNumeroEventos(), Comprimento);
                 ListaDeEventos[i].SetNomesEvento(ListaDeEventos[i].GetNumeroEventos(), (i + 1) + "-" + ListaDeEventos[i].GetNumeroEventos() + "_" + "Correlacao");
