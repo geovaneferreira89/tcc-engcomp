@@ -1275,6 +1275,11 @@ namespace AmbienteRPB
                 chart1.Series[i].Color = CorDeSerie;
                 chart1.Titles[i].ForeColor = CorDeFundo;
             }
+        }
+
+        private void Evento3_CheckedChanged(object sender, EventArgs e)
+        {
+
         }    
     }
 }

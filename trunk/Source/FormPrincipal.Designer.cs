@@ -873,7 +873,7 @@
             this.Evento1.Name = "Evento1";
             this.Evento1.Size = new System.Drawing.Size(85, 17);
             this.Evento1.TabIndex = 0;
-            this.Evento1.Text = "Espicula";
+            this.Evento1.Text = "QRS";
             this.Evento1.UseVisualStyleBackColor = false;
             this.Evento1.Click += new System.EventHandler(this.Evento_Click);
             // 
@@ -961,8 +961,9 @@
             this.Evento3.Name = "Evento3";
             this.Evento3.Size = new System.Drawing.Size(85, 17);
             this.Evento3.TabIndex = 2;
-            this.Evento3.Text = "Pisc. Palp";
+            this.Evento3.Text = "Padrão 03";
             this.Evento3.UseVisualStyleBackColor = false;
+            this.Evento3.CheckedChanged += new System.EventHandler(this.Evento3_CheckedChanged);
             this.Evento3.Click += new System.EventHandler(this.Evento_Click);
             // 
             // Evento2
@@ -972,7 +973,7 @@
             this.Evento2.Name = "Evento2";
             this.Evento2.Size = new System.Drawing.Size(85, 17);
             this.Evento2.TabIndex = 1;
-            this.Evento2.Text = "Ponta e Ond";
+            this.Evento2.Text = "Padrão 02";
             this.Evento2.UseVisualStyleBackColor = false;
             this.Evento2.Click += new System.EventHandler(this.Evento_Click);
             // 
@@ -1010,7 +1011,7 @@
             this.Name = "FormPrincipal";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Reconhecimento Automatizado de Padrões em EEG";
+            this.Text = "Reconhecimento Automatizado de Padrões em ECG";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.Shown += new System.EventHandler(this.FormPrincipal_Shown);
