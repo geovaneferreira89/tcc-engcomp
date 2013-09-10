@@ -4,3 +4,9 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Framework_Neural\bin\BrainNe
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Framework_Neural\obj\Debug\BrainNet.NeuralFramework.dll
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Framework_Neural\obj\Debug\BrainNet.NeuralFramework.xml
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Framework_Neural\obj\Debug\BrainNet.NeuralFramework.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\Framework_Neural\bin\BrainNet.NeuralFramework.dll
+C:\Users\Ge\Desktop\tcc2013\Source\Framework_Neural\bin\BrainNet.NeuralFramework.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\Framework_Neural\bin\BrainNet.NeuralFramework.xml
+C:\Users\Ge\Desktop\tcc2013\Source\Framework_Neural\obj\Debug\BrainNet.NeuralFramework.dll
+C:\Users\Ge\Desktop\tcc2013\Source\Framework_Neural\obj\Debug\BrainNet.NeuralFramework.xml
+C:\Users\Ge\Desktop\tcc2013\Source\Framework_Neural\obj\Debug\BrainNet.NeuralFramework.pdb
