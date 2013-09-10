@@ -72,12 +72,12 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 \begin{epigrafe}
 "The human heart is not unchanging (nay, changes almost out of recognition in the twinkling of an eye) \dots" 
 \begin{flushright}
-    C.S. Lewis
+    (C.S. Lewis)
 \end{flushright}
 
 "O coração humano não é imutável (ou melhor, muda quase que irreconhecivelmente no piscar de um olho) \dots" 
 \begin{flushright}
-    C.S. Lewis
+    (C.S. Lewis)
 \end{flushright}
 
 \end{epigrafe}
@@ -167,25 +167,85 @@ A figura ~\ref{ATM} mostra a tela de opções da ferramenta Physiobank ATM.
 	\label{ATM}
 \end{figure}
 
-\section{Desenvolvimento do Software}
-\label{sec:DSW}
+\section{Bibliotecas Utilizadas}
+\label{sec:Bib}
+O projeto utilizou as bibliotecas \textit{NeuroLoopGain} e \textit{BrainNet Library} para trabalhar com arquivos em formato EDF e redes neurais artificiais respectivamente.
 
-\subsection{Bibliotecas Utilizadas}
-Bibliotecas gráficas, biblioteca para abrir arquivo EDF.
+\subsection{NeuroLoopGain}
 
-\subsubsection{NeuroLoopGain}
+A biblioteca \textit{NeuroLoopGain} \cite{Neuroloop} foi implementada para análise de arquivos em formato EDF.
+O texto da licença Apache 2.0 \cite{Apache} mostra que seu código é aplicável a distribuição pretendida do software:
+ 
+``[ \dots] concede licença perpétua, mundial, não exclusiva, gratuita, isenta de royalties e irrevogável para reproduzir, preparar Obras Derivadas, de exibição pública, execução pública, sublicenciamento e distribuição do Trabalho e tais Obras Derivadas, na forma de Código Fonte ou Objeto. ''
 
-\subsubsection{BrainNet Library}
+Além disso, o texto da licença também atesta que:
 
-\subsection{Análise de Requisitos}
+``[ \dots] concede licença perpétua, mundial, não-exclusiva, gratuita, isenta de royalties e irrevogável [\dots] de licença de patente para fazer, mandar fazer, usar, oferecer para venda, vender, importar e transferir o trabalho. ''
+
+
+\subsection{BrainNet Library}
+
+A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação XML \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (CPOL) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
+
+\begin{itemize}
+	\item Código fonte e arquivos executáveis podem ser utilizados em aplicações comerciais;
+	\item Código fonte e arquivos executáveis podem ser redistribuídos; 
+	\item Código fonte pode ser modificado para criação de obras derivativas.
+\end{itemize}
+
+A figura \ref{UML1} apresenta o diagrama UML da biblioteca.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/UML1.png} % <- formatos PNG, JPG e PDF
+	\caption[Diagrama UML da Biblioteca BrainNet]{Diagrama UML da Biblioteca BrainNet}
+	\fonte{\cite{NN}}
+	\label{UML1}
+\end{figure}
+
+As principais interfaces da biblioteca estão resumidas na tabela \ref{Interfaces}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Principais interfaces da BrainNet Library]{Principais interfaces da BrainNet Library}
+	\label{Interfaces}
+	\begin{tabular}{ll}
+	\hline
+	\textbf{INetworkFactory} & Interface que define a estrutura da rede     \\ \hline
+	\textbf{INeuron}         & Interface que define o neurônio              \\ \hline
+	\textbf{INeuronStrategy} & Interface que define estratégias do neurônio \\ \hline
+	\textbf{INeuralNetwork}  & Interface que define a rede neural           \\ \hline 
+	\end{tabular}
+	\fonte{\cite{NN}}
+\end{table}
+
+As principais classes da biblioteca estão resumidas na tabela \ref{Classses}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Principais classes da BrainNet Library]{Principais classes da BrainNet Library}
+	\label{Classses}
+	\begin{tabular}{ll}
+	\hline
+	\textbf{BackPropNeuronStrategy}  & Estratégia \textit{backpropagation}\\ \hline
+	\textbf{NetworkHelper}           & Inicializa e treina a rede \\ \hline
+	\textbf{NeuralNetwork}           & Rede neural genérica \\ \hline
+	\textbf{NeuralNetworkCollection} & Coleção do tipo NeuralNetwrok \\ \hline
+	\textbf{Neuron}                  & Implementação de INeuron \\ \hline
+	\textbf{NeuronCollection}        & Coleção do tipo Neuron \\ \hline
+	\textbf{NeuronConnections}       & Registro das conexões entre neurônios e pesos sinápticos \\ \hline
+	\end{tabular}
+	\fonte{\cite{NN}}
+\end{table}
 
 \section{Sistema}
 \label{sec:MOD} 
-Eu consigo antever cinco módulos (Aí explica o que cada um faz):
-Telas do sistema vão aqui.
+Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a partir da seção Visão Geral do Sistema \ref{Vgeral}, e também uma visão detalhada por meio das subseções Módulo de Visualização do Sinal \ref{Mod1}, Módulo de Marcação de Eventos \ref{Mod2}, Módulo de Extração de Características \ref{Mod3}, Módulo de Reconhecimento de Padrões \ref{Mod4} e Módulo de Avaliação de Resultados \ref{Mod5}.
 
 \subsection{Visão Geral do Sistema}
-A figura ~\ref{fluxogramaRaw} mostra o processo utilizando raw ECG.
+\label{Vgeral} 
+
+O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza marcações do complexo QRS feitas pela equipe diretamente no sinal de ECG. As marcações dão origem ao conjunto de dados de treinamento, utilizado durante o processo de treinamento. Uma vez treinada, a rede poderá reconhecer padrões no sinal de ECG em questão (explicado em detalhes na seção \ref{sec:BD}), e exibe os resultados na tela. Um conjunto de marcações pertencente a base de dados é utilizado como parâmetro para a etapa de avaliação dos resultados. A figura ~\ref{fluxogramaRaw} mostra todo este processo.
 
 \begin{figure}[!htb]
 	\centering
@@ -195,8 +255,7 @@ A figura ~\ref{fluxogramaRaw} mostra o processo utilizando raw ECG.
 	\label{fluxogramaRaw}
 \end{figure}
 
-
-A figura ~\ref{FluxoCorrel} mostra o processo utilizando correlação.
+A segunda maneira de funcionamento do sistema é consideravelmente mais complexa. Para geração do conjunto de dados de treinamento, as marcações do complexo QRS passam por uma promedição (média matemática), e no resultado desta operação e no sinal inteiro de ECG é aplicada a função correlação. Neste sinal resultante da correlação são feitas as marcações que dão origem ao conjunto de dados de treinamento. O restante do processo é o mesmo que o processo anterior, a rede neural artificial passa pelo treinamento, capacitando-se para reconhecer padrões. Por fim é realizada a etapa de avaliação, que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original. A figura ~\ref{FluxoCorrel} mostra o processo utilizando correlação e promedição.
 
 \begin{figure}[!htb]
 	\centering
@@ -207,20 +266,29 @@ A figura ~\ref{FluxoCorrel} mostra o processo utilizando correlação.
 \end{figure}
 
 
-\subsection{Módulo de Visualização do sinal}
+\subsection{Módulo de Visualização do Sinal}
+\label{Mod1} 
+
 Explicar por exemplo, a duração do exame, quantos canais, a frequência e amplitude.
 
-\subsection{Módulo de Marcação de eventos}
+
+\subsection{Módulo de Marcação de Eventos}
+\label{Mod2} 
 Que tipo de eventos marcamos, em arquivo de texto, seguindo um padrão definido.
 
+
 \subsection{Módulo de Extração de Características}
+\label{Mod3} 
 Aqui será explicado o modo como foi utilizada a operação da Correlação.
 Correlação de um evento marcado com o sinal inteiro, gerando um novo sinal... com picos onde eventos daquele tipo ocorrem.
 
+
 \subsection{Módulo de Reconhecimento de padrões}
+\label{Mod4} 
 No caso utilizamos a Rede Neural MultiLayer Perceptron.
 
 \subsection{Módulo de Avaliação de Resultados}
+\label{Mod5} 
 Módulo que compara marcações com os resultados obtidos.
 
 \section{Modelagem UML}
@@ -234,9 +302,19 @@ Usamos algum padrão, MVC, etc....
 
 \subsection{Marcação de eventos}
 
+Sinal
+
+Total Usados = 1589
+Total Descartados = 72
+
+Sinal com correlação
+
 \subsection{Promedição do Sinal de ECG}
 
 \subsection{Treinamento da Rede Neural Artificial}
+
+Configuração da rede neural.
+Quantas épocas?
 
 \subsection{Avaliação do Classificador}
 
@@ -250,6 +328,7 @@ Introdução do Capítulo. Um parágrafo basta.
 
 \section{Testes com Sinal de ECG}
 Total de QRS: 2572
+
 \begin{table}[!htb]
 	\centering
 	\caption[Tabela de Resultados Obtidos com Raw ECG]{Tabela de Resultados Obtidos com Raw ECG}
@@ -270,6 +349,7 @@ Total de QRS: 2572
 		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
 		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
 		    \end{tabular}
+		    \fonte{Autoria Própria}
 \end{table}
 
 A curva ROC do processo utilizando \textit{raw} ECG é mostrada na figura ~\ref{ROC1}.
@@ -303,7 +383,8 @@ A curva ROC do processo utilizando \textit{raw} ECG é mostrada na figura ~\ref{R
 		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
 		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
 		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
-		    		    \end{tabular}
+		    \end{tabular}
+		    \fonte{Autoria Própria}
 \end{table}
 
 A curva ROC do processo utilizando correlação é mostrada na figura ~\ref{ROC2}.
