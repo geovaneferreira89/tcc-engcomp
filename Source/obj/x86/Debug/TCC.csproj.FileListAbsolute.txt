@@ -108,3 +108,34 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NLog.xml
 C:\Users\Geovane\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.config
 C:\Users\Geovane\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe
 C:\Users\Geovane\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.config
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\Modelos EDF\Modelo1.EDF
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.application
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\BrainNet.NeuralFramework.dll
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\NLog.dll
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\BrainNet.NeuralFramework.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\BrainNet.NeuralFramework.xml
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\NeuroLoopGainLibrary.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\NLog.pdb
+C:\Users\Ge\Desktop\tcc2013\Source\bin\Debug\NLog.xml
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.FormCarregar_EDF.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.FormEditorDeEventos.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.FormPrincipal.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.FormEditarNomePadrao.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.FormResultados.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\ReconhecimentoAutPadroesEEG.Form_Site.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.InfoEDF.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.Licenca.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\ReconhecimentoAutPadroesEEG.Properties.Resources.resources
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.TrustInfo.xml
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
+C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.application

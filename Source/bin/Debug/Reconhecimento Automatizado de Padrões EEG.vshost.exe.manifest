@@ -49,25 +49,25 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="74752">
-      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.5000.36445" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.5001.22658" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FFIzvvQCOLPkCbh6snNyWcDBXWKlH3Iq/00slyWOPwY=</dsig:DigestValue>
+        <dsig:DigestValue>jkIwGNZaqDOnsQqiW7w+0Iw4FvYc6GK/NwIhHGRciwE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.QualityTools.Testing.Fakes.dll" size="304784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.QualityTools.Testing.Fakes.dll" size="303680">
       <assemblyIdentity name="Microsoft.QualityTools.Testing.Fakes" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2aXAc03Ww56I38MkPRVaGQQJqzGdFm67XBnnfPy0Nkc=</dsig:DigestValue>
+        <dsig:DigestValue>6H6yzKFLKItMpEBQB7pu6UC5FHIhkY9Xz0LD90osQmI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,7 +103,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FERF54LLre/NBBd/0gTRVOhgoZOmZKWuaaR1GO5Iiko=</dsig:DigestValue>
+        <dsig:DigestValue>Oc/CyALIBoAQflEHBSirjdXNFiyvN5iyB5kLf08DBkM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
