@@ -153,11 +153,11 @@ namespace AmbienteRPB
                     {
                         MenorTamanho = network.InputLayer.Count;
                     }
-                    send_SmS(1, "Reconhencendo : " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     Rodar(Sinal,i);
                     float fim = DateTime.Now.Minute;
-                    send_SmS(1, "Terminado :" + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                    send_SmS(1, "Duração :" +Convert.ToString(fim-inicio) + " minutos", true);     
+                    send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    send_SmS(1, "Duração: " +Convert.ToString(fim-inicio) + " min.", true);     
                     //limpa os dados se existirem
                     double[] dados = new double[1];
                     Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
@@ -265,7 +265,29 @@ namespace AmbienteRPB
                                         load_progress_bar(0, 1);
                                     if (UsarReferencia)
                                     {
-                                        if (sinal.Count() > MenorTamanho && ((int)(referencia -x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2))
+                                        if (sinal.Count() > MenorTamanho && ((int)(referencia -x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) /*
+                                                                                                                                                                            && cont != 48 
+                                                                                                                                                                            && cont != 141 
+                                                                                                                                                                            && cont != 95 
+                                                                                                                                                                            && cont != 221 
+                                                                                                                                                                            && cont != 176 
+                                                                                                                                                                            && cont != 21 
+                                                                                                                                                                            && cont != 81 
+                                                                                                                                                                            && cont != 30 
+                                                                                                                                                                            && cont != 49
+                                                                                                                                                                            && cont != 134
+                                                                                                                                                                            && cont != 118
+                                                                                                                                                                            && cont != 88
+                                                                                                                                                                            && cont != 83
+                                                                                                                                                                            && cont != 36
+                                                                                                                                                                            && cont != 280
+                                                                                                                                                                            && cont != 260
+                                                                                                                                                                            && cont != 355
+                                                                                                                                                                            && cont != 368
+                                                                                                                                                                            && cont != 360
+                                                                                                                                                                            && cont != 310
+                                                                                                                                                                            && cont != 358
+                                                                                                                                                                            && cont != 348*/)
                                         {
                                             UsadosNoTreino.Add(cont);
                                             for (int i = (int)(referencia - (MenorTamanho / 2)); i < (int)(referencia + (MenorTamanho / 2)); i++)

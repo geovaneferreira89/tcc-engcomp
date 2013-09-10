@@ -410,7 +410,7 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            if (SelecionaEventoDasLista())
+            if (Promediacao())
             {
                 if (DataRecords_lidos[CanalAtual / 4] <= edfFileOutput.FileInfo.NrDataRecords)
                 {
@@ -452,6 +452,105 @@ namespace AmbienteRPB
                 }
             }
         }
+        //--------------------------------------------------------------------------
+        private bool Promediacao()
+        {
+            FormEditorDeEventos selecionar_evento = new FormEditorDeEventos(ListaDeEventos, edfFileOutput, numeroDeCanais);
+            selecionar_evento.ShowDialog();
+            int eventoMenor = 0;
+            if (selecionar_evento.vector != null)
+            {
+                ValorInicio = selecionar_evento.ValorInicio;
+                ValorFim    = selecionar_evento.ValorFim;
+                ID_PadraoAtual = selecionar_evento.itemLista;
+
+                for (int cont = 0; cont < ListaDeEventos[ID_PadraoAtual].NumeroEventos; cont++)
+                {
+                    int aux = (int)(ListaDeEventos[ID_PadraoAtual].GetValorFim(cont).X - ListaDeEventos[ID_PadraoAtual].GetValorInicio(cont).X);
+                    if (cont == 0 || MenorTamanho > aux){
+                        MenorTamanho = aux;
+                        eventoMenor = cont;
+                    }
+                }
+                vector_evento = new double[MenorTamanho -1];
+                int ValMinAcimaDaRef = (int)(ListaDeEventos[ID_PadraoAtual].GetValorFim(eventoMenor).X - ListaDeEventos[ID_PadraoAtual].GetValorMeio(eventoMenor).X);
+                int ValMinAbaixoDaRef = (int)(ListaDeEventos[ID_PadraoAtual].GetValorMeio(eventoMenor).X - ListaDeEventos[ID_PadraoAtual].GetValorInicio(eventoMenor).X);
+                int TotaisUsados = 0;
+                for(int i =0; i < ListaDeEventos[ID_PadraoAtual].NumeroEventos; i++)
+                {
+                    int tamanho = (int)(ListaDeEventos[ID_PadraoAtual].GetValorFim(i).X - ListaDeEventos[ID_PadraoAtual].GetValorInicio(i).X);
+                    int Ref_Menos_Inicio = (int)(ListaDeEventos[ID_PadraoAtual].GetValorMeio(i).X - ListaDeEventos[ID_PadraoAtual].GetValorInicio(i).X);
+                    int Ref_Menos_Fim = (int)(ListaDeEventos[ID_PadraoAtual].GetValorFim(i).X - ListaDeEventos[ID_PadraoAtual].GetValorMeio(i).X);
+                    if (MenorTamanho <= tamanho && ValMinAbaixoDaRef <= Ref_Menos_Inicio &&  ValMinAcimaDaRef <= Ref_Menos_Fim)
+                    {
+                        int inicio = Ref_Menos_Inicio - ValMinAbaixoDaRef;
+                        int fim = Ref_Menos_Inicio + ValMinAcimaDaRef;
+                        int auxContVet = 0;
+                        List<float> vectorSinal = new List<float>();
+                        vectorSinal = obtemSinal(i, ID_PadraoAtual);
+                        for (int j = inicio; j < fim; j++)
+                        {
+                            //Aqui preciso adquirir o sinal... 
+                               vector_evento[auxContVet] = vector_evento[auxContVet] + vectorSinal[j];
+                               auxContVet++;
+                        }
+                        TotaisUsados++;
+                        //faz a promediação (média)
+                        if(TotaisUsados != 0){
+                                for(int j=0;j<vector_evento.Count();j++){
+                                    vector_evento[j] = vector_evento[j]/TotaisUsados;
+                                }
+                        }
+                    }
+                }// ID_PadraoAtual
+                return true;
+            }
+            else
+                return false;
+        }
+        private List<float> obtemSinal(int PosicaoDaLista, int PadraoDaLista)
+        {
+            List<float> vectorSinal = new List<float>();
+             
+            string nome_canal = ListaDeEventos[PadraoDaLista].GetNomesEvento(PosicaoDaLista);
+            int X_ = nome_canal.IndexOf("_");
+            nome_canal = nome_canal.Substring(X_ + 1);
+            float x = ListaDeEventos[PadraoDaLista].GetValorInicio(PosicaoDaLista).X;
+            float x_fim = ListaDeEventos[PadraoDaLista].GetValorFim(PosicaoDaLista).X;
+            float referencia = ListaDeEventos[PadraoDaLista].GetValorMeio(PosicaoDaLista).X;          
+            int tempo_X = 0;
+            if (nome_canal == "Correlacao")
+            {
+                double[] sinal;
+                GerenArquivos Arquivos = new GerenArquivos();
+                sinal = Arquivos.ImportaPadraoCorrelacao(ListaDeEventos[PadraoDaLista].GetNomesEvento(PosicaoDaLista));
+                for (int j = 0; j < sinal.Count(); j++)
+                    vectorSinal.Add((float)sinal[j]);
+            }
+            else
+            {
+                int BlocosLidos = 0;
+                while (tempo_X <= (int)x_fim)
+                {
+                    edfFileOutput.ReadDataBlock(BlocosLidos);
+                    BlocosLidos++;
+                    for (int j = 0; j < edfFileOutput.FileInfo.NrSignals; j++)
+                    {
+                        for (int i = 0; i < edfFileOutput.SignalInfo[j].NrSamples; i++)
+                        {
+                            if (edfFileOutput.SignalInfo[j].SignalLabel == nome_canal)
+                            {
+                                if (tempo_X >= (int)x && tempo_X < (int)x_fim)
+                                    vectorSinal.Add(edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i]);
+                                tempo_X++;
+                            }
+                        }
+                    }
+                }
+            }
+            return vectorSinal;
+        }
+        //--------------------------------------------------------------------------
         private bool SelecionaEventoDasLista()
         {
             FormEditorDeEventos selecionar_evento = new FormEditorDeEventos(ListaDeEventos, edfFileOutput, numeroDeCanais);
@@ -497,7 +596,8 @@ namespace AmbienteRPB
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            SelecionaEventoDasLista();
+            //Segunda correlação
+            Promediacao();
             double[] Parametros;
             Parametros = new double[3];
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, null);
@@ -700,7 +800,7 @@ namespace AmbienteRPB
                         bool state = true;
                         while (state)
                         {
-                            DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinaod a rn sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                            DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
                             if (debug == DialogResult.Yes)
                             {
                                 SMS_Box.Clear();
@@ -710,7 +810,8 @@ namespace AmbienteRPB
                                 {
                                     PadroesATreinar = new int[1];
                                     PadroesATreinar[0] = ID_PadraoAtual;
-                                    eventos = new string[FormDadosInput.NumPadroes];
+                                    //Só busca um evento
+                                    eventos = new string[1];
                                     eventos[0] = Convert.ToString(ID_PadraoAtual);
                                     TipoBkP = "BackPropagation";
                                     if (FormDadosInput.UsarListaDeTodosEnventos)
