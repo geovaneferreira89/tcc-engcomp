@@ -472,7 +472,7 @@ namespace AmbienteRPB
                         eventoMenor = cont;
                     }
                 }
-                vector_evento = new double[MenorTamanho -1];
+                vector_evento = new double[MenorTamanho];
                 int ValMinAcimaDaRef = (int)(ListaDeEventos[ID_PadraoAtual].GetValorFim(eventoMenor).X - ListaDeEventos[ID_PadraoAtual].GetValorMeio(eventoMenor).X);
                 int ValMinAbaixoDaRef = (int)(ListaDeEventos[ID_PadraoAtual].GetValorMeio(eventoMenor).X - ListaDeEventos[ID_PadraoAtual].GetValorInicio(eventoMenor).X);
                 int TotaisUsados = 0;
