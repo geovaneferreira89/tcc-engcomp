@@ -2,7 +2,7 @@
 \contentsline {sigla}{\hbox to\@tempdima {GPS\hfil }{Global Positioning System}}{19}
 \contentsline {sigla}{\hbox to\@tempdima {DNA\hfil }{Deoxyribonucleic Acid}}{19}
 \contentsline {sigla}{\hbox to\@tempdima {MLP\hfil }{Multilayer Perceptron}}{22}
-\contentsline {sigla}{\hbox to\@tempdima {VP\hfil }{Verdadeiro Positivo}}{25}
+\contentsline {sigla}{\hbox to\@tempdima {VP\hfil }{Verdadeiro Positivo}}{24}
 \contentsline {sigla}{\hbox to\@tempdima {FP\hfil }{Falso positivo}}{25}
 \contentsline {sigla}{\hbox to\@tempdima {FN\hfil }{Falso negativo}}{25}
 \contentsline {sigla}{\hbox to\@tempdima {VN\hfil }{Verdadeiro negativo}}{25}
@@ -14,3 +14,4 @@
 \contentsline {sigla}{\hbox to\@tempdima {EDF\hfil }{European data format}}{31}
 \contentsline {sigla}{\hbox to\@tempdima {ATM\hfil }{Automated Teller Machine}}{32}
 \contentsline {sigla}{\hbox to\@tempdima {WFDB\hfil }{WaveForm DataBase}}{32}
+\contentsline {sigla}{\hbox to\@tempdima {XML\hfil }{eXtensible Markup Language}}{33}
