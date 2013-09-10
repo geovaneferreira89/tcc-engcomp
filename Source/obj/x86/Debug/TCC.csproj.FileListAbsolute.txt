@@ -105,3 +105,6 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NLog.pdb
 Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NLog.xml
+C:\Users\Geovane\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.config
+C:\Users\Geovane\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe
+C:\Users\Geovane\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
