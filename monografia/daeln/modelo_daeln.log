@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  9 SEP 2013 16:59
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  9 SEP 2013 23:20
 entering extended mode
 **modelo_daeln.tex
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.tex
@@ -633,6 +633,9 @@ Package pdftex.def Info: ./figs/ROC.png used on input line 329.
 Users/Ge/Desktop/tcc/monografia/daeln/figs/ROC.png>]
 [29]
 Cap\'{\i }tulo 3.
+
+LaTeX Warning: Reference `sec:DSW' on page 30 undefined on input line 124.
+
 <./figs/105.png, id=123, 464.4853pt x 252.945pt>
 File: ./figs/105.png Graphic file (type png)
  <use ./figs/105.png>
@@ -649,57 +652,68 @@ Package pdftex.def Info: ./figs/ATM.png used on input line 164.
 (pdftex.def)             Requested size: 455.24411pt x 121.99577pt.
 
 [32 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/ATM.png>]
-<./figs/fluxogramaRaw.png, id=135, 677.35411pt x 836.06471pt>
+<./figs/UML1.png, id=135, 620.3175pt x 351.3125pt>
+File: ./figs/UML1.png Graphic file (type png)
+ <use ./figs/UML1.png>
+Package pdftex.def Info: ./figs/UML1.png used on input line 200.
+(pdftex.def)             Requested size: 455.24411pt x 257.82294pt.
+
+[33]
+Overfull \hbox (1.64609pt too wide) in paragraph at lines 248--249
+[]\OT1/ptm/m/n/12 O sis-tema pode ope-rar de duas ma-nei-ras. A pri-meira, e ma
+is sim-ples de-las, uti-liza marca[][]oes
+ []
+
+[34 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/UML1.png>]
+<./figs/fluxogramaRaw.png, id=143, 677.35411pt x 836.06471pt>
 File: ./figs/fluxogramaRaw.png Graphic file (type png)
 
 <use ./figs/fluxogramaRaw.png>
-Package pdftex.def Info: ./figs/fluxogramaRaw.png used on input line 192.
+Package pdftex.def Info: ./figs/fluxogramaRaw.png used on input line 252.
 (pdftex.def)             Requested size: 318.66948pt x 393.33319pt.
-
-<./figs/FluxoCorrel.png, id=136, 955.09764pt x 1126.56177pt>
+ [35 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/fluxogramaRaw.png>]
+<./figs/FluxoCorrel.png, id=148, 955.09764pt x 1126.56177pt>
 File: ./figs/FluxoCorrel.png Graphic file (type png)
 
 <use ./figs/FluxoCorrel.png>
-Package pdftex.def Info: ./figs/FluxoCorrel.png used on input line 203.
+Package pdftex.def Info: ./figs/FluxoCorrel.png used on input line 262.
 (pdftex.def)             Requested size: 409.71692pt x 483.26039pt.
- [33] [34 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/fluxogramaRaw.png>] [3
-5 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/FluxoCorrel.png>] [36
+ [36 <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/FluxoCorrel.png>] [37] [38]
 
-]
 Cap\'{\i }tulo 4.
-<./figs/paca.png, id=150, 200.75pt x 234.8775pt>
+<./figs/paca.png, id=158, 200.75pt x 234.8775pt>
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 279.
+Package pdftex.def Info: ./figs/paca.png used on input line 359.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
- [37
+ [39
 
  <C:/Users/Ge/Desktop/tcc/monografia/daeln/figs/paca.png>]
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 313.
+Package pdftex.def Info: ./figs/paca.png used on input line 394.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
 
-[38] [39]
+[40] [41]
 Cap\'{\i }tulo 5.
-[40
+[42
 
 ]
 Cap\'{\i }tulo 6.
-[41
+[43
 
 ]
-Overfull \hbox (25.256pt too wide) in paragraph at lines 407--429
+Overfull \hbox (25.256pt too wide) in paragraph at lines 488--510
  [][] 
  []
 
-<./figs/horas.png, id=168, 361.35pt x 216.81pt>
+<./figs/horas.png, id=176, 361.35pt x 216.81pt>
 File: ./figs/horas.png Graphic file (type png)
  <use ./figs/horas.png>
-Package pdftex.def Info: ./figs/horas.png used on input line 436.
+Package pdftex.def Info: ./figs/horas.png used on input line 517.
 (pdftex.def)             Requested size: 364.19667pt x 218.51982pt.
 
-(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [42] [43 <C:/Users/G
+(C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.bbl [44] [45 <C:/Users/G
 e/Desktop/tcc/monografia/daeln/figs/horas.png>]
 Underfull \hbox (badness 4353) in paragraph at lines 20--27
 []\OT1/ptm/m/n/12 BROWN, C. D.; DA-VIS, H. T. Re-cei-ver ope-ra-ting cha-rac-te
@@ -718,28 +732,61 @@ Underfull \hbox (badness 3209) in paragraph at lines 20--27
 ISSN 0169-7439. Dis-pon[]vel em:
  []
 
-[44
 
-]) 
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
+[]\OT1/ptm/m/n/12 CONEP. \OT1/ptm/b/n/12 Per-gun-tas e Res-pos-tas Fre-quen-tes
+\OT1/ptm/m/n/12 . 2011. Dis-pon[]vel em:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--76
+[]\OT1/ptm/m/n/12 MADHUDSUDANAN, A. \OT1/ptm/b/n/12 Neu-ral Networks\OT1/ptm/m/
+n/12 . 2006. Dis-pon[]vel em:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--76
+$\OML/ztmcm/m/it/12 <$\OT1/ptm/m/n/12 http://www.amazedsaint.com/2008/01/neural
+-networks-part-iii-nxml-xml-based.html$\OML/ztmcm/m/it/12 >$\OT1/ptm/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--100
+[]\OT1/ptm/m/n/12 NEUROLOOPGAIN. \OT1/ptm/b/n/12 Neu-ro-Lo-op-Gain\OT1/ptm/m/n/
+12 . 2012. Dis-pon[]vel em:
+ []
+
+[46
+
+]
+Underfull \hbox (badness 1226) in paragraph at lines 103--106
+[]\OT1/ptm/m/n/12 PROJECT, C. \OT1/ptm/b/n/12 The Code Pro-ject Open Li-cense (
+CPOL) 1.02\OT1/ptm/m/n/12 . 2008. Dis-pon[]vel em:
+ []
+
+) 
 AED: lastpage setting LastPage
-[45]
+[47]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
 (C:\Users\Ge\Desktop\tcc\monografia\daeln\modelo_daeln.aux)
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4117 strings out of 493921
- 57851 string characters out of 3144885
- 124913 words of memory out of 3000000
- 7217 multiletter control sequences out of 15000+200000
+ 4152 strings out of 493921
+ 58263 string characters out of 3144885
+ 126298 words of memory out of 3000000
+ 7251 multiletter control sequences out of 15000+200000
  39778 words of font info for 92 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,11n,43p,1873b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,11n,43p,1873b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
@@ -749,9 +796,9 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (47 pages, 657408 bytes).
+Output written on modelo_daeln.pdf (49 pages, 687990 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
+ 219 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

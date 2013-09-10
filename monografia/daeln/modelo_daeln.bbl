@@ -27,7 +27,10 @@ Dispon{\'\i}vel em:
 
 \bibitem[CONEP 2011]{CONEP}
 \abntrefinfo{CONEP}{CONEP}{2011}
-{CONEP. \textbf{Perguntas e Respostas Frequentes}. 2011.}
+{CONEP. \textbf{Perguntas e Respostas Frequentes}. 2011.
+Dispon{\'\i}vel em:
+  $<$http://conselho.saude.gov.br/Web\_comissoes/conep/index.html$>$. Acesso
+  em: 25 de agosto de 2013.}
 
 \bibitem[European data format 'plus' (EDF+), an \{EDF\} alike standard format
   for the exchange of physiological data 2003]{Kemp20031755}
@@ -64,6 +67,13 @@ Circulation Electronic Pages:
 {HAYKIN, S. \textbf{Neural Networks: A Comprehensive Foundation}. 2nd. ed.
   [S.l.]: Pearson Prentice Hall, 2011. 823~p.}
 
+\bibitem[Madhudsudanan 2006]{NN}
+\abntrefinfo{Madhudsudanan}{MADHUDSUDANAN}{2006}
+{MADHUDSUDANAN, A. \textbf{Neural Networks}. 2006.
+Dispon{\'\i}vel em:
+  $<$http://www.amazedsaint.com/2008/01/neural-networks-part-iii-nxml-xml-based.html$>$.
+  Acesso em: 09 de setembro de 2013.}
+
 \bibitem[Malmivuo e Plonsey 1995]{MALMIVUO1995}
 \abntrefinfo{Malmivuo e Plonsey}{MALMIVUO; PLONSEY}{1995}
 {MALMIVUO, J.; PLONSEY, R. \textbf{Bioelectromagnetism - Principles and
@@ -82,10 +92,25 @@ ISBN 9788520414125.}
   use with it. In:  \textbf{Computers in Cardiology 1990, Proceedings.} [S.l.:
   s.n.], 1990. p. 185--188.}
 
+\bibitem[NeuroLoopGain 2012]{Neuroloop}
+\abntrefinfo{NeuroLoopGain}{NEUROLOOPGAIN}{2012}
+{NEUROLOOPGAIN. \textbf{NeuroLoopGain}. 2012.
+Dispon{\'\i}vel em: $<$http://code.google.com/p/neuroloopgain/$>$. Acesso em:
+  09 de setembro de 2013.}
+
+\bibitem[Project 2008]{Code}
+\abntrefinfo{Project}{PROJECT}{2008}
+{PROJECT, C. \textbf{The Code Project Open License (CPOL) 1.02}. 2008.
+Dispon{\'\i}vel em: $<$http://www.codeproject.com/info/cpol10.aspx$>$. Acesso
+  em: 09 de setembro de 2013.}
+
 \bibitem[Saraiva 2012]{SARAIVA2012}
 \abntrefinfo{Saraiva}{SARAIVA}{2012}
-{SARAIVA, A.~A. \textbf{Detec\c{c}\~ao do Complexo QRS atrav\'es de Morfologia
-  Matem\'atica Multiescalar}. 2012.}
+{SARAIVA, A.~A.
+\textbf{Detec\c{c}\~ao do Complexo QRS atrav\'es de Morfologia Matem\'atica
+  Multiescalar}.
+Disserta\c{c}\~ao (Mestrado) --- Programa de P\'os~--Gradua\c{c}\~ao em
+  Engenharia Biom\'edica ~-- UTFPR, 2012.}
 
 \bibitem[Smith 1997]{smith}
 \abntrefinfo{Smith}{SMITH}{1997}
@@ -100,6 +125,13 @@ ISBN 0-9660176-3-3.}
   Eventos Epileptiformes}.
 Tese (Doutorado) --- Programa de P\'os~--Gradua\c{c}\~ao em Engenharia
   El\'etrica ~-- UFSC, 2009.}
+
+\bibitem[{The Apache Software Foundation} 2004]{Apache}
+\abntrefinfo{{The Apache Software Foundation}}{{The Apache Software
+  Foundation}}{2004}
+{{The Apache Software Foundation}. \textbf{Apache License, Version 2.0}. 2004.
+Dispon{\'\i}vel em: $<$http://www.apache.org/licenses/LICENSE-2.0$>$. Acesso
+  em: 09 de setembro de 2013.}
 
 \bibitem[Zhang e Lian 2007]{Zhang2007}
 \abntrefinfo{Zhang e Lian}{ZHANG; LIAN}{2007}
