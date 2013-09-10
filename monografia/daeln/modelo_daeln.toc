@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {2.7.2}Estrat\'egia de Treinamento}{23}
 \contentsline {subsection}{\numberline {2.7.3}Valida\c c\~ao Cruzada}{24}
 \contentsline {section}{\numberline {2.8}Avalia\c c\~ao de Sistemas Classificadores}{24}
-\contentsline {subsection}{\numberline {2.8.1}Tabela de Conting\^encia}{25}
+\contentsline {subsection}{\numberline {2.8.1}Tabela de Conting\^encia}{24}
 \contentsline {subsection}{\numberline {2.8.2}Sensibilidade e Especificidade}{26}
 \contentsline {subsection}{\numberline {2.8.3}Curva ROC}{27}
 \contentsline {subsection}{\numberline {2.8.4}Outros \'Indices Estat\IeC {\'\i }sticos}{28}
@@ -27,7 +27,7 @@
 \contentsline {subsection}{\numberline {3.3.1}NeuroLoopGain}{32}
 \contentsline {subsection}{\numberline {3.3.2}BrainNet Library}{33}
 \contentsline {section}{\numberline {3.4}Sistema}{34}
-\contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{35}
+\contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{34}
 \contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{37}
 \contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{37}
 \contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{37}

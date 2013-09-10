@@ -155,9 +155,9 @@ A existência de diferentes fabricantes de equipamentos para aquisição de sinais 
 
 Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado. Este formato de arquivo, no entanto, não suporta anotações de eventos das gravações \cite{Kemp20031755}.
 
-Physiobank \sigla{ATM}{Automated Teller Machine} \textit{(Automated Teller Machine)} é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo PhysioBank por meio do navegador de internet. Esta toolbox software oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do Physionet (\sigla{WFDB}{WaveForm DataBase} ~-- WaveForm DataBase) para texto, CSV, EDF, ou .mat files (para utilização em Matlab ou Octave), entre outras funcionalidades \cite{PhysioNet}.
+\textit{Physiobank} \sigla{ATM}{Automated Teller Machine} \textit{(Automated Teller Machine)} é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo \textit{Physiobank} por meio do navegador de \textit{internet}. Esta textit{toolbox} oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do \textit{Physionet} (\sigla{WFDB}{WaveForm DataBase} ~-- \textit{WaveForm DataBase}) para texto, CSV, EDF, ou .mat files (para utilização nos programas \textit{Matlab} ou \textit{Octave}), entre outras funcionalidades \cite{PhysioNet}.
 
-A figura ~\ref{ATM} mostra a tela de opções da ferramenta Physiobank ATM.
+A figura ~\ref{ATM} mostra a tela de opções da ferramenta \textit{Physiobank} ATM.
 
 \begin{figure}[!htb]
 	\centering
@@ -174,18 +174,13 @@ O projeto utilizou as bibliotecas \textit{NeuroLoopGain} e \textit{BrainNet Libr
 \subsection{NeuroLoopGain}
 
 A biblioteca \textit{NeuroLoopGain} \cite{Neuroloop} foi implementada para análise de arquivos em formato EDF.
-O texto da licença Apache 2.0 \cite{Apache} mostra que seu código é aplicável a distribuição pretendida do software:
- 
-``[ \dots] concede licença perpétua, mundial, não exclusiva, gratuita, isenta de royalties e irrevogável para reproduzir, preparar Obras Derivadas, de exibição pública, execução pública, sublicenciamento e distribuição do Trabalho e tais Obras Derivadas, na forma de Código Fonte ou Objeto. ''
+O texto da licença Apache 2.0 \cite{Apache} mostra que seu código é aplicável a distribuição pretendida do software: ``[ \dots] concede licença perpétua, mundial, não exclusiva, gratuita, isenta de royalties e irrevogável para reproduzir, preparar Obras Derivadas, de exibição pública, execução pública, sublicenciamento e distribuição do Trabalho e tais Obras Derivadas, na forma de Código Fonte ou Objeto. ''
 
-Além disso, o texto da licença também atesta que:
-
-``[ \dots] concede licença perpétua, mundial, não-exclusiva, gratuita, isenta de royalties e irrevogável [\dots] de licença de patente para fazer, mandar fazer, usar, oferecer para venda, vender, importar e transferir o trabalho. ''
-
+Além disso, o texto da licença também atesta que: ``[ \dots] concede licença perpétua, mundial, não-exclusiva, gratuita, isenta de royalties e irrevogável [\dots] de licença de patente para fazer, mandar fazer, usar, oferecer para venda, vender, importar e transferir o trabalho. ''
 
 \subsection{BrainNet Library}
 
-A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação XML \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (CPOL) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
+A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação \sigla{XML}{eXtensible Markup Language} \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (CPOL) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
 
 \begin{itemize}
 	\item Código fonte e arquivos executáveis podem ser utilizados em aplicações comerciais;
@@ -203,7 +198,7 @@ A figura \ref{UML1} apresenta o diagrama UML da biblioteca.
 	\label{UML1}
 \end{figure}
 
-As principais interfaces da biblioteca estão resumidas na tabela \ref{Interfaces}.
+As principais interfaces disponibilizadas pela biblioteca \textit{BrainNet Library} estão resumidas na tabela \ref{Interfaces}.
 
 \begin{table}[!htb]
 	\centering
@@ -219,7 +214,7 @@ As principais interfaces da biblioteca estão resumidas na tabela \ref{Interfaces
 	\fonte{\cite{NN}}
 \end{table}
 
-As principais classes da biblioteca estão resumidas na tabela \ref{Classses}.
+As principais classes disponibilizadas pela biblioteca \textit{BrainNet Library} estão resumidas na tabela \ref{Classses}.
 
 \begin{table}[!htb]
 	\centering
@@ -240,27 +235,31 @@ As principais classes da biblioteca estão resumidas na tabela \ref{Classses}.
 
 \section{Sistema}
 \label{sec:MOD} 
-Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a partir da seção Visão Geral do Sistema \ref{Vgeral}, e também uma visão detalhada por meio das subseções Módulo de Visualização do Sinal \ref{Mod1}, Módulo de Marcação de Eventos \ref{Mod2}, Módulo de Extração de Características \ref{Mod3}, Módulo de Reconhecimento de Padrões \ref{Mod4} e Módulo de Avaliação de Resultados \ref{Mod5}.
+Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a partir da subseção Visão Geral do Sistema \ref{Vgeral}, e também uma visão detalhada por meio das subseções: Módulo de Visualização do Sinal \ref{Mod1}, Módulo de Marcação de Eventos \ref{Mod2}, Módulo de Extração de Características \ref{Mod3}, Módulo de Reconhecimento de Padrões \ref{Mod4} e Módulo de Avaliação de Resultados \ref{Mod5}.
 
 \subsection{Visão Geral do Sistema}
 \label{Vgeral} 
 
-O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza marcações do complexo QRS feitas pela equipe diretamente no sinal de ECG. As marcações dão origem ao conjunto de dados de treinamento, utilizado durante o processo de treinamento. Uma vez treinada, a rede poderá reconhecer padrões no sinal de ECG em questão (explicado em detalhes na seção \ref{sec:BD}), e exibe os resultados na tela. Um conjunto de marcações pertencente a base de dados é utilizado como parâmetro para a etapa de avaliação dos resultados. A figura ~\ref{fluxogramaRaw} mostra todo este processo.
+O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza marcações do complexo QRS feitas diretamente no sinal de ECG. A figura ~\ref{fluxogramaRaw} mostra todo este processo.
+
+Primeiramente, o arquivo com o sinal de ECG é carregado na tela (Carregar sinal na tela), em seguida são feitas pela equipe marcações do complexo QRS diretamente no sinal (Marcar eventos). As marcações dão origem ao conjunto de dados de treinamento (Padrões de Treinamento), utilizado durante a próxima etapa (Treinamento da Rede Neural Artificial). Uma vez treinada, a rede poderá reconhecer padrões no sinal de ECG em questão (explicado em detalhes na seção \ref{sec:BD}), e exibe os resultados na tela (Reconhecimento de Padrões). Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./figs/fluxogramaRaw.png} % <- formatos PNG, JPG e PDF
-	\caption[Fluxograma]{Fluxograma}
+	\includegraphics[width=0.6\textwidth]{./figs/fluxogramaRaw.png} % <- formatos PNG, JPG e PDF
+	\caption[Fluxograma simples]{Fluxograma simples}
 	\fonte{Autoria própria}
 	\label{fluxogramaRaw}
 \end{figure}
 
-A segunda maneira de funcionamento do sistema é consideravelmente mais complexa. Para geração do conjunto de dados de treinamento, as marcações do complexo QRS passam por uma promedição (média matemática), e no resultado desta operação e no sinal inteiro de ECG é aplicada a função correlação. Neste sinal resultante da correlação são feitas as marcações que dão origem ao conjunto de dados de treinamento. O restante do processo é o mesmo que o processo anterior, a rede neural artificial passa pelo treinamento, capacitando-se para reconhecer padrões. Por fim é realizada a etapa de avaliação, que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original. A figura ~\ref{FluxoCorrel} mostra o processo utilizando correlação e promedição.
+A segunda maneira de funcionamento do sistema é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. A diferença em relação ao método anterior ocorre no processo de geração do conjunto de dados de treinamento.
+
+Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado na subseção \ref{Mod3}. No sinal resultante deste procedimento são feitas novas marcações (Segunda marcação de eventos), que dão origem ao conjunto de dados de treinamento (Padrões de Treinamento). O restante do método é idêntico ao anterior, a rede neural artificial passa pelo treinamento (Treinamento da Rede Neural Artificial), capacitando-se para reconhecer padrões (Reconhecimento de Padrões). Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
-	\caption[Fluxograma da correlação]{Fluxograma da Correlação}
+	\includegraphics[width=0.7\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
+	\caption[Fluxograma utilizando extração de características]{Fluxograma utilizando extração de características}
 	\fonte{Autoria própria}
 	\label{FluxoCorrel}
 \end{figure}
@@ -406,7 +405,7 @@ Compara a outros trabalhos
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela Comparativa de métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de Zhang e Lian (2009) acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
+	\caption[Tabela Comparativa de métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de \cite{Zhang2007} acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
 	\label{tab:correlacao}
 	\begin{tabular}{llllll}
 		\hline 
@@ -485,7 +484,7 @@ A tabela ~\ref{tab:gestao} mostra de modo resumido as tarefas envolvidas no proj
 	\centering
 	\caption[Tabela com a lista de tarefas e horas de trabalho]{Tabela com a lista de tarefas e horas de trabalho}
 	\label{tab:gestao}
-	\begin{tabular}{ccc}
+	\begin{tabular}{lcc}
 		\hline 
 		Tarefas & Horas esperadas & Horas dedicadas \\
 		\hline
@@ -494,17 +493,17 @@ A tabela ~\ref{tab:gestao} mostra de modo resumido as tarefas envolvidas no proj
 		Pesquisa da base de dados & 0 & 30 \\
 		Estudo da base de dados & 0 & 10 \\
 		Ajustes na base de dados & 0 & 10 \\
-		Estudo de tecnologias & & \\
-		Desenvolvimento do módulo de visualização do sinal & & \\
-		Desenvolvimento do módulo de marcação de eventos & & \\
-		Desenvolvimento do módulo de extração de características & & \\
-		Desenvolvimento do módulo de reconhecimento de padrões & & \\
-		Desenvolvimento do módulo de avaliação & & \\
+		Estudo de tecnologias & 20 & 30 \\
+		Módulo de visualização do sinal & 40 & 45 \\
+		Módulo de marcação de eventos & 50 & 100\\
+		Módulo de extração de características & 50 & 20 \\
+		Módulo de reconhecimento de padrões & 50 & 100\\
+		Módulo de avaliação & 50 & 40 \\
 		Testes & 30 & 50 \\
 		Elaboração do relatório & 50 & 70 \\
 		Reuniões & 30 & 60 \\
 		\hline 
-		Total & 0 & 0 \\
+		Total & 460 & 655 \\
 		\hline 
 	\end{tabular}
 	\fonte{Autoria Própria}
