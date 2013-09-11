@@ -1,17 +1,19 @@
-\contentsline {sigla}{\hbox to\@tempdima {ECG\hfil }{Eletrocardiografia}}{12}
-\contentsline {sigla}{\hbox to\@tempdima {GPS\hfil }{Global Positioning System}}{19}
-\contentsline {sigla}{\hbox to\@tempdima {DNA\hfil }{Deoxyribonucleic Acid}}{19}
-\contentsline {sigla}{\hbox to\@tempdima {MLP\hfil }{Multilayer Perceptron}}{22}
+\contentsline {sigla}{\hbox to\@tempdima {ECG\hfil }{Eletrocardiografia}}{}
+\contentsline {sigla}{\hbox to\@tempdima {GPS\hfil }{\textit {Global Positioning System}}}{19}
+\contentsline {sigla}{\hbox to\@tempdima {DNA\hfil }{\textit {Deoxyribonucleic Acid}}}{19}
+\contentsline {sigla}{\hbox to\@tempdima {MLP\hfil }{\textit {Multilayer Perceptron}}}{22}
 \contentsline {sigla}{\hbox to\@tempdima {VP\hfil }{Verdadeiro Positivo}}{24}
 \contentsline {sigla}{\hbox to\@tempdima {FP\hfil }{Falso positivo}}{25}
 \contentsline {sigla}{\hbox to\@tempdima {FN\hfil }{Falso negativo}}{25}
 \contentsline {sigla}{\hbox to\@tempdima {VN\hfil }{Verdadeiro negativo}}{25}
-\contentsline {sigla}{\hbox to\@tempdima {DER\hfil }{Detection Error Rate}}{25}
-\contentsline {sigla}{\hbox to\@tempdima {ROC\hfil }{Receiving Operating Characteristic}}{27}
-\contentsline {sigla}{\hbox to\@tempdima {UML\hfil }{Unified Modeling Language}}{30}
+\contentsline {sigla}{\hbox to\@tempdima {ROC\hfil }{\textit {Receiving Operating Characteristic}}}{27}
+\contentsline {sigla}{\hbox to\@tempdima {DER\hfil }{\textit {Detection Error Rate}}}{28}
+\contentsline {sigla}{\hbox to\@tempdima {UML\hfil }{\textit {Unified Modeling Language}}}{30}
 \contentsline {sigla}{\hbox to\@tempdima {CONEP\hfil }{Comiss\~ao Nacional de \'Etica em Pesquisa}}{30}
-\contentsline {sigla}{\hbox to\@tempdima {MIT\hfil }{Massachusetts Institute of Technology}}{30}
-\contentsline {sigla}{\hbox to\@tempdima {EDF\hfil }{European data format}}{31}
-\contentsline {sigla}{\hbox to\@tempdima {ATM\hfil }{Automated Teller Machine}}{32}
-\contentsline {sigla}{\hbox to\@tempdima {WFDB\hfil }{WaveForm DataBase}}{32}
-\contentsline {sigla}{\hbox to\@tempdima {XML\hfil }{eXtensible Markup Language}}{33}
+\contentsline {sigla}{\hbox to\@tempdima {MIT\hfil }{\textit {Massachusetts Institute of Technology}}}{30}
+\contentsline {sigla}{\hbox to\@tempdima {EDF\hfil }{\textit {European data format}}}{31}
+\contentsline {sigla}{\hbox to\@tempdima {WFDB\hfil }{\textit {WaveForm DataBase}}}{32}
+\contentsline {sigla}{\hbox to\@tempdima {ATM\hfil }{\textit {Automated Teller Machine}}}{32}
+\contentsline {sigla}{\hbox to\@tempdima {XML\hfil }{\textit {eXtensible Markup Language}}}{33}
+\contentsline {sigla}{\hbox to\@tempdima {CPOL\hfil }{\textit {The Code Project Open License}}}{33}
+\contentsline {sigla}{\hbox to\@tempdima {ECG\hfil }{Eletroencefalografia}}{44}

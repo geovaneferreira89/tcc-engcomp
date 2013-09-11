@@ -5,10 +5,10 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{1.52 }
 
-\bibitem[Anghinah et al.]{ANGHINAH2006}
-\abntrefinfo{Anghinah et al.}{ANGHINAH et al.}{}
+\bibitem[Anghinah et al. 2006]{ANGHINAH2006}
+\abntrefinfo{Anghinah et al.}{ANGHINAH et al.}{2006}
 {ANGHINAH, R. et al. {Artefatos bio\'ogicos no EEG quantitativo}.
-\textbf{{Arquivos de Neuro~--Psiquiatria}}.}
+\textbf{{Arquivos de Neuro~--Psiquiatria}}, 2006.}
 
 \bibitem[Bloch 2004]{bloch2004l}
 \abntrefinfo{Bloch}{BLOCH}{2004}
@@ -31,13 +31,6 @@ Dispon{\'\i}vel em:
 Dispon{\'\i}vel em:
   $<$http://conselho.saude.gov.br/Web\_comissoes/conep/index.html$>$. Acesso
   em: 25 de agosto de 2013.}
-
-\bibitem[European data format 'plus' (EDF+), an \{EDF\} alike standard format
-  for the exchange of physiological data 2003]{Kemp20031755}
-\abntrefinfo{European\ldots}{EUROPEAN\ldots}{2003}
-{EUROPEAN data format 'plus' (EDF+), an \{EDF\} alike standard format for the
-  exchange of physiological data.
-\textbf{Clinical Neurophysiology}, v.~114, n.~9, p. 1755 -- 1761, 2003.}
 
 \bibitem[Fawcett 2006]{FAWCETT2006}
 \abntrefinfo{Fawcett}{FAWCETT}{2006}
@@ -67,6 +60,12 @@ Circulation Electronic Pages:
 {HAYKIN, S. \textbf{Neural Networks: A Comprehensive Foundation}. 2nd. ed.
   [S.l.]: Pearson Prentice Hall, 2011. 823~p.}
 
+\bibitem[Kemp e Olivan 2003]{Kemp20031755}
+\abntrefinfo{Kemp e Olivan}{KEMP; OLIVAN}{2003}
+{KEMP, B.; OLIVAN, J. European data format 'plus' (edf+), an \{EDF\} alike
+  standard format for the exchange of physiological data.
+\textbf{Clinical Neurophysiology}, v.~114, n.~9, p. 1755 -- 1761, 2003.}
+
 \bibitem[Madhudsudanan 2006]{NN}
 \abntrefinfo{Madhudsudanan}{MADHUDSUDANAN}{2006}
 {MADHUDSUDANAN, A. \textbf{Neural Networks}. 2006.
@@ -80,11 +79,10 @@ Dispon{\'\i}vel em:
   Applications of Bioelectric and Biomagnetic Fields}. New York: Oxford
   University Press, 1995. Dispon{\'\i}vel em: $<$http://www.bem.fi/book/$>$.}
 
-\bibitem[MASSAD, ORTEGA e SILVEIRA]{massad2004}
-\abntrefinfo{MASSAD, ORTEGA e SILVEIRA}{MASSAD; ORTEGA; SILVEIRA}{}
+\bibitem[Massad, Ortega e Silveira 2004]{massad2004}
+\abntrefinfo{Massad, Ortega e Silveira}{MASSAD; ORTEGA; SILVEIRA}{2004}
 {MASSAD, E.; ORTEGA, N.; SILVEIRA, P. \textbf{M{\'e}todos quantitativos em
-  medicina}. [S.l.: s.n.].
-ISBN 9788520414125.}
+  medicina}. [S.l.: s.n.], 2004.}
 
 \bibitem[Moody e Mark 1990]{MOODY1990}
 \abntrefinfo{Moody e Mark}{MOODY; MARK}{1990}
