@@ -254,11 +254,11 @@ Primeiramente, o arquivo com o sinal de ECG é carregado na tela (Carregar sinal 
 
 A segunda maneira de funcionamento do sistema é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. A diferença em relação ao método anterior ocorre no processo de geração do conjunto de dados de treinamento.
 
-Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado na subseção \ref{Mod3}. No sinal resultante deste procedimento são feitas novas marcações (Segunda marcação de eventos), que dão origem ao conjunto de dados de treinamento (Padrões de Treinamento). O restante do método é idêntico ao anterior, a rede neural artificial passa pelo treinamento (Treinamento da Rede Neural Artificial), capacitando-se para reconhecer padrões (Reconhecimento de Padrões). Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
+Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado na subseção \ref{Mod3}. No sinal resultante são feitas novas marcações (Segunda marcação de eventos), que dão origem ao conjunto de dados de treinamento (Padrões de Treinamento). O restante do método é idêntico ao anterior, a rede neural artificial passa pelo treinamento (Treinamento da Rede Neural Artificial), capacitando-se para reconhecer padrões (Reconhecimento de Padrões). Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.6\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
 	\caption[Fluxograma com extração de características]{Fluxograma com extração de características}
 	\fonte{Autoria própria}
 	\label{FluxoCorrel}
@@ -268,7 +268,27 @@ Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são 
 \subsection{Módulo de Visualização do Sinal}
 \label{Mod1} 
 
-Explicar por exemplo, a duração do exame, quantos canais, a frequência e amplitude.
+
+A figura \ref{tela1} .
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/tela1.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela inicial do sistema]{Tela inicial do sistema}
+	\fonte{Autoria Própria}
+	\label{tela1}
+\end{figure}
+
+
+A figura \ref{tela2} .
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/tela2.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de visualização do sinal no sistema]{Tela de visualização do sinal no sistema}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
 
 
 \subsection{Módulo de Marcação de Eventos}
@@ -326,7 +346,7 @@ Quantas épocas?
 \chapter{Resultados Obtidos} % 3 a 4 páginas
 \label{sec:Resultados}
 
-Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, a rede neural artificial pode ser treinada com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de ECG, e marcações feitas no sinal resultante do processo de extração de características (detalhado na seção ). OS resultados obtidos utilizando cada uma destas bases de marcações são descritos nas seções Testes com Sinal de ECG \ref{sec:Testes1} e Testes com ECG com correlação \ref{sec:Testes2}, respectivamente. Este capítulo termina com a seção de Comparativo dos Resultados \ref{sec:Comparativo} e a seção de Considerações \ref{sec:TestesConsider}.
+Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, a rede neural artificial pode ser treinada com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características (detalhado na seção ). OS resultados obtidos utilizando cada uma destas bases de marcações são descritos nas seções Testes com Sinal de ECG \ref{sec:Testes1} e Testes com ECG com correlação \ref{sec:Testes2}, respectivamente. Este capítulo termina com a seção de Comparativo dos Resultados \ref{sec:Comparativo} e a seção de Considerações \ref{sec:TestesConsider}.
 
 \section{Testes com Sinal de ECG}
 \label{sec:Testes1}
