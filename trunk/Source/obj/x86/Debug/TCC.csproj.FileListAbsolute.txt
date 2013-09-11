@@ -139,3 +139,4 @@ C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\TCC.csproj.GenerateResource.Cac
 C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.TrustInfo.xml
 C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
 C:\Users\Ge\Desktop\tcc2013\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.application
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\pt-BR\Microsoft.QualityTools.Testing.Fakes.resources.dll
