@@ -410,6 +410,15 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
+            if (visivel == false)
+            {
+                gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                visivel = true;
+            }
+            SMS_Box.Visible = true;
+            btn_Aumentar.Visible = true;
+            btn_Close.Visible = true;
+         
             if (Promediacao())
             {
                 if (DataRecords_lidos[CanalAtual / 4] <= edfFileOutput.FileInfo.NrDataRecords)
@@ -453,6 +462,7 @@ namespace AmbienteRPB
             }
         }
         //--------------------------------------------------------------------------
+        //Promediacão a ser utilizada na correlação
         private bool Promediacao()
         {
             FormEditorDeEventos selecionar_evento = new FormEditorDeEventos(ListaDeEventos, edfFileOutput, numeroDeCanais);
@@ -503,6 +513,8 @@ namespace AmbienteRPB
                         }
                     }
                 }// ID_PadraoAtual
+                SMS_Box.Clear();
+                SMS_Box.Text = "Realizada Promediação dos Eventos\nIniciando a correlação\n";
                 return true;
             }
             else
