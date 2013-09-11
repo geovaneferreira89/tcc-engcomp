@@ -85,14 +85,14 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 %resumo
 \begin{resumo}
 
-De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de ECG (Eletrocardiografia), muitas vezes corrompido por ruídos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de ECG. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização do sinal de ECG, marcação de eventos, extração de características, reconhecimento de padrões e avaliação de resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
+De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes corrompido por ruídos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de \sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização do sinal de ECG, marcação de eventos, extração de características, reconhecimento de padrões e avaliação de resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
 
 \end{resumo}
 
 %abstract
 \begin{abstract}
 
-According to \cite{Zhang2007}, electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the ECG signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools are needed that might improve the QRS-complex detection. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module will compare the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
+According to \cite{Zhang2007}, electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the electrocardiographic (ECG) signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools that improve the QRS-complex detection are required. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module will compare the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
 
 \end{abstract}
 
@@ -121,14 +121,14 @@ According to \cite{Zhang2007}, electrocardiographic recordings are considered  t
 \chapter{Materiais e Métodos} %ou Materiais e Métodos 
 \label{sec:Materiais}
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Desenvolvimento do \textit{Software} \ref{sec:DSW}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{Unified Modeling Language} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Bibliotecas Utilizadas \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
 
 De acordo com informações disponibilizadas pela Comissão Nacional de Ética em Pesquisa ~\cite{CONEP}, ``as pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP~--\sigla{CONEP}{Comissão Nacional de Ética em Pesquisa}.'' Por esta razão, a equipe optou por utilizar a base de dados pública MIT-BIH Arrhythmia Database. 
 
-A MIT-BIH Arrhythmia Database foi desenvolvida pelo Beth Israel Hospital de Boston em parceria com o \sigla{MIT}{Massachusetts Institute of Technology} durante uma pesquisa sobre arritmia e temas correlatos. Tem sido utilizada como um conjunto de dados padrão para testes e avaliação para sistemas detectores de arritmias e pesquisa em dinâmica cardíaca ~\cite{MOODY1990}.
+A MIT-BIH Arrhythmia Database foi desenvolvida pelo Beth Israel Hospital de Boston em parceria com o \sigla{MIT}{\textit{Massachusetts Institute of Technology}} durante uma pesquisa sobre arritmia e temas correlatos. Tem sido utilizada como um conjunto de dados padrão para testes e avaliação para sistemas detectores de arritmias e pesquisa em dinâmica cardíaca ~\cite{MOODY1990}.
 
 Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São apresentados dois sinais, \textit {modified limb lead II} (MLII) e \textit{lead} V1 (podendo ser ocasionalmente V2, V5 ou V4), ambos obtidos com os eletrodos colocados no peito. Esta é a configuração padrão utilizada pelo BIH Arrhythmia Laboratory. Pode-se observar maior proeminência dos complexos QRS no sinal superior ~\cite{PhysioNet}. A figura ~\ref{105} mostra parte da gravação do exame 105.
 
@@ -151,18 +151,18 @@ O arquivo de texto contendo as anotações do sinal de ECG 105, apresenta 2691 eve
 \section{European Data Format}
 \label{sec:EDF}
 
-A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \sigla{EDF}{European data format}, um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O EDF é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientifica \cite{Kemp20031755}.
+A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \textit{European data format} (EDF), um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O \sigla{EDF}{\textit{European data format}} é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientifica \cite{Kemp20031755}.
 
 Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado. Este formato de arquivo, no entanto, não suporta anotações de eventos das gravações \cite{Kemp20031755}.
 
-\textit{Physiobank} \sigla{ATM}{Automated Teller Machine} \textit{(Automated Teller Machine)} é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo \textit{Physiobank} por meio do navegador de \textit{internet}. Esta textit{toolbox} oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do \textit{Physionet} (\sigla{WFDB}{WaveForm DataBase} ~-- \textit{WaveForm DataBase}) para texto, CSV, EDF, ou .mat files (para utilização nos programas \textit{Matlab} ou \textit{Octave}), entre outras funcionalidades \cite{PhysioNet}.
+\textit{Physiobank} \textit{Automated Teller Machine} (ATM) é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo \textit{Physiobank} por meio do navegador de \textit{internet}. Esta \textit{toolbox} oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do \textit{Physionet} (\sigla{WFDB}{\textit{WaveForm DataBase}} ~-- \textit{WaveForm DataBase}) para texto, CSV, EDF, ou .mat files (para utilização nos programas \textit{Matlab} ou \textit{Octave}), entre outras funcionalidades \cite{PhysioNet}.
 
-A figura ~\ref{ATM} mostra a tela de opções da ferramenta \textit{Physiobank} ATM.
+A figura ~\ref{ATM} mostra a tela de opções da ferramenta \textit{Physiobank} \sigla{ATM}{\textit{Automated Teller Machine}}.
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=1\textwidth]{./figs/ATM.png} % <- formatos PNG, JPG e PDF
-	\caption[Physiobank ATM]{Tela de opções do Physiobank ATM}
+	\caption[Tela de opções do Physiobank ATM]{Tela de opções do Physiobank ATM}
 	\fonte{Autoria própria}
 	\label{ATM}
 \end{figure}
@@ -180,7 +180,7 @@ Além disso, o texto da licença também atesta que: ``[ \dots] concede licença per
 
 \subsection{BrainNet Library}
 
-A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação \sigla{XML}{eXtensible Markup Language} \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (CPOL) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
+A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação \sigla{XML}{\textit{eXtensible Markup Language}} \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (\sigla{CPOL}{\textit{The Code Project Open License}}) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
 
 \begin{itemize}
 	\item Código fonte e arquivos executáveis podem ser utilizados em aplicações comerciais;
@@ -240,7 +240,7 @@ Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a par
 \subsection{Visão Geral do Sistema}
 \label{Vgeral} 
 
-O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza marcações do complexo QRS feitas diretamente no sinal de ECG. A figura ~\ref{fluxogramaRaw} mostra todo este processo.
+O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza marcações do complexo QRS feitas diretamente no sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxogramaRaw} mostra todo este processo.
 
 Primeiramente, o arquivo com o sinal de ECG é carregado na tela (Carregar sinal na tela), em seguida são feitas pela equipe marcações do complexo QRS diretamente no sinal (Marcar eventos). As marcações dão origem ao conjunto de dados de treinamento (Padrões de Treinamento), utilizado durante a próxima etapa (Treinamento da Rede Neural Artificial). Uma vez treinada, a rede poderá reconhecer padrões no sinal de ECG em questão (explicado em detalhes na seção \ref{sec:BD}), e exibe os resultados na tela (Reconhecimento de Padrões). Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
 
@@ -259,7 +259,7 @@ Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
-	\caption[Fluxograma utilizando extração de características]{Fluxograma utilizando extração de características}
+	\caption[Fluxograma com extração de características]{Fluxograma com extração de características}
 	\fonte{Autoria própria}
 	\label{FluxoCorrel}
 \end{figure}
@@ -303,6 +303,8 @@ Usamos algum padrão, MVC, etc....
 
 Sinal
 
+Total de QRS: 2572
+
 Total Usados = 1589
 Total Descartados = 72
 
@@ -323,10 +325,15 @@ Quantas épocas?
 % -------------------------------------------
 \chapter{Resultados Obtidos} % 3 a 4 páginas
 \label{sec:Resultados}
-Introdução do Capítulo. Um parágrafo basta. 
+
+Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, a rede neural artificial pode ser treinada com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de ECG, e marcações feitas no sinal resultante do processo de extração de características (detalhado na seção ). OS resultados obtidos utilizando cada uma destas bases de marcações são descritos nas seções Testes com Sinal de ECG \ref{sec:Testes1} e Testes com ECG com correlação \ref{sec:Testes2}, respectivamente. Este capítulo termina com a seção de Comparativo dos Resultados \ref{sec:Comparativo} e a seção de Considerações \ref{sec:TestesConsider}.
 
 \section{Testes com Sinal de ECG}
-Total de QRS: 2572
+\label{sec:Testes1}
+
+Os resultados apresentados nesta seção dizem respeito ao treinamento realizado com marcações feitas diretamente no sinal de ECG. O conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, o que resulta em XXX ocorrências do complexo QRS. 
+
+A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
@@ -351,17 +358,21 @@ Total de QRS: 2572
 		    \fonte{Autoria Própria}
 \end{table}
 
-A curva ROC do processo utilizando \textit{raw} ECG é mostrada na figura ~\ref{ROC1}.
+A curva ROC do processo utilizando marcações no sinal de ECG é mostrada na figura ~\ref{ROC1}.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.2\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.4\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
 	\caption[Curva ROC dos resultados]{Curva ROC dos resultados}
 	\fonte{Autoria própria}
 	\label{ROC1}
 \end{figure}
 
-\section{Testes com ECG com correlação}
+\section{Testes com ECG com extração de características}
+\label{sec:Testes2}
+Esta seção apresenta os resultados obtidos com a utilização da base gerada após o processo de extração de características. Do mesmo modo que a seção anterior, o conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, correspondendo a XXX ocorrências do complexo QRS. 
+
+A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
@@ -386,7 +397,7 @@ A curva ROC do processo utilizando \textit{raw} ECG é mostrada na figura ~\ref{R
 		    \fonte{Autoria Própria}
 \end{table}
 
-A curva ROC do processo utilizando correlação é mostrada na figura ~\ref{ROC2}.
+A curva ROC do processo utilizando a base gerada após a extração de características é mostrada na figura ~\ref{ROC2}.
 
 \begin{figure}[!htb]
 	\centering
@@ -397,9 +408,20 @@ A curva ROC do processo utilizando correlação é mostrada na figura ~\ref{ROC2}.
 \end{figure}
 
 \section{Comparativo dos Resultados}
-Curva ROC comparativa.
+\label{sec:Comparativo}
+
+A figura \ref{ROC2} mostra as curvas ROC obtidas com os testes descritos nas seções Testes com ECG com extração de características \ref{sec:Testes1} e Testes com Sinal de ECG \ref{sec:Testes2}, permitindo uma visão comparativa entre eles.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.2\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\caption[Curva ROC do processo com correlação]{Curva ROC do processo com correlação}
+	\fonte{Autoria própria}
+	\label{ROC2}
+\end{figure}
 
 \section{Considerações}
+\label{sec:TestesConsider}
 Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
 Compara a outros trabalhos
 
@@ -449,9 +471,9 @@ Com redes SOM, ou com outras bases de dados.
 \chapter{Gestão do Projeto} % 1 página
 \label{sec:Gestao}
 
-Inicialmente, este projeto pretendia utilizar uma base de dados de exames de EEG, obtida em um Hospital, mediante autorização do Comitê de Ética da Instituição. A metodologia de testes seria realizada por um médico neurologista, que avaliaria os resultados do sistema, classificando-os como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. 
+Inicialmente, este projeto pretendia utilizar uma base de dados de exames de Eletroencefalografia (EEG), obtida em um Hospital, mediante autorização do Comitê de Ética da Instituição. A metodologia de testes seria realizada por um médico neurologista, que avaliaria os resultados do sistema, classificando-os como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. 
 
-Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez de bases de dados de EEG públicas adequadas (o que dispenderia menor tempo, por não necessitar de autorização do Comitê de Ética), a equipe alterou o escopo do projeto, passando a utilizar uma base de dados pública de ECG.
+Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez de bases de dados de EEG públicas adequadas (o que dispenderia menor tempo, por não necessitar de autorização do Comitê de Ética), a equipe alterou o escopo do projeto, passando a utilizar uma base de dados pública de \sigla{ECG}{Eletroencefalografia}.
 
 Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria equipe realizar os testes, uma vez que a base de dados já possui marcações dos eventos, bastando apenas compará-las aos eventos identificados pelo sistema.
 
@@ -459,7 +481,7 @@ Este capítulo apresenta as seções Recursos de Hardware \ref{RecHardware}, Recurs
 
 \section{Recursos de Hardware}
 \label{RecHardware}
-Os recursos de \textit{Hardware} correspondem às duas máquinas utilizadas pelos membros da equipe durante o desenvolvimento do projeto: Macbook Pro 13 polegadas, início de 2011, com processador Intel Core i7 de 2.7 GHz, memória de 16 GB e HD com 1TB e um \textit{notebook} Dell Inspiron 14R-3440 com processador Intel Core i5, memória RAM de 6GB e HD com 1TB.
+Os recursos de \textit{Hardware} correspondem às duas máquinas utilizadas pelos membros da equipe durante o desenvolvimento do projeto: \textit{Macbook Pro} 13 polegadas, início de 2011, com processador Intel Core i7 de 2.7 GHz, memória de 16 GB e HD com 1TB e um \textit{notebook} Dell Inspiron 14R-3440 com processador Intel Core i5, memória RAM de 6GB e HD com 1TB.
 
 \section{Recursos de Software}
 \label{RecSoftware}
@@ -467,10 +489,10 @@ Os recursos de \textit{Hardware} correspondem às duas máquinas utilizadas pelos 
 Os recursos de \textit{Software} utilizados neste projeto correspondem ao seguintes itens:
 
 \begin{itemize}
-	\item Visual Studio;
-    \item Plataforma Microsoft .NET versão 4.5;
-	\item Biblioteca NeuroLoopGain;
-	\item Biblioteca BrainNet Library.
+	\item \textit{Visual Studio};
+    \item Plataforma \textit{Microsoft} .NET versão 4.5;
+	\item Biblioteca \textit{NeuroLoopGain};
+	\item Biblioteca \textit{BrainNet Library}.
 \end{itemize}
 
 Para obter gratuitamente a licença do ambiente de desevolvimento \textit{Visual Studio}, a equipe se associou ao programa \text{DreamSpark}, da Universidade Tecnológica Federal do Paraná. Os demais recursos utilizados são gratuitos.
