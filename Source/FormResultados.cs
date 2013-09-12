@@ -580,7 +580,6 @@ namespace AmbienteRPB
                 return false;
         }
         //------------------------------------------------------------------------------------------
-        //Passar para thread depois... 
         private void inicia_correlacao()
         {
             chart1.Series[CanalAtual + 1].Points.Clear();
@@ -612,6 +611,8 @@ namespace AmbienteRPB
             Promediacao();
             double[] Parametros;
             Parametros = new double[3];
+            Parametros[1] = ValsMAX_MIN[0];//max
+            Parametros[2] = ValsMAX_MIN[1];//min
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, null);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
