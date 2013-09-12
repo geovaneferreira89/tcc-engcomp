@@ -373,7 +373,9 @@ namespace AmbienteRPB
                         load_progress_bar(prb.Series[canal + 1].Points.Count(), 2);
                         //Saida dos Resultados da correlação pela correlação!
                         //Limpa o canal da correlação e ajuste o offset
+                        prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                         prb.Series[canal + 1].Points.Clear();
+                        Thread.Sleep(10);
                         for (int i = 0; i < (vector_evento.Count() / 2); i++)
                             prb.Series[canal + 1].Points.AddY(SaidaDeDados[0]);
                         //Imprime o resultado final
@@ -525,8 +527,8 @@ namespace AmbienteRPB
                 prb.ChartAreas[_canal + 2].AxisX.ScaleView.Size = valor;
                 prb.ChartAreas[_canal + 2].AxisX.ScrollBar.Enabled = false;
 
-                prb.ChartAreas[_canal + 3].AxisX.ScaleView.Size = valor;
-                prb.ChartAreas[_canal + 3].AxisX.ScrollBar.Enabled = false;
+                 prb.ChartAreas[_canal + 3].AxisX.ScaleView.Size = valor;
+                 prb.ChartAreas[_canal + 3].AxisX.ScrollBar.Enabled = false;
 
                 ScrollBar.Maximum = (SinalEEG.FileInfo.NrDataRecords) * (int)SinalEEG.FileInfo.SampleRecDuration;
                 ScrollBar.SmallChange = 10;//segundos

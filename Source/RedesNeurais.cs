@@ -44,6 +44,7 @@ namespace AmbienteRPB
         private int iteration;             // Current iteration.
         private int length;                // Side length of output grid.
         private int dimensions;            // Number of input dimensions.
+        private double[,] SaidaFinal; 
         private Random rnd = new Random();
 
         private List<string> labels = new List<string>();
@@ -609,6 +610,9 @@ namespace AmbienteRPB
                             prb.ChartAreas["canal" + (canal + 3)].AxisX.Enabled = AxisEnabled.True;
                             prb.ChartAreas["canal" + (canal + 3)].Axes[1].MajorGrid.LineColor = Color.Gainsboro;
                             prb.ChartAreas["canal" + (canal + 3)].Axes[0].MajorGrid.LineColor = Color.Gainsboro;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisX.ScaleView.Size = length;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisX.ScaleView.SizeType = DateTimeIntervalType.Auto;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisX.ScrollBar.Enabled = true;
                             break;
                         }
                 }
@@ -619,6 +623,7 @@ namespace AmbienteRPB
         //====================================================================================================
         private void Initialise_KHn()
         {
+            SaidaFinal = new double[length, length];
             outputs_KHn = new Neuron_KHn[length, length];
             for (int i = 0; i < length; i++)
             {
@@ -739,6 +744,7 @@ namespace AmbienteRPB
                 string saida = labels[i] + " " + n.X + " " + n.Y;
                 dados[0] = n.X;
                 dados[1] = n.Y;
+                SaidaFinal[n.X, n.Y] = SaidaFinal[n.X, n.Y] + 1;
                 dados[2] = i;
                 dados[3] = VetorEvento.Count() + i;
                 Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null); // tem o n.x tbm para no caso o Mapa mesmo... 
@@ -761,6 +767,16 @@ namespace AmbienteRPB
                 if (i == 2200)
                     chave = true;
             }
+            for (int i = 0; i < length; i++)
+            {
+                string saida = "";
+                for (int j = 0; j < length; j++)
+                {
+                    saida += SaidaFinal[j, i] + "\t";
+                }
+                send_SmS(1, saida, true);
+            }
+               
         }
         //----------------------------------
         private Neuron_KHn Winner_KHn(double[] pattern)
