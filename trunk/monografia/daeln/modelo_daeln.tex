@@ -268,23 +268,22 @@ Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são 
 \subsection{Módulo de Visualização do Sinal}
 \label{Mod1} 
 
-
-A figura \ref{tela1} .
+O primeiro módulo do sistema a ser detalhado é o módulo de visualização do sinal. Na figura \ref{tela1} pode ser observada a tela em que o usuário seleciona quais canais (ou derivações) do sinal deseja visualizar. No caso, as derivações do sinal são {modified limb lead II} (MLII) e \textit{lead} V1 .
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=1\textwidth]{./figs/tela1.png} % <- formatos PNG, JPG e PDF
-	\caption[Tela inicial do sistema]{Tela inicial do sistema}
+	\includegraphics[width=0.6\textwidth]{./figs/tela0.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de seleção do sistema]{Tela de seleção do sistema}
 	\fonte{Autoria Própria}
 	\label{tela1}
 \end{figure}
 
 
-A figura \ref{tela2} .
+A figura \ref{tela2} mostra a impressão no sinal na tela do sistema. Além dos sinais, a tela também apresenta opções para alterar a frequência e amplitude do sinal e opções para mostrar o sinal em janelas de 5 ou 10 segundos.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=1\textwidth]{./figs/tela2.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.8\textwidth]{./figs/tela2.png} % <- formatos PNG, JPG e PDF
 	\caption[Tela de visualização do sinal no sistema]{Tela de visualização do sinal no sistema}
 	\fonte{Autoria Própria}
 	\label{tela2}
@@ -293,7 +292,40 @@ A figura \ref{tela2} .
 
 \subsection{Módulo de Marcação de Eventos}
 \label{Mod2} 
-Que tipo de eventos marcamos, em arquivo de texto, seguindo um padrão definido.
+Uma vez que a tela do sistema exibe o sinal de Eletroencefalografia (ECG), o usuário pode realizar as marcações de eventos.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/telab.png} % <- formatos PNG, JPG e PDF
+	\caption[Opção de marcar eventos]{Opção de marcar eventos}
+	\fonte{Autoria Própria}
+	\label{tela3}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/tela3.png} % <- formatos PNG, JPG e PDF
+	\caption[Marcações de eventos]{Marcações de eventos}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/tela4.png} % <- formatos PNG, JPG e PDF
+	\caption[Seleção do editor de marcações]{Seleção do editor de marcações}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/tela5.png} % <- formatos PNG, JPG e PDF
+	\caption[Editor de marcações]{Editor de marcações}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
+
 
 
 \subsection{Módulo de Extração de Características}
@@ -319,18 +351,24 @@ Usamos algum padrão, MVC, etc....
 \section{Metodologia de Testes}
 \label{sec:Met-Testes}
 
-\subsection{Marcação de eventos}
+\subsection{Geração das Bases de Dados}
 
-Sinal
+Marcação
 
-Total de QRS: 2572
+Promedição
 
+Correlação
+
+Sinal Puro
+
+Total de QRS = 2572
 Total Usados = 1589
 Total Descartados = 72
+últimos 10 minutos do sinal
 
 Sinal com correlação
 
-\subsection{Promedição do Sinal de ECG}
+
 
 \subsection{Treinamento da Rede Neural Artificial}
 
