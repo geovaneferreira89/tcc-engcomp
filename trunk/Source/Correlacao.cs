@@ -80,8 +80,9 @@ namespace AmbienteRPB
                     Plotar(0, Canal, edfFileOutput, "CorrigirAmplitude", Vector_evento, inicio, fim, NumeroDeCanais);
                 }
                 if (Opcao == "Correlacao_AGAIN")
+                {
                     Plotar(0, Canal, edfFileOutput, Opcao, Vector_evento, inicio, fim, NumeroDeCanais);
-              
+                }
                 if (Opcao == "Marcacoes")
                 {
                     Plotar(0, Canal, edfFileOutput, "CarregarTodoSinal", Vector_evento, inicio, fim, NumeroDeCanais);
@@ -330,7 +331,7 @@ namespace AmbienteRPB
                         load_progress_bar(vector_evento.Count(), 2);
                         float res = 0;
                         float Media = 0;
-                        double[] SaidaDeDados = new double[prb.Series[canal + 1].Points.Count];
+                        double[] SaidaDeDados = new double[prb.Series["canal" + (canal + 1)].Points.Count];
                         //===================================================================
                         //                     nova correlação
                         //===================================================================   
@@ -338,26 +339,26 @@ namespace AmbienteRPB
                         //Igual à soma dos quadrados dos valores da réplica armazenada.
                         double K = 0;
                         load_progress_bar(0, 4);
-                        load_progress_bar(vector_evento.Count() * prb.Series[canal + 1].Points.Count(), 2);
+                        load_progress_bar(vector_evento.Count() * prb.Series["canal" + (canal + 1)].Points.Count(), 2);
                         //Canal que está sendo amostrado
                         res = 0;
                         for (int i = 0; i < vector_evento.Count(); i++)
                         {
-                            double valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + i].YValues[0];
+                            double valor = prb.Series["canal" + (canal + 1)].Points[Convert.ToInt16(inicio) + i].YValues[0];
                             K = (valor * valor) + K;
                         }
                         //Este vetor evento tem que ser referente a correlação...
-                        for (int i = 0; i < prb.Series[canal + 1].Points.Count - vector_evento.Count(); i++)
+                        for (int i = 0; i < prb.Series["canal" + (canal + 1)].Points.Count - vector_evento.Count(); i++)
                         {
                             //Vetor do Evento
                             for (int j = 0; j < vector_evento.Count(); j++)
                             {
                                 double valor;
                                 //Se j+1 tem que ser menor que o tamanho do canal... 
-                                if ((j + i) < prb.Series[canal + 1].Points.Count)
+                                if ((j + i) < prb.Series["canal" + (canal + 1)].Points.Count)
                                 {
-                                    valor = prb.Series[canal + 1].Points[Convert.ToInt16(inicio) + j].YValues[0];
-                                    res = (float)((prb.Series[canal + 1].Points[i+j].YValues[0] * valor) + res);
+                                    valor = prb.Series["canal" + (canal + 1)].Points[Convert.ToInt16(inicio) + j].YValues[0];
+                                    res = (float)((prb.Series["canal" + (canal + 1)].Points[i+j].YValues[0] * valor) + res);
                                 }
                                 //Incrementa a barra de progresso
                                 load_progress_bar(0, 1);
@@ -368,21 +369,45 @@ namespace AmbienteRPB
                             Media = Media + res;
                             res = 0;
                         }
-                        load_progress_bar(1, 3);
-                        load_progress_bar(0, 4);
-                        load_progress_bar(prb.Series[canal + 1].Points.Count(), 2);
+       
                         //Saida dos Resultados da correlação pela correlação!
                         //Limpa o canal da correlação e ajuste o offset
                         prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                        prb.Series[canal + 1].Points.Clear();
-                        Thread.Sleep(10);
+                        prb.Series.Remove(prb.Series["canal" + (canal + 1)]);
+                        prb.Series.Add("canal" + (canal + 1));
+                        prb.Series["canal" + (canal + 1)].ChartArea = "canal" + (canal + 1);
+                        prb.Series["canal" + (canal + 1)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                        prb.Series["canal" + (canal + 1)].Color = Color.Green;
+
                         for (int i = 0; i < (vector_evento.Count() / 2); i++)
-                            prb.Series[canal + 1].Points.AddY(SaidaDeDados[0]);
-                        //Imprime o resultado final
+                            prb.Series["canal" + (canal + 1)].Points.AddY(SaidaDeDados[0]);
+
+                        load_progress_bar(1, 3);
+                        load_progress_bar(0, 4);
+                        load_progress_bar((SaidaDeDados.Count() - vector_evento.Count()), 2);
+                        //Imprime o resultado fina;             
                         for (int i = 0; i < (SaidaDeDados.Count() -vector_evento.Count()); i++)
                         {
-                            prb.Series[canal + 1].Points.AddY(SaidaDeDados[i]);
+                            prb.Series["canal" + (canal + 1)].Points.AddY(SaidaDeDados[i]);
                             load_progress_bar(0, 1);
+                        }
+                        
+                        double MaxY = 0, MinY = 0;
+                        if (prb.Series["canal" + (canal + 1)].Points.Count >= 6000)
+                        {
+
+                            for (int i = 0; i < 6000; i++)
+                            {
+                                if (i <= 6000)
+                                {
+                                    if (MaxY < prb.Series["canal" + (canal + 1)].Points[i].YValues[0] || i == 0)
+                                        MaxY = prb.Series["canal" + (canal + 1)].Points[i].YValues[0];
+                                    if (MinY > prb.Series["canal" + (canal + 1)].Points[i].YValues[0] || i == 0)
+                                        MinY = prb.Series["canal" + (canal + 1)].Points[i].YValues[0];
+                                }
+                                prb.ChartAreas["canal" + (canal + 1)].AxisY.Maximum = MaxY;
+                                prb.ChartAreas["canal" + (canal + 1)].AxisY.Minimum = MinY;
+                            }
                         }
 
                         load_progress_bar(1, 3);
