@@ -886,6 +886,7 @@ namespace AmbienteRPB
             layers.Add(NeuroniosDaCamadaInterm);
             layers.Add(1);
             
+            List<float> pesosIniciais = new List<float>();
             network = new NeuralNetwork();
             foreach (int neurons in layers)
             {
@@ -896,9 +897,11 @@ namespace AmbienteRPB
                     for (i = 0; i <= neurons - 1; i++)
                     {
                         INeuron neuronio = new Neuron(strategy);
+                        pesosIniciais.Add(neuronio.BiasValue);
                         layer.Add(ref neuronio);
                     }
                     network.Layers.Add(layer);
+                    pesosIniciais.Add(9999999);
                 }
             }
             network.ConnectLayers();
