@@ -387,7 +387,7 @@ namespace AmbienteRPB
             //Corrige o problema de deslocamento do sinal para esquerda... 
             dados[1] = 0;
             dados[0] = 0;
-            string saidaaaa = "";
+            string ReltsGerados = "";
             for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
             {
                 MLP_output = new ArrayList();                
@@ -409,7 +409,10 @@ namespace AmbienteRPB
                      saidaInt[0] = 1;
                 else
                     saidaInt[0] = 0;
-                saidaaaa += Convert.ToString(MLP_output[0]) + "\t";
+                //Saida de resultados impressos em numeros até 5 mil amostras
+                if(i < 5000)
+                    ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
+                //-------------------------------------------------------
                 if (it_is_debug)
                 {
                     if (saidaInt[0] == 1)
@@ -441,7 +444,7 @@ namespace AmbienteRPB
                     vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
                  load_progress_bar(0, 1);
             }
-            send_SmS(1, saidaaaa, false);
+            send_SmS(1, ReltsGerados, false);
             load_progress_bar(1, 3);
         }
         //====================================================================================================
