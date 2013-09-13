@@ -359,7 +359,7 @@ namespace AmbienteRPB
                         ///---------------------------------------
                        send_SmS(1, "Treinando", false);
                        load_progress_bar(1, 3);
-                       helper.Train(800);
+                       helper.Train(1000);
                        
                        break;
                     }
@@ -380,7 +380,7 @@ namespace AmbienteRPB
             load_progress_bar(0, 4);
             load_progress_bar(VetTreinamento, 2);
             int [] saidaInt = new int[1];
-            double threshold = 0.999;
+            double threshold = 0.1;
             char character;
             bool chave = true;
             double[] dados = new double[2];
@@ -403,12 +403,21 @@ namespace AmbienteRPB
 
                 //RODA A RN
                 MLP_output = new ArrayList(network.RunNetwork(inputs));
-                if(i == 26)
-                    threshold = Convert.ToDouble(MLP_output[0]);
-                if (threshold < Convert.ToDouble(MLP_output[0]))
-                     saidaInt[0] = 1;
+                if (i <= 26)
+                {
+                   if(threshold < Convert.ToDouble(MLP_output[0]))
+                       threshold = Convert.ToDouble(MLP_output[0]);
+                   saidaInt[0] = 0;
+                }
                 else
-                    saidaInt[0] = 0;
+                {
+                    if (threshold < Convert.ToDouble(MLP_output[0]))
+                        saidaInt[0] = 2;
+                    else if(threshold > Convert.ToDouble(MLP_output[0]))
+                        saidaInt[0] = 1;
+                    else
+                        saidaInt[0] = 0;
+                }
                 //Saida de resultados impressos em numeros até 5 mil amostras
                 if(i < 5000)
                     ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
