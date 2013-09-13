@@ -19,8 +19,21 @@ Public Module Utility
     '''<summary>Function used to generate a random number </summary>
     Public Function Rand() As Single
         Randomize()
-
         Return Rnd() * 2 - 1
+    End Function
+
+    '''<summary>Function used to generate a random number </summary>
+    Public Function Rand2() As Single
+        Randomize()
+        Dim valor As Single = Rnd() * 2 - 1
+        If 0.2 < valor Or valor < -0.2 Then
+            While 0.2 < valor Or valor < -0.2
+                Randomize()
+                valor = Rnd() * 2 - 1
+            End While
+        End If
+
+        Return valor
     End Function
 
 

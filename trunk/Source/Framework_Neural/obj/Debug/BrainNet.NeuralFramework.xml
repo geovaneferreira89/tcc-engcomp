@@ -254,6 +254,8 @@ This class is can hold a collection of training data objects
 	<summary>A collection of Neuron Layers </summary>
 </member><member name="M:BrainNet.NeuralFramework.Utility.Rand">
 	<summary>Function used to generate a random number </summary>
+</member><member name="M:BrainNet.NeuralFramework.Utility.Rand2">
+	<summary>Function used to generate a random number </summary>
 </member><member name="M:BrainNet.NeuralFramework.Utility.PrintArr(System.String,System.Collections.ArrayList)">
 	<summary>Print an array </summary>
 </member><member name="M:BrainNet.NeuralFramework.Utility.Report(System.Windows.Forms.ListView,BrainNet.NeuralFramework.INeuralNetwork)">

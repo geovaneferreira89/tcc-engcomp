@@ -359,7 +359,7 @@ namespace AmbienteRPB
                         ///---------------------------------------
                        send_SmS(1, "Treinando", false);
                        load_progress_bar(1, 3);
-                       helper.Train(1000);
+                       helper.Train(800);
                        
                        break;
                     }
@@ -380,13 +380,14 @@ namespace AmbienteRPB
             load_progress_bar(0, 4);
             load_progress_bar(VetTreinamento, 2);
             int [] saidaInt = new int[1];
-            double threshold = 0.99;
+            double threshold = 0.999;
             char character;
             bool chave = true;
             double[] dados = new double[2];
             //Corrige o problema de deslocamento do sinal para esquerda... 
             dados[1] = 0;
             dados[0] = 0;
+            string saidaaaa = "";
             for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
             {
                 MLP_output = new ArrayList();                
@@ -402,11 +403,13 @@ namespace AmbienteRPB
 
                 //RODA A RN
                 MLP_output = new ArrayList(network.RunNetwork(inputs));
-                if (threshold <= Convert.ToDouble(MLP_output[0]))
+                if(i == 26)
+                    threshold = Convert.ToDouble(MLP_output[0]);
+                if (threshold < Convert.ToDouble(MLP_output[0]))
                      saidaInt[0] = 1;
                 else
                     saidaInt[0] = 0;
-      
+                saidaaaa += Convert.ToString(MLP_output[0]) + "\t";
                 if (it_is_debug)
                 {
                     if (saidaInt[0] == 1)
@@ -438,6 +441,7 @@ namespace AmbienteRPB
                     vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
                  load_progress_bar(0, 1);
             }
+            send_SmS(1, saidaaaa, false);
             load_progress_bar(1, 3);
         }
         //====================================================================================================

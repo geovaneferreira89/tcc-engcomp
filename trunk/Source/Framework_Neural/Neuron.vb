@@ -31,7 +31,7 @@ Public Class Neuron
     Implements INeuron
 
 
-    Dim _bias As Single = Utility.Rand
+    Dim _bias As Single = Utility.Rand2
 
     Dim _output As Single
     Dim _delta As Single
