@@ -360,7 +360,9 @@ namespace AmbienteRPB
                        send_SmS(1, "Treinando", false);
                        load_progress_bar(1, 3);
                        helper.Train(1000);
-                       
+                       //calculo do erro
+                       NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
+                       send_SmS(1, "Erro em = " + Convert.ToString(ser.GetERROR(network)), false); 
                        break;
                     }
                     case ("SomenteUm"):

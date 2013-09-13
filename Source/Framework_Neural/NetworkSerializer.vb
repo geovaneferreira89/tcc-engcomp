@@ -105,6 +105,41 @@ Public Class NetworkSerializer
 
     End Sub
 
+    Public Function GetERROR(ByVal network As NeuralFramework.INeuralNetwork) As Single
+        Try
+            Dim networkModel As New DataModel.Network()
+
+            Dim layer As NeuronLayer
+            Dim neuron As INeuron
+
+
+            Dim layerCount As Long = 0, neuronCount As Long = 0
+
+            Dim erro As Single = 0
+
+            '''Fill the data model from the network
+
+            For Each layer In network.Layers
+                Dim layerModel As New DataModel.Layer()
+                neuronCount = 0
+                layerModel.Name = "Layer" & layerCount
+                '''Add each neuron'''s definition
+                For Each neuron In layer
+                    Dim neuronModel As New DataModel.Neuron()
+                    neuronModel.Bias = neuron.BiasValue
+                    neuronModel.Name = "L" & layerCount & "N" & neuronCount
+                    neuronModel.Output = neuron.OutputValue
+                    neuronModel.Delta = neuron.DeltaValue
+                    erro = neuron.DeltaValue
+                Next
+            Next
+            Return erro
+        Catch ex As Exception
+            Throw New NetworkSerializerException("Error na busca do erro. " & ex.Message, ex)
+
+        End Try
+
+    End Function
     '''<summary> The method will find a neuron'''s position from the layer</summary>
     Private Function FindNeuronPosition(ByVal neuron As INeuron, ByVal network As INeuralNetwork) As Point
         Dim layer As NeuronLayer
