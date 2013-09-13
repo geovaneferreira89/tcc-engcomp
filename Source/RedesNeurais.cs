@@ -202,8 +202,11 @@ namespace AmbienteRPB
                             saida.Add(1);
                             List<float> conjTreinado = new List<float>();
                             load_progress_bar(0, 4);
-                            load_progress_bar(ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos, 2);
-                            for (int cont = 0; cont < ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos; cont++)
+                            int totalParaTreino = ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos;
+                            if (totalParaTreino > 100)
+                                totalParaTreino = 100;
+                            load_progress_bar(totalParaTreino, 2);
+                            for (int cont = 0; cont < totalParaTreino; cont++)
                             {
                                 entrada = new ArrayList();
                                 string nome_canal = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont);

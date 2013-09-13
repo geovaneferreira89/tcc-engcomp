@@ -277,7 +277,7 @@ namespace AmbienteRPB
                         //Adiciona linha vertical em zero
                         HorizontalLineAnnotation Zero_correla = new HorizontalLineAnnotation();
                         Zero_correla.AnchorDataPoint = prb.Series[canal+1].Points[1];
-                        Zero_correla.Width = prb.ChartAreas[canal + 1].Position.Width;
+                        Zero_correla.Width = prb.ChartAreas["canal" + (canal + 1)].Position.Width;
                         Zero_correla.Height = 2;
                         Zero_correla.LineDashStyle = ChartDashStyle.Dot;
                         Zero_correla.LineColor = System.Drawing.Color.SkyBlue;
