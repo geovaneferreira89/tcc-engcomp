@@ -138,7 +138,7 @@ namespace AmbienteRPB
             {
                 //Utilizando o backPropagation 
                 send_SmS(0, "", false);
-                send_SmS(1, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                 float inicio = DateTime.Now.Minute;
                 //busca pelo menor tamanho do dos eventos deste padrao... 
                 vetorDeResultados = new int[Sinal.Count()];
@@ -170,7 +170,7 @@ namespace AmbienteRPB
             {
                 //Utilizando o backPropagation 
                 send_SmS(0, "", false);
-                send_SmS(1, "Inicializando.", false);
+                send_SmS(2, "Inicializando.", false);
                 //Busca pelo menor tamanho do dos eventos deste padrao... 
                 vetorDeResultados = new int[Sinal.Count()];
                 for(int i=0; i< PadroesATreinar.Count();i++)
@@ -350,8 +350,8 @@ namespace AmbienteRPB
                                 }
                                 fileSalve.Close();
 
-                                send_SmS(1, "Total Usados = " + Convert.ToString(conjTreinado.Count / 50), false);
-                                send_SmS(1, "Total Descartados = " + Convert.ToString(DescartadosDoTreino.Count), false);
+                                send_SmS(1, "Total Usados : " + Convert.ToString(conjTreinado.Count / 50), false);
+                                send_SmS(1, "Total Descartados : " + Convert.ToString(DescartadosDoTreino.Count), false);
                                 
                             }
                         ///---------------------------------------
@@ -362,7 +362,7 @@ namespace AmbienteRPB
                        helper.Train(1000);
                        //calculo do erro
                        NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
-                       send_SmS(1, "Erro em = " + Convert.ToString(ser.GetERROR(network)), false); 
+                       send_SmS(1, "Erro em : " + Convert.ToString(ser.GetERROR(network)), false); 
                        break;
                     }
                     case ("SomenteUm"):
