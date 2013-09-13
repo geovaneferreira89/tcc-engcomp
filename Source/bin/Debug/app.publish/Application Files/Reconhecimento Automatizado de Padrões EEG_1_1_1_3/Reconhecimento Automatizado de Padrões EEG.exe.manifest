@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG.exe" version="1.1.1.2" publicKeyToken="9eb9b0f5e295ff98" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG.exe" version="1.1.1.3" publicKeyToken="9eb9b0f5e295ff98" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="eegico.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -48,14 +48,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="74752">
-      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.4997.1836" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BrainNet.NeuralFramework.dll" size="75776">
+      <assemblyIdentity name="BrainNet.NeuralFramework" version="1.0.5004.21162" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0HuPp+QsmF3zFdrVT/xMBJpgHdsTn+UiHs0t/koTZdU=</dsig:DigestValue>
+        <dsig:DigestValue>ofaIgB7/C+9JXs2rcD9lfX84QiV00MYVv/miiE7YD/s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -68,6 +68,30 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>2aXAc03Ww56I38MkPRVaGQQJqzGdFm67XBnnfPy0Nkc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pt-BR\Microsoft.QualityTools.Testing.Fakes.resources.dll" size="24768">
+      <assemblyIdentity name="Microsoft.QualityTools.Testing.Fakes.resources" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="pt-BR" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>sV/Igkvok75VbD+n7mLg5Hwv3HbQgPFJUV6yn4NuqeA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pt-BR\Microsoft.VisualBasic.PowerPacks.Vs.resources.dll" size="65120">
+      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs.resources" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="pt-BR" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>W+ojP24Le5Je4D5FQbQfEnGjysXhmaQpJ61FpYu0B3Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -96,14 +120,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="579584">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Reconhecimento Automatizado de Padrões EEG.exe" size="584192">
       <assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PIARrax9hadUEKBY4a2IS/JCvpH4ym1Fd2N2tC5jvGs=</dsig:DigestValue>
+        <dsig:DigestValue>RRLlse1GZDC5ucomaArh1R+OsfIO8ayv8a04z0GT3wo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -146,4 +170,4 @@
       <!--<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"></supportedOS>-->
     </application>
   </compatibility>
-<publisherIdentity name="CN=WIN-LVVGKJ2VN5H\Geovane Ferreira" issuerKeyHash="48a93158e758445992eb8d40d75cf864aaa91b19" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>ws7x5c4zWYGTsmoyVLeFoG7bSKk=</DigestValue></Reference></SignedInfo><SignatureValue>sWr9K6qUhC0vF9MoCP+qn/kfpmBo4PtdtccWLrHtOte9cCU1i2FHria9KgXeMawx1Fxck4vgxe0O9+b9FBcmX1rXrnywe/ToKSgoV48C156zLl0AYK4oWTF0LsrGbEV5VTIn4pZpLofJ/hUCrAWvgF8PkDXZGWWEAgWGHR0woCs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>yO/g6oHZ5MYrdX6XiAzRP2Ag7iNnQ+use4phgyRtH7NyloFyZohlFpq2/Llh3ze0Cfgj7OVAZg4qFMjJCawlMbnabPumkWI4s3WmvE7iNOFgdDdWS9hIt8rx3P5ixEFmYmk8cnKekiMf6C9uowDCihqWcc4AleNjn1GH/i3Bbr8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="a948db6ea085b754326ab293815933cee5f1cec2" Description="" Url=""><as:assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG.exe" version="1.1.1.2" publicKeyToken="9eb9b0f5e295ff98" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=WIN-LVVGKJ2VN5H\Geovane Ferreira</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>/xxP0F4hWQw2/8vvN+ZyLcovJAQ=</DigestValue></Reference></SignedInfo><SignatureValue>ebCczymPFoyPyqmYPBqE+jV67BjJpbrSytALNt5KNAP7bs+W+BtyCJepFuh5TtTWQPHo7f/6PoA0CQDlVeKafN/zqnF6mFnyzT4c8S6NCbpIjKdBrtKHkm4P/1DS1EDhDgxqHSs6jqStBW94vj77dQpkUc3396rhfgojoVfiiwo=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>yO/g6oHZ5MYrdX6XiAzRP2Ag7iNnQ+use4phgyRtH7NyloFyZohlFpq2/Llh3ze0Cfgj7OVAZg4qFMjJCawlMbnabPumkWI4s3WmvE7iNOFgdDdWS9hIt8rx3P5ixEFmYmk8cnKekiMf6C9uowDCihqWcc4AleNjn1GH/i3Bbr8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICGTCCAYKgAwIBAgIQX7oK0h6AJ45K2YnrBEx0tzANBgkqhkiG9w0BAQUFADBLMUkwRwYDVQQDHkAAVwBJAE4ALQBMAFYAVgBHAEsASgAyAFYATgA1AEgAXABHAGUAbwB2AGEAbgBlACAARgBlAHIAcgBlAGkAcgBhMB4XDTEzMDUxMDIxMjQ1OVoXDTE0MDUxMTAzMjQ1OVowSzFJMEcGA1UEAx5AAFcASQBOAC0ATABWAFYARwBLAEoAMgBWAE4ANQBIAFwARwBlAG8AdgBhAG4AZQAgAEYAZQByAHIAZQBpAHIAYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAyO/g6oHZ5MYrdX6XiAzRP2Ag7iNnQ+use4phgyRtH7NyloFyZohlFpq2/Llh3ze0Cfgj7OVAZg4qFMjJCawlMbnabPumkWI4s3WmvE7iNOFgdDdWS9hIt8rx3P5ixEFmYmk8cnKekiMf6C9uowDCihqWcc4AleNjn1GH/i3Bbr8CAwEAATANBgkqhkiG9w0BAQUFAAOBgQDFntPNbA0D2q632ljIdDWswN83LI04DDKmbCa2ovpNYtNm92cZanb/yNZ5y3QvVV/bcEkaGNT9CtwTxmHso7beZYVU07hWmrMurpEWiqPFocmdtNFTBoNei3ZVgwQXA9d1ej3BvULf6Yr0qw+Z1ty/32eMvBgIgyhaQwtA68V4zg==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+<publisherIdentity name="CN=WIN-LVVGKJ2VN5H\Geovane Ferreira" issuerKeyHash="48a93158e758445992eb8d40d75cf864aaa91b19" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>tJh9KsU311pGL5lDQUsOmA3efPI=</DigestValue></Reference></SignedInfo><SignatureValue>RuhUew1LzkGS2LMjUhOoUm9xuZK+PxCXVDCWytuynnP3CaCqKykQuvVq4RQJeMybo0zpEZF1btMcTtq2wjlMbEbYdST7MNQgWX1275itk9qR2/ULYqlbub2UUC9ks+a8+xsC8ljBE+nrHIM3SD4FzWvQlQnTlrncaXE1eGYXS2M=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>yO/g6oHZ5MYrdX6XiAzRP2Ag7iNnQ+use4phgyRtH7NyloFyZohlFpq2/Llh3ze0Cfgj7OVAZg4qFMjJCawlMbnabPumkWI4s3WmvE7iNOFgdDdWS9hIt8rx3P5ixEFmYmk8cnKekiMf6C9uowDCihqWcc4AleNjn1GH/i3Bbr8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="f27cde0d980e4b4143992f465ad737c52a7d98b4" Description="" Url=""><as:assemblyIdentity name="Reconhecimento Automatizado de Padrões EEG.exe" version="1.1.1.3" publicKeyToken="9eb9b0f5e295ff98" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=WIN-LVVGKJ2VN5H\Geovane Ferreira</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>QMc6zFQ8DlMJ5UwVhKucopgaj04=</DigestValue></Reference></SignedInfo><SignatureValue>QvtuL1MdnXvqqbZLzjlo6DZiaIQJlznpy6gGt9/+9udBTmX8F6XvYmyY417lPifeVdBnFtospuOcIJSgmCVcsq310JCI0iiHvJvPTdTDNnoPURRW0e5/6SKtiyLhBqT2J8n2iro/8c50rjKW2LpeC5ToTMSYYcYA4oCmdXHjtog=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>yO/g6oHZ5MYrdX6XiAzRP2Ag7iNnQ+use4phgyRtH7NyloFyZohlFpq2/Llh3ze0Cfgj7OVAZg4qFMjJCawlMbnabPumkWI4s3WmvE7iNOFgdDdWS9hIt8rx3P5ixEFmYmk8cnKekiMf6C9uowDCihqWcc4AleNjn1GH/i3Bbr8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICGTCCAYKgAwIBAgIQX7oK0h6AJ45K2YnrBEx0tzANBgkqhkiG9w0BAQUFADBLMUkwRwYDVQQDHkAAVwBJAE4ALQBMAFYAVgBHAEsASgAyAFYATgA1AEgAXABHAGUAbwB2AGEAbgBlACAARgBlAHIAcgBlAGkAcgBhMB4XDTEzMDUxMDIxMjQ1OVoXDTE0MDUxMTAzMjQ1OVowSzFJMEcGA1UEAx5AAFcASQBOAC0ATABWAFYARwBLAEoAMgBWAE4ANQBIAFwARwBlAG8AdgBhAG4AZQAgAEYAZQByAHIAZQBpAHIAYTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAyO/g6oHZ5MYrdX6XiAzRP2Ag7iNnQ+use4phgyRtH7NyloFyZohlFpq2/Llh3ze0Cfgj7OVAZg4qFMjJCawlMbnabPumkWI4s3WmvE7iNOFgdDdWS9hIt8rx3P5ixEFmYmk8cnKekiMf6C9uowDCihqWcc4AleNjn1GH/i3Bbr8CAwEAATANBgkqhkiG9w0BAQUFAAOBgQDFntPNbA0D2q632ljIdDWswN83LI04DDKmbCa2ovpNYtNm92cZanb/yNZ5y3QvVV/bcEkaGNT9CtwTxmHso7beZYVU07hWmrMurpEWiqPFocmdtNFTBoNei3ZVgwQXA9d1ej3BvULf6Yr0qw+Z1ty/32eMvBgIgyhaQwtA68V4zg==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
