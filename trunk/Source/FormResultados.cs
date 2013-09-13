@@ -1044,7 +1044,23 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------------------
         private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (RN_Rodou)
+            {
+                DialogResult resposta = MessageBox.Show("Deseja salvar os resultados?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
+                if (resposta == DialogResult.Yes)
+                {
+                    OP_Salvar = true;
+                    ArquivoDeSaida = edfFileOutput.FileName;
+                    int count = SalvarResultados();
+                    Arquivos = new GerenArquivos();
+                    Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
+                    RN_Rodou = false;
+                }
+                if (resposta == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
         //----------------------------------------------------------------------------------------
         //Função responsavel por analisar os resultados obtidos da RN
@@ -1103,19 +1119,7 @@ namespace AmbienteRPB
 
         private void FormResultados_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (RN_Rodou)
-            {
-                DialogResult resposta = MessageBox.Show("Deseja salvar os resultados?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                if (resposta == DialogResult.Yes)
-                {
-                    OP_Salvar = true;
-                    ArquivoDeSaida = edfFileOutput.FileName;
-                    int count = SalvarResultados();
-                    Arquivos = new GerenArquivos();
-                    Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
-                    RN_Rodou = false;
-                }
-            }
+       
         }
         //Carrega o arquivo de marcacoes existente, arquivo este gerado pelo MIT e editado por nós... 
         private void btnMarcacoes_Click(object sender, EventArgs e)

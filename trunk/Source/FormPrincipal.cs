@@ -120,8 +120,24 @@ namespace AmbienteRPB
         //-----------------------------------------------------------------------------------------
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            encerrar_sistema( );
         }
+
+        private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //SALVAR
+            if (ListaPadroes != null)
+            {
+                DialogResult resposta = MessageBox.Show("Deseja salvar a lista de pradrões e eventos?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
+                if (resposta == DialogResult.Yes)
+                {
+                    Arquivos.Exportar_Padroes_Eventos(ListaPadroes);
+                }
+                if (resposta == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
+        } 
         //#########################################################################################
         //-----------------------------------------------------------------------------------------
         //                                 Gerencia de Projetos
@@ -1280,6 +1296,6 @@ namespace AmbienteRPB
         private void Evento3_CheckedChanged(object sender, EventArgs e)
         {
 
-        }    
+        }   
     }
 }
