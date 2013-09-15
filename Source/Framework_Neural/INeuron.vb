@@ -17,7 +17,7 @@
 
 
 Module NeuronConstants
-    Public Const LEARNING_RATE = 0.02
+    Public Const LEARNING_RATE = 0.01
 End Module
 
 
