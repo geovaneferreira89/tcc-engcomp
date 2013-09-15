@@ -46,7 +46,6 @@ namespace AmbienteRPB
         private int dimensions;            // Number of input dimensions.
         private double[,] SaidaFinal; 
         private Random rnd = new Random();
-
         private List<string> labels = new List<string>();
         private List<double[]> patterns = new List<double[]>();
         private string file;
@@ -61,11 +60,9 @@ namespace AmbienteRPB
 
         private ListaPadroesEventos[] ListasPadrEvents;
         private EdfFile SinalEEG;
-
         private int [] PadroesATreinar;
         private int MenorTamanho = 0;
         private int CanalParaPlotar = 2;
-
         private int[] vetorDeResultados;
         private bool it_is_debug = false;
         private bool UsarReferencia = false;
@@ -103,7 +100,7 @@ namespace AmbienteRPB
             //else
             //    it_is_debug = true;
             //----------------------------------------------------------------------------------
-            //Kohonen
+            //Kohonenn
             if (tipoDeRede == "Kohonen")
             {
                 Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null);
@@ -125,10 +122,8 @@ namespace AmbienteRPB
                 send_SmS(2, "Inicializando", false);
                 //Define o tamanho do vetor evento
                 MenorTamanho = VetorEvento.Count();
-              
                 if(!RNImportada)
                     TreinodaRede(VetorEvento, 1, "SomenteUm", 0); //null - somente o evento marcado 
-                
                 send_SmS(1, "Treinada", false);
                 vetorDeResultados = new int[Sinal.Count()];
                 Rodar(Sinal, 0);
@@ -165,7 +160,6 @@ namespace AmbienteRPB
                     Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                 }
             }
-            
             else if (tipoDeRede == "BackPropagationTreinar100x")
             {
                 //Utilizando o backPropagation 
@@ -188,12 +182,9 @@ namespace AmbienteRPB
             helper = new BrainNet.NeuralFramework.NetworkHelper(network);
             ArrayList entrada = new ArrayList();
             ArrayList saida = new ArrayList();
-
             List<int> UsadosNoTreino = new List<int>();
             List<int> DescartadosDoTreino = new List<int>();
-
             bool PadraoDescatardo = false;
-
             switch (tipoDeTreinamento)
             {
                 case ("TodosEventos"):
@@ -216,7 +207,6 @@ namespace AmbienteRPB
                                 float x = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorInicio(cont).X;
                                 float x_fim = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorFim(cont).X;
                                 float referencia = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorMeio(cont).X;
-
                                 int DataRecords_lidos = 0;
                                 int tempo_X = 0;
                                 ///---------------------------------------------------------
@@ -349,14 +339,12 @@ namespace AmbienteRPB
                                     smss = "";
                                 }
                                 fileSalve.Close();
-
                                 send_SmS(1, "Total Usados : " + Convert.ToString(conjTreinado.Count / 50), false);
                                 send_SmS(1, "Total Descartados : " + Convert.ToString(DescartadosDoTreino.Count), false);
-                                
                             }
-                        ///---------------------------------------
-                        ///Treina a Rede Neural
-                        ///---------------------------------------
+                           ///------------------------------------///
+                          ///Treina a Rede Neural                               
+                         ///------------------------------------///
                        send_SmS(1, "Treinando", false);
                        load_progress_bar(1, 3);
                        helper.Train(1000);
@@ -395,14 +383,12 @@ namespace AmbienteRPB
                 MLP_output = new ArrayList();                
                 inputs = new ArrayList();
                 MLP_output.Add(0.0);
-
                 for (int cont = 0; cont < MenorTamanho; cont++){
                     if ((cont + i) < Sinal.Count())
                         inputs.Add(Sinal[cont + i]);
                 }
                 dados[0] = i;
                 dados[1] = MenorTamanho + i;
-
                 //RODA A RN
                 MLP_output = new ArrayList(network.RunNetwork(inputs));
                 if (i <= 26)
@@ -430,12 +416,10 @@ namespace AmbienteRPB
                         character = '#';
                     else
                         character = '.';
-
                     string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
                     string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
                     if (!chave)
                         send_SmS(1, saida2, false);
-
                     if (chave)
                     {
                         Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
@@ -533,7 +517,7 @@ namespace AmbienteRPB
                 switch (opcao)
                 {
                     case ("BKP"):
-                        {
+                    {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             //Primeira saida da RN
                             if (canal == 0)
@@ -549,84 +533,73 @@ namespace AmbienteRPB
                                 prb.Series["canal" + (CanalParaPlotar)].Points.AddY(0);
                             else
                                 prb.Series["canal" + (CanalParaPlotar)].Points.Clear();
-
                             break;
-                        }
+                     }
                     case ("VectorAtual"):
-                        {
+                    {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-
                             PointF zero = new PointF(0, 0);
-                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
-                            prb.ChartAreas[canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);
-                            prb.ChartAreas[canal].CursorX.IsUserEnabled = true;
-                            prb.ChartAreas[canal].CursorX.IsUserSelectionEnabled = true;
-
-                            PointF Padrao_Inicio = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[0]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[0]));
-                            PointF Padrao_Fim = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[1]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[1]));
+                            prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
+                            prb.ChartAreas["canal" + canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);
+                            prb.ChartAreas["canal" + canal].CursorX.IsUserEnabled = true;
+                            prb.ChartAreas["canal" + canal].CursorX.IsUserSelectionEnabled = true;
+                            PointF Padrao_Inicio = new PointF((float)prb.ChartAreas["canal" + canal].AxisX.ValueToPixelPosition(dados[0]), (float)prb.ChartAreas["canal" + canal].AxisY.ValueToPixelPosition(dados[0]));
+                            PointF Padrao_Fim    = new PointF((float)prb.ChartAreas["canal" + canal].AxisX.ValueToPixelPosition(dados[1]), (float)prb.ChartAreas["canal" + canal].AxisY.ValueToPixelPosition(dados[1]));
                             //Colore a região do evento
-                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+                            prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                             break;
-                        }
+                    }
                     case ("AddDadoKohonen"):
-                        {
+                    {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             prb.Series["canal" + (canal+2)].Points.AddY(dados[1]);
                             //Mapa
                             prb.Series["canal" + (canal+3)].Points.AddXY(dados[0], dados[1]);
-
                             PointF zero = new PointF(0,0);
-                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
-                            prb.ChartAreas[canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow); 
-                            prb.ChartAreas[canal].CursorX.IsUserEnabled = true;
-                            prb.ChartAreas[canal].CursorX.IsUserSelectionEnabled = true;
-
-                            PointF Padrao_Inicio = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[2]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[2]));
-                            PointF Padrao_Fim = new PointF((float)prb.ChartAreas[canal].AxisX.ValueToPixelPosition(dados[3]), (float)prb.ChartAreas[canal].AxisY.ValueToPixelPosition(dados[3]));
+                            prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
+                            prb.ChartAreas["canal" + canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);
+                            prb.ChartAreas["canal" + canal].CursorX.IsUserEnabled = true;
+                            prb.ChartAreas["canal" + canal].CursorX.IsUserSelectionEnabled = true;
+                            PointF Padrao_Inicio = new PointF((float)prb.ChartAreas["canal" + canal].AxisX.ValueToPixelPosition(dados[2]), (float)prb.ChartAreas["canal" + canal].AxisY.ValueToPixelPosition(dados[2]));
+                            PointF Padrao_Fim    = new PointF((float)prb.ChartAreas["canal" + canal].AxisX.ValueToPixelPosition(dados[3]), (float)prb.ChartAreas["canal" + canal].AxisY.ValueToPixelPosition(dados[3]));
                             //Colore a região do evento
-                            prb.ChartAreas[canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-
+                            prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                             break;
-                        }
+                     }
                     case ("Criar Chart de Barras"):
-                        {
+                    {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-
                             if (prb.Series.Count != (canal + 4))
                             {
                                 prb.Series.Add("canal" + (canal + 2));
                                 prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
                                 prb.Titles.Add("canal" + (canal + 2));
-
-                                prb.Titles[canal + 2].Position.Height = 3;
-                                prb.Titles[canal + 2].Position.Width = 40;
-                                prb.Titles[canal + 2].Alignment = ContentAlignment.MiddleLeft;
-                                prb.Titles[canal + 2].Position.X = 0;
-                                prb.Titles[canal + 2].Position.Y = (25 * (canal + 2)) + ((100 - (25 * (canal + 2))) / 2);
-
-                                //mapa de kohonei
+                                prb.Titles["canal" + (canal + 2)].Position.Height = 3;
+                                prb.Titles["canal" + (canal + 2)].Position.Width = 40;
+                                prb.Titles["canal" + (canal + 2)].Alignment = ContentAlignment.MiddleLeft;
+                                prb.Titles["canal" + (canal + 2)].Position.X = 0;
+                                prb.Titles["canal" + (canal + 2)].Position.Y = (25 * (canal + 2)) + ((100 - (25 * (canal + 2))) / 2);
+                                //Mapa de Kohonenn
                                 prb.Series.Add("canal" + (canal + 3));
                                 prb.Series["canal" + (canal + 3)].ChartArea = "canal" + (canal + 3);
                                 prb.Titles.Add("canal" + (canal + 3));
-
-                                prb.Titles[canal + 3].Position.Height = 3;
-                                prb.Titles[canal + 3].Position.Width = 40;
-                                prb.Titles[canal + 3].Alignment = ContentAlignment.MiddleLeft;
-                                prb.Titles[canal + 3].Position.X = 0;
-                                prb.Titles[canal + 3].Position.Y = (25 * 4) + ((100 - (25 * 4)) / 2);
+                                prb.Titles["canal" + (canal + 3)].Position.Height = 3;
+                                prb.Titles["canal" + (canal + 3)].Position.Width = 40;
+                                prb.Titles["canal" + (canal + 3)].Alignment = ContentAlignment.MiddleLeft;
+                                prb.Titles["canal" + (canal + 3)].Position.X = 0;
+                                prb.Titles["canal" + (canal + 3)].Position.Y = (25 * 4) + ((100 - (25 * 4)) / 2);
                             }
                             else
                             {
                                 prb.Series["canal" + (canal + 2)].Points.Clear();
                                 prb.Series["canal" + (canal + 3)].Points.Clear();
                             }
-                            prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                            prb.Titles[canal + 2].Text = "Kohonen";
-                            prb.Series["canal" + (canal + 2)].Color = Color.LightBlue;
-
-                            prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-                            prb.Titles[(canal + 3)].Text = "Mapa";
-                            prb.Series["canal" + (canal + 3)].Color = Color.Red;
+                                prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                                prb.Titles["canal" + (canal + 2)].Text = "Kohonen";
+                                prb.Series["canal" + (canal + 2)].Color = Color.LightBlue;
+                                prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                                prb.Titles["canal" + (canal + 3)].Text = "Mapa";
+                                prb.Series["canal" + (canal + 3)].Color = Color.Red;
                             prb.ChartAreas["canal" + (canal + 3)].AxisY.Enabled = AxisEnabled.True;
                             prb.ChartAreas["canal" + (canal + 3)].AxisX.Enabled = AxisEnabled.True;
                             prb.ChartAreas["canal" + (canal + 3)].Axes[1].MajorGrid.LineColor = Color.Gainsboro;
@@ -659,13 +632,12 @@ namespace AmbienteRPB
                 }
             }
         }
-        //----------------------------------
+        //----------------------------------------------------------------------------------------
         private void LoadData_KHn(string file)
         {
             load_progress_bar(1, 3);
             load_progress_bar(0, 4);
             load_progress_bar(VetTreinamento, 2);
-
             int cont = 0;
             string resultado;
             int canal = 0;
@@ -699,7 +671,7 @@ namespace AmbienteRPB
             }
             load_progress_bar(1, 3);
         }
-        //----------------------------------
+        //----------------------------------------------------------------------------------------
         private void NormalisePatterns_KHn()
         {
             for (int j = 0; j < dimensions; j++)
@@ -716,7 +688,7 @@ namespace AmbienteRPB
                 }
             }
         }
-        //----------------------------------
+        //----------------------------------------------------------------------------------------
         private void Train_KHn(double maxError)
         {
             double currentError = double.MaxValue;
@@ -739,7 +711,7 @@ namespace AmbienteRPB
                 count++;
             }
         }
-        //----------------------------------
+        //----------------------------------------------------------------------------------------
         private double TrainPattern_KHn(double[] pattern)
         {
             double error = 0;
@@ -754,7 +726,7 @@ namespace AmbienteRPB
             iteration++;
             return Math.Abs(error / (length * length));
         }
-        //----------------------------------
+        //----------------------------------------------------------------------------------------
         private void DumpCoordinates_KHn()
         {
             bool chave = true;

@@ -20,6 +20,7 @@ namespace AmbienteRPB
 {
     public partial class FormResultados : Form
     {
+        //----------------------------------------------------------------------------
         public string ArquivoDeSaida
         {
             get;
@@ -30,7 +31,7 @@ namespace AmbienteRPB
             get;
             set;
         }
-        //-------------------------------------------
+        //----------------------------------------------------------------------------
         private ListaPadroesEventos[] ListaDeEventos;
         private int numeroDeCanais;
         private GerenArquivos Arquivos;
@@ -85,7 +86,6 @@ namespace AmbienteRPB
             Adiciona_linhas_de_tempo();
             SMS_Box.SelectionStart = SMS_Box.Text.Length;
             SMS_Box.ScrollToCaret();
-
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "PlotaSinalEEG", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, null,null);
             Thread Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
@@ -520,6 +520,7 @@ namespace AmbienteRPB
             else
                 return false;
         }
+        //----------------------------------------------------------------------------
         private List<float> obtemSinal(int PosicaoDaLista, int PadraoDaLista)
         {
             List<float> vectorSinal = new List<float>();
@@ -579,7 +580,7 @@ namespace AmbienteRPB
             else
                 return false;
         }
-        //------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------
         private void inicia_correlacao()
         {
             chart1.Series[CanalAtual + 1].Points.Clear();
@@ -591,7 +592,7 @@ namespace AmbienteRPB
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
-
+        //----------------------------------------------------------------------------
         private void btn_Suspender_Click_1(object sender, EventArgs e)
         {
             if (Thread_RN.IsAlive)
@@ -604,7 +605,7 @@ namespace AmbienteRPB
             else
                 MessageBox.Show("Nenhuma operação no momento está sendo executada!\n", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
         }
-
+        //----------------------------------------------------------------------------
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             //Segunda correlação
@@ -617,7 +618,7 @@ namespace AmbienteRPB
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
         }
-
+        //----------------------------------------------------------------------------
         private void BTN_Kohonen_Click(object sender, EventArgs e)
         {
             if (SelecionaEventoDasLista())
@@ -631,7 +632,6 @@ namespace AmbienteRPB
                 SMS_Box.Visible = true;
                 btn_Aumentar.Visible = true;
                 btn_Close.Visible = true;
-
                 GerArquivos = new GerenArquivos();
                 int CanalKohonen;
                 double numeroLinhas = chart1.Series[CanalAtual].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
@@ -641,7 +641,6 @@ namespace AmbienteRPB
                 if (vector_evento != null)
                     FormDadosInput.TamVetores = vector_evento.Count();
                 FormDadosInput.ShowDialog();
-
                 //Dados sobre os charts, onde plotar
                 if (FormDadosInput.UsarCorrelacao == true)
                     CanalKohonen = CanalAtual + 1;
@@ -649,7 +648,6 @@ namespace AmbienteRPB
                     CanalKohonen = CanalAtual;
                 //Canal de saida de resultados
                 int canalParaPlotar = CanalAtual + 2;
-
                 if (FormDadosInput.NumPadroes > 1)
                 {
                     PadroesATreinar = new int[FormDadosInput.NumPadroes];
@@ -685,7 +683,6 @@ namespace AmbienteRPB
         //------------------------------------------------------------------------------
         private void treinar100VezesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
             if ( SelecionaEventoDasLista())
             {
                 if (visivel == false)
@@ -757,7 +754,6 @@ namespace AmbienteRPB
                     PadroesATreinar[0] = 1;
                     eventos = new string[1];
                 }
-
                 RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objBKP.Init));
                 Thread_RN.Start();
@@ -766,111 +762,103 @@ namespace AmbienteRPB
 
             }
         }
-
+        //----------------------------------------------------------------------------
         private void btn_BackPropagation_Click(object sender, EventArgs e)
         {
-                    bool verifica = false;
-                    if (RN_Importada)
-                        verifica = true;
-                    else
-                        verifica = SelecionaEventoDasLista();
+            bool verifica = false;
+            if (RN_Importada)
+                verifica = true;
+            else
+                verifica = SelecionaEventoDasLista();
 
-                    if (verifica)
+            if (verifica)
+            {
+                if (visivel == false)
+                {
+                    gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                    visivel = true;
+                }
+                SMS_Box.Visible = true;
+                btn_Aumentar.Visible = true;
+                btn_Close.Visible = true;
+                GerArquivos = new GerenArquivos();
+                double numeroLinhas = chart1.Series[0].Points.Count;
+                FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
+                FormDadosInput.opcao = 1;
+                FormDadosInput.Vetores = numeroLinhas;
+                if (vector_evento != null)
+                    FormDadosInput.TamVetores = vector_evento.Count();
+                FormDadosInput.ShowDialog();
+                //Dados sobre os charts, onde plotar
+                int canalDados;
+                if (FormDadosInput.UsarCorrelacao == true)
+                    canalDados = CanalAtual + 1;
+                else
+                    canalDados = CanalAtual;
+                //Canal de saida de resultados
+                int canalParaPlotar = CanalAtual + 2;
+                double[] vectorSignal = new double[chart1.Series[canalDados].Points.Count];
+                for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
+                    vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
+                bool state = true;
+                while (state)
+                {
+                    DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                    if (debug == DialogResult.Yes)
                     {
-                        if (visivel == false)
+                        SMS_Box.Clear();
+                        string TipoBkP;
+                        //Verifica se a RN foi criada
+                        if (!RN_Importada)
                         {
-                            gbxChart.Height = gbxChart.Height - SMS_Box.Height;
-                            visivel = true;
-                        }
-                        SMS_Box.Visible = true;
-                        btn_Aumentar.Visible = true;
-                        btn_Close.Visible = true;
-
-                        GerArquivos = new GerenArquivos();
-                        double numeroLinhas = chart1.Series[0].Points.Count;
-                        FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
-                        FormDadosInput.opcao = 1;
-                        FormDadosInput.Vetores = numeroLinhas;
-                        if (vector_evento != null)
-                            FormDadosInput.TamVetores = vector_evento.Count();
-                        FormDadosInput.ShowDialog();
-
-                        //Dados sobre os charts, onde plotar
-                        int canalDados;
-                        if (FormDadosInput.UsarCorrelacao == true)
-                            canalDados = CanalAtual + 1;
-                        else
-                            canalDados = CanalAtual;
-
-                        //Canal de saida de resultados
-                        int canalParaPlotar = CanalAtual + 2;
-
-                        double[] vectorSignal = new double[chart1.Series[canalDados].Points.Count];
-                        for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
-                            vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
-
-
-                        bool state = true;
-                        while (state)
-                        {
-                            DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                            if (debug == DialogResult.Yes)
+                            PadroesATreinar = new int[1];
+                            PadroesATreinar[0] = ID_PadraoAtual;
+                            //Só busca um evento
+                            eventos = new string[1];
+                            eventos[0] = Convert.ToString(ID_PadraoAtual);
+                            TipoBkP = "BackPropagation";
+                            if (FormDadosInput.UsarListaDeTodosEnventos)
                             {
-                                SMS_Box.Clear();
-                                string TipoBkP;
-                                //Verifica se a RN foi criada
-                                if (!RN_Importada)
+                                TipoBkP = "BackPropagation_AllEvnts";
+                                if (!FormDadosInput.UsarReferencia)
                                 {
-                                    PadroesATreinar = new int[1];
-                                    PadroesATreinar[0] = ID_PadraoAtual;
-                                    //Só busca um evento
-                                    eventos = new string[1];
-                                    eventos[0] = Convert.ToString(ID_PadraoAtual);
-                                    TipoBkP = "BackPropagation";
-                                    if (FormDadosInput.UsarListaDeTodosEnventos)
+                                    for (int i = 0; i < PadroesATreinar.Count(); i++)
                                     {
-                                        TipoBkP = "BackPropagation_AllEvnts";
-                                        if (!FormDadosInput.UsarReferencia)
+                                        for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
                                         {
-                                            for (int i = 0; i < PadroesATreinar.Count(); i++)
-                                            {
-                                                for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
-                                                {
-                                                    int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
-                                                    if ((cont == 0 && i == 0) || MenorTamanho > aux)
-                                                        MenorTamanho = aux;
-                                                }
-                                            }
+                                            int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
+                                            if ((cont == 0 && i == 0) || MenorTamanho > aux)
+                                                MenorTamanho = aux;
                                         }
-                                        else
-                                            MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
                                     }
-                                    else
-                                        MenorTamanho = vector_evento.Count();
-                                    novaRedeMLP();
-                                    salvarRedeToolStripMenuItem.Enabled = true;
                                 }
-                                //Pergunta se quer treinar novamente a rede neural... algo assim
                                 else
-                                {
-                                    //So para nao dar erro na classe RedesNeurais
-                                    TipoBkP = "BackPropagation_AllEvnts";
-                                    PadroesATreinar = new int[1];
-                                    PadroesATreinar[0] = 1;
-                                    eventos = new string[1];
-                                }
-
-                                RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
-                                Thread_RN = new Thread(new ThreadStart(objBKP.Init));
-                                Thread_RN.Start();
-                                //Habilita a opção de poder exportar para o form principal
-                                RN_Rodou = true;
-
+                                    MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
                             }
                             else
-                                state = false;
+                                MenorTamanho = vector_evento.Count();
+                            novaRedeMLP();
+                            salvarRedeToolStripMenuItem.Enabled = true;
                         }
+                        //Pergunta se quer treinar novamente a rede neural... algo assim
+                        else
+                        {
+                            //So para nao dar erro na classe RedesNeurais
+                            TipoBkP = "BackPropagation_AllEvnts";
+                            PadroesATreinar = new int[1];
+                            PadroesATreinar[0] = 1;
+                            eventos = new string[1];
+                        }
+                        RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
+                        Thread_RN = new Thread(new ThreadStart(objBKP.Init));
+                        Thread_RN.Start();
+                        //Habilita a opção de poder exportar para o form principal
+                        RN_Rodou = true;
                     }
+                    else
+                        state = false;
+                }
+            }
          }
         //---------------------------------------------------------------------------
         //Função responsavel por criar a Rede Neural
@@ -878,7 +866,6 @@ namespace AmbienteRPB
         {
             BackPropNeuronStrategy strategy = new BackPropNeuronStrategy();
             ArrayList layers = new ArrayList();
-            
             layers.Add(MenorTamanho);
             int NeuroniosDaCamadaInterm = (int)Math.Sqrt(MenorTamanho);
             if (NeuroniosDaCamadaInterm < 9)
@@ -911,7 +898,7 @@ namespace AmbienteRPB
         {
 
         }
-
+        //----------------------------------------------------------------------------
         private void comboFrequencia_KeyDown(object sender, KeyEventArgs e)
         {
             if (comboFrequencia.Text != "")
@@ -921,7 +908,7 @@ namespace AmbienteRPB
                 chart1.ChartAreas[3].AxisX.ScaleView.Size = Convert.ToDouble(comboFrequencia.Text);
             }
         }
-
+        //----------------------------------------------------------------------------
         private void btn_Close_Click(object sender, EventArgs e)
         {
             if (!SMS_Zoom)
@@ -942,7 +929,7 @@ namespace AmbienteRPB
                 visivel = false;
             }
         }
-
+        //----------------------------------------------------------------------------
         private void btn_Aumentar_Click(object sender, EventArgs e)
         {
             SMS_Zoom = true;
@@ -953,14 +940,14 @@ namespace AmbienteRPB
             btn_Close.Location = new Point(this.btn_Close.Location.X, 30);
             visivel = false;
         }
-
+        //----------------------------------------------------------------------------
         private void comboFrequencia_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if (!Char.IsDigit(ch) && ch != 8)
                 e.Handled = true;
         }
-
+        //----------------------------------------------------------------------------
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
         }
@@ -973,6 +960,7 @@ namespace AmbienteRPB
             if (result.Series != null)
                 ExecutaSelecao(result, e, 0);
         }
+        //----------------------------------------------------------------------------
         private void ExecutaSelecao(HitTestResult result, MouseEventArgs e, int offsetX)
         {
             if (numCursor == 0)
@@ -989,21 +977,15 @@ namespace AmbienteRPB
             {
                 PointF Padrao_Inicio = new PointF((float)x_Pos, (float)y_Pos);
                 PointF Padrao_Fim = new PointF((e.X + offsetX), e.Y);
-
                 PointF zero = new PointF(0, 0);
-
                 result.ChartArea.CursorX.SetSelectionPixelPosition(zero, zero, true);
                 result.ChartArea.CursorX.SelectionColor = Color.FromArgb(128, Color.Green);
-
                 //Colore a região do evento
                 result.ChartArea.CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
-
                 Padrao_Inicio.X = (float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos);
                 Padrao_Fim.X = (float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX);
-
                 Padrao_Inicio = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(x_Pos), (float)result.ChartArea.AxisY.PixelPositionToValue(y_Pos));
                 Padrao_Fim = new PointF((float)result.ChartArea.AxisX.PixelPositionToValue(e.X + offsetX), (float)result.ChartArea.AxisY.PixelPositionToValue(e.Y));
-
                 numCursor = 0;
                 if (Padrao_Inicio.X < Padrao_Fim.X)
                 {
@@ -1116,11 +1098,12 @@ namespace AmbienteRPB
             }
             return count;
         }
-
+        //----------------------------------------------------------------------------
         private void FormResultados_FormClosed(object sender, FormClosedEventArgs e)
         {
        
         }
+        //----------------------------------------------------------------------------
         //Carrega o arquivo de marcacoes existente, arquivo este gerado pelo MIT e editado por nós... 
         private void btnMarcacoes_Click(object sender, EventArgs e)
         {
@@ -1147,7 +1130,7 @@ namespace AmbienteRPB
                  toolAnalise.Enabled = true;
             }
         }
-
+        //----------------------------------------------------------------------------
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
             HitTestResult result = chart1.HitTest(e.X, e.Y, ChartElementType.DataPoint);
@@ -1161,7 +1144,7 @@ namespace AmbienteRPB
             lbl_mouseX.Text = "Mouse X: " + e.Location.X;
             lbl_mouseY.Text = "Mouse Y: " + e.Location.Y;
         }
-
+        //----------------------------------------------------------------------------
         private void salvarRedeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -1171,7 +1154,7 @@ namespace AmbienteRPB
                 ser.SaveNetwork(nomeArquivo + ".xml", network);
             }
         }
-
+        //----------------------------------------------------------------------------
         private void importarRedeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
@@ -1205,10 +1188,9 @@ namespace AmbienteRPB
         {
             string threshold = "";
             threshold = Interaction.InputBox("Threshold", "Reconhecimento Automatizado de Padrões em EEG", "", 10, 10);
-
             MessageBox.Show("QRSs: " + Convert.ToString(ContarQRSs(Convert.ToInt16(threshold))), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
-            //ContarQRSs();
         }
+        //----------------------------------------------------------------------------
         private int ContarQRSs(int threshold)
         {
             bool iniciou = false;
@@ -1253,9 +1235,8 @@ namespace AmbienteRPB
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanaisCriados, "Resultado", Marcacoes, ValorInicio.X, ValorFim.X, numeroDeCanais, null, null);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
-
-
             return count;
         }
+        //----------------------------------------------------------------------------
     }
 }
