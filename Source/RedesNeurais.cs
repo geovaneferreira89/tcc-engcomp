@@ -57,7 +57,7 @@ namespace AmbienteRPB
         private INeuralNetwork network;
         private ArrayList inputs;
         private ArrayList MLP_output;
-
+        private bool treinarnova = true;
         private ListaPadroesEventos[] ListasPadrEvents;
         private EdfFile SinalEEG;
         private int [] PadroesATreinar;
@@ -131,34 +131,45 @@ namespace AmbienteRPB
             }
             else if (tipoDeRede == "BackPropagation_AllEvnts")
             {
-                //Utilizando o backPropagation 
-                send_SmS(0, "", false);
-                send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                float inicio = DateTime.Now.Minute;
-                //busca pelo menor tamanho do dos eventos deste padrao... 
-                vetorDeResultados = new int[Sinal.Count()];
-                for(int i=0; i< PadroesATreinar.Count();i++)
+                int loopMAX = 6;
+                while (treinarnova && loopMAX != 0)
                 {
-                    if (!RNImportada)
+                    Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                    //Utilizando o backPropagation 
+                    send_SmS(0, "", false);
+                    send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    float inicio = DateTime.Now.Minute;
+                    //busca pelo menor tamanho do dos eventos deste padrao... 
+                    vetorDeResultados = new int[Sinal.Count()];
+                    for (int i = 0; i < PadroesATreinar.Count(); i++)
                     {
-                        send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
-                        TreinodaRede(VetorEvento, 1, "TodosEventos", i);
-                        send_SmS(1, "Treinada", false);
+                        if (!RNImportada)
+                        {
+                            
+                            send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                            TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                            send_SmS(1, "Treinada", false);
+                        }
+                        else
+                        {
+                            MenorTamanho = network.InputLayer.Count;
+                        }
+                        send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                        Rodar(Sinal, i);
+                        if (!treinarnova)
+                        {
+                            float fim = DateTime.Now.Minute;
+                            send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                            send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
+                            //limpa os dados se existirem
+                            double[] dados = new double[1];
+                            Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                        }
                     }
-                    else
-                    {
-                        MenorTamanho = network.InputLayer.Count;
-                    }
-                    send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                    Rodar(Sinal,i);
-                    float fim = DateTime.Now.Minute;
-                    send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                    send_SmS(1, "Duração: " +Convert.ToString(fim-inicio) + " min.", true);     
-                    //limpa os dados se existirem
-                    double[] dados = new double[1];
-                    Plotar("BKP", dados, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                    Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                    loopMAX--;
                 }
+                if(loopMAX == 0)
+                    send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
             }
             else if (tipoDeRede == "BackPropagationTreinar100x")
             {
@@ -174,7 +185,40 @@ namespace AmbienteRPB
                      send_SmS(1, "Treinada", false);
                 }
             }
-        }    
+        }
+        //---------------------------------------------------------------------------
+        //Função responsavel por criar a Rede Neural
+        public void novaRedeMLP()
+        {
+            BackPropNeuronStrategy strategy = new BackPropNeuronStrategy();
+            ArrayList layers = new ArrayList();
+            layers.Add(MenorTamanho);
+            int NeuroniosDaCamadaInterm = (int)Math.Sqrt(MenorTamanho);
+            if (NeuroniosDaCamadaInterm < 9)
+                NeuroniosDaCamadaInterm = 9;
+            layers.Add(NeuroniosDaCamadaInterm);
+            layers.Add(1);
+
+            List<float> pesosIniciais = new List<float>();
+            network = new NeuralNetwork();
+            foreach (int neurons in layers)
+            {
+                NeuronLayer layer;
+                for (int i = 0; i <= neurons - 1; i++)
+                {
+                    layer = new NeuronLayer();
+                    for (i = 0; i <= neurons - 1; i++)
+                    {
+                        INeuron neuronio = new Neuron(strategy);
+                        pesosIniciais.Add(neuronio.BiasValue);
+                        layer.Add(ref neuronio);
+                    }
+                    network.Layers.Add(layer);
+                    pesosIniciais.Add(9999999);
+                }
+            }
+            network.ConnectLayers();
+        }
         //-----------------------------------------------------------------------------------------
         public void TreinodaRede(double[] input1, double output,string tipoDeTreinamento, int RedeAtual)
         {
@@ -188,180 +232,180 @@ namespace AmbienteRPB
             switch (tipoDeTreinamento)
             {
                 case ("TodosEventos"):
+                {
+                    saida = new ArrayList();
+                    saida.Add(1);
+                    List<float> conjTreinado = new List<float>();
+                    load_progress_bar(0, 4);
+                    int totalParaTreino = ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos;
+                    if (totalParaTreino > 160)
+                        totalParaTreino = 160;
+                    load_progress_bar(totalParaTreino, 2);
+                    for (int cont = 0; cont < totalParaTreino; cont++)
                     {
-                            saida = new ArrayList();
-                            saida.Add(1);
-                            List<float> conjTreinado = new List<float>();
-                            load_progress_bar(0, 4);
-                            int totalParaTreino = ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos;
-                            if (totalParaTreino > 100)
-                                totalParaTreino = 100;
-                            load_progress_bar(totalParaTreino, 2);
-                            for (int cont = 0; cont < totalParaTreino; cont++)
+                        entrada = new ArrayList();
+                        string nome_canal = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont);
+                        int X_ = nome_canal.IndexOf("_");
+                        nome_canal = nome_canal.Substring(X_ + 1);
+                        //Inicio do enveto
+                        float x = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorInicio(cont).X;
+                        float x_fim = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorFim(cont).X;
+                        float referencia = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorMeio(cont).X;
+                        int DataRecords_lidos = 0;
+                        int tempo_X = 0;
+                        ///---------------------------------------------------------
+                        ///Seleciona os eventos que foram marcados no form principal
+                        ///---------------------------------------------------------
+                        if (nome_canal != "Correlacao")
+                        {
+                            PadraoDescatardo = false;
+                            while (tempo_X <= (int)(referencia + MenorTamanho/25))
                             {
-                                entrada = new ArrayList();
-                                string nome_canal = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont);
-                                int X_ = nome_canal.IndexOf("_");
-                                nome_canal = nome_canal.Substring(X_ + 1);
-                                //Inicio do enveto
-                                float x = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorInicio(cont).X;
-                                float x_fim = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorFim(cont).X;
-                                float referencia = ListasPadrEvents[PadroesATreinar[RedeAtual]].GetValorMeio(cont).X;
-                                int DataRecords_lidos = 0;
-                                int tempo_X = 0;
-                                ///---------------------------------------------------------
-                                ///Seleciona os eventos que foram marcados no form principal
-                                ///---------------------------------------------------------
-                                if (nome_canal != "Correlacao")
+                                SinalEEG.ReadDataBlock(DataRecords_lidos);
+                                DataRecords_lidos++;
+                                //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
+                                for (int j = 0; j < SinalEEG.FileInfo.NrSignals; j++)
                                 {
-                                    PadraoDescatardo = false;
-                                    while (tempo_X <= (int)(referencia + MenorTamanho/25))
+                                    for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
                                     {
-                                        SinalEEG.ReadDataBlock(DataRecords_lidos);
-                                        DataRecords_lidos++;
-                                        //Cada ao fim deste for, é adiciocionado somente 1s em todos os canais
-                                        for (int j = 0; j < SinalEEG.FileInfo.NrSignals; j++)
+                                        if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
                                         {
-                                            for (int i = 0; i < SinalEEG.SignalInfo[j].NrSamples; i++)
+                                            //Pela Referencia
+                                            if (UsarReferencia)
                                             {
-                                                if (SinalEEG.SignalInfo[j].SignalLabel == nome_canal)
+                                                if ((x_fim - x) >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2) && tempo_X >= (referencia - (MenorTamanho / 2)) && tempo_X < (referencia + (MenorTamanho / 2)))
                                                 {
-                                                    //Pela Referencia
-                                                    if (UsarReferencia)
-                                                    {
-                                                        if ((x_fim - x) >= MenorTamanho && (referencia - x) >= (MenorTamanho / 2) && (x_fim - referencia) >= (MenorTamanho / 2) && tempo_X >= (referencia - (MenorTamanho / 2)) && tempo_X < (referencia + (MenorTamanho / 2)))
-                                                        {
-                                                            entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                            conjTreinado.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho + x))
-                                                             entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
-                                                    }
-                                                    tempo_X++;
+                                                    entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
+                                                    conjTreinado.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                                 }
                                             }
-                                        }
-                                    }
-                                }
-                                ///-------------------------------------------------------------
-                                ///Seleciona os eventos que foram marcados no form de reultados
-                                ///-------------------------------------------------------------
-                                else
-                                {
-                                    double[] sinal;
-                                    GerenArquivos Arquivos = new GerenArquivos();
-                                    sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont));
-                                    //Pegando pela referencia
-                                    if (cont == 1420)
-                                        load_progress_bar(0, 1);
-                                    if (UsarReferencia)
-                                    {
-                                        if (sinal.Count() > MenorTamanho && ((int)(referencia -x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) /*
-                                                                                                                                                                            && cont != 48 
-                                                                                                                                                                            && cont != 141 
-                                                                                                                                                                            && cont != 95 
-                                                                                                                                                                            && cont != 221 
-                                                                                                                                                                            && cont != 176 
-                                                                                                                                                                            && cont != 21 
-                                                                                                                                                                            && cont != 81 
-                                                                                                                                                                            && cont != 30 
-                                                                                                                                                                            && cont != 49
-                                                                                                                                                                            && cont != 134
-                                                                                                                                                                            && cont != 118
-                                                                                                                                                                            && cont != 88
-                                                                                                                                                                            && cont != 83
-                                                                                                                                                                            && cont != 36
-                                                                                                                                                                            && cont != 280
-                                                                                                                                                                            && cont != 260
-                                                                                                                                                                            && cont != 355
-                                                                                                                                                                            && cont != 368
-                                                                                                                                                                            && cont != 360
-                                                                                                                                                                            && cont != 310
-                                                                                                                                                                            && cont != 358
-                                                                                                                                                                            && cont != 348*/)
-                                        {
-                                            UsadosNoTreino.Add(cont);
-                                            for (int i = (int)(referencia - (MenorTamanho / 2)); i < (int)(referencia + (MenorTamanho / 2)); i++)
+                                            else
                                             {
-                                                entrada.Add(sinal[i]);
-                                                conjTreinado.Add((float)sinal[i]);
+                                                if (tempo_X >= (int)x && tempo_X < (int)(MenorTamanho + x))
+                                                        entrada.Add(SinalEEG.DataBuffer[SinalEEG.SignalInfo[j].BufferOffset + i]);
                                             }
-                                            PadraoDescatardo = false;
+                                            tempo_X++;
                                         }
-                                        else
-                                        {
-                                            PadraoDescatardo = true;
-                                            DescartadosDoTreino.Add(cont);
-                                        }
-                                    }
-                                    //Sem a referencia
-                                    else
-                                    {
-                                        if (sinal.Count() <= MenorTamanho)
-                                        {
-                                            for (int i = 0; i < MenorTamanho; i++)
-                                                entrada.Add(sinal[i]);
-                                            PadraoDescatardo = false;
-                                        }
-
-                                        else
-                                            PadraoDescatardo = true;
                                     }
                                 }
-                                if (!PadraoDescatardo)
-                                    helper.AddTrainingData(entrada, saida);
-                                load_progress_bar(0, 1);
                             }
-                            ///---------------------------------------
-                            ///Gera a saida dos vetores de treinamento
-                            ///---------------------------------------
+                        }
+                        ///-------------------------------------------------------------
+                        ///Seleciona os eventos que foram marcados no form de reultados
+                        ///-------------------------------------------------------------
+                        else
+                        {
+                            double[] sinal;
+                            GerenArquivos Arquivos = new GerenArquivos();
+                            sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[RedeAtual]].GetNomesEvento(cont));
+                            //Pegando pela referencia
+                            if (cont == 1420)
+                                load_progress_bar(0, 1);
                             if (UsarReferencia)
                             {
-                                GerenArquivos dir = new GerenArquivos();
-                                System.IO.StreamWriter fileSalve = new System.IO.StreamWriter(dir.getPathUser() + "ConjTreinado.txt", false);
-                                string smss = "";
-
-                                for (int val = 0; val < UsadosNoTreino.Count; val++)
-                                    smss += Convert.ToString(UsadosNoTreino[val]) + "\t";
-                            
-                                fileSalve.WriteLine(smss);
-                                smss = "";
-                                for (int linhas = 0; linhas < MenorTamanho; linhas++)
+                                if (sinal.Count() > MenorTamanho && ((int)(referencia -x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) /*
+                                                                                                                                                                    && cont != 48 
+                                                                                                                                                                    && cont != 141 
+                                                                                                                                                                    && cont != 95 
+                                                                                                                                                                    && cont != 221 
+                                                                                                                                                                    && cont != 176 
+                                                                                                                                                                    && cont != 21 
+                                                                                                                                                                    && cont != 81 
+                                                                                                                                                                    && cont != 30 
+                                                                                                                                                                    && cont != 49
+                                                                                                                                                                    && cont != 134
+                                                                                                                                                                    && cont != 118
+                                                                                                                                                                    && cont != 88
+                                                                                                                                                                    && cont != 83
+                                                                                                                                                                    && cont != 36
+                                                                                                                                                                    && cont != 280
+                                                                                                                                                                    && cont != 260
+                                                                                                                                                                    && cont != 355
+                                                                                                                                                                    && cont != 368
+                                                                                                                                                                    && cont != 360
+                                                                                                                                                                    && cont != 310
+                                                                                                                                                                    && cont != 358
+                                                                                                                                                                    && cont != 348*/)
                                 {
-                                    for (int padrTreinados = 0; padrTreinados < (conjTreinado.Count / 50); padrTreinados++)
+                                    UsadosNoTreino.Add(cont);
+                                    for (int i = (int)(referencia - (MenorTamanho / 2)); i < (int)(referencia + (MenorTamanho / 2)); i++)
                                     {
-                                        smss += conjTreinado[(padrTreinados * 50) + linhas].ToString() + "\t";
+                                        entrada.Add(sinal[i]);
+                                        conjTreinado.Add((float)sinal[i]);
                                     }
-                                    fileSalve.WriteLine(smss);
-                                    smss = "";
+                                    PadraoDescatardo = false;
                                 }
-                                fileSalve.Close();
-                                send_SmS(1, "Total Usados : " + Convert.ToString(conjTreinado.Count / 50), false);
-                                send_SmS(1, "Total Descartados : " + Convert.ToString(DescartadosDoTreino.Count), false);
+                                else
+                                {
+                                    PadraoDescatardo = true;
+                                    DescartadosDoTreino.Add(cont);
+                                }
                             }
-                           ///------------------------------------///
-                          ///Treina a Rede Neural                               
-                         ///------------------------------------///
-                       send_SmS(1, "Treinando", false);
-                       load_progress_bar(1, 3);
-                       helper.Train(1000);
-                       //calculo do erro
-                       NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
-                       send_SmS(1, "Erro em : " + Convert.ToString(ser.GetERROR(network)), false); 
-                       break;
+                            //Sem a referencia
+                            else
+                            {
+                                if (sinal.Count() <= MenorTamanho)
+                                {
+                                    for (int i = 0; i < MenorTamanho; i++)
+                                        entrada.Add(sinal[i]);
+                                    PadraoDescatardo = false;
+                                }
+
+                                else
+                                    PadraoDescatardo = true;
+                            }
+                        }
+                        if (!PadraoDescatardo)
+                            helper.AddTrainingData(entrada, saida);
+                        load_progress_bar(0, 1);
                     }
-                    case ("SomenteUm"):
+                    ///---------------------------------------
+                    ///Gera a saida dos vetores de treinamento
+                    ///---------------------------------------
+                    if (UsarReferencia)
                     {
-                        saida.Add(1);
-                        for (int i = 0; i < input1.Count(); i++)
-                            entrada.Add(input1[i]);
-                        helper.AddTrainingData(entrada, saida);
-                        helper.Train(1000);
-                        break;
+                        GerenArquivos dir = new GerenArquivos();
+                        System.IO.StreamWriter fileSalve = new System.IO.StreamWriter(dir.getPathUser() + "ConjTreinado.txt", false);
+                        string smss = "";
+
+                        for (int val = 0; val < UsadosNoTreino.Count; val++)
+                            smss += Convert.ToString(UsadosNoTreino[val]) + "\t";
+                            
+                        fileSalve.WriteLine(smss);
+                        smss = "";
+                        for (int linhas = 0; linhas < MenorTamanho; linhas++)
+                        {
+                            for (int padrTreinados = 0; padrTreinados < (conjTreinado.Count / 50); padrTreinados++)
+                            {
+                                smss += conjTreinado[(padrTreinados * 50) + linhas].ToString() + "\t";
+                            }
+                            fileSalve.WriteLine(smss);
+                            smss = "";
+                        }
+                        fileSalve.Close();
+                        send_SmS(1, "Total Usados : " + Convert.ToString(conjTreinado.Count / 50), false);
+                        send_SmS(1, "Total Descartados : " + Convert.ToString(DescartadosDoTreino.Count), false);
                     }
+                    ///------------------------------------///
+                    ///Treina a Rede Neural                               
+                    ///------------------------------------///
+                send_SmS(1, "Treinando", false);
+                load_progress_bar(1, 3);
+                helper.Train(1000);
+                //calculo do erro
+                NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
+                send_SmS(1, "Erro em : " + Convert.ToString(ser.GetERROR(network)), false); 
+                break;
+            }
+            case ("SomenteUm"):
+            {
+                saida.Add(1);
+                for (int i = 0; i < input1.Count(); i++)
+                    entrada.Add(input1[i]);
+                helper.AddTrainingData(entrada, saida);
+                helper.Train(1000);
+                break;
+            }
             }
         }
         //-----------------------------------------------------------------------------------------
@@ -393,16 +437,23 @@ namespace AmbienteRPB
                 MLP_output = new ArrayList(network.RunNetwork(inputs));
                 if (i <= 26)
                 {
-                   if(threshold < Convert.ToDouble(MLP_output[0]))
-                       threshold = Convert.ToDouble(MLP_output[0]);
+                    if (threshold < Convert.ToDouble(MLP_output[0]))
+                    {
+                        threshold = Convert.ToDouble(MLP_output[0]);
+                    }
                    saidaInt[0] = 0;
                 }
                 else
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
+                    {
                         saidaInt[0] = 2;
-                    else if(threshold > Convert.ToDouble(MLP_output[0]))
-                        saidaInt[0] = 1;
+                        treinarnova = false;
+                    }
+                    else if (threshold > Convert.ToDouble(MLP_output[0])){
+                       saidaInt[0] = 1;
+                       treinarnova = false;
+                    }
                     else
                         saidaInt[0] = 0;
                 }
@@ -439,8 +490,11 @@ namespace AmbienteRPB
                     vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
                  load_progress_bar(0, 1);
             }
-            send_SmS(1, ReltsGerados, false);
             load_progress_bar(1, 3);
+            if (!treinarnova)
+                send_SmS(1, ReltsGerados, false);
+            else
+                novaRedeMLP();
         }
         //====================================================================================================
         //                                ...Funções de saida do sistema... 
@@ -471,7 +525,14 @@ namespace AmbienteRPB
                 }
                 if (opcao == 0)
                 {
+                    TextBox.ForeColor = Color.Black;
                     TextBox.Text = "";
+                }
+                if (opcao == 5)
+                {
+                    TextBox.Text = "";
+                    TextBox.Text = texto;
+                    TextBox.ForeColor = Color.Red;
                 }
             }
         }
@@ -483,8 +544,7 @@ namespace AmbienteRPB
             {
                 _BarraDeProgresso.BeginInvoke(new AtualizaPloter(load_progress_bar), new Object[] { valor, caso });
             }
-            else
-            {
+            else{
                 prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
                 if (caso == 1)
                 {
@@ -516,6 +576,16 @@ namespace AmbienteRPB
             {
                 switch (opcao)
                 {
+                    case ("CLEAR"):
+                    {
+                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            prb.Series.Remove(prb.Series["canal" + CanalParaPlotar]);
+                            prb.Series.Add("canal" + CanalParaPlotar);
+                            prb.Series["canal" + CanalParaPlotar].ChartArea = "canal" + CanalParaPlotar;
+                            prb.Series["canal" + CanalParaPlotar].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                            prb.Series["canal" + CanalParaPlotar].Color = Color.Green;
+                        break;
+                    }
                     case ("BKP"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
@@ -569,8 +639,7 @@ namespace AmbienteRPB
                     case ("Criar Chart de Barras"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            if (prb.Series.Count != (canal + 4))
-                            {
+                            if (prb.Series.Count != (canal + 4)){
                                 prb.Series.Add("canal" + (canal + 2));
                                 prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
                                 prb.Titles.Add("canal" + (canal + 2));
@@ -589,8 +658,7 @@ namespace AmbienteRPB
                                 prb.Titles["canal" + (canal + 3)].Position.X = 0;
                                 prb.Titles["canal" + (canal + 3)].Position.Y = (25 * 4) + ((100 - (25 * 4)) / 2);
                             }
-                            else
-                            {
+                            else{
                                 prb.Series["canal" + (canal + 2)].Points.Clear();
                                 prb.Series["canal" + (canal + 3)].Points.Clear();
                             }
@@ -640,7 +708,6 @@ namespace AmbienteRPB
             load_progress_bar(VetTreinamento, 2);
             int cont = 0;
             string resultado;
-            int canal = 0;
             string line = null;
             int vetores = 0;
             for (int i = 0; i < VetTreinamento; i++)
@@ -769,7 +836,6 @@ namespace AmbienteRPB
                 }
                 send_SmS(1, saida, true);
             }
-               
         }
         //----------------------------------
         private Neuron_KHn Winner_KHn(double[] pattern)
