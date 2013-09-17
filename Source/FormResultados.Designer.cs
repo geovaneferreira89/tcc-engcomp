@@ -53,6 +53,7 @@
             this.redeMLPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salvarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treinar100VezesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
             this.toolAnalise = new System.Windows.Forms.ToolStripSplitButton();
@@ -82,7 +83,7 @@
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.treinar100VezesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redeMLP2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -277,7 +278,8 @@
             this.segundaCorrelacao,
             this.toolStripSeparator10,
             this.kohonenToolStripMenuItem,
-            this.redeMLPToolStripMenuItem});
+            this.redeMLPToolStripMenuItem,
+            this.redeMLP2ToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -326,7 +328,7 @@
             // 
             this.salvarRedeToolStripMenuItem.Enabled = false;
             this.salvarRedeToolStripMenuItem.Name = "salvarRedeToolStripMenuItem";
-            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.salvarRedeToolStripMenuItem.Text = "Salvar Rede";
             this.salvarRedeToolStripMenuItem.Click += new System.EventHandler(this.salvarRedeToolStripMenuItem_Click);
             // 
@@ -335,14 +337,22 @@
             this.importarRedeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.treinar100VezesToolStripMenuItem});
             this.importarRedeToolStripMenuItem.Name = "importarRedeToolStripMenuItem";
-            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.importarRedeToolStripMenuItem.Text = "Importar Rede";
             this.importarRedeToolStripMenuItem.Click += new System.EventHandler(this.importarRedeToolStripMenuItem_Click);
+            // 
+            // treinar100VezesToolStripMenuItem
+            // 
+            this.treinar100VezesToolStripMenuItem.Name = "treinar100VezesToolStripMenuItem";
+            this.treinar100VezesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.treinar100VezesToolStripMenuItem.Text = "Treinar +100 vezes";
+            this.treinar100VezesToolStripMenuItem.Visible = false;
+            this.treinar100VezesToolStripMenuItem.Click += new System.EventHandler(this.treinar100VezesToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(146, 6);
             // 
             // btnMarcacoes
             // 
@@ -548,13 +558,13 @@
             // 
             this.saveFileDialog1.Filter = "Arquivos XML (*.xml)|*xml";
             // 
-            // treinar100VezesToolStripMenuItem
+            // redeMLP2ToolStripMenuItem
             // 
-            this.treinar100VezesToolStripMenuItem.Name = "treinar100VezesToolStripMenuItem";
-            this.treinar100VezesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.treinar100VezesToolStripMenuItem.Text = "Treinar +100 vezes";
-            this.treinar100VezesToolStripMenuItem.Visible = false;
-            this.treinar100VezesToolStripMenuItem.Click += new System.EventHandler(this.treinar100VezesToolStripMenuItem_Click);
+            this.redeMLP2ToolStripMenuItem.Enabled = false;
+            this.redeMLP2ToolStripMenuItem.Name = "redeMLP2ToolStripMenuItem";
+            this.redeMLP2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redeMLP2ToolStripMenuItem.Text = "Rede MLP 2";
+            this.redeMLP2ToolStripMenuItem.Click += new System.EventHandler(this.redeMLP2ToolStripMenuItem_Click);
             // 
             // FormResultados
             // 
@@ -644,5 +654,6 @@
         private System.Windows.Forms.ToolStripMenuItem AnaliseMLP;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripMenuItem treinar100VezesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redeMLP2ToolStripMenuItem;
     }
 }

@@ -14,6 +14,10 @@ using System.Windows.Forms.DataVisualization.Charting;
 using BrainNet.NeuralFramework;
 using System.Runtime.InteropServices;
 using System.Collections;
+using NeuronDotNet;
+using NeuronDotNet.Core;
+using NeuronDotNet.Core.Backpropagation;
+using NeuronDotNet.Core.Initializers;
 
 namespace AmbienteRPB
 {
@@ -66,6 +70,12 @@ namespace AmbienteRPB
         private int[] vetorDeResultados;
         private bool it_is_debug = false;
         private bool UsarReferencia = false;
+
+
+        private double learningRate = 0.3d;
+        private int neuronCount = 10;
+        private int cycles = 10000;
+        private BackpropagationNetwork network2;
         //------------------------------------------------------------------------------------------
         public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, bool _UsarReferencia, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede, ref INeuralNetwork _network, bool _RNImportada, int _MenorTamanho)
         {
@@ -185,6 +195,143 @@ namespace AmbienteRPB
                      send_SmS(1, "Treinada", false);
                 }
             }
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //==================================================================================================
+            //REDE MLP NOVA Testes 
+            //_________________________________________________________________________________________________
+            else if (tipoDeRede == "BackPropagation_AllEvnts2")
+            {
+                int loopMAX = 6;
+                while (treinarnova && loopMAX != 0)
+                {
+                    Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                    //Utilizando o backPropagation 
+                    send_SmS(0, "", false);
+                    send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    float inicio = DateTime.Now.Minute;
+                    //busca pelo menor tamanho do dos eventos deste padrao... 
+                    vetorDeResultados = new int[Sinal.Count()];
+                        if (!RNImportada)
+                        {
+                            send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[0]].GetNomePadrao(), false);
+          
+                            cycles = 1000; 
+                            learningRate = 0.2d; 
+                            neuronCount = 10; 
+
+                            LinearLayer inputLayer = new LinearLayer(MenorTamanho);
+                            SigmoidLayer hiddenLayer = new SigmoidLayer((int)Math.Sqrt(MenorTamanho) + 2);
+                            SigmoidLayer outputLayer = new SigmoidLayer(1);
+                            new BackpropagationConnector(inputLayer, hiddenLayer).Initializer = new RandomFunction(0d, 0.2d);
+                            new BackpropagationConnector(hiddenLayer, outputLayer).Initializer = new RandomFunction(0d, 0.2d);
+                            network2 = new BackpropagationNetwork(inputLayer, outputLayer);
+                            network2.SetLearningRate(learningRate);
+
+                            TrainingSet trainingSet = new TrainingSet(MenorTamanho, 1);
+                            for (int tam = 0; tam < 10; tam++)
+                            {
+                                List<double> input = new List<double>();
+                                double[] sinal;
+                                float x = ListasPadrEvents[PadroesATreinar[0]].GetValorInicio(tam).X;
+                                float x_fim = ListasPadrEvents[PadroesATreinar[0]].GetValorFim(tam).X;
+                                float referencia = ListasPadrEvents[PadroesATreinar[0]].GetValorMeio(tam).X;
+                                bool PadraoDescatardo = true;
+                                GerenArquivos Arquivos = new GerenArquivos();
+                                sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[0]].GetNomesEvento(tam));
+                                if (UsarReferencia)
+                                {
+                                    if (sinal.Count() > MenorTamanho && ((int)(referencia - x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) )
+                                    {
+                                        for (int aa = (int)(referencia - (MenorTamanho / 2)); aa < (int)(referencia + (MenorTamanho / 2)); aa++)
+                                            input.Add(sinal[aa]);
+                                        PadraoDescatardo = false;
+                                    }
+                                    else
+                                        PadraoDescatardo = true;
+                                    if (!PadraoDescatardo)
+                                    {
+                                        double [] entrada = new double[input.Count];
+                                        for (int k = 0; k < input.Count; k++)
+                                            entrada[k] = input[k];
+                                        trainingSet.Add(new TrainingSample(entrada, new double[] { 0.25 }));
+                                    }
+                                }
+                            }
+                            load_progress_bar(0, 0);
+                            network2.EndEpochEvent += new TrainingEpochEventHandler(
+                                delegate(object senderNetwork, TrainingEpochEventArgs args)
+                                {
+                                    load_progress_bar(5,(int)(args.TrainingIteration * 100d / cycles));
+                                    Application.DoEvents();
+                                });
+                            network2.Learn(trainingSet, cycles);
+                            //TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                            send_SmS(1, "Treinada", false);
+                        send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                        StopLearning(this, EventArgs.Empty);
+                        if (!treinarnova)
+                        {
+                            float fim = DateTime.Now.Minute;
+                            send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                            send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
+                            //limpa os dados se existirem
+                            double[] dados = new double[1];
+                            Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                        }
+                    }
+                    loopMAX--;
+                }
+                if (loopMAX == 0)
+                    send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
+            }
+        }
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //==================================================================================================
+        //REDE MLP NOVA Testes 
+        //_________________________________________________________________________________________________
+        private void StopLearning(object sender, EventArgs e)
+        {
+            if (network != null)
+            {
+                treinarnova = false;
+                network2.StopLearning();
+                load_progress_bar(0, 4);
+                load_progress_bar(VetTreinamento, 2);
+                int[] saidaInt = new int[1];
+                double threshold = 0.1;
+                char character;
+                bool chave = true;
+                double[] dados = new double[2];
+                //Corrige o problema de deslocamento do sinal para esquerda... 
+                string ReltsGerados = "";
+                double[] entrada;
+                for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
+                {
+                    entrada = new double[MenorTamanho];
+                    MLP_output = new ArrayList();
+                    inputs = new ArrayList();
+                    for (int cont = 0; cont < MenorTamanho; cont++)
+                    {
+                        if ((cont + i) < Sinal.Count())
+                            entrada[cont] = (Sinal[cont + i]);
+                    }
+
+                    dados[0] = i;
+                    dados[1] = MenorTamanho + i;
+                    //RODA A RN
+                    double saida = network2.Run(entrada)[0];
+                    Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
+                    send_SmS(1, Convert.ToString(saida), true);
+                    DialogResult resposta = MessageBox.Show("Saida: " + Convert.ToString(saida), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
+                    load_progress_bar(0, 1);
+                }
+                load_progress_bar(1, 3);
+                if (!treinarnova)
+                    send_SmS(1, ReltsGerados, false);
+                else
+                    novaRedeMLP();
+            }
+            network = null;
         }
         //---------------------------------------------------------------------------
         //Função responsavel por criar a Rede Neural
@@ -209,7 +356,7 @@ namespace AmbienteRPB
                     layer = new NeuronLayer();
                     for (i = 0; i <= neurons - 1; i++)
                     {
-                        INeuron neuronio = new Neuron(strategy);
+                        BrainNet.NeuralFramework.INeuron neuronio = new Neuron(strategy);
                         pesosIniciais.Add(neuronio.BiasValue);
                         layer.Add(ref neuronio);
                     }
@@ -546,6 +693,11 @@ namespace AmbienteRPB
             }
             else{
                 prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
+                if (caso == 0)
+                {
+                    prgbar.Visible = true;
+                    prgbar.Value = 0;
+                }
                 if (caso == 1)
                 {
                     if (prgbar != null)
@@ -562,6 +714,9 @@ namespace AmbienteRPB
                     prgbar.Visible = false;
                 if (caso == 4)
                     prgbar.Value = 0;
+                if (caso == 5)
+                    prgbar.Value = valor;
+
             }
         }
         //-------------------------------------------------------------------
