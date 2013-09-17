@@ -44,10 +44,10 @@
             // 
             // btn_salvar
             // 
-            this.btn_salvar.Location = new System.Drawing.Point(230, 7);
+            this.btn_salvar.Location = new System.Drawing.Point(226, 7);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(51, 22);
-            this.btn_salvar.TabIndex = 4;
+            this.btn_salvar.TabIndex = 1;
             this.btn_salvar.Text = "Ok";
             this.btn_salvar.UseVisualStyleBackColor = true;
             this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
@@ -57,7 +57,7 @@
             this.text_NomePadrao.Location = new System.Drawing.Point(69, 9);
             this.text_NomePadrao.Name = "text_NomePadrao";
             this.text_NomePadrao.Size = new System.Drawing.Size(146, 20);
-            this.text_NomePadrao.TabIndex = 0;
+            this.text_NomePadrao.TabIndex = 1;
             // 
             // lbl_digiteONomeDoPadrao
             // 
@@ -65,13 +65,13 @@
             this.lbl_digiteONomeDoPadrao.Location = new System.Drawing.Point(5, 12);
             this.lbl_digiteONomeDoPadrao.Name = "lbl_digiteONomeDoPadrao";
             this.lbl_digiteONomeDoPadrao.Size = new System.Drawing.Size(44, 13);
-            this.lbl_digiteONomeDoPadrao.TabIndex = 7;
+            this.lbl_digiteONomeDoPadrao.TabIndex = 2;
             this.lbl_digiteONomeDoPadrao.Text = "Padrão ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 64);
+            this.label1.Location = new System.Drawing.Point(5, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 5;
@@ -79,22 +79,22 @@
             // 
             // txt_VetorTamanho
             // 
-            this.txt_VetorTamanho.Location = new System.Drawing.Point(69, 61);
+            this.txt_VetorTamanho.Location = new System.Drawing.Point(69, 38);
             this.txt_VetorTamanho.Name = "txt_VetorTamanho";
             this.txt_VetorTamanho.Size = new System.Drawing.Size(146, 20);
             this.txt_VetorTamanho.TabIndex = 2;
             // 
             // TxtTreinarCom
             // 
-            this.TxtTreinarCom.Location = new System.Drawing.Point(69, 35);
+            this.TxtTreinarCom.Location = new System.Drawing.Point(69, 64);
             this.TxtTreinarCom.Name = "TxtTreinarCom";
             this.TxtTreinarCom.Size = new System.Drawing.Size(146, 20);
-            this.TxtTreinarCom.TabIndex = 1;
+            this.TxtTreinarCom.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 38);
+            this.label2.Location = new System.Drawing.Point(5, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 6;
@@ -103,10 +103,10 @@
             // ckb_UseCorrel
             // 
             this.ckb_UseCorrel.AutoSize = true;
-            this.ckb_UseCorrel.Location = new System.Drawing.Point(8, 158);
+            this.ckb_UseCorrel.Location = new System.Drawing.Point(7, 113);
             this.ckb_UseCorrel.Name = "ckb_UseCorrel";
             this.ckb_UseCorrel.Size = new System.Drawing.Size(102, 17);
-            this.ckb_UseCorrel.TabIndex = 3;
+            this.ckb_UseCorrel.TabIndex = 6;
             this.ckb_UseCorrel.Text = "Usar Correlação";
             this.ckb_UseCorrel.UseVisualStyleBackColor = true;
             // 
@@ -115,10 +115,10 @@
             this.ckb_ListaToda.AutoSize = true;
             this.ckb_ListaToda.Checked = true;
             this.ckb_ListaToda.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb_ListaToda.Location = new System.Drawing.Point(8, 113);
+            this.ckb_ListaToda.Location = new System.Drawing.Point(128, 90);
             this.ckb_ListaToda.Name = "ckb_ListaToda";
             this.ckb_ListaToda.Size = new System.Drawing.Size(148, 17);
-            this.ckb_ListaToda.TabIndex = 8;
+            this.ckb_ListaToda.TabIndex = 4;
             this.ckb_ListaToda.Text = "Todos eventos do padrão";
             this.ckb_ListaToda.UseVisualStyleBackColor = true;
             this.ckb_ListaToda.CheckedChanged += new System.EventHandler(this.ckb_ListaToda_CheckedChanged);
@@ -126,15 +126,16 @@
             // txtPadroes
             // 
             this.txtPadroes.Enabled = false;
-            this.txtPadroes.Location = new System.Drawing.Point(69, 87);
+            this.txtPadroes.Location = new System.Drawing.Point(69, 181);
             this.txtPadroes.Name = "txtPadroes";
             this.txtPadroes.Size = new System.Drawing.Size(146, 20);
-            this.txtPadroes.TabIndex = 9;
+            this.txtPadroes.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 90);
+            this.label3.Enabled = false;
+            this.label3.Location = new System.Drawing.Point(10, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 10;
@@ -143,10 +144,10 @@
             // ckReferencia
             // 
             this.ckReferencia.AutoSize = true;
-            this.ckReferencia.Location = new System.Drawing.Point(8, 135);
+            this.ckReferencia.Location = new System.Drawing.Point(7, 90);
             this.ckReferencia.Name = "ckReferencia";
             this.ckReferencia.Size = new System.Drawing.Size(103, 17);
-            this.ckReferencia.TabIndex = 11;
+            this.ckReferencia.TabIndex = 5;
             this.ckReferencia.Text = "Usar Referencia";
             this.ckReferencia.UseVisualStyleBackColor = true;
             this.ckReferencia.CheckedChanged += new System.EventHandler(this.ckReferencia_CheckedChanged);
@@ -155,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 35);
+            this.ClientSize = new System.Drawing.Size(288, 36);
             this.Controls.Add(this.ckReferencia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPadroes);

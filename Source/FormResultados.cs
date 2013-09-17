@@ -621,8 +621,6 @@ namespace AmbienteRPB
         //----------------------------------------------------------------------------
         private void BTN_Kohonen_Click(object sender, EventArgs e)
         {
-            if (SelecionaEventoDasLista())
-            {
                 if (visivel == false)
                 {
                     gbxChart.Height = gbxChart.Height - SMS_Box.Height;
@@ -634,51 +632,52 @@ namespace AmbienteRPB
                 btn_Close.Visible = true;
                 GerArquivos = new GerenArquivos();
                 int CanalKohonen;
-                double numeroLinhas = chart1.Series[CanalAtual].Points.Count;//System.IO.File.ReadAllLines(GerArquivos.getPathUser() + "arquivo.txt").Length;
+                double numeroLinhas = chart1.Series[CanalAtual].Points.Count;
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
-                FormDadosInput.opcao = 1;
+                FormDadosInput.opcao = 2;
                 FormDadosInput.Vetores = numeroLinhas;
-                if (vector_evento != null)
-                    FormDadosInput.TamVetores = vector_evento.Count();
+                FormDadosInput.TamVetores = 50;
                 FormDadosInput.ShowDialog();
-                //Dados sobre os charts, onde plotar
-                if (FormDadosInput.UsarCorrelacao == true)
-                    CanalKohonen = CanalAtual + 1;
-                else
-                    CanalKohonen = CanalAtual;
-                //Canal de saida de resultados
-                int canalParaPlotar = CanalAtual + 2;
-                if (FormDadosInput.NumPadroes > 1)
+                if (FormDadosInput.opcao == 100)
                 {
-                    PadroesATreinar = new int[FormDadosInput.NumPadroes];
-                    PadroesATreinar[0] = ID_PadraoAtual;
-                    eventos = new string[FormDadosInput.NumPadroes];
-                    eventos[0] = Convert.ToString(ID_PadraoAtual);
-
-                    for (int i = 1; i < FormDadosInput.NumPadroes; i++)
+                    //Dados sobre os charts, onde plotar
+                    if (FormDadosInput.UsarCorrelacao == true)
+                        CanalKohonen = CanalAtual + 1;
+                    else
+                        CanalKohonen = CanalAtual;
+                    //Canal de saida de resultados
+                    int canalParaPlotar = CanalAtual + 2;
+                    if (FormDadosInput.NumPadroes > 1)
                     {
-                        SelecionaEventoDasLista();
-                        PadroesATreinar[i] = ID_PadraoAtual;
-                        eventos[i] = Convert.ToString(ID_PadraoAtual);
-                    }
-                }
-                else
-                {
-                    PadroesATreinar = new int[1];
-                    PadroesATreinar[0] = ID_PadraoAtual;
-                    eventos = new string[FormDadosInput.NumPadroes];
-                    eventos[0] = Convert.ToString(ID_PadraoAtual);
-                }
+                        PadroesATreinar = new int[FormDadosInput.NumPadroes];
+                        PadroesATreinar[0] = ID_PadraoAtual;
+                        eventos = new string[FormDadosInput.NumPadroes];
+                        eventos[0] = Convert.ToString(ID_PadraoAtual);
 
-                double[] vectorSignal = new double[chart1.Series["canal" + CanalKohonen].Points.Count];
-                for (int i = 0; i < chart1.Series["canal" + CanalKohonen].Points.Count; i++)
-                    vectorSignal[i] = chart1.Series["canal" + CanalKohonen].Points[i].YValues[0];
-                RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", ref network, RN_Importada, MenorTamanho);
-                Thread_RN = new Thread(new ThreadStart(objRMP.Init));
-                Thread_RN.Start();
-                //Habilita a opção de poder exportar para o form principal
-                RN_Rodou = true;
-            }
+                        for (int i = 1; i < FormDadosInput.NumPadroes; i++)
+                        {
+                            SelecionaEventoDasLista();
+                            PadroesATreinar[i] = ID_PadraoAtual;
+                            eventos[i] = Convert.ToString(ID_PadraoAtual);
+                        }
+                    }
+                    else
+                    {
+                        PadroesATreinar = new int[1];
+                        PadroesATreinar[0] = ID_PadraoAtual;
+                        eventos = new string[FormDadosInput.NumPadroes];
+                        eventos[0] = Convert.ToString(ID_PadraoAtual);
+                    }
+
+                    double[] vectorSignal = new double[chart1.Series["canal" + CanalKohonen].Points.Count];
+                    for (int i = 0; i < chart1.Series["canal" + CanalKohonen].Points.Count; i++)
+                        vectorSignal[i] = chart1.Series["canal" + CanalKohonen].Points[i].YValues[0];
+                    RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", ref network, RN_Importada, MenorTamanho);
+                    Thread_RN = new Thread(new ThreadStart(objRMP.Init));
+                    Thread_RN.Start();
+                    //Habilita a opção de poder exportar para o form principal
+                    RN_Rodou = true;
+                }
         }
         //------------------------------------------------------------------------------
         private void treinar100VezesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -789,74 +788,77 @@ namespace AmbienteRPB
                 if (vector_evento != null)
                     FormDadosInput.TamVetores = vector_evento.Count();
                 FormDadosInput.ShowDialog();
-                //Dados sobre os charts, onde plotar
-                int canalDados;
-                if (FormDadosInput.UsarCorrelacao == true)
-                    canalDados = CanalAtual + 1;
-                else
-                    canalDados = CanalAtual;
-                //Canal de saida de resultados
-                int canalParaPlotar = CanalAtual + 2;
-                double[] vectorSignal = new double[chart1.Series["canal" + canalDados].Points.Count];
-                for (int i = 0; i < chart1.Series["canal"+canalDados].Points.Count; i++)
-                    vectorSignal[i] = chart1.Series["canal" + canalDados].Points[i].YValues[0];
-                bool state = true;
-                while (state)
+                if (FormDadosInput.opcao == 100)
                 {
-                    DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                    if (debug == DialogResult.Yes)
+                    //Dados sobre os charts, onde plotar
+                    int canalDados;
+                    if (FormDadosInput.UsarCorrelacao == true)
+                        canalDados = CanalAtual + 1;
+                    else
+                        canalDados = CanalAtual;
+                    //Canal de saida de resultados
+                    int canalParaPlotar = CanalAtual + 2;
+                    double[] vectorSignal = new double[chart1.Series["canal" + canalDados].Points.Count];
+                    for (int i = 0; i < chart1.Series["canal" + canalDados].Points.Count; i++)
+                        vectorSignal[i] = chart1.Series["canal" + canalDados].Points[i].YValues[0];
+                    bool state = true;
+                    while (state)
                     {
-                        SMS_Box.Clear();
-                        string TipoBkP;
-                        //Verifica se a RN foi criada
-                        if (!RN_Importada)
+                        DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                        if (debug == DialogResult.Yes)
                         {
-                            PadroesATreinar = new int[1];
-                            PadroesATreinar[0] = ID_PadraoAtual;
-                            //Só busca um evento
-                            eventos = new string[1];
-                            eventos[0] = Convert.ToString(ID_PadraoAtual);
-                            TipoBkP = "BackPropagation";
-                            if (FormDadosInput.UsarListaDeTodosEnventos)
+                            SMS_Box.Clear();
+                            string TipoBkP;
+                            //Verifica se a RN foi criada
+                            if (!RN_Importada)
                             {
-                                TipoBkP = "BackPropagation_AllEvnts";
-                                if (!FormDadosInput.UsarReferencia)
+                                PadroesATreinar = new int[1];
+                                PadroesATreinar[0] = ID_PadraoAtual;
+                                //Só busca um evento
+                                eventos = new string[1];
+                                eventos[0] = Convert.ToString(ID_PadraoAtual);
+                                TipoBkP = "BackPropagation";
+                                if (FormDadosInput.UsarListaDeTodosEnventos)
                                 {
-                                    for (int i = 0; i < PadroesATreinar.Count(); i++)
+                                    TipoBkP = "BackPropagation_AllEvnts";
+                                    if (!FormDadosInput.UsarReferencia)
                                     {
-                                        for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
+                                        for (int i = 0; i < PadroesATreinar.Count(); i++)
                                         {
-                                            int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
-                                            if ((cont == 0 && i == 0) || MenorTamanho > aux)
-                                                MenorTamanho = aux;
+                                            for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
+                                            {
+                                                int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
+                                                if ((cont == 0 && i == 0) || MenorTamanho > aux)
+                                                    MenorTamanho = aux;
+                                            }
                                         }
                                     }
+                                    else
+                                        MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
                                 }
                                 else
-                                    MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
+                                    MenorTamanho = vector_evento.Count();
+                                novaRedeMLP();
+                                salvarRedeToolStripMenuItem.Enabled = true;
                             }
+                            //Pergunta se quer treinar novamente a rede neural... algo assim
                             else
-                                MenorTamanho = vector_evento.Count();
-                            novaRedeMLP();
-                            salvarRedeToolStripMenuItem.Enabled = true;
+                            {
+                                //So para nao dar erro na classe RedesNeurais
+                                TipoBkP = "BackPropagation_AllEvnts";
+                                PadroesATreinar = new int[1];
+                                PadroesATreinar[0] = 1;
+                                eventos = new string[1];
+                            }
+                            RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
+                            Thread_RN = new Thread(new ThreadStart(objBKP.Init));
+                            Thread_RN.Start();
+                            //Habilita a opção de poder exportar para o form principal
+                            RN_Rodou = true;
                         }
-                        //Pergunta se quer treinar novamente a rede neural... algo assim
                         else
-                        {
-                            //So para nao dar erro na classe RedesNeurais
-                            TipoBkP = "BackPropagation_AllEvnts";
-                            PadroesATreinar = new int[1];
-                            PadroesATreinar[0] = 1;
-                            eventos = new string[1];
-                        }
-                        RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
-                        Thread_RN = new Thread(new ThreadStart(objBKP.Init));
-                        Thread_RN.Start();
-                        //Habilita a opção de poder exportar para o form principal
-                        RN_Rodou = true;
+                            state = false;
                     }
-                    else
-                        state = false;
                 }
             }
          }
