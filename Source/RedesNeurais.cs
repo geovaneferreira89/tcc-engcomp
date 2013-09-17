@@ -111,180 +111,188 @@ namespace AmbienteRPB
             //    it_is_debug = true;
             //----------------------------------------------------------------------------------
             //Kohonenn
-            if (tipoDeRede == "Kohonen")
+            switch(tipoDeRede)
             {
-                Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null);
-                send_SmS(2, "Inicializando",false);
-                Initialise_KHn();
-                send_SmS(1, "Carregando Arquivo de Vetores", false);
-                LoadData_KHn(file);
-                send_SmS(1, "Init NormalisePatterns", false);
-                NormalisePatterns_KHn();
-                send_SmS(1, "Treinando a rede com 0.0000001", false);
-                Train_KHn(0.0000001);
-                send_SmS(1, "Resultados:", false);
-                DumpCoordinates_KHn();
-                send_SmS(1, "Fim...", false);
-            }
-            else if (tipoDeRede == "BackPropagation")
-            {
-                //Utilizando o backPropagation 
-                send_SmS(2, "Inicializando", false);
-                //Define o tamanho do vetor evento
-                MenorTamanho = VetorEvento.Count();
-                if(!RNImportada)
-                    TreinodaRede(VetorEvento, 1, "SomenteUm", 0); //null - somente o evento marcado 
-                send_SmS(1, "Treinada", false);
-                vetorDeResultados = new int[Sinal.Count()];
-                Rodar(Sinal, 0);
-                send_SmS(1, "Fim", false);
-            }
-            else if (tipoDeRede == "BackPropagation_AllEvnts")
-            {
-                int loopMAX = 6;
-                float inicio = DateTime.Now.Minute;
-                while (treinarnova && loopMAX != 0)
+                case("Kohonen"):
                 {
-                    Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                    //Utilizando o backPropagation 
-                    send_SmS(0, "", false);
-                    send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                    //busca pelo menor tamanho do dos eventos deste padrao... 
-                    vetorDeResultados = new int[Sinal.Count()];
-                    for (int i = 0; i < PadroesATreinar.Count(); i++)
+                        Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null);
+                        send_SmS(2, "Inicializando",false);
+                        Initialise_KHn();
+                        send_SmS(1, "Carregando Arquivo de Vetores", false);
+                        LoadData_KHn(file);
+                        send_SmS(1, "Init NormalisePatterns", false);
+                        NormalisePatterns_KHn();
+                        send_SmS(1, "Treinando a rede com 0.0000001", false);
+                        Train_KHn(0.0000001);
+                        send_SmS(1, "Resultados:", false);
+                        DumpCoordinates_KHn();
+                        send_SmS(1, "Fim...", false);
+                        break;
+                }
+                case("BackPropagation"):
+                {
+                        //Utilizando o backPropagation 
+                        send_SmS(2, "Inicializando", false);
+                        //Define o tamanho do vetor evento
+                        MenorTamanho = VetorEvento.Count();
+                        if(!RNImportada)
+                            TreinodaRede(VetorEvento, 1, "SomenteUm", 0); //null - somente o evento marcado 
+                        send_SmS(1, "Treinada", false);
+                        vetorDeResultados = new int[Sinal.Count()];
+                        Rodar(Sinal, 0);
+                        send_SmS(1, "Fim", false);
+                        break;
+                }
+                case("BackPropagation_AllEvnts"):
+                {
+                    int loopMAX = 6;
+                    float inicio = DateTime.Now.Minute;
+                    while (treinarnova && loopMAX != 0)
                     {
-                        if (!RNImportada)
+                        Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                        //Utilizando o backPropagation 
+                        send_SmS(0, "", false);
+                        send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                        //busca pelo menor tamanho do dos eventos deste padrao... 
+                        vetorDeResultados = new int[Sinal.Count()];
+                        for (int i = 0; i < PadroesATreinar.Count(); i++)
                         {
+                            if (!RNImportada)
+                            {
                             
-                            send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
-                            TreinodaRede(VetorEvento, 1, "TodosEventos", i);
-                            send_SmS(1, "Treinada", false);
+                                send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                                TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                                send_SmS(1, "Treinada", false);
+                            }
+                            else
+                            {
+                                MenorTamanho = network.InputLayer.Count;
+                            }
+                            send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                            Rodar(Sinal, i);
+                            if (!treinarnova)
+                            {
+                                float fim = DateTime.Now.Minute;
+                                send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                                send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
+                                //limpa os dados se existirem
+                                double[] dados = new double[1];
+                                Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                            }
                         }
-                        else
-                        {
-                            MenorTamanho = network.InputLayer.Count;
-                        }
-                        send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                        Rodar(Sinal, i);
-                        if (!treinarnova)
-                        {
-                            float fim = DateTime.Now.Minute;
-                            send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                            send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
-                            //limpa os dados se existirem
-                            double[] dados = new double[1];
-                            Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                        }
+                        loopMAX--;
                     }
-                    loopMAX--;
-                }
-                if(loopMAX == 0)
-                    send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
-            }
-            else if (tipoDeRede == "BackPropagationTreinar100x")
-            {
-                //Utilizando o backPropagation 
-                send_SmS(0, "", false);
-                send_SmS(2, "Inicializando.", false);
-                //Busca pelo menor tamanho do dos eventos deste padrao... 
-                vetorDeResultados = new int[Sinal.Count()];
-                for(int i=0; i< PadroesATreinar.Count();i++)
-                {
-                     send_SmS(1, "Treinando a rede 1000 + com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
-                     TreinodaRede(VetorEvento, 1, "TodosEventos", i);
-                     send_SmS(1, "Treinada", false);
-                }
-            }
+                    if(loopMAX == 0)
+                        send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
+                    break;
+               }
+               case("BackPropagationTreinar100x"):
+               {
+                        //Utilizando o backPropagation 
+                        send_SmS(0, "", false);
+                        send_SmS(2, "Inicializando.", false);
+                        //Busca pelo menor tamanho do dos eventos deste padrao... 
+                        vetorDeResultados = new int[Sinal.Count()];
+                        for(int i=0; i< PadroesATreinar.Count();i++)
+                        {
+                             send_SmS(1, "Treinando a rede 1000 + com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                             TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                             send_SmS(1, "Treinada", false);
+                        }
+                        break;
+               }
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             //=================================================================================================
             //REDE MLP NOVA Testes 
             //_________________________________________________________________________________________________
-            else if (tipoDeRede == "BackPropagation_AllEvnts2")
+            case("BackPropagation_AllEvnts2"):
             {
-                int loopMAX = 6;
-                while (treinarnova && loopMAX != 0)
-                {
-                    Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                    //Utilizando o backPropagation 
-                    send_SmS(0, "", false);
-                    send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                    float inicio = DateTime.Now.Minute;
-                    //busca pelo menor tamanho do dos eventos deste padrao... 
-                    vetorDeResultados = new int[Sinal.Count()];
-                        if (!RNImportada)
-                        {
-                            send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[0]].GetNomePadrao(), false);
-          
-                            cycles = 1000; 
-                            learningRate = 0.2d; 
-                            neuronCount = 10; 
-
-                            LinearLayer inputLayer = new LinearLayer(MenorTamanho);
-                            SigmoidLayer hiddenLayer = new SigmoidLayer((int)Math.Sqrt(MenorTamanho) + 2);
-                            SigmoidLayer outputLayer = new SigmoidLayer(1);
-                            new BackpropagationConnector(inputLayer, hiddenLayer).Initializer = new RandomFunction(0d, 0.2d);
-                            new BackpropagationConnector(hiddenLayer, outputLayer).Initializer = new RandomFunction(0d, 0.2d);
-                            network2 = new BackpropagationNetwork(inputLayer, outputLayer);
-                            network2.SetLearningRate(learningRate);
-
-                            TrainingSet trainingSet = new TrainingSet(MenorTamanho, 1);
-                            for (int tam = 0; tam < 10; tam++)
+                            int loopMAX = 6;
+                            while (treinarnova && loopMAX != 0)
                             {
-                                List<double> input = new List<double>();
-                                double[] sinal;
-                                float x = ListasPadrEvents[PadroesATreinar[0]].GetValorInicio(tam).X;
-                                float x_fim = ListasPadrEvents[PadroesATreinar[0]].GetValorFim(tam).X;
-                                float referencia = ListasPadrEvents[PadroesATreinar[0]].GetValorMeio(tam).X;
-                                bool PadraoDescatardo = true;
-                                GerenArquivos Arquivos = new GerenArquivos();
-                                sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[0]].GetNomesEvento(tam));
-                                if (UsarReferencia)
-                                {
-                                    if (sinal.Count() > MenorTamanho && ((int)(referencia - x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) )
+                                Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                                //Utilizando o backPropagation 
+                                send_SmS(0, "", false);
+                                send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                                float inicio = DateTime.Now.Minute;
+                                //busca pelo menor tamanho do dos eventos deste padrao... 
+                                vetorDeResultados = new int[Sinal.Count()];
+                                    if (!RNImportada)
                                     {
-                                        for (int aa = (int)(referencia - (MenorTamanho / 2)); aa < (int)(referencia + (MenorTamanho / 2)); aa++)
-                                            input.Add(sinal[aa]);
-                                        PadraoDescatardo = false;
-                                    }
-                                    else
-                                        PadraoDescatardo = true;
-                                    if (!PadraoDescatardo)
+                                        send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[0]].GetNomePadrao(), false);
+          
+                                        cycles = 1000; 
+                                        learningRate = 0.2d; 
+                                        neuronCount = 10; 
+
+                                        LinearLayer inputLayer = new LinearLayer(MenorTamanho);
+                                        SigmoidLayer hiddenLayer = new SigmoidLayer((int)Math.Sqrt(MenorTamanho) + 2);
+                                        SigmoidLayer outputLayer = new SigmoidLayer(1);
+                                        new BackpropagationConnector(inputLayer, hiddenLayer).Initializer = new RandomFunction(0d, 0.2d);
+                                        new BackpropagationConnector(hiddenLayer, outputLayer).Initializer = new RandomFunction(0d, 0.2d);
+                                        network2 = new BackpropagationNetwork(inputLayer, outputLayer);
+                                        network2.SetLearningRate(learningRate);
+
+                                        TrainingSet trainingSet = new TrainingSet(MenorTamanho, 1);
+                                        for (int tam = 0; tam < 10; tam++)
+                                        {
+                                            List<double> input = new List<double>();
+                                            double[] sinal;
+                                            float x = ListasPadrEvents[PadroesATreinar[0]].GetValorInicio(tam).X;
+                                            float x_fim = ListasPadrEvents[PadroesATreinar[0]].GetValorFim(tam).X;
+                                            float referencia = ListasPadrEvents[PadroesATreinar[0]].GetValorMeio(tam).X;
+                                            bool PadraoDescatardo = true;
+                                            GerenArquivos Arquivos = new GerenArquivos();
+                                            sinal = Arquivos.ImportaPadraoCorrelacao(ListasPadrEvents[PadroesATreinar[0]].GetNomesEvento(tam));
+                                            if (UsarReferencia)
+                                            {
+                                                if (sinal.Count() > MenorTamanho && ((int)(referencia - x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) )
+                                                {
+                                                    for (int aa = (int)(referencia - (MenorTamanho / 2)); aa < (int)(referencia + (MenorTamanho / 2)); aa++)
+                                                        input.Add(sinal[aa]);
+                                                    PadraoDescatardo = false;
+                                                }
+                                                else
+                                                    PadraoDescatardo = true;
+                                                if (!PadraoDescatardo)
+                                                {
+                                                    double [] entrada = new double[input.Count];
+                                                    for (int k = 0; k < input.Count; k++)
+                                                        entrada[k] = input[k];
+                                                    trainingSet.Add(new TrainingSample(entrada, new double[] { 0.25 }));
+                                                }
+                                            }
+                                        }
+                                        load_progress_bar(0, 0);
+                                        network2.EndEpochEvent += new TrainingEpochEventHandler(
+                                            delegate(object senderNetwork, TrainingEpochEventArgs args)
+                                            {
+                                                load_progress_bar(5,(int)(args.TrainingIteration * 100d / cycles));
+                                                Application.DoEvents();
+                                            });
+                                        network2.Learn(trainingSet, cycles);
+                                        //TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                                        send_SmS(1, "Treinada", false);
+                                    send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                                    StopLearning(this, EventArgs.Empty);
+                                    if (!treinarnova)
                                     {
-                                        double [] entrada = new double[input.Count];
-                                        for (int k = 0; k < input.Count; k++)
-                                            entrada[k] = input[k];
-                                        trainingSet.Add(new TrainingSample(entrada, new double[] { 0.25 }));
+                                        float fim = DateTime.Now.Minute;
+                                        send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                                        send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
+                                        //limpa os dados se existirem
+                                        double[] dados = new double[1];
+                                        Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                                     }
                                 }
+                                loopMAX--;
                             }
-                            load_progress_bar(0, 0);
-                            network2.EndEpochEvent += new TrainingEpochEventHandler(
-                                delegate(object senderNetwork, TrainingEpochEventArgs args)
-                                {
-                                    load_progress_bar(5,(int)(args.TrainingIteration * 100d / cycles));
-                                    Application.DoEvents();
-                                });
-                            network2.Learn(trainingSet, cycles);
-                            //TreinodaRede(VetorEvento, 1, "TodosEventos", i);
-                            send_SmS(1, "Treinada", false);
-                        send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                        StopLearning(this, EventArgs.Empty);
-                        if (!treinarnova)
-                        {
-                            float fim = DateTime.Now.Minute;
-                            send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                            send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
-                            //limpa os dados se existirem
-                            double[] dados = new double[1];
-                            Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
-                        }
-                    }
-                    loopMAX--;
-                }
-                if (loopMAX == 0)
-                    send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
-            }
-        }
+                            if (loopMAX == 0)
+                                send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
+                            break;
+                  }//Fim case
+            }//Fim switch
+        }//Fim
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //=================================================================================================
         //REDE MLP NOVA Testes 
