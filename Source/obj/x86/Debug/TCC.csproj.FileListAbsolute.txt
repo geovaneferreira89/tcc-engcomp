@@ -143,7 +143,6 @@ Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\pt-BR\Microsoft.Qu
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.config
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
-W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Modelo1.EDF
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.application
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe
@@ -175,3 +174,6 @@ W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.application
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NeuronDotNet.Core.dll
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NeuronDotNet.Core.xml
+W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_102.edf
+W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_105.edf
+W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\EEG_1.edf

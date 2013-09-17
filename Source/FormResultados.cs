@@ -1168,9 +1168,9 @@ namespace AmbienteRPB
             //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
             for (int CanalX = 0; CanalX < CanaisCriados; CanalX++)
             {
-                for (int i = 0; i < chart1.Series[(CanalX * 4) + 2].Points.Count(); i++)
+                for (int i = 0; i < chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count(); i++)
                 {
-                    val = (int)chart1.Series[(CanalX * 4) + 2].Points[i].YValues[0];
+                    val = (int)chart1.Series["canal" + ((CanalX * 4) + 2)].Points[i].YValues[0];
                     if (val != 0)
                     {
                         if (iniciou == false)
