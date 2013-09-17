@@ -113,6 +113,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Avaliador.cs" />
+    <Compile Include="AV_Marcacao.cs" />
     <Compile Include="Correlacao.cs" />
     <Compile Include="FormCarregar_EDF.cs">
       <SubType>Form</SubType>
@@ -165,6 +167,7 @@
       <DependentUpon>MDIPrincipalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ListaPadroesEventos.cs" />
+    <Compile Include="AV_Resultado.cs" />
     <Compile Include="Thread_Annotations.cs" />
     <Compile Include="Thread_grafico.cs" />
     <Compile Include="FormPrincipal.cs">

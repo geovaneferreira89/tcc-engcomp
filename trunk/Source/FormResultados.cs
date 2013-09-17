@@ -1345,5 +1345,50 @@ namespace AmbienteRPB
             Thread_.Start();
             return count;
         }
+
+        private void avaliadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (visivel == false)
+            {
+                gbxChart.Height = gbxChart.Height - SMS_Box.Height;
+                visivel = true;
+            }
+            SMS_Box.Visible = true;
+            btn_Aumentar.Visible = true;
+            btn_Close.Visible = true;
+
+            //Cria entradas
+            List<double> resultados = new List<double> { 10, 20, 31, 40, 50, 55, 60, 80, 90 };
+            List<double> marcacoes = new List<double> { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+
+
+            //Avalia
+            Avaliador avaliador = new Avaliador();
+            avaliador.Avaliar(resultados, marcacoes);
+
+
+            //Saída
+            SMS_Box.Text = "Resultado Avaliação";
+            for (int i = 0; i < avaliador.VP.Count(); i++)
+            {
+                SMS_Box.Text = SMS_Box.Text + "\nVP " + i + ": " + avaliador.VP[i];
+            }
+
+            for (int i = 0; i < avaliador.FP.Count(); i++)
+            {
+                  SMS_Box.Text = SMS_Box.Text + "\nFP " + i + ": " + avaliador.FP[i];
+            }
+
+            for (int i = 0; i < avaliador.FN.Count(); i++)
+            {
+                  SMS_Box.Text = SMS_Box.Text + "\nFN " + i + ": " + avaliador.FN[i];
+            }
+
+            for (int i = 0; i < avaliador.VN.Count(); i++)
+            {
+                  SMS_Box.Text = SMS_Box.Text + "\nVN " + i + ": " + avaliador.VN[i];
+            }
+
+        }
     }
 }

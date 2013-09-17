@@ -10,3 +10,6 @@ C:\Users\Ge\Desktop\tcc2013\avaliador teste\teste\teste\obj\Debug\teste.pdb
 C:\Users\Ge\Desktop\tcc2013\avaliador teste\teste\teste\bin\Debug\teste.exe
 C:\Users\Ge\Desktop\tcc2013\avaliador teste\teste\teste\bin\Debug\teste.pdb
 C:\Users\Ge\Desktop\tcc2013\avaliador teste\teste\teste\obj\Debug\teste.csprojResolveAssemblyReference.cache
+W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\avaliador teste\teste\teste\bin\Debug\teste.exe.config
+W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\avaliador teste\teste\teste\obj\Debug\teste.exe
+W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\avaliador teste\teste\teste\obj\Debug\teste.pdb
