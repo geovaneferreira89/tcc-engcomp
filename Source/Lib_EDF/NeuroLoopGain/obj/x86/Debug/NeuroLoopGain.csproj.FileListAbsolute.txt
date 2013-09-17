@@ -1,0 +1,7 @@
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Lib_EDF\NeuroLoopGain\obj\x86\Debug\NeuroLoopGain.csprojResolveAssemblyReference.cache
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Lib_EDF\NeuroLoopGain\obj\x86\Debug\NeuroLoopGain.FormPiBHistogram.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Lib_EDF\NeuroLoopGain\obj\x86\Debug\NeuroLoopGain.MainGUI.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Lib_EDF\NeuroLoopGain\obj\x86\Debug\NeuroLoopGain.ProgressBarForm.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Lib_EDF\NeuroLoopGain\obj\x86\Debug\NeuroLoopGain.Properties.Resources.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Lib_EDF\NeuroLoopGain\obj\x86\Debug\NeuroLoopGain.Strings.resources
+Z:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\Lib_EDF\NeuroLoopGain\obj\x86\Debug\NeuroLoopGain.csproj.GenerateResource.Cache
