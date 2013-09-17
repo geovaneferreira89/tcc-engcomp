@@ -621,6 +621,8 @@ namespace AmbienteRPB
         //----------------------------------------------------------------------------
         private void BTN_Kohonen_Click(object sender, EventArgs e)
         {
+            if (SelecionaEventoDasLista())
+            {
                 if (visivel == false)
                 {
                     gbxChart.Height = gbxChart.Height - SMS_Box.Height;
@@ -678,6 +680,7 @@ namespace AmbienteRPB
                     //Habilita a opção de poder exportar para o form principal
                     RN_Rodou = true;
                 }
+            }
         }
         //------------------------------------------------------------------------------
         private void treinar100VezesToolStripMenuItem_Click(object sender, EventArgs e)
