@@ -119,23 +119,21 @@ namespace AmbienteRPB
                 case("Kohonen"):
                 {
                         Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null,null,null);
-                        send_SmS(2, "Inicializando",false);
+                        send_SmS(2, "Inicializando", false);
                         Initialise_KHn();
-                        send_SmS(1, "Carregando Arquivo de Vetores", false);
+                        send_SmS(1, "Adicionando Entradas", false);
                         LoadData_KHn(file);
-                        send_SmS(1, "Init NormalisePatterns", false);
                         NormalisePatterns_KHn();
-                        send_SmS(1, "Treinando a rede com 0.0000001", false);
+                        send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
                         Train_KHn(0.0001);
-                        send_SmS(1, "Resultados:", false);
+                        send_SmS(1, "Resultados: ", false);
                         DumpCoordinates_KHn();
                         if(!it_is_debug)
                         {
                             double[] dados = new double[2];
-                 
-                                Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, X_Vals,Y_Vals);
-                       }
-                                        //Imprime a matriz
+                            Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, X_Vals,Y_Vals);
+                        }
+                        //Imprime a matriz de resultados
                         for (int i = 0; i < length; i++)
                         {
                             string saida = "";
@@ -145,7 +143,7 @@ namespace AmbienteRPB
                             }
                             send_SmS(1, saida, true);
                         }
-                        send_SmS(1, "Fim...", false);
+                        send_SmS(1, "Fim", false);
                         break;
                 }
                 case("BackPropagation"):
@@ -892,33 +890,23 @@ namespace AmbienteRPB
             load_progress_bar(0, 4);
             load_progress_bar(VetTreinamento, 2);
             int cont = 0;
-            string resultado;
-            string line = null;
-            int vetores = 0;
+            //VetTreinamento é o numero total de amostras que sera apresentada kohonen e classificada por ele
             for (int i = 0; i < VetTreinamento; i++)
             {
-                while (cont < VetorEvento.Count())
-                {
-                    if ((cont + i) < Sinal.Count())
-                        resultado = Convert.ToString(Sinal[cont + i]);
-                    else
-                        resultado = "0.0";
-                    resultado = resultado.Replace(",", ".");
-                    line = line + ", " + resultado;
-                    cont++;
-                }
-                string[] _line = line.Split(',');
-                labels.Add(_line[0]);
                 double[] inputs = new double[dimensions];
-                for (int j = 0; j < dimensions; j++)
+                //VetorEvento é o numero de amostras por evento, recomendase sempre acima de 50 amostras por evento
+                int pos = 0;
+                cont = 0;
+                while (cont < dimensions)
                 {
-                    inputs[j] = double.Parse(_line[j + 1]);
+                    if ((cont + i) < dimensions)
+                        inputs[pos] = Sinal[cont + i];
+                    else
+                        inputs[pos] = 0;
+                    cont++;
+                    pos++;
                 }
                 patterns.Add(inputs);
-                line = null;
-                cont = 0;
-                vetores++;
-                line = "vetor" + vetores;
                 load_progress_bar(0, 1);
             }
             load_progress_bar(1, 3);
@@ -943,6 +931,9 @@ namespace AmbienteRPB
         //----------------------------------------------------------------------------------------
         private void Train_KHn(double maxError)
         {
+            load_progress_bar(1, 3);
+            load_progress_bar(0, 4);
+            load_progress_bar(100, 2);
             double currentError = double.MaxValue;
             int count = 0;
             while (currentError > maxError)
@@ -959,9 +950,11 @@ namespace AmbienteRPB
                     currentError += TrainPattern_KHn(pattern);
                     TrainingSet.Remove(pattern);
                 }
-                send_SmS(1, Convert.ToString(count), true);
+                send_SmS(1, Convert.ToString(count) + " - " + Convert.ToString(currentError), true);
                 count++;
+                load_progress_bar(0, 1);
             }
+            load_progress_bar(1, 3);
         }
         //----------------------------------------------------------------------------------------
         private double TrainPattern_KHn(double[] pattern)
@@ -988,7 +981,7 @@ namespace AmbienteRPB
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
-                string saida = labels[i] + " " + n.X + " " + n.Y;
+                string saida = n.X + " " + n.Y;
                 dados[0] = n.X;
                 dados[1] = n.Y;
                 SaidaFinal[n.X, n.Y] = SaidaFinal[n.X, n.Y] + 1;
