@@ -14,6 +14,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using BrainNet.NeuralFramework;
 using System.Runtime.InteropServices;
 using System.Collections;
+
 using NeuronDotNet;
 using NeuronDotNet.Core;
 using NeuronDotNet.Core.Backpropagation;
@@ -25,7 +26,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int [] myArray);
+        private delegate void AtualizaChart(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int [] myArray,List<double> X_, List<double> Y_);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor;        
         private int CanalAtual;
@@ -56,6 +57,10 @@ namespace AmbienteRPB
         private int VetTreinamento;
         private double[] VetorEvento;
         private double[] Sinal;
+
+        List<double> X_Vals;
+        List<double> Y_Vals;
+
         //Varivais por backpropagation ------------------------------------------------------------
         private bool RNImportada;
         private INeuralNetwork network;
@@ -71,10 +76,8 @@ namespace AmbienteRPB
         private bool it_is_debug = false;
         private bool UsarReferencia = false;
 
-
-        private double learningRate = 0.3d;
         private int neuronCount = 10;
-        private int cycles = 10000;
+        private int cycles2 = 10000;
         private BackpropagationNetwork network2;
         //------------------------------------------------------------------------------------------
         public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, bool _UsarReferencia, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede, ref INeuralNetwork _network, bool _RNImportada, int _MenorTamanho)
@@ -115,7 +118,7 @@ namespace AmbienteRPB
             {
                 case("Kohonen"):
                 {
-                        Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null);
+                        Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null,null,null);
                         send_SmS(2, "Inicializando",false);
                         Initialise_KHn();
                         send_SmS(1, "Carregando Arquivo de Vetores", false);
@@ -123,9 +126,25 @@ namespace AmbienteRPB
                         send_SmS(1, "Init NormalisePatterns", false);
                         NormalisePatterns_KHn();
                         send_SmS(1, "Treinando a rede com 0.0000001", false);
-                        Train_KHn(0.0000001);
+                        Train_KHn(0.0001);
                         send_SmS(1, "Resultados:", false);
                         DumpCoordinates_KHn();
+                        if(!it_is_debug)
+                        {
+                            double[] dados = new double[2];
+                 
+                                Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, X_Vals,Y_Vals);
+                       }
+                                        //Imprime a matriz
+                        for (int i = 0; i < length; i++)
+                        {
+                            string saida = "";
+                            for (int j = 0; j < length; j++)
+                            {
+                                saida += SaidaFinal[j, i] + "\t";
+                            }
+                            send_SmS(1, saida, true);
+                        }
                         send_SmS(1, "Fim...", false);
                         break;
                 }
@@ -149,7 +168,7 @@ namespace AmbienteRPB
                     float inicio = DateTime.Now.Minute;
                     while (treinarnova && loopMAX != 0)
                     {
-                        Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                        Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados,null,null);
                         //Utilizando o backPropagation 
                         send_SmS(0, "", false);
                         send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
@@ -177,7 +196,7 @@ namespace AmbienteRPB
                                 send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
                                 //limpa os dados se existirem
                                 double[] dados = new double[1];
-                                Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                                Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                             }
                         }
                         loopMAX--;
@@ -210,7 +229,7 @@ namespace AmbienteRPB
                             int loopMAX = 6;
                             while (treinarnova && loopMAX != 0)
                             {
-                                Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                                Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                                 //Utilizando o backPropagation 
                                 send_SmS(0, "", false);
                                 send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
@@ -220,9 +239,8 @@ namespace AmbienteRPB
                                     if (!RNImportada)
                                     {
                                         send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[0]].GetNomePadrao(), false);
-          
-                                        cycles = 1000; 
-                                        learningRate = 0.2d; 
+
+                                       cycles2 = 1000; 
                                         neuronCount = 10; 
 
                                         LinearLayer inputLayer = new LinearLayer(MenorTamanho);
@@ -231,7 +249,7 @@ namespace AmbienteRPB
                                         new BackpropagationConnector(inputLayer, hiddenLayer).Initializer = new RandomFunction(0d, 0.2d);
                                         new BackpropagationConnector(hiddenLayer, outputLayer).Initializer = new RandomFunction(0d, 0.2d);
                                         network2 = new BackpropagationNetwork(inputLayer, outputLayer);
-                                        network2.SetLearningRate(learningRate);
+                                        network2.SetLearningRate(0.2d);
 
                                         TrainingSet trainingSet = new TrainingSet(MenorTamanho, 1);
                                         for (int tam = 0; tam < 10; tam++)
@@ -267,10 +285,10 @@ namespace AmbienteRPB
                                         network2.EndEpochEvent += new TrainingEpochEventHandler(
                                             delegate(object senderNetwork, TrainingEpochEventArgs args)
                                             {
-                                                load_progress_bar(5,(int)(args.TrainingIteration * 100d / cycles));
+                                                load_progress_bar(5,(int)(args.TrainingIteration * 100d / cycles2));
                                                 Application.DoEvents();
                                             });
-                                        network2.Learn(trainingSet, cycles);
+                                        network2.Learn(trainingSet, cycles2);
                                         //TreinodaRede(VetorEvento, 1, "TodosEventos", i);
                                         send_SmS(1, "Treinada", false);
                                     send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
@@ -282,7 +300,7 @@ namespace AmbienteRPB
                                         send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
                                         //limpa os dados se existirem
                                         double[] dados = new double[1];
-                                        Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados);
+                                        Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                                     }
                                 }
                                 loopMAX--;
@@ -306,9 +324,6 @@ namespace AmbienteRPB
                 load_progress_bar(0, 4);
                 load_progress_bar(VetTreinamento, 2);
                 int[] saidaInt = new int[1];
-                double threshold = 0.1;
-                char character;
-                bool chave = true;
                 double[] dados = new double[2];
                 //Corrige o problema de deslocamento do sinal para esquerda... 
                 string ReltsGerados = "";
@@ -323,12 +338,11 @@ namespace AmbienteRPB
                         if ((cont + i) < Sinal.Count())
                             entrada[cont] = (Sinal[cont + i]);
                     }
-
                     dados[0] = i;
                     dados[1] = MenorTamanho + i;
                     //RODA A RN
                     double saida = network2.Run(entrada)[0];
-                    Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
+                    Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt, null, null);
                     send_SmS(1, Convert.ToString(saida), true);
                     DialogResult resposta = MessageBox.Show("Saida: " + Convert.ToString(saida), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     load_progress_bar(0, 1);
@@ -458,29 +472,7 @@ namespace AmbienteRPB
                                 load_progress_bar(0, 1);
                             if (UsarReferencia)
                             {
-                                if (sinal.Count() > MenorTamanho && ((int)(referencia -x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) /*
-                                                                                                                                                                    && cont != 48 
-                                                                                                                                                                    && cont != 141 
-                                                                                                                                                                    && cont != 95 
-                                                                                                                                                                    && cont != 221 
-                                                                                                                                                                    && cont != 176 
-                                                                                                                                                                    && cont != 21 
-                                                                                                                                                                    && cont != 81 
-                                                                                                                                                                    && cont != 30 
-                                                                                                                                                                    && cont != 49
-                                                                                                                                                                    && cont != 134
-                                                                                                                                                                    && cont != 118
-                                                                                                                                                                    && cont != 88
-                                                                                                                                                                    && cont != 83
-                                                                                                                                                                    && cont != 36
-                                                                                                                                                                    && cont != 280
-                                                                                                                                                                    && cont != 260
-                                                                                                                                                                    && cont != 355
-                                                                                                                                                                    && cont != 368
-                                                                                                                                                                    && cont != 360
-                                                                                                                                                                    && cont != 310
-                                                                                                                                                                    && cont != 358
-                                                                                                                                                                    && cont != 348*/)
+                                if (sinal.Count() > MenorTamanho && ((int)(referencia -x)) > (MenorTamanho / 2) && ((int)(x_fim - referencia)) > (MenorTamanho / 2) /* && cont != 48 && cont != 141  && cont != 95 && cont != 221 && cont != 176 && cont != 21 && cont != 81 && cont != 30  && cont != 49 && cont != 134 && cont != 11 8&& cont != 88 && cont != 83 && cont != 36&& cont != 280 && cont != 260 && cont != 355 && cont != 368 && cont != 360 && cont != 310 && cont != 358 && cont != 348*/)
                                 {
                                     UsadosNoTreino.Add(cont);
                                     for (int i = (int)(referencia - (MenorTamanho / 2)); i < (int)(referencia + (MenorTamanho / 2)); i++)
@@ -544,13 +536,13 @@ namespace AmbienteRPB
                     ///------------------------------------///
                     ///Treina a Rede Neural                               
                     ///------------------------------------///
-                send_SmS(1, "Treinando", false);
-                load_progress_bar(1, 3);
-                helper.Train(2000);
-                //calculo do erro
-                NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
-                send_SmS(1, "Erro em : " + Convert.ToString(ser.GetERROR(network)), false); 
-                break;
+                    send_SmS(1, "Treinando", false);
+                    load_progress_bar(1, 3);
+                    helper.Train(1500);
+                    //calculo do erro
+                    NetworkSerializer erro = new BrainNet.NeuralFramework.NetworkSerializer();
+                    send_SmS(1, "Erro em : " + Convert.ToString(erro.GetERROR(network)), false); 
+                    break;
             }
             case ("SomenteUm"):
             {
@@ -619,16 +611,16 @@ namespace AmbienteRPB
                 if (it_is_debug)
                 {
                     if (saidaInt[0] == 1)
-                        character = '#';
+                        character = '~';
                     else
-                        character = '.';
+                        character = ' ';
                     string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
                     string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
                     if (!chave)
                         send_SmS(1, saida2, false);
                     if (chave)
                     {
-                        Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt);
+                        Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt, null, null);
                         send_SmS(1, saida2, true);
                         Thread.Sleep(12);
                         DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
@@ -699,41 +691,54 @@ namespace AmbienteRPB
             {
                 _BarraDeProgresso.BeginInvoke(new AtualizaPloter(load_progress_bar), new Object[] { valor, caso });
             }
-            else{
+            else
+            {
                 prgbar = _BarraDeProgresso as System.Windows.Forms.ProgressBar;
-                if (caso == 0)
+                switch (caso)
                 {
-                    prgbar.Visible = true;
-                    prgbar.Value = 0;
-                }
-                if (caso == 1)
-                {
-                    if (prgbar != null)
+                    case (0):
                     {
-                        prgbar.Increment(1);
+                        prgbar.Visible = true;
+                        prgbar.Value = 0;
+                        break;
+                    }
+                    case (1):
+                    {
+                        if (prgbar != null)
+                            prgbar.Increment(1);
+                        break;
+                    }
+                    case (2):
+                    {
+                        prgbar.Visible = true;
+                        prgbar.Maximum = valor;
+                        break;
+                    }
+                    case (3):
+                    {
+                        prgbar.Visible = false;
+                        break;
+                    }
+                    case (4):
+                    {
+                        prgbar.Value = 0;
+                        break;
+                    }
+                    case (5):
+                    {
+                       prgbar.Value = valor;
+                       break;
                     }
                 }
-                if (caso == 2)
-                {
-                    prgbar.Visible = true;
-                    prgbar.Maximum = valor;
-                }
-                if (caso == 3)
-                    prgbar.Visible = false;
-                if (caso == 4)
-                    prgbar.Value = 0;
-                if (caso == 5)
-                    prgbar.Value = valor;
-
             }
         }
         //-------------------------------------------------------------------
         //Saida pelo Grafico 
-        private void Plotar(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int[] myArray)
+        private void Plotar(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int[] myArray, List<double> X_, List<double> Y_)
         {
             if (_Grafico.InvokeRequired)
             {
-                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dados, canal, CanalParaPlotar, selecaoAtual, myArray });
+                _Grafico.BeginInvoke(new AtualizaChart(Plotar), new Object[] { opcao, dados, canal, CanalParaPlotar, selecaoAtual, myArray,X_, Y_ });
             }
             else
             {
@@ -785,7 +790,10 @@ namespace AmbienteRPB
                     case ("AddDadoKohonen"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            prb.Series["canal" + (canal+2)].Points.AddY(dados[1]);
+                            if(dados[0] == 0 && dados[1] >= 0 && dados[1] < 11)
+                              prb.Series["canal" + (canal+2)].Points.AddY(1);
+                            else
+                              prb.Series["canal" + (canal + 2)].Points.AddY(0);
                             //Mapa
                             prb.Series["canal" + (canal+3)].Points.AddXY(dados[0], dados[1]);
                             PointF zero = new PointF(0,0);
@@ -798,6 +806,20 @@ namespace AmbienteRPB
                             //Colore a região do evento
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                             break;
+                     }
+                    case ("PlotKohonen"):
+                    {
+                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                            for (int i = 0;  i < X_.Count; i++)
+                            {
+                                if (X_[i] == 0 && Y_[i] >= 0 && Y_[i] < 11)
+                                    prb.Series["canal" + (canal+2)].Points.AddY(1);
+                                else
+                                    prb.Series["canal" + (canal + 2)].Points.AddY(0);
+                                //Mapa
+                                prb.Series["canal" + (canal + 3)].Points.AddXY(X_[i], Y_[i]);
+                            }
+                        break;
                      }
                     case ("Criar Chart de Barras"):
                     {
@@ -815,21 +837,21 @@ namespace AmbienteRPB
                                 prb.Series.Add("canal" + (canal + 3));
                                 prb.Series["canal" + (canal + 3)].ChartArea = "canal" + (canal + 3);
                                 prb.Titles.Add("canal" + (canal + 3));
-                                prb.Titles["canal" + (canal + 3)].Position.Height = 3;
-                                prb.Titles["canal" + (canal + 3)].Position.Width = 40;
-                                prb.Titles["canal" + (canal + 3)].Alignment = ContentAlignment.MiddleLeft;
-                                prb.Titles["canal" + (canal + 3)].Position.X = 0;
-                                prb.Titles["canal" + (canal + 3)].Position.Y = (25 * 4) + ((100 - (25 * 4)) / 2);
+                                prb.Titles[(canal + 3)].Position.Height = 3;
+                                prb.Titles[(canal + 3)].Position.Width = 40;
+                                prb.Titles[(canal + 3)].Alignment = ContentAlignment.MiddleLeft;
+                                prb.Titles[(canal + 3)].Position.X = 0;
+                                prb.Titles[(canal + 3)].Position.Y = (25 * 4) + ((100 - (25 * 4)) / 2);
                             }
                             else{
                                 prb.Series["canal" + (canal + 2)].Points.Clear();
                                 prb.Series["canal" + (canal + 3)].Points.Clear();
                             }
-                                prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                                prb.Titles["canal" + (canal + 2)].Text = "Kohonen";
-                                prb.Series["canal" + (canal + 2)].Color = Color.LightBlue;
+                                prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                                prb.Titles[(canal + 2)].Text = "Kohonen";
+                                prb.Series["canal" + (canal + 2)].Color = Color.Orange;
                                 prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-                                prb.Titles["canal" + (canal + 3)].Text = "Mapa";
+                                prb.Titles[(canal + 3)].Text = "Mapa";
                                 prb.Series["canal" + (canal + 3)].Color = Color.Red;
                             prb.ChartAreas["canal" + (canal + 3)].AxisY.Enabled = AxisEnabled.True;
                             prb.ChartAreas["canal" + (canal + 3)].AxisX.Enabled = AxisEnabled.True;
@@ -959,8 +981,10 @@ namespace AmbienteRPB
         //----------------------------------------------------------------------------------------
         private void DumpCoordinates_KHn()
         {
-            bool chave = true;
             double[] dados = new double[10];
+            X_Vals = new List<double>();
+            Y_Vals = new List<double>();
+
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
@@ -970,34 +994,22 @@ namespace AmbienteRPB
                 SaidaFinal[n.X, n.Y] = SaidaFinal[n.X, n.Y] + 1;
                 dados[2] = i;
                 dados[3] = VetorEvento.Count() + i;
-                Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null); // tem o n.x tbm para no caso o Mapa mesmo... 
-                if (!chave)
-                    send_SmS(1, saida, false);
-                if (chave)
+
+                if (!it_is_debug)
                 {
+                    X_Vals.Add(n.X);
+                    Y_Vals.Add(n.Y);
+                    send_SmS(1, saida, false);
+                }
+                else
+                {
+                    Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, null, null);
                     send_SmS(1, saida, true);
                     Thread.Sleep(1);
                     DialogResult resposta = MessageBox.Show("Dado: " + i + "\nPlotado\nX: " + n.X + "\nY: " + n.Y, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
                     if (resposta == DialogResult.Cancel)
-                        chave = false;
+                        it_is_debug = false;
                 }
-                if (i == 520)
-                    chave = true;
-                if (i == 1300)
-                    chave = true;
-                if (i == 2000)
-                    chave = true;
-                if (i == 2200)
-                    chave = true;
-            }
-            for (int i = 0; i < length; i++)
-            {
-                string saida = "";
-                for (int j = 0; j < length; j++)
-                {
-                    saida += SaidaFinal[j, i] + "\t";
-                }
-                send_SmS(1, saida, true);
             }
         }
         //----------------------------------

@@ -65,7 +65,7 @@ namespace AmbienteRPB
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            if (opcao == 1)
+            if (opcao == 1 || opcao == 2)
             {
                 Vetores = Convert.ToDouble(text_NomePadrao.Text);
                 TamVetores = Convert.ToDouble(txt_VetorTamanho.Text);
@@ -81,6 +81,7 @@ namespace AmbienteRPB
                     NumPadroes = 1;
                 if (ckReferencia.Checked)
                     UsarReferencia = true;
+                opcao = 100;
                 this.Close();
             }
             else if (text_NomePadrao.Text != "")
@@ -94,16 +95,39 @@ namespace AmbienteRPB
         {
             if (opcao == 1)
             {
-                this.Height = 219;
-                this.Width = 240;
-                btn_salvar.Location = new Point(164, 153); 
-                lbl_digiteONomeDoPadrao.Text = "Num Vet";
+                this.Height = 145;
+                this.Width = 304;
+                //btn_salvar.Location = new Point(164, 153); 
+                lbl_digiteONomeDoPadrao.Text = "Total";
+                label2.Visible = false;
+                TxtTreinarCom.Visible = false;
+
+                ckReferencia.Location = new Point(ckReferencia.Location.X, 67);
+                ckb_ListaToda.Location = new Point(ckb_ListaToda.Location.X, 67);
+                ckb_UseCorrel.Location = new Point(ckb_UseCorrel.Location.X, 90); 
+
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(TamVetores);
                 TxtTreinarCom.Text = Convert.ToString(Vetores);
                 txtPadroes.Text = "1";
                 UsarReferencia = false;
-                this.Text = "Dados de Entrada";
+                this.Text = "Configuração MLP";
+            }
+            if (opcao == 2)
+            {
+                this.Height = 169;
+                this.Width = 304;
+               // btn_salvar.Location = new Point(164, 153);
+                lbl_digiteONomeDoPadrao.Text = "Total";
+                label2.Text = "Matriz [x:x]";
+                text_NomePadrao.Text = Convert.ToString(Vetores);
+                txt_VetorTamanho.Text = Convert.ToString(50);
+                TxtTreinarCom.Text = Convert.ToString(30);
+                txtPadroes.Text = "1";
+                UsarReferencia = true;
+                ckReferencia.Checked = true;
+                ckb_ListaToda.Visible = false;
+                this.Text = "Configuração Kohonen";
             }
         }
 
