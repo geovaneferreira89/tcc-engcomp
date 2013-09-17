@@ -38,10 +38,10 @@ namespace teste
                 Console.WriteLine("FN " + i + ": " + avaliador.FN[i]);
             }
 
-            //for (int i = 0; i < avaliador.VN.Count(); i++)
-            //{
-            //    Console.WriteLine("VN " + i + ": " + avaliador.VN[i]);
-            //}
+            for (int i = 0; i < avaliador.VN.Count(); i++)
+            {
+                Console.WriteLine("VN " + i + ": " + avaliador.VN[i]);
+            }
 
             Console.ReadKey();
 

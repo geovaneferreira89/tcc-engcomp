@@ -91,39 +91,39 @@ namespace teste
 
             // VN: entre duas marcações em que não há FP
             // entre o fim de uma e o início de outra    
-            //gera lista
-            //for (int i = 0; i < marcacoes.Count(); i++)
-            //{
-            //    marc = new Marcacao();
-            //    marc.inicio = marcacoes[i].fim;
-            //    marc.fim = marcacoes[i + 1].inicio;
-            //    marc.detectada = false;
-            //    intervalos.Add(marc);                
-            //}
+            // gera lista
+            for (int i = 0; i < marcacoes.Count() - 1; i++)
+            {
+                marc = new Marcacao();
+                marc.inicio = marcacoes[i].fim;
+                marc.fim = marcacoes[i + 1].inicio;
+                marc.detectada = false;
+                intervalos.Add(marc);                
+            }
 
 
-            //for (int i = 0; i < intervalos.Count(); i++)     // percorre o vetor de marcações já que ele é a referência
-            //{
-            //    for (int j = 0; j < resultados.Count(); j++)
-            //    {
-            //        // marcação e resultado
-            //        if ((resultados[j].horario > intervalos[i].inicio) && (resultados[j].horario < intervalos[i].fim)) //dentro do intervalo da marcação
-            //        {
-            //            intervalos[i].detectada = true;
-            //        }
-            //    }
-            //}
+            for (int i = 0; i < intervalos.Count(); i++)     // percorre o vetor de marcações já que ele é a referência
+            {
+                for (int j = 0; j < resultados.Count(); j++)
+                {
+                    // marcação e resultado
+                    if ((resultados[j].horario > intervalos[i].inicio) && (resultados[j].horario < intervalos[i].fim)) //dentro do intervalo da marcação
+                    {
+                        intervalos[i].detectada = true;
+                    }
+                }
+            }
 
-            //for (int i = 0; i < intervalos.Count(); i++)
-            //{
-            //    if(intervalos[i].detectada == false)
-            //    {
-            //        //VN
-            //        aux = new double();
-            //        aux = intervalos[i].inicio;
-            //        VN.Add(aux);
-            //    }
-            //}
+            for (int i = 0; i < intervalos.Count(); i++)
+            {
+                if(intervalos[i].detectada == false)
+                {
+                    //VN
+                    aux = new double();
+                    aux = intervalos[i].inicio;
+                    VN.Add(aux);
+                }
+            }
 
 
         }
