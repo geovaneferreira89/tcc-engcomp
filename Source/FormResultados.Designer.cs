@@ -55,6 +55,7 @@
             this.importarRedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treinar100VezesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.redeMLP2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
             this.toolAnalise = new System.Windows.Forms.ToolStripSplitButton();
             this.AnaliseMLP = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +84,6 @@
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.redeMLP2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -123,8 +123,7 @@
             // 
             this.lbl_ferramentaAtiva.ForeColor = System.Drawing.Color.Brown;
             this.lbl_ferramentaAtiva.Name = "lbl_ferramentaAtiva";
-            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(49, 17);
-            this.lbl_ferramentaAtiva.Text = "Iniciado";
+            this.lbl_ferramentaAtiva.Size = new System.Drawing.Size(0, 17);
             // 
             // lbl_x
             // 
@@ -354,6 +353,14 @@
             this.toolStripSeparator13.Name = "toolStripSeparator13";
             this.toolStripSeparator13.Size = new System.Drawing.Size(146, 6);
             // 
+            // redeMLP2ToolStripMenuItem
+            // 
+            this.redeMLP2ToolStripMenuItem.Enabled = false;
+            this.redeMLP2ToolStripMenuItem.Name = "redeMLP2ToolStripMenuItem";
+            this.redeMLP2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redeMLP2ToolStripMenuItem.Text = "Rede MLP 2";
+            this.redeMLP2ToolStripMenuItem.Click += new System.EventHandler(this.redeMLP2ToolStripMenuItem_Click);
+            // 
             // btnMarcacoes
             // 
             this.btnMarcacoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -557,14 +564,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Arquivos XML (*.xml)|*xml";
-            // 
-            // redeMLP2ToolStripMenuItem
-            // 
-            this.redeMLP2ToolStripMenuItem.Enabled = false;
-            this.redeMLP2ToolStripMenuItem.Name = "redeMLP2ToolStripMenuItem";
-            this.redeMLP2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.redeMLP2ToolStripMenuItem.Text = "Rede MLP 2";
-            this.redeMLP2ToolStripMenuItem.Click += new System.EventHandler(this.redeMLP2ToolStripMenuItem_Click);
             // 
             // FormResultados
             // 
