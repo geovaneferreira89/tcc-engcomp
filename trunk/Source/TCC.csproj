@@ -29,7 +29,7 @@
     <UpdateUrl>http://eeg.novoindustrial.com.br/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>SW.html</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -96,6 +96,9 @@
     <Reference Include="NeuroLoopGainLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib_EDF\Library\bin\Debug\NeuroLoopGainLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="NeuronDotNet.Core">
+      <HintPath>Lib_MLP2\NeuronDotNet.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
