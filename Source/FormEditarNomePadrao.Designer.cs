@@ -126,7 +126,7 @@
             // txtPadroes
             // 
             this.txtPadroes.Enabled = false;
-            this.txtPadroes.Location = new System.Drawing.Point(69, 181);
+            this.txtPadroes.Location = new System.Drawing.Point(69, 185);
             this.txtPadroes.Name = "txtPadroes";
             this.txtPadroes.Size = new System.Drawing.Size(146, 20);
             this.txtPadroes.TabIndex = 7;
@@ -135,7 +135,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(10, 184);
+            this.label3.Location = new System.Drawing.Point(10, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 10;
