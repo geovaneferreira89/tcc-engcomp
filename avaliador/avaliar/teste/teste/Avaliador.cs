@@ -13,6 +13,8 @@ namespace teste
         public List<double> FP = new List<double>();
         public List<double> FN = new List<double>();
 
+        List<Mark> marcacoes = new List<Mark>();
+
         //VP: QRS detectado
         //FP: não QRS detectado
         //VN: não QRS não detectado, entre dois VP/QRS
@@ -21,48 +23,31 @@ namespace teste
 
         public void Avaliar(List<double> results, List<double> annotations) //resultados RN e marcações
         {
-            //int aumento = 1; //aumento da marcação
-            //double[] aumentado = new double[1 + aumento * 2]; //aumento pra direita e pra esquerda
-            double aux;
 
-            for (int i = 0; i < annotations.Count(); i++)//percorre o vetor de marcações já que ele é a referência
+            //tratar marcações: são expandidas
+            Mark mark;
+            for (int i = 0; i < annotations.Count(); i++)
             {
-                //vai fazer um E lógico, só que com o vetor expandido
+                mark = new Mark(annotations[i]);
+                marcacoes.Add(mark);
+            }
 
-
-                //primeiro expandir o vetor
-                //if (annotations[i] == 1)
-                //{
-                //    for (int j = 0; j < (1 + aumento * 2); j++)
-                //    {
-                //        aumentado[j] = annotations[i] - aumento + j;
-                //    }
-                //}
-
-
-                //com o vetor novo percorremos a list de resultados
+            //percorrer marcações tratadas
+            for (int i = 0; i < marcacoes.Count(); i++)
+            {
                 for (int j = 0; j < results.Count(); j++)
                 {
-                    //for (int k = 0; k < aumentado.Count(); k++)
-                    //{
-                    //    if (aumentado[k] == results[j]) //VP
-                    //    {
-                    //        aux = new double();
-                    //        aux = aumentado[k];
-                    //        VP.Add(aux);
-                    //    }
-                    //}
-
-                    if ((annotations[i] == 1) && (results[j] == 1))
+                    if( (results[j] >= marcacoes[i]) && (results[j] <= marcacoes[i]) )
                     {
-                        aux = new double();
-                        aux = i;                //salva a posição ou horário do evento
-                        VP.Add(aux);
+                        if (marcacoes[i].detectada == false)
+                        {
+                            marcacoes[i].detectada = true;
+                        }
                     }
+                  
                 }
-
-
             }
+
 
         }
 
