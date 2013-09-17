@@ -84,6 +84,7 @@
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.avaliadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -375,7 +376,8 @@
             // 
             this.toolAnalise.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolAnalise.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AnaliseMLP});
+            this.AnaliseMLP,
+            this.avaliadorToolStripMenuItem});
             this.toolAnalise.Image = ((System.Drawing.Image)(resources.GetObject("toolAnalise.Image")));
             this.toolAnalise.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolAnalise.Name = "toolAnalise";
@@ -565,6 +567,13 @@
             // 
             this.saveFileDialog1.Filter = "Arquivos XML (*.xml)|*xml";
             // 
+            // avaliadorToolStripMenuItem
+            // 
+            this.avaliadorToolStripMenuItem.Name = "avaliadorToolStripMenuItem";
+            this.avaliadorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.avaliadorToolStripMenuItem.Text = "Avaliador";
+            this.avaliadorToolStripMenuItem.Click += new System.EventHandler(this.avaliadorToolStripMenuItem_Click);
+            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -654,5 +663,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripMenuItem treinar100VezesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redeMLP2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem avaliadorToolStripMenuItem;
     }
 }
