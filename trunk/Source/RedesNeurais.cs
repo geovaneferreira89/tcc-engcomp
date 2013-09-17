@@ -738,7 +738,7 @@ namespace AmbienteRPB
                             prb.Series.Add("canal" + CanalParaPlotar);
                             prb.Series["canal" + CanalParaPlotar].ChartArea = "canal" + CanalParaPlotar;
                             prb.Series["canal" + CanalParaPlotar].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-                            prb.Series["canal" + CanalParaPlotar].Color = Color.Green;
+                            prb.Series["canal" + CanalParaPlotar].Color = Color.Orange;
                         break;
                     }
                     case ("BKP"):
