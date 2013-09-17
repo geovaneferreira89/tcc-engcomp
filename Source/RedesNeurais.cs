@@ -118,6 +118,8 @@ namespace AmbienteRPB
             {
                 case("Kohonen"):
                 {
+                    float min_inicio = DateTime.Now.Minute;
+                    float hr_inicio = DateTime.Now.Hour;
                         Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null,null,null);
                         send_SmS(2, "Inicializando", false);
                         Initialise_KHn();
@@ -134,7 +136,7 @@ namespace AmbienteRPB
                             Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, X_Vals,Y_Vals);
                         }
                         //Imprime a matriz de resultados
-                        for (int i = 0; i < length; i++)
+                        /*for (int i = 0; i < length; i++)
                         {
                             string saida = "";
                             for (int j = 0; j < length; j++)
@@ -142,8 +144,9 @@ namespace AmbienteRPB
                                 saida += SaidaFinal[j, i] + "\t";
                             }
                             send_SmS(1, saida, true);
-                        }
+                        }*/
                         send_SmS(1, "Fim", false);
+                        send_SmS(1, "Tempo : " + Convert.ToString(DateTime.Now.Hour - hr_inicio) + ":" + Convert.ToString(DateTime.Now.Minute -min_inicio),true);
                         break;
                 }
                 case("BackPropagation"):
@@ -899,7 +902,7 @@ namespace AmbienteRPB
                 cont = 0;
                 while (cont < dimensions)
                 {
-                    if ((cont + i) < dimensions)
+                    if ((cont + i) < Sinal.Count())
                         inputs[pos] = Sinal[cont + i];
                     else
                         inputs[pos] = 0;
