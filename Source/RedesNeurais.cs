@@ -142,13 +142,13 @@ namespace AmbienteRPB
             else if (tipoDeRede == "BackPropagation_AllEvnts")
             {
                 int loopMAX = 6;
+                float inicio = DateTime.Now.Minute;
                 while (treinarnova && loopMAX != 0)
                 {
                     Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados);
                     //Utilizando o backPropagation 
                     send_SmS(0, "", false);
                     send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                    float inicio = DateTime.Now.Minute;
                     //busca pelo menor tamanho do dos eventos deste padrao... 
                     vetorDeResultados = new int[Sinal.Count()];
                     for (int i = 0; i < PadroesATreinar.Count(); i++)
@@ -195,8 +195,8 @@ namespace AmbienteRPB
                      send_SmS(1, "Treinada", false);
                 }
             }
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //==================================================================================================
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //=================================================================================================
             //REDE MLP NOVA Testes 
             //_________________________________________________________________________________________________
             else if (tipoDeRede == "BackPropagation_AllEvnts2")
@@ -285,8 +285,8 @@ namespace AmbienteRPB
                     send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
             }
         }
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //==================================================================================================
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //=================================================================================================
         //REDE MLP NOVA Testes 
         //_________________________________________________________________________________________________
         private void StopLearning(object sender, EventArgs e)
@@ -385,8 +385,8 @@ namespace AmbienteRPB
                     List<float> conjTreinado = new List<float>();
                     load_progress_bar(0, 4);
                     int totalParaTreino = ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos;
-                    if (totalParaTreino > 160)
-                        totalParaTreino = 160;
+                    if (totalParaTreino > 100)
+                        totalParaTreino = 100;
                     load_progress_bar(totalParaTreino, 2);
                     for (int cont = 0; cont < totalParaTreino; cont++)
                     {
@@ -538,7 +538,7 @@ namespace AmbienteRPB
                     ///------------------------------------///
                 send_SmS(1, "Treinando", false);
                 load_progress_bar(1, 3);
-                helper.Train(1000);
+                helper.Train(2000);
                 //calculo do erro
                 NetworkSerializer ser = new BrainNet.NeuralFramework.NetworkSerializer();
                 send_SmS(1, "Erro em : " + Convert.ToString(ser.GetERROR(network)), false); 
@@ -594,7 +594,7 @@ namespace AmbienteRPB
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
                     {
-                        saidaInt[0] = 2;
+                        saidaInt[0] = 20;
                         treinarnova = false;
                     }
                     else if (threshold > Convert.ToDouble(MLP_output[0])){

@@ -279,8 +279,8 @@ namespace AmbienteRPB
                 //Desabilita o canal que está sendo exibido... 
                 for (int i = 0; i < 4; i++)
                 {
-                    chart1.ChartAreas[CanalAtual + i].Visible = false;
-                    chart1.Titles[CanalAtual + i].Visible = false;
+                    chart1.ChartAreas["canal" + (CanalAtual + i)].Visible = false;
+                    chart1.Titles[(CanalAtual + i)].Visible = false;
                 }
                 //Incrementa o canal...
                 CanalAtual = CanalAtual + 4;
@@ -298,8 +298,8 @@ namespace AmbienteRPB
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        chart1.ChartAreas[CanalAtual + i].Visible = true;
-                        chart1.Titles[CanalAtual + i].Visible = true;
+                        chart1.ChartAreas["canal" + (CanalAtual + i)].Visible = true;
+                        chart1.Titles[(CanalAtual + i)].Visible = true;
                     }
                 }
             }
@@ -312,15 +312,15 @@ namespace AmbienteRPB
                 //Desabilita o canal que está sendo exibido... 
                 for (int i = 0; i < 4; i++)
                 {
-                    chart1.ChartAreas[CanalAtual + i].Visible = false;
-                    chart1.Titles[CanalAtual + i].Visible = false;
+                    chart1.ChartAreas["canal" + (CanalAtual + i)].Visible = false;
+                    chart1.Titles[(CanalAtual + i)].Visible = false;
                 }
                 //Carrega o canal inferior, o qual já está cirado
                 CanalAtual = CanalAtual - 4;
                 for (int i = 0; i < 4; i++)
                 {
-                    chart1.ChartAreas[CanalAtual + i].Visible = true;
-                    chart1.Titles[CanalAtual + i].Visible = true;
+                    chart1.ChartAreas["canal" + (CanalAtual + i)].Visible = true;
+                    chart1.Titles[(CanalAtual + i)].Visible = true;
                 }
             }
         }
@@ -339,10 +339,10 @@ namespace AmbienteRPB
                 AdicionaData(e.NewValue + Scroll_Click_Escala_Seg);
             }
             //Atualizar o chart
-            chart1.ChartAreas[CanalAtual].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-            chart1.ChartAreas[CanalAtual + 1].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-            chart1.ChartAreas[CanalAtual + 2].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
-            chart1.ChartAreas[CanalAtual + 3].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            chart1.ChartAreas["canal" + (CanalAtual)].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            chart1.ChartAreas["canal" + (CanalAtual + 1)].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            chart1.ChartAreas["canal" + (CanalAtual + 2)].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
+            chart1.ChartAreas["canal" + (CanalAtual + 3)].AxisX.ScaleView.Position = e.NewValue * (edfFileOutput.SignalInfo[1].BufferOffset / (int)edfFileOutput.FileInfo.SampleRecDuration);
         }
         //------------------------------------------------------------------------------------------
         private void AddSegInChart()
@@ -355,8 +355,8 @@ namespace AmbienteRPB
                     {
                         SetMax = false;
                         ValsMAX_MIN = new float[2];
-                        ValsMAX_MIN[0] = (float)chart1.ChartAreas[CanalAtual].AxisY.Maximum;
-                        ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
+                        ValsMAX_MIN[0] = (float)chart1.ChartAreas["canal" + CanalAtual].AxisY.Maximum;
+                        ValsMAX_MIN[1] = (float)chart1.ChartAreas["canal" + CanalAtual].AxisY.Minimum;
                     }
                     int excluir;
                     int tempo = DataRecords_lidos[CanalAtual / 4] * edfFileOutput.SignalInfo[1].BufferOffset;
@@ -373,8 +373,8 @@ namespace AmbienteRPB
                                 excluir = edfFileOutput.DataBuffer[edfFileOutput.SignalInfo[j].BufferOffset + i];
                         }
                     }
-                    chart1.ChartAreas[CanalAtual].AxisY.Maximum = ValsMAX_MIN[0];
-                    chart1.ChartAreas[CanalAtual].AxisY.Minimum = ValsMAX_MIN[1];
+                    chart1.ChartAreas["canal" + CanalAtual].AxisY.Maximum = ValsMAX_MIN[0];
+                    chart1.ChartAreas["canal" + CanalAtual].AxisY.Minimum = ValsMAX_MIN[1];
                 }
             }
         }
@@ -382,30 +382,30 @@ namespace AmbienteRPB
         //Ajustes de Amplitude 
         private void toolStripButton1_Click_2(object sender, EventArgs e)
         {
-            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum + 1;
+            chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum = chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum + 1;
         }
         //------------------------------------------------------------------------------------------
 
         private void ampliMENOS_Click(object sender, EventArgs e)
         {
-            double Max = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum;
+            double Max = chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum;
             if ((Max - 10) >= 0)
-                chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 10;
+                chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum = chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum - 10;
             else if ((Max - 1) >= 0)
-                chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 1;
+                chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum = chart1.ChartAreas["canal"+ ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum - 1;
         }
         //------------------------------------------------------------------------------------------
         //Ajustes de Offset 
         private void offsetCIMA_Click(object sender, EventArgs e)
         {
-            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum - 1;
-            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum - 1;
+            chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum = chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum - 1;
+            chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Minimum = chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Minimum - 1;
         }
         //------------------------------------------------------------------------------------------
         private void offsetBAIXO_Click(object sender, EventArgs e)
         {
-            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Maximum + 1;
-            chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum = chart1.ChartAreas[(Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual].AxisY.Minimum + 1;
+            chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum = chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Maximum + 1;
+            chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Minimum = chart1.ChartAreas["canal" + ((Convert.ToInt16(opcCANAL.Text) - 1) + CanalAtual)].AxisY.Minimum + 1;
         }
         //------------------------------------------------------------------------------------------
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -436,14 +436,14 @@ namespace AmbienteRPB
                         {
                             SetMax = false;
                             ValsMAX_MIN = new float[2];
-                            ValsMAX_MIN[0] = (float)chart1.ChartAreas[CanalAtual].AxisY.Maximum;
-                            ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
+                            ValsMAX_MIN[0] = (float)chart1.ChartAreas["canal" + CanalAtual].AxisY.Maximum;
+                            ValsMAX_MIN[1] = (float)chart1.ChartAreas["canal" + CanalAtual].AxisY.Minimum;
                         }
                         Parametros[1] = ValsMAX_MIN[0];//max
                         Parametros[2] = ValsMAX_MIN[1];//min
 
-                        chart1.Series[CanalAtual + 1].Points.Clear();
-                        chart1.Series[CanalAtual + 2].Points.Clear();
+                        chart1.Series["canal" + (CanalAtual + 1)].Points.Clear();
+                        chart1.Series["canal" + (CanalAtual + 2)].Points.Clear();
 
                         Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "CarregarTodoSinal", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, null);
                         Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
@@ -612,8 +612,8 @@ namespace AmbienteRPB
             Promediacao();
             double[] Parametros;
             Parametros = new double[3];
-            Parametros[1] = ValsMAX_MIN[0];//max
-            Parametros[2] = ValsMAX_MIN[1];//min
+            //Parametros[1] = ValsMAX_MIN[0];//max
+            //Parametros[2] = ValsMAX_MIN[1];//min
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanalAtual, "Correlacao_AGAIN", vector_evento, ValorInicio.X, ValorFim.X, numeroDeCanais, Parametros, null);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
@@ -670,9 +670,9 @@ namespace AmbienteRPB
                     eventos[0] = Convert.ToString(ID_PadraoAtual);
                 }
 
-                double[] vectorSignal = new double[chart1.Series[CanalKohonen].Points.Count];
-                for (int i = 0; i < chart1.Series[CanalKohonen].Points.Count; i++)
-                    vectorSignal[i] = chart1.Series[CanalKohonen].Points[i].YValues[0];
+                double[] vectorSignal = new double[chart1.Series["canal" + CanalKohonen].Points.Count];
+                for (int i = 0; i < chart1.Series["canal" + CanalKohonen].Points.Count; i++)
+                    vectorSignal[i] = chart1.Series["canal" + CanalKohonen].Points[i].YValues[0];
                 RedesNeurais objRMP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, GerArquivos.getPathUser() + "arquivo.txt", chart1, CanalKohonen, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, "Kohonen", ref network, RN_Importada, MenorTamanho);
                 Thread_RN = new Thread(new ThreadStart(objRMP.Init));
                 Thread_RN.Start();
@@ -714,9 +714,9 @@ namespace AmbienteRPB
                 //Canal de saida de resultados
                 int canalParaPlotar = CanalAtual + 2;
 
-                double[] vectorSignal = new double[chart1.Series[canalDados].Points.Count];
-                for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
-                    vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
+                double[] vectorSignal = new double[chart1.Series["canal" + canalDados].Points.Count];
+                for (int i = 0; i < chart1.Series["canal" + canalDados].Points.Count; i++)
+                    vectorSignal[i] = chart1.Series["canal" + canalDados].Points[i].YValues[0];
 
                 string TipoBkP;
                 //Verifica se a RN foi criada
@@ -797,9 +797,9 @@ namespace AmbienteRPB
                     canalDados = CanalAtual;
                 //Canal de saida de resultados
                 int canalParaPlotar = CanalAtual + 2;
-                double[] vectorSignal = new double[chart1.Series[canalDados].Points.Count];
-                for (int i = 0; i < chart1.Series[canalDados].Points.Count; i++)
-                    vectorSignal[i] = chart1.Series[canalDados].Points[i].YValues[0];
+                double[] vectorSignal = new double[chart1.Series["canal" + canalDados].Points.Count];
+                for (int i = 0; i < chart1.Series["canal"+canalDados].Points.Count; i++)
+                    vectorSignal[i] = chart1.Series["canal" + canalDados].Points[i].YValues[0];
                 bool state = true;
                 while (state)
                 {
@@ -1220,8 +1220,8 @@ namespace AmbienteRPB
                  {
                      SetMax = false;
                      ValsMAX_MIN = new float[2];
-                     ValsMAX_MIN[0] = (float)chart1.ChartAreas[CanalAtual].AxisY.Maximum;
-                     ValsMAX_MIN[1] = (float)chart1.ChartAreas[CanalAtual].AxisY.Minimum;
+                     ValsMAX_MIN[0] = (float)chart1.ChartAreas["canal" + CanalAtual].AxisY.Maximum;
+                     ValsMAX_MIN[1] = (float)chart1.ChartAreas["canal" + CanalAtual].AxisY.Minimum;
                  }
                  Parametros[1] = ValsMAX_MIN[0];//max
                  Parametros[2] = ValsMAX_MIN[1];//min
