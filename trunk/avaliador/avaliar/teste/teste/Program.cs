@@ -12,8 +12,8 @@ namespace teste
         {
             
             //Cria entradas
-            List<double> resultados = new List<double> {0, 0, 0, 1, 0, 0, 0, 1};
-            List<double> marcacoes = new List<double> {0, 0, 0, 1, 0, 0, 0, 1};
+            List<double> resultados = new List<double> {5, 10, 20, 26};
+            List<double> marcacoes = new List<double> {1, 10, 20, 30, 40, 50};
 
 
             //Avalia

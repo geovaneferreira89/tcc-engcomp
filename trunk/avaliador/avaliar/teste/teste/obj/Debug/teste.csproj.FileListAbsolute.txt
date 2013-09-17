@@ -4,3 +4,6 @@ C:\Users\Ge\Desktop\testeFile\avaliador\avaliar\teste\teste\bin\Debug\teste.exe
 C:\Users\Ge\Desktop\testeFile\avaliador\avaliar\teste\teste\bin\Debug\teste.pdb
 C:\Users\Ge\Desktop\testeFile\avaliador\avaliar\teste\teste\obj\Debug\teste.exe
 C:\Users\Ge\Desktop\testeFile\avaliador\avaliar\teste\teste\obj\Debug\teste.pdb
+C:\Users\Ge\Desktop\tcc2013\avaliador\avaliar\teste\teste\bin\Debug\teste.exe.config
+C:\Users\Ge\Desktop\tcc2013\avaliador\avaliar\teste\teste\obj\Debug\teste.exe
+C:\Users\Ge\Desktop\tcc2013\avaliador\avaliar\teste\teste\obj\Debug\teste.pdb
