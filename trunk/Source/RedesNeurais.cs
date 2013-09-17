@@ -791,7 +791,9 @@ namespace AmbienteRPB
                     case ("AddDadoKohonen"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            if(dados[0] == 0 && dados[1] >= 0 && dados[1] < 11)
+                            if (dados[0] == 0 && dados[1] == 0)
+                              prb.Series["canal" + (canal+2)].Points.AddY(1);
+                            else if(dados[0] == 0 && dados[1] >= 0 && dados[1] < 3)
                               prb.Series["canal" + (canal+2)].Points.AddY(1);
                             else
                               prb.Series["canal" + (canal + 2)].Points.AddY(0);
@@ -813,7 +815,9 @@ namespace AmbienteRPB
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             for (int i = 0;  i < X_.Count; i++)
                             {
-                                if (X_[i] == 0 && Y_[i] >= 0 && Y_[i] < 11)
+                                if (X_[i] == 0 && Y_[i] == 0)
+                                    prb.Series["canal" + (canal + 2)].Points.AddY(10);
+                                else if (X_[i] == 0 && Y_[i] >= 0 && Y_[i] < 3)
                                     prb.Series["canal" + (canal+2)].Points.AddY(1);
                                 else
                                     prb.Series["canal" + (canal + 2)].Points.AddY(0);
@@ -980,7 +984,7 @@ namespace AmbienteRPB
             double[] dados = new double[10];
             X_Vals = new List<double>();
             Y_Vals = new List<double>();
-
+            //it_is_debug = true;
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
@@ -995,7 +999,6 @@ namespace AmbienteRPB
                 {
                     X_Vals.Add(n.X);
                     Y_Vals.Add(n.Y);
-                    send_SmS(1, saida, false);
                 }
                 else
                 {

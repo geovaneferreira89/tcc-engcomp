@@ -122,7 +122,7 @@ namespace AmbienteRPB
                 label2.Text = "Matriz [x:x]";
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(50);
-                TxtTreinarCom.Text = Convert.ToString(30);
+                TxtTreinarCom.Text = Convert.ToString(10);
                 txtPadroes.Text = "1";
                 UsarReferencia = true;
                 ckReferencia.Checked = true;
