@@ -16,6 +16,8 @@ namespace teste
         List<Resultado> resultados = new List<Resultado>();
         List<Marcacao> marcacoes = new List<Marcacao>();
 
+        List<Marcacao> intervalos = new List<Marcacao>();
+
         // VP: QRS detectado
         // FP: não QRS detectado
         // VN: não QRS não detectado, entre dois VP/QRS
@@ -48,7 +50,7 @@ namespace teste
                 for(int j = 0; j < resultados.Count(); j++)
                 {
                     // marcação e resultado
-                    if((resultados[j].horario <= marcacoes[i].inicio) && (resultados[j].horario <= marcacoes[i].fim)) //dentro do intervalo da marcação
+                    if((resultados[j].horario >= marcacoes[i].inicio) && (resultados[j].horario <= marcacoes[i].fim)) //dentro do intervalo da marcação
                     {
                         resultados[j].correta = true;       // resultado correto
                         marcacoes[i].detectada = true;      // marcacao detectada
@@ -88,17 +90,41 @@ namespace teste
             }
 
             // VN: entre duas marcações em que não há FP
-            // entre o fim de uma e o início de outra
-            for (int i = 0; i < marcacoes.Count(); i++)
-            {
+            // entre o fim de uma e o início de outra    
+            //gera lista
+            //for (int i = 0; i < marcacoes.Count(); i++)
+            //{
+            //    marc = new Marcacao();
+            //    marc.inicio = marcacoes[i].fim;
+            //    marc.fim = marcacoes[i + 1].inicio;
+            //    marc.detectada = false;
+            //    intervalos.Add(marc);                
+            //}
 
-                for (int j = 0; j < resultados.Count(); j++)
-                {
-                    //if(resultados[j].horario >= marcacoes[i].fim) (resultados[j].horario <= marcacoes[i+1].inicio)
-                    //{
-                    //}
-                }
-            }
+
+            //for (int i = 0; i < intervalos.Count(); i++)     // percorre o vetor de marcações já que ele é a referência
+            //{
+            //    for (int j = 0; j < resultados.Count(); j++)
+            //    {
+            //        // marcação e resultado
+            //        if ((resultados[j].horario > intervalos[i].inicio) && (resultados[j].horario < intervalos[i].fim)) //dentro do intervalo da marcação
+            //        {
+            //            intervalos[i].detectada = true;
+            //        }
+            //    }
+            //}
+
+            //for (int i = 0; i < intervalos.Count(); i++)
+            //{
+            //    if(intervalos[i].detectada == false)
+            //    {
+            //        //VN
+            //        aux = new double();
+            //        aux = intervalos[i].inicio;
+            //        VN.Add(aux);
+            //    }
+            //}
+
 
         }
 

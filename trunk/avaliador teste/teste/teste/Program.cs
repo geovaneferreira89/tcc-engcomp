@@ -12,8 +12,8 @@ namespace teste
         {
             
             //Cria entradas
-            List<double> resultados = new List<double> {0, 0, 0, 1, 0, 0, 0, 1};
-            List<double> marcacoes = new List<double> {0, 0, 0, 1, 0, 0, 0, 1};
+            List<double> resultados = new List<double> {10, 20, 31, 40, 50, 55, 60, 80, 90};
+            List<double> marcacoes = new List<double> {10, 20, 30, 40, 50, 60, 70, 80, 90};
 
 
             //Avalia
@@ -38,10 +38,10 @@ namespace teste
                 Console.WriteLine("FN " + i + ": " + avaliador.FN[i]);
             }
 
-            for (int i = 0; i < avaliador.VN.Count(); i++)
-            {
-                Console.WriteLine("VN " + i + ": " + avaliador.VN[i]);
-            }
+            //for (int i = 0; i < avaliador.VN.Count(); i++)
+            //{
+            //    Console.WriteLine("VN " + i + ": " + avaliador.VN[i]);
+            //}
 
             Console.ReadKey();
 
