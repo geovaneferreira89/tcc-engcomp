@@ -1363,6 +1363,7 @@ namespace AmbienteRPB
                 
                 //Cria entradas
                 List<double> resultados = new List<double>();
+                List<double> resultadosFiltrado = new List<double>();
                 for (int i = 0; i < chart1.Series["canal" + ((CanalAtual * 4) + 2)].Points.Count(); i++)
                 {
                     resultados.Add((int)chart1.Series["canal" + ((CanalAtual * 4) + 2)].Points[i].YValues[0]);
@@ -1375,11 +1376,10 @@ namespace AmbienteRPB
                     {
                         EmUM = true;
                         contador++;
-                        resultados[i] = 0;
                     }
                     else if (resultados[i] == 0 && EmUM == true)
                     {
-                        resultados[i - (contador / 2)] = 1;
+                        resultadosFiltrado.Add((i - (contador / 2)));
                         EmUM = false;
                         contador = 0;
                     }
@@ -1390,7 +1390,7 @@ namespace AmbienteRPB
 
                 //Avalia
                 Avaliador avaliador = new Avaliador();
-                avaliador.Avaliar(resultados, marcacoes);
+                avaliador.Avaliar(resultadosFiltrado, marcacoes);
 
                 //Saída
                 SMS_Box.Text = "Resultado Avaliação";
