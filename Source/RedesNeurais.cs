@@ -879,7 +879,7 @@ namespace AmbienteRPB
         //                                        KOHONEN
         //====================================================================================================
         //
-        private int pulo = 3;
+        private int pulo = 4;
         private void Initialise_KHn()
         {
             SaidaFinal = new double[length, length];
