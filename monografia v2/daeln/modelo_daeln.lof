@@ -5,21 +5,20 @@
 \contentsline {figure}{\numberline {4}{\ignorespaces Ondas, segmentos e intervalos dos sinais de ECG}}{19}
 \contentsline {figure}{\numberline {5}{\ignorespaces Exemplo de aplica\c c\~ao da fun\c c\~ao correla\c c\~ao}}{20}
 \contentsline {figure}{\numberline {6}{\ignorespaces Estrutura de uma rede neural artificial}}{21}
-\contentsline {figure}{\numberline {7}{\ignorespaces Gr\'aficos das fun\c c\~oes de ativa\c c\~ao}}{22}
-\contentsline {figure}{\numberline {8}{\ignorespaces Exemplo de sinal e padr\~ao de classifica\c c\~ao}}{24}
-\contentsline {figure}{\numberline {9}{\ignorespaces Gr\'aficos de Sensibilidade e Especificidade}}{25}
-\contentsline {figure}{\numberline {10}{\ignorespaces Curva ROC}}{26}
-\contentsline {figure}{\numberline {11}{\ignorespaces Parte da grava\c c\~ao 105 da base de ECG}}{29}
-\contentsline {figure}{\numberline {12}{\ignorespaces Tela de op\c c\~oes do Physiobank ATM}}{30}
-\contentsline {figure}{\numberline {13}{\ignorespaces Fluxograma simples}}{32}
-\contentsline {figure}{\numberline {14}{\ignorespaces Fluxograma com extra\c c\~ao de caracter\IeC {\'\i }sticas}}{33}
-\contentsline {figure}{\numberline {15}{\ignorespaces Tela de sele\c c\~ao do sistema}}{34}
-\contentsline {figure}{\numberline {16}{\ignorespaces Tela de visualiza\c c\~ao do sinal no sistema}}{34}
-\contentsline {figure}{\numberline {17}{\ignorespaces Op\c c\~ao de marcar eventos}}{35}
-\contentsline {figure}{\numberline {18}{\ignorespaces Marca\c c\~oes de eventos}}{35}
-\contentsline {figure}{\numberline {19}{\ignorespaces Sele\c c\~ao do editor de marca\c c\~oes}}{36}
-\contentsline {figure}{\numberline {20}{\ignorespaces Editor de marca\c c\~oes}}{36}
-\contentsline {figure}{\numberline {21}{\ignorespaces Curva ROC dos resultados}}{41}
+\contentsline {figure}{\numberline {7}{\ignorespaces Exemplo de sinal e padr\~ao de classifica\c c\~ao}}{22}
+\contentsline {figure}{\numberline {8}{\ignorespaces Gr\'aficos de Sensibilidade e Especificidade}}{24}
+\contentsline {figure}{\numberline {9}{\ignorespaces Curva ROC}}{25}
+\contentsline {figure}{\numberline {10}{\ignorespaces Parte da grava\c c\~ao 105 da base de ECG}}{28}
+\contentsline {figure}{\numberline {11}{\ignorespaces Tela de op\c c\~oes do Physiobank ATM}}{29}
+\contentsline {figure}{\numberline {12}{\ignorespaces Fluxograma simples}}{31}
+\contentsline {figure}{\numberline {13}{\ignorespaces Fluxograma com extra\c c\~ao de caracter\IeC {\'\i }sticas}}{32}
+\contentsline {figure}{\numberline {14}{\ignorespaces Tela de sele\c c\~ao do sistema}}{33}
+\contentsline {figure}{\numberline {15}{\ignorespaces Tela de visualiza\c c\~ao do sinal no sistema}}{33}
+\contentsline {figure}{\numberline {16}{\ignorespaces Op\c c\~ao de marcar eventos}}{34}
+\contentsline {figure}{\numberline {17}{\ignorespaces Marca\c c\~oes de eventos}}{34}
+\contentsline {figure}{\numberline {18}{\ignorespaces Editor de marca\c c\~oes}}{35}
+\contentsline {figure}{\numberline {19}{\ignorespaces L\'ogica da avalia\c c\~ao}}{37}
+\contentsline {figure}{\numberline {20}{\ignorespaces Curva ROC dos resultados}}{40}
+\contentsline {figure}{\numberline {21}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{41}
 \contentsline {figure}{\numberline {22}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{42}
-\contentsline {figure}{\numberline {23}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{43}
-\contentsline {figure}{\numberline {24}{\ignorespaces Gr\'afico da Quantidade de Horas Trabalhadas}}{47}
+\contentsline {figure}{\numberline {23}{\ignorespaces Gr\'afico da Quantidade de Horas Trabalhadas}}{46}
