@@ -1,0 +1,31 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: modelo_daeln.aux
+The style file: abnt-alf.bst
+Database file #1: abnt-options.bib
+Database file #2: reflatex.bib
+I was expecting a `,' or a `}'---line 12 of file reflatex.bib
+ :   
+ :   urlaccessdate = {8 de novembro de 2012}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 93 of file reflatex.bib
+ : 
+ : %note = "",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 142 of file reflatex.bib
+ :   
+ :   %isbn={9788520414125},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 168 of file reflatex.bib
+ :    
+ :    %URL = {http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0004-282X2006000200017&nrm=iso},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
++---------------------------------------------------------+
+| Estilo bibliografico abnt-alf.bst versao 1.52           |
+| Implementa a NBR6023, NBR10520 e NBR10523               |
+| Em caso de duvidas ou problemas com este estilo procure |
+| http://abntex.codigolivre.org.br                        |
++---------------------------------------------------------+
+(There were 4 error messages)

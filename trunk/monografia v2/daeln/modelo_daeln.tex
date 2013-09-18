@@ -1,0 +1,597 @@
+%% Exemplo de utilizacao do estilo de formatacao abnt-UTFPR.cls para LaTeX (v1.2)
+%% Autores: Hugo Vieira Neto (hvieir@utfpr.edu.br)
+%%          Diogo Rosa Kuiaski (diogo.kuiaski@gmail.com)
+
+\documentclass{abnt-UTFPR} % estilo de documento abnTeX
+\usepackage[alf,abnt-emphasize=bf,bibjustif,recuo=0cm]{abntcite} % estilo de bibliografia abnTeX
+\usepackage[brazil]{babel} % pacote portugues brasileiro
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb} % pacote matematico
+\usepackage{graphicx} % pacote grafico
+\usepackage{fixltx2e}
+\usepackage{multirow} %pacote tabela
+\usepackage[section,subsection,subsubsection]{extraplaceins} %pacote pra figura não sair do lugar!
+
+%tabelas ajustáveis
+\usepackage{tabulary}
+%fixar tabelas no mesmo lugar
+\usepackage{float}
+%\restylefloat{table}
+
+
+% ---------- Preambulo ----------
+\instituicao{Universidade Tecnológica Federal do Paraná} % nome da instituicao
+\departamento{Departamento Acadêmico de Eletrônica/Informática} % nome do departamento
+\programa{Curso Superior de Engenharia de Computação} % nome do curso
+
+\documento{Trabalho de Conclusão de Curso} % tipo de documento
+\titulacao{Engenheiro} % [Técnico], [Tecn\'ologo] ou [Engenheiro]
+
+\titulo{Sistema para Detecção de Complexo QRS em Sinais de Eletrocardiografia} % titulo do trabalho em portugues
+\title{System for QRS Complex Detection in Electrocardiographical Signals } % titulo do trabalho em ingles
+
+\autor{Georgea Danielewicz \protect\\ Geovane Vinicius Ferreira} % autor do trabalho
+\cita{DANIELEWICZ, Georgea \protect e FERREIRA, Geovane Vinícius} % sobrenome (maiusculas), nome do autor do trabalho
+
+\palavraschave{análise de sinal, reconhecimento de padrões, eletrocardiografia, complexo QRS} % palavras-chave do trabalho
+\keywords{\textit{signal analysis}, \textit{pattern classification}, \textit{electrocardiography}, \textit{QRS-complex}} % palavras-chave do trabalho em ingles
+
+
+\comentario{\UTFPRdocumentodata\ apresentado ao \UTFPRdepartamentodata\ como requisito parcial para obtenção do grau de \UTFPRtitulacaodata\ no \UTFPRprogramadata\ da \ABNTinstituicaodata.}
+
+\orientador{Professor Doutor Miguel Antonio Sovierzoski} % nome do orientador do trabalho
+%\orientador[Orientadora:]{Nome da Orientadora} % <- no caso de orientadora, usar esta sintaxe
+%\coorientador{Nome do Co-orientador} % nome do co-orientador do trabalho, caso exista
+%\coorientador[Co-orientadora:]{Nome da Co-orientadora} % <- no caso de co-orientadora, usar esta sintaxe
+
+\local{Curitiba} % cidade
+\data{2013} % ano
+
+
+%---------- Inicio do Documento ----------
+\begin{document}
+
+\capa % geracao automatica da capa
+\folhaderosto % geracao automatica da folha de rosto
+%\termodeaprovacao % <- ainda a ser implementado corretamente
+
+% dedicatória (opcional)
+%\begin{dedicatoria}
+%Texto da dedicatória.
+%\end{dedicatoria}
+
+% agradecimentos (opcional)
+\begin{agradecimentos}
+Nossos sinceros agradecimentos ao Professor Miguel Antonio Sovierzoski, por ter orientado este trabalho com grande dedicação, estando sempre presente. 
+
+Agradecemos de coração a todos os nossos familiares, pois sem eles esta realização jamais teria sido possível. E também a nossos amigos e colegas, pelos incentivos e pelo apoio. 
+\end{agradecimentos}
+
+% epigrafe (opcional)
+% citação, seguida de indicação de autoria e ano, relacionada com a matéria tratada no corpo do trabalho
+\begin{epigrafe}
+"The human heart is not unchanging (nay, changes almost out of recognition in the twinkling of an eye) \dots" 
+\begin{flushright}
+    (C.S. Lewis)
+\end{flushright}
+
+"O coração humano não é imutável (ou melhor, muda quase que irreconhecivelmente no piscar de um olho) \dots" 
+\begin{flushright}
+    (C.S. Lewis)
+\end{flushright}
+
+\end{epigrafe}
+
+%resumo
+\begin{resumo}
+
+De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para se avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes corrompido por ruídos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de \sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização do sinal de ECG, marcação de eventos, extração de características, reconhecimento de padrões e avaliação de resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
+
+\end{resumo}
+
+%abstract
+\begin{abstract}
+
+According to \cite{Zhang2007}, electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the electrocardiographic (ECG) signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools that improve the QRS-complex detection are required. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module will compare the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
+
+\end{abstract}
+
+% listas (opcionais, mas recomenda-se a partir de 5 elementos)
+\listadefiguras % geracao automatica da lista de figuras
+\listadetabelas % geracao automatica da lista de tabelas
+\listadesiglas % geracao automatica da lista de siglas
+%\listadesimbolos % geracao automatica da lista de simbolos
+
+% sumario
+\sumario % geracao automatica do sumario
+
+
+%---------- Inicio do Texto ----------
+% recomenda-se a escrita de cada capitulo em um arquivo texto separado (exemplo: intro.tex, fund.tex, exper.tex, concl.tex, etc.) e a posterior inclusao dos mesmos no mestre do documento utilizando o comando \input{}, da seguinte forma:
+\input{intro.tex} 
+\input{fund.tex}
+%\input{exper.tex}
+
+
+%Considerações: 
+%1. não ultrapassar 100 páginas
+%2. introdução 5%, considerações finais 5%, fundamentação, materiais e métodos e resultados obtidos 90%
+%3. 2 páginas, 1 páginas, 					15,16 páginas, 	20 páginas ,		 5 páginas
+% -------------------------------------------
+\chapter{Materiais e Métodos} %ou Materiais e Métodos 
+\label{sec:Materiais}
+
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Bibliotecas Utilizadas \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
+
+\section{Base de Dados}
+\label{sec:BD}
+
+De acordo com informações disponibilizadas pela Comissão Nacional de Ética em Pesquisa ~\cite{CONEP}, ``as pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP~--\sigla{CONEP}{Comissão Nacional de Ética em Pesquisa}.'' Por esta razão, a equipe optou por utilizar a base de dados pública MIT-BIH Arrhythmia Database. 
+
+A MIT-BIH Arrhythmia Database foi desenvolvida pelo Beth Israel Hospital de Boston em parceria com o \sigla{MIT}{\textit{Massachusetts Institute of Technology}} durante uma pesquisa sobre arritmia e temas correlatos. Tem sido utilizada como um conjunto de dados padrão para testes e avaliação para sistemas detectores de arritmias e pesquisa em dinâmica cardíaca ~\cite{MOODY1990}.
+
+Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São apresentados dois sinais, \textit {modified limb lead II} (MLII) e \textit{lead} V1 (podendo ser ocasionalmente V2, V5 ou V4), ambos obtidos com os eletrodos colocados no peito. Esta é a configuração padrão utilizada pelo BIH Arrhythmia Laboratory. Pode-se observar maior proeminência dos complexos QRS no sinal superior ~\cite{PhysioNet}. A figura ~\ref{105} mostra parte da gravação do exame 105.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./figs/105.png} % <- formatos PNG, JPG e PDF
+	\caption[Parte da gravação 105 da base de ECG]{Parte da gravação 105 da base de dados MIT-BIH Arrhythmia Database}
+	\fonte{Autoria própria}
+	\label{105}
+\end{figure}
+
+Os exames foram realizados com 47 pacientes acompanhados pelo BIH Arrhythmia Laboratory entre os anos de 1975 e 1979. Vinte e três gravações foram aleatoriamente de um conjunto de 4000 exames ambulatoriais de ECG com duração de 24 horas coletadas de pacientes internos (cerca de 60\%) e pacientes ambulatoriais (cerca de 40\%) do Boston's Beth Israel Hospital. Os outros 25 exames foram selecionados do mesmo conjunto para incluir arritmias clinicamente incomuns ~\cite{MOODY1990}.
+
+Uma equipe com dois cardiologistas realizou anotações dos batimentos em cada uma das gravações, resultando em aproximadamente 110 mil marcações. Estas foram incluídas na base de dados. A base completa tem sido disponibilizada gratuitamente pelo desde 2005 ~\cite{MOODY1990}.
+
+Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por apresentar maior dificuldade na detecção do complexo QRS ~\cite{SARAIVA2012}.
+
+O arquivo de texto contendo as anotações do sinal de ECG 105, apresenta 2691 eventos. Destes 2691 eventos, apenas 2572 são relevantes para os testes neste projeto, que correspondem às marcações  de \textit{Normal beat} (2526 ocorrências), \textit{Premature ventricular contraction} (41 ocorrências) e \textit{Unclassifiable beat} (5 ocorrências).
+ 
+\section{European Data Format}
+\label{sec:EDF}
+
+A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \textit{European data format} (EDF), um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O \sigla{EDF}{\textit{European data format}} é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientifica \cite{Kemp20031755}.
+
+Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado. Este formato de arquivo, no entanto, não suporta anotações de eventos das gravações \cite{Kemp20031755}.
+
+\textit{Physiobank} \textit{Automated Teller Machine} (ATM) é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo \textit{Physiobank} por meio do navegador de \textit{internet}. Esta \textit{toolbox} oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do \textit{Physionet} (\sigla{WFDB}{\textit{WaveForm DataBase}} ~-- \textit{WaveForm DataBase}) para texto, CSV, EDF, ou .mat files (para utilização nos programas \textit{Matlab} ou \textit{Octave}), entre outras funcionalidades \cite{PhysioNet}.
+
+A figura ~\ref{ATM} mostra a tela de opções da ferramenta \textit{Physiobank} \sigla{ATM}{\textit{Automated Teller Machine}}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/ATM.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de opções do Physiobank ATM]{Tela de opções do Physiobank ATM}
+	\fonte{Autoria própria}
+	\label{ATM}
+\end{figure}
+
+\section{Bibliotecas Utilizadas}
+\label{sec:Bib}
+O projeto utilizou as bibliotecas \textit{NeuroLoopGain} e \textit{BrainNet Library} para trabalhar com arquivos em formato EDF e redes neurais artificiais respectivamente.
+
+\subsection{NeuroLoopGain}
+
+A biblioteca \textit{NeuroLoopGain} \cite{Neuroloop} foi implementada para análise de arquivos em formato EDF.
+O texto da licença Apache 2.0 \cite{Apache} mostra que seu código é aplicável a distribuição pretendida do software: ``[ \dots] concede licença perpétua, mundial, não exclusiva, gratuita, isenta de royalties e irrevogável para reproduzir, preparar Obras Derivadas, de exibição pública, execução pública, sublicenciamento e distribuição do Trabalho e tais Obras Derivadas, na forma de Código Fonte ou Objeto. ''
+
+Além disso, o texto da licença também atesta que: ``[ \dots] concede licença perpétua, mundial, não-exclusiva, gratuita, isenta de royalties e irrevogável [\dots] de licença de patente para fazer, mandar fazer, usar, oferecer para venda, vender, importar e transferir o trabalho. ''
+
+\subsection{Biblioteca Kohonen}
+
+
+\section{Sistema}
+\label{sec:MOD} 
+Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a partir da subseção Visão Geral do Sistema \ref{Vgeral}, e também uma visão detalhada por meio das subseções: Módulo de Visualização do Sinal \ref{Mod1}, Módulo de Marcação de Eventos \ref{Mod2}, Módulo de Extração de Características \ref{Mod3}, Módulo de Reconhecimento de Padrões \ref{Mod4} e Módulo de Avaliação de Resultados \ref{Mod5}.
+
+\subsection{Visão Geral do Sistema}
+\label{Vgeral} 
+
+O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza marcações do complexo QRS feitas diretamente no sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxogramaRaw} mostra todo este processo.
+
+Primeiramente, o arquivo com o sinal de ECG é carregado na tela (Carregar sinal na tela), em seguida são feitas pela equipe marcações do complexo QRS diretamente no sinal (Marcar eventos). As marcações dão origem ao conjunto de dados de treinamento (Padrões de Treinamento), utilizado durante a próxima etapa (Treinamento da Rede Neural Artificial). Uma vez treinada, a rede poderá reconhecer padrões no sinal de ECG em questão (explicado em detalhes na seção \ref{sec:BD}), e exibe os resultados na tela (Reconhecimento de Padrões). Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/fluxogramaRaw.png} % <- formatos PNG, JPG e PDF
+	\caption[Fluxograma simples]{Fluxograma simples}
+	\fonte{Autoria própria}
+	\label{fluxogramaRaw}
+\end{figure}
+
+A segunda maneira de funcionamento do sistema é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. A diferença em relação ao método anterior ocorre no processo de geração do conjunto de dados de treinamento.
+
+Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado na subseção \ref{Mod3}. No sinal resultante são feitas novas marcações (Segunda marcação de eventos), que dão origem ao conjunto de dados de treinamento (Padrões de Treinamento). O restante do método é idêntico ao anterior, a rede neural artificial passa pelo treinamento (Treinamento da Rede Neural Artificial), capacitando-se para reconhecer padrões (Reconhecimento de Padrões). Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
+	\caption[Fluxograma com extração de características]{Fluxograma com extração de características}
+	\fonte{Autoria própria}
+	\label{FluxoCorrel}
+\end{figure}
+
+
+\subsection{Módulo de Visualização do Sinal}
+\label{Mod1} 
+
+O primeiro módulo do sistema a ser detalhado é o módulo de visualização do sinal. Na figura \ref{tela1} pode ser observada a tela em que o usuário seleciona quais canais (ou derivações) do sinal deseja visualizar. No caso, as derivações do sinal são {modified limb lead II} (MLII) e \textit{lead} V1 .
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/tela0.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de seleção do sistema]{Tela de seleção do sistema}
+	\fonte{Autoria Própria}
+	\label{tela1}
+\end{figure}
+
+
+A figura \ref{tela2} mostra a impressão no sinal na tela do sistema. Além dos sinais, a tela também apresenta opções para alterar a frequência e amplitude do sinal e opções para mostrar o sinal em janelas de 5 ou 10 segundos.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/tela2.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de visualização do sinal no sistema]{Tela de visualização do sinal no sistema}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
+
+
+\subsection{Módulo de Marcação de Eventos}
+\label{Mod2} 
+Uma vez que a tela do sistema exibe o sinal de Eletroencefalografia (ECG), o usuário pode realizar as marcações de eventos.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/telab.png} % <- formatos PNG, JPG e PDF
+	\caption[Opção de marcar eventos]{Opção de marcar eventos}
+	\fonte{Autoria Própria}
+	\label{tela3}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/tela3.png} % <- formatos PNG, JPG e PDF
+	\caption[Marcações de eventos]{Marcações de eventos}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/tela4.png} % <- formatos PNG, JPG e PDF
+	\caption[Seleção do editor de marcações]{Seleção do editor de marcações}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/tela5.png} % <- formatos PNG, JPG e PDF
+	\caption[Editor de marcações]{Editor de marcações}
+	\fonte{Autoria Própria}
+	\label{tela2}
+\end{figure}
+
+
+
+\subsection{Módulo de Extração de Características}
+\label{Mod3} 
+Aqui será explicado o modo como foi utilizada a operação da Correlação.
+Correlação de um evento marcado com o sinal inteiro, gerando um novo sinal... com picos onde eventos daquele tipo ocorrem.
+
+
+\subsection{Módulo de Reconhecimento de padrões}
+\label{Mod4} 
+No caso utilizamos a Rede Neural MultiLayer Perceptron.
+
+\subsection{Módulo de Avaliação de Resultados}
+\label{Mod5} 
+Módulo que compara marcações com os resultados obtidos.
+
+\section{Modelagem UML}
+\label{sec:UML}
+
+Diagrama
+
+
+As classes do sistema estão resumidas na tabela \ref{Classes}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de classes do sistema]{Tabela de classes do sistema}
+	\label{Classes}
+	\begin{tabular}{ll}
+	\hline
+	\textbf{Avaliador}  			& Gera tabela de contingência: VP, FP, VN e FN \\ \hline
+	\textbf{AV\_Marcacao} 			& Gerencia marcações da base de dados na avaliação \\ \hline
+	\textbf{AV\_Resultado} 			& Gerencia resultados do sistema na avaliação \\ \hline
+	\textbf{GerenArquivos} 			& Gerencia arquivos (sinal e marcações) \\ \hline
+	\textbf{Annotations\_Chart} 	&  \\ \hline
+	\textbf{atualiza\_sinal}    	&  \\ \hline
+	\textbf{AtualizarRefInChart}	&  \\ \hline	
+	\textbf{Program}  				&  \\ \hline	
+	\textbf{Licenca}            	&  \\ \hline
+	\textbf{Form\_Site}         	&  \\ \hline
+	\textbf{FormCarregar\_EDF}  	&  \\ \hline
+	\textbf{FormEditarNomePadrao}   &  \\ \hline
+	\textbf{FormEditorDeEventos}    &  \\ \hline
+	\textbf{FormPrincipal}       	&  \\ \hline
+	\textbf{FormResultados}  		&  \\ \hline
+	\textbf{InfoEDF}           		&  \\ \hline
+	\textbf{MDIPrincipalForm}       &  \\ \hline
+	\textbf{Neuro\_kHn} 			&  \\ \hline
+	\textbf{RedesNeurais}           &  \\ \hline
+	\textbf{Resources}        		&  \\ \hline
+	\textbf{Settings}       		&  \\ \hline
+	\end{tabular}
+	\fonte{Autoria Própria}
+\end{table}
+
+\section{Metodologia de Testes}
+\label{sec:Met-Testes}
+
+\subsection{Geração das Bases de Dados}
+
+Marcação
+
+Promedição
+
+Correlação
+
+Sinal Puro
+
+Total de QRS = 2572
+Total Usados = 1589
+Total Descartados = 72
+últimos 10 minutos do sinal
+
+Sinal com correlação
+
+
+
+\subsection{Classificação de Padrões}
+
+Tamanho do Mapa
+Função que limita a saída
+
+Figura explicativa
+
+\subsection{Avaliação do Classificador}
+
+O que são
+
+VP
+FP
+VN
+FN
+
+Figura explicativa
+
+\section{Considerações}
+\label{sec:Cons-Des}
+
+% -------------------------------------------
+\chapter{Resultados Obtidos} % 3 a 4 páginas
+\label{sec:Resultados}
+
+Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, a rede neural artificial pode ser treinada com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características (detalhado na seção ). OS resultados obtidos utilizando cada uma destas bases de marcações são descritos nas seções Testes com Sinal de ECG \ref{sec:Testes1} e Testes com ECG com correlação \ref{sec:Testes2}, respectivamente. Este capítulo termina com a seção de Comparativo dos Resultados \ref{sec:Comparativo} e a seção de Considerações \ref{sec:TestesConsider}.
+
+\section{Testes com Sinal de ECG}
+\label{sec:Testes1}
+
+Os resultados apresentados nesta seção dizem respeito ao treinamento realizado com marcações feitas diretamente no sinal de ECG. O conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, o que resulta em XXX ocorrências do complexo QRS. 
+
+A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de Resultados Obtidos com Raw ECG]{Tabela de Resultados Obtidos com Raw ECG}
+	\label{tab:rawECG}
+		    \begin{tabular}{ccccccccc}
+		    \hline
+		    Threshold & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    \hline
+		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    \end{tabular}
+		    \fonte{Autoria Própria}
+\end{table}
+
+A curva ROC do processo utilizando marcações no sinal de ECG é mostrada na figura ~\ref{ROC1}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\caption[Curva ROC dos resultados]{Curva ROC dos resultados}
+	\fonte{Autoria própria}
+	\label{ROC1}
+\end{figure}
+
+\section{Testes com ECG com extração de características}
+\label{sec:Testes2}
+Esta seção apresenta os resultados obtidos com a utilização da base gerada após o processo de extração de características. Do mesmo modo que a seção anterior, o conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, correspondendo a XXX ocorrências do complexo QRS. 
+
+A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de Resultados utilizando correlação]{Tabela de Resultados utilizando correlação}
+	\label{tab:rawECG}
+		    \begin{tabular}{ccccccccc}
+		    \hline
+		    Threshold & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    \hline
+		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    \end{tabular}
+		    \fonte{Autoria Própria}
+\end{table}
+
+A curva ROC do processo utilizando a base gerada após a extração de características é mostrada na figura ~\ref{ROC2}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.2\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\caption[Curva ROC do processo com correlação]{Curva ROC do processo com correlação}
+	\fonte{Autoria própria}
+	\label{ROC2}
+\end{figure}
+
+\section{Comparativo dos Resultados}
+\label{sec:Comparativo}
+
+A figura \ref{ROC2} mostra as curvas ROC obtidas com os testes descritos nas seções Testes com ECG com extração de características \ref{sec:Testes1} e Testes com Sinal de ECG \ref{sec:Testes2}, permitindo uma visão comparativa entre eles.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.2\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\caption[Curva ROC do processo com correlação]{Curva ROC do processo com correlação}
+	\fonte{Autoria própria}
+	\label{ROC2}
+\end{figure}
+
+\section{Considerações}
+\label{sec:TestesConsider}
+Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
+Compara a outros trabalhos
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela Comparativa de métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de \cite{Zhang2007} acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
+	\label{tab:correlacao}
+	\begin{tabular}{llllll}
+		\hline 
+		Método & QRS & FP & FN & DER \\
+		\hline
+		\hline
+		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 \\
+		Filtro passa banda & 2572 & 67 & 22 & 3,46 \\
+		Wavelet denoising & 2572 & 78 & 5 & 3,23 \\
+		Bancos de filtragem & 2139 & 53 & 16 & 3,22 \\
+		BPF/search-back & 2564 & 53 & 22 & 2,95 \\
+		Filtro adaptativo linear & 2572 & 40 & 22 & 2,40 \\
+		Filtragem otimizada & 2572 & 35 & 21 & 2,18 \\
+		Topological mapping & 2572 & 41 & 4 & 1,75\\
+		Transformada wavelet & 2572 & 15 & 12 & 1,09 \\
+		Filtro adaptativo e rede neural & 2572 & 10 & 4 & 0,5 \\
+		Morfologia 1M & 2572 & 49 & 10 & 2,29 \\
+		Morfologia 2M & 2572 & 27 & 9 & 1,40 \\
+		Morfologia 3M & 2572 & 19 & 7 & 1,01 \\
+		Morfologia 1M & 2690 & 40 & 2 & 1,56 \\
+		Morfologia 2M & 2690 & 41 & 2 & 1,60 \\
+		Morfologia 3M & 2690 & 40 & 0 & 1,49 \\
+		Morfologia 4M & 2690 & 39 & 0 & 1,45 \\
+		\hline 
+	\end{tabular}
+	\fonte{Modificada de \cite{SARAIVA2012}}
+\end{table}
+
+%----------------------------------------
+\chapter{Considerações Finais} % 1 página
+\label{sec:CFinais}
+
+Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? 
+
+Cada seção teve a sua conclusão, então completa a discussão. Elementos resultantes do processo de união. Não apresentar nenhum dado novo! 1 folha e meia no máximo. 
+
+Propostas futuras? Resultados futuros.
+
+Com redes SOM, ou com outras bases de dados.
+
+\chapter{Gestão do Projeto} % 1 página
+\label{sec:Gestao}
+
+Inicialmente, este projeto pretendia utilizar uma base de dados de exames de Eletroencefalografia (EEG), obtida em um Hospital, mediante autorização do Comitê de Ética da Instituição. A metodologia de testes seria realizada por um médico neurologista, que avaliaria os resultados do sistema, classificando-os como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. 
+
+Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez de bases de dados de EEG públicas adequadas (o que dispenderia menor tempo, por não necessitar de autorização do Comitê de Ética), a equipe alterou o escopo do projeto, passando a utilizar uma base de dados pública de \sigla{ECG}{Eletroencefalografia}.
+
+Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria equipe realizar os testes, uma vez que a base de dados já possui marcações dos eventos, bastando apenas compará-las aos eventos identificados pelo sistema.
+
+Este capítulo apresenta as seções Recursos de Hardware \ref{RecHardware}, Recursos de Software \ref{RecSoftware} e Horas de Trabalho \ref{Horas}.
+
+\section{Recursos de Hardware}
+\label{RecHardware}
+Os recursos de \textit{Hardware} correspondem às duas máquinas utilizadas pelos membros da equipe durante o desenvolvimento do projeto: \textit{Macbook Pro} 13 polegadas, início de 2011, com processador Intel Core i7 de 2.7 GHz, memória de 16 GB e HD com 1TB e um \textit{notebook} Dell Inspiron 14R-3440 com processador Intel Core i5, memória RAM de 6GB e HD com 1TB.
+
+\section{Recursos de Software}
+\label{RecSoftware}
+
+Os recursos de \textit{Software} utilizados neste projeto correspondem ao seguintes itens:
+
+\begin{itemize}
+	\item \textit{Visual Studio};
+    \item Plataforma \textit{Microsoft} .NET versão 4.5;
+	\item Biblioteca \textit{NeuroLoopGain};
+	\item Biblioteca \textit{BrainNet Library}.
+\end{itemize}
+
+Para obter gratuitamente a licença do ambiente de desevolvimento \textit{Visual Studio}, a equipe se associou ao programa \text{DreamSpark}, da Universidade Tecnológica Federal do Paraná. Os demais recursos utilizados são gratuitos.
+
+\section{Horas de Trabalho}
+\label{Horas}
+
+A tabela ~\ref{tab:gestao} mostra de modo resumido as tarefas envolvidas no projeto, e as respectivas quantidades de horas esperadas e efetivamente dedicadas.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela com a lista de tarefas e horas de trabalho]{Tabela com a lista de tarefas e horas de trabalho}
+	\label{tab:gestao}
+	\begin{tabular}{lcc}
+		\hline 
+		Tarefas & Horas esperadas & Horas dedicadas \\
+		\hline
+		\hline
+		Plano de Projeto & 90 & 100 \\
+		Pesquisa da base de dados & 0 & 30 \\
+		Estudo da base de dados & 0 & 10 \\
+		Ajustes na base de dados & 0 & 10 \\
+		Estudo de tecnologias & 20 & 30 \\
+		Módulo de visualização do sinal & 40 & 45 \\
+		Módulo de marcação de eventos & 50 & 100\\
+		Módulo de extração de características & 50 & 20 \\
+		Módulo de reconhecimento de padrões & 50 & 100\\
+		Módulo de avaliação & 50 & 40 \\
+		Testes & 30 & 50 \\
+		Elaboração do relatório & 50 & 70 \\
+		Reuniões & 30 & 60 \\
+		\hline 
+		Total & 460 & 655 \\
+		\hline 
+	\end{tabular}
+	\fonte{Autoria Própria}
+\end{table}
+
+A figura ~\ref{horas} mostra o comparativo entre as horas esperadas e as horas realmente dedicadas ao projeto.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/horas.png} % <- formatos PNG, JPG e PDF
+	\caption[Gráfico da Quantidade de Horas Trabalhadas]{Gráfico da Quantidade de Horas Trabalhadas}
+	\fonte{Autoria própria}
+	\label{horas}
+\end{figure}
+
+%------------------ Referencias --------------------
+\bibliography{reflatex} % geracao automatica das referencias a partir do arquivo reflatex.bib
+
+\end{document}
