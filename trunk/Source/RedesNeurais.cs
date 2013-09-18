@@ -133,7 +133,7 @@ namespace AmbienteRPB
                         if(!it_is_debug)
                         {
                             double[] dados = new double[2];
-                            Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, X_Vals,Y_Vals);
+                            Plotar("PlotKohonen", dados, CanalAtual, dimensions, selecaoAtual, null, X_Vals, Y_Vals);
                         }
                         //Imprime a matriz de resultados
                         /*for (int i = 0; i < length; i++)
@@ -790,6 +790,7 @@ namespace AmbienteRPB
                     }
                     case ("AddDadoKohonen"):
                     {
+                            int offset = CanalParaPlotar;
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             if (dados[0] == 0 && dados[1] == 0)
                               prb.Series["canal" + (canal+2)].Points.AddY(1);
@@ -812,11 +813,15 @@ namespace AmbienteRPB
                      }
                     case ("PlotKohonen"):
                     {
+                        int offset = CanalParaPlotar;
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            for (int i = 0;  i < X_.Count; i++)
+                            for (int i = 0; i < (offset/2); i++)
+                                prb.Series["canal" + (canal + 2)].Points.AddY(0);
+                       
+                           for (int i = 0;  i < X_.Count; i++)
                             {
                                 if (X_[i] == 0 && Y_[i] == 0)
-                                    prb.Series["canal" + (canal + 2)].Points.AddY(10);
+                                    prb.Series["canal" + (canal + 2)].Points.AddY(1);
                                 else if (X_[i] == 0 && Y_[i] >= 0 && Y_[i] < 3)
                                     prb.Series["canal" + (canal+2)].Points.AddY(1);
                                 else
@@ -873,6 +878,8 @@ namespace AmbienteRPB
         //====================================================================================================
         //                                        KOHONEN
         //====================================================================================================
+        //
+        private int pulo = 3;
         private void Initialise_KHn()
         {
             SaidaFinal = new double[length, length];
@@ -915,6 +922,8 @@ namespace AmbienteRPB
                 }
                 patterns.Add(inputs);
                 load_progress_bar(0, 1);
+               //<<CUIDADO>>
+                i = (pulo-1) + i;
             }
             load_progress_bar(1, 3);
         }
@@ -997,8 +1006,11 @@ namespace AmbienteRPB
 
                 if (!it_is_debug)
                 {
-                    X_Vals.Add(n.X);
-                    Y_Vals.Add(n.Y);
+                    for (int k = 0; k < pulo; k++)
+                    {
+                        X_Vals.Add(n.X);
+                        Y_Vals.Add(n.Y);
+                    }
                 }
                 else
                 {
