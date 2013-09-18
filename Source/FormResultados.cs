@@ -1363,7 +1363,7 @@ namespace AmbienteRPB
                 
                 //Cria entradas
                 List<double> resultados = new List<double>();
-                for (int i = 0; i < chart1.Series["canal" + (CanalAtual * 4) + 2].Points.Count(); i++)
+                for (int i = 0; i < chart1.Series["canal" + ((CanalAtual * 4) + 2)].Points.Count(); i++)
                 {
                     resultados.Add((int)chart1.Series[(CanalAtual * 4) + 2].Points[i].YValues[0]);
                 }
