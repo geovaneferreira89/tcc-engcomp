@@ -16,8 +16,8 @@ namespace AmbienteRPB
         public void Tratar(double h)
         {
             horario = h;
-            inicio = horario - 2;
-            fim = horario + 2;
+            inicio = horario - 200;
+            fim = horario + 200;
             detectada = false;
         }
     }

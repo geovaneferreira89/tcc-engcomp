@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AmbienteRPB
 {
     class Avaliador
     {
+
         public List<double> VP = new List<double>();
         public List<double> VN = new List<double>();
         public List<double> FP = new List<double>();
