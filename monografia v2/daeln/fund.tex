@@ -1,0 +1,334 @@
+\chapter{Fundamentação Teórica}
+\label{sec:Fund}
+
+O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos \ref{sec:Ondas}. Em seguida, as seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. A seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
+
+\section{Fisiologia do Coração}
+\label{sec:Fisiologia}
+
+O coração humano possui paredes compostas por músculos cardíacos estriados, chamadas de miocárdio, formando quatro compartimentos: o átrio direito, o átrio esquerdo, o ventrículo direito e o ventrículo esquerdo.  A figura ~\ref{fig:heart} mostra o coração com indicações dos respectivos átrios e ventrículos \cite{MALMIVUO1995}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/heart.png} % <- formatos PNG, JPG e PDF
+		\caption[Anatomia de um coração]{Anatomia de um coração}
+	\fonte{\cite{MALMIVUO1995}}
+	\label{fig:heart}
+\end{figure}
+
+O coração possui ainda quatro válvulas. Entre o átrio direito e o ventrículo direito se encontra a válvula tricúspide, e entre o átrio esquerdo e o ventrículo esquerdo fica a válvula mitral. A válvula pulmonar fica entre o ventrículo direito e a artéria pulmonar, enquanto a válvula aorta está no trato de saída do ventrículo esquerdo, e controla o fluxo para a aorta \cite{MALMIVUO1995}.
+
+Para retornar da circulação sistêmica, o sangue chega ao átrio direito e dele segue pela válvula tricúspide para o ventrículo direito. Então é ejetado do ventrículo direito para os pulmões, pela válvula pulmonar. Dos pulmões, o sangue oxigenado retorna para o átrio esquerdo, e passa pela válvula mitral até o ventrículo esquerdo. Finalmente, é bombeado pela válvula aorta para a aorta e para a circulação sistêmica \cite{MALMIVUO1995}.
+
+A fibra muscular do coração é orientada em espiral. O fato das células musculares cardíacas permanecerem tangencialmente e radialmente, como mostra a figura ~\ref{fig:muscle}, e a resistência do músculo ser mais baixa em direção as fibras é importante na área da eletrocardiografia, pois a atividade elétrica pode se propagar de uma célula para outra em qualquer direção. Como resultado disso, as formas de onda de ativação são bastante complexas \cite{MALMIVUO1995}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/muscle.png} % <- formatos PNG, JPG e PDF
+		\caption[Fibras musculares cardíacas]{Fibras musculares cardíacas}
+	\fonte{\cite{MALMIVUO1995}}
+	\label{fig:muscle}
+\end{figure}
+
+\section{Formação do Sinal de Eletrocardiografia}
+\label{sec:FormaSinal}
+
+O músculo cardíaco, miocárdio, é composto por células geradoras de potencial elétricas denominadas cardiomiócitos. Em repouso, estas células especializadas em atividade elétrica permanecem polarizadas em sua membrana com um potencial elétrico de aproximadamente -90 mV. No entanto, qualquer excitação por estímulo externo pode rapidamente reverter o potencial elétrico das células miocardiais, a este processo é dado o nome de despolarização \cite{GACEK2011}. 
+
+A despolarização geralmente é ocasionada pelo aumento da permeabilidade da membrana ao sódio, permitindo assim que íons positivamente carregados de sódio entrem na célula. Algumas células cardíacas podem ser carregadas com íons de cálcio no lugar de íons de sódio \cite{GACEK2011}. 
+
+A variação negativa do potencial elétrico é chamada de fase de repolarização. Ocorre devido ao movimento de íons de potássio para fora da célula, considerando que após a despolarização, o músculo retorna a seu estado elétrico original. Durante a repolarização, o músculo cardíaco é incapaz de ser estimulado, o que o protege de alguma eventual estimulação prematura \cite{GACEK2011}, evitando danos ao sistema cardíaco.
+
+Estas mudanças no potencial elétrico durante os processos de despolarização e repolarização das fibras do miocárdio são registradas com a colocação de eletrodos posicionados na superfície do peito e nas derivações dos membros, e constituem os sinais de Eletrocardiografia (ECG). A forma de onda do ECG pode ser impressa em papel ou mostrada na tela do computador \cite{GACEK2011}.
+
+\section{Exame de Eletrocardiografia}
+\label{sec:Exame}
+
+Dentre as vantagens dos exames de Eletrocardiografia (ECG), podem ser citadas seu baixo custo, facilidade de implementação, o fato de ser um procedimento não invasivo e a obtenção imediata dos resultados \cite{GACEK2011}.
+
+Os exames de ECG podem auxiliar em diagnósticos cardiológicos tais como \cite{MALMIVUO1995}:
+
+\begin{enumerate}
+  \item Eixo elétrico do coração
+  \item Monitoramento de frequência cardíaca
+  \item Arritmias
+  \begin{enumerate}
+      \item Arritmias supraventriculares 
+      \item Arritmias ventriculares
+  \end{enumerate}
+  \item Desordens na sequência de ativação
+  \begin{enumerate}
+      \item Defeitos na condução atrioventricular
+      \item Bloqueio atrioventricular de primeiro grau
+      \item Síndrome de Wolff-Parkinson-White 
+  \end{enumerate} 
+  \item Aumento da espessura das paredes ou do tamanho dos átrios e ventrículos 
+  \begin{enumerate}
+      \item Hipertrofia atrial
+      \item Hipertrofia ventricular
+  \end{enumerate}
+  \item Isquemia e infarto do miocárdio
+  \begin{enumerate}
+      \item Isquemia
+      \item Infarto 
+  \end{enumerate}
+  \item Efeito de drogas
+  \item Desequilíbrio eletrolítico
+  \begin{enumerate}
+      \item Potássio
+      \item Cálcio 
+  \end{enumerate}
+  \item Cardite
+  \begin{enumerate}
+      \item Pericardite
+      \item Miocardite
+  \end{enumerate}
+  \item Monitoramento de marca-passo
+\end{enumerate}
+
+Os possíveis artefatos em sinais biomédicos são os instrumentais, como os de eletrodo e fisiológicos ou biológicos, que incluem os movimentos musculares, respiratórios entre outros \cite{ANGHINAH2006}.
+
+\section{Sistema de Derivações}
+\label{sec:SistemaDer}
+
+O sistema de configuração mais comum em exames ambulatoriais de Eletrocardiografia (ECG) é o sistema 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
+
+\begin{itemize}
+	\item Derivações dos membros (\textit{Limb leads}): I, II, III;	 
+	\item Derivações aumentadas ou de Goldberger (\textit{Goldberger Augmented Leads}): aV\textsubscript{R}, {aV}\textsubscript{L}; %e aV\textsubscript{F} (ou V\textsubscript{R}, V\textsubscript{L} e V\textsubscript{F})
+	\item Derivações Precordiais (\textit{Precordial leads}): V\textsubscript{1}, V\textsubscript{2}, V\textsubscript{3}, V\textsubscript{4}, V\textsubscript{5} e V\textsubscript{6}.
+\end{itemize}
+
+As seis primeiras derivações, I, II, III, aV\textsubscript{R}, aV\textsubscript{L} e aV\textsubscript{F} são derivadas dos mesmos três pontos de medição. Por isso, qualquer par dentre este grupo fornece a mesma informações que os quarto restantes \cite{MALMIVUO1995}. A localização das derivações é ilustrada na figura ~\ref{fig:leads}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/leads.png} % <- formatos PNG, JPG e PDF
+		\caption[Derivações cardíacas]{Derivações cardíacas}
+	\fonte{\cite{MALMIVUO1995}}
+	\label{fig:leads}
+\end{figure}
+
+Mais de 90\% da atividade elétrica cardíaca pode ser explicada com a medição de três componentes independentes. A princípio, duas das derivações límbicas I II III devem ser suficiente para descrever completamente o vetor elétrico cardíaco. A principal razão para que sejam gravadas as 12 derivações é porque enriquece o reconhecimento dos padrões. Esta combinação de derivações fornece ao medico a oportunidade de observar diversas projeções do vetor elétrico cardíaco, que consiste em um modo de visualizar o gerador de potencial elétrico do coração como um dipolo elétrico \cite{MALMIVUO1995}. 
+
+\section{Ondas, Segmentos e Intervalos}
+\label{sec:Ondas}
+
+Além das ondas, os elementos existentes na forma de onda do Eletrocardiografia (ECG) são \cite{GACEK2011}:
+
+\begin{itemize}
+	\item Linha isoelétrica: a linha horizontal quando não há atividade elétrica no ECG;
+	\item Segmentos: a duração da linha isoelétrica entre as ondas;
+	\item Intervalos: o tempo entre dois segmentos de ondas adjacentes.
+\end{itemize}
+
+A onda P é a primeira deflexão do ECG e resulta da despolarização dos átrios, que ocorre durante a despolarização ventricular. É positiva na maioria das derivações, mesmo sendo pouco evidente. Sua amplitude não excede 0,15 mV e 0,25 mV nas derivações precordiais, e dura no máximo 0,12 segundos \cite{GACEK2011}.
+
+A onda T, por sua vez, representa a repolarização ventricular, a restauração do repouso no potencial da membrana. As ondas T se diferenciam das ondas P, por seguirem o complexo QRS após cerca de 0,2 segundos. Após a onda T, ocorre a onda U, com a mesma polaridade da onda T que a precede. Ondas U invertidas podem aparecer na presença de hipertrofia do ventrículo esquerdo ou isquemia \cite{GACEK2011}.
+
+O segmento PQ expressa tempo decorrido entre a despolarização atrial e o começo da despolarização ventricular, durando entre 0,12 e 0,2 segundos. O intervalo ventricular ST-T coincide com a repolarização do músculo ventricular. O intervalo QT corresponde à duração do potencial de ação ventricular e da repolarização. O intervalo TP é o período em que os átrios e ventrículos estão na diástole. O intervalo RR corresponde um ciclo cardíaco e é utilizado para o cálculo da frequência cardíaca \cite{GACEK2011}.
+
+A identificação do complexo QRS não apresenta grandes dificuldades, uma vez que possui forma de onda característica e amplitude dominante. Esta amplitude mede cerca de 1 mV em um coração normal, mas pode ser muito maior em uma hipertrofia ventricular. O complexo QRS é o maior grupo de ondas no ECG e corresponde à despolarização ventricular.  A primeira deflexão negativa é a onda Q. Seguida de uma deflexão positiva, a onda R, sendo finalizada com uma última deflexão negativa denominada de onda S, completando um complexo QRS \cite{GACEK2011}.
+
+A duração normal do QRS fica entre 0,08 e 0,09 segundos. Durações maiores são geralmente devidas à despolarização assíncrona dos dois ventrículos. Isto ocorre em casos de bloqueio atrioventricular de primeiro grau, síndromes de pré-excitação ou contração ventricular prematura. Nestas situações, um ventrículo é despolarizado mais cedo que o outro, fazendo com que o complexo QRS apresente uma onda R seguida de outra onda R. Estas ondas correspondem à despolarização dos dois ventrículos \cite{GACEK2011}. A figura ~\ref{fig:QRS} mostra as formas de onda características de um ciclo cardíaco.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/QRS.png} % <- formatos PNG, JPG e PDF
+		\caption[Ondas, segmentos e intervalos dos sinais de ECG]{Ondas, segmentos e intervalos dos sinais de ECG}
+	\fonte{\cite{GACEK2011}}
+	\label{fig:QRS}
+\end{figure}
+
+\section{Função Correlação}
+\label{sec:Correl}
+
+O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um padrão sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas e determinar que arma disparou um projétil, mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema  \sigla{GPS}{\textit{Global Positioning System}} e na análise de \sigla{DNA}{\textit{Deoxyribonucleic Acid}} \cite{bloch2004l}. 
+
+A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figs/corre.png} 
+		\caption[Exemplo de aplicação da função correlação]{Exemplo de aplicação da função correlação}
+	\fonte{Modificado de \cite{smith}}
+	\label{fig:corre}
+\end{figure}
+
+No domínio discreto de dados a função correlação pode ser calculada na equação ~(\ref{eq:correlacao}), em que o índice \textit{r} refere-se ao sinal recebido e o índice \textit{a} se refere ao padrão armazenado. O fator de normalização K é igual à soma dos quadrados dos valores do padrão armazenado \cite{bloch2004l}.
+
+\begin{equation}
+ R_{r,a} (\tau )= \frac{1}{K}\sum_{n=0}^{N-1} f_{r}(n)f_{s}(\tau + n)
+\label{eq:correlacao}
+\end{equation}
+
+O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que se pretende identificar, pode ser uma estimativa do sinal original, ou uma réplica. Pode ser utilizado um conjunto de padrões de sinais similares ao que se deseja buscar. É com base neste tipo de estimativas que operam astrônomos, peritos em criptografia e especialistas em supervisão eletrônica \cite{bloch2004l}.
+
+\section{Redes Neurais Artificiais}
+\label{sec:RNA}
+
+O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado como um computador extremamente complexo, não linear que apresenta paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
+
+De certa forma, as redes neurais artificiais foram criadas para realizar atividades mimetizando o cérebro humano. As redes neurais artificiais são modelos matemáticos que podem ser implementadas com componentes eletrônicos ou simuladas em software \cite{HAYKIN2011}.
+
+As unidades básicas de processamento de uma rede neural artificial são chamadas de neurônios, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
+
+As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
+
+Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada ao neurônio \textit{k}, é multiplicada pelo peso sináptico \textit{w\textsubscript{kj}}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/RN2.png} 
+		\caption[Estrutura de uma rede neural artificial]{Estrutura de uma rede neural artificial}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:RN2}
+\end{figure}
+
+A função de ativação que limita a saída de um neurônio pode ser de três tipos básicos:
+
+\begin{itemize}
+	\item Função de limiar ou \textit{threshold};
+	\item Função \textit{Piecewise}~-- contínua;
+	\item Função Sigmóide.
+\end{itemize}
+
+A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/limiares.png} 
+		\caption[Gráficos das funções de ativação]{Gráficos das funções de ativação}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:limiares}
+\end{figure}
+
+\subsection{Redes Auto-Organizáveis}
+
+
+
+\section{Avaliação de Sistemas Classificadores}
+\label{sec:AvaliaSis}
+
+Esta seção vamos nos concentrar em formas de avaliar o desempenho de sistemas classificadores por meio das seções: Tabela de Contingência \ref{subsec:TabelaCont}, Sensibilidade e Especificidade \ref{subsec:SeEsP}, Curva ROC \ref{subsec:ROCCurva} e Outros Índices Estatísticos \ref{subsec:outros}.
+
+\subsection{Tabela de Contingência}
+\label{subsec:TabelaCont}
+
+A tabela de contingência, também chamada de tabela de confusão, é descrita como uma ferramenta capaz de representar, dentro de uma população, os indivíduos doentes, indivíduos sadios, indivíduos com teste positivo e indivíduos com teste negativo \cite{massad2004}, como mostrado na tabela~\ref{tab:confusao}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de Contingência 2x2]{Tabela de Contingência 2x2}
+	\label{tab:confusao}	
+		\centering
+		\includegraphics[width=1\textwidth]{./figs/tab.png} % <- formatos PNG, JPG e PDF
+		
+	%	\begin{tabular}{cc|c|c|c|}
+	%	\cline{3-4}
+	%	 & & \multicolumn{2}{|c|}{indivíduos} \\ \cline{3-4}
+	%	 & & doentes & sadios &  \multicolumn{1}{r}{}  \\ \cline{1-5}
+	%	 \multicolumn{1}{ |c| }{\multirow{2}{*}{indicação do exame} } &
+	%	 \multicolumn{1}{ |c| }{positivo} & VP  & FP &  total de positivos  \\ \cline{2-5}
+	%	 \multicolumn{1}{ |c  }{}                  
+	%	 \multicolumn{1}{ |c| }{negativo} & FN & VN &  total de negativos   \\ \cline{1-5}
+	%	  & & total de doentes & total de sadios &  total \\ \cline{3-5}
+	%	\end{tabular}
+	
+	\fonte{\cite{SOVIERZOSKI2009}}
+\end{table}
+
+A partir da tabela de contingência, podem ser observados os seguintes índices: 
+\begin{itemize}
+	\item \sigla{VP}{Verdadeiro Positivo} (Verdadeiro positivo): doente com resultado positivo;  
+	\item \sigla{FP}{Falso positivo} (Falso positivo): sadio com resultado positivo;
+	\item \sigla{FN}{Falso negativo} (Falso negativo): doente com resultado negativo; 
+	\item \sigla{VN}{Verdadeiro negativo} (Verdadeiro negativo): sadio com resultado negativo.
+\end{itemize}
+
+Como este projeto pretende obter a identificação do complexo QRS em exames de Eletrocardiografia (ECG), a etapa de testes trata como verdadeiro positivo o complexo QRS indicado como positivo, falso positivo como padrão diferente do complexo QRS indicado como positivo, falso negativo como um complexo QRS não identificado e verdadeiro negativo como um padrão diferente do complexo QRS não identificado pelo sistema \cite{SARAIVA2012}. A lógica desta avaliação é expressa pela figura ~\ref{fig:TesteDiag}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./figs/TesteDiag.png} % <- formatos PNG, JPG e PDF
+		\caption[Exemplo de sinal e padrão de classificação]{Exemplo de sinal e padrão de classificação considerando o nível de decisão}
+	\fonte{\cite{SARAIVA2012}}
+	\label{fig:TesteDiag}
+\end{figure}
+
+Os índices da tabela de contingência são utilizados para o cálculo de outros índices, tais como sensibilidade, especificidade, eficiência e o índice DER.
+
+\subsection{Sensibilidade e Especificidade}
+\label{subsec:SeEsP}
+
+A sensibilidade pode ser descrita como a medida da capacidade de um sistema em identificar indivíduos com exame positivo entre os indivíduos verdadeiramente doentes, levando em conta outros indivíduos doentes com exames negativos, como evidencia a equação ~(\ref{eq:sensibilidade}). Logo, quanto maior a sensibilidade de um sistema, menor o número de falsos negativos \cite{massad2004}.
+
+\begin{equation}
+sensibilidade = \frac{VP}{VP + FN}
+\label{eq:sensibilidade}
+\end{equation}
+
+Especificidade mede a capacidade do sistema em identificar os indivíduos negativos entre os verdadeiramente não doentes, representada pela equação ~(\ref{eq:especificidade}). Assim, quanto menor o número de falsos positivos identificados pelo sistema, maior será sua especificidade \cite{massad2004}.
+
+\begin{equation}
+especificidade = \frac{VN}{VN + FP}
+\label{eq:especificidade}
+\end{equation}
+
+A sensibilidade e especificidade costumam retornar diferentes valores de acordo com a variação em algum atributo do sistema \cite{SOVIERZOSKI2009}. A figura ~\ref{fig:SensibEspec} mostra o comportamento dos índices de sensibilidade e especificidade em função do limiar de decisão da rede neural, ferramenta utilizada no reconhecimento de padrões a ser discutida na seção X.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/SensibEspec.png} % <- formatos PNG, JPG e PDF
+		\caption[Gráficos de Sensibilidade e Especificidade]{Gráficos de Sensibilidade e Especificidade}
+	\fonte{\cite{SARAIVA2012}}
+	\label{fig:SensibEspec}
+\end{figure}
+
+\subsection{Curva ROC}
+\label{subsec:ROCCurva}
+
+A Curva \sigla{ROC}{\textit{Receiving Operating Characteristic}} \textit{(Receiving Operating Characteristic)} é útil para visualização da performance de classificadores. Seu uso vem crescendo em pesquisas nas áreas de \textit{machine learning} e \textit{data mining} \cite{FAWCETT2006}. 
+
+Os valores de sensibilidade e especificidade são organizados em pares ordenados, e dispostos no primeiro quadrante de um plano cartesiano. Com algum método de interpolação, são interligados desde a origem (sensibilidade = 0 e especificidade = 1), até o extremo oposto do gráfico (sensibilidade = 1 e especificidade = 0), dando origem a curva ROC \cite{massad2004}, conforme ilustra a figura ~\ref{fig:ROC}. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./figs/ROC.png} 
+		\caption[Curva ROC]{Curva ROC}
+	\fonte{\cite{SOVIERZOSKI2009}} 
+	\label{fig:ROC}
+\end{figure}
+
+Cada ponto da curva ROC equivale a um valor diferente do limiar de decisão da rede neural, dessa forma, construindo a relação entre sensibilidade e especificidade \cite{SOVIERZOSKI2009}.
+
+No eixo das ordenadas da curva ROC pode ser observada a fração dos verdadeiros positivos (sensibilidade). E no eixo das abcissas, a fração dos falsos positivos, correspondente ao complemento da especificidade (1 - especificidade) \cite{massad2004}.
+
+A linha tracejada representa um sistema classificador incapaz de discriminar, em outras palavras, um sistema que apresenta o mesmo percentual de verdadeiros positivos e de falsos positivos. Quanto mais afastada da linha tracejada estiver a curva ROC (de modo semelhante à figura ~\ref{fig:ROC}), melhor é o desempenho do sistema. O classificador idel possui sensibilidade = 1 e especificidade = 1 \cite{Brown2006}. 
+ 
+ 
+\subsection{Outros Índices Estatísticos}
+\label{subsec:outros}
+
+Além de inúmeros outros métodos para medição do desempenho de sistemas classificadores, existem o índice DER e eficiência. 
+
+O índice \sigla{DER}{\textit{Detection Error Rate}} \textit{(Detection Error Rate)}, dado na equação (\ref{eq:DER}) \cite{Zhang2007}, relaciona o número de erros do sistema, soma dos falsos positivos e falsos negativos, com o número total de eventos do sistema.
+
+\begin{equation}
+DER = \frac{FP +FN}{\textrm{Total de eventos QRS}}
+\label{eq:DER}
+\end{equation}
+
+Eficiência ou \textit{accuracy} corresponde a capacidade de um sistema em identificar os verdadeiros doentes e sadios \cite{SOVIERZOSKI2009}. A fórmula para o cálculo da eficiência é dada na equação ~(\ref{eq:accuracy}).
+
+\begin{equation}
+accuracy = \frac{VP + VN}{VP + VN + FP + FN}
+\label{eq:accuracy}
+\end{equation}
+
+\section{Considerações}
+\label{sec:Consid}
+
+O capítulo de Fundamentação Teórica forneceu esclarecimento acerca de diversos conhecimentos necessários durante implementação do projeto. Entre eles, cabe destacar os conceitos abordados pelas seções Função Correlação \ref{sec:Correl}, Redes Neurais Artificiais \ref{sec:RNA} e Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis}. Conceitos cujo entendimento é essencial para uma leitura proveitosa dos próximos capítulos desta monografia.
+
+O próximo capítulo, Materiais e Métodos \ref{sec:Materiais}, explica a maneira como todos estes conceitos foram aplicados de modo prático, e também os recursos utilizados ao longo do desenvolvimento deste projeto.

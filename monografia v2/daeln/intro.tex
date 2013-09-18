@@ -1,0 +1,35 @@
+\chapter{Introdução}
+\label{sec:Intro}
+
+"O coração humano não é imutável (ou melhor, muda quase que irreconhecivelmente no piscar de um olho) \dots". Esta frase do escritor irlandês C. S. Lewis aborda a questão das constantes mudanças no coração humano. Considerando-a do ponto de vista médico, o estado do coração humano se modifica em questão de milissegundos \cite{MALMIVUO1995}, produzindo atividade elétrica. Dá-se o nome de Eletroencefalografia (ECG) aos registros da atividade elétrica do coração.
+
+Desta forma, o escopo deste projeto é identificar o complexo QRS, forma de onda característica em sinais de Eletroencefalografia. Foi desenvolvido como Trabalho de Conclusão de Curso pelos alunos Georgea Danielewicz e Geovane Vinicius Ferreira do curso de Engenharia de Computação, da Universidade Tecnológica Federal do Paraná. 
+
+As próximas seções deste capítulo abordarão Motivação e Justificativa \ref{sec:Mot}, Objetivos \ref{sec:Obj} e Estrutura do Trabalho \ref{sec:Est}.
+
+\section{Motivação e Justificativa}
+\label{sec:Mot}
+
+Os exames de Eletroencefalografia (ECG) atuam como uma ferramenta de grande auxílio no diagnóstico de problemas cardíacos. O sinais de ECG, muitas vezes, encontram-se corrompidos pelo ruído causado por contrações musculares ou interferências na linha de energia e desvio da linha de base devido à respiração e artefatos motores \cite{Zhang2007}. Tais fatores podem dificultar a análise do sinal.
+
+Considerando que a detecção do complexo QRS é essencial para se avaliar adequadamente a situação de um coração, surge a necessidade de pesquisas que busquem continuamente automatizar e aprimorar esta tarefa. Por muitas décadas, a detecção do complexo QRS nos sinais de ECG tem sido tema de pesquisas, pois fornece uma visão geral do funcionamento de algoritmos e técnicas para reconhecimento\cite{Zhang2007}.
+
+\section{Objetivos}
+\label{sec:Obj}
+
+O objetivo geral deste projeto é desenvolver um sistema para reconhecimento do complexo QRS em sinais biomédicos de Eletroencefalografia (ECG). Para melhor definição do escopo, separamos nos seguintes objetivos específicos:  
+
+%+ tabulação e - espaçamento
+\begin{itemize}
+	\item Desenvolvimento de um ambiente para visualizar sinais de ECG armazenados em arquivos digitais;
+	\item Implementar no ambiente a funcionalidade de marcar eventos no sinal e salvá-los para uso futuro;
+	\item Reconhecimento de padrões, realizado a partir da extração de características das marcações salvas;
+	\item Avaliar os resultados obtidos pelo sistema.
+\end{itemize}
+
+\section{Estrutura do Trabalho}
+\label{sec:Est}
+
+Este documento foi estruturado na forma de capítulos, e cada capítulo, por sua vez, é dividido em seções. 
+
+O capítulo seguinte a este capítulo introdutório corresponde a Fundamentação Teórica \ref{sec:Fund}, em que são apresentados e devidamente referenciados os princípios teóricos envolvidos no desenvolvimento do trabalho. Em seguida, o capítulo Materiais e Métodos \ref{sec:Materiais} descreve os recursos e metodologias empregados no projeto, cujos resultados observados na etapa de testes são apresentados e representados em gráficos no capítulo Resultados Obtidos \ref{sec:Resultados}. A conclusão sobre todas as informações apresentadas nos capítulos anteriores Considerações Finais \ref{sec:CFinais}. O capítulo de Gestão do Projeto \ref{sec:Gestao} descreve as principais tarefas e horas dedicadas pela equipe a trabalho.
