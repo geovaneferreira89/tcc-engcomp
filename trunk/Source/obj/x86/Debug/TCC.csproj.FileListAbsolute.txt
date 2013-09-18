@@ -177,3 +177,4 @@ W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NeuronDotNet.Core.
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_102.edf
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_105.edf
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\EEG_1.edf
+W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Marcações v3 - EEG105.txt
