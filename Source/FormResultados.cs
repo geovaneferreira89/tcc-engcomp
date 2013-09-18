@@ -1363,18 +1363,34 @@ namespace AmbienteRPB
                 
                 //Cria entradas
                 List<double> resultados = new List<double>();
-                for (int i = 0; i < chart1.Series[(CanalAtual * 4) + 2].Points.Count(); i++)
+                for (int i = 0; i < chart1.Series["canal" + (CanalAtual * 4) + 2].Points.Count(); i++)
                 {
                     resultados.Add((int)chart1.Series[(CanalAtual * 4) + 2].Points[i].YValues[0]);
+                }
+                int contador=0;
+                bool EmUM = false;
+                for (int i = 0; i < resultados.Count; i++)
+                {
+                    if (resultados[i] == 1)
+                    {
+                        EmUM = true;
+                        contador++;
+                        resultados[i] = 0;
+                    }
+                    else if (resultados[i] == 0 && EmUM == true)
+                    {
+                        resultados[i - (contador / 2)] = 1;
+                        EmUM = false;
+                        contador = 0;
+                    }
+                   
                 }
                 List<double> marcacoes = new List<double>();
                 marcacoes = Arquivos.LerMarcacaoLits(openFileDialog1.FileName);
 
-
                 //Avalia
                 Avaliador avaliador = new Avaliador();
                 avaliador.Avaliar(resultados, marcacoes);
-
 
                 //Saída
                 SMS_Box.Text = "Resultado Avaliação";
