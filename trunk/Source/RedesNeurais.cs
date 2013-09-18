@@ -120,34 +120,38 @@ namespace AmbienteRPB
                 {
                     float min_inicio = DateTime.Now.Minute;
                     float hr_inicio = DateTime.Now.Hour;
-                        Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual,null,null,null);
-                        send_SmS(2, "Inicializando", false);
-                        Initialise_KHn();
-                        send_SmS(1, "Adicionando Entradas", false);
-                        LoadData_KHn(file);
-                        NormalisePatterns_KHn();
-                        send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
-                        Train_KHn(0.0001);
-                        send_SmS(1, "Resultados: ", false);
-                        DumpCoordinates_KHn();
-                        if(!it_is_debug)
+                    int [] offset = new int[2];
+                    offset[0] = MenorTamanho;
+                    Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
+                    Plotar("CLEAR", null, 1, CanalParaPlotar+1, selecaoAtual, vetorDeResultados, null, null);
+                    Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
+                    send_SmS(2, "Inicializando", false);
+                    Initialise_KHn();
+                    send_SmS(1, "Adicionando Entradas", false);
+                    LoadData_KHn(file);
+                    NormalisePatterns_KHn();
+                    send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
+                    Train_KHn(0.0001);
+                    send_SmS(1, "Resultados: ", false);
+                    DumpCoordinates_KHn();
+                    if(!it_is_debug)
+                    {
+                        double[] dados = new double[2];
+                        Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
+                    }
+                    //Imprime a matriz de resultados
+                    /*for (int i = 0; i < length; i++)
+                    {
+                        string saida = "";
+                        for (int j = 0; j < length; j++)
                         {
-                            double[] dados = new double[2];
-                            Plotar("PlotKohonen", dados, CanalAtual, dimensions, selecaoAtual, null, X_Vals, Y_Vals);
+                            saida += SaidaFinal[j, i] + "\t";
                         }
-                        //Imprime a matriz de resultados
-                        /*for (int i = 0; i < length; i++)
-                        {
-                            string saida = "";
-                            for (int j = 0; j < length; j++)
-                            {
-                                saida += SaidaFinal[j, i] + "\t";
-                            }
-                            send_SmS(1, saida, true);
-                        }*/
-                        send_SmS(1, "Fim", false);
-                        send_SmS(1, "Tempo : " + Convert.ToString(DateTime.Now.Hour - hr_inicio) + ":" + Convert.ToString(DateTime.Now.Minute -min_inicio),true);
-                        break;
+                        send_SmS(1, saida, true);
+                    }*/
+                    send_SmS(1, "Fim", false);
+                    send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Hour - hr_inicio) + "hrs " + Convert.ToString(DateTime.Now.Minute -min_inicio) + " min",true);
+                    break;
                 }
                 case("BackPropagation"):
                 {
@@ -179,7 +183,6 @@ namespace AmbienteRPB
                         {
                             if (!RNImportada)
                             {
-                            
                                 send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
                                 TreinodaRede(VetorEvento, 1, "TodosEventos", i);
                                 send_SmS(1, "Treinada", false);
@@ -790,16 +793,15 @@ namespace AmbienteRPB
                     }
                     case ("AddDadoKohonen"):
                     {
-                            int offset = CanalParaPlotar;
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             if (dados[0] == 0 && dados[1] == 0)
-                              prb.Series["canal" + (canal+2)].Points.AddY(1);
+                                prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
                             else if(dados[0] == 0 && dados[1] >= 0 && dados[1] < 3)
-                              prb.Series["canal" + (canal+2)].Points.AddY(1);
+                                prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
                             else
-                              prb.Series["canal" + (canal + 2)].Points.AddY(0);
+                                prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                             //Mapa
-                            prb.Series["canal" + (canal+3)].Points.AddXY(dados[0], dados[1]);
+                            prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1]);
                             PointF zero = new PointF(0,0);
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
                             prb.ChartAreas["canal" + canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);
@@ -813,21 +815,19 @@ namespace AmbienteRPB
                      }
                     case ("PlotKohonen"):
                     {
-                        int offset = CanalParaPlotar;
+                        int offset = myArray[0];
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             for (int i = 0; i < (offset/3); i++)
-                                prb.Series["canal" + (canal + 2)].Points.AddY(0);
+                                prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                        
                            for (int i = 0;  i < X_.Count; i++)
                             {
-                                if (X_[i] == 0 && Y_[i] == 0)
-                                    prb.Series["canal" + (canal + 2)].Points.AddY(1);
-                                else if (X_[i] == 0 && Y_[i] >= 0 && Y_[i] < 3)
-                                    prb.Series["canal" + (canal+2)].Points.AddY(1);
+                                if (X_[i] == 0 && Y_[i] >= 0 && Y_[i] < 3)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
                                 else
-                                    prb.Series["canal" + (canal + 2)].Points.AddY(0);
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                                 //Mapa
-                                prb.Series["canal" + (canal + 3)].Points.AddXY(X_[i], Y_[i]);
+                                prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i]);
                             }
                         break;
                      }
