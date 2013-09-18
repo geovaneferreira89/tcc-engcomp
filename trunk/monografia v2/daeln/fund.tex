@@ -185,25 +185,7 @@ Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada 
 	\label{fig:RN2}
 \end{figure}
 
-A função de ativação que limita a saída de um neurônio pode ser de três tipos básicos:
-
-\begin{itemize}
-	\item Função de limiar ou \textit{threshold};
-	\item Função \textit{Piecewise}~-- contínua;
-	\item Função Sigmóide.
-\end{itemize}
-
-A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/limiares.png} 
-		\caption[Gráficos das funções de ativação]{Gráficos das funções de ativação}
-	\fonte{\cite{HAYKIN2011}}
-	\label{fig:limiares}
-\end{figure}
-
-\subsection{Redes Auto-Organizáveis}
+\subsection{Redes Neurais de Kohonen}
 
 
 
@@ -223,18 +205,6 @@ A tabela de contingência, também chamada de tabela de confusão, é descrita como 
 	\label{tab:confusao}	
 		\centering
 		\includegraphics[width=1\textwidth]{./figs/tab.png} % <- formatos PNG, JPG e PDF
-		
-	%	\begin{tabular}{cc|c|c|c|}
-	%	\cline{3-4}
-	%	 & & \multicolumn{2}{|c|}{indivíduos} \\ \cline{3-4}
-	%	 & & doentes & sadios &  \multicolumn{1}{r}{}  \\ \cline{1-5}
-	%	 \multicolumn{1}{ |c| }{\multirow{2}{*}{indicação do exame} } &
-	%	 \multicolumn{1}{ |c| }{positivo} & VP  & FP &  total de positivos  \\ \cline{2-5}
-	%	 \multicolumn{1}{ |c  }{}                  
-	%	 \multicolumn{1}{ |c| }{negativo} & FN & VN &  total de negativos   \\ \cline{1-5}
-	%	  & & total de doentes & total de sadios &  total \\ \cline{3-5}
-	%	\end{tabular}
-	
 	\fonte{\cite{SOVIERZOSKI2009}}
 \end{table}
 

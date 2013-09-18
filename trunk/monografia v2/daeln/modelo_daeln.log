@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  18 SEP 2013 14:39
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  18 SEP 2013 17:44
 entering extended mode
 **modelo_daeln.tex
 ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.tex"
@@ -392,12 +392,6 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 LaTeX Warning: Label `tela2' multiply defined.
 
 
-LaTeX Warning: Label `tela2' multiply defined.
-
-
-LaTeX Warning: Label `tela2' multiply defined.
-
-
 LaTeX Warning: Label `tab:rawECG' multiply defined.
 
 
@@ -488,33 +482,28 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 
 
 ]
-("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.lof"
-Overfull \hbox (9.17168pt too wide) in paragraph at lines 10--10
- []\OT1/ptm/m/n/12 --[] FI-GURA []RELA[][]AO EN-TRE O ERRO M[]EDIO QUA-DRADO E 
-TREI-NA-MENTO   []  
- []
-
-)
+("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.lof")
 \tf@lof=\write3
  [5
 
-] ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.lot")
+]
+("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.lot")
 \tf@lot=\write4
+ [6
 
-[6
-
-] ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.lsg")
+]
+("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.lsg")
 \tf@lsg=\write5
+ [7
 
-[7
-
-] ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.toc"
-[8
+]
+("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.toc" [8
 
 
 ])
 \tf@toc=\write6
- [9] ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\intro.tex"
+
+[9] ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\intro.tex"
 Cap\'{\i }tulo 1.
 [10
 
@@ -593,173 +582,165 @@ File: ./figs/RN2.png Graphic file (type png)
 Package pdftex.def Info: ./figs/RN2.png used on input line 182.
 (pdftex.def)             Requested size: 273.14923pt x 184.9476pt.
 
-<./figs/limiares.png, id=85, 252.19218pt x 463.7325pt>
-File: ./figs/limiares.png Graphic file (type png)
-
-<use ./figs/limiares.png>
-Package pdftex.def Info: ./figs/limiares.png used on input line 200.
-(pdftex.def)             Requested size: 227.62206pt x 418.5583pt.
- [21 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/RN2.png>] [22 <C:/Us
-ers/Ge/Desktop/tcc2013/monografia v2/daeln/figs/limiares.png>] <./figs/tab.png,
- id=94, 575.14874pt x 130.98938pt>
+<./figs/tab.png, id=85, 575.14874pt x 130.98938pt>
 File: ./figs/tab.png Graphic file (type png)
-
-<use ./figs/tab.png>
-Package pdftex.def Info: ./figs/tab.png used on input line 225.
+ <use ./figs/tab.png>
+Package pdftex.def Info: ./figs/tab.png used on input line 207.
 (pdftex.def)             Requested size: 455.24411pt x 103.68433pt.
- <./figs/TesteDiag.png, id=95, 511.9125pt x 299.61937pt>
+
+[21 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/RN2.png>]
+<./figs/TesteDiag.png, id=89, 511.9125pt x 299.61937pt>
 File: ./figs/TesteDiag.png Graphic file (type png)
 
 <use ./figs/TesteDiag.png>
-Package pdftex.def Info: ./figs/TesteDiag.png used on input line 253.
+Package pdftex.def Info: ./figs/TesteDiag.png used on input line 223.
 (pdftex.def)             Requested size: 318.66948pt x 186.51643pt.
- [23 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/tab.png>] <./figs/Se
-nsibEspec.png, id=100, 429.10312pt x 427.5975pt>
+ [22 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/tab.png> <C:/Users/G
+e/Desktop/tcc2013/monografia v2/daeln/figs/TesteDiag.png>] <./figs/SensibEspec.
+png, id=93, 429.10312pt x 427.5975pt>
 File: ./figs/SensibEspec.png Graphic file (type png)
 
 <use ./figs/SensibEspec.png>
-Package pdftex.def Info: ./figs/SensibEspec.png used on input line 282.
+Package pdftex.def Info: ./figs/SensibEspec.png used on input line 252.
 (pdftex.def)             Requested size: 273.14923pt x 272.19342pt.
- [24 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/TesteDiag.png>] <./f
-igs/ROC.png, id=104, 427.5975pt x 406.51875pt>
+ [23]
+<./figs/ROC.png, id=98, 427.5975pt x 406.51875pt>
 File: ./figs/ROC.png Graphic file (type png)
-
-<use ./figs/ROC.png>
-Package pdftex.def Info: ./figs/ROC.png used on input line 297.
+ <use ./figs/ROC.png>
+Package pdftex.def Info: ./figs/ROC.png used on input line 267.
 (pdftex.def)             Requested size: 182.09486pt x 173.11864pt.
- [25 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/SensibEspec.png>] [2
-6 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/ROC.png>]) [27]
+ [24 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/SensibEspec.png>] [2
+5 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/ROC.png>]) [26]
 Cap\'{\i }tulo 3.
-<./figs/105.png, id=114, 464.4853pt x 252.945pt>
+<./figs/105.png, id=108, 464.4853pt x 252.945pt>
 File: ./figs/105.png Graphic file (type png)
  <use ./figs/105.png>
 Package pdftex.def Info: ./figs/105.png used on input line 137.
 (pdftex.def)             Requested size: 318.66948pt x 173.54031pt.
- [28
+ [27
 
 ]
-[29 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/105.png>]
-<./figs/ATM.png, id=122, 994.46532pt x 266.49562pt>
+[28 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/105.png>]
+<./figs/ATM.png, id=115, 994.46532pt x 266.49562pt>
 File: ./figs/ATM.png Graphic file (type png)
  <use ./figs/ATM.png>
 Package pdftex.def Info: ./figs/ATM.png used on input line 164.
 (pdftex.def)             Requested size: 455.24411pt x 121.99577pt.
 
-[30 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/ATM.png>]
+[29 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/ATM.png>]
 Overfull \hbox (1.64609pt too wide) in paragraph at lines 191--192
 []\OT1/ptm/m/n/12 O sis-tema pode ope-rar de duas ma-nei-ras. A pri-meira, e ma
 is sim-ples de-las, uti-liza marca[][]oes
  []
 
-<./figs/fluxogramaRaw.png, id=127, 677.35411pt x 1003.27765pt>
+<./figs/fluxogramaRaw.png, id=122, 677.35411pt x 1003.27765pt>
 File: ./figs/fluxogramaRaw.png Graphic file (type png)
 
 <use ./figs/fluxogramaRaw.png>
 Package pdftex.def Info: ./figs/fluxogramaRaw.png used on input line 197.
 (pdftex.def)             Requested size: 273.14923pt x 404.58002pt.
- [31]
-<./figs/FluxoCorrel.png, id=131, 796.38705pt x 1133.64706pt>
+ [30]
+<./figs/FluxoCorrel.png, id=126, 796.38705pt x 1133.64706pt>
 File: ./figs/FluxoCorrel.png Graphic file (type png)
 
 <use ./figs/FluxoCorrel.png>
 Package pdftex.def Info: ./figs/FluxoCorrel.png used on input line 209.
 (pdftex.def)             Requested size: 273.14923pt x 388.82532pt.
- [32 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/fluxogramaRaw.png>]
-<./figs/tela0.png, id=135, 358.33875pt x 323.70938pt>
+ [31 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/fluxogramaRaw.png>]
+<./figs/tela0.png, id=130, 358.33875pt x 323.70938pt>
 File: ./figs/tela0.png Graphic file (type png)
  <use ./figs/tela0.png>
 Package pdftex.def Info: ./figs/tela0.png used on input line 223.
 (pdftex.def)             Requested size: 273.14923pt x 246.76753pt.
 
-<./figs/tela2.png, id=136, 616.55344pt x 445.665pt>
+<./figs/tela2.png, id=131, 616.55344pt x 445.665pt>
 File: ./figs/tela2.png Graphic file (type png)
  <use ./figs/tela2.png>
 Package pdftex.def Info: ./figs/tela2.png used on input line 234.
 (pdftex.def)             Requested size: 364.19667pt x 263.25967pt.
 
-[33 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/FluxoCorrel.png>]
-<./figs/telab.png, id=140, 459.96844pt x 182.93344pt>
-File: ./figs/telab.png Graphic file (type png)
- <use ./figs/telab.png>
-Package pdftex.def Info: ./figs/telab.png used on input line 247.
-(pdftex.def)             Requested size: 227.62206pt x 90.5286pt.
-
+[32 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/FluxoCorrel.png>]
 Overfull \vbox (21.45439pt too high) has occurred while \output is active []
 
 
-[34 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/tela0.png> <C:/Users/
+[33 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/tela0.png> <C:/Users/
 Ge/Desktop/tcc2013/monografia v2/daeln/figs/tela2.png>]
-<./figs/tela3.png, id=144, 640.64343pt x 444.15938pt>
+<./figs/telab.png, id=138, 459.96844pt x 182.93344pt>
+File: ./figs/telab.png Graphic file (type png)
+ <use ./figs/telab.png>
+Package pdftex.def Info: ./figs/telab.png used on input line 246.
+(pdftex.def)             Requested size: 227.62206pt x 90.5286pt.
+
+<./figs/tela3.png, id=139, 640.64343pt x 444.15938pt>
 File: ./figs/tela3.png Graphic file (type png)
  <use ./figs/tela3.png>
-Package pdftex.def Info: ./figs/tela3.png used on input line 255.
+Package pdftex.def Info: ./figs/tela3.png used on input line 256.
 (pdftex.def)             Requested size: 364.19667pt x 252.50252pt.
 
-<./figs/tela4.png, id=145, 639.89063pt x 444.15938pt>
-File: ./figs/tela4.png Graphic file (type png)
- <use ./figs/tela4.png>
-Package pdftex.def Info: ./figs/tela4.png used on input line 263.
-(pdftex.def)             Requested size: 364.19667pt x 252.8007pt.
-
-<./figs/tela5.png, id=146, 538.26094pt x 427.5975pt>
+<./figs/tela5.png, id=140, 538.26094pt x 427.5975pt>
 File: ./figs/tela5.png Graphic file (type png)
  <use ./figs/tela5.png>
-Package pdftex.def Info: ./figs/tela5.png used on input line 271.
+Package pdftex.def Info: ./figs/tela5.png used on input line 267.
 (pdftex.def)             Requested size: 364.19667pt x 289.32051pt.
 
-[35 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/telab.png> <C:/Users/
-Ge/Desktop/tcc2013/monografia v2/daeln/figs/tela3.png>]
+[34 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/telab.png> <C:/Users/
+Ge/Desktop/tcc2013/monografia v2/daeln/figs/tela3.png>] [35 <C:/Users/Ge/Deskto
+p/tcc2013/monografia v2/daeln/figs/tela5.png>] [36]
+<./figs/aval2.png, id=151, 266.49562pt x 219.82124pt>
+File: ./figs/aval2.png Graphic file (type png)
+ <use ./figs/aval2.png>
+Package pdftex.def Info: ./figs/aval2.png used on input line 362.
+(pdftex.def)             Requested size: 364.19667pt x 300.43883pt.
 
-LaTeX Warning: Text page 36 contains only floats.
+[37 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/aval2.png>]
+Overfull \hbox (19.05107pt too wide) in paragraph at lines 375--376
+[]\OT1/ptm/m/n/12 Por fim, o ava-li-a-dor con-si-dera como ver-da-deiro ne-ga-t
+ivo (VN), in-ter-valo en-tre duas marca[][]oes
+ []
 
-[36 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/tela4.png> <C:/Users/
-Ge/Desktop/tcc2013/monografia v2/daeln/figs/tela5.png>]
-
-LaTeX Warning: Reference `Classes' on page 37 undefined on input line 299.
-
-[37] [38] [39]
+[38]
 Cap\'{\i }tulo 4.
 
-Overfull \hbox (16.28754pt too wide) in paragraph at lines 384--385
+Overfull \hbox (16.28754pt too wide) in paragraph at lines 392--393
 []\OT1/ptm/m/n/12 Os re-sul-ta-dos apre-sen-ta-dos nesta se[][]ao di-zem res-pe
 ito ao trei-na-mento re-a-li-zado com marca[][]oes
  []
 
-<./figs/paca.png, id=163, 200.75pt x 234.8775pt>
+<./figs/paca.png, id=159, 200.75pt x 234.8775pt>
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 415.
+Package pdftex.def Info: ./figs/paca.png used on input line 423.
 (pdftex.def)             Requested size: 182.09486pt x 213.06508pt.
- [40
+ [39
 
 ]
-[41 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/paca.png>]
+[40 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/paca.png>]
 File: ./figs/paca.png Graphic file (type png)
 
 <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 454.
+Package pdftex.def Info: ./figs/paca.png used on input line 462.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 467.
+Package pdftex.def Info: ./figs/paca.png used on input line 475.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
- [42] [43]
+ [41] [42]
 Cap\'{\i }tulo 5.
-[44
+[43
 
 ]
 Cap\'{\i }tulo 6.
-[45
+[44
 
-] <./figs/horas.png, id=184, 375.65344pt x 407.27156pt>
+] <./figs/horas.png, id=180, 375.65344pt x 407.27156pt>
 File: ./figs/horas.png Graphic file (type png)
 
 <use ./figs/horas.png>
-Package pdftex.def Info: ./figs/horas.png used on input line 588.
+Package pdftex.def Info: ./figs/horas.png used on input line 596.
 (pdftex.def)             Requested size: 364.19667pt x 394.87892pt.
 
-("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.bbl" [46]
-[47 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/horas.png>]
+("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.bbl" [45]
+[46 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/horas.png>]
 Underfull \hbox (badness 4353) in paragraph at lines 20--27
 []\OT1/ptm/m/n/12 BROWN, C. D.; DA-VIS, H. T. Re-cei-ver ope-ra-ting cha-rac-te
 -ris-tics cur-ves and re-
@@ -801,7 +782,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--98
 12 . 2012. Dis-pon[]vel em:
  []
 
-[48
+[47
 
 ]
 Underfull \hbox (badness 1226) in paragraph at lines 101--104
@@ -811,24 +792,21 @@ CPOL) 1.02\OT1/ptm/m/n/12 . 2008. Dis-pon[]vel em:
 
 ) 
 AED: lastpage setting LastPage
-[49]
+[48]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
 ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.aux")
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4178 strings out of 493921
- 59162 string characters out of 3144885
- 126357 words of memory out of 3000000
- 7274 multiletter control sequences out of 15000+200000
+ 4169 strings out of 493921
+ 59012 string characters out of 3144885
+ 126328 words of memory out of 3000000
+ 7266 multiletter control sequences out of 15000+200000
  39778 words of font info for 92 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,11n,43p,1901b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -841,9 +819,9 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (51 pages, 862254 bytes).
+Output written on modelo_daeln.pdf (50 pages, 783651 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
+ 223 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

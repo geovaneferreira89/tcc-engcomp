@@ -211,12 +211,12 @@ Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são 
 	\fonte{Autoria própria}
 	\label{FluxoCorrel}
 \end{figure}
-
+ 
 
 \subsection{Módulo de Visualização do Sinal}
 \label{Mod1} 
 
-O primeiro módulo do sistema a ser detalhado é o módulo de visualização do sinal. Na figura \ref{tela1} pode ser observada a tela em que o usuário seleciona quais canais (ou derivações) do sinal deseja visualizar. No caso, as derivações do sinal são {modified limb lead II} (MLII) e \textit{lead} V1 .
+O primeiro módulo do sistema a ser descrito é o módulo de visualização do sinal. Na figura \ref{tela1} pode ser observada a tela em que o usuário seleciona quais canais (ou derivações) do sinal deseja visualizar. No caso, as derivações do sinal são {modified limb lead II} (MLII) e \textit{lead} V1 .
 
 \begin{figure}[!htb]
 	\centering
@@ -227,7 +227,7 @@ O primeiro módulo do sistema a ser detalhado é o módulo de visualização do sinal
 \end{figure}
 
 
-A figura \ref{tela2} mostra a impressão no sinal na tela do sistema. Além dos sinais, a tela também apresenta opções para alterar a frequência e amplitude do sinal e opções para mostrar o sinal em janelas de 5 ou 10 segundos.
+A figura \ref{tela2} mostra a impressão no sinal na tela do sistema. Além dos sinais, a tela também apresenta opções para alterar a frequência e amplitude do sinal e opções para que o sinal possa ser visualizado em janelas de 5 ou 10 segundos.
 
 \begin{figure}[!htb]
 	\centering
@@ -237,10 +237,9 @@ A figura \ref{tela2} mostra a impressão no sinal na tela do sistema. Além dos si
 	\label{tela2}
 \end{figure}
 
-
 \subsection{Módulo de Marcação de Eventos}
 \label{Mod2} 
-Uma vez que a tela do sistema exibe o sinal de Eletroencefalografia (ECG), o usuário pode realizar as marcações de eventos.
+Uma vez que a tela do sistema exibe o sinal de Eletroencefalografia (ECG), o usuário pode realizar as marcações de eventos. Ao selecionar o botão evidenciado pela flecha azul na figura \ref{tela3}, o usuário tem acesso a um menu de marcações. 
 
 \begin{figure}[!htb]
 	\centering
@@ -250,6 +249,8 @@ Uma vez que a tela do sistema exibe o sinal de Eletroencefalografia (ECG), o usu
 	\label{tela3}
 \end{figure}
 
+O usuário pode selecionar uma cor disponível no menu do lado esquerdo, e em seguida marcar fragmentos no sinal, determinando assim o início e fim do evento. Estas marcações são salvas em disco utilizando arquivos de texto, podendo ser recuperadas em algum uso futuro. A figura \ref{tela2} mostra a tela com opção de marcação de eventos. Na figura, a cor selecionada foi o verde (correspondente ao complexo QRS), exibindo duas marcações deste evento no sinal. 
+
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./figs/tela3.png} % <- formatos PNG, JPG e PDF
@@ -258,23 +259,16 @@ Uma vez que a tela do sistema exibe o sinal de Eletroencefalografia (ECG), o usu
 	\label{tela2}
 \end{figure}
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.8\textwidth]{./figs/tela4.png} % <- formatos PNG, JPG e PDF
-	\caption[Seleção do editor de marcações]{Seleção do editor de marcações}
-	\fonte{Autoria Própria}
-	\label{tela2}
-\end{figure}
+
+Após a realização de algumas marcações, o usuário pode editá-las por meio do Editor de marcações, mostrado na figura \ref{tela5}. Para acessá-lo, basta clicar em Menu Ferramentas, e em seguida, em Editor de Eventos. Este editor permite que o usuário navegue pelos tipos de padrão e visualize as marcações já salvas. O usuário tem a opção de editar os pontos de início, fim e referência do sinal, e também pode excluir a marcação.
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./figs/tela5.png} % <- formatos PNG, JPG e PDF
 	\caption[Editor de marcações]{Editor de marcações}
 	\fonte{Autoria Própria}
-	\label{tela2}
+	\label{tela5}
 \end{figure}
-
-
 
 \subsection{Módulo de Extração de Características}
 \label{Mod3} 
@@ -302,12 +296,13 @@ As classes do sistema estão resumidas na tabela \ref{Classes}.
 	\centering
 	\caption[Tabela de classes do sistema]{Tabela de classes do sistema}
 	\label{Classes}
-	\begin{tabular}{ll}
+	\begin{tabular}{l|l}
 	\hline
 	\textbf{Avaliador}  			& Gera tabela de contingência: VP, FP, VN e FN \\ \hline
 	\textbf{AV\_Marcacao} 			& Gerencia marcações da base de dados na avaliação \\ \hline
 	\textbf{AV\_Resultado} 			& Gerencia resultados do sistema na avaliação \\ \hline
 	\textbf{GerenArquivos} 			& Gerencia arquivos (sinal e marcações) \\ \hline
+	\textbf{Correlacao} 			& Aplica função correlação no sinal \\ \hline
 	\textbf{Annotations\_Chart} 	&  \\ \hline
 	\textbf{atualiza\_sinal}    	&  \\ \hline
 	\textbf{AtualizarRefInChart}	&  \\ \hline	
@@ -360,17 +355,30 @@ Figura explicativa
 
 \subsection{Avaliação do Classificador}
 
-O que são
+O módulo de Avaliação do Classificador gera de modo automático a tabela de contingência após a conclusão do reconhecimento de padrões. Ou seja, o número de ocorrências de verdadeiro positivo (VP), falso positivo (FP), verdadeiro negativo (VN) e falso negativo (FN), como foi discutido na seção Tabela de Contingência \ref{subsec:TabelaCont} do capítulo de Fundamentação Teórica \ref{sec:Fund}. A figura \ref{avaliar} mostra ideias básicas para auxiliar a compreensão deste procedimento.
 
-VP
-FP
-VN
-FN
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figs/aval2.png} % <- formatos PNG, JPG e PDF
+	\caption[Lógica da avaliação]{Lógica da avaliação}
+	\fonte{Autoria Própria}
+	\label{avaliar}
+\end{figure}
 
-Figura explicativa
+O processo de avaliação é feito confirme a seguinte lógica:
+
+\begin{enumerate}
+	\item São enviadas como parâmetro no construtor da classe Avaliador duas listas: a de lista de resultados (sistema) e a lista de marcações (referência), que enviam a posição x de cada evento em relação ao vetor de todos os pontos do sinal;
+	\item As duas listas são recriadas, utilizando outras estruturas que possibilitam o uso de \textit{flags} e outras variáveis. Os itens da lista de resultados armazenam então apenas seu horário de ocorrência. E os itens da lista de marcações sofrem expansão de tamanho variável x, determinando seu inicio e fim;
+	\item Percorre-se a lista de marcações, verificando, se cada um dos resultados está dentro do intervalo de alguma marcação. Caso esteja, ocorreu um verdadeiro positivo (VP) e as \textit{flags} de detecção do resultado e da marcação são ativadas. Caso contrário, ou seja, se o resultado está fora da faixa de qualquer uma das marcações, caracteriza-se como falso positivo (FP);
+	\item Novamente, percorre-se a lista de marcações, verificando quais marcações não foram detectadas, pois não apresentam resultado correspondente. Estas ocorrências são classificadas como falso negativo (FN), pois o sistema deveria detectá-las, mas não conseguiu;
+	\item Por fim, o avaliador considera como verdadeiro negativo (VN), intervalo entre duas marcações (entre o fim de uma e início da seguinte) em que não ocorreu nenhum falso positivo (FP).
+\end{enumerate}
 
 \section{Considerações}
 \label{sec:Cons-Des}
+
+
 
 % -------------------------------------------
 \chapter{Resultados Obtidos} % 3 a 4 páginas
