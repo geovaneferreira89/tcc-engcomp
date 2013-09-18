@@ -1356,37 +1356,47 @@ namespace AmbienteRPB
             SMS_Box.Visible = true;
             btn_Aumentar.Visible = true;
             btn_Close.Visible = true;
-
-            //Cria entradas
-            List<double> resultados = new List<double> { 10, 20, 31, 40, 50, 55, 60, 80, 90 };
-            List<double> marcacoes = new List<double> { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
-
-
-            //Avalia
-            Avaliador avaliador = new Avaliador();
-            avaliador.Avaliar(resultados, marcacoes);
-
-
-            //Saída
-            SMS_Box.Text = "Resultado Avaliação";
-            for (int i = 0; i < avaliador.VP.Count(); i++)
+            openFileDialog1.Filter = "TXT Files|*.txt";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK && RN_Rodou == true)
             {
-                SMS_Box.Text = SMS_Box.Text + "\nVP " + i + ": " + avaliador.VP[i];
-            }
+                GerenArquivos Arquivos = new GerenArquivos();
+                
+                //Cria entradas
+                List<double> resultados = new List<double>();
+                for (int i = 0; i < chart1.Series[(CanalAtual * 4) + 2].Points.Count(); i++)
+                {
+                    resultados.Add((int)chart1.Series[(CanalAtual * 4) + 2].Points[i].YValues[0]);
+                }
+                List<double> marcacoes = new List<double>();
+                marcacoes = Arquivos.LerMarcacaoLits(openFileDialog1.FileName);
 
-            for (int i = 0; i < avaliador.FP.Count(); i++)
-            {
-                  SMS_Box.Text = SMS_Box.Text + "\nFP " + i + ": " + avaliador.FP[i];
-            }
 
-            for (int i = 0; i < avaliador.FN.Count(); i++)
-            {
-                  SMS_Box.Text = SMS_Box.Text + "\nFN " + i + ": " + avaliador.FN[i];
-            }
+                //Avalia
+                Avaliador avaliador = new Avaliador();
+                avaliador.Avaliar(resultados, marcacoes);
 
-            for (int i = 0; i < avaliador.VN.Count(); i++)
-            {
-                  SMS_Box.Text = SMS_Box.Text + "\nVN " + i + ": " + avaliador.VN[i];
+
+                //Saída
+                SMS_Box.Text = "Resultado Avaliação";
+                for (int i = 0; i < avaliador.VP.Count(); i++)
+                {
+                    SMS_Box.Text = SMS_Box.Text + "\nVP " + i + ": " + avaliador.VP[i];
+                }
+
+                for (int i = 0; i < avaliador.FP.Count(); i++)
+                {
+                    SMS_Box.Text = SMS_Box.Text + "\nFP " + i + ": " + avaliador.FP[i];
+                }
+
+                for (int i = 0; i < avaliador.FN.Count(); i++)
+                {
+                    SMS_Box.Text = SMS_Box.Text + "\nFN " + i + ": " + avaliador.FN[i];
+                }
+
+                for (int i = 0; i < avaliador.VN.Count(); i++)
+                {
+                    SMS_Box.Text = SMS_Box.Text + "\nVN " + i + ": " + avaliador.VN[i];
+                }
             }
 
         }
