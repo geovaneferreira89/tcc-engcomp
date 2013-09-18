@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  18 SEP 2013 17:44
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  18 SEP 2013 19:04
 entering extended mode
 **modelo_daeln.tex
 ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.tex"
@@ -689,11 +689,11 @@ p/tcc2013/monografia v2/daeln/figs/tela5.png>] [36]
 <./figs/aval2.png, id=151, 266.49562pt x 219.82124pt>
 File: ./figs/aval2.png Graphic file (type png)
  <use ./figs/aval2.png>
-Package pdftex.def Info: ./figs/aval2.png used on input line 362.
+Package pdftex.def Info: ./figs/aval2.png used on input line 363.
 (pdftex.def)             Requested size: 364.19667pt x 300.43883pt.
 
 [37 <C:/Users/Ge/Desktop/tcc2013/monografia v2/daeln/figs/aval2.png>]
-Overfull \hbox (19.05107pt too wide) in paragraph at lines 375--376
+Overfull \hbox (19.05107pt too wide) in paragraph at lines 376--377
 []\OT1/ptm/m/n/12 Por fim, o ava-li-a-dor con-si-dera como ver-da-deiro ne-ga-t
 ivo (VN), in-ter-valo en-tre duas marca[][]oes
  []
@@ -701,7 +701,7 @@ ivo (VN), in-ter-valo en-tre duas marca[][]oes
 [38]
 Cap\'{\i }tulo 4.
 
-Overfull \hbox (16.28754pt too wide) in paragraph at lines 392--393
+Overfull \hbox (16.28754pt too wide) in paragraph at lines 397--398
 []\OT1/ptm/m/n/12 Os re-sul-ta-dos apre-sen-ta-dos nesta se[][]ao di-zem res-pe
 ito ao trei-na-mento re-a-li-zado com marca[][]oes
  []
@@ -709,7 +709,7 @@ ito ao trei-na-mento re-a-li-zado com marca[][]oes
 <./figs/paca.png, id=159, 200.75pt x 234.8775pt>
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 423.
+Package pdftex.def Info: ./figs/paca.png used on input line 428.
 (pdftex.def)             Requested size: 182.09486pt x 213.06508pt.
  [39
 
@@ -718,11 +718,11 @@ Package pdftex.def Info: ./figs/paca.png used on input line 423.
 File: ./figs/paca.png Graphic file (type png)
 
 <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 462.
+Package pdftex.def Info: ./figs/paca.png used on input line 467.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 475.
+Package pdftex.def Info: ./figs/paca.png used on input line 480.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
  [41] [42]
 Cap\'{\i }tulo 5.
@@ -736,7 +736,7 @@ Cap\'{\i }tulo 6.
 File: ./figs/horas.png Graphic file (type png)
 
 <use ./figs/horas.png>
-Package pdftex.def Info: ./figs/horas.png used on input line 596.
+Package pdftex.def Info: ./figs/horas.png used on input line 601.
 (pdftex.def)             Requested size: 364.19667pt x 394.87892pt.
 
 ("C:\Users\Ge\Desktop\tcc2013\monografia v2\daeln\modelo_daeln.bbl" [45]
@@ -803,10 +803,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4169 strings out of 493921
- 59012 string characters out of 3144885
- 126328 words of memory out of 3000000
- 7266 multiletter control sequences out of 15000+200000
+ 4170 strings out of 493921
+ 59025 string characters out of 3144885
+ 126341 words of memory out of 3000000
+ 7267 multiletter control sequences out of 15000+200000
  39778 words of font info for 92 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,11n,43p,1901b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -819,7 +819,7 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (50 pages, 783651 bytes).
+Output written on modelo_daeln.pdf (50 pages, 784389 bytes).
 PDF statistics:
  223 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
