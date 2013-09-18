@@ -134,23 +134,24 @@ namespace AmbienteRPB
                     Train_KHn(0.0001);
                     send_SmS(1, "Resultados: ", false);
                     DumpCoordinates_KHn();
-                    if(!it_is_debug)
-                    {
-                        double[] dados = new double[2];
-                        Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
-                    }
+                    send_SmS(1, "Fim", false);
+                    send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Hour - hr_inicio) + " hrs " + Convert.ToString(DateTime.Now.Minute - min_inicio) + " min", true);
                     //Imprime a matriz de resultados
-                    /*for (int i = 0; i < length; i++)
+                    send_SmS(1, "Matriz do Kohonen", false); 
+                    for (int i = 0; i < length; i++)
                     {
                         string saida = "";
                         for (int j = 0; j < length; j++)
                         {
                             saida += SaidaFinal[j, i] + "\t";
                         }
-                        send_SmS(1, saida, true);
-                    }*/
-                    send_SmS(1, "Fim", false);
-                    send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Hour - hr_inicio) + "hrs " + Convert.ToString(DateTime.Now.Minute -min_inicio) + " min",true);
+                        send_SmS(1, saida, false);
+                    }
+                    if(!it_is_debug)
+                    {
+                        double[] dados = new double[2];
+                        Plotar("PlotKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
+                    }
                     break;
                 }
                 case("BackPropagation"):
