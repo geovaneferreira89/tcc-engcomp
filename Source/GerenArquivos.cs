@@ -369,7 +369,6 @@ namespace AmbienteRPB
                 return false;
             else
                 return true;
-
         }
         //---------------------------------------------------------------------
         // vai lendo o arquivo e salvando Sample e Sub
@@ -401,6 +400,36 @@ namespace AmbienteRPB
             }
             file.Close();
             file.Dispose();
+        }
+        //Retorna por List<double> o arquivo de marcações 
+        public List<double> LerMarcacaoLits(string diretorio)
+        {
+            System.IO.StreamReader file = new System.IO.StreamReader(diretorio);
+
+            string[] separators = new string[] { "\r\n" };
+            string text = file.ReadToEnd();
+            // quebra o seu conteudo por linhas
+            string[] lines = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            List<double> Samples2 = new List<double>();
+            Sub = new int[lines.Length];
+            Times = new string[lines.Length];
+
+            string header = lines[0];
+
+            string[] words = new string[6];
+            string[] sep = new string[] { "  " };
+
+            for (int i = 1; i < lines.Length; i++) //execeto a primeira, que é cabeçalho
+            {
+                words = lines[i].Split(sep, StringSplitOptions.RemoveEmptyEntries);
+                Times[i - 1] = words[0];
+                Samples2.Add(float.Parse(words[1]));
+                Sub[i - 1] = int.Parse(words[3]);
+            }
+            file.Close();
+            file.Dispose();
+            return Samples2;
         }
     }
 }
