@@ -26,12 +26,12 @@
 \contentsline {subsection}{\numberline {3.3.2}Biblioteca Kohonen}{32}
 \contentsline {section}{\numberline {3.4}Sistema}{32}
 \contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{32}
-\contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{34}
+\contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{33}
 \contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{35}
 \contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{37}
 \contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{37}
 \contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{37}
-\contentsline {section}{\numberline {3.5}Modelagem UML}{38}
+\contentsline {section}{\numberline {3.5}Modelagem UML}{37}
 \contentsline {section}{\numberline {3.6}Metodologia de Testes}{38}
 \contentsline {subsection}{\numberline {3.6.1}Gera\c c\~ao das Bases de Dados}{38}
 \contentsline {subsection}{\numberline {3.6.2}Classifica\c c\~ao de Padr\~oes}{39}
