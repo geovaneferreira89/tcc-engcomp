@@ -23,7 +23,6 @@
 \contentsline {section}{\numberline {3.2}European Data Format}{30}
 \contentsline {section}{\numberline {3.3}Bibliotecas Utilizadas}{31}
 \contentsline {subsection}{\numberline {3.3.1}NeuroLoopGain}{31}
-\contentsline {subsection}{\numberline {3.3.2}Biblioteca Kohonen}{32}
 \contentsline {section}{\numberline {3.4}Sistema}{32}
 \contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{32}
 \contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{34}
@@ -34,9 +33,9 @@
 \contentsline {section}{\numberline {3.5}Modelagem UML}{38}
 \contentsline {section}{\numberline {3.6}Metodologia de Testes}{38}
 \contentsline {subsection}{\numberline {3.6.1}Metodologia da Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{38}
-\contentsline {subsection}{\numberline {3.6.2}Metodologia da Classifica\c c\~ao de Padr\~oes}{40}
-\contentsline {subsection}{\numberline {3.6.3}Metodologia da Avalia\c c\~ao do Classificador}{40}
-\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{41}
+\contentsline {subsection}{\numberline {3.6.2}Metodologia da Classifica\c c\~ao de Padr\~oes}{39}
+\contentsline {subsection}{\numberline {3.6.3}Metodologia da Avalia\c c\~ao do Classificador}{39}
+\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{40}
 \contentsline {chapter}{\numberline {4}Resultados Obtidos}{42}
 \contentsline {section}{\numberline {4.1}Testes com Sinal de ECG}{42}
 \contentsline {section}{\numberline {4.2}Testes com ECG com extra\c c\~ao de caracter\IeC {\'\i }sticas}{43}
