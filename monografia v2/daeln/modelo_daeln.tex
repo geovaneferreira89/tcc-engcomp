@@ -121,7 +121,7 @@ According to \cite{Zhang2007}, electrocardiographic recordings are considered  t
 \chapter{Materiais e Métodos} %ou Materiais e Métodos 
 \label{sec:Materiais}
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Bibliotecas Utilizadas \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Biblioteca Utilizada \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
@@ -178,9 +178,6 @@ O texto da licença Apache 2.0 \cite{Apache} mostra que seu código é aplicável a 
 
 Além disso, o texto da licença também atesta que: ``[ \dots] concede licença perpétua, mundial, não-exclusiva, gratuita, isenta de royalties e irrevogável [\dots] de licença de patente para fazer, mandar fazer, usar, oferecer para venda, vender, importar e transferir o trabalho. ''
 
-\subsection{Biblioteca Kohonen}
-
-
 \section{Sistema}
 \label{sec:MOD} 
 Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a partir da subseção Visão Geral do Sistema \ref{Vgeral}, e também uma visão detalhada por meio das subseções: Módulo de Visualização do Sinal \ref{Mod1}, Módulo de Marcação de Eventos \ref{Mod2}, Módulo de Extração de Características \ref{Mod3}, Módulo de Reconhecimento de Padrões \ref{Mod4} e Módulo de Avaliação de Resultados \ref{Mod5}.
@@ -190,8 +187,6 @@ Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a par
 
 O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza diretamente o sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxogramaRaw} mostra todo este processo.
 
-Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, é feito o reconhecimento de padrões (Reconhecimento de Padrões), e os resultados são exibidos na tela . Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
-
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.4\textwidth]{./figs/fluxogramaRaw.png} % <- formatos PNG, JPG e PDF
@@ -200,13 +195,15 @@ Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na 
 	\label{fluxogramaRaw}
 \end{figure}
 
+Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, é feito o reconhecimento de padrões (Reconhecimento de Padrões), e os resultados são exibidos na tela . Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
+
 A segunda maneira de funcionamento do sistema é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. A diferença em relação ao método anterior ocorre no processo de geração do conjunto de dados para o reconhecimento de padrões.
 
-Depois que o arquivo com sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado na subseção \ref{Mod3}. O sinal resultante (Sinal resultante) passa pelo reconhecimento de padrões (Reconhecimento de Padrões). Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
+Depois que o arquivo com sinal de ECG é carregado e exibido na tela (Visualização do sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado nas subseções Módulo de Extração de Características \ref{Mod3} e Metodologia de Extração de Características \ref{subsec:met1}. O sinal resultante (Sinal resultante) passa pelo reconhecimento de padrões (Reconhecimento de Padrões), e exibe na tela onde são detectadas ocorrências do complexo QRS. Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.4\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.6\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
 	\caption[Fluxograma com extração de características]{Fluxograma com extração de características}
 	\fonte{Autoria própria}
 	\label{FluxoCorrel}
@@ -327,33 +324,28 @@ As classes do sistema estão resumidas na tabela \ref{Classes}.
 \section{Metodologia de Testes}
 \label{sec:Met-Testes}
 
-\subsection{Geração das Bases de Dados}
+\subsection{Metodologia da Extração de Características}
+\label{subsec:met1}
+A extração de características é o processo pelo qual o sinal de Eletroencefalografia (ECG) pode ser submetido antes do processo de reconhecimento de padrões. A função correlação, descrita na seção \ref{sec:Correl} do capítulo de Fundamentação Teórica \ref{sec:Fund}, é aplicada sucessivas vezes (no caso apenas duas) em uma marcação do complexo QRS e no sinal de ECG produzindo um novo sinal como mostrado na figura \ref{corr5}.
 
-Marcação
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figs/corr5.png} % <- formatos PNG, JPG e PDF
+	\caption[Função correlação no sistema]{Função correlação no sistema}
+	\fonte{Autoria Própria}
+	\label{corr5}
+\end{figure}
 
-Promedição
+Como se pode perceber, os picos do sinal resultante correspondem aos instantes em que ocorrem o complexo QRS. Este novo sinal pode ser utilizado como entrada para o módulo de reconhecimento de padrões, a ser visto com mais detalhes na próxima seção.
 
-Correlação
-
-Sinal Puro
-
-Total de QRS = 2572
-Total Usados = 1589
-Total Descartados = 72
-últimos 10 minutos do sinal
-
-Sinal com correlação
-
-
-
-\subsection{Classificação de Padrões}
+\subsection{Metodologia da Classificação de Padrões}
 
 Tamanho do Mapa
 Função que limita a saída
 
 Figura explicativa
 
-\subsection{Avaliação do Classificador}
+\subsection{Metodologia da Avaliação do Classificador}
 \label{subsec:Aval}
 
 O módulo de Avaliação do Classificador gera de modo automático a tabela de contingência após a conclusão do reconhecimento de padrões. Ou seja, o número de ocorrências de verdadeiro positivo (VP), falso positivo (FP), verdadeiro negativo (VN) e falso negativo (FN), como foi discutido na seção Tabela de Contingência \ref{subsec:TabelaCont} do capítulo de Fundamentação Teórica \ref{sec:Fund}. A figura \ref{avaliar} mostra ideias básicas para auxiliar a compreensão deste procedimento.
