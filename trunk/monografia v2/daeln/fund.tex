@@ -173,9 +173,7 @@ De certa forma, as redes neurais artificiais foram criadas para realizar ativida
 
 As unidades básicas de processamento de uma rede neural artificial são chamadas de neurônios, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
 
-As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
-
-Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada ao neurônio \textit{k}, é multiplicada pelo peso sináptico \textit{w\textsubscript{kj}}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
+As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
 
 \begin{figure}[!htb]
 	\centering
@@ -316,7 +314,7 @@ especificidade = \frac{VN}{VN + FP}
 \label{eq:especificidade}
 \end{equation}
 
-A sensibilidade e especificidade costumam retornar diferentes valores de acordo com a variação em algum atributo do sistema \cite{SOVIERZOSKI2009}. A figura ~\ref{fig:SensibEspec} mostra o comportamento dos índices de sensibilidade e especificidade em função do limiar de decisão da rede neural, ferramenta utilizada no reconhecimento de padrões a ser discutida na seção X.
+A sensibilidade e especificidade costumam retornar diferentes valores de acordo com a variação em algum atributo do sistema \cite{SOVIERZOSKI2009}. A figura ~\ref{fig:SensibEspec} mostra o comportamento dos índices de sensibilidade e especificidade em função do limiar de decisão de uma rede neural do tipo Perceptron Multicamadas (\textit{Multilayer Perceptron} ~-- \sigla{MLP}{\textit{Multilayer Perceptron}}).
 
 \begin{figure}[!htb]
 	\centering
