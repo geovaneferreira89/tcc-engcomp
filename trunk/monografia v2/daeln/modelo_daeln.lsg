@@ -1,16 +1,17 @@
 \contentsline {sigla}{\hbox to\@tempdima {ECG\hfil }{Eletrocardiografia}}{}
 \contentsline {sigla}{\hbox to\@tempdima {GPS\hfil }{\textit {Global Positioning System}}}{19}
 \contentsline {sigla}{\hbox to\@tempdima {DNA\hfil }{\textit {Deoxyribonucleic Acid}}}{19}
-\contentsline {sigla}{\hbox to\@tempdima {VP\hfil }{Verdadeiro Positivo}}{22}
-\contentsline {sigla}{\hbox to\@tempdima {FP\hfil }{Falso positivo}}{22}
-\contentsline {sigla}{\hbox to\@tempdima {FN\hfil }{Falso negativo}}{22}
-\contentsline {sigla}{\hbox to\@tempdima {VN\hfil }{Verdadeiro negativo}}{22}
-\contentsline {sigla}{\hbox to\@tempdima {ROC\hfil }{\textit {Receiving Operating Characteristic}}}{24}
-\contentsline {sigla}{\hbox to\@tempdima {DER\hfil }{\textit {Detection Error Rate}}}{25}
-\contentsline {sigla}{\hbox to\@tempdima {UML\hfil }{\textit {Unified Modeling Language}}}{27}
-\contentsline {sigla}{\hbox to\@tempdima {CONEP\hfil }{Comiss\~ao Nacional de \'Etica em Pesquisa}}{27}
-\contentsline {sigla}{\hbox to\@tempdima {MIT\hfil }{\textit {Massachusetts Institute of Technology}}}{27}
-\contentsline {sigla}{\hbox to\@tempdima {EDF\hfil }{\textit {European data format}}}{28}
-\contentsline {sigla}{\hbox to\@tempdima {WFDB\hfil }{\textit {WaveForm DataBase}}}{29}
-\contentsline {sigla}{\hbox to\@tempdima {ATM\hfil }{\textit {Automated Teller Machine}}}{29}
-\contentsline {sigla}{\hbox to\@tempdima {ECG\hfil }{Eletroencefalografia}}{44}
+\contentsline {sigla}{\hbox to\@tempdima {BMU\hfil }{\textit {Best Matching Unit}}}{23}
+\contentsline {sigla}{\hbox to\@tempdima {VP\hfil }{Verdadeiro Positivo}}{24}
+\contentsline {sigla}{\hbox to\@tempdima {FP\hfil }{Falso positivo}}{24}
+\contentsline {sigla}{\hbox to\@tempdima {FN\hfil }{Falso negativo}}{24}
+\contentsline {sigla}{\hbox to\@tempdima {VN\hfil }{Verdadeiro negativo}}{24}
+\contentsline {sigla}{\hbox to\@tempdima {ROC\hfil }{\textit {Receiving Operating Characteristic}}}{27}
+\contentsline {sigla}{\hbox to\@tempdima {DER\hfil }{\textit {Detection Error Rate}}}{28}
+\contentsline {sigla}{\hbox to\@tempdima {UML\hfil }{\textit {Unified Modeling Language}}}{29}
+\contentsline {sigla}{\hbox to\@tempdima {CONEP\hfil }{Comiss\~ao Nacional de \'Etica em Pesquisa}}{29}
+\contentsline {sigla}{\hbox to\@tempdima {MIT\hfil }{\textit {Massachusetts Institute of Technology}}}{29}
+\contentsline {sigla}{\hbox to\@tempdima {EDF\hfil }{\textit {European data format}}}{30}
+\contentsline {sigla}{\hbox to\@tempdima {WFDB\hfil }{\textit {WaveForm DataBase}}}{31}
+\contentsline {sigla}{\hbox to\@tempdima {ATM\hfil }{\textit {Automated Teller Machine}}}{31}
+\contentsline {sigla}{\hbox to\@tempdima {ECG\hfil }{Eletroencefalografia}}{46}
