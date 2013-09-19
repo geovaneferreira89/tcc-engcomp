@@ -12,39 +12,39 @@
 \contentsline {section}{\numberline {2.6}Fun\c c\~ao Correla\c c\~ao}{19}
 \contentsline {section}{\numberline {2.7}Redes Neurais Artificiais}{20}
 \contentsline {subsection}{\numberline {2.7.1}Redes Neurais de Kohonen}{21}
-\contentsline {section}{\numberline {2.8}Avalia\c c\~ao de Sistemas Classificadores}{21}
-\contentsline {subsection}{\numberline {2.8.1}Tabela de Conting\^encia}{21}
-\contentsline {subsection}{\numberline {2.8.2}Sensibilidade e Especificidade}{23}
-\contentsline {subsection}{\numberline {2.8.3}Curva ROC}{24}
-\contentsline {subsection}{\numberline {2.8.4}Outros \'Indices Estat\IeC {\'\i }sticos}{25}
-\contentsline {section}{\numberline {2.9}Considera\c c\~oes}{26}
-\contentsline {chapter}{\numberline {3}Materiais e M\'etodos}{27}
-\contentsline {section}{\numberline {3.1}Base de Dados}{27}
-\contentsline {section}{\numberline {3.2}European Data Format}{28}
-\contentsline {section}{\numberline {3.3}Bibliotecas Utilizadas}{29}
-\contentsline {subsection}{\numberline {3.3.1}NeuroLoopGain}{29}
-\contentsline {subsection}{\numberline {3.3.2}Biblioteca Kohonen}{30}
-\contentsline {section}{\numberline {3.4}Sistema}{30}
-\contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{30}
-\contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{32}
-\contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{33}
-\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{35}
-\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{35}
-\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{35}
-\contentsline {section}{\numberline {3.5}Modelagem UML}{36}
-\contentsline {section}{\numberline {3.6}Metodologia de Testes}{36}
-\contentsline {subsection}{\numberline {3.6.1}Gera\c c\~ao das Bases de Dados}{36}
-\contentsline {subsection}{\numberline {3.6.2}Classifica\c c\~ao de Padr\~oes}{37}
-\contentsline {subsection}{\numberline {3.6.3}Avalia\c c\~ao do Classificador}{37}
-\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{38}
-\contentsline {chapter}{\numberline {4}Resultados Obtidos}{39}
-\contentsline {section}{\numberline {4.1}Testes com Sinal de ECG}{39}
-\contentsline {section}{\numberline {4.2}Testes com ECG com extra\c c\~ao de caracter\IeC {\'\i }sticas}{40}
-\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{41}
-\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{42}
-\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{43}
-\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{44}
-\contentsline {section}{\numberline {6.1}Recursos de Hardware}{44}
-\contentsline {section}{\numberline {6.2}Recursos de Software}{44}
-\contentsline {section}{\numberline {6.3}Horas de Trabalho}{45}
-\contentsline {chapter}{REFER\^ENCIAS}{47}
+\contentsline {section}{\numberline {2.8}Avalia\c c\~ao de Sistemas Classificadores}{24}
+\contentsline {subsection}{\numberline {2.8.1}Tabela de Conting\^encia}{24}
+\contentsline {subsection}{\numberline {2.8.2}Sensibilidade e Especificidade}{25}
+\contentsline {subsection}{\numberline {2.8.3}Curva ROC}{27}
+\contentsline {subsection}{\numberline {2.8.4}Outros \'Indices Estat\IeC {\'\i }sticos}{28}
+\contentsline {section}{\numberline {2.9}Considera\c c\~oes}{28}
+\contentsline {chapter}{\numberline {3}Materiais e M\'etodos}{29}
+\contentsline {section}{\numberline {3.1}Base de Dados}{29}
+\contentsline {section}{\numberline {3.2}European Data Format}{30}
+\contentsline {section}{\numberline {3.3}Bibliotecas Utilizadas}{31}
+\contentsline {subsection}{\numberline {3.3.1}NeuroLoopGain}{31}
+\contentsline {subsection}{\numberline {3.3.2}Biblioteca Kohonen}{32}
+\contentsline {section}{\numberline {3.4}Sistema}{32}
+\contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{32}
+\contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{34}
+\contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{35}
+\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{37}
+\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{37}
+\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{37}
+\contentsline {section}{\numberline {3.5}Modelagem UML}{38}
+\contentsline {section}{\numberline {3.6}Metodologia de Testes}{38}
+\contentsline {subsection}{\numberline {3.6.1}Gera\c c\~ao das Bases de Dados}{38}
+\contentsline {subsection}{\numberline {3.6.2}Classifica\c c\~ao de Padr\~oes}{39}
+\contentsline {subsection}{\numberline {3.6.3}Avalia\c c\~ao do Classificador}{39}
+\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{40}
+\contentsline {chapter}{\numberline {4}Resultados Obtidos}{41}
+\contentsline {section}{\numberline {4.1}Testes com Sinal de ECG}{41}
+\contentsline {section}{\numberline {4.2}Testes com ECG com extra\c c\~ao de caracter\IeC {\'\i }sticas}{42}
+\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{43}
+\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{44}
+\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{45}
+\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{46}
+\contentsline {section}{\numberline {6.1}Recursos de Hardware}{46}
+\contentsline {section}{\numberline {6.2}Recursos de Software}{46}
+\contentsline {section}{\numberline {6.3}Horas de Trabalho}{47}
+\contentsline {chapter}{REFER\^ENCIAS}{49}

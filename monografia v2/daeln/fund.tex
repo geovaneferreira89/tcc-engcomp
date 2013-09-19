@@ -187,12 +187,83 @@ Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada 
 
 \subsection{Redes Neurais de Kohonen}
 
+Existe um tipo especial de redes neurais artificiais auto organizáveis conhecidas como Mapas Auto Organizáveis ou Mapas de Kohonen. Nos Mapas de Kohonen, os neurônios, ou nós, são dispostos em nós em uma estrutura bidimensional e passam por um processo de aprendizado utilizando padrões de entrada, no caso aprendizado competitivo.  Os neurônios ficam então ordenados em relação a uns aos outros. O Mapa de Kohonen forma, portanto, um mapa topográfico dos padrões de entrada, no qual as coordenadas dos neurônios indicam características dos padrões de entrada \cite{HAYKIN2011}.
 
+Cabe explicitar que o aprendizado dos Mapas de Kohonen é do tipo não supervisionado, isso significa que não é necessário um conjunto de dados de treinamento para que a rede aprenda a classificar padrões \cite{Guthi}.
+
+No mapa, cada nó é conectado a todos os nós de entrada, mas não são conectados entre si, como ilustra a figura \ref{fig:map0}. Cada nó possui um vetor de pesos, e também uma coordenada única \textit{(i,j)}. Esta coordenada auxilia a identificar o nó, além de ser importante para os cálculos do algoritmo do Mapa de Kohonen \cite{Guthi}. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./figs/map1.png} 
+		\caption[Estrutura de um Mapa de Kohonen]{Estrutura de um Mapa de Kohonen}
+	\fonte{\cite{Guthi}}
+	\label{fig:map0}
+\end{figure}
+
+Para que o algoritmo funcione adequadamente, as redes devem ser formadas por nós, sendo que cada um deles deverá possuir um vetor de pesos de dimensão n. Os nós de entrada também deverão apresentar vetores de entrada com dimensão n. E, considerando que os neurônios não possuem nenhuma conexão com os neurônios em sua vizinhança, não podem conhecer o valor dos pesos deles. O algoritmo do Mapa de Kohonen que altera os pesos dos nós é descrito a seguir \cite{Guthi}.
+
+\begin{enumerate}
+	\item Os pesos de cada nó são inicializados;
+	\item Um vetor é escolhido \textit{(input vector)} aleatoriamente dos dados de entrada e apresentado a rede;
+	\item Cada nó da rede é analisado em busca do nó que apresenta pesos mais similares ao nó escolhido \textit{(input vector)}. Este nó é conhecido como \textit{Best Matching Unit} (BMU). O BMU é encontrado com o cálculo da distância dado pela equação ~(\ref{eq:bmu}), em que \textit{I} se refere ao vetor escolhido, \textit{W} ao vetor de pesos do nó e \textit{n} à dimensão do vetor. 
+	
+	\begin{equation}
+	 DistFromInput^{2} = \sum_{i=n}^{i=0}(I_{i} - W_{i})^{2}
+	\label{eq:bmu}
+	\end{equation}
+	
+	\item Calcula-se o raio da vizinhança do BMU de acordo com a equação ~(\ref{eq:raio}). Este valor deve ser inicialmente grande, mas diminui a cada iteração do algoritmo. Os termos da equação \textit{t}, $\sigma$\textsubscript{0} e $\lambda$ correspondem a iteração atual, número de iterações sobre o raio do mapa e raio do mapa, respectivamente.
+	
+	\begin{equation}
+	\sigma (t) = \sigma _{0}e^{(-t/\lambda))}
+	\label{eq:raio}
+	\end{equation}
+		
+	\item Os nós encontrados dentro do raio do \sigla{BMU}{\textit{Best Matching Unit}} tem seus pesos alterados de modo a se assemelharem aos pesos do BMU, conforme as equações (\ref{p1}), (\ref{p2}) e (\ref{p3}).
+	
+	\begin{equation}
+	W(t+1) = W(t) + \Theta(t)L(t)(I(t) - W(t))
+	\label{p1}
+	\end{equation}
+	
+	\begin{equation}
+	L(t) = L_{0}e^{(-t/\lambda)}
+	\label{p2}
+	\end{equation}
+		
+	\begin{equation}
+	\Theta = e^{(-DistFromBMU^{2}/2\sigma ^{2}(t))}
+	\label{p3}
+	\end{equation}
+		
+	\item Repetir o passo 2 por N iterações.
+\end{enumerate}
+
+Um exemplo clássico de implementação de Mapas de Kohonen é a clusterização de cores. Os vetores de peso são representados pela tripla (R,G,B), que representam a cor. A figura \ref{fig:color1} mostra uma rede inicializada. Cada pixel é um nó da rede.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./figs/color1.png} 
+		\caption[Mapa de Kohonen inicializado]{Mapa de Kohonen inicializado}
+	\fonte{\cite{Guthi}}
+	\label{fig:color1}
+\end{figure}
+
+A aplicação do algoritmo do Mapa de Kohonen descrito anteriormente deve resultar no mapa mostrado pela figura \ref{fig:color2}. Percebe-se que as cores foram agrupadas de acordo com a semelhança entre elas.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{./figs/color2.png} 
+		\caption[Mapa de Kohonen após algoritmo]{Mapa de Kohonen após algoritmo}
+	\fonte{\cite{Guthi}}
+	\label{fig:color2}
+\end{figure}
 
 \section{Avaliação de Sistemas Classificadores}
 \label{sec:AvaliaSis}
 
-Esta seção vamos nos concentrar em formas de avaliar o desempenho de sistemas classificadores por meio das seções: Tabela de Contingência \ref{subsec:TabelaCont}, Sensibilidade e Especificidade \ref{subsec:SeEsP}, Curva ROC \ref{subsec:ROCCurva} e Outros Índices Estatísticos \ref{subsec:outros}.
+Nesta seção vamos nos concentrar em formas de avaliar o desempenho de sistemas classificadores por meio das seções: Tabela de Contingência \ref{subsec:TabelaCont}, Sensibilidade e Especificidade \ref{subsec:SeEsP}, Curva ROC \ref{subsec:ROCCurva} e Outros Índices Estatísticos \ref{subsec:outros}.
 
 \subsection{Tabela de Contingência}
 \label{subsec:TabelaCont}

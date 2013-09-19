@@ -55,6 +55,12 @@ Circulation Electronic Pages:
   http://circ.ahajournals.org/cgi/content/full/101/23/e215 PMID:1085218; doi:
   10.1161/01.CIR.101.23.e215.}
 
+\bibitem[Guthikonda 2005]{Guthi}
+\abntrefinfo{Guthikonda}{GUTHIKONDA}{2005}
+{GUTHIKONDA, S.~M. \textbf{Kohonen Self Organizing Maps}. 2005.
+Dispon{\'\i}vel em: $<$http://shy.am/writings/Kohonen\_SOMs.pdf$>$. Acesso em:
+  18 de setembro de 2013.}
+
 \bibitem[Haykin 2011]{HAYKIN2011}
 \abntrefinfo{Haykin}{HAYKIN}{2011}
 {HAYKIN, S. \textbf{Neural Networks: A Comprehensive Foundation}. 2nd. ed.
@@ -65,13 +71,6 @@ Circulation Electronic Pages:
 {KEMP, B.; OLIVAN, J. European data format 'plus' (edf+), an \{EDF\} alike
   standard format for the exchange of physiological data.
 \textbf{Clinical Neurophysiology}, v.~114, n.~9, p. 1755 -- 1761, 2003.}
-
-\bibitem[Madhudsudanan 2006]{NN}
-\abntrefinfo{Madhudsudanan}{MADHUDSUDANAN}{2006}
-{MADHUDSUDANAN, A. \textbf{Neural Networks}. 2006.
-Dispon{\'\i}vel em:
-  $<$http://www.amazedsaint.com/2008/01/neural-networks-part-iii-nxml-xml-based.html$>$.
-  Acesso em: 09 de setembro de 2013.}
 
 \bibitem[Malmivuo e Plonsey 1995]{MALMIVUO1995}
 \abntrefinfo{Malmivuo e Plonsey}{MALMIVUO; PLONSEY}{1995}
@@ -95,12 +94,6 @@ Dispon{\'\i}vel em:
 {NEUROLOOPGAIN. \textbf{NeuroLoopGain}. 2012.
 Dispon{\'\i}vel em: $<$http://code.google.com/p/neuroloopgain/$>$. Acesso em:
   09 de setembro de 2013.}
-
-\bibitem[Project 2008]{Code}
-\abntrefinfo{Project}{PROJECT}{2008}
-{PROJECT, C. \textbf{The Code Project Open License (CPOL) 1.02}. 2008.
-Dispon{\'\i}vel em: $<$http://www.codeproject.com/info/cpol10.aspx$>$. Acesso
-  em: 09 de setembro de 2013.}
 
 \bibitem[Saraiva 2012]{SARAIVA2012}
 \abntrefinfo{Saraiva}{SARAIVA}{2012}
