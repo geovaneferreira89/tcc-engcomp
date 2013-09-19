@@ -59,6 +59,7 @@
             this.btnMarcacoes = new System.Windows.Forms.ToolStripButton();
             this.toolAnalise = new System.Windows.Forms.ToolStripSplitButton();
             this.AnaliseMLP = new System.Windows.Forms.ToolStripMenuItem();
+            this.avaliadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -84,7 +85,6 @@
             this.btn_Aumentar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.avaliadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Box_Status.SuspendLayout();
             this.gbxChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -356,7 +356,6 @@
             // 
             // redeMLP2ToolStripMenuItem
             // 
-            this.redeMLP2ToolStripMenuItem.Enabled = false;
             this.redeMLP2ToolStripMenuItem.Name = "redeMLP2ToolStripMenuItem";
             this.redeMLP2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redeMLP2ToolStripMenuItem.Text = "Rede MLP 2";
@@ -387,9 +386,16 @@
             // AnaliseMLP
             // 
             this.AnaliseMLP.Name = "AnaliseMLP";
-            this.AnaliseMLP.Size = new System.Drawing.Size(101, 22);
+            this.AnaliseMLP.Size = new System.Drawing.Size(124, 22);
             this.AnaliseMLP.Text = "MLP ";
             this.AnaliseMLP.Click += new System.EventHandler(this.AnaliseMLP_Click);
+            // 
+            // avaliadorToolStripMenuItem
+            // 
+            this.avaliadorToolStripMenuItem.Name = "avaliadorToolStripMenuItem";
+            this.avaliadorToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.avaliadorToolStripMenuItem.Text = "Avaliador";
+            this.avaliadorToolStripMenuItem.Click += new System.EventHandler(this.avaliadorToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
@@ -566,13 +572,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Arquivos XML (*.xml)|*xml";
-            // 
-            // avaliadorToolStripMenuItem
-            // 
-            this.avaliadorToolStripMenuItem.Name = "avaliadorToolStripMenuItem";
-            this.avaliadorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.avaliadorToolStripMenuItem.Text = "Avaliador";
-            this.avaliadorToolStripMenuItem.Click += new System.EventHandler(this.avaliadorToolStripMenuItem_Click);
             // 
             // FormResultados
             // 
