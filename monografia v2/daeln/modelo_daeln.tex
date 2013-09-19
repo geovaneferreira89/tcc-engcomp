@@ -188,25 +188,25 @@ Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a par
 \subsection{Visão Geral do Sistema}
 \label{Vgeral} 
 
-O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza marcações do complexo QRS feitas diretamente no sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxogramaRaw} mostra todo este processo.
+O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza diretamente o sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxogramaRaw} mostra todo este processo.
 
-Primeiramente, o arquivo com o sinal de ECG é carregado na tela (Carregar sinal na tela), em seguida são feitas pela equipe marcações do complexo QRS diretamente no sinal (Marcar eventos). As marcações dão origem ao conjunto de dados de treinamento (Padrões de Treinamento), utilizado durante a próxima etapa (Treinamento da Rede Neural Artificial). Uma vez treinada, a rede poderá reconhecer padrões no sinal de ECG em questão (explicado em detalhes na seção \ref{sec:BD}), e exibe os resultados na tela (Reconhecimento de Padrões). Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
+Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, é feito o reconhecimento de padrões (Reconhecimento de Padrões), e os resultados são exibidos na tela . Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/fluxogramaRaw.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.4\textwidth]{./figs/fluxogramaRaw.png} % <- formatos PNG, JPG e PDF
 	\caption[Fluxograma simples]{Fluxograma simples}
 	\fonte{Autoria própria}
 	\label{fluxogramaRaw}
 \end{figure}
 
-A segunda maneira de funcionamento do sistema é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. A diferença em relação ao método anterior ocorre no processo de geração do conjunto de dados de treinamento.
+A segunda maneira de funcionamento do sistema é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. A diferença em relação ao método anterior ocorre no processo de geração do conjunto de dados para o reconhecimento de padrões.
 
-Depois que o arquivo com sinal de ECG é carregado na tela (Carregar sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado na subseção \ref{Mod3}. No sinal resultante são feitas novas marcações (Segunda marcação de eventos), que dão origem ao conjunto de dados de treinamento (Padrões de Treinamento). O restante do método é idêntico ao anterior, a rede neural artificial passa pelo treinamento (Treinamento da Rede Neural Artificial), capacitando-se para reconhecer padrões (Reconhecimento de Padrões). Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
+Depois que o arquivo com sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado na subseção \ref{Mod3}. O sinal resultante (Sinal resultante) passa pelo reconhecimento de padrões (Reconhecimento de Padrões). Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.4\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
 	\caption[Fluxograma com extração de características]{Fluxograma com extração de características}
 	\fonte{Autoria própria}
 	\label{FluxoCorrel}
@@ -555,7 +555,6 @@ Os recursos de \textit{Software} utilizados neste projeto correspondem ao seguin
 	\item \textit{Visual Studio};
     \item Plataforma \textit{Microsoft} .NET versão 4.5;
 	\item Biblioteca \textit{NeuroLoopGain};
-	\item Biblioteca \textit{BrainNet Library}.
 \end{itemize}
 
 Para obter gratuitamente a licença do ambiente de desevolvimento \textit{Visual Studio}, a equipe se associou ao programa \text{DreamSpark}, da Universidade Tecnológica Federal do Paraná. Os demais recursos utilizados são gratuitos.
