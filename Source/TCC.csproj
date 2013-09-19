@@ -87,6 +87,15 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge">
+      <HintPath>Lib_MLP2\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls">
+      <HintPath>Lib_MLP2\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Neuro">
+      <HintPath>Lib_MLP2\AForge.Neuro.dll</HintPath>
+    </Reference>
     <Reference Include="BrainNet.NeuralFramework">
       <HintPath>Framework_Neural\bin\BrainNet.NeuralFramework.dll</HintPath>
     </Reference>
@@ -96,9 +105,6 @@
     <Reference Include="NeuroLoopGainLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib_EDF\Library\bin\Debug\NeuroLoopGainLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="NeuronDotNet.Core">
-      <HintPath>Lib_MLP2\NeuronDotNet.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
