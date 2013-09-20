@@ -170,11 +170,11 @@ namespace AmbienteRPB
                 }
                 case("BackPropagation_AllEvnts"):
                 {
-                    int loopMAX = 6;
+                    int loopMAX = 2;
                     float inicio = DateTime.Now.Minute;
                     while (treinarnova && loopMAX != 0)
                     {
-                        //Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados,null,null);
+                        Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados,null,null);
                         //Utilizando o backPropagation 
                         send_SmS(0, "", false);
                         send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
@@ -189,9 +189,7 @@ namespace AmbienteRPB
                                 send_SmS(1, "Treinada", false);
                             }
                             else
-                            {
                                 MenorTamanho = network.InputLayer.Count;
-                            }
                             send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                             Rodar(Sinal, i);
                             if (!treinarnova)
@@ -202,7 +200,10 @@ namespace AmbienteRPB
                                 //limpa os dados se existirem
                                 double[] dados = new double[1];
                                 Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
+                                Thread.Sleep(10);
                             }
+                            else
+                                send_SmS(1, "ERRO", false);
                         }
                         loopMAX--;
                     }
@@ -478,6 +479,7 @@ namespace AmbienteRPB
                     else
                         saidaInt[0] = 0;
                 }
+                load_progress_bar(1, 3);
                 //Saida de resultados impressos em numeros até 5 mil amostras
                 //if(i < 5000)
                 //    ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
@@ -514,10 +516,10 @@ namespace AmbienteRPB
                  load_progress_bar(0, 1);
             }
             load_progress_bar(1, 3);
-            if (!treinarnova)
-                send_SmS(1, ReltsGerados, false);
-            else
-                novaRedeMLP();
+            //if (!treinarnova)
+            //    send_SmS(1, ReltsGerados, false);
+            //else
+            //    novaRedeMLP();
         }
         //====================================================================================================
         //                                ...Funções de saida do sistema... 
@@ -627,7 +629,7 @@ namespace AmbienteRPB
                             prb.Series.Add("canal" + CanalParaPlotar);
                             prb.Series["canal" + CanalParaPlotar].ChartArea = "canal" + CanalParaPlotar;
                             prb.Series["canal" + CanalParaPlotar].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-                            prb.Series["canal" + CanalParaPlotar].Color = Color.Orange;
+                            prb.Series["canal" + CanalParaPlotar].Color = Color.Red;
                         break;
                     }
                     case ("BKP"):
