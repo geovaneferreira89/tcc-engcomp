@@ -203,7 +203,7 @@ namespace AmbienteRPB
                                 Thread.Sleep(10);
                             }
                             else
-                                send_SmS(1, "ERRO", false);
+                                send_SmS(1, "Retreinando a Rede.", false);
                         }
                         loopMAX--;
                     }

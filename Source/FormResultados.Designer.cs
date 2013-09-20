@@ -328,7 +328,7 @@
             // 
             this.salvarRedeToolStripMenuItem.Enabled = false;
             this.salvarRedeToolStripMenuItem.Name = "salvarRedeToolStripMenuItem";
-            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salvarRedeToolStripMenuItem.Text = "Salvar Rede";
             this.salvarRedeToolStripMenuItem.Click += new System.EventHandler(this.salvarRedeToolStripMenuItem_Click);
             // 
@@ -337,7 +337,7 @@
             this.importarRedeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.treinar100VezesToolStripMenuItem});
             this.importarRedeToolStripMenuItem.Name = "importarRedeToolStripMenuItem";
-            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.importarRedeToolStripMenuItem.Text = "Importar Rede";
             this.importarRedeToolStripMenuItem.Click += new System.EventHandler(this.importarRedeToolStripMenuItem_Click);
             // 
@@ -352,13 +352,14 @@
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(149, 6);
             // 
             // redeMLP2ToolStripMenuItem
             // 
             this.redeMLP2ToolStripMenuItem.Name = "redeMLP2ToolStripMenuItem";
             this.redeMLP2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redeMLP2ToolStripMenuItem.Text = "Rede MLP 2";
+            this.redeMLP2ToolStripMenuItem.Visible = false;
             this.redeMLP2ToolStripMenuItem.Click += new System.EventHandler(this.redeMLP2ToolStripMenuItem_Click);
             // 
             // btnMarcacoes
