@@ -1,0 +1,47 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2013.8.19)  25 AUG 2013 19:35
+entering extended mode
+**C:/Users/Ge/Desktop/tcc/monografia/daeln/reflatex.bib
+(C:/Users/Ge/Desktop/tcc/monografia/daeln/reflatex.bib
+Overfull \hbox (128.13527pt too wide) in paragraph at lines 40--50
+\tenrm isbn=9780073039381, lccn=99021139, se-ries=Electrical en-gi-neer-ing se-
+ries, url=http://books.google.com.br/books?id=ZNQQAQAAIAAJ,|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm i
+.\tenrm s
+.\tenrm b
+.\tenrm n
+.\tenrm =
+.etc.
+
+
+Overfull \hbox (16.95096pt too wide) in paragraph at lines 51--59
+\tenrm computing;CD-ROM;ECG recordings;MIT-BIH Ar-rhyth-mia Database;medical da
+ta;Assembly;CD recording;CD-|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\tenrm c
+.\tenrm o
+.\tenrm m
+.\tenrm p
+.\tenrm u
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.64  issue_
+            date = {June 2006},
+? 
+! Emergency stop.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.64  issue_
+            date = {June 2006},
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!
