@@ -116,34 +116,40 @@ namespace AmbienteRPB
                 case("Kohonen"):
                 {
                     float min_inicio = DateTime.Now.Minute;
-                    float hr_inicio = DateTime.Now.Hour;
+                    send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    X_Vals = new List<double>();
+                    Y_Vals = new List<double>();
                     int [] offset = new int[2];
                     offset[0] = MenorTamanho;
                     Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                     Plotar("CLEAR", null, 1, CanalParaPlotar+1, selecaoAtual, vetorDeResultados, null, null);
                     Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
-                    send_SmS(2, "Inicializando", false);
+                    send_SmS(1, "Adicionando Entradas e treinando", false);
+                    int inicio = 0;
+                    int divisaoKo = 3;
                     Initialise_KHn();
-                    send_SmS(1, "Adicionando Entradas", false);
-                    LoadData_KHn(file);
-                    NormalisePatterns_KHn();
                     send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
-                    Train_KHn(0.0001);
-                    send_SmS(1, "Resultados: ", false);
-                    DumpCoordinates_KHn();
-                    send_SmS(1, "Fim", false);
-                    send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Hour - hr_inicio) + " hrs " + Convert.ToString(DateTime.Now.Minute - min_inicio) + " min", true);
-                    //Imprime a matriz de resultados
-                    send_SmS(1, "Matriz do Kohonen", false); 
-                   /* for (int i = 0; i < length; i++)
+                    for (int max = 0; max < divisaoKo; max++)
                     {
-                        string saida = "";
-                        for (int j = 0; j < length; j++)
-                        {
-                            saida += SaidaFinal[j, i] + "\t";
-                        }
-                        send_SmS(1, saida, false);
-                    }*/
+                        LoadData_KHn(file, inicio, ((max + 1) * (VetTreinamento / divisaoKo)));
+                        NormalisePatterns_KHn();
+                        Train_KHn(0.0001);
+                        DumpCoordinates_KHn();
+                        inicio = inicio + (VetTreinamento / divisaoKo);
+                    }
+                    //Imprime a matriz de resultados
+                    send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                    send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Minute - min_inicio) + " min.", false);
+                    /* send_SmS(1, "Matriz do Kohonen", false); 
+                     for (int i = 0; i < length; i++)
+                     {
+                         string saida = "";
+                         for (int j = 0; j < length; j++)
+                         {
+                             saida += SaidaFinal[j, i] + "\t";
+                         }
+                         send_SmS(1, saida, false);
+                     }*/
                     if(!it_is_debug)
                         Plotar("PlotKohonen", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
                     break;
@@ -686,13 +692,21 @@ namespace AmbienteRPB
                        
                            for (int i = 0;  i < X_.Count; i++)
                             {
-                                for (int k = 0; k < 5; k++)
-                                {
-                                    if (X_[i] == 0 && Y_[i] >= 0 && Y_[i] < 3)
+                               // for (int k = 0; k < 5; k++)
+                               // {
+                                    if (X_[i] == 0 && Y_[i] == 0)
+                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
+                                    else if (X_[i] == 0 && Y_[i] == 1)
+                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
+                                    else if (X_[i] == 0 && Y_[i] == 2)
+                                          prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
+                                    else if (X_[i] == 0 && Y_[i] == 3)
                                         prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
+                                    else if (X_[i] == 0 && Y_[i] == 4)
+                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
                                     else
                                         prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
-                                }
+                                //}
                                 //Mapa
                                 prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i]);
                             }
@@ -766,14 +780,15 @@ namespace AmbienteRPB
             }
         }
         //----------------------------------------------------------------------------------------
-        private void LoadData_KHn(string file)
+        private void LoadData_KHn(string file, int ValAtual, int fim)
         {
             load_progress_bar(1, 3);
             load_progress_bar(0, 4);
-            load_progress_bar(VetTreinamento, 2);
+            load_progress_bar(fim, 2);
             int cont = 0;
+            patterns.Clear();
             //VetTreinamento é o numero total de amostras que sera apresentada kohonen e classificada por ele
-            for (int i = 0; i < VetTreinamento; i++)
+            for (int i = ValAtual; i < fim; i++)
             {
                 double[] inputs = new double[dimensions];
                 //VetorEvento é o numero de amostras por evento, recomendase sempre acima de 50 amostras por evento
@@ -817,7 +832,7 @@ namespace AmbienteRPB
         {
             load_progress_bar(1, 3);
             load_progress_bar(0, 4);
-            load_progress_bar(100, 2);
+            load_progress_bar(10, 2);
             double currentError = double.MaxValue;
             int count = 0;
             while (currentError > maxError)
@@ -834,7 +849,7 @@ namespace AmbienteRPB
                     currentError += TrainPattern_KHn(pattern);
                     TrainingSet.Remove(pattern);
                 }
-                send_SmS(1, Convert.ToString(count) + " - " + Convert.ToString(currentError), true);
+                //send_SmS(1, Convert.ToString(count) + " - " + Convert.ToString(currentError), true);
                 count++;
                 load_progress_bar(0, 1);
             }
@@ -859,8 +874,6 @@ namespace AmbienteRPB
         private void DumpCoordinates_KHn()
         {
             double[] dados = new double[10];
-            X_Vals = new List<double>();
-            Y_Vals = new List<double>();
             //it_is_debug = true;
             for (int i = 0; i < patterns.Count; i++)
             {
@@ -870,11 +883,11 @@ namespace AmbienteRPB
 
                 if (!it_is_debug)
                 {
-                    //for (int k = 0; k < pulo; k++)
-                    //{
+                    for (int k = 0; k < pulo; k++)
+                    {
                         X_Vals.Add(n.X);
                         Y_Vals.Add(n.Y);
-                    //}
+                    }
                 }
                 else
                 {
