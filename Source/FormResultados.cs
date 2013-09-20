@@ -807,9 +807,9 @@ namespace AmbienteRPB
                     bool state = true;
                     while (state)
                     {
-                        DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                        if (debug == DialogResult.Yes)
-                        {
+                        //DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
+                        //if (debug == DialogResult.Yes)
+                        //{
                             SMS_Box.Clear();
                             string TipoBkP;
                             //Verifica se a RN foi criada
@@ -858,9 +858,9 @@ namespace AmbienteRPB
                             Thread_RN.Start();
                             //Habilita a opção de poder exportar para o form principal
                             RN_Rodou = true;
-                        }
-                        else
-                            state = false;
+                        //}
+                        //else
+                          state = false;
                     }
                 }
             }
@@ -1372,7 +1372,7 @@ namespace AmbienteRPB
                 bool EmUM = false;
                 for (int i = 0; i < resultados.Count; i++)
                 {
-                    if (resultados[i] == 1)
+                    if (resultados[i] != 0)
                     {
                         EmUM = true;
                         contador++;
@@ -1381,7 +1381,6 @@ namespace AmbienteRPB
                     {
                       //  resultadosFiltrado.Add((i - (contador / 2)));
                         resultadosFiltrado.Add(i);
-
                         EmUM = false;
                         contador = 0;
                     }

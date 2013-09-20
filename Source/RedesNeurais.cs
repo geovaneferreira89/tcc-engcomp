@@ -126,7 +126,7 @@ namespace AmbienteRPB
                     Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
                     send_SmS(1, "Adicionando Entradas e treinando", false);
                     int inicio = 0;
-                    int divisaoKo = 3;
+                    int divisaoKo = 4;
                     Initialise_KHn();
                     send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
                     for (int max = 0; max < divisaoKo; max++)
