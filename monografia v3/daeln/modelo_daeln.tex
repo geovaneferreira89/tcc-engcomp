@@ -121,7 +121,7 @@ According to \cite{Zhang2007}, electrocardiographic recordings are considered  t
 \chapter{Materiais e Métodos} %ou Materiais e Métodos 
 \label{sec:Materiais}
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Biblioteca Utilizada \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Biblioteca Utilizada \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologias Detalhadas \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
@@ -228,7 +228,7 @@ A figura \ref{tela2} mostra a impressão no sinal na tela do sistema. Além dos si
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./figs/tela2.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=1\textwidth]{./figs/tela2.png} % <- formatos PNG, JPG e PDF
 	\caption[Tela de visualização do sinal no sistema]{Tela de visualização do sinal no sistema}
 	\fonte{Autoria Própria}
 	\label{tela2}
@@ -250,7 +250,7 @@ O usuário pode selecionar uma cor disponível no menu do lado esquerdo, e em segu
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./figs/tela3.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=1\textwidth]{./figs/tela3.png} % <- formatos PNG, JPG e PDF
 	\caption[Marcações de eventos]{Marcações de eventos}
 	\fonte{Autoria Própria}
 	\label{tela2}
@@ -261,7 +261,7 @@ Após a realização de algumas marcações, o usuário pode editá-las por meio do Edi
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./figs/tela5.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.6\textwidth]{./figs/tela5.png} % <- formatos PNG, JPG e PDF
 	\caption[Editor de marcações]{Editor de marcações}
 	\fonte{Autoria Própria}
 	\label{tela5}
@@ -269,17 +269,44 @@ Após a realização de algumas marcações, o usuário pode editá-las por meio do Edi
 
 \subsection{Módulo de Extração de Características}
 \label{Mod3} 
-Aqui será explicado o modo como foi utilizada a operação da Correlação.
-Correlação de um evento marcado com o sinal inteiro, gerando um novo sinal... com picos onde eventos daquele tipo ocorrem.
+O módulo de extração de características produz um novo sinal, que pode ser utilizado como entrada do módulo de reconhecimento de padrões. O seu funcionamento é explicado com detalhes na subseção Metodologia da Extração de Caracteríticas \ref{subsec:met1} da seção de Metodologias Detalhadas \ref{sec:Met-Testes}. Contudo, de modo resumido, pode se dizer que a função correlação pode ser aplicada sucessivas vezes em um evento salvo (do tipo que se quer buscar, no caso o complexo QRS) e o sinal de Eletroencefalografia (ECG). O resultado pode ser observado na figura \ref{telaEC}, o primeiro sinal corresponde ao sinal original de ECG, e o segundo foi produzido pela extração de características. O acesso desta tela pode ser obtido ao selecionar Menu Ferramentas e Técnicas de Reconhecimento.
 
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/corr4.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela da extração de características]{Tela da extração de características}
+	\fonte{Autoria Própria}
+	\label{telaEC}
+\end{figure}
 
 \subsection{Módulo de Reconhecimento de padrões}
 \label{Mod4} 
-No caso utilizamos a Rede Neural MultiLayer Perceptron.
+O módulo de reconhecimento de padrões utiliza um Mapa de Kohonen para identificar o complexo QRS. Para acessar este módulo, basta selecionar na tela de Técnicas de Reconhecimento a opção Técnicas e em seguida Kohonen. Será exibida uma tela da figura \ref{105}, que permite configurar o mapa, tais como tamanho, uso da correlação (extração de características) e tamanho das amostras (explicado em detalhes em \ref{subsec:met2}).
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/rec0.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de configuração do mapa de Kohonen]{Tela de configuração do mapa de Kohonen}
+	\fonte{Autoria Própria}
+	\label{rec0}
+\end{figure}
+
+
+A figura \ref{105} mostra a tela em que são exibidos os resultados após a execução da etapa de reconhecimento de padrões. O sinal em laranja apresenta amplitude elevada nas detecções do padrão.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/rec2.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de resultados]{Tela de resultados}
+	\fonte{Autoria Própria}
+	\label{rec1}
+\end{figure}
+
+Da mesma maneira que o módulo anterior, a metodologia em detalhes do módulo de reconhecimento de padrões será descrita na subseção \ref{subsec:met2} da seção de Metodologias Detalhadas \ref{sec:Met-Testes}.  
 
 \subsection{Módulo de Avaliação de Resultados}
 \label{Mod5} 
-Módulo que compara marcações com os resultados obtidos.
+Com a conclusão da etapa de reconhecimento de padrões, podem ser gerados dados estatísticos para medir o desempenho do sistema. Os resultados obtidos são comparados às marcações provenientes da base de dados, que indicam existência do complexo QRS no sinal. A partir disso, são contabilizados a quantidade de verdadeiros positivos (VP), falsos positivos (FP), verdadeiros negativos (VN) e falsos negativos (FN) e exibidos no terminal da tela de Técnicas de Reconhecimento.
 
 \section{Modelagem UML}
 \label{sec:UML}
@@ -325,7 +352,7 @@ A finalidade da existência de cada classe do sistema está resumida na tabela \re
 	\fonte{Autoria Própria}
 \end{table}
 
-\section{Metodologia de Testes}
+\section{Metodologias Detalhadas}
 \label{sec:Met-Testes}
 Esta seção visa explicar as metodologias utilizadas na implementação dos módulos do sistema por meio das subseções: Metodologia da Extração de Características \ref{subsec:met1}, Metodologia do Reconhecimento de Padrões \ref{subsec:met2} e Metodologia da Avaliação dos Resultados \ref{subsec:Aval}.
 
