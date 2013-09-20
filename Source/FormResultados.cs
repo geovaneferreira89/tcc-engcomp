@@ -804,64 +804,54 @@ namespace AmbienteRPB
                     double[] vectorSignal = new double[chart1.Series["canal" + canalDados].Points.Count];
                     for (int i = 0; i < chart1.Series["canal" + canalDados].Points.Count; i++)
                         vectorSignal[i] = chart1.Series["canal" + canalDados].Points[i].YValues[0];
-                    bool state = true;
-                    while (state)
+                    SMS_Box.Clear();
+                    string TipoBkP;
+                    //Verifica se a RN foi criada
+                    if (!RN_Importada)
                     {
-                        DialogResult debug = MessageBox.Show("Iniciar, este é um loop para ficar treinando a RN sempre, vou retirar depois...", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-                        if (debug == DialogResult.Yes)
+                        PadroesATreinar = new int[1];
+                        PadroesATreinar[0] = ID_PadraoAtual;
+                        //Só busca um evento
+                        eventos = new string[1];
+                        eventos[0] = Convert.ToString(ID_PadraoAtual);
+                        TipoBkP = "BackPropagation";
+                        if (FormDadosInput.UsarListaDeTodosEnventos)
                         {
-                            SMS_Box.Clear();
-                            string TipoBkP;
-                            //Verifica se a RN foi criada
-                            if (!RN_Importada)
+                            TipoBkP = "BackPropagation_AllEvnts";
+                            if (!FormDadosInput.UsarReferencia)
                             {
-                                PadroesATreinar = new int[1];
-                                PadroesATreinar[0] = ID_PadraoAtual;
-                                //Só busca um evento
-                                eventos = new string[1];
-                                eventos[0] = Convert.ToString(ID_PadraoAtual);
-                                TipoBkP = "BackPropagation";
-                                if (FormDadosInput.UsarListaDeTodosEnventos)
+                                for (int i = 0; i < PadroesATreinar.Count(); i++)
                                 {
-                                    TipoBkP = "BackPropagation_AllEvnts";
-                                    if (!FormDadosInput.UsarReferencia)
+                                    for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
                                     {
-                                        for (int i = 0; i < PadroesATreinar.Count(); i++)
-                                        {
-                                            for (int cont = 0; cont < ListaDeEventos[PadroesATreinar[i]].NumeroEventos; cont++)
-                                            {
-                                                int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
-                                                if ((cont == 0 && i == 0) || MenorTamanho > aux)
-                                                    MenorTamanho = aux;
-                                            }
-                                        }
+                                        int aux = (int)(ListaDeEventos[PadroesATreinar[i]].GetValorFim(cont).X - ListaDeEventos[PadroesATreinar[i]].GetValorInicio(cont).X);
+                                        if ((cont == 0 && i == 0) || MenorTamanho > aux)
+                                            MenorTamanho = aux;
                                     }
-                                    else
-                                        MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
                                 }
-                                else
-                                    MenorTamanho = vector_evento.Count();
-                                novaRedeMLP();
-                                salvarRedeToolStripMenuItem.Enabled = true;
                             }
-                            //Pergunta se quer treinar novamente a rede neural... algo assim
                             else
-                            {
-                                //So para nao dar erro na classe RedesNeurais
-                                TipoBkP = "BackPropagation_AllEvnts";
-                                PadroesATreinar = new int[1];
-                                PadroesATreinar[0] = 1;
-                                eventos = new string[1];
-                            }
-                            RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
-                            Thread_RN = new Thread(new ThreadStart(objBKP.Init));
-                            Thread_RN.Start();
-                            //Habilita a opção de poder exportar para o form principal
-                            RN_Rodou = true;
+                                MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
                         }
                         else
-                          state = false;
+                            MenorTamanho = vector_evento.Count();
+                        novaRedeMLP();
+                        salvarRedeToolStripMenuItem.Enabled = true;
                     }
+                    //Pergunta se quer treinar novamente a rede neural... algo assim
+                    else
+                    {
+                        //So para nao dar erro na classe RedesNeurais
+                        TipoBkP = "BackPropagation_AllEvnts";
+                        PadroesATreinar = new int[1];
+                        PadroesATreinar[0] = 1;
+                        eventos = new string[1];
+                    }
+                    RedesNeurais objBKP = new RedesNeurais(edfFileOutput, ListaDeEventos, FormDadosInput.UsarReferencia, FormDadosInput.TamVetores, FormDadosInput.Vetores, FormDadosInput.TreinamentoCom, null, chart1, canalDados, canalParaPlotar, progressBar, SMS_Box, vector_evento, vectorSignal, PadroesATreinar, TipoBkP, ref network, RN_Importada, MenorTamanho);
+                    Thread_RN = new Thread(new ThreadStart(objBKP.Init));
+                    //Habilita a opção de poder exportar para o form principal
+                    RN_Rodou = true;
+                    Thread_RN.Start();
                 }
             }
          }
