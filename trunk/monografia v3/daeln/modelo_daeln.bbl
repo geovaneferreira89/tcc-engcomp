@@ -1,0 +1,135 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.52 }
+
+\bibitem[Anghinah et al. 2006]{ANGHINAH2006}
+\abntrefinfo{Anghinah et al.}{ANGHINAH et al.}{2006}
+{ANGHINAH, R. et al. {Artefatos bio\'ogicos no EEG quantitativo}.
+\textbf{{Arquivos de Neuro~--Psiquiatria}}, 2006.}
+
+\bibitem[Bloch 2004]{bloch2004l}
+\abntrefinfo{Bloch}{BLOCH}{2004}
+{BLOCH, S. \textbf{Excel para engenheiros e cientistas}. [S.l.]: Livros
+  T{\'e}cnicos e Cient{\'\i}ficos, 2004.}
+
+\bibitem[Brown e Davis 2006]{Brown2006}
+\abntrefinfo{Brown e Davis}{BROWN; DAVIS}{2006}
+{BROWN, C.~D.; DAVIS, H.~T. Receiver operating characteristics curves and
+  related decision measures: A tutorial.
+\textbf{Chemometrics and Intelligent Laboratory Systems}, v.~80, n.~1, p. 24 --
+  38, 2006.
+ISSN 0169-7439.
+Dispon{\'\i}vel em:
+  $<$http://www.sciencedirect.com/science/article/pii/S0169743905000766$>$.}
+
+\bibitem[CONEP 2011]{CONEP}
+\abntrefinfo{CONEP}{CONEP}{2011}
+{CONEP. \textbf{Perguntas e Respostas Frequentes}. 2011.
+Dispon{\'\i}vel em:
+  $<$http://conselho.saude.gov.br/Web\_comissoes/conep/index.html$>$. Acesso
+  em: 25 de agosto de 2013.}
+
+\bibitem[Fawcett 2006]{FAWCETT2006}
+\abntrefinfo{Fawcett}{FAWCETT}{2006}
+{FAWCETT, T. An introduction to roc analysis.
+\textbf{Pattern Recogn. Lett.}, Elsevier Science Inc., New York, NY, USA,
+  v.~27, n.~8, p. 861--874, jun. 2006.
+ISSN 0167-8655.
+Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1016/j.patrec.2005.10.010$>$.}
+
+\bibitem[Gacek e Predycz 2011]{GACEK2011}
+\abntrefinfo{Gacek e Predycz}{GACEK; PREDYCZ}{2011}
+{GACEK, A.; PREDYCZ, W. \textbf{ECG Signal Processing, Classification and
+  Interpretation: A Comprehensive Framework of Computational Intelligence}.
+  [S.l.]: Springer, 2011.}
+
+\bibitem[Goldberger et al. 2000]{PhysioNet}
+\abntrefinfo{Goldberger et al.}{GOLDBERGER et al.}{2000}
+{GOLDBERGER, A.~L. et al. {PhysioBank, PhysioToolkit, and PhysioNet}:
+  Components of a new research resource for complex physiologic signals.
+\textbf{Circulation}, v.~101, n.~23, p. e215--e220, 2000.
+Circulation Electronic Pages:
+  http://circ.ahajournals.org/cgi/content/full/101/23/e215 PMID:1085218; doi:
+  10.1161/01.CIR.101.23.e215.}
+
+\bibitem[Guthikonda 2005]{Guthi}
+\abntrefinfo{Guthikonda}{GUTHIKONDA}{2005}
+{GUTHIKONDA, S.~M. \textbf{Kohonen Self Organizing Maps}. 2005.
+Dispon{\'\i}vel em: $<$http://shy.am/writings/Kohonen\_SOMs.pdf$>$. Acesso em:
+  18 de setembro de 2013.}
+
+\bibitem[Haykin 2011]{HAYKIN2011}
+\abntrefinfo{Haykin}{HAYKIN}{2011}
+{HAYKIN, S. \textbf{Neural Networks: A Comprehensive Foundation}. 2nd. ed.
+  [S.l.]: Pearson Prentice Hall, 2011. 823~p.}
+
+\bibitem[Kemp e Olivan 2003]{Kemp20031755}
+\abntrefinfo{Kemp e Olivan}{KEMP; OLIVAN}{2003}
+{KEMP, B.; OLIVAN, J. European data format 'plus' (edf+), an \{EDF\} alike
+  standard format for the exchange of physiological data.
+\textbf{Clinical Neurophysiology}, v.~114, n.~9, p. 1755 -- 1761, 2003.}
+
+\bibitem[Malmivuo e Plonsey 1995]{MALMIVUO1995}
+\abntrefinfo{Malmivuo e Plonsey}{MALMIVUO; PLONSEY}{1995}
+{MALMIVUO, J.; PLONSEY, R. \textbf{Bioelectromagnetism - Principles and
+  Applications of Bioelectric and Biomagnetic Fields}. New York: Oxford
+  University Press, 1995. Dispon{\'\i}vel em: $<$http://www.bem.fi/book/$>$.}
+
+\bibitem[Massad, Ortega e Silveira 2004]{massad2004}
+\abntrefinfo{Massad, Ortega e Silveira}{MASSAD; ORTEGA; SILVEIRA}{2004}
+{MASSAD, E.; ORTEGA, N.; SILVEIRA, P. \textbf{M{\'e}todos quantitativos em
+  medicina}. [S.l.: s.n.], 2004.}
+
+\bibitem[Moody e Mark 1990]{MOODY1990}
+\abntrefinfo{Moody e Mark}{MOODY; MARK}{1990}
+{MOODY, G.; MARK, R. The mit-bih arrhythmia database on cd-rom and software for
+  use with it. In:  \textbf{Computers in Cardiology 1990, Proceedings.} [S.l.:
+  s.n.], 1990. p. 185--188.}
+
+\bibitem[NeuroLoopGain 2012]{Neuroloop}
+\abntrefinfo{NeuroLoopGain}{NEUROLOOPGAIN}{2012}
+{NEUROLOOPGAIN. \textbf{NeuroLoopGain}. 2012.
+Dispon{\'\i}vel em: $<$http://code.google.com/p/neuroloopgain/$>$. Acesso em:
+  09 de setembro de 2013.}
+
+\bibitem[Saraiva 2012]{SARAIVA2012}
+\abntrefinfo{Saraiva}{SARAIVA}{2012}
+{SARAIVA, A.~A.
+\textbf{Detec\c{c}\~ao do Complexo QRS atrav\'es de Morfologia Matem\'atica
+  Multiescalar}.
+Disserta\c{c}\~ao (Mestrado) --- Programa de P\'os~--Gradua\c{c}\~ao em
+  Engenharia Biom\'edica ~-- UTFPR, 2012.}
+
+\bibitem[Smith 1997]{smith}
+\abntrefinfo{Smith}{SMITH}{1997}
+{SMITH, S.~W. \textbf{The scientist and engineer's guide to digital signal
+  processing}. San Diego, CA, USA: California Technical Publishing, 1997.
+ISBN 0-9660176-3-3.}
+
+\bibitem[Sovierzoski 2009]{SOVIERZOSKI2009}
+\abntrefinfo{Sovierzoski}{SOVIERZOSKI}{2009}
+{SOVIERZOSKI, M.
+\textbf{Avalia\c{c}\~ao de Descritores Morfol\'ogicos na Identifica\c{c}\~ao de
+  Eventos Epileptiformes}.
+Tese (Doutorado) --- Programa de P\'os~--Gradua\c{c}\~ao em Engenharia
+  El\'etrica ~-- UFSC, 2009.}
+
+\bibitem[{The Apache Software Foundation} 2004]{Apache}
+\abntrefinfo{{The Apache Software Foundation}}{{The Apache Software
+  Foundation}}{2004}
+{{The Apache Software Foundation}. \textbf{Apache License, Version 2.0}. 2004.
+Dispon{\'\i}vel em: $<$http://www.apache.org/licenses/LICENSE-2.0$>$. Acesso
+  em: 09 de setembro de 2013.}
+
+\bibitem[Zhang e Lian 2007]{Zhang2007}
+\abntrefinfo{Zhang e Lian}{ZHANG; LIAN}{2007}
+{ZHANG, F.; LIAN, Y. Electrocardiogram qrs detection using multiscale filtering
+  based on mathematical morphology. In:  \textbf{Engineering in Medicine and
+  Biology Society, 2007. EMBS 2007. 29th Annual International Conference of the
+  IEEE}. [S.l.: s.n.], 2007. p. 3196--3199.
+ISSN 1557-170X.}
+
+\end{thebibliography}
