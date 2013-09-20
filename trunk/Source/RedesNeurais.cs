@@ -126,7 +126,7 @@ namespace AmbienteRPB
                     Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
                     send_SmS(1, "Adicionando Entradas e treinando", false);
                     int inicio = 0;
-                    int divisaoKo = 4;
+                    int divisaoKo = 3;
                     Initialise_KHn();
                     send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
                     for (int max = 0; max < divisaoKo; max++)
@@ -140,7 +140,7 @@ namespace AmbienteRPB
                     //Imprime a matriz de resultados
                     send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Minute - min_inicio) + " min.", false);
-                    /* send_SmS(1, "Matriz do Kohonen", false); 
+                    send_SmS(1, "Matriz do Kohonen", false); 
                      for (int i = 0; i < length; i++)
                      {
                          string saida = "";
@@ -149,7 +149,7 @@ namespace AmbienteRPB
                              saida += SaidaFinal[j, i] + "\t";
                          }
                          send_SmS(1, saida, false);
-                     }*/
+                     }
                     if(!it_is_debug)
                         Plotar("PlotKohonen", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
                     break;
@@ -174,7 +174,7 @@ namespace AmbienteRPB
                     float inicio = DateTime.Now.Minute;
                     while (treinarnova && loopMAX != 0)
                     {
-                        Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados,null,null);
+                        //Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados,null,null);
                         //Utilizando o backPropagation 
                         send_SmS(0, "", false);
                         send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
@@ -479,8 +479,8 @@ namespace AmbienteRPB
                         saidaInt[0] = 0;
                 }
                 //Saida de resultados impressos em numeros até 5 mil amostras
-                if(i < 5000)
-                    ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
+                //if(i < 5000)
+                //    ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
                 //-------------------------------------------------------
                 if (it_is_debug)
                 {
@@ -488,12 +488,14 @@ namespace AmbienteRPB
                         character = '~';
                     else
                         character = ' ';
-                    string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
-                    string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
-                    if (!chave)
-                        send_SmS(1, saida2, false);
+                   //string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
+                   // string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
+                   // if (!chave)
+                   //    send_SmS(1, saida2, false);
                     if (chave)
                     {
+                        string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
+                        string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
                         Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt, null, null);
                         send_SmS(1, saida2, true);
                         Thread.Sleep(12);
@@ -635,10 +637,7 @@ namespace AmbienteRPB
                             if (canal == 0)
                             {
                                 for (int i = 0; i < myArray.Count(); i++)
-                                {
                                     prb.Series["canal" + (CanalParaPlotar)].Points.AddY(myArray[i]);
-                                    load_progress_bar(0, 1);
-                                }
                             }
                             //Adiciona Zeros Offset
                             else if(canal == 3)
@@ -664,12 +663,22 @@ namespace AmbienteRPB
                     case ("AddDadoKohonen"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            if (dados[0] == 0 && dados[1] == 0)
-                                prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                            else if(dados[0] == 0 && dados[1] >= 0 && dados[1] < 3)
-                                prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                            else
-                                prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
+                            for (int k = 0; k < 3; k++)
+                            {
+                              
+                                if (dados[0] == 0 && dados[1] == 0)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
+                                else if (dados[0] == 0 && dados[1] == 1)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
+                                else if (dados[0] == 0 && dados[1] == 2)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
+                                else if (dados[0] == 0 && dados[1] == 3)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
+                                else if (dados[0] == 0 && dados[1] == 4)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
+                                else
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
+                            }
                             //Mapa
                             prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1]);
                             PointF zero = new PointF(0,0);
@@ -715,7 +724,8 @@ namespace AmbienteRPB
                     case ("Criar Chart de Barras"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            if (prb.Series.Count != (canal + 4)){
+                            if (prb.Series.Count != (canal + 4))
+                            {
                                 prb.Series.Add("canal" + (canal + 2));
                                 prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
                                 prb.Titles.Add("canal" + (canal + 2));
@@ -761,7 +771,7 @@ namespace AmbienteRPB
         // *****************************************   KOHONEN   *********************************************
         //====================================================================================================
         //
-        private int pulo = 5;
+        private int pulo = 3;
         private void Initialise_KHn()
         {
             SaidaFinal = new double[length, length];
@@ -874,12 +884,12 @@ namespace AmbienteRPB
         private void DumpCoordinates_KHn()
         {
             double[] dados = new double[10];
-            //it_is_debug = true;
+            it_is_debug = false;
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
                 string saida = n.X + " " + n.Y;
-                //SaidaFinal[n.X, n.Y] = SaidaFinal[n.X, n.Y] + 1;
+                SaidaFinal[n.X, n.Y] = SaidaFinal[n.X, n.Y] + 1;
 
                 if (!it_is_debug)
                 {
@@ -893,8 +903,8 @@ namespace AmbienteRPB
                 {
                     dados[0] = n.X;
                     dados[1] = n.Y;
-                    dados[2] = i;
-                    dados[3] = VetorEvento.Count() + i;
+                    dados[2] = i * pulo;
+                    dados[3] = VetorEvento.Count() + (i*pulo);
                     Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, null, null);
                     send_SmS(1, saida, true);
                     Thread.Sleep(1);
