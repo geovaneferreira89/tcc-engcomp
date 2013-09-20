@@ -26,24 +26,24 @@
 \contentsline {section}{\numberline {3.4}Sistema}{32}
 \contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{32}
 \contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{34}
-\contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{35}
-\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{37}
-\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{37}
-\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{37}
-\contentsline {section}{\numberline {3.5}Modelagem UML}{38}
-\contentsline {section}{\numberline {3.6}Metodologia de Testes}{39}
-\contentsline {subsection}{\numberline {3.6.1}Metodologia da Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{39}
-\contentsline {subsection}{\numberline {3.6.2}Metodologia da Classifica\c c\~ao de Padr\~oes}{40}
-\contentsline {subsection}{\numberline {3.6.3}Metodologia da Avalia\c c\~ao do Classificador}{41}
-\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{43}
-\contentsline {chapter}{\numberline {4}Resultados Obtidos}{44}
-\contentsline {section}{\numberline {4.1}Testes com Sinal de ECG}{44}
-\contentsline {section}{\numberline {4.2}Testes com ECG com extra\c c\~ao de caracter\IeC {\'\i }sticas}{45}
-\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{46}
-\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{47}
-\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{48}
-\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{49}
-\contentsline {section}{\numberline {6.1}Recursos de Hardware}{49}
-\contentsline {section}{\numberline {6.2}Recursos de Software}{49}
-\contentsline {section}{\numberline {6.3}Horas de Trabalho}{50}
-\contentsline {chapter}{REFER\^ENCIAS}{52}
+\contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{37}
+\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{39}
+\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{39}
+\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{41}
+\contentsline {section}{\numberline {3.5}Modelagem UML}{41}
+\contentsline {section}{\numberline {3.6}Metodologias Detalhadas}{42}
+\contentsline {subsection}{\numberline {3.6.1}Metodologia da Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{42}
+\contentsline {subsection}{\numberline {3.6.2}Metodologia da Classifica\c c\~ao de Padr\~oes}{43}
+\contentsline {subsection}{\numberline {3.6.3}Metodologia da Avalia\c c\~ao do Classificador}{44}
+\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{46}
+\contentsline {chapter}{\numberline {4}Resultados Obtidos}{47}
+\contentsline {section}{\numberline {4.1}Testes com Sinal de ECG}{47}
+\contentsline {section}{\numberline {4.2}Testes com ECG com extra\c c\~ao de caracter\IeC {\'\i }sticas}{48}
+\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{49}
+\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{50}
+\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{51}
+\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{52}
+\contentsline {section}{\numberline {6.1}Recursos de Hardware}{52}
+\contentsline {section}{\numberline {6.2}Recursos de Software}{52}
+\contentsline {section}{\numberline {6.3}Horas de Trabalho}{53}
+\contentsline {chapter}{REFER\^ENCIAS}{55}
