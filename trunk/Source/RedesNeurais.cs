@@ -15,11 +15,6 @@ using BrainNet.NeuralFramework;
 using System.Runtime.InteropServices;
 using System.Collections;
 
-using AForge;
-using AForge.Neuro;
-using AForge.Neuro.Learning;
-using AForge.Controls;
-
 namespace AmbienteRPB
 {
     public class RedesNeurais
@@ -179,32 +174,26 @@ namespace AmbienteRPB
                         send_SmS(0, "", false);
                         send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                         //busca pelo menor tamanho do dos eventos deste padrao... 
-                        vetorDeResultados = new int[Sinal.Count()];
-                        for (int i = 0; i < PadroesATreinar.Count(); i++)
+                        vetorDeResultados = new int[VetTreinamento];
+                        if (!RNImportada)
                         {
-                            if (!RNImportada)
-                            {
-                                send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
-                                TreinodaRede(VetorEvento, 1, "TodosEventos", i);
-                                send_SmS(1, "Treinada", false);
-                            }
-                            else
-                                MenorTamanho = network.InputLayer.Count;
-                            send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                            Rodar(Sinal, i);
-                            if (!treinarnova)
-                            {
-                                float fim = DateTime.Now.Minute;
-                                send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
-                                send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
-                                //limpa os dados se existirem
-                                double[] dados = new double[1];
-                                Plotar("BKP", dados, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
-                                Thread.Sleep(10);
-                            }
-                            else
-                                send_SmS(1, "Retreinando a Rede.", false);
+                            send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[0]].GetNomePadrao(), false);
+                            TreinodaRede(VetorEvento, 1, "TodosEventos", 0);
+                            send_SmS(1, "Treinada", false);
                         }
+                        else
+                            MenorTamanho = network.InputLayer.Count;
+                        send_SmS(1, "Reconhencendo: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                        Rodar(Sinal, 0);
+                        if (!treinarnova)
+                        {
+                            float fim = DateTime.Now.Minute;
+                            send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
+                            send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
+                            Plotar("BKP", null, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
+                        }
+                        else
+                            send_SmS(1, "Retreinando a Rede.", false);
                         loopMAX--;
                     }
                     if(loopMAX == 0)
@@ -213,20 +202,19 @@ namespace AmbienteRPB
                }
                case("BackPropagationTreinar100x"):
                {
-                        //Utilizando o backPropagation 
-                        send_SmS(0, "", false);
-                        send_SmS(2, "Inicializando.", false);
-                        //Busca pelo menor tamanho do dos eventos deste padrao... 
-                        vetorDeResultados = new int[Sinal.Count()];
-                        for(int i=0; i< PadroesATreinar.Count();i++)
-                        {
-                             send_SmS(1, "Treinando a rede 1000 + com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
-                             TreinodaRede(VetorEvento, 1, "TodosEventos", i);
-                             send_SmS(1, "Treinada", false);
-                        }
-                        break;
+                    //Utilizando o backPropagation 
+                    send_SmS(0, "", false);
+                    send_SmS(2, "Inicializando.", false);
+                    //Busca pelo menor tamanho do dos eventos deste padrao... 
+                    vetorDeResultados = new int[Sinal.Count()];
+                    for(int i=0; i< PadroesATreinar.Count();i++)
+                    {
+                            send_SmS(1, "Treinando a rede 1000 + com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
+                            TreinodaRede(VetorEvento, 1, "TodosEventos", i);
+                            send_SmS(1, "Treinada", false);
+                    }
+                    break;
                }
-
             }//Fim switch
         }//Fim MLP NOVA Testes 
         //_________________________________________________________________________________________________
@@ -243,7 +231,6 @@ namespace AmbienteRPB
             layers.Add(NeuroniosDaCamadaInterm);
             layers.Add(1);
 
-            List<float> pesosIniciais = new List<float>();
             network = new NeuralNetwork();
             foreach (int neurons in layers)
             {
@@ -254,11 +241,9 @@ namespace AmbienteRPB
                     for (i = 0; i <= neurons - 1; i++)
                     {
                         BrainNet.NeuralFramework.INeuron neuronio = new BrainNet.NeuralFramework.Neuron(strategy);
-                        pesosIniciais.Add(neuronio.BiasValue);
                         layer.Add(ref neuronio);
                     }
                     network.Layers.Add(layer);
-                    pesosIniciais.Add(9999999);
                 }
             }
             network.ConnectLayers();
@@ -416,7 +401,7 @@ namespace AmbienteRPB
                     helper.Train(1500);
                     //calculo do erro
                     NetworkSerializer erro = new BrainNet.NeuralFramework.NetworkSerializer();
-                    send_SmS(1, "Erro em : " + Convert.ToString(erro.GetERROR(network)), false); 
+                    send_SmS(1, "Erro em: " + Convert.ToString(erro.GetERROR(network)), false); 
                     break;
             }
             case ("SomenteUm"):
@@ -434,8 +419,8 @@ namespace AmbienteRPB
         public void Rodar(double[] input1, int RedeAtual)
         {
             load_progress_bar(0, 4);
-            load_progress_bar(VetTreinamento, 2);
-            int [] saidaInt = new int[1];
+            load_progress_bar(VetTreinamento - MenorTamanho, 2);
+            //int [] saidaInt = new int[1];
             double threshold = 0.1;
             char character;
             bool chave = true;
@@ -443,8 +428,7 @@ namespace AmbienteRPB
             //Corrige o problema de deslocamento do sinal para esquerda... 
             dados[1] = 0;
             dados[0] = 0;
-            string ReltsGerados = "";
-            for (int i = 0; i < vetorDeResultados.Count() - MenorTamanho; i++)
+            for (int i = 0; i < VetTreinamento - MenorTamanho; i++)
             {
                 MLP_output = new ArrayList();                
                 inputs = new ArrayList();
@@ -460,33 +444,30 @@ namespace AmbienteRPB
                 if (i <= 26)
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
-                    {
                         threshold = Convert.ToDouble(MLP_output[0]);
-                    }
-                   saidaInt[0] = 0;
+                    vetorDeResultados[i + (MenorTamanho / 2)] = 0;
                 }
                 else
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
                     {
-                        saidaInt[0] = 20;
+                        vetorDeResultados[i + (MenorTamanho / 2)] = 20;
                         treinarnova = false;
                     }
                     else if (threshold > Convert.ToDouble(MLP_output[0])){
-                       saidaInt[0] = 1;
+                        vetorDeResultados[i + (MenorTamanho / 2)] = 1;
                        treinarnova = false;
                     }
                     else
-                        saidaInt[0] = 0;
+                        vetorDeResultados[i + (MenorTamanho / 2)] = 0;
                 }
-                load_progress_bar(1, 3);
                 //Saida de resultados impressos em numeros até 5 mil amostras
                 //if(i < 5000)
                 //    ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
                 //-------------------------------------------------------
                 if (it_is_debug)
                 {
-                    if (saidaInt[0] == 1)
+                    if (vetorDeResultados[i + (MenorTamanho / 2)] == 1)
                         character = '~';
                     else
                         character = ' ';
@@ -497,8 +478,8 @@ namespace AmbienteRPB
                     if (chave)
                     {
                         string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
-                        string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
-                        Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, saidaInt, null, null);
+                        string saida2 = Convert.ToString(vetorDeResultados[i + (MenorTamanho / 2)]) + "\t" + character;
+                        Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                         send_SmS(1, saida2, true);
                         Thread.Sleep(12);
                         DialogResult resposta = MessageBox.Show("Dado: " + saida, "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OKCancel);
@@ -509,17 +490,11 @@ namespace AmbienteRPB
                         }
                     }
                 }
-                if (saidaInt[0] == 1)
-                    vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + RedeAtual + 1;     
-                else
-                    vetorDeResultados[i + (MenorTamanho / 2)] = vetorDeResultados[i + (MenorTamanho / 2)] + 0;
-                 load_progress_bar(0, 1);
+                load_progress_bar(0, 1);
             }
             load_progress_bar(1, 3);
-            //if (!treinarnova)
-            //    send_SmS(1, ReltsGerados, false);
-            //else
-            //    novaRedeMLP();
+            if (treinarnova)
+                novaRedeMLP();
         }
         //====================================================================================================
         //                                ...Funções de saida do sistema... 
