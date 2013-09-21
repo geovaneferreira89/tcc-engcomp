@@ -87,15 +87,6 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AForge">
-      <HintPath>Lib_MLP2\AForge.dll</HintPath>
-    </Reference>
-    <Reference Include="AForge.Controls">
-      <HintPath>Lib_MLP2\AForge.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="AForge.Neuro">
-      <HintPath>Lib_MLP2\AForge.Neuro.dll</HintPath>
-    </Reference>
     <Reference Include="BrainNet.NeuralFramework">
       <HintPath>Framework_Neural\bin\BrainNet.NeuralFramework.dll</HintPath>
     </Reference>

@@ -176,6 +176,3 @@ W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_10
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_105.edf
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\EEG_1.edf
 W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Marcações v3 - EEG105.txt
-W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\AForge.Controls.dll
-W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\AForge.dll
-W:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\AForge.Neuro.dll
