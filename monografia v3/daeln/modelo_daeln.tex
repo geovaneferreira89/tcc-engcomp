@@ -31,7 +31,7 @@
 \title{System for QRS Complex Detection in Electrocardiographical Signals } % titulo do trabalho em ingles
 
 \autor{Georgea Danielewicz \protect\\ Geovane Vinicius Ferreira} % autor do trabalho
-\cita{DANIELEWICZ, Georgea \protect e FERREIRA, Geovane Vinícius} % sobrenome (maiusculas), nome do autor do trabalho
+\cita{DANIELEWICZ, Georgea \protect e FERREIRA, Geovane Vinicius} % sobrenome (maiusculas), nome do autor do trabalho
 
 \palavraschave{análise de sinal, reconhecimento de padrões, eletrocardiografia, complexo QRS} % palavras-chave do trabalho
 \keywords{\textit{signal analysis}, \textit{pattern classification}, \textit{electrocardiography}, \textit{QRS-complex}} % palavras-chave do trabalho em ingles
@@ -334,19 +334,20 @@ A finalidade da existência de cada classe do sistema está resumida na tabela \re
 	\textbf{AV\_Resultado} 			& Gerencia resultados do sistema na avaliação \\ \hline
 	\textbf{GerenArquivos} 			& Gerencia arquivos (sinal e marcações) \\ \hline
 	\textbf{Correlacao} 			& Aplica função correlação no sinal \\ \hline
-	\textbf{Annotations\_Chart} 	& Carrega a lista de enventos marcados ou resultados \\ \hline
+	\textbf{Annotations\_Chart} 	& Carrega a lista de eventos marcados ou resultados \\ \hline
 	\textbf{atualiza\_sinal}    	& Carrega eventos marcados do sinal caso elas já existam \\ \hline
 	\textbf{AtualizarRefInChart}	& Atualiza o ponto de referência de um evento \\ \hline	
 	\textbf{Program}  				& Classe que inicializa o sistema \\ \hline	
 	\textbf{Licenca}            	& Gerencia licença do sistema \\ \hline
-	\textbf{Form\_Site}         	&  \\ \hline
+	\textbf{Form\_Site}         	& Carrega e exibe o website do projeto\\ \hline
 	\textbf{FormCarregar\_EDF}  	& Janela para selecionar arquivo contendo o sinal \\ \hline
 	\textbf{FormEditarNomePadrao}   & Janela de edição do nome do padrão \\ \hline
 	\textbf{FormEditorDeEventos}    & Janela de editor de eventos\\ \hline
-	\textbf{FormPrincipal}       	&  \\ \hline
-	\textbf{FormResultados}  		&  \\ \hline
-	\textbf{InfoEDF}           		&  \\ \hline
-	\textbf{MDIPrincipalForm}       &  \\ \hline
+	\textbf{FormPrincipal}       	& Janela principal do sistema, onde é exibido o sinal e realizada as marcações\\ \hline
+	\textbf{FormResultados}  		& Janela onde é mostrado canal por canal e a saída da correlação\\ \hline
+									& e as redes neurais quando executadas\\ \hline
+	\textbf{InfoEDF}           		& Exibe informações sobre o EDF, como nome do paciente, data\\ \hline
+	\textbf{MDIPrincipalForm}       & Tela inicial, onde pode-se abrir várias telas do FormPrincipal\\ \hline
 	\textbf{RedesNeurais}           & Realiza o reconhecimento de padrões \\ \hline
 	\end{tabular}
 	\fonte{Autoria Própria}
