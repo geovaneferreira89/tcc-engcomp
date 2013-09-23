@@ -642,7 +642,6 @@ namespace AmbienteRPB
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             for (int k = 0; k < 3; k++)
                             {
-                              
                                 if (dados[0] == 0 && dados[1] == 0)
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
                                 else if (dados[0] == 0 && dados[1] == 1)
@@ -675,7 +674,6 @@ namespace AmbienteRPB
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             for (int i = 0; i < (offset/3); i++)
                                 prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
-                       
                            for (int i = 0;  i < X_.Count; i++)
                             {
                                // for (int k = 0; k < 5; k++)

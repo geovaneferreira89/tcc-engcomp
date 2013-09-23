@@ -1,36 +1,27 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  20 SEP 2013 00:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.7.2)  23 SEP 2013 13:46
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **modelo_daeln.tex
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.tex"
+(./modelo_daeln.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
- lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
-ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
-an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
-ishmax, welsh, loaded.
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abnt-UTFPR.cls"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+(./abnt-UTFPR.cls (./cvs-id.def)
 Document Class: abnt-UTFPR 2009/11/03 v1.1
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(C:\Users\Ge\AppData\Roaming\MiKTeX\2.9\tex\latex\lastpage\lastpage.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2013/01/28 v1.2l Refers to last page's name (HMM; JPG)
 )
-(C:\Users\Ge\AppData\Roaming\MiKTeX\2.9\tex\latex\bigfoot\perpage.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/bigfoot/perpage.sty
 Package: perpage 2006/07/15 1.12 Reset/sort counters per page
 \c@abspage=\count79
-)
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abnt.cls"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+) (./abnt.cls
+(./cvs-id.def)
 Document Class: abnt 2006/09/09 v1.32 Classe abnt (NBR6024, NBR6027, NBR6028, N
 BR14724)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count80
 \calc@Bcount=\count81
@@ -43,7 +34,7 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count82
 \calc@Cskip=\skip43
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \c@tracingmulticols=\count83
 \mult@box=\box26
@@ -91,51 +82,42 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \colbreak@box=\box51
 \multicol@sort@counter=\count91
 )
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abntex-abrev.sty"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+(./abntex-abrev.sty (./cvs-id.def)
 Package: abntex-abrev 2005/11/14 v1.4 Abreviacoes
-
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\nbr10522-1988.def"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+ (./nbr10522-1988.def (./cvs-id.def)
 File: nbr10522-1988.def 2003/10/13 v1.2 Abreviacoes bibliograficas (NBR10522:19
 88)
 )
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abntex-abrev-pt_BR.def"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+(./abntex-abrev-pt_BR.def (./cvs-id.def)
 File: abntex-abrev-pt_BR.def 2005/11/14 v1.3 definicao de abntex-abrev, traduca
 o de termos en_US/pt_BR
-))
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abntex-text.sty"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+)) (./abntex-text.sty (./cvs-id.def)
 Package: abntex-text 2005/11/14 v1.1 abnTeX text replacements
 
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abntex-text-pt_BR.def"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+(./abntex-text-pt_BR.def (./cvs-id.def)
 File: abntex-text-pt_BR.def 2005/12/21 v1.2 Definicao de nomes em Portugues/Bra
 sil (pt_BR)
-))
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abntex-default-design.sty"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+)) (./abntex-default-design.sty
+(./cvs-id.def)
 Package: abntex-default-design 2005/06/22 v1.2 Definicoes de design padrao do a
 bntex
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
-Package: relsize 2003/07/04 ver 3.1
+(/usr/local/texlive/2013/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
 
 
-Package relsize Warning: Failed to get list of font sizes.
-(relsize)                Falling back to old definition. on input line 81.
+Package relsize Warning: Failed to get list of defined font sizes.
+(relsize)                Size scaling will attempt arbitrary sizes..
 
 )
 \ABNTanapindent=\skip46
 \ABNTsignwidth=\skip47
 \ABNTsignthickness=\skip48
 \ABNTsignskip=\skip49
-) ("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\nbr6027-1989.def")
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\nbr14724-2001.def")
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
+) (./nbr6027-1989.def) (./nbr14724-2001.def)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count92
@@ -151,10 +133,10 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip51
 \bibindent=\dimen112
 )
-(C:\Users\Ge\AppData\Roaming\MiKTeX\2.9\tex\latex\setspace\setspace.sty
+(/usr/local/texlive/2013/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\mathptmx.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/mathptmx.sty
 Package: mathptmx 2005/04/12 PSNFSS-v9.2a Times w/ Math, improved (SPQR, WaS) 
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -190,31 +172,28 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
 LaTeX Info: Redefining \hbar on input line 50.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\helvet.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 ))
 \c@absfigure=\count101
 \c@abstable=\count102
 \c@absequation=\count103
 )
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\abntcite.sty"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+(./abntcite.sty (./cvs-id.def)
 Package: abntcite 2006/04/25 v1.30 Chamadas de referencias no texto (NBR10520, 
 NBR10522)
 \minimumbiblabelwidth=\skip52
 \ABCIauxlen=\skip53
 \c@ABCIaux=\count104
 \c@ABCImax=\count105
-
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\nbr10520-2002.def"
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\cvs-id.def")
+ (./nbr10520-2002.def (./cvs-id.def)
 File: nbr10520-2002.def 2006/04/25 v1.4 Definicoes para abntcite (NBR10520:2002
 )
 )
@@ -223,52 +202,46 @@ LaTeX Info: Redefining \newblock on input line 466.
 LaTeX Info: Redefining \cite on input line 493.
 \ABCItoken=\toks15
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
-Package: babel 2008/07/08 v3.8m The Babel package
+(/usr/local/texlive/2013/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/05/16 v3.9f The Babel package
 
-*************************************
-* Local config file bblopts.cfg used
-*
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
-File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\portuges.ldf"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/babel-portuges/portuges.ldf
 Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
-File: babel.def 2008/07/08 v3.8m Babel common definitions
+(/usr/local/texlive/2013/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/05/16 v3.9f Babel common definitions
 \babel@savecnt=\count106
 \U@D=\dimen113
 )
 \l@brazil = a dialect from \language\l@portuges 
 Package babel Info: Making " an active character on input line 145.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latin1.def"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip55
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks18
 \ex@=\dimen114
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen115
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count107
@@ -309,37 +282,37 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup6
 \symAMSb=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count119
@@ -347,25 +320,25 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen123
 \Gin@req@width=\dimen124
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fixltx2e.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/fixltx2e.sty
 Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
 LaTeX Info: Redefining \em on input line 420.
 LaTeX Info: The control sequence `\[' is already robust on input line 471.
 LaTeX Info: The control sequence `\]' is already robust on input line 472.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen125
 )
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\extraplaceins.sty"
+(./extraplaceins.sty
 
 LaTeX Warning: You have requested package `extraplaceins',
                but the package provides `placeins'.
 
 Package: placeins 2005/04/18  v 2.2
-) (C:\Users\Ge\AppData\Roaming\MiKTeX\2.9\tex\latex\tabulary\tabulary.sty
+) (/usr/local/texlive/2013/texmf-dist/tex/latex/tabulary/tabulary.sty
 Package: tabulary 2008/12/01 v0.9 tabulary package (DPC)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen126
 \extrarowheight=\dimen127
@@ -379,7 +352,7 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \tymax=\dimen130
 \TY@tablewidth=\dimen131
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count121
 \float@exts=\toks24
@@ -387,7 +360,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks25
 \@floatcapt=\box55
 )
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.aux"
+(./modelo_daeln.aux
 
 LaTeX Warning: Label `tela2' multiply defined.
 
@@ -398,6 +371,8 @@ LaTeX Warning: Label `tab:rawECG' multiply defined.
 LaTeX Warning: Label `ROC2' multiply defined.
 
 )
+\openout1 = `modelo_daeln.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
@@ -411,7 +386,7 @@ LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 52.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 Package lastpage Info: Please have a look at the pageslts package at
@@ -422,7 +397,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
 (lastpage)             ! on input line 52.
 
-(C:\Users\Ge\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+(/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count122
 \scratchdimen=\dimen132
@@ -435,30 +410,78 @@ Package lastpage Info: Please have a look at the pageslts package at
 \MPnumerator=\count126
 \makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks27
+) (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 54
 .
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ztmcm.fd"
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 54
 .
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlztmcm.fd"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 54
 .
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsztmcm.fd"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 54
 .
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxztmcm.fd"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
@@ -469,48 +492,53 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
  [1
 
-{C:/Users/Ge/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1] [1
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1] [1
 
 
 ] [2
 
 
-] [3
+]
+[3
 
 
 ] [4
 
 
-]
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.lof")
+] (./modelo_daeln.lof)
 \tf@lof=\write3
+\openout3 = `modelo_daeln.lof'.
+
  [5
 
-]
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.lot")
+] (./modelo_daeln.lot)
 \tf@lot=\write4
+\openout4 = `modelo_daeln.lot'.
+
  [6
 
-]
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.lsg")
+] (./modelo_daeln.lsg)
 \tf@lsg=\write5
- [7
+\openout5 = `modelo_daeln.lsg'.
 
-]
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.toc" [8
+
+[7
+
+] (./modelo_daeln.toc [8
 
 
 ])
 \tf@toc=\write6
+\openout6 = `modelo_daeln.toc'.
 
-[9] ("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\intro.tex"
+ [9] (./intro.tex
 Cap\'{\i }tulo 1.
 [10
 
 
 ]
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 22.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
@@ -518,12 +546,12 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 
 Overfull \hbox (4.67393pt too wide) in paragraph at lines 24--25
 []\OT1/ptm/m/n/12 Reconhecimento de padr[]oes, re-a-li-zado a par-tir da extra[
-][]ao de ca-rac-ter[]sticas das marca[][]oes
+][]ao de ca-rac-ter[]^^Psticas das marca[][]oes
  []
 
-) ("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\fund.tex" [11]
+) (./fund.tex [11]
 Cap\'{\i }tulo 2.
-<./figs/heart.png, id=47, 451.6875pt x 438.13687pt>
+<./figs/heart.png, id=48, 451.6875pt x 438.13687pt>
 File: ./figs/heart.png Graphic file (type png)
  <use ./figs/heart.png>
 Package pdftex.def Info: ./figs/heart.png used on input line 13.
@@ -537,101 +565,97 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 
 [12
 
-] <./figs/muscle.png, id=51, 371.88937pt x 430.60875pt>
+] <./figs/muscle.png, id=52, 371.88937pt x 430.60875pt>
 File: ./figs/muscle.png Graphic file (type png)
 
 <use ./figs/muscle.png>
 Package pdftex.def Info: ./figs/muscle.png used on input line 27.
 (pdftex.def)             Requested size: 273.14923pt x 316.28664pt.
- [13 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/heart.png>] [14 <C:/
-Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/muscle.png>]
+ [13 <./figs/heart.png>] [14 <./figs/muscle.png>]
 Overfull \hbox (0.95213pt too wide) in paragraph at lines 42--43
 []\OT1/ptm/m/n/12 Estas mudan[]as no po-ten-cial el[]etrico du-rante os pro-ces
 -sos de despolariza[][]ao e repolariza[][]ao
  []
 
-[15] <./figs/leads.png, id=61, 275.52937pt x 271.0125pt>
+[15] <./figs/leads.png, id=62, 275.52937pt x 271.0125pt>
 File: ./figs/leads.png Graphic file (type png)
 
 <use ./figs/leads.png>
 Package pdftex.def Info: ./figs/leads.png used on input line 106.
 (pdftex.def)             Requested size: 273.14923pt x 268.69604pt.
- [16] [17 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/leads.png>] <./
-figs/QRS.png, id=69, 602.25pt x 259.7203pt>
+ [16] [17 <./figs/leads.png>]
+<./figs/QRS.png, id=70, 602.25pt x 259.7203pt>
 File: ./figs/QRS.png Graphic file (type png)
-
-<use ./figs/QRS.png>
+ <use ./figs/QRS.png>
 Package pdftex.def Info: ./figs/QRS.png used on input line 137.
 (pdftex.def)             Requested size: 364.19667pt x 157.06587pt.
- [18] <./figs/corre.png, id=73, 636.12656pt x 261.97874pt>
+ [18]
+<./figs/corre.png, id=74, 636.12656pt x 261.97874pt>
 File: ./figs/corre.png Graphic file (type png)
-
-<use ./figs/corre.png>
+ <use ./figs/corre.png>
 Package pdftex.def Info: ./figs/corre.png used on input line 152.
 (pdftex.def)             Requested size: 409.71692pt x 168.73314pt.
- [19 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/QRS.png>]
+
+[19 <./figs/QRS.png>]
 Overfull \hbox (15.19627pt too wide) in paragraph at lines 174--175
 []\OT1/ptm/m/n/12 As uni-da-des b[]asicas de pro-ces-sa-mento de uma rede neu-r
 al ar-ti-fi-cial s[]ao cha-ma-das de neur[]onios,
  []
 
-<./figs/RN2.png, id=81, 505.89pt x 342.5297pt>
+<./figs/RN2.png, id=82, 505.89pt x 342.5297pt>
 File: ./figs/RN2.png Graphic file (type png)
  <use ./figs/RN2.png>
 Package pdftex.def Info: ./figs/RN2.png used on input line 180.
 (pdftex.def)             Requested size: 273.14923pt x 184.9476pt.
- [20 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/corre.png>]
-<./figs/map1.png, id=85, 289.08pt x 365.11406pt>
+ [20 <./figs/corre.png>] <./figs/map1.png, id=86, 289.08pt x 365.11406pt>
 File: ./figs/map1.png Graphic file (type png)
- <use ./figs/map1.png>
+
+<use ./figs/map1.png>
 Package pdftex.def Info: ./figs/map1.png used on input line 196.
 (pdftex.def)             Requested size: 182.09486pt x 229.98964pt.
- [21 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/RN2.png>] [22 <C:/Us
-ers/Ge/Desktop/tcc2013/monografia v3/daeln/figs/map1.png>]
-<./figs/color1.png, id=92, 277.78781pt x 277.035pt>
+ [21 <./figs/RN2.png>] [22 <./figs/map1.png>]
+<./figs/color1.png, id=93, 277.78781pt x 277.035pt>
 File: ./figs/color1.png Graphic file (type png)
  <use ./figs/color1.png>
 Package pdftex.def Info: ./figs/color1.png used on input line 245.
 (pdftex.def)             Requested size: 182.09486pt x 181.60509pt.
 
-<./figs/color2.png, id=93, 295.85532pt x 269.50688pt>
+<./figs/color2.png, id=94, 295.85532pt x 269.50688pt>
 File: ./figs/color2.png Graphic file (type png)
  <use ./figs/color2.png>
 Package pdftex.def Info: ./figs/color2.png used on input line 255.
 (pdftex.def)             Requested size: 182.09486pt x 165.8835pt.
 
-[23 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/color1.png>]
-<./figs/tab.png, id=98, 575.14874pt x 130.98938pt>
+[23 <./figs/color1.png>] <./figs/tab.png, id=99, 575.14874pt x 130.98938pt>
 File: ./figs/tab.png Graphic file (type png)
- <use ./figs/tab.png>
+
+<use ./figs/tab.png>
 Package pdftex.def Info: ./figs/tab.png used on input line 276.
 (pdftex.def)             Requested size: 455.24411pt x 103.68433pt.
-
-[24 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/color2.png> <C:/Users
-/Ge/Desktop/tcc2013/monografia v3/daeln/figs/tab.png>]
-<./figs/TesteDiag.png, id=102, 511.9125pt x 299.61937pt>
+ [24 <./figs/color2.png> <./figs/tab.png>]
+<./figs/TesteDiag.png, id=103, 511.9125pt x 299.61937pt>
 File: ./figs/TesteDiag.png Graphic file (type png)
 
 <use ./figs/TesteDiag.png>
 Package pdftex.def Info: ./figs/TesteDiag.png used on input line 292.
 (pdftex.def)             Requested size: 318.66948pt x 186.51643pt.
- [25 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/TesteDiag.png>]
-<./figs/SensibEspec.png, id=106, 429.10312pt x 427.5975pt>
+ [25 <./figs/TesteDiag.png>]
+<./figs/SensibEspec.png, id=107, 429.10312pt x 427.5975pt>
 File: ./figs/SensibEspec.png Graphic file (type png)
 
 <use ./figs/SensibEspec.png>
 Package pdftex.def Info: ./figs/SensibEspec.png used on input line 321.
 (pdftex.def)             Requested size: 273.14923pt x 272.19342pt.
- [26 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/SensibEspec.png>] <.
-/figs/ROC.png, id=110, 427.5975pt x 406.51875pt>
+ [26 <./figs/SensibEspec.png>]
+<./figs/ROC.png, id=111, 427.5975pt x 406.51875pt>
 File: ./figs/ROC.png Graphic file (type png)
-
-<use ./figs/ROC.png>
+ <use ./figs/ROC.png>
 Package pdftex.def Info: ./figs/ROC.png used on input line 336.
 (pdftex.def)             Requested size: 182.09486pt x 173.11864pt.
- [27 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/ROC.png>]) [28]
+
+[27 <./figs/ROC.png>]) [28]
 Cap\'{\i }tulo 3.
-<./figs/105.png, id=117, 464.4853pt x 252.945pt>
+<./figs/105.png, id=118, 464.4853pt x 252.945pt>
 File: ./figs/105.png Graphic file (type png)
  <use ./figs/105.png>
 Package pdftex.def Info: ./figs/105.png used on input line 137.
@@ -639,56 +663,53 @@ Package pdftex.def Info: ./figs/105.png used on input line 137.
  [29
 
 ]
-[30 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/105.png>]
-<./figs/ATM.png, id=125, 994.46532pt x 266.49562pt>
+[30 <./figs/105.png>] <./figs/ATM.png, id=126, 994.46532pt x 266.49562pt>
 File: ./figs/ATM.png Graphic file (type png)
- <use ./figs/ATM.png>
+
+<use ./figs/ATM.png>
 Package pdftex.def Info: ./figs/ATM.png used on input line 164.
 (pdftex.def)             Requested size: 455.24411pt x 121.99577pt.
-
-[31 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/ATM.png>]
-<./figs/fluxogramaRaw.png, id=131, 439.28824pt x 646.17882pt>
+ [31 <./figs/ATM.png>]
+<./figs/fluxogramaRaw.png, id=132, 439.28824pt x 646.17882pt>
 File: ./figs/fluxogramaRaw.png Graphic file (type png)
 
 <use ./figs/fluxogramaRaw.png>
 Package pdftex.def Info: ./figs/fluxogramaRaw.png used on input line 192.
 (pdftex.def)             Requested size: 182.09486pt x 267.85356pt.
- [32 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/fluxogramaRaw.png>]
-<./figs/FluxoCorrel.png, id=135, 756.70941pt x 845.98412pt>
+ [32 <./figs/fluxogramaRaw.png>]
+<./figs/FluxoCorrel.png, id=136, 756.70941pt x 845.98412pt>
 File: ./figs/FluxoCorrel.png Graphic file (type png)
 
 <use ./figs/FluxoCorrel.png>
 Package pdftex.def Info: ./figs/FluxoCorrel.png used on input line 206.
 (pdftex.def)             Requested size: 273.14923pt x 305.3802pt.
  [33]
-<./figs/tela0.png, id=139, 358.33875pt x 323.70938pt>
+<./figs/tela0.png, id=140, 358.33875pt x 323.70938pt>
 File: ./figs/tela0.png Graphic file (type png)
  <use ./figs/tela0.png>
 Package pdftex.def Info: ./figs/tela0.png used on input line 220.
 (pdftex.def)             Requested size: 273.14923pt x 246.76753pt.
 
-<./figs/tela2.png, id=140, 616.55344pt x 445.665pt>
+<./figs/tela2.png, id=141, 616.55344pt x 445.665pt>
 File: ./figs/tela2.png Graphic file (type png)
  <use ./figs/tela2.png>
 Package pdftex.def Info: ./figs/tela2.png used on input line 231.
 (pdftex.def)             Requested size: 455.24411pt x 329.0729pt.
 
-[34 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/FluxoCorrel.png>]
-[35 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/tela0.png>] [36 <C:/U
-sers/Ge/Desktop/tcc2013/monografia v3/daeln/figs/tela2.png>]
-<./figs/telab.png, id=151, 459.96844pt x 182.93344pt>
+[34 <./figs/FluxoCorrel.png>] [35 <./figs/tela0.png>] [36 <./figs/tela2.png>]
+<./figs/telab.png, id=152, 459.96844pt x 182.93344pt>
 File: ./figs/telab.png Graphic file (type png)
  <use ./figs/telab.png>
 Package pdftex.def Info: ./figs/telab.png used on input line 243.
 (pdftex.def)             Requested size: 227.62206pt x 90.5286pt.
 
-<./figs/tela3.png, id=152, 640.64343pt x 444.15938pt>
+<./figs/tela3.png, id=153, 640.64343pt x 444.15938pt>
 File: ./figs/tela3.png Graphic file (type png)
  <use ./figs/tela3.png>
 Package pdftex.def Info: ./figs/tela3.png used on input line 253.
 (pdftex.def)             Requested size: 455.24411pt x 315.62645pt.
 
-<./figs/tela5.png, id=153, 538.26094pt x 427.5975pt>
+<./figs/tela5.png, id=154, 538.26094pt x 427.5975pt>
 File: ./figs/tela5.png Graphic file (type png)
  <use ./figs/tela5.png>
 Package pdftex.def Info: ./figs/tela5.png used on input line 264.
@@ -696,70 +717,69 @@ Package pdftex.def Info: ./figs/tela5.png used on input line 264.
 
 [37
 
- <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/telab.png>]
+ <./figs/telab.png>]
 
 LaTeX Warning: Text page 38 contains only floats.
 
-[38 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/tela3.png> <C:/Users/
-Ge/Desktop/tcc2013/monografia v3/daeln/figs/tela5.png>]
-<./figs/corr4.png, id=160, 1028.34187pt x 548.0475pt>
+[38 <./figs/tela3.png> <./figs/tela5.png>]
+<./figs/corr4.png, id=161, 1028.34187pt x 548.0475pt>
 File: ./figs/corr4.png Graphic file (type png)
  <use ./figs/corr4.png>
 Package pdftex.def Info: ./figs/corr4.png used on input line 276.
 (pdftex.def)             Requested size: 455.24411pt x 242.62181pt.
 
-<./figs/rec0.png, id=161, 231.11343pt x 130.23656pt>
+<./figs/rec0.png, id=162, 231.11343pt x 130.23656pt>
 File: ./figs/rec0.png Graphic file (type png)
  <use ./figs/rec0.png>
 Package pdftex.def Info: ./figs/rec0.png used on input line 288.
 (pdftex.def)             Requested size: 227.62206pt x 128.27084pt.
 
-[39 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/corr4.png>]
-<./figs/rec2.png, id=165, 1028.34187pt x 549.55313pt>
+[39 <./figs/corr4.png>] <./figs/rec2.png, id=166, 1028.34187pt x 549.55313pt>
 File: ./figs/rec2.png Graphic file (type png)
- <use ./figs/rec2.png>
+
+<use ./figs/rec2.png>
 Package pdftex.def Info: ./figs/rec2.png used on input line 299.
 (pdftex.def)             Requested size: 455.24411pt x 243.28836pt.
-
-[40 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/rec0.png> <C:/Users/G
-e/Desktop/tcc2013/monografia v3/daeln/figs/rec2.png>]
-<./figs/uml.png, id=169, 1184.66118pt x 931.00764pt>
+ [40 <./figs/rec0.png> <./figs/rec2.png>]
+<./figs/uml.png, id=170, 1184.66118pt x 931.00764pt>
 File: ./figs/uml.png Graphic file (type png)
  <use ./figs/uml.png>
 Package pdftex.def Info: ./figs/uml.png used on input line 318.
 (pdftex.def)             Requested size: 409.71692pt x 321.97932pt.
 
-[41 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/uml.png>]
-<./figs/corr5.png, id=174, 566.115pt x 143.78719pt>
-File: ./figs/corr5.png Graphic file (type png)
- <use ./figs/corr5.png>
-Package pdftex.def Info: ./figs/corr5.png used on input line 365.
-(pdftex.def)             Requested size: 409.71692pt x 104.06642pt.
+Overfull \hbox (60.10689pt too wide) in paragraph at lines 330--353
+ [][] 
+ []
 
-[42] <./figs/classi0.png, id=178, 633.86812pt x 389.20406pt>
+[41 <./figs/uml.png>] <./figs/corr5.png, id=175, 566.115pt x 143.78719pt>
+File: ./figs/corr5.png Graphic file (type png)
+
+<use ./figs/corr5.png>
+Package pdftex.def Info: ./figs/corr5.png used on input line 366.
+(pdftex.def)             Requested size: 409.71692pt x 104.06642pt.
+ [42]
+<./figs/classi0.png, id=179, 633.86812pt x 389.20406pt>
 File: ./figs/classi0.png Graphic file (type png)
 
 <use ./figs/classi0.png>
-Package pdftex.def Info: ./figs/classi0.png used on input line 386.
+Package pdftex.def Info: ./figs/classi0.png used on input line 387.
 (pdftex.def)             Requested size: 227.62206pt x 139.76295pt.
 
-<./figs/classi1b.png, id=179, 635.37375pt x 388.45125pt>
+<./figs/classi1b.png, id=180, 635.37375pt x 388.45125pt>
 File: ./figs/classi1b.png Graphic file (type png)
 
 <use ./figs/classi1b.png>
-Package pdftex.def Info: ./figs/classi1b.png used on input line 396.
+Package pdftex.def Info: ./figs/classi1b.png used on input line 397.
 (pdftex.def)             Requested size: 227.62206pt x 139.16069pt.
- [43 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/corr5.png>] [44 <C:/
-Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/classi0.png> <C:/Users/Ge/Des
-ktop/tcc2013/monografia v3/daeln/figs/classi1b.png>]
-<./figs/aval2.png, id=188, 266.49562pt x 219.82124pt>
+ [43 <./figs/corr5.png>] [44 <./figs/classi0.png> <./figs/classi1b.png>] <./fig
+s/aval2.png, id=189, 266.49562pt x 219.82124pt>
 File: ./figs/aval2.png Graphic file (type png)
- <use ./figs/aval2.png>
-Package pdftex.def Info: ./figs/aval2.png used on input line 413.
-(pdftex.def)             Requested size: 273.14923pt x 225.33163pt.
 
-[45 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/aval2.png>]
-Overfull \hbox (19.05107pt too wide) in paragraph at lines 426--427
+<use ./figs/aval2.png>
+Package pdftex.def Info: ./figs/aval2.png used on input line 414.
+(pdftex.def)             Requested size: 273.14923pt x 225.33163pt.
+ [45 <./figs/aval2.png>]
+Overfull \hbox (19.05107pt too wide) in paragraph at lines 427--428
 []\OT1/ptm/m/n/12 Por fim, o ava-li-a-dor con-si-dera como ver-da-deiro ne-ga-t
 ivo (VN), in-ter-valo en-tre duas marca[][]oes
  []
@@ -767,39 +787,39 @@ ivo (VN), in-ter-valo en-tre duas marca[][]oes
 [46]
 Cap\'{\i }tulo 4.
 
-Overfull \hbox (16.28754pt too wide) in paragraph at lines 447--448
+Overfull \hbox (16.28754pt too wide) in paragraph at lines 448--449
 []\OT1/ptm/m/n/12 Os re-sul-ta-dos apre-sen-ta-dos nesta se[][]ao di-zem res-pe
 ito ao trei-na-mento re-a-li-zado com marca[][]oes
  []
 
 
-Overfull \hbox (8.40804pt too wide) in paragraph at lines 455--471
+Overfull \hbox (8.40804pt too wide) in paragraph at lines 456--472
  [][] 
  []
 
-<./figs/paca.png, id=196, 200.75pt x 234.8775pt>
+<./figs/paca.png, id=197, 200.75pt x 234.8775pt>
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 478.
+Package pdftex.def Info: ./figs/paca.png used on input line 479.
 (pdftex.def)             Requested size: 182.09486pt x 213.06508pt.
  [47
 
 ]
-Overfull \hbox (8.40804pt too wide) in paragraph at lines 494--510
+Overfull \hbox (8.40804pt too wide) in paragraph at lines 495--511
  [][] 
  []
 
-[48 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/paca.png>]
+[48 <./figs/paca.png>]
 File: ./figs/paca.png Graphic file (type png)
-
-<use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 517.
+ <use ./figs/paca.png>
+Package pdftex.def Info: ./figs/paca.png used on input line 518.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 530.
+Package pdftex.def Info: ./figs/paca.png used on input line 531.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
- [49] [50]
+ [49]
+[50]
 Cap\'{\i }tulo 5.
 [51
 
@@ -807,15 +827,13 @@ Cap\'{\i }tulo 5.
 Cap\'{\i }tulo 6.
 [52
 
-] <./figs/horas.png, id=217, 375.65344pt x 407.27156pt>
+] <./figs/horas.png, id=219, 375.65344pt x 407.27156pt>
 File: ./figs/horas.png Graphic file (type png)
 
 <use ./figs/horas.png>
-Package pdftex.def Info: ./figs/horas.png used on input line 650.
+Package pdftex.def Info: ./figs/horas.png used on input line 651.
 (pdftex.def)             Requested size: 364.19667pt x 394.87892pt.
-
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.bbl" [53]
-[54 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/horas.png>]
+ (./modelo_daeln.bbl [53] [54 <./figs/horas.png>]
 Underfull \hbox (badness 4353) in paragraph at lines 20--27
 []\OT1/ptm/m/n/12 BROWN, C. D.; DA-VIS, H. T. Re-cei-ver ope-ra-ting cha-rac-te
 -ris-tics cur-ves and re-
@@ -830,25 +848,25 @@ e-mo-me-trics and In-tel-li-gent La-bo-ra-
 
 Underfull \hbox (badness 3209) in paragraph at lines 20--27
 \OT1/ptm/b/n/12 tory Sys-tems\OT1/ptm/m/n/12 , v. 80, n. 1, p. 24 -- 38, 2006. 
-ISSN 0169-7439. Dis-pon[]vel em:
+ISSN 0169-7439. Dis-pon[]^^Pvel em:
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 30--34
 []\OT1/ptm/m/n/12 CONEP. \OT1/ptm/b/n/12 Per-gun-tas e Res-pos-tas Fre-quen-tes
-\OT1/ptm/m/n/12 . 2011. Dis-pon[]vel em:
+\OT1/ptm/m/n/12 . 2011. Dis-pon[]^^Pvel em:
  []
 
 
 Underfull \hbox (badness 7832) in paragraph at lines 60--63
 []\OT1/ptm/m/n/12 GUTHIKONDA, S. M. \OT1/ptm/b/n/12 Koho-nen Self Or-ga-ni-zing
- Maps\OT1/ptm/m/n/12 . 2005. Dis-pon[]vel em:
+ Maps\OT1/ptm/m/n/12 . 2005. Dis-pon[]^^Pvel em:
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 94--97
 []\OT1/ptm/m/n/12 NEUROLOOPGAIN. \OT1/ptm/b/n/12 Neu-ro-Lo-op-Gain\OT1/ptm/m/n/
-12 . 2012. Dis-pon[]vel em:
+12 . 2012. Dis-pon[]^^Pvel em:
  []
 
 [55
@@ -860,31 +878,32 @@ AED: lastpage setting LastPage
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
 +-------------------------------------------------------------------+
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.aux")
+(./modelo_daeln.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4235 strings out of 493921
- 60057 string characters out of 3144885
- 126462 words of memory out of 3000000
- 7318 multiletter control sequences out of 15000+200000
- 41651 words of font info for 96 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 36i,11n,43p,1901b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ge/AppD
-ata/Roaming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Ge/AppData/Roa
-ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
-mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (58 pages, 1876111 bytes).
+ 4674 strings out of 493315
+ 64663 string characters out of 6137905
+ 143030 words of memory out of 5000000
+ 7885 multiletter control sequences out of 15000+600000
+ 41651 words of font info for 96 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 38i,11n,43p,1901b,314s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2013/tex
+mf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2013/texmf-dist/fon
+ts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on modelo_daeln.pdf (58 pages, 1853897 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
+ 263 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
