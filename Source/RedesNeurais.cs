@@ -673,6 +673,7 @@ namespace AmbienteRPB
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                             break;
                      }
+
                     case ("PlotKohonen"):
                     {
                         int offset = myArray[0];
@@ -686,21 +687,35 @@ namespace AmbienteRPB
                                 if (X_[i] == 0 && Y_[i] == 0)
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
-                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.InsertXY(0, 0);
+                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 10);
                                 }
                                 else if (X_[i] == 0 && Y_[i] == 1)
+                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
+                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 8);
+
+                                }
                                 else if (X_[i] == 0 && Y_[i] == 2)
+                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
+                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 7);
+
+                                }
                                 else if (X_[i] == 0 && Y_[i] == 3)
+                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                                else if (X_[i] == 0 && Y_[i] == 4)
-                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
+                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 5);
+                                }
+                                // else if (X_[i] == 0 && Y_[i] == 4)
+                                //     prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
                                 else
+                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
+                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 2);
+
+                                }
                                 //}
                                 //Mapa
-                                //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i]);
                             }
                         break;
                      }
@@ -734,8 +749,9 @@ namespace AmbienteRPB
                                 prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Titles[(canal + 2)].Text = "Kohonen";
                                 prb.Series["canal" + (canal + 2)].Color = Color.Orange;
-                                prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                                prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bubble;
                                 prb.Titles[(canal + 3)].Text = "Mapa";
+                                prb.Series["canal" + (canal + 3)].MarkerStyle = MarkerStyle.Circle;
                                 prb.Series["canal" + (canal + 3)].Color = Color.Red;
                             prb.ChartAreas["canal" + (canal + 3)].AxisY.Enabled = AxisEnabled.True;
                             prb.ChartAreas["canal" + (canal + 3)].AxisX.Enabled = AxisEnabled.True;
