@@ -372,7 +372,7 @@ Para proporcionar um entendimento da arquitetura do sistema, estão seção apresen
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./figs/uml.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.9\textwidth]{./figs/UML2.png} % <- formatos PNG, JPG e PDF
 	\caption[Diagrama de Classes do Sistema]{Diagrama de Classes do Sistema}
 	\fonte{Autoria Própria}
 	\label{UML}
@@ -417,6 +417,9 @@ Esta seção visa explicar as metodologias utilizadas na implementação dos módulos
 
 \subsection{Geração dos Dados de Treinamento}
 
+Amostras 306900
+
+
 \subsection{Metodologia da Extração de Características}
 \label{subsec:met1}
 A extração de características é o processo pelo qual o sinal de Eletroencefalografia (ECG) pode ser submetido antes do processo de reconhecimento de padrões. A função correlação, descrita na seção \ref{sec:Correl} do capítulo de Fundamentação Teórica \ref{sec:Fund}, é aplicada sucessivas vezes (no caso apenas duas) em uma marcação arbitrária que represente bem o complexo QRS e no sinal de ECG produzindo um novo sinal como mostrado na figura \ref{corr5}.
@@ -440,7 +443,7 @@ Como foi explicado no capítulo de Fundamentação Teórica, o Mapa de Kohonen agrup
 
 O Mapa de Kohonen foi utilizado com o objetivo de identificar ocorrências do complexo QRS em meio ao sinal de Eletroencefalografia (ECG). Considerando que o sinal de ECG utilizado pode ser dividido em fragmentos com diferentes características, alguns poderão apresentar o complexo QRS inteiro ou partes dele, outros poderão apresentar outras formas de onda como a onda P, T ou U, arritmias cardíacas ou apenas ruído. 
 
-O mapa é inicializado com fragmentos obtidos do sinal. Inicialmente, foram realizados testes percorrendo o sinal todo e captando fragmentos deslocando o sinal ponto por ponto. Contudo, isso gerava fragmentos redundantes e aumentava o tempo de duração da etapa de reconhecimento de padrões. Em vista disso, foi decidido deslocar o sinal de três em três pontos para obtenção de cada fragmento. Outro aspecto relevante é que para particionar o sinal de ECG sem extração de caracteríticas, são usadas 50 amostras. No particionamento do sinal de ECG após a extração de características é necessário utilizar 200 amostras.
+O mapa é inicializado com fragmentos, ou janelas, obtidos do sinal. Inicialmente, foram realizados testes percorrendo o sinal todo e captando fragmentos deslocando o sinal ponto por ponto. Contudo, isso gerava fragmentos redundantes e aumentava o tempo de duração da etapa de reconhecimento de padrões. Em vista disso, foi decidido deslocar o sinal de cinco em cinco amostras para obtenção de cada janela. Outro aspecto relevante é que para particionar o sinal de ECG sem extração de caracteríticas, são usadas 50 amostras. No particionamento do sinal de ECG após a extração de características é necessário utilizar 200 amostras.
 
 A figura \ref{classi2} mostra um exemplo simplificado de como seria uma mapa inicializado. As estrelas azuis representam nós onde existem fragmentos com o complexo QRS, e as bolas vermelhas representam fragmentos de sinal que não apresentam esta forma de onda.
 
@@ -462,9 +465,9 @@ Após a aplicação do algoritmo, o mapa deverá se assemelhar ao mapa da figura \re
 	\label{classi2}
 \end{figure}
 
-O tamanho do Mapa é variável, contudo, manteve-se um tamanho padrão de 10 por 10 nós para os testes. Nós contendo fragmentos do sinal com características do complexo QRS tenderam a se localizar nas regiões em que as coordenadas \textit{x} e \textit{y} se aproximam de 0. Para separar a região onde se concentra o complexo QRS do restante do mapa, determinam-se valores de corte do \textit{x} e \textit{y}. Por exemplo, os nós com os valores de \textit{x} e \textit{y} entre 0 e 3 representam o grupo de padrões que se deseja buscar. No Capítulo de Resultados Obtidos \ref{sec:Resultados} são apresentados resultados para diferentes valores de corte de \textit{x} e \textit{y}.
+O tamanho do Mapa é variável, contudo, manteve-se um tamanho padrão de 10 por 10 nós para os testes. Nós contendo fragmentos do sinal com características do complexo QRS tenderam a se localizar nas regiões em que as coordenadas \textit{x} e \textit{y} se aproximam de 0. Para separar a região onde se concentra o complexo QRS do restante do mapa, determinam-se valores de corte do \textit{x} e \textit{y}. Por exemplo, os nós com os valores de \textit{x} e \textit{y} entre 0 e 2 representam o grupo de padrões que se deseja buscar. No Capítulo de Resultados Obtidos \ref{sec:Resultados} são apresentados resultados para diferentes valores de corte de \textit{x} e \textit{y}.
 
-O algoritmo do Mapa de Kohonen segue a lógica detalhada no capítulo de Fundamentação Teórica, e o código utilizado no sistema foi obtido em 
+O algoritmo do Mapa de Kohonen segue a lógica detalhada no artigo de \cite{Guthi}.
 
 \subsection{Metodologia da Avaliação do Classificador}
 \label{subsec:Aval}
@@ -505,6 +508,22 @@ O próximo capítulo, Resultados Obtidos \ref{sec:Resultados}, pretende explorar a
 Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, a rede neural artificial pode ser treinada com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características (detalhado na seção ). OS resultados obtidos utilizando cada uma destas bases de marcações são descritos nas seções Testes com Sinal de ECG \ref{sec:Testes1} e Testes com ECG com correlação \ref{sec:Testes2}, respectivamente. Este capítulo termina com a seção de Comparativo dos Resultados \ref{sec:Comparativo} e a seção de Considerações \ref{sec:TestesConsider}.
 
 \section{Testes com Mapa de Kohonen}
+
+Oos testes realizados utilizando Mapa de Kohonen para reconhecimento de padrões obtiveram os resultados apresentados na tabela \ref{tab:kohonen}. De acordo com as marcações provenientes da base de dados, há 1182 ocorrências do complexo QRS 
+no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo complexo QRS concentraram-se nas regiões do mapa em que a coordenada \textit{x} tem o valor 0 e a coordenada \textit{y} varia de 0 a 2. O coeficiente de aprendizado foi configurado com o valor 0.0001.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela de Resultados Obtidos com Mapa de Kohonen]{Tabela de Resultados Obtidos com Mapa de Kohonen}
+	\label{tab:kohonen}
+		    \begin{tabular}{cccccccc}
+		    \hline
+		    VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    \hline
+		    1177  & 1180  & 1  & 5  & 0,995769882 & 0,99915326 & 0,997460855 & 0,002332815 \\ \hline
+		    \end{tabular}
+		    \fonte{Autoria Própria}
+\end{table}
 
 \section{Testes com Rede Multicamadas}
 \label{sec:Testes1}
@@ -599,10 +618,40 @@ A figura \ref{ROC2} mostra as curvas ROC obtidas com os testes descritos nas seç
 
 \section{Considerações}
 \label{sec:TestesConsider}
+
 Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
 Compara a outros trabalhos
 
-
+\begin{table}[!htb]
+	\centering
+	\caption[Tabela Comparativa de métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de \cite{Zhang2007} acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
+	\label{tab:correlacao}
+	\begin{tabular}{llllll}
+		\hline 
+		Método & QRS & FP & FN & DER \\
+		\hline
+		\hline
+		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 \\
+		Filtro passa banda & 2572 & 67 & 22 & 3,46 \\
+		Wavelet denoising & 2572 & 78 & 5 & 3,23 \\
+		Bancos de filtragem & 2139 & 53 & 16 & 3,22 \\
+		BPF/search-back & 2564 & 53 & 22 & 2,95 \\
+		Filtro adaptativo linear & 2572 & 40 & 22 & 2,40 \\
+		Filtragem otimizada & 2572 & 35 & 21 & 2,18 \\
+		Topological mapping & 2572 & 41 & 4 & 1,75\\
+		Transformada wavelet & 2572 & 15 & 12 & 1,09 \\
+		Filtro adaptativo e rede neural & 2572 & 10 & 4 & 0,5 \\
+		Morfologia 1M & 2572 & 49 & 10 & 2,29 \\
+		Morfologia 2M & 2572 & 27 & 9 & 1,40 \\
+		Morfologia 3M & 2572 & 19 & 7 & 1,01 \\
+		Morfologia 1M & 2690 & 40 & 2 & 1,56 \\
+		Morfologia 2M & 2690 & 41 & 2 & 1,60 \\
+		Morfologia 3M & 2690 & 40 & 0 & 1,49 \\
+		Morfologia 4M & 2690 & 39 & 0 & 1,45 \\
+		\hline 
+	\end{tabular}
+	\fonte{Modificada de \cite{SARAIVA2012}}
+\end{table}
 
 %----------------------------------------
 \chapter{Considerações Finais} % 1 página
