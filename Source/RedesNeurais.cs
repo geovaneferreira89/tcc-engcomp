@@ -121,23 +121,28 @@ namespace AmbienteRPB
                     Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
                     send_SmS(1, "Adicionando Entradas e treinando", false);
                     int inicio    = 0;
-                    int divisaoKo = 4;
-                    /*if (200000 < VetTreinamento)
-                        divisaoKo = 3;
+                    int divisaoKo = 3;
+                    if (200000 < VetTreinamento)
+                        divisaoKo = 4;
                     else if (VetTreinamento < 4000)
-                        divisaoKo = 1;*/
+                        divisaoKo = 1;
+                    
+                    load_progress_bar(1, 3);
+                    load_progress_bar(0, 4);
+                    load_progress_bar(divisaoKo, 2);
 
                     Initialise_KHn();
-                    send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
+                    send_SmS(1, "Treinando a rede com erro abaixo de 0.00001", false);
                     for (int max = 0; max < divisaoKo; max++)
                     {
-                        send_SmS(1, Convert.ToString(max), false);
                         LoadData_KHn(file, inicio, ((max + 1) * (VetTreinamento / divisaoKo)));
                         NormalisePatterns_KHn();
-                        Train_KHn(0.0001);
+                        Train_KHn(0.00001);
                         DumpCoordinates_KHn();
                         inicio = inicio + (VetTreinamento / divisaoKo);
+                        load_progress_bar(0, 1);
                     }
+                    load_progress_bar(1, 3);
                     //Imprime a matriz de resultados
                     send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Minute - min_inicio) + " min.", false);
@@ -682,7 +687,7 @@ namespace AmbienteRPB
                     {
                         int offset = myArray[0];
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            for (int i = 0; i < (offset/4); i++)
+                            for (int i = 0; i < (offset/2); i++)
                                 prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                            for (int i = 0;  i < X_.Count; i++)
                             {
@@ -706,13 +711,13 @@ namespace AmbienteRPB
                                     //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 7);
 
                                 }
-                                else if (X_[i] == 0 && Y_[i] == 3)
+                                /*else if (X_[i] == 0 && Y_[i] == 3)
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
                                     //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 5);
-                                }
-                                 else if (X_[i] == 0 && Y_[i] == 4)
-                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
+                                }*/
+                               //  else if (X_[i] == 0 && Y_[i] == 4)
+                               //      prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
                                 else
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
@@ -795,9 +800,6 @@ namespace AmbienteRPB
         //----------------------------------------------------------------------------------------
         private void LoadData_KHn(string file, int ValAtual, int fim)
         {
-            load_progress_bar(1, 3);
-            load_progress_bar(0, 4);
-            load_progress_bar(fim, 2);
             int cont = 0;
             patterns.Clear();
             //VetTreinamento é o numero total de amostras que sera apresentada kohonen e classificada por ele
@@ -817,11 +819,9 @@ namespace AmbienteRPB
                     pos++;
                 }
                 patterns.Add(inputs);
-                load_progress_bar(0, 1);
                //<<CUIDADO>>
                 i = (pulo-1) + i;
             }
-            load_progress_bar(1, 3);
         }
         //----------------------------------------------------------------------------------------
         private void NormalisePatterns_KHn()
@@ -843,9 +843,6 @@ namespace AmbienteRPB
         //----------------------------------------------------------------------------------------
         private void Train_KHn(double maxError)
         {
-            load_progress_bar(1, 3);
-            load_progress_bar(0, 4);
-            load_progress_bar(10, 2);
             double currentError = double.MaxValue;
             int count = 0;
             while (currentError > maxError)
@@ -862,11 +859,8 @@ namespace AmbienteRPB
                     currentError += TrainPattern_KHn(pattern);
                     TrainingSet.Remove(pattern);
                 }
-                //send_SmS(1, Convert.ToString(count) + " - " + Convert.ToString(currentError), true);
                 count++;
-                load_progress_bar(0, 1);
             }
-            load_progress_bar(1, 3);
         }
         //----------------------------------------------------------------------------------------
         private double TrainPattern_KHn(double[] pattern)
