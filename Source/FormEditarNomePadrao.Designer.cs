@@ -40,6 +40,7 @@
             this.txtPadroes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ckReferencia = new System.Windows.Forms.CheckBox();
+            this.ckbDebug = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btn_salvar
@@ -152,11 +153,22 @@
             this.ckReferencia.UseVisualStyleBackColor = true;
             this.ckReferencia.CheckedChanged += new System.EventHandler(this.ckReferencia_CheckedChanged);
             // 
+            // ckbDebug
+            // 
+            this.ckbDebug.AutoSize = true;
+            this.ckbDebug.Location = new System.Drawing.Point(128, 113);
+            this.ckbDebug.Name = "ckbDebug";
+            this.ckbDebug.Size = new System.Drawing.Size(88, 17);
+            this.ckbDebug.TabIndex = 11;
+            this.ckbDebug.Text = "Modo Debug";
+            this.ckbDebug.UseVisualStyleBackColor = true;
+            // 
             // FormEditarNomePadrao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 36);
+            this.ClientSize = new System.Drawing.Size(288, 38);
+            this.Controls.Add(this.ckbDebug);
             this.Controls.Add(this.ckReferencia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPadroes);
@@ -193,5 +205,6 @@
         private System.Windows.Forms.TextBox txtPadroes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox ckReferencia;
+        private System.Windows.Forms.CheckBox ckbDebug;
     }
 }

@@ -72,7 +72,7 @@ namespace AmbienteRPB
         private bool UsarReferencia = false;
 
         //------------------------------------------------------------------------------------------
-        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, bool _UsarReferencia, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede, ref INeuralNetwork _network, bool _RNImportada, int _MenorTamanho)
+        public RedesNeurais(EdfFile _SinalEEG, ListaPadroesEventos[] _Listas, bool _UsarReferencia, double _dimensions, double _length, double _VetTreinamento, string _file, Control Grafico, int _CanalAtual, int _CanalParaPlotar, Control BarraDeProgresso, Control _SMS_, double[] _VetorEvento, double[] _Sinal, int[] _PadroesATreinar, string _TipoDeRede, ref INeuralNetwork _network, bool _RNImportada, int _MenorTamanho, bool _modDebug)
         {
             SinalEEG        =  _SinalEEG;
             ListasPadrEvents = _Listas;
@@ -94,17 +94,11 @@ namespace AmbienteRPB
             network         = _network;
             MenorTamanho    = _MenorTamanho;
             UsarReferencia = _UsarReferencia;
+            it_is_debug = _modDebug;
         }
         //------------------------------------------------------------------------------------------
         public void Init()
         {
-            //Opção de ir Debugando a saida da RN
-            //DialogResult debug = MessageBox.Show("Modo debug?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNo);
-            //if (debug == DialogResult.No)
-                it_is_debug = false;
-            //else
-            //    it_is_debug = true;
-            //----------------------------------------------------------------------------------
             //Kohonenn
             switch(tipoDeRede)
             {
@@ -156,7 +150,7 @@ namespace AmbienteRPB
                          }
                          send_SmS(1, saida, false);
                      }*/
-                    //if(!it_is_debug)
+                     if(!it_is_debug)
                         Plotar("PlotKohonen", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
                     //Thread.Sleep(50);
                     break;
@@ -654,7 +648,7 @@ namespace AmbienteRPB
                     case ("AddDadoKohonen"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            for (int k = 0; k < 3; k++)
+                            for (int k = 0; k < 5; k++)
                             {
                                 if (dados[0] == 0 && dados[1] == 0)
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
@@ -664,8 +658,8 @@ namespace AmbienteRPB
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
                                 else if (dados[0] == 0 && dados[1] == 3)
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                                else if (dados[0] == 0 && dados[1] == 4)
-                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
+                                //else if (dados[0] == 0 && dados[1] == 4)
+                                //    prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
                                 else
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                             }
@@ -881,7 +875,6 @@ namespace AmbienteRPB
         private void DumpCoordinates_KHn()
         {
             double[] dados = new double[10];
-            it_is_debug = false;
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
