@@ -92,7 +92,7 @@ De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados 
 %abstract
 \begin{abstract}
 
-According to \cite{Zhang2007}, electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the electrocardiographic (ECG) signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools that improve the QRS-complex detection are required. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module will compare the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
+According to \cite{Zhang2007}, electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the electrocardiographic (ECG) signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools that improve the QRS-complex detection are required. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module compares the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
 
 \end{abstract}
 
@@ -151,9 +151,9 @@ O arquivo de texto contendo as anotações do sinal de ECG 105, apresenta 2691 eve
 \section{European Data Format}
 \label{sec:EDF}
 
-A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \textit{European data format} (EDF), um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O \sigla{EDF}{\textit{European data format}} é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientifica \cite{Kemp20031755}.
+A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \textit{European data format} (EDF), um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O \sigla{EDF}{\textit{European Data Format}} é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientifica \cite{Kemp20031755}.
 
-Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado. Este formato de arquivo, no entanto, não suporta anotações de eventos das gravações \cite{Kemp20031755}.
+Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado \cite{Kemp20031755}.
 
 \textit{Physiobank} \textit{Automated Teller Machine} (ATM) é uma ferramenta \textit{open~--source} que permite explorar as bases de dados disponibilzadas pelo \textit{Physiobank} por meio do navegador de \textit{internet}. Esta \textit{toolbox} oferece opções para importar anotações das formas de onda e histogramas, converter sinais em formato padrão do \textit{Physionet} (\sigla{WFDB}{\textit{WaveForm DataBase}} ~-- \textit{WaveForm DataBase}) para texto, CSV, EDF, ou .mat files (para utilização nos programas \textit{Matlab} ou \textit{Octave}), entre outras funcionalidades \cite{PhysioNet}.
 
@@ -167,6 +167,8 @@ A figura ~\ref{ATM} mostra a tela de opções da ferramenta \textit{Physiobank} \s
 	\label{ATM}
 \end{figure}
 
+Esta ferramenta foi utilizada para obtenção dos arquivos de sinal em formado EDF e anotações em arquivo de texto.
+
 \section{Bibliotecas Utilizadas}
 \label{sec:Bib}
 O projeto utilizou as bibliotecas \textit{NeuroLoopGain} e \textit{BrainNet Library} para trabalhar com arquivos em formato EDF e redes neurais artificiais respectivamente.
@@ -177,6 +179,61 @@ A biblioteca \textit{NeuroLoopGain} \cite{Neuroloop} foi implementada para análi
 O texto da licença Apache 2.0 \cite{Apache} mostra que seu código é aplicável a distribuição pretendida do software: ``[ \dots] concede licença perpétua, mundial, não exclusiva, gratuita, isenta de royalties e irrevogável para reproduzir, preparar Obras Derivadas, de exibição pública, execução pública, sublicenciamento e distribuição do Trabalho e tais Obras Derivadas, na forma de Código Fonte ou Objeto. ''
 
 Além disso, o texto da licença também atesta que: ``[ \dots] concede licença perpétua, mundial, não-exclusiva, gratuita, isenta de royalties e irrevogável [\dots] de licença de patente para fazer, mandar fazer, usar, oferecer para venda, vender, importar e transferir o trabalho. ''
+
+\subsection{BrainNet Library}
+
+A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação \sigla{XML}{\textit{eXtensible Markup Language}} \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (\sigla{CPOL}{\textit{The Code Project Open License}}) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
+
+\begin{itemize}
+	\item Código fonte e arquivos executáveis podem ser utilizados em aplicações comerciais;
+	\item Código fonte e arquivos executáveis podem ser redistribuídos; 
+	\item Código fonte pode ser modificado para criação de obras derivativas.
+\end{itemize}
+
+A figura \ref{UML1} apresenta o diagrama UML da biblioteca.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/UML1.png} % <- formatos PNG, JPG e PDF
+	\caption[Diagrama UML da Biblioteca BrainNet]{Diagrama UML da Biblioteca BrainNet}
+	\fonte{\cite{NN}}
+	\label{UML1}
+\end{figure}
+
+As principais interfaces disponibilizadas pela biblioteca \textit{BrainNet Library} estão resumidas na tabela \ref{Interfaces}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Principais interfaces da BrainNet Library]{Principais interfaces da BrainNet Library}
+	\label{Interfaces}
+	\begin{tabular}{ll}
+	\hline
+	\textbf{INetworkFactory} & Interface que define a estrutura da rede     \\ \hline
+	\textbf{INeuron}         & Interface que define o neurônio              \\ \hline
+	\textbf{INeuronStrategy} & Interface que define estratégias do neurônio \\ \hline
+	\textbf{INeuralNetwork}  & Interface que define a rede neural           \\ \hline 
+	\end{tabular}
+	\fonte{\cite{NN}}
+\end{table}
+
+As principais classes disponibilizadas pela biblioteca \textit{BrainNet Library} estão resumidas na tabela \ref{Classses}.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Principais classes da BrainNet Library]{Principais classes da BrainNet Library}
+	\label{Classses}
+	\begin{tabular}{ll}
+	\hline
+	\textbf{BackPropNeuronStrategy}  & Estratégia \textit{backpropagation}\\ \hline
+	\textbf{NetworkHelper}           & Inicializa e treina a rede \\ \hline
+	\textbf{NeuralNetwork}           & Rede neural genérica \\ \hline
+	\textbf{NeuralNetworkCollection} & Coleção do tipo NeuralNetwrok \\ \hline
+	\textbf{Neuron}                  & Implementação de INeuron \\ \hline
+	\textbf{NeuronCollection}        & Coleção do tipo Neuron \\ \hline
+	\textbf{NeuronConnections}       & Registro das conexões entre neurônios e pesos sinápticos \\ \hline
+	\end{tabular}
+	\fonte{\cite{NN}}
+\end{table}
 
 \section{Sistema}
 \label{sec:MOD} 
@@ -343,8 +400,9 @@ A finalidade da existência de cada classe do sistema está resumida na tabela \re
 	\textbf{FormCarregar\_EDF}  	& Janela para selecionar arquivo contendo o sinal \\ \hline
 	\textbf{FormEditarNomePadrao}   & Janela de edição do nome do padrão \\ \hline
 	\textbf{FormEditorDeEventos}    & Janela de editor de eventos\\ \hline
-	\textbf{FormPrincipal}       	& Janela principal do sistema, onde é exibido o sinal e realizada as marcações\\ \hline
-	\textbf{FormResultados}  		& Janela onde é mostrado canal por canal e a saída da correlação\\ \hline
+	\textbf{FormPrincipal}       	& Janela principal do sistema, onde é exibido o sinal \\ 
+									& e realizada as marcações \\ \hline
+	\textbf{FormResultados}  		& Janela onde é mostrado canal por canal e a saída da correlação\\ 
 									& e as redes neurais quando executadas\\ \hline
 	\textbf{InfoEDF}           		& Exibe informações sobre o EDF, como nome do paciente, data\\ \hline
 	\textbf{MDIPrincipalForm}       & Tela inicial, onde pode-se abrir várias telas do FormPrincipal\\ \hline
@@ -356,6 +414,8 @@ A finalidade da existência de cada classe do sistema está resumida na tabela \re
 \section{Metodologias Detalhadas}
 \label{sec:Met-Testes}
 Esta seção visa explicar as metodologias utilizadas na implementação dos módulos do sistema por meio das subseções: Metodologia da Extração de Características \ref{subsec:met1}, Metodologia do Reconhecimento de Padrões \ref{subsec:met2} e Metodologia da Avaliação dos Resultados \ref{subsec:Aval}.
+
+\subsection{Geração dos Dados de Treinamento}
 
 \subsection{Metodologia da Extração de Características}
 \label{subsec:met1}
@@ -371,7 +431,9 @@ A extração de características é o processo pelo qual o sinal de Eletroencefalogr
 
 Como se pode perceber, os picos do sinal resultante correspondem aos instantes em que ocorrem o complexo QRS. Este novo sinal pode ser utilizado como entrada para o módulo de reconhecimento de padrões, a ser visto com mais detalhes na próxima seção.
 
-\subsection{Metodologia da Classificação de Padrões}
+\subsection{Reconhecimento de Padrões com Redes Neurais Multicamadas}
+
+\subsection{Reconhecimento de Padrões com Mapa de Kohonen}
 \label{subsec:met2} 
 
 Como foi explicado no capítulo de Fundamentação Teórica, o Mapa de Kohonen agrupa nós que possuem características similares em localizações próximas. No exemplo da clusterização de cores, os nós de cor azul foram agrupados em uma determinada localização. Da mesma forma, o Mapa de Kohonen agrupa fragmentos de sinais com características similares.
@@ -421,7 +483,7 @@ O processo de avaliação é feito confirme a seguinte lógica:
 
 \begin{enumerate}
 	\item São enviadas como parâmetro no construtor da classe Avaliador duas listas: a de lista de resultados (sistema) e a lista de marcações (referência), que enviam a posição x de cada evento em relação ao vetor de todos os pontos do sinal;
-	\item As duas listas são recriadas, utilizando outras estruturas que possibilitam o uso de \textit{flags} e outras variáveis. Os itens da lista de resultados armazenam então apenas seu horário de ocorrência. E os itens da lista de marcações sofrem expansão de tamanho variável x, determinando seu inicio e fim;
+	\item As duas listas são recriadas, utilizando outras estruturas que possibilitam o uso de \textit{flags} e outras variáveis. Os itens da lista de resultados armazenam então apenas seu horário de ocorrência. E os itens da lista de marcações tem seu horário transformado em um intervalo com início e fim, ao sofrerem uma expansão de tamanho variável \textit{x} para a esquerda e para a direita(no caso 50 amostras);
 	\item Percorre-se a lista de marcações, verificando, se cada um dos resultados está dentro do intervalo de alguma marcação. Caso esteja, ocorreu um verdadeiro positivo (VP) e as \textit{flags} de detecção do resultado e da marcação são ativadas. Caso contrário, ou seja, se o resultado está fora da faixa de qualquer uma das marcações, caracteriza-se como falso positivo (FP);
 	\item Novamente, percorre-se a lista de marcações, verificando quais marcações não foram detectadas, pois não apresentam resultado correspondente. Estas ocorrências são classificadas como falso negativo (FN), pois o sistema deveria detectá-las, mas não conseguiu;
 	\item Por fim, o avaliador considera como verdadeiro negativo (VN), intervalo entre duas marcações (entre o fim de uma e início da seguinte) em que não ocorreu nenhum falso positivo (FP).
@@ -442,7 +504,9 @@ O próximo capítulo, Resultados Obtidos \ref{sec:Resultados}, pretende explorar a
 
 Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, a rede neural artificial pode ser treinada com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características (detalhado na seção ). OS resultados obtidos utilizando cada uma destas bases de marcações são descritos nas seções Testes com Sinal de ECG \ref{sec:Testes1} e Testes com ECG com correlação \ref{sec:Testes2}, respectivamente. Este capítulo termina com a seção de Comparativo dos Resultados \ref{sec:Comparativo} e a seção de Considerações \ref{sec:TestesConsider}.
 
-\section{Testes com Sinal de ECG}
+\section{Testes com Mapa de Kohonen}
+
+\section{Testes com Rede Multicamadas}
 \label{sec:Testes1}
 
 Os resultados apresentados nesta seção dizem respeito ao treinamento realizado com marcações feitas diretamente no sinal de ECG. O conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, o que resulta em XXX ocorrências do complexo QRS. 
@@ -482,8 +546,7 @@ A curva ROC do processo utilizando marcações no sinal de ECG é mostrada na figur
 	\label{ROC1}
 \end{figure}
 
-\section{Testes com ECG com extração de características}
-\label{sec:Testes2}
+
 Esta seção apresenta os resultados obtidos com a utilização da base gerada após o processo de extração de características. Do mesmo modo que a seção anterior, o conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, correspondendo a XXX ocorrências do complexo QRS. 
 
 A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
@@ -539,36 +602,6 @@ A figura \ref{ROC2} mostra as curvas ROC obtidas com os testes descritos nas seç
 Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
 Compara a outros trabalhos
 
-\begin{table}[!htb]
-	\centering
-	\caption[Tabela Comparativa de métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de \cite{Zhang2007} acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
-	\label{tab:correlacao}
-	\begin{tabular}{llllll}
-		\hline 
-		Método & QRS & FP & FN & DER \\
-		\hline
-		\hline
-		Algoritmos genéticos & 2572 & 86 & 5 & 3,54 \\
-		Filtro passa banda & 2572 & 67 & 22 & 3,46 \\
-		Wavelet denoising & 2572 & 78 & 5 & 3,23 \\
-		Bancos de filtragem & 2139 & 53 & 16 & 3,22 \\
-		BPF/search-back & 2564 & 53 & 22 & 2,95 \\
-		Filtro adaptativo linear & 2572 & 40 & 22 & 2,40 \\
-		Filtragem otimizada & 2572 & 35 & 21 & 2,18 \\
-		Topological mapping & 2572 & 41 & 4 & 1,75\\
-		Transformada wavelet & 2572 & 15 & 12 & 1,09 \\
-		Filtro adaptativo e rede neural & 2572 & 10 & 4 & 0,5 \\
-		Morfologia 1M & 2572 & 49 & 10 & 2,29 \\
-		Morfologia 2M & 2572 & 27 & 9 & 1,40 \\
-		Morfologia 3M & 2572 & 19 & 7 & 1,01 \\
-		Morfologia 1M & 2690 & 40 & 2 & 1,56 \\
-		Morfologia 2M & 2690 & 41 & 2 & 1,60 \\
-		Morfologia 3M & 2690 & 40 & 0 & 1,49 \\
-		Morfologia 4M & 2690 & 39 & 0 & 1,45 \\
-		\hline 
-	\end{tabular}
-	\fonte{Modificada de \cite{SARAIVA2012}}
-\end{table}
 
 %----------------------------------------
 \chapter{Considerações Finais} % 1 página
@@ -606,6 +639,7 @@ Os recursos de \textit{Software} utilizados neste projeto correspondem ao seguin
 	\item \textit{Visual Studio};
     \item Plataforma \textit{Microsoft} .NET versão 4.5;
 	\item Biblioteca \textit{NeuroLoopGain};
+	\item Biblioteca \textit{BrainNet Library}.
 \end{itemize}
 
 Para obter gratuitamente a licença do ambiente de desevolvimento \textit{Visual Studio}, a equipe se associou ao programa \text{DreamSpark}, da Universidade Tecnológica Federal do Paraná. Os demais recursos utilizados são gratuitos.
