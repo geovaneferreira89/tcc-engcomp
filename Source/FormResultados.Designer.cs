@@ -388,15 +388,15 @@
             // AnaliseMLP
             // 
             this.AnaliseMLP.Name = "AnaliseMLP";
-            this.AnaliseMLP.Size = new System.Drawing.Size(124, 22);
-            this.AnaliseMLP.Text = "MLP ";
+            this.AnaliseMLP.Size = new System.Drawing.Size(175, 22);
+            this.AnaliseMLP.Text = "Avaliador MLP ";
             this.AnaliseMLP.Click += new System.EventHandler(this.AnaliseMLP_Click);
             // 
             // avaliadorToolStripMenuItem
             // 
             this.avaliadorToolStripMenuItem.Name = "avaliadorToolStripMenuItem";
-            this.avaliadorToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.avaliadorToolStripMenuItem.Text = "Avaliador";
+            this.avaliadorToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.avaliadorToolStripMenuItem.Text = "Avaliador Kohonen";
             this.avaliadorToolStripMenuItem.Click += new System.EventHandler(this.avaliadorToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
