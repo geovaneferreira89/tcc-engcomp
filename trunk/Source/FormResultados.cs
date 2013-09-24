@@ -1275,7 +1275,7 @@ namespace AmbienteRPB
                 }
                 catch
                 {
-                    MessageBox.Show("Erro Arquivo invalido", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro Arquivo invalido", "Reconhecimento Automatizado de Padrões em ECG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -1286,8 +1286,14 @@ namespace AmbienteRPB
         private void AnaliseMLP_Click(object sender, EventArgs e)
         {
             string threshold = "";
-            threshold = Interaction.InputBox("Threshold", "Reconhecimento Automatizado de Padrões em EEG", "", 10, 10);
-            MessageBox.Show("QRSs: " + Convert.ToString(ContarQRSs(Convert.ToInt16(threshold))), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+            threshold = Interaction.InputBox("Threshold", "Reconhecimento Automatizado de Padrões em ECG", "1", 10, 10);
+            if (Convert.ToInt16(threshold) < 0)
+                threshold = "1";
+            ContarQRSs(Convert.ToInt16(threshold));
+            object senders = new object[1];
+            EventArgs a = new EventArgs();
+            avaliadorToolStripMenuItem_Click(sender, e);
+            //MessageBox.Show("QRSs: " + Convert.ToString(ContarQRSs(Convert.ToInt16(threshold))), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
         }
         //----------------------------------------------------------------------------
         private int ContarQRSs(int threshold)
@@ -1317,11 +1323,15 @@ namespace AmbienteRPB
                     }
                     else if (iniciou == true && numMAX >= threshold)
                     {
+                        
+                        //Salva os dados nos vetores
+                        for (int k = 0; k < numMAX; k++)
+                        {
+                            Marcacoes[count] = inicio + k;
+                            count++;
+                        }
                         numMAX = 0;
                         Fim = i;
-                        //Salva os dados nos vetores
-                        Marcacoes[count] = inicio;
-                        count++;
                         iniciou = false;
                     }
                     else
