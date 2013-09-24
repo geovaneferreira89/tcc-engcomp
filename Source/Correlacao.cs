@@ -109,14 +109,20 @@ namespace AmbienteRPB
                 {
                     case ("Resultado"):
                         {
-                            prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                          /*  prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             load_progress_bar(0, 4);
                             load_progress_bar(canal, 2);
-                            for (int CanalX = 0; CanalX < canal; CanalX++)
-                            {
+
+
+
+                           
                                 int tam = prb.Series[(CanalX * 4) + 2].Points.Count();
                                 int ponto = 0;
-                                prb.Series[(CanalX * 4) + 3].Color = Color.Blue;
+                                prb.Series.Remove(prb.Series["canal" + (canal + 2)]);
+                                prb.Series.Add("canal" + (canal + 2));
+                                prb.Series["canal" + (canal + 2)].ChartArea = "canal" + (canal + 2);
+                                prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                                prb.Series["canal" + (canal + 2)].Color = Color.Blue;
                                 for (int i = 0; i < tam; i++)
                                 {
                                     if (vector_evento[ponto] == i)
@@ -128,8 +134,7 @@ namespace AmbienteRPB
                                         prb.Series[(CanalX * 4) + 3].Points.AddY(0);
                                 }
                                 load_progress_bar(0, 1);
-                            }
-                            load_progress_bar(1, 3);
+                            load_progress_bar(1, 3);*/
                             break;
                         }
                     case("PlotaSinalEEG"):

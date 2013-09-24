@@ -1299,10 +1299,10 @@ namespace AmbienteRPB
             int val = 0;
             int numMAX = 0;
             CountMarcacoes_Por_Evento = new int[eventos.Count()];
-            Marcacoes = new double[chart1.Series[2].Points.Count()];
             //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
             for (int CanalX = 0; CanalX < CanaisCriados; CanalX++)
             {
+                Marcacoes = new double[chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count()];
                 for (int i = 0; i < chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count(); i++)
                 {
                     val = (int)chart1.Series["canal" + ((CanalX * 4) + 2)].Points[i].YValues[0];
@@ -1329,6 +1329,23 @@ namespace AmbienteRPB
                         iniciou = false;
                         numMAX = 0;
                     }
+                }
+                int tam = chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count();
+                int ponto = 0;
+                chart1.Series.Remove(chart1.Series["canal" + (CanalX + 2)]);
+                chart1.Series.Add("canal" + (CanalX + 2));
+                chart1.Series["canal" + (CanalX + 2)].ChartArea = "canal" + (CanalX + 2);
+                chart1.Series["canal" + (CanalX + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+                chart1.Series["canal" + (CanalX + 2)].Color = Color.Blue;
+                for (int i = 0; i < tam; i++)
+                {
+                    if (Marcacoes[ponto] == i)
+                    {
+                        chart1.Series["canal" + (CanalX + 2)].Points.AddY(1);
+                        ponto++;
+                    }
+                    else
+                        chart1.Series["canal" + (CanalX + 2)].Points.AddY(0);
                 }
             }
             Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanaisCriados, "Resultado", Marcacoes, ValorInicio.X, ValorFim.X, numeroDeCanais, null, null);
