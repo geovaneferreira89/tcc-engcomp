@@ -1386,25 +1386,26 @@ namespace AmbienteRPB
                 //Saída
                 SMS_Box.Text = "Resultado Avaliação";
                 SMS_Box.Text = SMS_Box.Text + "\nTOTAL VP: " + avaliador.VP.Count();
-                for (int i = 0; i < avaliador.VP.Count(); i++)
+               /* for (int i = 0; i < avaliador.VP.Count(); i++)
                 {
                     SMS_Box.Text = SMS_Box.Text + "\nVP " + i + ": " + avaliador.VP[i];
-                }
+                }*/
+                SMS_Box.Text = SMS_Box.Text + "\nTOTAL VN: " + avaliador.VN.Count();
+                /* for (int i = 0; i < avaliador.VN.Count(); i++)
+                 {
+                     SMS_Box.Text = SMS_Box.Text + "\nVN " + i + ": " + avaliador.VN[i];
+                 }*/
+
                 SMS_Box.Text = SMS_Box.Text + "\nTOTAL FP: " + avaliador.FP.Count();
-                for (int i = 0; i < avaliador.FP.Count(); i++)
+               /* for (int i = 0; i < avaliador.FP.Count(); i++)
                 {
                     SMS_Box.Text = SMS_Box.Text + "\nFP " + i + ": " + avaliador.FP[i];
-                }
+                }*/
                 SMS_Box.Text = SMS_Box.Text + "\nTOTAL FN: " + avaliador.FN.Count();
-                for (int i = 0; i < avaliador.FN.Count(); i++)
+                /*for (int i = 0; i < avaliador.FN.Count(); i++)
                 {
                     SMS_Box.Text = SMS_Box.Text + "\nFN " + i + ": " + avaliador.FN[i];
-                }
-                SMS_Box.Text = SMS_Box.Text + "\nTOTAL VN: " + avaliador.VN.Count();
-                for (int i = 0; i < avaliador.VN.Count(); i++)
-                {
-                    SMS_Box.Text = SMS_Box.Text + "\nVN " + i + ": " + avaliador.VN[i];
-                }
+                }*/
             }
 
         }
