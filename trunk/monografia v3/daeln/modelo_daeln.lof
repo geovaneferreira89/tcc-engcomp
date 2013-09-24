@@ -10,30 +10,30 @@
 \contentsline {figure}{\numberline {9}{\ignorespaces Rede neural do tipo Multilayer Perceptron}}{23}
 \contentsline {figure}{\numberline {10}{\ignorespaces Rela\c c\~ao entre o erro m\'edio quadrado e treinamento}}{23}
 \contentsline {figure}{\numberline {11}{\ignorespaces Estrutura de um Mapa de Kohonen}}{25}
-\contentsline {figure}{\numberline {12}{\ignorespaces Mapa de Kohonen inicializado}}{26}
+\contentsline {figure}{\numberline {12}{\ignorespaces Mapa de Kohonen inicializado}}{27}
 \contentsline {figure}{\numberline {13}{\ignorespaces Mapa de Kohonen ap\'os algoritmo}}{27}
-\contentsline {figure}{\numberline {14}{\ignorespaces Exemplo de sinal e padr\~ao de classifica\c c\~ao}}{28}
-\contentsline {figure}{\numberline {15}{\ignorespaces Gr\'aficos de Sensibilidade e Especificidade}}{29}
-\contentsline {figure}{\numberline {16}{\ignorespaces Curva ROC}}{30}
-\contentsline {figure}{\numberline {17}{\ignorespaces Parte da grava\c c\~ao 105 da base de ECG}}{33}
-\contentsline {figure}{\numberline {18}{\ignorespaces Tela de op\c c\~oes do Physiobank ATM}}{34}
-\contentsline {figure}{\numberline {19}{\ignorespaces Diagrama UML da Biblioteca BrainNet}}{36}
-\contentsline {figure}{\numberline {20}{\ignorespaces Fluxograma simples}}{37}
-\contentsline {figure}{\numberline {21}{\ignorespaces Fluxograma com extra\c c\~ao de caracter\IeC {\'\i }sticas}}{38}
-\contentsline {figure}{\numberline {22}{\ignorespaces Tela de sele\c c\~ao do sistema}}{39}
-\contentsline {figure}{\numberline {23}{\ignorespaces Tela de visualiza\c c\~ao do sinal no sistema}}{40}
-\contentsline {figure}{\numberline {24}{\ignorespaces Op\c c\~ao de marcar eventos}}{41}
-\contentsline {figure}{\numberline {25}{\ignorespaces Marca\c c\~oes de eventos}}{42}
-\contentsline {figure}{\numberline {26}{\ignorespaces Editor de marca\c c\~oes}}{42}
-\contentsline {figure}{\numberline {27}{\ignorespaces Tela da extra\c c\~ao de caracter\IeC {\'\i }sticas}}{43}
-\contentsline {figure}{\numberline {28}{\ignorespaces Tela de configura\c c\~ao do mapa de Kohonen}}{44}
-\contentsline {figure}{\numberline {29}{\ignorespaces Tela de resultados}}{44}
-\contentsline {figure}{\numberline {30}{\ignorespaces Diagrama de Classes do Sistema}}{45}
-\contentsline {figure}{\numberline {31}{\ignorespaces Fun\c c\~ao correla\c c\~ao no sistema}}{47}
-\contentsline {figure}{\numberline {32}{\ignorespaces Mapa inicializado com sinal}}{48}
+\contentsline {figure}{\numberline {14}{\ignorespaces Exemplo de sinal e padr\~ao de classifica\c c\~ao}}{29}
+\contentsline {figure}{\numberline {15}{\ignorespaces Gr\'aficos de Sensibilidade e Especificidade}}{30}
+\contentsline {figure}{\numberline {16}{\ignorespaces Curva ROC}}{31}
+\contentsline {figure}{\numberline {17}{\ignorespaces Parte da grava\c c\~ao 105 da base de ECG}}{34}
+\contentsline {figure}{\numberline {18}{\ignorespaces Tela de op\c c\~oes do Physiobank ATM}}{35}
+\contentsline {figure}{\numberline {19}{\ignorespaces Diagrama UML da Biblioteca BrainNet}}{37}
+\contentsline {figure}{\numberline {20}{\ignorespaces Fluxograma simples}}{38}
+\contentsline {figure}{\numberline {21}{\ignorespaces Fluxograma com extra\c c\~ao de caracter\IeC {\'\i }sticas}}{39}
+\contentsline {figure}{\numberline {22}{\ignorespaces Tela de sele\c c\~ao do sistema}}{40}
+\contentsline {figure}{\numberline {23}{\ignorespaces Tela de visualiza\c c\~ao do sinal no sistema}}{41}
+\contentsline {figure}{\numberline {24}{\ignorespaces Op\c c\~ao de marcar eventos}}{42}
+\contentsline {figure}{\numberline {25}{\ignorespaces Marca\c c\~oes de eventos}}{43}
+\contentsline {figure}{\numberline {26}{\ignorespaces Editor de marca\c c\~oes}}{43}
+\contentsline {figure}{\numberline {27}{\ignorespaces Tela da extra\c c\~ao de caracter\IeC {\'\i }sticas}}{44}
+\contentsline {figure}{\numberline {28}{\ignorespaces Tela de configura\c c\~ao do mapa de Kohonen}}{45}
+\contentsline {figure}{\numberline {29}{\ignorespaces Tela de resultados}}{45}
+\contentsline {figure}{\numberline {30}{\ignorespaces Diagrama de Classes do Sistema}}{46}
+\contentsline {figure}{\numberline {31}{\ignorespaces Fun\c c\~ao correla\c c\~ao no sistema}}{48}
+\contentsline {figure}{\numberline {32}{\ignorespaces Mapa inicializado com sinal}}{49}
 \contentsline {figure}{\numberline {33}{\ignorespaces Mapa produzido}}{49}
 \contentsline {figure}{\numberline {34}{\ignorespaces L\'ogica da avalia\c c\~ao}}{50}
 \contentsline {figure}{\numberline {35}{\ignorespaces Curva ROC dos resultados}}{53}
 \contentsline {figure}{\numberline {36}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{54}
-\contentsline {figure}{\numberline {37}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{54}
+\contentsline {figure}{\numberline {37}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{55}
 \contentsline {figure}{\numberline {38}{\ignorespaces Gr\'afico da Quantidade de Horas Trabalhadas}}{59}
