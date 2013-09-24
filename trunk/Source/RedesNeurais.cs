@@ -120,17 +120,18 @@ namespace AmbienteRPB
                     Plotar("CLEAR", null, 1, CanalParaPlotar+1, selecaoAtual, vetorDeResultados, null, null);
                     Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
                     send_SmS(1, "Adicionando Entradas e treinando", false);
-                    int inicio = 0;
-                    int divisaoKo = 2;
-                    if (400000 < VetTreinamento)
+                    int inicio    = 0;
+                    int divisaoKo = 4;
+                    /*if (200000 < VetTreinamento)
                         divisaoKo = 3;
                     else if (VetTreinamento < 4000)
-                        divisaoKo = 1;
+                        divisaoKo = 1;*/
 
                     Initialise_KHn();
                     send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
                     for (int max = 0; max < divisaoKo; max++)
                     {
+                        send_SmS(1, Convert.ToString(max), false);
                         LoadData_KHn(file, inicio, ((max + 1) * (VetTreinamento / divisaoKo)));
                         NormalisePatterns_KHn();
                         Train_KHn(0.0001);
@@ -140,8 +141,8 @@ namespace AmbienteRPB
                     //Imprime a matriz de resultados
                     send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Minute - min_inicio) + " min.", false);
-                    send_SmS(1, "Matriz do Kohonen", false); 
-                     for (int i = 0; i < length; i++)
+                    //send_SmS(1, "Matriz do Kohonen", false); 
+                     /*for (int i = 0; i < length; i++)
                      {
                          string saida = "";
                          for (int j = 0; j < length; j++)
@@ -149,9 +150,10 @@ namespace AmbienteRPB
                              saida += SaidaFinal[j, i] + "\t";
                          }
                          send_SmS(1, saida, false);
-                     }
-                    if(!it_is_debug)
+                     }*/
+                    //if(!it_is_debug)
                         Plotar("PlotKohonen", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
+                    //Thread.Sleep(50);
                     break;
                 }
                 case("BackPropagation"):
@@ -170,7 +172,7 @@ namespace AmbienteRPB
                 }
                 case("BackPropagation_AllEvnts"):
                 {
-                    int loopMAX = 2;
+                    int loopMAX = 3;
                     float inicio = DateTime.Now.Minute;
                     while (treinarnova && loopMAX != 0)
                     {
@@ -198,8 +200,10 @@ namespace AmbienteRPB
                             Plotar("BKP", null, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                         }
                         else
+                        {
                             send_SmS(1, "Retreinando a Rede.", false);
-                        loopMAX--;
+                            loopMAX--;
+                        }
                     }
                     if(loopMAX == 0)
                         send_SmS(5, "Erro!\nNão consiguiu detectar!\nObs.: Verifique o conjunto de treinamento", false);
@@ -272,8 +276,8 @@ namespace AmbienteRPB
                     List<float> conjTreinado = new List<float>();
                     load_progress_bar(0, 4);
                     int totalParaTreino = ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos;
-                    if (totalParaTreino > 100)
-                        totalParaTreino = 100;
+                    if (totalParaTreino > 200)
+                        totalParaTreino = 200;
                     load_progress_bar(totalParaTreino, 2);
                     for (int cont = 0; cont < totalParaTreino; cont++)
                     {
@@ -678,41 +682,41 @@ namespace AmbienteRPB
                     {
                         int offset = myArray[0];
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            for (int i = 0; i < (offset/3); i++)
+                            for (int i = 0; i < (offset/4); i++)
                                 prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                            for (int i = 0;  i < X_.Count; i++)
                             {
                                // for (int k = 0; k < 5; k++)
                                // {
+                                prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                                 if (X_[i] == 0 && Y_[i] == 0)
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
-                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 10);
+                                  //  prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 10);
                                 }
                                 else if (X_[i] == 0 && Y_[i] == 1)
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
-                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 8);
+                                    ///prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 8);
 
                                 }
                                 else if (X_[i] == 0 && Y_[i] == 2)
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
-                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 7);
+                                    //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 7);
 
                                 }
                                 else if (X_[i] == 0 && Y_[i] == 3)
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 5);
+                                    //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 5);
                                 }
-                                // else if (X_[i] == 0 && Y_[i] == 4)
-                                //     prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
+                                 else if (X_[i] == 0 && Y_[i] == 4)
+                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
                                 else
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
-                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 2);
-
+                                   // prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 2);
                                 }
                                 //}
                                 //Mapa
@@ -770,7 +774,7 @@ namespace AmbienteRPB
         // *****************************************   KOHONEN   *********************************************
         //====================================================================================================
         //
-        private int pulo = 3;
+        private int pulo = 5;
         private void Initialise_KHn()
         {
             SaidaFinal = new double[length, length];
