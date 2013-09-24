@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Network xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://tempuri.org/Network.xsd">
+  <Layer Name="Layer0">
+    <Neuron Name="L0N0">
+      <Bias>-0.97949886322021484</Bias>
+      <Output>977</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N1">
+      <Bias>0.35825860500335693</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N2">
+      <Bias>0.3449862003326416</Bias>
+      <Output>979</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N3">
+      <Bias>-0.1463550329208374</Bias>
+      <Output>980</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N4">
+      <Bias>-0.67233133316040039</Bias>
+      <Output>978</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N5">
+      <Bias>0.37443912029266357</Bias>
+      <Output>977</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N6">
+      <Bias>-0.76587224006652832</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N7">
+      <Bias>-0.28262126445770264</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N8">
+      <Bias>0.26762580871582031</Bias>
+      <Output>979</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N9">
+      <Bias>-0.44543230533599854</Bias>
+      <Output>979</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N10">
+      <Bias>0.224900484085083</Bias>
+      <Output>980</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N11">
+      <Bias>-0.31725633144378662</Bias>
+      <Output>974</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N12">
+      <Bias>-0.15962743759155273</Bias>
+      <Output>974</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N13">
+      <Bias>0.83632743358612061</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N14">
+      <Bias>0.37962126731872559</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N15">
+      <Bias>0.28089821338653564</Bias>
+      <Output>976</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N16">
+      <Bias>0.045908927917480469</Bias>
+      <Output>976</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N17">
+      <Bias>0.750876784324646</Bias>
+      <Output>977</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N18">
+      <Bias>0.63597321510314941</Bias>
+      <Output>977</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N19">
+      <Bias>-0.48815762996673584</Bias>
+      <Output>977</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N20">
+      <Bias>0.35307645797729492</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N21">
+      <Bias>-0.70178425312042236</Bias>
+      <Output>977</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N22">
+      <Bias>-0.47488522529602051</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N23">
+      <Bias>-0.62442386150360107</Bias>
+      <Output>973</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N24">
+      <Bias>-0.17580795288085938</Bias>
+      <Output>971</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N25">
+      <Bias>-0.052814126014709473</Bias>
+      <Output>974</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N26">
+      <Bias>0.51588749885559082</Bias>
+      <Output>976</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N27">
+      <Bias>-0.65905892848968506</Bias>
+      <Output>978</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N28">
+      <Bias>-0.60306119918823242</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N29">
+      <Bias>-0.23989593982696533</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N30">
+      <Bias>0.1394498348236084</Bias>
+      <Output>974</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N31">
+      <Bias>-0.060904383659362793</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N32">
+      <Bias>-0.92868328094482422</Bias>
+      <Output>978</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N33">
+      <Bias>-0.32534658908843994</Bias>
+      <Output>981</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N34">
+      <Bias>0.39580178260803223</Bias>
+      <Output>981</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N35">
+      <Bias>-0.82996022701263428</Bias>
+      <Output>978</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N36">
+      <Bias>-0.090357303619384766</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N37">
+      <Bias>-0.3091660737991333</Bias>
+      <Output>972</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N38">
+      <Bias>-0.7150566577911377</Bias>
+      <Output>975</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N39">
+      <Bias>0.50261509418487549</Bias>
+      <Output>976</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N40">
+      <Bias>0.84959983825683594</Bias>
+      <Output>973</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N41">
+      <Bias>0.87096250057220459</Bias>
+      <Output>972</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N42">
+      <Bias>0.80687451362609863</Bias>
+      <Output>970</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N43">
+      <Bias>0.9991384744644165</Bias>
+      <Output>969</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N44">
+      <Bias>0.42234659194946289</Bias>
+      <Output>972</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N45">
+      <Bias>0.15272223949432373</Bias>
+      <Output>972</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N46">
+      <Bias>0.43043684959411621</Bias>
+      <Output>971</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N47">
+      <Bias>-0.40270698070526123</Bias>
+      <Output>971</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N48">
+      <Bias>0.0967245101928711</Bias>
+      <Output>971</Output>
+      <Delta>0</Delta>
+    </Neuron>
+    <Neuron Name="L0N49">
+      <Bias>0.067271590232849121</Bias>
+      <Output>969</Output>
+      <Delta>0</Delta>
+    </Neuron>
+  </Layer>
+  <Layer Name="Layer1">
+    <Neuron Name="L1N0">
+      <Bias>0.68678879737854</Bias>
+      <Output>0</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="-0.68042159080505371" />
+        <Input Layer="0" Neuron="39" Weight="0.075361847877502441" />
+        <Input Layer="0" Neuron="34" Weight="-0.93677353858947754" />
+        <Input Layer="0" Neuron="31" Weight="0.14463198184967041" />
+        <Input Layer="0" Neuron="8" Weight="0.59324789047241211" />
+        <Input Layer="0" Neuron="26" Weight="-0.7150566577911377" />
+        <Input Layer="0" Neuron="25" Weight="-0.23989593982696533" />
+        <Input Layer="0" Neuron="30" Weight="0.85769009590148926" />
+        <Input Layer="0" Neuron="5" Weight="-0.49624788761138916" />
+        <Input Layer="0" Neuron="15" Weight="-0.77914464473724365" />
+        <Input Layer="0" Neuron="44" Weight="0.16599464416503906" />
+        <Input Layer="0" Neuron="46" Weight="-0.11690211296081543" />
+        <Input Layer="0" Neuron="7" Weight="-0.70987451076507568" />
+        <Input Layer="0" Neuron="16" Weight="-0.261258602142334" />
+        <Input Layer="0" Neuron="41" Weight="-0.58169853687286377" />
+        <Input Layer="0" Neuron="0" Weight="-0.5522456169128418" />
+        <Input Layer="0" Neuron="43" Weight="-0.010088801383972168" />
+        <Input Layer="0" Neuron="11" Weight="-0.79532516002655029" />
+        <Input Layer="0" Neuron="13" Weight="-0.66714918613433838" />
+        <Input Layer="0" Neuron="35" Weight="0.7936021089553833" />
+        <Input Layer="0" Neuron="33" Weight="0.32362353801727295" />
+        <Input Layer="0" Neuron="14" Weight="-0.16771769523620606" />
+        <Input Layer="0" Neuron="3" Weight="-0.52279269695281982" />
+        <Input Layer="0" Neuron="2" Weight="0.48125243186950684" />
+        <Input Layer="0" Neuron="18" Weight="0.037818670272827148" />
+        <Input Layer="0" Neuron="22" Weight="0.3449862003326416" />
+        <Input Layer="0" Neuron="23" Weight="-0.31725633144378662" />
+        <Input Layer="0" Neuron="40" Weight="0.64406347274780273" />
+        <Input Layer="0" Neuron="37" Weight="0.28898847103118896" />
+        <Input Layer="0" Neuron="24" Weight="0.35307645797729492" />
+        <Input Layer="0" Neuron="38" Weight="-0.62960600852966309" />
+        <Input Layer="0" Neuron="9" Weight="0.10190665721893311" />
+        <Input Layer="0" Neuron="17" Weight="0.66542613506317139" />
+        <Input Layer="0" Neuron="32" Weight="-0.50143003463745117" />
+        <Input Layer="0" Neuron="20" Weight="-0.0049066543579101562" />
+        <Input Layer="0" Neuron="47" Weight="0.53725016117095947" />
+        <Input Layer="0" Neuron="19" Weight="0.40098392963409424" />
+        <Input Layer="0" Neuron="48" Weight="-0.21044301986694336" />
+        <Input Layer="0" Neuron="1" Weight="-0.99277126789093018" />
+        <Input Layer="0" Neuron="10" Weight="0.259535551071167" />
+        <Input Layer="0" Neuron="28" Weight="-0.12499237060546875" />
+        <Input Layer="0" Neuron="49" Weight="-0.018179059028625488" />
+        <Input Layer="0" Neuron="4" Weight="-0.29589366912841797" />
+        <Input Layer="0" Neuron="42" Weight="0.31035113334655762" />
+        <Input Layer="0" Neuron="21" Weight="0.6307910680770874" />
+        <Input Layer="0" Neuron="36" Weight="-0.24507808685302734" />
+        <Input Layer="0" Neuron="27" Weight="-0.40270698070526123" />
+        <Input Layer="0" Neuron="45" Weight="0.11808717250823975" />
+        <Input Layer="0" Neuron="29" Weight="0.45988976955413818" />
+        <Input Layer="0" Neuron="12" Weight="-0.41597938537597656" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N1">
+      <Bias>0.82823717594146729</Bias>
+      <Output>1</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="-0.53897321224212646" />
+        <Input Layer="0" Neuron="39" Weight="0.13135957717895508" />
+        <Input Layer="0" Neuron="34" Weight="0.23008263111114502" />
+        <Input Layer="0" Neuron="31" Weight="0.98586606979370117" />
+        <Input Layer="0" Neuron="8" Weight="-0.35998165607452393" />
+        <Input Layer="0" Neuron="26" Weight="0.50261509418487549" />
+        <Input Layer="0" Neuron="25" Weight="0.1394498348236084" />
+        <Input Layer="0" Neuron="30" Weight="0.31553328037261963" />
+        <Input Layer="0" Neuron="5" Weight="-0.56033587455749512" />
+        <Input Layer="0" Neuron="15" Weight="-0.77396249771118164" />
+        <Input Layer="0" Neuron="44" Weight="0.92177808284759521" />
+        <Input Layer="0" Neuron="46" Weight="0.70815145969390869" />
+        <Input Layer="0" Neuron="7" Weight="0.080543994903564453" />
+        <Input Layer="0" Neuron="16" Weight="0.20353782176971436" />
+        <Input Layer="0" Neuron="41" Weight="-0.30398392677307129" />
+        <Input Layer="0" Neuron="0" Weight="0.54534041881561279" />
+        <Input Layer="0" Neuron="43" Weight="0.38771152496337891" />
+        <Input Layer="0" Neuron="11" Weight="0.33689594268798828" />
+        <Input Layer="0" Neuron="13" Weight="-0.047631978988647461" />
+        <Input Layer="0" Neuron="35" Weight="0.5077972412109375" />
+        <Input Layer="0" Neuron="33" Weight="-0.082267045974731445" />
+        <Input Layer="0" Neuron="14" Weight="-0.60824334621429443" />
+        <Input Layer="0" Neuron="3" Weight="-0.074176788330078125" />
+        <Input Layer="0" Neuron="2" Weight="0.91368782520294189" />
+        <Input Layer="0" Neuron="18" Weight="-0.693693995475769" />
+        <Input Layer="0" Neuron="22" Weight="-0.1463550329208374" />
+        <Input Layer="0" Neuron="23" Weight="-0.15962743759155273" />
+        <Input Layer="0" Neuron="40" Weight="0.9564131498336792" />
+        <Input Layer="0" Neuron="37" Weight="-0.50952029228210449" />
+        <Input Layer="0" Neuron="24" Weight="-0.70178425312042236" />
+        <Input Layer="0" Neuron="38" Weight="0.24626314640045166" />
+        <Input Layer="0" Neuron="9" Weight="-0.88595795631408691" />
+        <Input Layer="0" Neuron="17" Weight="0.89232516288757324" />
+        <Input Layer="0" Neuron="32" Weight="-0.13826477527618408" />
+        <Input Layer="0" Neuron="20" Weight="-0.56551802158355713" />
+        <Input Layer="0" Neuron="47" Weight="-0.723146915435791" />
+        <Input Layer="0" Neuron="19" Weight="0.21681022644042969" />
+        <Input Layer="0" Neuron="48" Weight="-0.48006737232208252" />
+        <Input Layer="0" Neuron="1" Weight="-0.13308262825012207" />
+        <Input Layer="0" Neuron="10" Weight="0.10999691486358643" />
+        <Input Layer="0" Neuron="28" Weight="-0.73641932010650635" />
+        <Input Layer="0" Neuron="49" Weight="0.94314074516296387" />
+        <Input Layer="0" Neuron="4" Weight="-0.22371542453765869" />
+        <Input Layer="0" Neuron="42" Weight="-0.57360827922821045" />
+        <Input Layer="0" Neuron="21" Weight="0.4650719165802002" />
+        <Input Layer="0" Neuron="36" Weight="-0.90732061862945557" />
+        <Input Layer="0" Neuron="27" Weight="0.0967245101928711" />
+        <Input Layer="0" Neuron="45" Weight="0.0031836032867431641" />
+        <Input Layer="0" Neuron="29" Weight="0.97777581214904785" />
+        <Input Layer="0" Neuron="12" Weight="-0.39461672306060791" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N2">
+      <Bias>0.93505048751831055</Bias>
+      <Output>1</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="-0.4321599006652832" />
+        <Input Layer="0" Neuron="39" Weight="0.49452483654022217" />
+        <Input Layer="0" Neuron="34" Weight="0.72951412200927734" />
+        <Input Layer="0" Neuron="31" Weight="-0.068994641304016113" />
+        <Input Layer="0" Neuron="8" Weight="-0.03145146369934082" />
+        <Input Layer="0" Neuron="26" Weight="0.84959983825683594" />
+        <Input Layer="0" Neuron="25" Weight="-0.060904383659362793" />
+        <Input Layer="0" Neuron="30" Weight="0.47316217422485352" />
+        <Input Layer="0" Neuron="5" Weight="-0.36807191371917725" />
+        <Input Layer="0" Neuron="15" Weight="0.27280795574188232" />
+        <Input Layer="0" Neuron="44" Weight="0.12326931953430176" />
+        <Input Layer="0" Neuron="46" Weight="0.76414918899536133" />
+        <Input Layer="0" Neuron="7" Weight="-0.821869969367981" />
+        <Input Layer="0" Neuron="16" Weight="-0.25316834449768066" />
+        <Input Layer="0" Neuron="41" Weight="0.33171379566192627" />
+        <Input Layer="0" Neuron="0" Weight="0.721423864364624" />
+        <Input Layer="0" Neuron="43" Weight="-0.27453100681304932" />
+        <Input Layer="0" Neuron="11" Weight="0.40907418727874756" />
+        <Input Layer="0" Neuron="13" Weight="-0.43734204769134521" />
+        <Input Layer="0" Neuron="35" Weight="-0.1036297082901001" />
+        <Input Layer="0" Neuron="33" Weight="-0.86459529399871826" />
+        <Input Layer="0" Neuron="14" Weight="0.1821751594543457" />
+        <Input Layer="0" Neuron="3" Weight="0.57997548580169678" />
+        <Input Layer="0" Neuron="2" Weight="0.67869853973388672" />
+        <Input Layer="0" Neuron="18" Weight="0.43852710723876953" />
+        <Input Layer="0" Neuron="22" Weight="-0.67233133316040039" />
+        <Input Layer="0" Neuron="23" Weight="0.83632743358612061" />
+        <Input Layer="0" Neuron="40" Weight="0.5505225658416748" />
+        <Input Layer="0" Neuron="37" Weight="0.41716444492340088" />
+        <Input Layer="0" Neuron="24" Weight="-0.47488522529602051" />
+        <Input Layer="0" Neuron="38" Weight="-0.38134431838989258" />
+        <Input Layer="0" Neuron="9" Weight="-0.45352256298065186" />
+        <Input Layer="0" Neuron="17" Weight="0.74278652667999268" />
+        <Input Layer="0" Neuron="32" Weight="0.77223944664001465" />
+        <Input Layer="0" Neuron="20" Weight="0.053999185562133789" />
+        <Input Layer="0" Neuron="47" Weight="-0.41079723834991455" />
+        <Input Layer="0" Neuron="19" Weight="0.23817288875579834" />
+        <Input Layer="0" Neuron="48" Weight="-0.20235276222229004" />
+        <Input Layer="0" Neuron="1" Weight="-0.18099009990692139" />
+        <Input Layer="0" Neuron="10" Weight="0.55861282348632812" />
+        <Input Layer="0" Neuron="28" Weight="0.56670308113098145" />
+        <Input Layer="0" Neuron="49" Weight="0.0591813325881958" />
+        <Input Layer="0" Neuron="4" Weight="-0.97140860557556152" />
+        <Input Layer="0" Neuron="42" Weight="0.60942840576171875" />
+        <Input Layer="0" Neuron="21" Weight="0.024546265602111816" />
+        <Input Layer="0" Neuron="36" Weight="-0.3894345760345459" />
+        <Input Layer="0" Neuron="27" Weight="0.067271590232849121" />
+        <Input Layer="0" Neuron="45" Weight="0.87905275821685791" />
+        <Input Layer="0" Neuron="29" Weight="0.48643457889556885" />
+        <Input Layer="0" Neuron="12" Weight="-0.45870471000671387" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N3">
+      <Bias>0.61461055278778076</Bias>
+      <Output>0</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="-0.752599835395813" />
+        <Input Layer="0" Neuron="39" Weight="-0.5949709415435791" />
+        <Input Layer="0" Neuron="34" Weight="0.70006120204925537" />
+        <Input Layer="0" Neuron="31" Weight="-0.37325406074523926" />
+        <Input Layer="0" Neuron="8" Weight="0.45179951190948486" />
+        <Input Layer="0" Neuron="26" Weight="0.87096250057220459" />
+        <Input Layer="0" Neuron="25" Weight="-0.92868328094482422" />
+        <Input Layer="0" Neuron="30" Weight="-0.53088295459747314" />
+        <Input Layer="0" Neuron="5" Weight="0.52397775650024414" />
+        <Input Layer="0" Neuron="15" Weight="0.60133814811706543" />
+        <Input Layer="0" Neuron="44" Weight="-0.95004594326019287" />
+        <Input Layer="0" Neuron="46" Weight="-0.87268555164337158" />
+        <Input Layer="0" Neuron="7" Weight="-0.64578652381896973" />
+        <Input Layer="0" Neuron="16" Weight="-0.35189139842987061" />
+        <Input Layer="0" Neuron="41" Weight="-0.63769626617431641" />
+        <Input Layer="0" Neuron="0" Weight="-0.74450957775115967" />
+        <Input Layer="0" Neuron="43" Weight="-0.28780341148376465" />
+        <Input Layer="0" Neuron="11" Weight="-0.33861899375915527" />
+        <Input Layer="0" Neuron="13" Weight="-0.33052873611450195" />
+        <Input Layer="0" Neuron="35" Weight="-0.8005073070526123" />
+        <Input Layer="0" Neuron="33" Weight="-0.51761054992675781" />
+        <Input Layer="0" Neuron="14" Weight="-0.18908035755157471" />
+        <Input Layer="0" Neuron="3" Weight="-0.85132288932800293" />
+        <Input Layer="0" Neuron="2" Weight="-0.61633360385894775" />
+        <Input Layer="0" Neuron="18" Weight="-0.95813620090484619" />
+        <Input Layer="0" Neuron="22" Weight="0.37443912029266357" />
+        <Input Layer="0" Neuron="23" Weight="0.37962126731872559" />
+        <Input Layer="0" Neuron="40" Weight="-0.231805682182312" />
+        <Input Layer="0" Neuron="37" Weight="-0.89404821395874023" />
+        <Input Layer="0" Neuron="24" Weight="-0.62442386150360107" />
+        <Input Layer="0" Neuron="38" Weight="0.032636523246765137" />
+        <Input Layer="0" Neuron="9" Weight="-0.688511848449707" />
+        <Input Layer="0" Neuron="17" Weight="-0.80859756469726562" />
+        <Input Layer="0" Neuron="32" Weight="0.57188522815704346" />
+        <Input Layer="0" Neuron="20" Weight="0.19544756412506104" />
+        <Input Layer="0" Neuron="47" Weight="-0.816687822341919" />
+        <Input Layer="0" Neuron="19" Weight="0.17408490180969238" />
+        <Input Layer="0" Neuron="48" Weight="0.96450340747833252" />
+        <Input Layer="0" Neuron="1" Weight="0.90041542053222656" />
+        <Input Layer="0" Neuron="10" Weight="-0.787234902381897" />
+        <Input Layer="0" Neuron="28" Weight="0.65733587741851807" />
+        <Input Layer="0" Neuron="49" Weight="-0.757781982421875" />
+        <Input Layer="0" Neuron="4" Weight="-0.19717061519622803" />
+        <Input Layer="0" Neuron="42" Weight="0.52915990352630615" />
+        <Input Layer="0" Neuron="21" Weight="0.814964771270752" />
+        <Input Layer="0" Neuron="36" Weight="0.5880657434463501" />
+        <Input Layer="0" Neuron="27" Weight="0.68678879737854" />
+        <Input Layer="0" Neuron="45" Weight="0.25144529342651367" />
+        <Input Layer="0" Neuron="29" Weight="-0.039541721343994141" />
+        <Input Layer="0" Neuron="12" Weight="-0.266440749168396" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N4">
+      <Bias>-0.42406964302062988</Bias>
+      <Output>0</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="0.20871996879577637" />
+        <Input Layer="0" Neuron="39" Weight="-0.79532516002655029" />
+        <Input Layer="0" Neuron="34" Weight="-0.68042159080505371" />
+        <Input Layer="0" Neuron="31" Weight="-0.52279269695281982" />
+        <Input Layer="0" Neuron="8" Weight="-0.46679496765136719" />
+        <Input Layer="0" Neuron="26" Weight="0.80687451362609863" />
+        <Input Layer="0" Neuron="25" Weight="-0.32534658908843994" />
+        <Input Layer="0" Neuron="30" Weight="0.48125243186950684" />
+        <Input Layer="0" Neuron="5" Weight="0.78551185131073" />
+        <Input Layer="0" Neuron="15" Weight="-0.91541087627410889" />
+        <Input Layer="0" Neuron="44" Weight="-0.261258602142334" />
+        <Input Layer="0" Neuron="46" Weight="0.037818670272827148" />
+        <Input Layer="0" Neuron="7" Weight="-0.11171996593475342" />
+        <Input Layer="0" Neuron="16" Weight="-0.58688068389892578" />
+        <Input Layer="0" Neuron="41" Weight="-0.66714918613433838" />
+        <Input Layer="0" Neuron="0" Weight="-0.34670925140380859" />
+        <Input Layer="0" Neuron="43" Weight="-0.77914464473724365" />
+        <Input Layer="0" Neuron="11" Weight="-0.095539450645446777" />
+        <Input Layer="0" Neuron="13" Weight="-0.65096867084503174" />
+        <Input Layer="0" Neuron="35" Weight="-0.70987451076507568" />
+        <Input Layer="0" Neuron="33" Weight="-0.49624788761138916" />
+        <Input Layer="0" Neuron="14" Weight="-0.54415535926818848" />
+        <Input Layer="0" Neuron="3" Weight="-0.026269316673278809" />
+        <Input Layer="0" Neuron="2" Weight="-0.73123717308044434" />
+        <Input Layer="0" Neuron="18" Weight="0.294170618057251" />
+        <Input Layer="0" Neuron="22" Weight="-0.76587224006652832" />
+        <Input Layer="0" Neuron="23" Weight="0.28089821338653564" />
+        <Input Layer="0" Neuron="40" Weight="-0.41597938537597656" />
+        <Input Layer="0" Neuron="37" Weight="0.10190665721893311" />
+        <Input Layer="0" Neuron="24" Weight="-0.17580795288085938" />
+        <Input Layer="0" Neuron="38" Weight="0.259535551071167" />
+        <Input Layer="0" Neuron="9" Weight="0.016456007957458496" />
+        <Input Layer="0" Neuron="17" Weight="-0.15444529056549072" />
+        <Input Layer="0" Neuron="32" Weight="-0.29589366912841797" />
+        <Input Layer="0" Neuron="20" Weight="0.3022608757019043" />
+        <Input Layer="0" Neuron="47" Weight="0.40098392963409424" />
+        <Input Layer="0" Neuron="19" Weight="0.36634886264801025" />
+        <Input Layer="0" Neuron="48" Weight="-0.0049066543579101562" />
+        <Input Layer="0" Neuron="1" Weight="0.18735730648040772" />
+        <Input Layer="0" Neuron="10" Weight="-0.21853327751159668" />
+        <Input Layer="0" Neuron="28" Weight="-0.5522456169128418" />
+        <Input Layer="0" Neuron="49" Weight="0.6307910680770874" />
+        <Input Layer="0" Neuron="4" Weight="0.011273860931396484" />
+        <Input Layer="0" Neuron="42" Weight="-0.16771769523620606" />
+        <Input Layer="0" Neuron="21" Weight="0.44370925426483154" />
+        <Input Layer="0" Neuron="36" Weight="0.59324789047241211" />
+        <Input Layer="0" Neuron="27" Weight="0.82823717594146729" />
+        <Input Layer="0" Neuron="45" Weight="0.66542613506317139" />
+        <Input Layer="0" Neuron="29" Weight="-0.99277126789093018" />
+        <Input Layer="0" Neuron="12" Weight="-0.84323263168334961" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N5">
+      <Bias>0.16081249713897705</Bias>
+      <Output>1</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="0.7936021089553833" />
+        <Input Layer="0" Neuron="39" Weight="0.33689594268798828" />
+        <Input Layer="0" Neuron="34" Weight="-0.53897321224212646" />
+        <Input Layer="0" Neuron="31" Weight="-0.074176788330078125" />
+        <Input Layer="0" Neuron="8" Weight="0.28898847103118896" />
+        <Input Layer="0" Neuron="26" Weight="0.9991384744644165" />
+        <Input Layer="0" Neuron="25" Weight="0.39580178260803223" />
+        <Input Layer="0" Neuron="30" Weight="0.91368782520294189" />
+        <Input Layer="0" Neuron="5" Weight="-0.93677353858947754" />
+        <Input Layer="0" Neuron="15" Weight="0.16599464416503906" />
+        <Input Layer="0" Neuron="44" Weight="0.20353782176971436" />
+        <Input Layer="0" Neuron="46" Weight="-0.693693995475769" />
+        <Input Layer="0" Neuron="7" Weight="-0.24507808685302734" />
+        <Input Layer="0" Neuron="16" Weight="0.11808717250823975" />
+        <Input Layer="0" Neuron="41" Weight="-0.047631978988647461" />
+        <Input Layer="0" Neuron="0" Weight="0.45988976955413818" />
+        <Input Layer="0" Neuron="43" Weight="-0.77396249771118164" />
+        <Input Layer="0" Neuron="11" Weight="0.64406347274780273" />
+        <Input Layer="0" Neuron="13" Weight="0.31035113334655762" />
+        <Input Layer="0" Neuron="35" Weight="0.080543994903564453" />
+        <Input Layer="0" Neuron="33" Weight="-0.56033587455749512" />
+        <Input Layer="0" Neuron="14" Weight="-0.010088801383972168" />
+        <Input Layer="0" Neuron="3" Weight="-0.50143003463745117" />
+        <Input Layer="0" Neuron="2" Weight="0.14463198184967041" />
+        <Input Layer="0" Neuron="18" Weight="0.53725016117095947" />
+        <Input Layer="0" Neuron="22" Weight="-0.28262126445770264" />
+        <Input Layer="0" Neuron="23" Weight="0.045908927917480469" />
+        <Input Layer="0" Neuron="40" Weight="-0.39461672306060791" />
+        <Input Layer="0" Neuron="37" Weight="-0.88595795631408691" />
+        <Input Layer="0" Neuron="24" Weight="-0.052814126014709473" />
+        <Input Layer="0" Neuron="38" Weight="0.10999691486358643" />
+        <Input Layer="0" Neuron="9" Weight="-0.62960600852966309" />
+        <Input Layer="0" Neuron="17" Weight="-0.11690211296081543" />
+        <Input Layer="0" Neuron="32" Weight="-0.22371542453765869" />
+        <Input Layer="0" Neuron="20" Weight="-0.018179059028625488" />
+        <Input Layer="0" Neuron="47" Weight="0.21681022644042969" />
+        <Input Layer="0" Neuron="19" Weight="-0.21044301986694336" />
+        <Input Layer="0" Neuron="48" Weight="-0.56551802158355713" />
+        <Input Layer="0" Neuron="1" Weight="0.85769009590148926" />
+        <Input Layer="0" Neuron="10" Weight="0.075361847877502441" />
+        <Input Layer="0" Neuron="28" Weight="0.54534041881561279" />
+        <Input Layer="0" Neuron="49" Weight="0.4650719165802002" />
+        <Input Layer="0" Neuron="4" Weight="0.32362353801727295" />
+        <Input Layer="0" Neuron="42" Weight="-0.60824334621429443" />
+        <Input Layer="0" Neuron="21" Weight="0.088634252548217773" />
+        <Input Layer="0" Neuron="36" Weight="-0.35998165607452393" />
+        <Input Layer="0" Neuron="27" Weight="0.93505048751831055" />
+        <Input Layer="0" Neuron="45" Weight="0.89232516288757324" />
+        <Input Layer="0" Neuron="29" Weight="-0.13308262825012207" />
+        <Input Layer="0" Neuron="12" Weight="-0.58169853687286377" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N6">
+      <Bias>-0.12499237060546875</Bias>
+      <Output>1</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="0.5077972412109375" />
+        <Input Layer="0" Neuron="39" Weight="0.40907418727874756" />
+        <Input Layer="0" Neuron="34" Weight="-0.4321599006652832" />
+        <Input Layer="0" Neuron="31" Weight="0.57997548580169678" />
+        <Input Layer="0" Neuron="8" Weight="-0.50952029228210449" />
+        <Input Layer="0" Neuron="26" Weight="0.42234659194946289" />
+        <Input Layer="0" Neuron="25" Weight="-0.82996022701263428" />
+        <Input Layer="0" Neuron="30" Weight="0.67869853973388672" />
+        <Input Layer="0" Neuron="5" Weight="0.23008263111114502" />
+        <Input Layer="0" Neuron="15" Weight="0.92177808284759521" />
+        <Input Layer="0" Neuron="44" Weight="-0.25316834449768066" />
+        <Input Layer="0" Neuron="46" Weight="0.43852710723876953" />
+        <Input Layer="0" Neuron="7" Weight="-0.90732061862945557" />
+        <Input Layer="0" Neuron="16" Weight="0.0031836032867431641" />
+        <Input Layer="0" Neuron="41" Weight="-0.43734204769134521" />
+        <Input Layer="0" Neuron="0" Weight="0.97777581214904785" />
+        <Input Layer="0" Neuron="43" Weight="0.27280795574188232" />
+        <Input Layer="0" Neuron="11" Weight="0.9564131498336792" />
+        <Input Layer="0" Neuron="13" Weight="-0.57360827922821045" />
+        <Input Layer="0" Neuron="35" Weight="-0.821869969367981" />
+        <Input Layer="0" Neuron="33" Weight="-0.36807191371917725" />
+        <Input Layer="0" Neuron="14" Weight="0.38771152496337891" />
+        <Input Layer="0" Neuron="3" Weight="-0.13826477527618408" />
+        <Input Layer="0" Neuron="2" Weight="0.98586606979370117" />
+        <Input Layer="0" Neuron="18" Weight="-0.723146915435791" />
+        <Input Layer="0" Neuron="22" Weight="0.26762580871582031" />
+        <Input Layer="0" Neuron="23" Weight="0.750876784324646" />
+        <Input Layer="0" Neuron="40" Weight="-0.45870471000671387" />
+        <Input Layer="0" Neuron="37" Weight="-0.45352256298065186" />
+        <Input Layer="0" Neuron="24" Weight="0.51588749885559082" />
+        <Input Layer="0" Neuron="38" Weight="0.55861282348632812" />
+        <Input Layer="0" Neuron="9" Weight="0.24626314640045166" />
+        <Input Layer="0" Neuron="17" Weight="0.70815145969390869" />
+        <Input Layer="0" Neuron="32" Weight="-0.97140860557556152" />
+        <Input Layer="0" Neuron="20" Weight="0.94314074516296387" />
+        <Input Layer="0" Neuron="47" Weight="0.23817288875579834" />
+        <Input Layer="0" Neuron="19" Weight="-0.48006737232208252" />
+        <Input Layer="0" Neuron="48" Weight="0.053999185562133789" />
+        <Input Layer="0" Neuron="1" Weight="0.31553328037261963" />
+        <Input Layer="0" Neuron="10" Weight="0.13135957717895508" />
+        <Input Layer="0" Neuron="28" Weight="0.721423864364624" />
+        <Input Layer="0" Neuron="49" Weight="0.024546265602111816" />
+        <Input Layer="0" Neuron="4" Weight="-0.082267045974731445" />
+        <Input Layer="0" Neuron="42" Weight="0.1821751594543457" />
+        <Input Layer="0" Neuron="21" Weight="0.62270081043243408" />
+        <Input Layer="0" Neuron="36" Weight="-0.03145146369934082" />
+        <Input Layer="0" Neuron="27" Weight="0.61461055278778076" />
+        <Input Layer="0" Neuron="45" Weight="0.74278652667999268" />
+        <Input Layer="0" Neuron="29" Weight="-0.18099009990692139" />
+        <Input Layer="0" Neuron="12" Weight="-0.30398392677307129" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N7">
+      <Bias>-0.73641932010650635</Bias>
+      <Output>0</Output>
+      <Delta>0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="-0.1036297082901001" />
+        <Input Layer="0" Neuron="39" Weight="-0.33861899375915527" />
+        <Input Layer="0" Neuron="34" Weight="-0.752599835395813" />
+        <Input Layer="0" Neuron="31" Weight="-0.85132288932800293" />
+        <Input Layer="0" Neuron="8" Weight="0.41716444492340088" />
+        <Input Layer="0" Neuron="26" Weight="0.15272223949432373" />
+        <Input Layer="0" Neuron="25" Weight="-0.090357303619384766" />
+        <Input Layer="0" Neuron="30" Weight="-0.61633360385894775" />
+        <Input Layer="0" Neuron="5" Weight="0.72951412200927734" />
+        <Input Layer="0" Neuron="15" Weight="0.12326931953430176" />
+        <Input Layer="0" Neuron="44" Weight="-0.35189139842987061" />
+        <Input Layer="0" Neuron="46" Weight="-0.95813620090484619" />
+        <Input Layer="0" Neuron="7" Weight="-0.3894345760345459" />
+        <Input Layer="0" Neuron="16" Weight="0.87905275821685791" />
+        <Input Layer="0" Neuron="41" Weight="-0.33052873611450195" />
+        <Input Layer="0" Neuron="0" Weight="0.48643457889556885" />
+        <Input Layer="0" Neuron="43" Weight="0.60133814811706543" />
+        <Input Layer="0" Neuron="11" Weight="0.5505225658416748" />
+        <Input Layer="0" Neuron="13" Weight="0.60942840576171875" />
+        <Input Layer="0" Neuron="35" Weight="-0.64578652381896973" />
+        <Input Layer="0" Neuron="33" Weight="0.52397775650024414" />
+        <Input Layer="0" Neuron="14" Weight="-0.27453100681304932" />
+        <Input Layer="0" Neuron="3" Weight="0.77223944664001465" />
+        <Input Layer="0" Neuron="2" Weight="-0.068994641304016113" />
+        <Input Layer="0" Neuron="18" Weight="-0.41079723834991455" />
+        <Input Layer="0" Neuron="22" Weight="-0.44543230533599854" />
+        <Input Layer="0" Neuron="23" Weight="0.63597321510314941" />
+        <Input Layer="0" Neuron="40" Weight="-0.266440749168396" />
+        <Input Layer="0" Neuron="37" Weight="-0.688511848449707" />
+        <Input Layer="0" Neuron="24" Weight="-0.65905892848968506" />
+        <Input Layer="0" Neuron="38" Weight="-0.787234902381897" />
+        <Input Layer="0" Neuron="9" Weight="-0.38134431838989258" />
+        <Input Layer="0" Neuron="17" Weight="0.76414918899536133" />
+        <Input Layer="0" Neuron="32" Weight="-0.19717061519622803" />
+        <Input Layer="0" Neuron="20" Weight="0.0591813325881958" />
+        <Input Layer="0" Neuron="47" Weight="0.17408490180969238" />
+        <Input Layer="0" Neuron="19" Weight="-0.20235276222229004" />
+        <Input Layer="0" Neuron="48" Weight="0.19544756412506104" />
+        <Input Layer="0" Neuron="1" Weight="0.47316217422485352" />
+        <Input Layer="0" Neuron="10" Weight="0.49452483654022217" />
+        <Input Layer="0" Neuron="28" Weight="-0.74450957775115967" />
+        <Input Layer="0" Neuron="49" Weight="0.814964771270752" />
+        <Input Layer="0" Neuron="4" Weight="-0.86459529399871826" />
+        <Input Layer="0" Neuron="42" Weight="-0.18908035755157471" />
+        <Input Layer="0" Neuron="21" Weight="-0.97949886322021484" />
+        <Input Layer="0" Neuron="36" Weight="0.45179951190948486" />
+        <Input Layer="0" Neuron="27" Weight="-0.42406964302062988" />
+        <Input Layer="0" Neuron="45" Weight="-0.80859756469726562" />
+        <Input Layer="0" Neuron="29" Weight="0.90041542053222656" />
+        <Input Layer="0" Neuron="12" Weight="0.33171379566192627" />
+      </Connections>
+    </Neuron>
+    <Neuron Name="L1N8">
+      <Bias>0.56670308113098145</Bias>
+      <Output>0</Output>
+      <Delta>-0</Delta>
+      <Connections>
+        <Input Layer="0" Neuron="6" Weight="-0.8005073070526123" />
+        <Input Layer="0" Neuron="39" Weight="-0.095539450645446777" />
+        <Input Layer="0" Neuron="34" Weight="0.20871996879577637" />
+        <Input Layer="0" Neuron="31" Weight="-0.026269316673278809" />
+        <Input Layer="0" Neuron="8" Weight="-0.89404821395874023" />
+        <Input Layer="0" Neuron="26" Weight="0.43043684959411621" />
+        <Input Layer="0" Neuron="25" Weight="-0.3091660737991333" />
+        <Input Layer="0" Neuron="30" Weight="-0.73123717308044434" />
+        <Input Layer="0" Neuron="5" Weight="0.70006120204925537" />
+        <Input Layer="0" Neuron="15" Weight="-0.95004594326019287" />
+        <Input Layer="0" Neuron="44" Weight="-0.58688068389892578" />
+        <Input Layer="0" Neuron="46" Weight="0.294170618057251" />
+        <Input Layer="0" Neuron="7" Weight="0.5880657434463501" />
+        <Input Layer="0" Neuron="16" Weight="0.25144529342651367" />
+        <Input Layer="0" Neuron="41" Weight="-0.65096867084503174" />
+        <Input Layer="0" Neuron="0" Weight="-0.039541721343994141" />
+        <Input Layer="0" Neuron="43" Weight="-0.91541087627410889" />
+        <Input Layer="0" Neuron="11" Weight="-0.231805682182312" />
+        <Input Layer="0" Neuron="13" Weight="0.52915990352630615" />
+        <Input Layer="0" Neuron="35" Weight="-0.11171996593475342" />
+        <Input Layer="0" Neuron="33" Weight="0.78551185131073" />
+        <Input Layer="0" Neuron="14" Weight="-0.28780341148376465" />
+        <Input Layer="0" Neuron="3" Weight="0.57188522815704346" />
+        <Input Layer="0" Neuron="2" Weight="-0.37325406074523926" />
+        <Input Layer="0" Neuron="18" Weight="-0.816687822341919" />
+        <Input Layer="0" Neuron="22" Weight="0.224900484085083" />
+        <Input Layer="0" Neuron="23" Weight="-0.48815762996673584" />
+        <Input Layer="0" Neuron="40" Weight="-0.84323263168334961" />
+        <Input Layer="0" Neuron="37" Weight="0.016456007957458496" />
+        <Input Layer="0" Neuron="24" Weight="-0.60306119918823242" />
+        <Input Layer="0" Neuron="38" Weight="-0.21853327751159668" />
+        <Input Layer="0" Neuron="9" Weight="0.032636523246765137" />
+        <Input Layer="0" Neuron="17" Weight="-0.87268555164337158" />
+        <Input Layer="0" Neuron="32" Weight="0.011273860931396484" />
+        <Input Layer="0" Neuron="20" Weight="-0.757781982421875" />
+        <Input Layer="0" Neuron="47" Weight="0.36634886264801025" />
+        <Input Layer="0" Neuron="19" Weight="0.96450340747833252" />
+        <Input Layer="0" Neuron="48" Weight="0.3022608757019043" />
+        <Input Layer="0" Neuron="1" Weight="-0.53088295459747314" />
+        <Input Layer="0" Neuron="10" Weight="-0.5949709415435791" />
+        <Input Layer="0" Neuron="28" Weight="-0.34670925140380859" />
+        <Input Layer="0" Neuron="49" Weight="0.44370925426483154" />
+        <Input Layer="0" Neuron="4" Weight="-0.51761054992675781" />
+        <Input Layer="0" Neuron="42" Weight="-0.54415535926818848" />
+        <Input Layer="0" Neuron="21" Weight="0.35825860500335693" />
+        <Input Layer="0" Neuron="36" Weight="-0.46679496765136719" />
+        <Input Layer="0" Neuron="27" Weight="0.16081249713897705" />
+        <Input Layer="0" Neuron="45" Weight="-0.15444529056549072" />
+        <Input Layer="0" Neuron="29" Weight="0.18735730648040772" />
+        <Input Layer="0" Neuron="12" Weight="-0.63769626617431641" />
+      </Connections>
+    </Neuron>
+  </Layer>
+  <Layer Name="Layer2">
+    <Neuron Name="L2N0">
+      <Bias>2.062969446182251</Bias>
+      <Output>0.99851351976394653</Output>
+      <Delta>2.2063388769311132E-06</Delta>
+      <Connections>
+        <Input Layer="1" Neuron="5" Weight="1.259166955947876" />
+        <Input Layer="1" Neuron="1" Weight="2.0284404754638672" />
+        <Input Layer="1" Neuron="3" Weight="0.35825860500335693" />
+        <Input Layer="1" Neuron="0" Weight="0.088634252548217773" />
+        <Input Layer="1" Neuron="2" Weight="0.42604571580886841" />
+        <Input Layer="1" Neuron="4" Weight="0.3449862003326416" />
+        <Input Layer="1" Neuron="7" Weight="0.37443912029266357" />
+        <Input Layer="1" Neuron="6" Weight="0.73323982954025269" />
+        <Input Layer="1" Neuron="8" Weight="-0.76587224006652832" />
+      </Connections>
+    </Neuron>
+  </Layer>
+</Network>
