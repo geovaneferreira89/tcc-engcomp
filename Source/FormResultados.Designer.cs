@@ -289,7 +289,7 @@
             // correlaçãoToolStripMenuItem
             // 
             this.correlaçãoToolStripMenuItem.Name = "correlaçãoToolStripMenuItem";
-            this.correlaçãoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.correlaçãoToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.correlaçãoToolStripMenuItem.Text = "Correlação";
             this.correlaçãoToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -297,19 +297,19 @@
             // 
             this.segundaCorrelacao.Enabled = false;
             this.segundaCorrelacao.Name = "segundaCorrelacao";
-            this.segundaCorrelacao.Size = new System.Drawing.Size(152, 22);
+            this.segundaCorrelacao.Size = new System.Drawing.Size(148, 22);
             this.segundaCorrelacao.Text = "2ª Correlação ";
             this.segundaCorrelacao.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(145, 6);
             // 
             // kohonenToolStripMenuItem
             // 
             this.kohonenToolStripMenuItem.Name = "kohonenToolStripMenuItem";
-            this.kohonenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kohonenToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.kohonenToolStripMenuItem.Text = "Kohonen";
             this.kohonenToolStripMenuItem.Click += new System.EventHandler(this.BTN_Kohonen_Click);
             // 
@@ -320,7 +320,7 @@
             this.importarRedeToolStripMenuItem,
             this.toolStripSeparator13});
             this.redeMLPToolStripMenuItem.Name = "redeMLPToolStripMenuItem";
-            this.redeMLPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redeMLPToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.redeMLPToolStripMenuItem.Text = "Rede MLP";
             this.redeMLPToolStripMenuItem.Click += new System.EventHandler(this.btn_BackPropagation_Click);
             // 
@@ -328,7 +328,7 @@
             // 
             this.salvarRedeToolStripMenuItem.Enabled = false;
             this.salvarRedeToolStripMenuItem.Name = "salvarRedeToolStripMenuItem";
-            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salvarRedeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.salvarRedeToolStripMenuItem.Text = "Salvar Rede";
             this.salvarRedeToolStripMenuItem.Click += new System.EventHandler(this.salvarRedeToolStripMenuItem_Click);
             // 
@@ -337,7 +337,7 @@
             this.importarRedeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.treinar100VezesToolStripMenuItem});
             this.importarRedeToolStripMenuItem.Name = "importarRedeToolStripMenuItem";
-            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importarRedeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.importarRedeToolStripMenuItem.Text = "Importar Rede";
             this.importarRedeToolStripMenuItem.Click += new System.EventHandler(this.importarRedeToolStripMenuItem_Click);
             // 
@@ -352,12 +352,12 @@
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(146, 6);
             // 
             // redeMLP2ToolStripMenuItem
             // 
             this.redeMLP2ToolStripMenuItem.Name = "redeMLP2ToolStripMenuItem";
-            this.redeMLP2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redeMLP2ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.redeMLP2ToolStripMenuItem.Text = "Rede MLP 2";
             this.redeMLP2ToolStripMenuItem.Visible = false;
             this.redeMLP2ToolStripMenuItem.Click += new System.EventHandler(this.redeMLP2ToolStripMenuItem_Click);
@@ -383,6 +383,7 @@
             this.toolAnalise.Name = "toolAnalise";
             this.toolAnalise.Size = new System.Drawing.Size(61, 22);
             this.toolAnalise.Text = "Análise";
+            this.toolAnalise.ButtonClick += new System.EventHandler(this.toolAnalise_ButtonClick);
             // 
             // AnaliseMLP
             // 
