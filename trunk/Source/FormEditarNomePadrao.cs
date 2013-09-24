@@ -58,6 +58,12 @@ namespace AmbienteRPB
             get;
             set;
         }
+
+        public bool DebugMode
+        {
+            get;
+            set;
+        }
         public FormEditarNomePadrao()
         {
             InitializeComponent();
@@ -81,6 +87,10 @@ namespace AmbienteRPB
                     NumPadroes = 1;
                 if (ckReferencia.Checked)
                     UsarReferencia = true;
+                if (ckbDebug.Checked)
+                    DebugMode = true;
+                else
+                    DebugMode = false;
                 opcao = 100;
                 this.Close();
             }
@@ -104,7 +114,8 @@ namespace AmbienteRPB
 
                 ckReferencia.Location = new Point(ckReferencia.Location.X, 67);
                 ckb_ListaToda.Location = new Point(ckb_ListaToda.Location.X, 67);
-                ckb_UseCorrel.Location = new Point(ckb_UseCorrel.Location.X, 90); 
+                ckb_UseCorrel.Location = new Point(ckb_UseCorrel.Location.X, 90);
+                ckbDebug.Location = new Point(ckbDebug.Location.X, 90); 
 
                 text_NomePadrao.Text = Convert.ToString(Vetores);
                 txt_VetorTamanho.Text = Convert.ToString(TamVetores);
