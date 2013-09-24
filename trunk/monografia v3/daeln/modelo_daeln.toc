@@ -8,43 +8,48 @@
 \contentsline {section}{\numberline {2.2}Forma\c c\~ao do Sinal de Eletrocardiografia}{14}
 \contentsline {section}{\numberline {2.3}Exame de Eletrocardiografia}{15}
 \contentsline {section}{\numberline {2.4}Sistema de Deriva\c c\~oes}{16}
-\contentsline {section}{\numberline {2.5}Ondas, Segmentos e Intervalos}{17}
+\contentsline {section}{\numberline {2.5}Ondas, Segmentos e Intervalos}{18}
 \contentsline {section}{\numberline {2.6}Fun\c c\~ao Correla\c c\~ao}{19}
 \contentsline {section}{\numberline {2.7}Redes Neurais Artificiais}{20}
-\contentsline {subsection}{\numberline {2.7.1}Redes Neurais de Kohonen}{21}
-\contentsline {section}{\numberline {2.8}Avalia\c c\~ao de Sistemas Classificadores}{24}
-\contentsline {subsection}{\numberline {2.8.1}Tabela de Conting\^encia}{24}
-\contentsline {subsection}{\numberline {2.8.2}Sensibilidade e Especificidade}{25}
-\contentsline {subsection}{\numberline {2.8.3}Curva ROC}{27}
-\contentsline {subsection}{\numberline {2.8.4}Outros \'Indices Estat\IeC {\'\i }sticos}{28}
-\contentsline {section}{\numberline {2.9}Considera\c c\~oes}{28}
-\contentsline {chapter}{\numberline {3}Materiais e M\'etodos}{29}
-\contentsline {section}{\numberline {3.1}Base de Dados}{29}
-\contentsline {section}{\numberline {3.2}European Data Format}{30}
-\contentsline {section}{\numberline {3.3}Bibliotecas Utilizadas}{31}
-\contentsline {subsection}{\numberline {3.3.1}NeuroLoopGain}{31}
-\contentsline {subsection}{\numberline {3.3.2}BrainNet Library}{32}
-\contentsline {section}{\numberline {3.4}Sistema}{33}
-\contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{34}
-\contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{35}
-\contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{38}
-\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{40}
-\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{40}
-\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{42}
-\contentsline {section}{\numberline {3.5}Modelagem UML}{42}
-\contentsline {section}{\numberline {3.6}Metodologias Detalhadas}{43}
-\contentsline {subsection}{\numberline {3.6.1}Metodologia da Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{43}
-\contentsline {subsection}{\numberline {3.6.2}Metodologia da Classifica\c c\~ao de Padr\~oes}{44}
-\contentsline {subsection}{\numberline {3.6.3}Metodologia da Avalia\c c\~ao do Classificador}{45}
-\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{47}
-\contentsline {chapter}{\numberline {4}Resultados Obtidos}{48}
-\contentsline {section}{\numberline {4.1}Testes com Sinal de ECG}{48}
-\contentsline {section}{\numberline {4.2}Testes com ECG com extra\c c\~ao de caracter\IeC {\'\i }sticas}{49}
-\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{50}
-\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{51}
-\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{52}
-\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{53}
-\contentsline {section}{\numberline {6.1}Recursos de Hardware}{53}
-\contentsline {section}{\numberline {6.2}Recursos de Software}{53}
-\contentsline {section}{\numberline {6.3}Horas de Trabalho}{54}
-\contentsline {chapter}{REFER\^ENCIAS}{56}
+\contentsline {subsection}{\numberline {2.7.1}Rede Multicamadas}{22}
+\contentsline {subsection}{\numberline {2.7.2}Estrat\'egia de Treinamento para Rede Multicamadas}{23}
+\contentsline {subsection}{\numberline {2.7.3}Valida\c c\~ao Cruzada}{24}
+\contentsline {subsection}{\numberline {2.7.4}Redes Neurais de Kohonen}{24}
+\contentsline {section}{\numberline {2.8}Avalia\c c\~ao de Sistemas Classificadores}{27}
+\contentsline {subsection}{\numberline {2.8.1}Tabela de Conting\^encia}{27}
+\contentsline {subsection}{\numberline {2.8.2}Sensibilidade e Especificidade}{28}
+\contentsline {subsection}{\numberline {2.8.3}Curva ROC}{30}
+\contentsline {subsection}{\numberline {2.8.4}Outros \'Indices Estat\IeC {\'\i }sticos}{31}
+\contentsline {section}{\numberline {2.9}Considera\c c\~oes}{31}
+\contentsline {chapter}{\numberline {3}Materiais e M\'etodos}{32}
+\contentsline {section}{\numberline {3.1}Base de Dados}{32}
+\contentsline {section}{\numberline {3.2}European Data Format}{33}
+\contentsline {section}{\numberline {3.3}Bibliotecas Utilizadas}{34}
+\contentsline {subsection}{\numberline {3.3.1}NeuroLoopGain}{34}
+\contentsline {subsection}{\numberline {3.3.2}BrainNet Library}{35}
+\contentsline {section}{\numberline {3.4}Sistema}{36}
+\contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{37}
+\contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{38}
+\contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{41}
+\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{43}
+\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{43}
+\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{45}
+\contentsline {section}{\numberline {3.5}Modelagem UML}{45}
+\contentsline {section}{\numberline {3.6}Metodologias Detalhadas}{46}
+\contentsline {subsection}{\numberline {3.6.1}Gera\c c\~ao dos Dados de Treinamento}{46}
+\contentsline {subsection}{\numberline {3.6.2}Metodologia da Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{46}
+\contentsline {subsection}{\numberline {3.6.3}Reconhecimento de Padr\~oes com Redes Neurais Multicamadas}{48}
+\contentsline {subsection}{\numberline {3.6.4}Reconhecimento de Padr\~oes com Mapa de Kohonen}{48}
+\contentsline {subsection}{\numberline {3.6.5}Metodologia da Avalia\c c\~ao do Classificador}{49}
+\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{51}
+\contentsline {chapter}{\numberline {4}Resultados Obtidos}{52}
+\contentsline {section}{\numberline {4.1}Testes com Mapa de Kohonen}{52}
+\contentsline {section}{\numberline {4.2}Testes com Rede Multicamadas}{52}
+\contentsline {section}{\numberline {4.3}Comparativo dos Resultados}{54}
+\contentsline {section}{\numberline {4.4}Considera\c c\~oes}{55}
+\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{56}
+\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{57}
+\contentsline {section}{\numberline {6.1}Recursos de Hardware}{57}
+\contentsline {section}{\numberline {6.2}Recursos de Software}{57}
+\contentsline {section}{\numberline {6.3}Horas de Trabalho}{58}
+\contentsline {chapter}{REFER\^ENCIAS}{60}

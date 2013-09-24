@@ -18,7 +18,17 @@ O coração humano possui paredes compostas por músculos cardíacos estriados, cham
 
 O coração possui ainda quatro válvulas. Entre o átrio direito e o ventrículo direito se encontra a válvula tricúspide, e entre o átrio esquerdo e o ventrículo esquerdo fica a válvula mitral. A válvula pulmonar fica entre o ventrículo direito e a artéria pulmonar, enquanto a válvula aorta está no trato de saída do ventrículo esquerdo, e controla o fluxo para a aorta \cite{MALMIVUO1995}.
 
-Para retornar da circulação sistêmica, o sangue chega ao átrio direito e dele segue pela válvula tricúspide para o ventrículo direito. Então o sangue é ejetado do ventrículo direito para os pulmões, pela válvula pulmonar. Dos pulmões, o sangue oxigenado retorna para o átrio esquerdo, e passa pela válvula mitral até o ventrículo esquerdo. Finalmente, é bombeado pela válvula aorta para a aorta e para a circulação sistêmica \cite{MALMIVUO1995}.
+Para retornar da circulação sistêmica, o sangue chega ao átrio direito e dele segue pela válvula tricúspide para o ventrículo direito. Então o sangue é ejetado do ventrículo direito para os pulmões, pela válvula pulmonar. Dos pulmões, o sangue oxigenado retorna para o átrio esquerdo, e passa pela válvula mitral até o ventrículo esquerdo. Finalmente, é bombeado pela válvula aorta para a aorta e para a circulação sistêmica. A contração ventricular necessária para o esvaziamento do ventrículo é conhecida como sístole. O relaxamento ventricular é conhecido como diástole e é nessa fase que os ventrículos recebem sangue do átrio \cite{MALMIVUO1995}. 
+
+A figura \ref{} mostra o diagrama de blocos do coração mostrando o sentido em que o sangue circula.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/coracao.png} % <- formatos PNG, JPG e PDF
+		\caption[Diagrama de blocos do coração]{Diagrama de blocos do coração}
+	\fonte{Autoria própria}
+	\label{fig:coracao}
+\end{figure}
 
 A fibra muscular que forma o coração é orientada em espiral. O fato das células musculares cardíacas permanecerem tangencialmente e radialmente, como mostra a figura ~\ref{fig:muscle}, e a resistência do músculo ser mais baixa em direção as fibras são importantes na área da eletrocardiografia, pois a atividade elétrica pode se propagar de uma célula para outra em qualquer direção. Como resultado disso, as formas de onda de ativação são bastante complexas \cite{MALMIVUO1995}.
 
@@ -165,13 +175,15 @@ O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que
 \section{Redes Neurais Artificiais}
 \label{sec:RNA}
 
-O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. No entanto, pode ser considerado um computador extremamente complexo, não linear que apresenta paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organização de modo a desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
+O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado como um computador extremamente complexo, não linear que apresenta paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
 
 De certa forma, as redes neurais artificiais foram criadas para realizar atividades mimetizando o cérebro humano. As redes neurais artificiais são modelos matemáticos que podem ser implementadas com componentes eletrônicos ou simuladas em software \cite{HAYKIN2011}.
 
 As unidades básicas de processamento de uma rede neural artificial são chamadas de neurônios, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
 
-As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
+As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
+
+Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada ao neurônio \textit{k}, é multiplicada pelo peso sináptico \textit{w\textsubscript{kj}}. Constitui também a rede neural artificial um somador, para somar os sinais da entrada ponderados pelas respectivas conexões do neurônio (estas operações constituem uma combinação linear). Uma função de ativação é empregada para limitar a amplitude da saída de um neurônio a um determinado intervalo numérico, usualmente este intervalo corresponde a [0,1] ou [-1,1]. A figura ~\ref{fig:RN2} ilustra a estrutura básica de uma rede neural artificial \cite{HAYKIN2011}.
 
 \begin{figure}[!htb]
 	\centering
@@ -180,6 +192,63 @@ As redes neurais artificiais passam por um processo de aprendizado, também conhe
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:RN2}
 \end{figure}
+
+A função de ativação que limita a saída de um neurônio pode ser de três tipos básicos:
+
+\begin{itemize}
+	\item Função de limiar ou \textit{threshold};
+	\item Função \textit{Piecewise}~-- contínua;
+	\item Função Sigmóide.
+\end{itemize}
+
+A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/limiares.png} 
+		\caption[Gráficos das funções de ativação]{Gráficos das funções de ativação}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:limiares}
+\end{figure}
+
+\subsection{Rede Multicamadas}
+
+Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes Perceptron Multicamadas (\textit{Multilayer Perceptron} ~-- \sigla{MLP}{\textit{Multilayer Perceptron}}). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figs/RN4.png} 
+		\caption[Rede neural do tipo Multilayer Perceptron]{Rede neural do tipo Multilayer Perceptron}
+	\fonte{\cite{HAYKIN2011}}
+	\label{fig:RN4}
+\end{figure}
+
+Como mencionado anteriormente, os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado \textit{backpropagation}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
+
+\subsection{Estratégia de Treinamento para Rede Multicamadas}
+
+A rede multicamadas é treinada com o algoritmo \textit{backpropagation}, em estágios, produzindo funções de mapeamento complexas. Observa-se que o erro médio quadrado diminui com o aumento do número de épocas durante um treinamento. No início apresenta um valor elevado, diminui rapidamente, e então começa a diminuir lentamente até o valor do mínimo local na superfície de erro \cite{HAYKIN2011}. A figura \ref{parada} mostra a relação entre o erro médio quadrado e as épocas de treinamento.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/parada3.png} 
+		\caption[Relação entre o erro médio quadrado e treinamento]{Relação entre o erro médio quadrado e treinamento}
+	\fonte{Modificado de \cite{HAYKIN2011}}
+	\label{parada}
+\end{figure}
+
+É possível, portanto, acabar treinando a rede em excesso, se o treinamento não for interrompido no instante certo. Para identificar este instante, a cada período de treinamento, a rede é testada e o erro médio quadrado monitorado. A este procedimento dá-se o nome de método de treinamento de parada antecipada. O menor erro médio indica qual a melhor época de treinamento, com base nos testes \cite{HAYKIN2011}.
+
+\subsection{Validação Cruzada}
+
+Partindo do princípio de que as redes neurais artificiais do tipo MLP passam por um processo de treinamento, é necessário um conjunto de dados para a realização desta etapa. Além disso é necessário testar o funcionamento da rede. Considerada uma padrão pela estatística, a validação cruzada soluciona esta questão ao dividir a base de dados inicial em dois conjuntos \cite{HAYKIN2011}. São eles:
+
+\begin{itemize}
+	\item Conjunto de dados de treinamento;
+	\item Conjunto de dados de testes.
+\end{itemize}
+
+Além destas duas divisões, o conjunto de dados de treinamento pode ser dividido em dados para estimativa e dados para validação \cite{HAYKIN2011}. Contudo, o estudo aprofundado deste tema não faz parte do escopo deste projeto.
 
 \subsection{Redes Neurais de Kohonen}
 
