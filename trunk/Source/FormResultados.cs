@@ -1408,5 +1408,10 @@ namespace AmbienteRPB
             }
 
         }
+
+        private void toolAnalise_ButtonClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

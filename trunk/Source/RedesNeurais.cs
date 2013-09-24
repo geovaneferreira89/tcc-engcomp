@@ -121,7 +121,12 @@ namespace AmbienteRPB
                     Plotar("Criar Chart de Barras", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
                     send_SmS(1, "Adicionando Entradas e treinando", false);
                     int inicio = 0;
-                    int divisaoKo = 3;
+                    int divisaoKo = 2;
+                    if (400000 < VetTreinamento)
+                        divisaoKo = 3;
+                    else if (VetTreinamento < 4000)
+                        divisaoKo = 1;
+
                     Initialise_KHn();
                     send_SmS(1, "Treinando a rede com erro abaixo de 0.0001", false);
                     for (int max = 0; max < divisaoKo; max++)
@@ -678,21 +683,24 @@ namespace AmbienteRPB
                             {
                                // for (int k = 0; k < 5; k++)
                                // {
-                                    if (X_[i] == 0 && Y_[i] == 0)
-                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
-                                    else if (X_[i] == 0 && Y_[i] == 1)
-                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
-                                    else if (X_[i] == 0 && Y_[i] == 2)
-                                          prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
-                                    else if (X_[i] == 0 && Y_[i] == 3)
-                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                                    else if (X_[i] == 0 && Y_[i] == 4)
-                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
-                                    else
-                                        prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
+                                if (X_[i] == 0 && Y_[i] == 0)
+                                {
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
+                                    prb.Series["canal" + (CanalParaPlotar + 1)].Points.InsertXY(0, 0);
+                                }
+                                else if (X_[i] == 0 && Y_[i] == 1)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
+                                else if (X_[i] == 0 && Y_[i] == 2)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
+                                else if (X_[i] == 0 && Y_[i] == 3)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
+                                else if (X_[i] == 0 && Y_[i] == 4)
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
+                                else
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                                 //}
                                 //Mapa
-                                prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i]);
+                                //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i]);
                             }
                         break;
                      }
@@ -726,7 +734,7 @@ namespace AmbienteRPB
                                 prb.Series["canal" + (canal + 2)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
                                 prb.Titles[(canal + 2)].Text = "Kohonen";
                                 prb.Series["canal" + (canal + 2)].Color = Color.Orange;
-                                prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                                prb.Series["canal" + (canal + 3)].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                                 prb.Titles[(canal + 3)].Text = "Mapa";
                                 prb.Series["canal" + (canal + 3)].Color = Color.Red;
                             prb.ChartAreas["canal" + (canal + 3)].AxisY.Enabled = AxisEnabled.True;
