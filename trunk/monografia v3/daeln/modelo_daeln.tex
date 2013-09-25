@@ -528,9 +528,7 @@ no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo compl
 \section{Testes com Rede Multicamadas}
 \label{sec:Testes1}
 
-Os resultados apresentados nesta seção dizem respeito ao treinamento realizado com marcações feitas diretamente no sinal de ECG. O conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, o que resulta em XXX ocorrências do complexo QRS. 
-
-A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
+A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada com eventos marcados diretamente no sinal de ECG. Os dados analisados correspondem aos 14 primeiros minutos do sinal do arquivo 105. Nele estão contidas 1182 ocorrências do complexo QRS. Na tabela são apresentados os totais de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
@@ -538,19 +536,19 @@ A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verda
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
-		    Coordenadas \textit{x} e \textit{y} & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    \textit{Threshold} & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
 		    \hline
-		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    1     & 1171  & 1181 & 0  	& 11 	& 0,990693739	& 1 		   & 0,9953	& 0,0042  \\ 
+		    0,9   & 1173  & 1181 & 0  	& 9  	& 0,992385787	& 1            & 0,9961	& 0,0034  \\ 
+		    0,8   & 1175  & 1181 & 0  	& 7  	& 0,994077834 	& 1            & 0,9970	& 0,0027  \\ 
+		    0,7   & 1176  & 1181 & 0  	& 6  	& 0,994923858	& 1            & 0,9974	& 0,0023  \\ 
+		    0,6   & 1176  & 1180 & 1  	& 6  	& 0,994923858	& 0,99915326   & 0,9970	& 0,0027  \\ 
+		    0,5   & 1176  & 1180 & 1  	& 6  	& 0,994923858	& 0,99915326   & 0,9970	& 0,0027  \\
+		    0,4   & 1176  & 1180 & 1  	& 6  	& 0,994923858	& 0,99915326   & 0,9970	& 0,0027  \\
+		    0,3   & 1177  & 1179 & 2  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
+		    0,2   & 1177  & 1179 & 3  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
+		    0,1   & 1177  & 1179 & 3  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
+		    0     & 1182  & 0  	 & 305720  & 5  	& 0,9957877	& 0            & 0,0038	& 118,86  \\ \hline
 		    \end{tabular}
 		    \fonte{Autoria Própria}
 \end{table}
@@ -559,7 +557,7 @@ A curva ROC do processo utilizando marcações no sinal de ECG é mostrada na figur
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.4\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.6\textwidth]{./figs/rocecg1.png} % <- formatos PNG, JPG e PDF
 	\caption[Curva ROC dos resultados]{Curva ROC dos resultados}
 	\fonte{Autoria própria}
 	\label{ROC1}
@@ -576,19 +574,19 @@ A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verda
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
-		    Coordenadas \textit{x} e \textit{y}  & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+		    \textit{Threshold} & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
 		    \hline
-		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
 		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
+		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
 		    \end{tabular}
 		    \fonte{Autoria Própria}
 \end{table}

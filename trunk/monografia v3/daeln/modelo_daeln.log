@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  24 SEP 2013 19:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  24 SEP 2013 23:11
 entering extended mode
 **modelo_daeln.tex
 ("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.tex"
@@ -820,42 +820,34 @@ Cap\'{\i }tulo 4.
 
 LaTeX Warning: Reference `sec:Testes2' on page 52 undefined on input line 508.
 
-
-Overfull \hbox (16.28754pt too wide) in paragraph at lines 531--532
-[]\OT1/ptm/m/n/12 Os re-sul-ta-dos apre-sen-ta-dos nesta se[][]ao di-zem res-pe
-ito ao trei-na-mento re-a-li-zado com marca[][]oes
- []
-
 [52
 
 ]
-Overfull \hbox (8.40804pt too wide) in paragraph at lines 539--555
+Overfull \hbox (16.28073pt too wide) in paragraph at lines 537--553
  [][] 
  []
 
-<./figs/paca.png, id=222, 200.75pt x 234.8775pt>
+<./figs/rocecg1.png, id=222, 240.9pt x 250.68657pt>
+File: ./figs/rocecg1.png Graphic file (type png)
+ <use ./figs/rocecg1.png>
+Package pdftex.def Info: ./figs/rocecg1.png used on input line 560.
+(pdftex.def)             Requested size: 273.14923pt x 284.2747pt.
+
+[53 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/rocecg1.png>]
+<./figs/paca.png, id=227, 200.75pt x 234.8775pt>
 File: ./figs/paca.png Graphic file (type png)
  <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 562.
-(pdftex.def)             Requested size: 182.09486pt x 213.06508pt.
- [53 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/paca.png>]
-Overfull \hbox (8.40804pt too wide) in paragraph at lines 577--593
- [][] 
- []
-
-File: ./figs/paca.png Graphic file (type png)
-<use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 600.
+Package pdftex.def Info: ./figs/paca.png used on input line 598.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
 
 
-LaTeX Warning: Reference `sec:Testes2' on page 54 undefined on input line 609.
+LaTeX Warning: Reference `sec:Testes2' on page 54 undefined on input line 607.
 
 File: ./figs/paca.png Graphic file (type png)
 <use ./figs/paca.png>
-Package pdftex.def Info: ./figs/paca.png used on input line 613.
+Package pdftex.def Info: ./figs/paca.png used on input line 611.
 (pdftex.def)             Requested size: 91.04742pt x 106.52895pt.
- [54] [55]
+ [54 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/paca.png>] [55]
 Cap\'{\i }tulo 5.
 [56
 
@@ -863,11 +855,11 @@ Cap\'{\i }tulo 5.
 Cap\'{\i }tulo 6.
 [57
 
-] <./figs/horas.png, id=240, 375.65344pt x 407.27156pt>
+] <./figs/horas.png, id=241, 375.65344pt x 407.27156pt>
 File: ./figs/horas.png Graphic file (type png)
 
 <use ./figs/horas.png>
-Package pdftex.def Info: ./figs/horas.png used on input line 735.
+Package pdftex.def Info: ./figs/horas.png used on input line 733.
 (pdftex.def)             Requested size: 364.19667pt x 394.87892pt.
 
 ("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.bbl" [58]
@@ -943,10 +935,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4278 strings out of 493921
- 60731 string characters out of 3144885
+ 4283 strings out of 493921
+ 60833 string characters out of 3144885
  125630 words of memory out of 3000000
- 7356 multiletter control sequences out of 15000+200000
+ 7360 multiletter control sequences out of 15000+200000
  41651 words of font info for 96 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,11n,43p,1901b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -959,9 +951,9 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (63 pages, 2057368 bytes).
+Output written on modelo_daeln.pdf (63 pages, 2061584 bytes).
 PDF statistics:
- 283 PDF objects out of 1000 (max. 8388607)
+ 284 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 
