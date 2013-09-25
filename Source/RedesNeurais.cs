@@ -21,7 +21,7 @@ namespace AmbienteRPB
     {
         //Controles Chart--------------------------------------------------------------------------
         private Control _Grafico = null;
-        private delegate void AtualizaChart(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int [] myArray,List<double> X_, List<double> Y_);
+        private delegate void AtualizaChart(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, double [] myArray,List<double> X_, List<double> Y_);
         private System.Windows.Forms.DataVisualization.Charting.Chart prb = null;
         private VerticalLineAnnotation Cursor;        
         private int CanalAtual;
@@ -67,7 +67,7 @@ namespace AmbienteRPB
         private int [] PadroesATreinar;
         private int MenorTamanho = 0;
         private int CanalParaPlotar = 2;
-        private int[] vetorDeResultados;
+        private double[] vetorDeResultados;
         private bool it_is_debug = false;
         private bool UsarReferencia = false;
 
@@ -108,7 +108,7 @@ namespace AmbienteRPB
                     send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     X_Vals = new List<double>();
                     Y_Vals = new List<double>();
-                    int [] offset = new int[2];
+                    double[] offset = new double[2];
                     offset[0] = MenorTamanho;
                     Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                     Plotar("CLEAR", null, 1, CanalParaPlotar+1, selecaoAtual, vetorDeResultados, null, null);
@@ -169,7 +169,7 @@ namespace AmbienteRPB
                         if(!RNImportada)
                             TreinodaRede(VetorEvento, 1, "SomenteUm", 0); //null - somente o evento marcado 
                         send_SmS(1, "Treinada", false);
-                        vetorDeResultados = new int[Sinal.Count()];
+                        vetorDeResultados = new double[Sinal.Count()];
                         Rodar(Sinal, 0);
                         send_SmS(1, "Fim", false);
                         break;
@@ -185,7 +185,7 @@ namespace AmbienteRPB
                         send_SmS(0, "", false);
                         send_SmS(2, "Iniciando - " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                         //busca pelo menor tamanho do dos eventos deste padrao... 
-                        vetorDeResultados = new int[VetTreinamento];
+                        vetorDeResultados = new double[VetTreinamento];
                         if (!RNImportada)
                         {
                             send_SmS(1, "Adicionando entradas na rede com " + ListasPadrEvents[PadroesATreinar[0]].GetNomePadrao(), false);
@@ -219,7 +219,7 @@ namespace AmbienteRPB
                     send_SmS(0, "", false);
                     send_SmS(2, "Inicializando.", false);
                     //Busca pelo menor tamanho do dos eventos deste padrao... 
-                    vetorDeResultados = new int[Sinal.Count()];
+                    vetorDeResultados = new double[Sinal.Count()];
                     for(int i=0; i< PadroesATreinar.Count();i++)
                     {
                             send_SmS(1, "Treinando a rede 1000 + com '" + ListasPadrEvents[PadroesATreinar[i]].GetNomePadrao(), false);
@@ -280,8 +280,8 @@ namespace AmbienteRPB
                     List<float> conjTreinado = new List<float>();
                     load_progress_bar(0, 4);
                     int totalParaTreino = ListasPadrEvents[PadroesATreinar[RedeAtual]].NumeroEventos;
-                    if (totalParaTreino > 200)
-                        totalParaTreino = 200;
+                    if (totalParaTreino > 300)
+                        totalParaTreino = 300;
                     load_progress_bar(totalParaTreino, 2);
                     for (int cont = 0; cont < totalParaTreino; cont++)
                     {
@@ -395,15 +395,15 @@ namespace AmbienteRPB
                         smss = "";
                         for (int linhas = 0; linhas < MenorTamanho; linhas++)
                         {
-                            for (int padrTreinados = 0; padrTreinados < (conjTreinado.Count / 50); padrTreinados++)
+                            for (int padrTreinados = 0; padrTreinados < (conjTreinado.Count / MenorTamanho); padrTreinados++)
                             {
-                                smss += conjTreinado[(padrTreinados * 50) + linhas].ToString() + "\t";
+                                smss += conjTreinado[(padrTreinados * MenorTamanho) + linhas].ToString() + "\t";
                             }
                             fileSalve.WriteLine(smss);
                             smss = "";
                         }
                         fileSalve.Close();
-                        send_SmS(1, "Total Usados : " + Convert.ToString(conjTreinado.Count / 50), false);
+                        send_SmS(1, "Total Usados : " + Convert.ToString(conjTreinado.Count / MenorTamanho), false);
                         send_SmS(1, "Total Descartados : " + Convert.ToString(DescartadosDoTreino.Count), false);
                     }
                     ///------------------------------------///
@@ -435,6 +435,9 @@ namespace AmbienteRPB
             load_progress_bar(VetTreinamento - MenorTamanho, 2);
             //int [] saidaInt = new int[1];
             double threshold = 0.1;
+            double media = 0;
+            
+            double maximo = 0;
             char character;
             bool chave = true;
             double[] dados = new double[2];
@@ -454,26 +457,33 @@ namespace AmbienteRPB
                 dados[1] = MenorTamanho + i;
                 //RODA A RN
                 MLP_output = new ArrayList(network.RunNetwork(inputs));
-                if (i <= 26)
+               /* if (i <= 26)
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
                         threshold = Convert.ToDouble(MLP_output[0]);
+                    if( maximo < Convert.ToDouble(MLP_output[0])){
+                         maximo = Convert.ToDouble(MLP_output[0]);
+                    }
                     vetorDeResultados[i + (MenorTamanho / 2)] = 0;
                 }
                 else
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
                     {
-                        vetorDeResultados[i + (MenorTamanho / 2)] = 20;
+                        vetorDeResultados[i + (MenorTamanho / 2)] = 10;
                         treinarnova = false;
                     }
                     else if (threshold > Convert.ToDouble(MLP_output[0])){
                         vetorDeResultados[i + (MenorTamanho / 2)] = 1;
-                       treinarnova = false;
+                        treinarnova = false;
                     }
                     else
                         vetorDeResultados[i + (MenorTamanho / 2)] = 0;
-                }
+                }*/
+                vetorDeResultados[i + (MenorTamanho / 2)] = Convert.ToDouble(MLP_output[0]);
+                media = media + Convert.ToDouble(MLP_output[0]);
+                //treinarnova = false;
+
                 //Saida de resultados impressos em numeros até 5 mil amostras
                 //if(i < 5000)
                 //    ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
@@ -505,6 +515,28 @@ namespace AmbienteRPB
                 }
                 load_progress_bar(0, 1);
             }
+            //Salva em disco a saida 
+            //GerenArquivos dir = new GerenArquivos();
+            //System.IO.StreamWriter fileSalve = new System.IO.StreamWriter(dir.getPathUser() + "saida.txt", false);
+            //string smss = "";
+            //for (int val = 0; val < vetorDeResultados.Count(); val++)
+            //    smss += Convert.ToString(vetorDeResultados[val]) + "\t";
+            //fileSalve.WriteLine(smss);
+            //fileSalve.Close();
+            //send_SmS(1, "Salvo em disco a saida.", false);
+            //Calculo para o threshold inicial
+            media = media / (VetTreinamento - MenorTamanho);
+            for (int val = 0; val < (VetTreinamento - MenorTamanho); val++)
+            {
+                if (vetorDeResultados[val] > media)
+                {
+                    vetorDeResultados[val] = 1;
+                    treinarnova = false;
+                }
+                else
+                    vetorDeResultados[val] = 0;
+            }
+
             load_progress_bar(1, 3);
             if (treinarnova)
                 novaRedeMLP();
@@ -600,7 +632,7 @@ namespace AmbienteRPB
         }
         //-------------------------------------------------------------------
         //Saida pelo Grafico 
-        private void Plotar(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, int[] myArray, List<double> X_, List<double> Y_)
+        private void Plotar(string opcao, double[] dados, int canal, int CanalParaPlotar, RectangleAnnotation selecaoAtual, double[] myArray, List<double> X_, List<double> Y_)
         {
             if (_Grafico.InvokeRequired)
             {
@@ -690,7 +722,7 @@ namespace AmbienteRPB
 
                     case ("PlotKohonen"):
                     {
-                        int offset = myArray[0];
+                        double offset = myArray[0];
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             for (int i = 0; i < (offset/2); i++)
                                 prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
