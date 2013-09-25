@@ -141,15 +141,20 @@ namespace AmbienteRPB
                     send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                     send_SmS(1, "Duração: " + Convert.ToString(DateTime.Now.Minute - min_inicio) + " min.", false);
                     //send_SmS(1, "Matriz do Kohonen", false); 
-                     /*for (int i = 0; i < length; i++)
-                     {
-                         string saida = "";
-                         for (int j = 0; j < length; j++)
-                         {
-                             saida += SaidaFinal[j, i] + "\t";
-                         }
-                         send_SmS(1, saida, false);
-                     }*/
+                    for (int i = 0; i < length; i++)
+                    {
+                        string saida = "";
+                        for (int j = 0; j < length; j++)
+                        {
+                            double[] dados = new double[3];
+                            dados[0] = i;
+                            dados[1] = j;
+                            dados[2] = SaidaFinal[j, i];
+                            Plotar("MapaKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, offset, null, null);
+                         //   saida += SaidaFinal[j, i] + "\t";
+                        }
+                        //send_SmS(1, saida, false);
+                    }
                      if(!it_is_debug)
                         Plotar("PlotKohonen", null, CanalAtual, CanalParaPlotar, selecaoAtual, offset, X_Vals, Y_Vals);
                     //Thread.Sleep(50);
@@ -645,6 +650,12 @@ namespace AmbienteRPB
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
                             break;
                     }
+                    case ("MapaKohonen"):
+                    {
+                        prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
+                        prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1], dados[2]);
+                        break;
+                    }
                     case ("AddDadoKohonen"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
@@ -664,7 +675,7 @@ namespace AmbienteRPB
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                             }
                             //Mapa
-                            prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1]);
+                            //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1]);
                             PointF zero = new PointF(0,0);
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
                             prb.ChartAreas["canal" + canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);
