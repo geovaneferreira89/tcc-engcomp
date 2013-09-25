@@ -457,7 +457,7 @@ namespace AmbienteRPB
                 dados[1] = MenorTamanho + i;
                 //RODA A RN
                 MLP_output = new ArrayList(network.RunNetwork(inputs));
-               /* if (i <= 26)
+                if (i <= 26)
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
                         threshold = Convert.ToDouble(MLP_output[0]);
@@ -479,9 +479,9 @@ namespace AmbienteRPB
                     }
                     else
                         vetorDeResultados[i + (MenorTamanho / 2)] = 0;
-                }*/
-                vetorDeResultados[i + (MenorTamanho / 2)] = Convert.ToDouble(MLP_output[0]);
-                media = media + Convert.ToDouble(MLP_output[0]);
+                }
+               // vetorDeResultados[i + (MenorTamanho / 2)] = Convert.ToDouble(MLP_output[0]);
+               // media = media + Convert.ToDouble(MLP_output[0]);
                 //treinarnova = false;
 
                 //Saida de resultados impressos em numeros até 5 mil amostras
@@ -525,17 +525,17 @@ namespace AmbienteRPB
             //fileSalve.Close();
             //send_SmS(1, "Salvo em disco a saida.", false);
             //Calculo para o threshold inicial
-            media = media / (VetTreinamento - MenorTamanho);
-            for (int val = 0; val < (VetTreinamento - MenorTamanho); val++)
-            {
-                if (vetorDeResultados[val] > media)
-                {
-                    vetorDeResultados[val] = 1;
-                    treinarnova = false;
-                }
-                else
-                    vetorDeResultados[val] = 0;
-            }
+            //media = media / (VetTreinamento - MenorTamanho);
+            //for (int val = 0; val < (VetTreinamento - MenorTamanho); val++)
+            //{
+            //    if (vetorDeResultados[val] > media)
+            //    {
+            //        vetorDeResultados[val] = 1;
+            //        treinarnova = false;
+            //    }
+            //    else
+            //        vetorDeResultados[val] = 0;
+            //}
 
             load_progress_bar(1, 3);
             if (treinarnova)
