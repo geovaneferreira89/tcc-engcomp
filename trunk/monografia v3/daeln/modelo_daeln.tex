@@ -574,19 +574,18 @@ A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verda
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
-		    \textit{Threshold} & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
+			\textit{Threshold} & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
 		    \hline
-		    1         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,9       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,8       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,7       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,6       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,5       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,4       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,3       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,2       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0,1       & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ 
-		    0         & ~  & ~  & ~  & ~  & ~             & ~              & ~          & ~   \\ \hline
+		    1         & 1143 & 1095 & 86 & 39  & 0,967005076 & 0,927180356 & 0,947101143 & 0,048600311\\ 
+		    0,9       & 1143 & 1093 & 88 & 39  & 0,967005076 & 0,925486876 & 0,946254761 & 0,049377916\\ 
+		    0,8       & 1144 & 1089 & 92 & 38  & 0,9678511   & 0,922099915 & 0,944985188 & 0,050544323\\ 
+		    0,7       & 1144 & 1089 & 92 & 38  & 0,9678511   & 0,922099915 & 0,944985188 & 0,050544323\\ 
+		    0,6       & 1144 & 1084 & 97 & 38  & 0,9678511   & 0,922099915 & 0,942869234 & 0,052488336\\ 
+		    0,5       & 1144 & 1084 & 97 & 38  & 0,9678511   & 0,922099915 & 0,942869234 & 0,052488336\\ 
+		    0,4       & 1145 & 1083 & 98 & 37  & 0,968697124 & 0,917019475 & 0,942869234 & 0,052488336\\ 
+		    0,3       & 1145 & 1082 & 99 & 37  & 0,968697124 & 0,916172735 & 0,942446043 & 0,052877138\\ 
+		    0,2       & 1145 & 1081 & 100 & 37 & 0,968697124 & 0,915325995 & 0,942022852 & 0,053265941\\ 
+		    0,1       & 1145 & 1081 & 100 & 37 & 0,968697124 & 0,915325995 & 0,942022852 & 0,053265941\\ 
 		    \end{tabular}
 		    \fonte{Autoria Própria}
 \end{table}
@@ -595,7 +594,7 @@ A curva ROC do processo utilizando a base gerada após a extração de característi
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.2\textwidth]{./figs/paca.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.2\textwidth]{./figs/rocecg2.png} % <- formatos PNG, JPG e PDF
 	\caption[Curva ROC do processo com correlação]{Curva ROC do processo com correlação}
 	\fonte{Autoria própria}
 	\label{ROC2}
