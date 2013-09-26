@@ -32,23 +32,21 @@
 \contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{39}
 \contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{42}
 \contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{44}
-\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{44}
-\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{46}
-\contentsline {section}{\numberline {3.5}Modelagem UML}{46}
-\contentsline {section}{\numberline {3.6}Metodologias Detalhadas}{47}
-\contentsline {subsection}{\numberline {3.6.1}Gera\c c\~ao dos Dados de Treinamento}{47}
-\contentsline {subsection}{\numberline {3.6.2}Metodologia da Extra\c c\~ao de Caracter\IeC {\'\i }sticas}{47}
-\contentsline {subsection}{\numberline {3.6.3}Reconhecimento de Padr\~oes com Redes Neurais Multicamadas}{48}
-\contentsline {subsection}{\numberline {3.6.4}Reconhecimento de Padr\~oes com Mapa de Kohonen}{48}
-\contentsline {subsection}{\numberline {3.6.5}Metodologia da Avalia\c c\~ao do Classificador}{50}
-\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{51}
-\contentsline {chapter}{\numberline {4}Resultados Obtidos}{52}
-\contentsline {section}{\numberline {4.1}Testes com Mapa de Kohonen}{52}
-\contentsline {section}{\numberline {4.2}Testes com Rede Multicamadas}{52}
-\contentsline {section}{\numberline {4.3}Considera\c c\~oes}{55}
-\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{57}
-\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{58}
-\contentsline {section}{\numberline {6.1}Recursos de Hardware}{58}
-\contentsline {section}{\numberline {6.2}Recursos de Software}{58}
-\contentsline {section}{\numberline {6.3}Horas de Trabalho}{59}
-\contentsline {chapter}{REFER\^ENCIAS}{61}
+\contentsline {subsection}{\numberline {3.4.5}M\'odulo de Reconhecimento de padr\~oes}{45}
+\contentsline {subsubsection}{Reconhecimento de Padr\~oes com Mapa de Kohonen}{45}
+\contentsline {subsubsection}{Reconhecimento de Padr\~oes com Rede Multicamadas}{48}
+\contentsline {subsection}{\numberline {3.4.6}M\'odulo de Avalia\c c\~ao de Resultados}{48}
+\contentsline {section}{\numberline {3.5}Modelagem UML}{49}
+\contentsline {section}{\numberline {3.6}Metodologias Detalhadas}{52}
+\contentsline {subsection}{\numberline {3.6.1}Gera\c c\~ao dos Dados de Treinamento}{52}
+\contentsline {section}{\numberline {3.7}Considera\c c\~oes}{53}
+\contentsline {chapter}{\numberline {4}Resultados Obtidos}{54}
+\contentsline {section}{\numberline {4.1}Testes com Mapa de Kohonen}{54}
+\contentsline {section}{\numberline {4.2}Testes com Rede Multicamadas}{54}
+\contentsline {section}{\numberline {4.3}Considera\c c\~oes}{57}
+\contentsline {chapter}{\numberline {5}Considera\c c\~oes Finais}{59}
+\contentsline {chapter}{\numberline {6}Gest\~ao do Projeto}{60}
+\contentsline {section}{\numberline {6.1}Recursos de Hardware}{60}
+\contentsline {section}{\numberline {6.2}Recursos de Software}{60}
+\contentsline {section}{\numberline {6.3}Horas de Trabalho}{61}
+\contentsline {chapter}{REFER\^ENCIAS}{63}

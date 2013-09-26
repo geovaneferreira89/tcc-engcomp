@@ -279,6 +279,7 @@ O primeiro módulo do sistema a ser descrito é o módulo de visualização do sinal.
 	\label{tela1}
 \end{figure}
 
+Sobre a tela de seleção do sistema, é possível fazer a montagem dos sinais selecionados por meio do botão Montagem. Basicamente, são associados em pares, o primeiro e o segundo canais, terceiro e o quarto e assim por diante. Então é realizada a subtração. Esta funcionalidade deve ser configurada pelo médico, é muito utilizada para exibir na tela determinadas configurações de sinais de Eletroencefalografia (EEG).
 
 A figura \ref{tela2} mostra a impressão no sinal na tela do sistema. Além dos sinais, a tela também apresenta opções para alterar a frequência e amplitude do sinal e opções para que o sinal possa ser visualizado em janelas de 5 ou 10 segundos.
 
@@ -302,7 +303,7 @@ Uma vez que a tela do sistema exibe o sinal de Eletroencefalografia (ECG), o usu
 	\label{tela3}
 \end{figure}
 
-O usuário pode selecionar uma cor disponível no menu do lado esquerdo, e em seguida marcar fragmentos no sinal, determinando assim o início e fim do evento. Estas marcações são salvas em disco utilizando arquivos de texto, podendo ser recuperadas em algum uso futuro. A figura \ref{tela2} mostra a tela com opção de marcação de eventos. Na figura, a cor selecionada foi o verde (correspondente ao complexo QRS), exibindo duas marcações deste evento no sinal. 
+O usuário pode selecionar uma cor disponível no menu do lado esquerdo, e em seguida marcar fragmentos no sinal, determinando assim o início e fim do evento. Estas marcações são salvas em disco utilizando arquivos de texto, podendo ser recuperadas em algum uso futuro. A figura \ref{tela2} mostra a tela com opção de marcação de eventos. Na figura, a cor selecionada foi o verde (correspondente ao complexo QRS), exibindo duas marcações deste evento no sinal. Também é possível adicionar comentários, através do Menu Ferramentas, Habilitar Comentários. Assim, quando um evento é marcado, automaticamente é exibida uma tela para o usuário digitar o comentário desejado, e este também é adicionado na tela principal do sinal, dentro da área marcada.
 
 \begin{figure}[!htb]
 	\centering
@@ -317,7 +318,7 @@ Após a realização de algumas marcações, o usuário pode editá-las por meio do Edi
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/tela5.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.7\textwidth]{./figs/tela5.png} % <- formatos PNG, JPG e PDF
 	\caption[Editor de marcações]{Editor de marcações}
 	\fonte{Autoria Própria}
 	\label{tela5}
@@ -325,7 +326,7 @@ Após a realização de algumas marcações, o usuário pode editá-las por meio do Edi
 
 \subsection{Módulo de Extração de Características}
 \label{Mod3} 
-O módulo de extração de características produz um novo sinal, que pode ser utilizado como entrada do módulo de reconhecimento de padrões. O seu funcionamento é explicado com detalhes na subseção Metodologia da Extração de Caracteríticas \ref{subsec:met1} da seção de Metodologias Detalhadas \ref{sec:Met-Testes}. Contudo, de modo resumido, pode se dizer que a função correlação pode ser aplicada sucessivas vezes em um evento salvo (do tipo que se quer buscar, no caso o complexo QRS) e o sinal de Eletroencefalografia (ECG). O resultado pode ser observado na figura \ref{telaEC}, o primeiro sinal corresponde ao sinal original de ECG, e o segundo foi produzido pela extração de características. O acesso desta tela pode ser obtido ao selecionar Menu Ferramentas e Técnicas de Reconhecimento.
+O módulo de extração de características produz um novo sinal, que pode ser utilizado como entrada do módulo de reconhecimento de padrões. A função correlação pode ser aplicada sucessivas vezes em um evento salvo (do tipo que se quer buscar, no caso o complexo QRS) e o sinal de Eletroencefalografia (ECG). O resultado pode ser observado na figura \ref{telaEC}, o primeiro sinal corresponde ao sinal original de ECG, e o segundo foi produzido pela extração de características. O acesso desta tela pode ser obtido ao selecionar Menu Ferramentas e Técnicas de Reconhecimento.
 
 \begin{figure}[!htb]
 	\centering
@@ -335,9 +336,57 @@ O módulo de extração de características produz um novo sinal, que pode ser utili
 	\label{telaEC}
 \end{figure}
 
+A extração de características é o processo pelo qual o sinal de Eletroencefalografia (ECG) pode ser submetido antes do processo de reconhecimento de padrões. A função correlação, descrita na seção \ref{sec:Correl} do capítulo de Fundamentação Teórica \ref{sec:Fund}, é aplicada sucessivas vezes (no caso apenas duas) em uma marcação arbitrária que represente bem o complexo QRS e no sinal de ECG produzindo um novo sinal como mostrado na figura \ref{corr5}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figs/corr5.png} % <- formatos PNG, JPG e PDF
+	\caption[Função correlação no sistema]{Função correlação no sistema}
+	\fonte{Autoria Própria}
+	\label{corr5}
+\end{figure}
+
+Como se pode perceber, os picos do sinal resultante correspondem aos instantes em que ocorrem o complexo QRS. Este novo sinal pode ser utilizado como entrada para o módulo de reconhecimento de padrões, a ser visto com mais detalhes na próxima seção.
+
 \subsection{Módulo de Reconhecimento de padrões}
 \label{Mod4} 
-O módulo de reconhecimento de padrões utiliza um Mapa de Kohonen para identificar o complexo QRS. Para acessar este módulo, basta selecionar na tela de Técnicas de Reconhecimento a opção Técnicas e em seguida Kohonen. Será exibida uma tela da figura \ref{105}, que permite configurar o mapa, tais como tamanho, uso da correlação (extração de características) e tamanho das amostras (explicado em detalhes em \ref{subsec:met2}).
+
+O módulo de reconhecimento de padrões oferece duas técnicas distintas: mapa de Kohonen e rede neural artificial do tipo multicamadas. A rede neural artifical multicamadas pode ser treinada com dois tipos de dados diferentes: eventos marcados diretamente no sinal de Eletrocardiografia (ECG), ou eventos marcados no sinal resultante da extração de características (aplicação da correlação). A próxima subsubseção, \ref{RecKHN}, descreve o processo com a utilização do mapa de Kohonen. A subsubseção seguinte, \ref{RecMLP}, descreve o reconhecimento de padrões utilizando a rede multicamadas.
+
+\subsubsection{Reconhecimento de Padrões com Mapa de Kohonen}
+\label{RecKHN}
+
+Como foi explicado no capítulo de Fundamentação Teórica, o Mapa de Kohonen agrupa nós com características similares em localizações próximas. No exemplo da clusterização de cores, os nós de cor azul foram agrupados em uma determinada localização. Da mesma forma, o Mapa de Kohonen agrupa fragmentos de sinais com características similares.
+
+O Mapa de Kohonen foi utilizado com o objetivo de identificar ocorrências do complexo QRS em meio ao sinal de Eletroencefalografia (ECG). Considerando que o sinal de ECG utilizado pode ser dividido em fragmentos com diferentes características, alguns poderão apresentar o complexo QRS inteiro ou partes dele, outros poderão apresentar outras formas de onda como a onda P, T ou U, arritmias cardíacas ou apenas ruído. 
+
+O mapa é inicializado com fragmentos, ou janelas, obtidos do sinal. Inicialmente, foram realizados testes percorrendo o sinal todo e captando fragmentos deslocando o sinal ponto por ponto. Contudo, isso gerava fragmentos redundantes e aumentava o tempo de duração da etapa de reconhecimento de padrões. Em vista disso, foi decidido deslocar o sinal de cinco em cinco amostras para obtenção de cada janela. Outro aspecto relevante é que para particionar o sinal de ECG sem extração de características, são usadas 50 amostras. No particionamento do sinal de ECG após a extração de características é necessário utilizar 200 amostras.
+
+A figura \ref{classi2} mostra um exemplo simplificado de como seria uma mapa inicializado. As estrelas azuis representam nós onde existem fragmentos com o complexo QRS, e as bolas vermelhas representam fragmentos de sinal que não apresentam esta forma de onda.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/classi0.png} % <- formatos PNG, JPG e PDF
+	\caption[Mapa inicializado com sinal]{Mapa inicializado com sinal}
+	\fonte{Autoria Própria}
+	\label{classi1}
+\end{figure}
+
+Após a aplicação do algoritmo, o mapa deverá se assemelhar ao mapa da figura \ref{classi2}. Neste exemplo, os sinais com características do complexo QRS formam um grupo, e os sinais com quaisquer outras características formam o outro grupo.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figs/classi1b.png} % <- formatos PNG, JPG e PDF
+	\caption[Mapa produzido]{Mapa produzido}
+	\fonte{Autoria Própria}
+	\label{classi2}
+\end{figure}
+
+O tamanho do Mapa é variável, contudo, manteve-se um tamanho padrão de 10 por 10 nós para os testes. Nós contendo fragmentos do sinal com características do complexo QRS tenderam a se localizar nas regiões em que as coordenadas \textit{x} e \textit{y} se aproximam de 0. Para separar a região onde se concentra o complexo QRS do restante do mapa, determinam-se valores de corte do \textit{x} e \textit{y}. Por exemplo, os nós com os valores de \textit{x} e \textit{y} entre 0 e 2 representam o grupo de padrões que se deseja buscar. No Capítulo de Resultados Obtidos \ref{sec:Resultados} são apresentados resultados para diferentes valores de corte de \textit{x} e \textit{y}.
+
+O algoritmo do Mapa de Kohonen segue a lógica detalhada no artigo de \cite{Guthi}.
+
+Para acessar a opção de reconhecimento de padrões com mapa de Kohonen, basta selecionar na tela de Técnicas de Reconhecimento a opção Técnicas e em seguida Kohonen. Será exibida uma tela da figura \ref{105}, que permite configurar o mapa, tais como tamanho, uso da correlação (extração de características) e tamanho das amostras (explicado em detalhes em \ref{subsec:met2}).
 
 \begin{figure}[!htb]
 	\centering
@@ -353,16 +402,36 @@ A figura \ref{105} mostra a tela em que são exibidos os resultados após a execuç
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=1\textwidth]{./figs/rec2.png} % <- formatos PNG, JPG e PDF
-	\caption[Tela de resultados]{Tela de resultados}
+	\caption[Tela de resultados do mapa de Kohonen]{Tela de resultados do mapa de Kohonen}
 	\fonte{Autoria Própria}
 	\label{rec1}
 \end{figure}
 
-Da mesma maneira que o módulo anterior, a metodologia em detalhes do módulo de reconhecimento de padrões será descrita na subseção \ref{subsec:met2} da seção de Metodologias Detalhadas \ref{sec:Met-Testes}.  
+\subsubsection{Reconhecimento de Padrões com Rede Multicamadas} 
+\label{RecMLP}
 
 \subsection{Módulo de Avaliação de Resultados}
 \label{Mod5} 
-Com a conclusão da etapa de reconhecimento de padrões, podem ser gerados dados estatísticos para medir o desempenho do sistema. Os resultados obtidos são comparados às marcações provenientes da base de dados, que indicam existência do complexo QRS no sinal. A partir disso, são contabilizados a quantidade de verdadeiros positivos (VP), falsos positivos (FP), verdadeiros negativos (VN) e falsos negativos (FN) e exibidos no terminal da tela de Técnicas de Reconhecimento.
+Com a conclusão da etapa de reconhecimento de padrões, podem ser gerados dados estatísticos para medir o desempenho do sistema. Os resultados obtidos são comparados às marcações provenientes da base de dados, que indicam existência do complexo QRS no sinal. A partir disso, é gerada de modo automático a tabela de contingência. Ou seja, a quantidade verdadeiros positivos (VP), falsos positivos (FP), verdadeiros negativos (VN) e falsos negativos (FN), como foi discutido na seção Tabela de Contingência \ref{subsec:TabelaCont} do capítulo de Fundamentação Teórica \ref{sec:Fund}. A figura \ref{avaliar} mostra ideias básicas para auxiliar a compreensão deste procedimento.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/aval2.png} % <- formatos PNG, JPG e PDF
+	\caption[Lógica da avaliação]{Lógica da avaliação}
+	\fonte{Autoria Própria}
+	\label{avaliar}
+\end{figure}
+
+O processo de avaliação é feito confirme a seguinte lógica:
+
+\begin{enumerate}
+	\item São enviadas como parâmetro no construtor da classe Avaliador duas listas: a de lista de resultados (sistema) e a lista de marcações (referência), que enviam a posição x de cada evento em relação ao vetor de todos os pontos do sinal;
+	\item As duas listas são recriadas, utilizando outras estruturas que possibilitam o uso de \textit{flags} e outras variáveis. Os itens da lista de resultados armazenam então apenas seu horário de ocorrência. E os itens da lista de marcações tem seu horário transformado em um intervalo com início e fim, ao sofrerem uma expansão de tamanho variável \textit{x} para a esquerda e para a direita(no caso 50 amostras);
+	\item Percorre-se a lista de marcações, verificando, se cada um dos resultados está dentro do intervalo de alguma marcação. Caso esteja, ocorreu um verdadeiro positivo (VP) e as \textit{flags} de detecção do resultado e da marcação são ativadas. Caso contrário, ou seja, se o resultado está fora da faixa de qualquer uma das marcações, caracteriza-se como falso positivo (FP);
+	\item Novamente, percorre-se a lista de marcações, verificando quais marcações não foram detectadas, pois não apresentam resultado correspondente. Estas ocorrências são classificadas como falso negativo (FN), pois o sistema deveria detectá-las, mas não conseguiu;
+	\item Por fim, o avaliador considera como verdadeiro negativo (VN), intervalo entre duas marcações (entre o fim de uma e início da seguinte) em que não ocorreu nenhum falso positivo (FP).
+\end{enumerate}
+
 
 \section{Modelagem UML}
 \label{sec:UML}
@@ -412,84 +481,28 @@ A finalidade da existência de cada classe do sistema está resumida na tabela \re
 
 \section{Metodologias Detalhadas}
 \label{sec:Met-Testes}
-Esta seção visa explicar as metodologias utilizadas na implementação dos módulos do sistema por meio das subseções: Metodologia da Extração de Características \ref{subsec:met1}, Metodologia do Reconhecimento de Padrões \ref{subsec:met2} e Metodologia da Avaliação dos Resultados \ref{subsec:Aval}.
+Esta seção visa explicar a metodologia utilizada na etapa de testes. É composta por apenas uma seção: Geração dos Dados de Treinamento \ref{subsec:geradados}.
 
 \subsection{Geração dos Dados de Treinamento}
+\label{geradados}
 
-Amostras 306900
+Para determinar se de fato ocorre um complexo QRS no sinal, foi tomado como referência as marcações provenientes da base de dados MIT-BIH Arrhythmia Database. O arquivo de texto contendo as marcações do sinal de Eletrocardiografia (ECG) 105, apresenta 2691 eventos. Destes 2691 eventos, apenas 2572 são relevantes para os testes neste projeto, que correspondem às marcações  de \textit{Normal beat} (2526 ocorrências), \textit{Premature ventricular contraction} (41 ocorrências) e \textit{Unclassifiable beat} (5 ocorrências).
 
+Logo, o sinal inteiro apresenta 2572 ocorrências do complexo QRS. No entanto, apenas os 14 minutos inicias da gravação são utilizados. O que corresponde a 306900 amostras, e 1182 ocorrências de QRS. Este conjunto de dados inteiro funciona como dados de entrada para o mapa de Kohonen. Os dados são então agrupados, e o grupo do complexo QRS é separado dos demais, como explicado anteriormente.
 
-\subsection{Metodologia da Extração de Características}
-\label{subsec:met1}
-A extração de características é o processo pelo qual o sinal de Eletroencefalografia (ECG) pode ser submetido antes do processo de reconhecimento de padrões. A função correlação, descrita na seção \ref{sec:Correl} do capítulo de Fundamentação Teórica \ref{sec:Fund}, é aplicada sucessivas vezes (no caso apenas duas) em uma marcação arbitrária que represente bem o complexo QRS e no sinal de ECG produzindo um novo sinal como mostrado na figura \ref{corr5}.
+Para o treinamento da rede multicamadas, como também já foi explicado anteriormente, podem ser usados dois conjuntos de dados. O primeiro deles é constituído de eventos marcados diretamente no sinal de ECG. Para gerar este conjunto de dados, foram marcados os complexos QRS dos dois terços iniciais do sinal, que apresentam cerca de 200 mil amostras. Foi gerado então um conjunto de dados formado por 700 marcações do complexo QRS salva em arquivo texto. Em seguida, foram devidamente ajustados os pontos de referência (no pico) para cada marcação.
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.9\textwidth]{./figs/corr5.png} % <- formatos PNG, JPG e PDF
-	\caption[Função correlação no sistema]{Função correlação no sistema}
-	\fonte{Autoria Própria}
-	\label{corr5}
-\end{figure}
+O segundo conjunto de dados, foi obtido após aplicação da função correlação de um complexo QRS com o sinal inteiro (original) de ECG. Também foram utilizadas as primeiras 200 mil amostras do sinal (dois terços), gerando 700 marcações. Obviamente, a rede neural multicamadas treinada com este conjunto de dados, também realiza o reconhecimento de padrões no sinal resultante da extração de características.
 
-Como se pode perceber, os picos do sinal resultante correspondem aos instantes em que ocorrem o complexo QRS. Este novo sinal pode ser utilizado como entrada para o módulo de reconhecimento de padrões, a ser visto com mais detalhes na próxima seção.
-
-\subsection{Reconhecimento de Padrões com Redes Neurais Multicamadas}
-
-\subsection{Reconhecimento de Padrões com Mapa de Kohonen}
-\label{subsec:met2} 
-
-Como foi explicado no capítulo de Fundamentação Teórica, o Mapa de Kohonen agrupa nós que possuem características similares em localizações próximas. No exemplo da clusterização de cores, os nós de cor azul foram agrupados em uma determinada localização. Da mesma forma, o Mapa de Kohonen agrupa fragmentos de sinais com características similares.
-
-O Mapa de Kohonen foi utilizado com o objetivo de identificar ocorrências do complexo QRS em meio ao sinal de Eletroencefalografia (ECG). Considerando que o sinal de ECG utilizado pode ser dividido em fragmentos com diferentes características, alguns poderão apresentar o complexo QRS inteiro ou partes dele, outros poderão apresentar outras formas de onda como a onda P, T ou U, arritmias cardíacas ou apenas ruído. 
-
-O mapa é inicializado com fragmentos, ou janelas, obtidos do sinal. Inicialmente, foram realizados testes percorrendo o sinal todo e captando fragmentos deslocando o sinal ponto por ponto. Contudo, isso gerava fragmentos redundantes e aumentava o tempo de duração da etapa de reconhecimento de padrões. Em vista disso, foi decidido deslocar o sinal de cinco em cinco amostras para obtenção de cada janela. Outro aspecto relevante é que para particionar o sinal de ECG sem extração de caracteríticas, são usadas 50 amostras. No particionamento do sinal de ECG após a extração de características é necessário utilizar 200 amostras.
-
-A figura \ref{classi2} mostra um exemplo simplificado de como seria uma mapa inicializado. As estrelas azuis representam nós onde existem fragmentos com o complexo QRS, e as bolas vermelhas representam fragmentos de sinal que não apresentam esta forma de onda.
+A figura \ref{geradados} mostra os dois tipos de eventos marcados que podem ser utilizados para treinar a rede.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/classi0.png} % <- formatos PNG, JPG e PDF
-	\caption[Mapa inicializado com sinal]{Mapa inicializado com sinal}
+	\includegraphics[width=0.7\textwidth]{./figs/geradados.png} % <- formatos PNG, JPG e PDF
+	\caption[Dois tipos de eventos marcados]{Dois tipos de eventos marcados}
 	\fonte{Autoria Própria}
-	\label{classi1}
+	\label{geradados}
 \end{figure}
-
-Após a aplicação do algoritmo, o mapa deverá se assemelhar ao mapa da figura \ref{classi2}. Neste exemplo, os sinais com características do complexo QRS formam um grupo, e os sinais com quaisquer outras características formam o outro grupo.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/classi1b.png} % <- formatos PNG, JPG e PDF
-	\caption[Mapa produzido]{Mapa produzido}
-	\fonte{Autoria Própria}
-	\label{classi2}
-\end{figure}
-
-O tamanho do Mapa é variável, contudo, manteve-se um tamanho padrão de 10 por 10 nós para os testes. Nós contendo fragmentos do sinal com características do complexo QRS tenderam a se localizar nas regiões em que as coordenadas \textit{x} e \textit{y} se aproximam de 0. Para separar a região onde se concentra o complexo QRS do restante do mapa, determinam-se valores de corte do \textit{x} e \textit{y}. Por exemplo, os nós com os valores de \textit{x} e \textit{y} entre 0 e 2 representam o grupo de padrões que se deseja buscar. No Capítulo de Resultados Obtidos \ref{sec:Resultados} são apresentados resultados para diferentes valores de corte de \textit{x} e \textit{y}.
-
-O algoritmo do Mapa de Kohonen segue a lógica detalhada no artigo de \cite{Guthi}.
-
-\subsection{Metodologia da Avaliação do Classificador}
-\label{subsec:Aval}
-
-O módulo de Avaliação do Classificador gera de modo automático a tabela de contingência após a conclusão do reconhecimento de padrões. Ou seja, o número de ocorrências de verdadeiro positivo (VP), falso positivo (FP), verdadeiro negativo (VN) e falso negativo (FN), como foi discutido na seção Tabela de Contingência \ref{subsec:TabelaCont} do capítulo de Fundamentação Teórica \ref{sec:Fund}. A figura \ref{avaliar} mostra ideias básicas para auxiliar a compreensão deste procedimento.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/aval2.png} % <- formatos PNG, JPG e PDF
-	\caption[Lógica da avaliação]{Lógica da avaliação}
-	\fonte{Autoria Própria}
-	\label{avaliar}
-\end{figure}
-
-O processo de avaliação é feito confirme a seguinte lógica:
-
-\begin{enumerate}
-	\item São enviadas como parâmetro no construtor da classe Avaliador duas listas: a de lista de resultados (sistema) e a lista de marcações (referência), que enviam a posição x de cada evento em relação ao vetor de todos os pontos do sinal;
-	\item As duas listas são recriadas, utilizando outras estruturas que possibilitam o uso de \textit{flags} e outras variáveis. Os itens da lista de resultados armazenam então apenas seu horário de ocorrência. E os itens da lista de marcações tem seu horário transformado em um intervalo com início e fim, ao sofrerem uma expansão de tamanho variável \textit{x} para a esquerda e para a direita(no caso 50 amostras);
-	\item Percorre-se a lista de marcações, verificando, se cada um dos resultados está dentro do intervalo de alguma marcação. Caso esteja, ocorreu um verdadeiro positivo (VP) e as \textit{flags} de detecção do resultado e da marcação são ativadas. Caso contrário, ou seja, se o resultado está fora da faixa de qualquer uma das marcações, caracteriza-se como falso positivo (FP);
-	\item Novamente, percorre-se a lista de marcações, verificando quais marcações não foram detectadas, pois não apresentam resultado correspondente. Estas ocorrências são classificadas como falso negativo (FN), pois o sistema deveria detectá-las, mas não conseguiu;
-	\item Por fim, o avaliador considera como verdadeiro negativo (VN), intervalo entre duas marcações (entre o fim de uma e início da seguinte) em que não ocorreu nenhum falso positivo (FP).
-\end{enumerate}
 
 \section{Considerações}
 \label{sec:Cons-Des}

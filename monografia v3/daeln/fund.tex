@@ -269,7 +269,7 @@ Inicialmente no mapa, cada nó é conectado a todos os nós de entrada, mas não são
 As redes devem ser formadas por nós, sendo que cada um deles deverá possuir um vetor de pesos de dimensão n. Para que o algoritmo funcione adequadamente, os nós de entrada também deverão apresentar vetores de entrada com dimensão n. E, considerando que os neurônios não possuem nenhuma conexão com os neurônios em sua vizinhança, não podem conhecer o valor dos pesos deles. Para serem organizados, os dados passam pelo algortimo do Mapa de Kohonen. Este algoritmo que agrupa os padrões de entrada é descrito a seguir \cite{Guthi}.
 
 \begin{enumerate}
-	\item Os pesos de cada nó são inicializados a partir dos dados de entrada;
+	\item Os pesos de cada nó são inicializados com valores aleatórios;
 	\item Um vetor é escolhido \textit{(input vector)} aleatoriamente dos dados de entrada e apresentado a rede;
 	\item Cada nó da rede é analisado em busca do nó que apresenta pesos mais similares ao nó escolhido \textit{(input vector)}. Este nó é conhecido como \textit{Best Matching Unit} (BMU). O BMU é encontrado com o cálculo da distância dado pela equação ~(\ref{eq:bmu}), em que \textit{I} se refere ao vetor escolhido, \textit{W} ao vetor de pesos do nó e \textit{n} à dimensão do vetor. 
 	
