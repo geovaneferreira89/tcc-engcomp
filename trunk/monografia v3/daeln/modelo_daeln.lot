@@ -1,10 +1,10 @@
 \select@language {brazil}
 \contentsline {table}{\numberline {1}{\ignorespaces Tabela de Conting\^encia 2x2}}{28}
-\contentsline {table}{\numberline {2}{\ignorespaces Principais interfaces da BrainNet Library}}{36}
+\contentsline {table}{\numberline {2}{\ignorespaces Principais interfaces da BrainNet Library}}{37}
 \contentsline {table}{\numberline {3}{\ignorespaces Principais classes da BrainNet Library}}{37}
 \contentsline {table}{\numberline {4}{\ignorespaces Tabela de classes do sistema}}{47}
 \contentsline {table}{\numberline {5}{\ignorespaces Tabela de Resultados Obtidos com Mapa de Kohonen}}{52}
-\contentsline {table}{\numberline {6}{\ignorespaces Tabela de Resultados Obtidos com Raw ECG}}{53}
-\contentsline {table}{\numberline {7}{\ignorespaces Tabela de Resultados utilizando correla\c c\~ao}}{53}
+\contentsline {table}{\numberline {6}{\ignorespaces Tabela de Resultados com marca\c c\~oes diretamente no ECG}}{53}
+\contentsline {table}{\numberline {7}{\ignorespaces Tabela de Resultados com extra\c c\~ao de caracter\IeC {\'\i }sticas}}{53}
 \contentsline {table}{\numberline {8}{\ignorespaces Tabela Comparativa de m\'etodos}}{56}
 \contentsline {table}{\numberline {9}{\ignorespaces Tabela com a lista de tarefas e horas de trabalho}}{59}

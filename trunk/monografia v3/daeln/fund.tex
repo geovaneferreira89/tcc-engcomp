@@ -1,7 +1,7 @@
 \chapter{Fundamentação Teórica}
 \label{sec:Fund}
 
-O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos \ref{sec:Ondas}. Em seguida, as seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. A seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
+O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos \ref{sec:Ondas}. Em seguida, as seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. A seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata de assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
 
 \section{Fisiologia do Coração}
 \label{sec:Fisiologia}
@@ -18,9 +18,9 @@ O coração humano possui paredes compostas por músculos cardíacos estriados, cham
 
 O coração possui ainda quatro válvulas. Entre o átrio direito e o ventrículo direito se encontra a válvula tricúspide, e entre o átrio esquerdo e o ventrículo esquerdo fica a válvula mitral. A válvula pulmonar fica entre o ventrículo direito e a artéria pulmonar, enquanto a válvula aorta está no trato de saída do ventrículo esquerdo, e controla o fluxo para a aorta \cite{MALMIVUO1995}.
 
-Para retornar da circulação sistêmica, o sangue chega ao átrio direito e dele segue pela válvula tricúspide para o ventrículo direito. Então o sangue é ejetado do ventrículo direito para os pulmões, pela válvula pulmonar. Dos pulmões, o sangue oxigenado retorna para o átrio esquerdo, e passa pela válvula mitral até o ventrículo esquerdo. Finalmente, é bombeado pela válvula aorta para a aorta e para a circulação sistêmica. A contração ventricular necessária para o esvaziamento do ventrículo é conhecida como sístole. O relaxamento ventricular é conhecido como diástole e é nessa fase que os ventrículos recebem sangue do átrio \cite{MALMIVUO1995}. 
+Para retornar da circulação sistêmica, o sangue chega ao átrio direito e dele segue pela válvula tricúspide para o ventrículo direito. Então o sangue é ejetado do ventrículo direito para os pulmões, pela válvula pulmonar. Dos pulmões, o sangue oxigenado retorna para o átrio esquerdo, e passa pela válvula mitral até o ventrículo esquerdo. Finalmente, é bombeado pela válvula aorta para a aorta e para a circulação sistêmica. A contração ventricular necessária para o esvaziamento do ventrículo é conhecida como sístole. O relaxamento ventricular é conhecido como diástole, e é nessa fase que os ventrículos recebem sangue do átrio \cite{MALMIVUO1995}. 
 
-A figura \ref{fig:coracao} mostra o diagrama de blocos do coração mostrando o sentido em que o sangue circula.
+A figura \ref{fig:coracao} mostra o diagrama de blocos do coração evidenciando o sentido em que o sangue circula.
 
 \begin{figure}[!htb]
 	\centering
@@ -151,7 +151,7 @@ A duração normal do QRS fica entre 0,08 e 0,09 segundos. Durações maiores são ge
 \section{Função Correlação}
 \label{sec:Correl}
 
-O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas, e determinar que arma disparou um projétil mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema  \sigla{GPS}{\textit{Global Positioning System}} e na análise de \sigla{DNA}{\textit{Deoxyribonucleic Acid}} \cite{bloch2004l}. 
+O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas, ou ainda determinar que arma disparou um projétil mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema  \sigla{GPS}{\textit{Global Positioning System}} e na análise de \sigla{DNA}{\textit{Deoxyribonucleic Acid}} \cite{bloch2004l}. 
 
 A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre eles. Podem ser utilizados um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
 
@@ -175,7 +175,7 @@ O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que
 \section{Redes Neurais Artificiais}
 \label{sec:RNA}
 
-O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado como um computador extremamente complexo, não linear que apresenta paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
+O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado um computador extremamente complexo, não linear com paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
 
 De certa forma, as redes neurais artificiais foram criadas para realizar atividades mimetizando o cérebro humano. As redes neurais artificiais são modelos matemáticos que podem ser implementadas com componentes eletrônicos ou simuladas em software \cite{HAYKIN2011}.
 
@@ -241,7 +241,7 @@ A rede multicamadas é treinada com o algoritmo \textit{backpropagation}, em está
 
 \subsection{Validação Cruzada}
 
-Partindo do princípio de que as redes neurais artificiais do tipo MLP passam por um processo de treinamento, é necessário um conjunto de dados para a realização desta etapa. Além disso é necessário testar o funcionamento da rede. Considerada uma padrão pela estatística, a validação cruzada soluciona esta questão ao dividir a base de dados inicial em dois conjuntos \cite{HAYKIN2011}. São eles:
+Partindo do princípio de que as redes neurais artificiais do tipo MLP passam por um processo de treinamento, é necessário um conjunto de dados para a realização desta etapa. Além disso é necessário testar o funcionamento da rede. Considerada um padrão pela estatística, a validação cruzada soluciona esta questão ao dividir a base de dados inicial em dois conjuntos \cite{HAYKIN2011}. São eles:
 
 \begin{itemize}
 	\item Conjunto de dados de treinamento;
@@ -252,11 +252,11 @@ Além destas duas divisões, o conjunto de dados de treinamento pode ser dividido 
 
 \subsection{Redes Neurais de Kohonen}
 
-Existe um tipo especial de redes neurais artificiais auto organizáveis conhecidas como Mapas Auto Organizáveis ou Mapas de Kohonen. Nos Mapas de Kohonen, os neurônios, ou nós, são dispostos em nós em uma estrutura bidimensional e passam por um processo de aprendizado competitivo utilizando padrões de entrada.  Os neurônios ficam então ordenados em relação a uns aos outros. O Mapa de Kohonen forma, portanto, um mapa topográfico dos padrões de entrada, no qual as coordenadas dos neurônios indicam características dos padrões de entrada \cite{HAYKIN2011}.
+Existe um tipo especial de redes neurais artificiais auto organizáveis conhecidas como Mapas Auto Organizáveis ou Mapas de Kohonen. Nos Mapas de Kohonen, os neurônios, ou nós, são dispostos em nós em uma estrutura bidimensional e passam por um processo de aprendizado competitivo utilizando padrões de entrada.  Os neurônios são então ordenados uns em relação aos outros. O Mapa de Kohonen forma, portanto, um mapa topográfico dos padrões de entrada, no qual as coordenadas dos neurônios indicam características dos padrões de entrada \cite{HAYKIN2011}.
 
 Cabe explicitar que o aprendizado dos Mapas de Kohonen é do tipo não supervisionado, isso significa que não é necessário um conjunto de dados de treinamento para que a rede aprenda a classificar padrões \cite{Guthi}.
 
-No mapa, cada nó é conectado a todos os nós de entrada, mas não são conectados entre si, como ilustra a figura \ref{fig:map0}. Cada nó possui um vetor de pesos, e também uma coordenada única \textit{(i,j)}. Esta coordenada auxilia a identificar o nó, além de ser importante para os cálculos do algoritmo do Mapa de Kohonen \cite{Guthi}. 
+Inicialmente no mapa, cada nó é conectado a todos os nós de entrada, mas não são conectados entre si, como ilustra a figura \ref{fig:map0}. Cada nó possui um vetor de pesos, e também uma coordenada única \textit{(i,j)}. Esta coordenada auxilia a identificar o nó, além de ser importante para os cálculos do algoritmo do Mapa de Kohonen \cite{Guthi}. 
 
 \begin{figure}[!htb]
 	\centering
@@ -269,7 +269,7 @@ No mapa, cada nó é conectado a todos os nós de entrada, mas não são conectados e
 As redes devem ser formadas por nós, sendo que cada um deles deverá possuir um vetor de pesos de dimensão n. Para que o algoritmo funcione adequadamente, os nós de entrada também deverão apresentar vetores de entrada com dimensão n. E, considerando que os neurônios não possuem nenhuma conexão com os neurônios em sua vizinhança, não podem conhecer o valor dos pesos deles. Para serem organizados, os dados passam pelo algortimo do Mapa de Kohonen. Este algoritmo que agrupa os padrões de entrada é descrito a seguir \cite{Guthi}.
 
 \begin{enumerate}
-	\item Os pesos de cada nó são inicializados;
+	\item Os pesos de cada nó são inicializados a partir dos dados de entrada;
 	\item Um vetor é escolhido \textit{(input vector)} aleatoriamente dos dados de entrada e apresentado a rede;
 	\item Cada nó da rede é analisado em busca do nó que apresenta pesos mais similares ao nó escolhido \textit{(input vector)}. Este nó é conhecido como \textit{Best Matching Unit} (BMU). O BMU é encontrado com o cálculo da distância dado pela equação ~(\ref{eq:bmu}), em que \textit{I} se refere ao vetor escolhido, \textit{W} ao vetor de pesos do nó e \textit{n} à dimensão do vetor. 
 	
