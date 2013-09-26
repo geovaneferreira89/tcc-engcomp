@@ -1287,13 +1287,16 @@ namespace AmbienteRPB
         {
             string threshold = "";
             threshold = Interaction.InputBox("Threshold", "Reconhecimento Automatizado de Padrões em ECG", "1", 10, 10);
-            if (Convert.ToInt16(threshold) < 0)
-                threshold = "1";
-            ContarQRSs(Convert.ToInt16(threshold));
-            object senders = new object[1];
-            EventArgs a = new EventArgs();
-            avaliadorToolStripMenuItem_Click(sender, e);
-            //MessageBox.Show("QRSs: " + Convert.ToString(ContarQRSs(Convert.ToInt16(threshold))), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+            if (threshold != "")
+            {
+                if (Convert.ToInt16(threshold) < 0)
+                    threshold = "1";
+                ContarQRSs(Convert.ToInt16(threshold));
+                object senders = new object[1];
+                EventArgs a = new EventArgs();
+                avaliadorToolStripMenuItem_Click(sender, e);
+                //MessageBox.Show("QRSs: " + Convert.ToString(ContarQRSs(Convert.ToInt16(threshold))), "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.OK);
+            }
         }
         //----------------------------------------------------------------------------
         private int ContarQRSs(int threshold)
@@ -1323,7 +1326,9 @@ namespace AmbienteRPB
                     }
                     else if (iniciou == true && numMAX >= threshold)
                     {
-                        
+
+                        if (50 < numMAX)
+                            numMAX = 50;
                         //Salva os dados nos vetores
                         for (int k = 0; k < numMAX; k++)
                         {
