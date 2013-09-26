@@ -140,13 +140,12 @@ Os dados correspondem à 48 gravações ECG com duração de meia hora cada uma. São 
 	\label{105}
 \end{figure}
 
-Os exames foram realizados com 47 pacientes acompanhados pelo BIH Arrhythmia Laboratory entre os anos de 1975 e 1979. Vinte e três gravações foram aleatoriamente de um conjunto de 4000 exames ambulatoriais de ECG com duração de 24 horas coletadas de pacientes internos (cerca de 60\%) e pacientes ambulatoriais (cerca de 40\%) do Boston's Beth Israel Hospital. Os outros 25 exames foram selecionados do mesmo conjunto para incluir arritmias clinicamente incomuns ~\cite{MOODY1990}.
+Os exames foram realizados com 47 pacientes acompanhados pelo BIH Arrhythmia Laboratory entre os anos de 1975 e 1979. Vinte e três gravações foram selecionadas aleatoriamente de um conjunto de 4000 exames ambulatoriais de ECG com duração de 24 horas coletadas de pacientes internos (cerca de 60\%) e pacientes ambulatoriais (cerca de 40\%) do Boston's Beth Israel Hospital. Os outros 25 exames foram selecionados do mesmo conjunto para incluir arritmias clinicamente incomuns ~\cite{MOODY1990}.
 
 Uma equipe com dois cardiologistas realizou anotações dos batimentos em cada uma das gravações, resultando em aproximadamente 110 mil marcações. Estas foram incluídas na base de dados. A base completa tem sido disponibilizada gratuitamente pelo desde 2005 ~\cite{MOODY1990}.
 
 Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por apresentar maior dificuldade na detecção do complexo QRS ~\cite{SARAIVA2012}.
 
-O arquivo de texto contendo as anotações do sinal de ECG 105, apresenta 2691 eventos. Destes 2691 eventos, apenas 2572 são relevantes para os testes neste projeto, que correspondem às marcações  de \textit{Normal beat} (2526 ocorrências), \textit{Premature ventricular contraction} (41 ocorrências) e \textit{Unclassifiable beat} (5 ocorrências).
  
 \section{European Data Format}
 \label{sec:EDF}
@@ -533,7 +532,7 @@ A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela de Resultados Obtidos com Raw ECG]{Tabela de Resultados Obtidos com Raw ECG}
+	\caption[Tabela de Resultados com marcações diretamente no ECG]{Tabela de Resultados com marcações diretamente no ECG}
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
@@ -567,7 +566,7 @@ A tabela \ref{tab:rawECG} mostra os resultados atingidos com a base de eventos g
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela de Resultados utilizando correlação]{Tabela de Resultados utilizando correlação}
+	\caption[Tabela de Resultados com extração de características]{Tabela de Resultados com extração de características}
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
@@ -602,9 +601,9 @@ A curva ROC do processo utilizando a base gerada após a extração de característi
 
 Com base nós testes realizados, os três métodos de reconhecimento de padrões implementados podem ser considerados sistemas classificadores. A forma do gráfico da curva ROC da rede multicamadas, com ambas as bases de eventos, caracteriza o sistema como classificador, como foi explicado na subseção \ref{subsec:ROCCurva}. 
 
-O mesmo pode se afirmar por meio da observação dos dados estatísticos. Os valores da sensibilidade variaram entre 0,967005076 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1) e 0,995769882 (Mapa de Kohonen). Já os valores mínimo e máximo da especificidade variaram entre 0,915325995 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1) e 1 (rede multicamadas treinada com eventos marcados diretamente no sinal). E a eficiência apresentou como valor máximo 0,997460855 (Mapa de Kohonen) e valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1).
+O mesmo pode se afirmar por meio da observação dos dados estatísticos. Os valores da sensibilidade variaram entre 0,967005076 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1) e 0,995769882 (Mapa de Kohonen). Já os valores mínimo e máximo da especificidade variaram entre 0,915325995 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1) e 1 (rede multicamadas treinada com eventos marcados diretamente no sinal). E a eficiência apresentou como valor máximo 0,997460855 (Mapa de Kohonen) e valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1).
 
-Os resultados obtidos com a utilização do Mapa de Kohonen superaram em muito qualquer expectativa, dado a facilidade de sua implemntação e o fato de realizar aprendizado não supervisionado. O Mapa de Kohonen mostrou melhor desempenho, ao menos para o fragmento do sinal testado. Nas poucas partes em que o sinal apresentou muito ruído, a rede multicamadas foi mais eficiente.
+Os resultados obtidos com a utilização do Mapa de Kohonen superaram em muito qualquer expectativa, dada a facilidade de sua implementação e o fato de realizar aprendizado não supervisionado. Em relação a rede multicamadas, o Mapa de Kohonen mostrou melhor desempenho, ao menos para o fragmento do sinal testado. Nas poucas partes em que o sinal apresentou muito ruído, a rede multicamadas foi mais eficiente.
 
 Na tabela \ref{tab:correlacao}, podem ser observados resultados obtidos a partir da aplicação de diferentes métodos na mesma base de dados utilizada neste trabalho. E possibilita a comparação dos valores observados do índice \sigla{DER}{\textit{Detection Error Rate}} \textit{(Detection Error Rate)} entre eles.
 
@@ -639,21 +638,21 @@ Na tabela \ref{tab:correlacao}, podem ser observados resultados obtidos a partir
 	\fonte{Modificada de \cite{SARAIVA2012}}
 \end{table}
 
-Cabe destacar, no entanto, que os resultados apresentados na tabela \ref{tab:correlacao} são relativos ao uso do sinal inteiro, em que as marcações da base de dados acusam entre 2572 e 2690 de ocorrências do complexo QRS. Enquanto que este projeto realizou testes com metade do mesmo sinal, apresentando 1182 ocorrências do complexo QRS.
+Cabe destacar, no entanto, que os resultados apresentados na tabela \ref{tab:correlacao} são relativos ao uso do sinal inteiro, em que as marcações da base de dados acusam entre 2572 e 2690 ocorrências do complexo QRS. Enquanto este projeto realizou testes com metade do mesmo sinal, apresentando 1182 ocorrências do complexo QRS.
 
-No entanto, o menor valor do índice \sigla{DER}{\textit{Detection Error Rate}} \textit{(Detection Error Rate)} obtido pelos outros trabalhos foi 0,5 (Filtro adaptativo e rede neural). E o presente trabalho teve como valor mínimo do índice DER 0,002332815 (aplicação do Mapa de Kohonen), valor inferior a qualquer dos outros métodos. O valor máximo do índice DER observado nos testes deste projeto foi 0,053265941 (rede multicamadas com extração de características e \textit{threshold} 0,1).
+No entanto, o menor valor do índice \sigla{DER}{\textit{Detection Error Rate}} \textit{(Detection Error Rate)} obtido pelos outros trabalhos foi 0,5 (Filtro adaptativo e rede neural). E o presente trabalho teve como valor mínimo do índice DER 0,002332815 (aplicação do Mapa de Kohonen), valor inferior ao obtido por qualquer dos outros trabalhos. O valor máximo do índice DER observado nos testes deste projeto foi 0,053265941 (rede multicamadas com extração de características e \textit{threshold} 0,1).
 
 %----------------------------------------
 \chapter{Considerações Finais} % 1 página
 \label{sec:CFinais}
 
-Os objetivos inicialmente definidos foram alcançados plenamente. O projeto concluiu o desenvolvimento de um sistema computacional, capaz visualizar sinais de ECG armazenados em arquivos digitais, apresentando ainda as funcionalidade de marcar e salvar eventos do sinal, e reconhecer padrões. Além disso, foi implemtada uma técnica a mais do que inicialmente planejado. Ao todo, o sistema apresenta três técnicas diferentes para o reconhecimento de padrões: Mapa de Kohonen, rede multicamadas treinada  eventos marcados diretamente no sinal e rede multicamadas treinada com eventos obtidos após a extração de características.
+Os objetivos inicialmente definidos foram alcançados plenamente. O projeto concluiu o desenvolvimento de um sistema computacional, capaz visualizar sinais de ECG armazenados em arquivos digitais, apresentando ainda as funcionalidade de marcar e salvar eventos do sinal, e reconhecer padrões. Além disso, foi implementada uma técnica a mais do que inicialmente planejado. Ao todo, o sistema apresenta três técnicas diferentes para o reconhecimento de padrões: Mapa de Kohonen, rede multicamadas treinada  eventos marcados diretamente no sinal e rede multicamadas treinada com eventos obtidos após a extração de características.
 
-Cada uma das técnicas de reconhecimento de padrões implementada foi testada com o mesmo arquivo de sinal. Todas as técnicas apresentaram valores acima de 0,91 para os índices estatísticos de eficiência, especificidade e sensibilidade. Os valores mínimos da sensibilidade e da especificidade foram 0,967005076 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1)  0,915325995 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1), respectivamente. A eficiência apresentou o valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1).
+Cada uma das técnicas de reconhecimento de padrões implementada foi testada com o mesmo arquivo de sinal. Todas as técnicas apresentaram valores acima de 0,91 para os índices estatísticos de eficiência, especificidade e sensibilidade. Os valores mínimos da sensibilidade e da especificidade foram 0,967005076 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1)  0,915325995 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1), respectivamente. A eficiência apresentou o valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1).
 
 Em relação a utilização da base de dados obtida com extração de características, esperava-se que os testes apresentassem melhores resultados. Todavia, o Mapa de Kohonen mostrou-se extremamente eficiente como sistema classificador.
 
-O desenvolvimento deste trabalho exigiu uma grande quantidade de horas dedicadas tanto ao estudo, da fundamentação teórica, quanto ao desenvolvimento do projeto propriamente dito. O capítulo Gestão do Projeto \ref{sec:Gestao} foi elaborado para abordar a questão do esforço dispendido pelos membros da equipe, e aspectos de gestão do projeto.
+O desenvolvimento deste trabalho exigiu uma grande quantidade de horas dedicadas tanto ao estudo da fundamentação teórica, quanto ao desenvolvimento do projeto propriamente dito. O capítulo Gestão do Projeto \ref{sec:Gestao} foi elaborado para abordar a questão do esforço dispendido pelos membros da equipe, e aspectos de gestão do projeto.
 
 Como trabalhos futuros, propõe-se o uso de outros bases de dados contendo outros tipos de sinal, como sinais de Eletroencefalografia (EEG), por exemplo. Seria interessante observar o comportamento dos métodos de reconhecimento implementados atuando sobre outros tipos de dados, com formas de onda menos definidas. 
 
