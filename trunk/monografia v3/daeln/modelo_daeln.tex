@@ -505,12 +505,13 @@ O próximo capítulo, Resultados Obtidos \ref{sec:Resultados}, pretende explorar a
 \chapter{Resultados Obtidos} % 3 a 4 páginas
 \label{sec:Resultados}
 
-Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, a rede neural artificial pode ser treinada com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características (detalhado na seção ). OS resultados obtidos utilizando cada uma destas bases de marcações são descritos nas seções Testes com Sinal de ECG \ref{sec:Testes1} e Testes com ECG com correlação \ref{sec:Testes2}, respectivamente. Este capítulo termina com a seção de Comparativo dos Resultados \ref{sec:Comparativo} e a seção de Considerações \ref{sec:TestesConsider}.
+Conforme foi explicado na subseção Visão Geral \ref{Vgeral} da seção Sistema \ref{sec:MOD}, o reconhecimento de padrões pode ser realizado de três maneiras distintas. A primeira delas utiliza Mapa de Kohonen, as outras duas utilizam redes neuras artificiais multicamadas. As redes multicamadas são treinadas com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características. Os resultados obtidos com cada tipo de reconhecimento são descritos nas seções Testes com Mapa de Kohonen \ref{sec:Testes0} e Testes com Rede Multicamadas \ref{sec:Testes1}, respectivamente. Este capítulo termina com a seção de Considerações \ref{sec:TestesConsider}.
 
 \section{Testes com Mapa de Kohonen}
+\label{sec:Testes0}
 
-Oos testes realizados utilizando Mapa de Kohonen para reconhecimento de padrões obtiveram os resultados apresentados na tabela \ref{tab:kohonen}. De acordo com as marcações provenientes da base de dados, há 1182 ocorrências do complexo QRS 
-no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo complexo QRS concentraram-se nas regiões do mapa em que a coordenada \textit{x} tem o valor 0 e a coordenada \textit{y} varia de 0 a 2. O coeficiente de aprendizado foi configurado com o valor 0.0001.
+Os testes realizados utilizando Mapa de Kohonen para reconhecimento de padrões obtiveram os resultados apresentados na tabela \ref{tab:kohonen}. De acordo com as marcações provenientes da base de dados, há 1182 ocorrências do complexo QRS 
+no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo complexo QRS se concentraram nas regiões do mapa em que a coordenada \textit{x} tem o valor 0 e a coordenada \textit{y} varia de 0 a 2. O coeficiente de aprendizado foi configurado com o valor 0.0001.
 
 \begin{table}[!htb]
 	\centering
@@ -528,7 +529,7 @@ no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo compl
 \section{Testes com Rede Multicamadas}
 \label{sec:Testes1}
 
-A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada com eventos marcados diretamente no sinal de ECG. Os dados analisados correspondem aos 14 primeiros minutos do sinal do arquivo 105. Nele estão contidas 1182 ocorrências do complexo QRS. Na tabela são apresentados os totais de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
+A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada com eventos marcados diretamente no sinal de ECG. Os dados analisados correspondem aos 14 primeiros minutos do sinal do arquivo 105, o que equivale a 1182 ocorrências do complexo QRS. Na tabela são apresentados os totais de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
@@ -547,13 +548,12 @@ A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada
 		    0,4   & 1176  & 1180 & 1  	& 6  	& 0,994923858	& 0,99915326   & 0,9970	& 0,0027  \\
 		    0,3   & 1177  & 1179 & 2  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
 		    0,2   & 1177  & 1179 & 3  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
-		    0,1   & 1177  & 1179 & 3  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
-		    0     & 1182  & 0  	 & 305720  & 5  	& 0,9957877	& 0            & 0,0038	& 118,86  \\ \hline
+		    0,1   & 1177  & 1179 & 3  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\ \hline
 		    \end{tabular}
 		    \fonte{Autoria Própria}
 \end{table}
 
-A curva ROC do processo utilizando marcações no sinal de ECG é mostrada na figura ~\ref{ROC1}.
+A curva ROC do processo utilizando eventos marcados diretamente no sinal de ECG é mostrada na figura ~\ref{ROC1}.
 
 \begin{figure}[!htb]
 	\centering
@@ -563,10 +563,7 @@ A curva ROC do processo utilizando marcações no sinal de ECG é mostrada na figur
 	\label{ROC1}
 \end{figure}
 
-
-Esta seção apresenta os resultados obtidos com a utilização da base gerada após o processo de extração de características. Do mesmo modo que a seção anterior, o conjunto de testes considera os últimos 10 minutos do sinal de ECG do arquivo 105, correspondendo a XXX ocorrências do complexo QRS. 
-
-A tabela \ref{tab:rawECG} apresenta a quantidade de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
+A tabela \ref{tab:rawECG} mostra os resultados atingidos com a base de eventos gerada após o processo de extração de características. Do mesmo modo que a seção anterior, o conjunto de testes considera os primeiros 14 minutos do sinal de ECG do arquivo 105, correspondendo a 1182 ocorrências do complexo QRS. São apresentadas as quantidades de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
@@ -603,8 +600,13 @@ A curva ROC do processo utilizando a base gerada após a extração de característi
 \section{Considerações}
 \label{sec:TestesConsider}
 
-Então.. o sistema é classificador ou não? (De acordo com a curva ROC)
-Compara a outros trabalhos
+Com base nós testes realizados, os três métodos de reconhecimento de padrões implementados podem ser considerados sistemas classificadores. A forma do gráfico da curva ROC da rede multicamadas, com ambas as bases de eventos, caracteriza o sistema como classificador, como foi explicado na subseção \ref{subsec:ROCCurva}. 
+
+O mesmo pode se afirmar por meio da observação dos dados estatísticos. Os valores da sensibilidade variaram entre 0,967005076 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1) e 0,995769882 (Mapa de Kohonen). Já os valores mínimo e máximo da especificidade variaram entre 0,915325995 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1) e 1 (rede multicamadas treinada com eventos marcados diretamente no sinal). E a eficiência apresentou como valor máximo 0,997460855 (Mapa de Kohonen) e valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1).
+
+Os resultados obtidos com a utilização do Mapa de Kohonen superaram em muito qualquer expectativa, dado a facilidade de sua implemntação e o fato de realizar aprendizado não supervisionado. O Mapa de Kohonen mostrou melhor desempenho, ao menos para o fragmento do sinal testado. Nas poucas partes em que o sinal apresentou muito ruído, a rede multicamadas foi mais eficiente.
+
+Na tabela \ref{tab:correlacao}, podem ser observados resultados obtidos a partir da aplicação de diferentes métodos na mesma base de dados utilizada neste trabalho. E possibilita a comparação dos valores observados do índice \sigla{DER}{\textit{Detection Error Rate}} \textit{(Detection Error Rate)} entre eles.
 
 \begin{table}[!htb]
 	\centering
@@ -637,17 +639,24 @@ Compara a outros trabalhos
 	\fonte{Modificada de \cite{SARAIVA2012}}
 \end{table}
 
+Cabe destacar, no entanto, que os resultados apresentados na tabela \ref{tab:correlacao} são relativos ao uso do sinal inteiro, em que as marcações da base de dados acusam entre 2572 e 2690 de ocorrências do complexo QRS. Enquanto que este projeto realizou testes com metade do mesmo sinal, apresentando 1182 ocorrências do complexo QRS.
+
+No entanto, o menor valor do índice \sigla{DER}{\textit{Detection Error Rate}} \textit{(Detection Error Rate)} obtido pelos outros trabalhos foi 0,5 (Filtro adaptativo e rede neural). E o presente trabalho teve como valor mínimo do índice DER 0,002332815 (aplicação do Mapa de Kohonen), valor inferior a qualquer dos outros métodos. O valor máximo do índice DER observado nos testes deste projeto foi 0,053265941 (rede multicamadas com extração de características e \textit{threshold} 0,1).
+
 %----------------------------------------
 \chapter{Considerações Finais} % 1 página
 \label{sec:CFinais}
 
-Alcançou os objetivos?? Quanto conseguiu atingir? A metodologia foi boa ou ruim? 
+Os objetivos inicialmente definidos foram alcançados plenamente. O projeto concluiu o desenvolvimento de um sistema computacional, capaz visualizar sinais de ECG armazenados em arquivos digitais, apresentando ainda as funcionalidade de marcar e salvar eventos do sinal, e reconhecer padrões. Além disso, foi implemtada uma técnica a mais do que inicialmente planejado. Ao todo, o sistema apresenta três técnicas diferentes para o reconhecimento de padrões: Mapa de Kohonen, rede multicamadas treinada  eventos marcados diretamente no sinal e rede multicamadas treinada com eventos obtidos após a extração de características.
 
-Cada seção teve a sua conclusão, então completa a discussão. Elementos resultantes do processo de união. Não apresentar nenhum dado novo! 1 folha e meia no máximo. 
+Cada uma das técnicas de reconhecimento de padrões implementada foi testada com o mesmo arquivo de sinal. Todas as técnicas apresentaram valores acima de 0,91 para os índices estatísticos de eficiência, especificidade e sensibilidade. Os valores mínimos da sensibilidade e da especificidade foram 0,967005076 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1)  0,915325995 (rede multicamadas treinada com extração de características e\textit{threshold} 0,1), respectivamente. A eficiência apresentou o valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1).
 
-Propostas futuras? Resultados futuros.
+Em relação a utilização da base de dados obtida com extração de características, esperava-se que os testes apresentassem melhores resultados. Todavia, o Mapa de Kohonen mostrou-se extremamente eficiente como sistema classificador.
 
-Com redes SOM, ou com outras bases de dados.
+O desenvolvimento deste trabalho exigiu uma grande quantidade de horas dedicadas tanto ao estudo, da fundamentação teórica, quanto ao desenvolvimento do projeto propriamente dito. O capítulo Gestão do Projeto \ref{sec:Gestao} foi elaborado para abordar a questão do esforço dispendido pelos membros da equipe, e aspectos de gestão do projeto.
+
+Como trabalhos futuros, propõe-se o uso de outros bases de dados contendo outros tipos de sinal, como sinais de Eletroencefalografia (EEG), por exemplo. Seria interessante observar o comportamento dos métodos de reconhecimento implementados atuando sobre outros tipos de dados, com formas de onda menos definidas. 
+
 
 \chapter{Gestão do Projeto} % 1 página
 \label{sec:Gestao}
