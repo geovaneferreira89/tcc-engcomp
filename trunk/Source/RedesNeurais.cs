@@ -201,6 +201,7 @@ namespace AmbienteRPB
                             float fim = DateTime.Now.Minute;
                             send_SmS(1, "Terminado: " + string.Format("{0:HH:mm:ss tt}", DateTime.Now), false);
                             send_SmS(1, "Duração: " + Convert.ToString(fim - inicio) + " min.", true);
+                            Plotar("CLEAR", null, 1, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                             Plotar("BKP", null, 0, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                         }
                         else
@@ -433,25 +434,32 @@ namespace AmbienteRPB
         {
             load_progress_bar(0, 4);
             load_progress_bar(VetTreinamento - MenorTamanho, 2);
-            //int [] saidaInt = new int[1];
             double threshold = 0.1;
-            double media = 0;
-            
-            double maximo = 0;
             char character;
             bool chave = true;
-            double[] dados = new double[2];
-            //Corrige o problema de deslocamento do sinal para esquerda... 
-            dados[1] = 0;
+            double[] dados = new double[3];
             dados[0] = 0;
-            for (int i = 0; i < VetTreinamento - MenorTamanho; i++)
+            dados[1] = 0;
+            dados[2] = 0;
+            int offset = (MenorTamanho / 4);
+            //Corrige o problema de deslocamento do sinal para esquerda... 
+            for (int i = 0; i < offset; i++)
+            {
+                vetorDeResultados[i] = 0;
+                if (it_is_debug)
+                    Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
+            }
+
+            for (int i = 0; i < VetTreinamento - offset; i++)
             {
                 MLP_output = new ArrayList();                
-                inputs = new ArrayList();
+                inputs     = new ArrayList();
                 MLP_output.Add(0.0);
                 for (int cont = 0; cont < MenorTamanho; cont++){
                     if ((cont + i) < Sinal.Count())
                         inputs.Add(Sinal[cont + i]);
+                    else
+                        inputs.Add(0);
                 }
                 dados[0] = i;
                 dados[1] = MenorTamanho + i;
@@ -461,47 +469,34 @@ namespace AmbienteRPB
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
                         threshold = Convert.ToDouble(MLP_output[0]);
-                    if( maximo < Convert.ToDouble(MLP_output[0])){
-                         maximo = Convert.ToDouble(MLP_output[0]);
-                    }
-                    vetorDeResultados[i + (MenorTamanho / 2)] = 0;
+                    vetorDeResultados[i + offset] = 0;
                 }
                 else
                 {
                     if (threshold < Convert.ToDouble(MLP_output[0]))
                     {
-                        vetorDeResultados[i + (MenorTamanho / 2)] = 10;
+                        vetorDeResultados[i + offset] = 1;
                         treinarnova = false;
                     }
                     else if (threshold > Convert.ToDouble(MLP_output[0])){
-                        vetorDeResultados[i + (MenorTamanho / 2)] = 1;
+                        vetorDeResultados[i + offset] = 5;
                         treinarnova = false;
                     }
                     else
-                        vetorDeResultados[i + (MenorTamanho / 2)] = 0;
+                        vetorDeResultados[i + offset] = 0;
                 }
-               // vetorDeResultados[i + (MenorTamanho / 2)] = Convert.ToDouble(MLP_output[0]);
-               // media = media + Convert.ToDouble(MLP_output[0]);
-                //treinarnova = false;
-
-                //Saida de resultados impressos em numeros até 5 mil amostras
-                //if(i < 5000)
-                //    ReltsGerados += Convert.ToString(MLP_output[0]) + "\t";
                 //-------------------------------------------------------
                 if (it_is_debug)
                 {
-                    if (vetorDeResultados[i + (MenorTamanho / 2)] == 1)
+                    if (vetorDeResultados[i + offset] == 1)
                         character = '~';
                     else
                         character = ' ';
-                   //string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
-                   // string saida2 = Convert.ToString(saidaInt[0]) + "\t" + character;
-                   // if (!chave)
-                   //    send_SmS(1, saida2, false);
                     if (chave)
                     {
+                        dados[2] = vetorDeResultados[i + offset];
                         string saida = i + "\n\n" + Convert.ToString(MLP_output[0]);
-                        string saida2 = Convert.ToString(vetorDeResultados[i + (MenorTamanho / 2)]) + "\t" + character;
+                        string saida2 = Convert.ToString(vetorDeResultados[i + offset]) + "\t" + character;
                         Plotar("VectorAtual", dados, CanalAtual, CanalParaPlotar, selecaoAtual, vetorDeResultados, null, null);
                         send_SmS(1, saida2, true);
                         Thread.Sleep(12);
@@ -670,6 +665,7 @@ namespace AmbienteRPB
                      }
                     case ("VectorAtual"):
                     {
+                            
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                             PointF zero = new PointF(0, 0);
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
@@ -680,6 +676,8 @@ namespace AmbienteRPB
                             PointF Padrao_Fim    = new PointF((float)prb.ChartAreas["canal" + canal].AxisX.ValueToPixelPosition(dados[1]), (float)prb.ChartAreas["canal" + canal].AxisY.ValueToPixelPosition(dados[1]));
                             //Colore a região do evento
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+
+                            prb.Series["canal" + (CanalParaPlotar)].Points.AddY(dados[2]);
                             break;
                     }
                     case ("MapaKohonen"):
