@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  26 SEP 2013 22:44
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  26 SEP 2013 22:48
 entering extended mode
 **modelo_daeln.tex
 ("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.tex"
@@ -783,21 +783,21 @@ File: ./figs/classi1b.png Graphic file (type png)
 Package pdftex.def Info: ./figs/classi1b.png used on input line 393.
 (pdftex.def)             Requested size: 227.62206pt x 139.16069pt.
  [46 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/classi0.png>] <./fig
-s/rec0b.png, id=199, 2522.42375pt x 1375.1375pt>
-File: ./figs/rec0b.png Graphic file (type png)
+s/rec0.png, id=199, 231.11343pt x 130.23656pt>
+File: ./figs/rec0.png Graphic file (type png)
 
-<use ./figs/rec0b.png>
-Package pdftex.def Info: ./figs/rec0b.png used on input line 407.
-(pdftex.def)             Requested size: 227.62206pt x 124.07178pt.
+<use ./figs/rec0.png>
+Package pdftex.def Info: ./figs/rec0.png used on input line 407.
+(pdftex.def)             Requested size: 227.62206pt x 128.27084pt.
  [47 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/classi1b.png> <C:/Us
-ers/Ge/Desktop/tcc2013/monografia v3/daeln/figs/rec0b.png>] <./figs/rec2.png, i
-d=205, 1028.34187pt x 549.55313pt>
-File: ./figs/rec2.png Graphic file (type png)
- <use ./figs/rec2.png>
-Package pdftex.def Info: ./figs/rec2.png used on input line 418.
-(pdftex.def)             Requested size: 455.24411pt x 243.28836pt.
+ers/Ge/Desktop/tcc2013/monografia v3/daeln/figs/rec0.png>] <./figs/rec0b.png, i
+d=205, 2522.42375pt x 1375.1375pt>
+File: ./figs/rec0b.png Graphic file (type png)
+ <use ./figs/rec0b.png>
+Package pdftex.def Info: ./figs/rec0b.png used on input line 418.
+(pdftex.def)             Requested size: 455.24411pt x 248.16454pt.
 
-[48 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/rec2.png>]
+[48 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/rec0b.png>]
 <./figs/3.png, id=209, 1028.34187pt x 548.0475pt>
 File: ./figs/3.png Graphic file (type png)
  <use ./figs/3.png>
@@ -957,10 +957,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4303 strings out of 493921
- 61224 string characters out of 3144885
+ 4302 strings out of 493921
+ 61208 string characters out of 3144885
  125647 words of memory out of 3000000
- 7377 multiletter control sequences out of 15000+200000
+ 7376 multiletter control sequences out of 15000+200000
  41651 words of font info for 96 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,11n,43p,1901b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -973,7 +973,7 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on modelo_daeln.pdf (68 pages, 2307566 bytes).
+Output written on modelo_daeln.pdf (68 pages, 2258447 bytes).
 PDF statistics:
  303 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
