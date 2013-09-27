@@ -729,9 +729,9 @@ namespace AmbienteRPB
                             annotationRectangle.AxisX = prb.ChartAreas["canal" + (CanalParaPlotar + 1)].AxisX;
                             annotationRectangle.AxisY = prb.ChartAreas["canal" + (CanalParaPlotar + 1)].AxisY;
                             annotationRectangle.AnchorX = dados[0];
-                            annotationRectangle.Y = dados[1] + 0.05;
+                            annotationRectangle.Y = dados[1] + 0.5;
                             annotationRectangle.Height = 2;
-                            annotationRectangle.Width = 2; 
+                            annotationRectangle.Width = 1; 
                             annotationRectangle.LineColor = Color.Blue;
                             annotationRectangle.Font = new Font("Arial", 10, FontStyle.Bold);
                             annotationRectangle.AllowMoving = false;
@@ -749,26 +749,13 @@ namespace AmbienteRPB
                                 prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                            for (int i = 0;  i < X_.Count; i++)
                             {
-                               // for (int k = 0; k < 5; k++)
-                               // {
                                 prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                                 if (X_[i] == 0 && Y_[i] == 0)
-                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(10);
-                                  //  prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 10);
-                                }
                                 else if (X_[i] == 0 && Y_[i] == 1)
-                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
-                                    ///prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 8);
-
-                                }
                                 else if (X_[i] == 0 && Y_[i] == 2)
-                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
-                                    //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 7);
-
-                                }
                                 /*else if (X_[i] == 0 && Y_[i] == 3)
                                 {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
@@ -777,12 +764,7 @@ namespace AmbienteRPB
                                //  else if (X_[i] == 0 && Y_[i] == 4)
                                //      prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
                                 else
-                                {
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
-                                   // prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 2);
-                                }
-                                //}
-                                //Mapa
                             }
                         break;
                      }
@@ -825,8 +807,16 @@ namespace AmbienteRPB
                             prb.ChartAreas["canal" + (canal + 3)].Axes[1].MajorGrid.LineColor = Color.Gainsboro;
                             prb.ChartAreas["canal" + (canal + 3)].Axes[0].MajorGrid.LineColor = Color.Gainsboro;
                             prb.ChartAreas["canal" + (canal + 3)].AxisX.ScaleView.Size = length;
-                            prb.ChartAreas["canal" + (canal + 3)].AxisX.ScaleView.SizeType = DateTimeIntervalType.Auto;
-                            prb.ChartAreas["canal" + (canal + 3)].AxisX.ScrollBar.Enabled = true;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisY.ScaleView.Size = length;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisY.Maximum = length + 1;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisX.Maximum = length + 1;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisY.Minimum = -1;
+                            prb.ChartAreas["canal" + (canal + 3)].AxisX.Minimum = -1;
+
+                            //prb.ChartAreas["canal" + (canal + 3)].AxisX.ScaleView.SizeType = DateTimeIntervalType.Auto;
+                           // prb.ChartAreas["canal" + (canal + 3)].AxisX.ScrollBar.Enabled = true;
+                           // prb.ChartAreas["canal" + (canal + 3)].AxisY.ScrollBar.Enabled = true;
+
                             break;
                         }
                 }
