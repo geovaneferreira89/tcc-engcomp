@@ -43,6 +43,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_SinalProximo = new System.Windows.Forms.ToolStripButton();
             this.btn_SinalAnterior = new System.Windows.Forms.ToolStripButton();
+            this.btnSalve = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -210,6 +211,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_SinalProximo,
             this.btn_SinalAnterior,
+            this.btnSalve,
             this.toolStripSeparator9,
             this.toolStripSeparator1,
             this.toolStripDropDownButton1,
@@ -259,6 +261,16 @@
             this.btn_SinalAnterior.Size = new System.Drawing.Size(23, 22);
             this.btn_SinalAnterior.Text = "^";
             this.btn_SinalAnterior.Click += new System.EventHandler(this.btn_SinalAnterior_Click);
+            // 
+            // btnSalve
+            // 
+            this.btnSalve.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSalve.Image = ((System.Drawing.Image)(resources.GetObject("btnSalve.Image")));
+            this.btnSalve.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalve.Name = "btnSalve";
+            this.btnSalve.Size = new System.Drawing.Size(23, 22);
+            this.btnSalve.Text = "toolStripButton1";
+            this.btnSalve.Click += new System.EventHandler(this.btnSalve_Click);
             // 
             // toolStripSeparator9
             // 
@@ -593,7 +605,6 @@
             this.Text = "Técnicas de Reconhecimento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormResultados_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormResultados_FormClosed);
             this.Shown += new System.EventHandler(this.FormResultados_Shown);
             this.Box_Status.ResumeLayout(false);
             this.Box_Status.PerformLayout();
@@ -665,5 +676,6 @@
         private System.Windows.Forms.ToolStripMenuItem treinar100VezesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redeMLP2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem avaliadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnSalve;
     }
 }

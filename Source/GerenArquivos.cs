@@ -126,7 +126,7 @@ namespace AmbienteRPB
             return edfFileOutput;
         }
         //Exportar Saida Da Rede Neural------------------------------------------------------
-        public void Exportar_RN(string NomeArquivo, string[] eventos, int [] CountMarcacoes_Por_Evento, double [] Marcacoes, int TotalDeMarcacoes)
+        public void Exportar_RN(string NomeArquivo, string[] eventos, List<int> CountMarcacoes_Por_Evento, List <double> Marcacoes, int TotalDeMarcacoes)
         {
             string Dados_Saida;//hours
             Dados_Saida = "[TamList= " + eventos.Count() + "]";
