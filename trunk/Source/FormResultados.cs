@@ -57,8 +57,8 @@ namespace AmbienteRPB
         private Color CorDaSerie;
         private bool RN_Rodou;
         private string[] eventos;
-        private int[] CountMarcacoes_Por_Evento;
-        private double[] Marcacoes;
+        private List<int> CountMarcacoes_Por_Evento;
+        private List<double> Marcacoes;
         private bool SetMax = true;
         private float[] ValsMAX_MIN;
         //Rede Neural
@@ -1122,7 +1122,14 @@ namespace AmbienteRPB
         //================================================================================================
         //                      Fechar o Form E Salvamento de Resultados  Dados Da RN
         //================================================================================================
-        //------------------------------------------------------------------------------------------
+        private void btnSalve_Click(object sender, EventArgs e)
+        {
+            if (RN_Rodou)
+            {
+                SalvarResultados();
+            }
+        }
+        //----------------------------------------------------------------------------
         private void FormResultados_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (RN_Rodou)
@@ -1130,12 +1137,7 @@ namespace AmbienteRPB
                 DialogResult resposta = MessageBox.Show("Deseja salvar os resultados?", "Reconhecimento Automatizado de Padrões em EEG", MessageBoxButtons.YesNoCancel);
                 if (resposta == DialogResult.Yes)
                 {
-                    OP_Salvar = true;
-                    ArquivoDeSaida = edfFileOutput.FileName;
-                    int count = SalvarResultados();
-                    Arquivos = new GerenArquivos();
-                    Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
-                    RN_Rodou = false;
+                    SalvarResultados();
                 }
                 if (resposta == DialogResult.Cancel)
                 {
@@ -1145,18 +1147,17 @@ namespace AmbienteRPB
         }
         //----------------------------------------------------------------------------------------
         //Função responsavel por analisar os resultados obtidos da RN
-        private int SalvarResultados()
+        private void SalvarResultados()
         {
             bool iniciou = false;
             int inicio = 0;
             int Fim;
             int count = 0;
-            int valMax = 0;
-            int valMin = 0;
             int val = 0;
-            CountMarcacoes_Por_Evento = new int[eventos.Count()];
-            Marcacoes = new double[chart1.Series[2].Points.Count()];
+            CountMarcacoes_Por_Evento = new List<int>();
+            Marcacoes = new List<double>();
             //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
+            CountMarcacoes_Por_Evento.Add(0);
             for (int CanalX = 0; CanalX < CanaisCriados; CanalX++)
             {
                 for (int i = 0; i < chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count(); i++)
@@ -1166,43 +1167,28 @@ namespace AmbienteRPB
                     {
                         if (iniciou == false)
                         {
-                            valMax = val;
-                            valMin = val;
                             inicio = i;
                             iniciou = true;
-                        }
-                        else if (valMin >= val && iniciou == true)
-                        {
-                            valMin = val;
-                        }
-                        else if (valMax <= val && iniciou == true)
-                        {
-                            valMax = val;
                         }
                     }
                     else if (iniciou == true)
                     {
                         Fim = i;
-                        CountMarcacoes_Por_Evento[valMin - 1] = CountMarcacoes_Por_Evento[valMin - 1] + 1;
+                        CountMarcacoes_Por_Evento[0] = CountMarcacoes_Por_Evento[0] + 1;
                         //Salva os dados nos vetores
-                        Marcacoes[count] = CanalX;
-                        count++;
-                        Marcacoes[count] = inicio;
-                        count++;
-                        Marcacoes[count] = Fim;
-                        count++;
+                        Marcacoes.Add(CanalX);
+                        Marcacoes.Add(inicio);
+                        Marcacoes.Add(Fim);
                         iniciou = false;
                     }
                 }
             }
-            return count;
+            count = Marcacoes.Count;
+            ArquivoDeSaida = edfFileOutput.FileName;
+            Arquivos = new GerenArquivos();
+            Arquivos.Exportar_RN(ArquivoDeSaida, eventos, CountMarcacoes_Por_Evento, Marcacoes, count);
+            RN_Rodou = false;
         }
-        //----------------------------------------------------------------------------
-        private void FormResultados_FormClosed(object sender, FormClosedEventArgs e)
-        {
-       
-        }
-        //----------------------------------------------------------------------------
         //Carrega o arquivo de marcacoes existente, arquivo este gerado pelo MIT e editado por nós... 
         private void btnMarcacoes_Click(object sender, EventArgs e)
         {
@@ -1307,11 +1293,11 @@ namespace AmbienteRPB
             int count = 0;
             int val = 0;
             int numMAX = 0;
-            CountMarcacoes_Por_Evento = new int[eventos.Count()];
+            double [] Marcacoes2 = null;
             //Pegar sempre o menor maybe, o menor é o primeiro evento que vc marcou.... 
             for (int CanalX = 0; CanalX < CanaisCriados; CanalX++)
             {
-                Marcacoes = new double[chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count()];
+                Marcacoes2 = new double[chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count()];
                 for (int i = 0; i < chart1.Series["canal" + ((CanalX * 4) + 2)].Points.Count(); i++)
                 {
                     val = (int)chart1.Series["canal" + ((CanalX * 4) + 2)].Points[i].YValues[0];
@@ -1332,7 +1318,7 @@ namespace AmbienteRPB
                         //Salva os dados nos vetores
                         for (int k = 0; k < numMAX; k++)
                         {
-                            Marcacoes[count] = inicio + k;
+                            Marcacoes2[count] = inicio + k;
                             count++;
                         }
                         numMAX = 0;
@@ -1354,7 +1340,7 @@ namespace AmbienteRPB
                 chart1.Series["canal" + (CanalX + 2)].Color = Color.Blue;
                 for (int i = 0; i < tam; i++)
                 {
-                    if (Marcacoes[ponto] == i)
+                    if (Marcacoes2[ponto] == i)
                     {
                         chart1.Series["canal" + (CanalX + 2)].Points.AddY(1);
                         ponto++;
@@ -1363,7 +1349,7 @@ namespace AmbienteRPB
                         chart1.Series["canal" + (CanalX + 2)].Points.AddY(0);
                 }
             }
-            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanaisCriados, "Resultado", Marcacoes, ValorInicio.X, ValorFim.X, numeroDeCanais, null, null);
+            Correlacao objCliente = new Correlacao(chart1, progressBar, ScrollBar, edfFileOutput, CanaisCriados, "Resultado", Marcacoes2, ValorInicio.X, ValorFim.X, numeroDeCanais, null, null);
             Thread_ = new Thread(new ThreadStart(objCliente.Inicializa));
             Thread_.Start();
             return count;
@@ -1447,5 +1433,9 @@ namespace AmbienteRPB
         {
 
         }
+
+    
+
+    
     }
 }
