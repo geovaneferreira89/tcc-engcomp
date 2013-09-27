@@ -404,7 +404,7 @@ Para acessar a opção de reconhecimento de padrões com mapa de Kohonen, basta sel
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./figs/rec0b.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.5\textwidth]{./figs/rec0.png} % <- formatos PNG, JPG e PDF
 	\caption[Tela de configuração do mapa de Kohonen]{Tela de configuração do mapa de Kohonen}
 	\fonte{Autoria Própria}
 	\label{rec0}
@@ -415,7 +415,7 @@ A figura \ref{105} mostra a tela em que são exibidos os resultados após a execuç
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=1\textwidth]{./figs/rec2.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=1\textwidth]{./figs/rec0b.png} % <- formatos PNG, JPG e PDF
 	\caption[Tela de resultados do mapa de Kohonen]{Tela de resultados do mapa de Kohonen}
 	\fonte{Autoria Própria}
 	\label{rec1}
@@ -424,7 +424,7 @@ A figura \ref{105} mostra a tela em que são exibidos os resultados após a execuç
 \subsubsection{Reconhecimento de Padrões com Rede Multicamadas} 
 \label{RecMLP}
 
-A rede neural artificial foi implementada com 3 camadas. A camada de entrada, uma "escondida" e a camada de saída. Devido ao fato de o sinal apresentar 250 amostras por segundo, e o tamanho médio de um complexo QRS no sinal ser de 50 amostras, na camada de entrada numero de neurônios é 50. No entanto, este valor pode ser aumentado ou reduzido, conforme as necessidades do usuário.
+A rede neural artificial foi implementada com 3 camadas. A camada de entrada, uma camada escondida e a camada de saída. Devido ao fato de o sinal apresentar 250 amostras por segundo, e o tamanho médio de um complexo QRS no sinal ser de 50 amostras, na camada de entrada numero de neurônios é 50. No entanto, este valor pode ser aumentado ou reduzido, conforme as necessidades do usuário.
 
 Também foi utilizado o ajuste de referência do editor de eventos. Para que as janelas de sinal apresentadas corretamente à rede, e não deslocadas, evitando erros no treinamento.
  
