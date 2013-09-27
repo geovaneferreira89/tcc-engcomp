@@ -121,7 +121,7 @@ According to \cite{Zhang2007}, electrocardiographic recordings are considered  t
 \chapter{Materiais e Métodos} %ou Materiais e Métodos 
 \label{sec:Materiais}
 
-Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Biblioteca Utilizada \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologias Detalhadas \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
+Este capítulo aborda os recursos e metodologias utilizadas em todo o desenvolvimento deste trabalho. O capítulo foi dividido em seções: Base de Dados \ref{sec:BD}, \textit{European Data Format} \ref{sec:EDF}, Biblioteca Utilizada \ref{sec:Bib}, Sistema \ref{sec:MOD}, Modelagem \sigla{UML}{\textit{Unified Modeling Language}} \ref{sec:UML}, Metodologia de Testes \ref{sec:Met-Testes} e por fim as Considerações sobre o capítulo \ref{sec:Cons-Des}.
 
 \section{Base de Dados}
 \label{sec:BD}
@@ -241,7 +241,9 @@ Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a par
 \subsection{Visão Geral do Sistema}
 \label{Vgeral} 
 
-O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliza diretamente o sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxogramaRaw} mostra todo este processo.
+O sistema oferece duas técnicas diferentes para o reconhecimento de padrões: utilizando mapa de Kohonen ou utilizando com rede multicamadas. Esta subseção dará uma visão geral sobre o funcionamento delas.
+
+A figura ~\ref{fluxogramaRaw} mostra o processo com a técnica de mapa de Kohonen.
 
 \begin{figure}[!htb]
 	\centering
@@ -251,20 +253,32 @@ O sistema pode operar de duas maneiras. A primeira, e mais simples delas, utiliz
 	\label{fluxogramaRaw}
 \end{figure}
 
-Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, é feito o reconhecimento de padrões (Reconhecimento de Padrões), e os resultados são exibidos na tela . Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
+Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, é feito o reconhecimento de padrões (Reconhecimento de Padrões), e os resultados são exibidos na tela . Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados).
 
-A segunda maneira de funcionamento do sistema é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. A diferença em relação ao método anterior ocorre no processo de geração do conjunto de dados para o reconhecimento de padrões.
-
-Depois que o arquivo com sinal de ECG é carregado e exibido na tela (Visualização do sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo será detalhado nas subseções Módulo de Extração de Características \ref{Mod3} e Metodologia de Extração de Características \ref{subsec:met1}. O sinal resultante (Sinal resultante) passa pelo reconhecimento de padrões (Reconhecimento de Padrões), e exibe na tela onde são detectadas ocorrências do complexo QRS. Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
+Com a utilização da rede multicamadas, o treinamento pode ser realizado de suas maneiras. A primeira, e mais simples delas, utiliza diretamente o sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxogramaRaw} mostra todo este processo.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/FluxoCorrel.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.4\textwidth]{./figs/visaogeral1.png} % <- formatos PNG, JPG e PDF
+	\caption[Fluxograma simples]{Fluxograma simples}
+	\fonte{Autoria própria}
+	\label{fluxogramaRaw}
+\end{figure}
+
+Assim como no mapa de Kohonen, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, são marcados eventos no sinal (Marcação de eventos). Com o conjunto de dados gerada nesta etapa, a rede neural é treinada (Treinamento da rede neural). É então feito o reconhecimento de padrões (Reconhecimento de Padrões) no sinal de ECG original, e os resultados são exibidos na tela. Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados). 
+
+A segunda maneira de treinar a rede neural é mais complexa, e pode ser observada no fluxograma da figura ~\ref{FluxoCorrel}. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{./figs/visaogeral2.png} % <- formatos PNG, JPG e PDF
 	\caption[Fluxograma com extração de características]{Fluxograma com extração de características}
 	\fonte{Autoria própria}
 	\label{FluxoCorrel}
 \end{figure}
  
+
+Depois que o arquivo com sinal de ECG é carregado e exibido na tela (Visualização do sinal), são feitas marcações diretamente no sinal de ECG (Marcar eventos). Estas marcações do complexo QRS (Marcações direto no sinal) passam por um processo (Extração de características) em conjunto com o sinal original (Sinal de ECG). Este processo é detalhado nas subseções Módulo de Extração de Características \ref{Mod3}. São feitas novas marcações (Nova marcação de ventos) gerando um novo conjunto de dados (Maracações após correlação) A rede neural é treinada com estes dados (Treinamento da rede neural artificial). O sinal resultante (Sinal resultante) passa pelo reconhecimento de padrões (Reconhecimento de Padrões), e exibe na tela onde são detectadas ocorrências do complexo QRS. Por fim é realizada a etapa de avaliação (Avaliação dos Resultados), que compara os resultados obtidos com os resultados esperados proveniente das marcações da base de dados original (Marcações da base de dados). 
 
 \subsection{Módulo de Visualização do Sinal}
 \label{Mod1} 
@@ -351,7 +365,7 @@ Como se pode perceber, os picos do sinal resultante correspondem aos instantes e
 \subsection{Módulo de Reconhecimento de padrões}
 \label{Mod4} 
 
-O módulo de reconhecimento de padrões oferece duas técnicas distintas: mapa de Kohonen e rede neural artificial do tipo multicamadas. A rede neural artifical multicamadas pode ser treinada com dois tipos de dados diferentes: eventos marcados diretamente no sinal de Eletrocardiografia (ECG), ou eventos marcados no sinal resultante da extração de características (aplicação da correlação). A próxima subsubseção, \ref{RecKHN}, descreve o processo com a utilização do mapa de Kohonen. A subsubseção seguinte, \ref{RecMLP}, descreve o reconhecimento de padrões utilizando a rede multicamadas.
+O módulo de reconhecimento de padrões oferece duas técnicas distintas: mapa de Kohonen e rede neural artificial do tipo multicamadas. A rede neural artifical multicamadas pode ser treinada com dois tipos de dados diferentes: eventos marcados diretamente no sinal de Eletrocardiografia (ECG), ou eventos marcados no sinal resultante da extração de características (aplicação da correlação). A próxima subsubseção descreve o processo com a utilização do mapa de Kohonen. A subsubseção seguinte descreve o reconhecimento de padrões utilizando a rede multicamadas.
 
 \subsubsection{Reconhecimento de Padrões com Mapa de Kohonen}
 \label{RecKHN}
@@ -382,11 +396,11 @@ Após a aplicação do algoritmo, o mapa deverá se assemelhar ao mapa da figura \re
 	\label{classi2}
 \end{figure}
 
-O tamanho do Mapa é variável, contudo, manteve-se um tamanho padrão de 10 por 10 nós para os testes. Nós contendo fragmentos do sinal com características do complexo QRS tenderam a se localizar nas regiões em que as coordenadas \textit{x} e \textit{y} se aproximam de 0. Para separar a região onde se concentra o complexo QRS do restante do mapa, determinam-se valores de corte do \textit{x} e \textit{y}. Por exemplo, os nós com os valores de \textit{x} e \textit{y} entre 0 e 2 representam o grupo de padrões que se deseja buscar. No Capítulo de Resultados Obtidos \ref{sec:Resultados} são apresentados resultados para diferentes valores de corte de \textit{x} e \textit{y}.
+O tamanho do Mapa é variável, contudo, manteve-se um tamanho padrão de 10 por 10 nós para os testes. Nós contendo fragmentos do sinal com características do complexo QRS tenderam a se localizar nas regiões em que as coordenadas \textit{x} e \textit{y} se aproximam de 0. Para separar a região onde se concentra o complexo QRS do restante do mapa, determinam-se valores de corte do \textit{x} e \textit{y}. Por exemplo, os nós com os valores de \textit{x} e \textit{y} entre 0 e 2 representam o grupo de padrões que se deseja buscar.
 
 O algoritmo do Mapa de Kohonen segue a lógica detalhada no artigo de \cite{Guthi}.
 
-Para acessar a opção de reconhecimento de padrões com mapa de Kohonen, basta selecionar na tela de Técnicas de Reconhecimento a opção Técnicas e em seguida Kohonen. Será exibida uma tela da figura \ref{105}, que permite configurar o mapa, tais como tamanho, uso da correlação (extração de características) e tamanho das amostras (explicado em detalhes em \ref{subsec:met2}).
+Para acessar a opção de reconhecimento de padrões com mapa de Kohonen, basta selecionar na tela de Técnicas de Reconhecimento a opção Técnicas e em seguida Kohonen. Será exibida uma tela da figura \ref{105}, que permite configurar o mapa, tais como tamanho, uso da correlação (extração de características) e tamanho das amostras, por padrão definido como 50.
 
 \begin{figure}[!htb]
 	\centering
@@ -409,6 +423,38 @@ A figura \ref{105} mostra a tela em que são exibidos os resultados após a execuç
 
 \subsubsection{Reconhecimento de Padrões com Rede Multicamadas} 
 \label{RecMLP}
+
+A rede neural artificial foi implementada com 3 camadas. A camada de entrada, uma "escondida" e a camada de saída. Devido ao fato de o sinal apresentar 250 amostras por segundo, e o tamanho médio de um complexo QRS no sinal ser de 50 amostras, na camada de entrada numero de neurônios é 50. No entanto, este valor pode ser aumentado ou reduzido, conforme as necessidades do usuário.
+
+Também foi utilizado o ajuste de referência do editor de eventos. Para que as janelas de sinal apresentadas corretamente à rede, e não deslocadas, evitando erros no treinamento.
+ 
+Na segunda camada da rede, foi utilizada a raiz do número de neurônios da camada de entrada. Ou seja, raiz de 50. Este valor é alterado conforme se altera o tamanho da camada de entrada.
+
+Finalmente, a última camada têm somente uma saída, que varia de 0 a 1. A equação  ~(\ref{eq:sigmo}) define função de \textit{threshold} utilizada.
+
+\begin{equation}
+\varphi (z) = \frac{1}{ 1 + e^{-z\alpha }}
+\label{eq:sigmo}
+\end{equation}
+
+Outro fator que influenciou a análise, foram os pesos randômicos iniciais, que variam entre -0.2 e +0.2. Estas são portanto, as configurações da rede neural multicamadas deste projeto.
+
+A mesma rede multicamadas foi treinada com dois conjuntos de dados distintos. O primeiro formado por eventos marcados diretamente no sinal. Os testes para a rede treinada com este conjunto de dados são feitos com sinal de ECG original.
+
+O segundo utiliza eventos marcados no sinal resultante da extração de características. Obviamente, a rede treinada com este conjunto de dados, também realiza o reconhecimento de padrões no sinal resultante da extração de características.
+Mais informações sobre estes conjuntos de dados se encontram na subseção Geração de Dados de Treinamento \ref{geradados}.
+
+Na figura \ref{redemlpresulta} pode ser visualizada a tela de resultados após a conclusão do treinamento da rede e do processo de reconhecimento de padrões.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1\textwidth]{./figs/3.png} % <- formatos PNG, JPG e PDF
+	\caption[Tela de resultados da rede multicamadas]{Tela de resultados da rede multicamadas}
+	\fonte{Autoria Própria}
+	\label{redemlpresulta}
+\end{figure}
+
+Na tela de resultados das técnicas de reconhecimento, após a utilização da rede multicamadas ou mapa de Kohonen, caso o usuário feche a tela, o software pergunta se deseja salvar os resultados. Em caso afirmativo, estes dados são salvos em um arquivo no mesmo diretório e com mesmo nome do arquivo do sinal (.edf), porém com uma extensão, e ficam disponíveis para uso futuro. Caso o usuário deseje visualizar os dados salvos na tela principal é necessário em Ferramentas e Resultados e automaticamente os resultados são carregados. Da mesma forma quando o arquivo do sinal é aberto o software verifica se já existe algum arquivo com resultados já salvo, e verifica se o usuário deseja carregá-los na tela.
 
 \subsection{Módulo de Avaliação de Resultados}
 \label{Mod5} 
@@ -479,7 +525,7 @@ A finalidade da existência de cada classe do sistema está resumida na tabela \re
 	\fonte{Autoria Própria}
 \end{table}
 
-\section{Metodologias Detalhadas}
+\section{Metodologia de Testes}
 \label{sec:Met-Testes}
 Esta seção visa explicar a metodologia utilizada na etapa de testes. É composta por apenas uma seção: Geração dos Dados de Treinamento \ref{subsec:geradados}.
 
@@ -492,13 +538,13 @@ Logo, o sinal inteiro apresenta 2572 ocorrências do complexo QRS. No entanto, ap
 
 Para o treinamento da rede multicamadas, como também já foi explicado anteriormente, podem ser usados dois conjuntos de dados. O primeiro deles é constituído de eventos marcados diretamente no sinal de ECG. Para gerar este conjunto de dados, foram marcados os complexos QRS dos dois terços iniciais do sinal, que apresentam cerca de 200 mil amostras. Foi gerado então um conjunto de dados formado por 700 marcações do complexo QRS salva em arquivo texto. Em seguida, foram devidamente ajustados os pontos de referência (no pico) para cada marcação.
 
-O segundo conjunto de dados, foi obtido após aplicação da função correlação de um complexo QRS com o sinal inteiro (original) de ECG. Também foram utilizadas as primeiras 200 mil amostras do sinal (dois terços), gerando 700 marcações. Obviamente, a rede neural multicamadas treinada com este conjunto de dados, também realiza o reconhecimento de padrões no sinal resultante da extração de características.
+O segundo conjunto de dados, foi obtido após aplicação da função correlação de um complexo QRS com o sinal inteiro (original) de ECG. Também foram utilizadas as primeiras 200 mil amostras do sinal (dois terços), gerando 700 marcações. 
 
 A figura \ref{geradados} mostra os dois tipos de eventos marcados que podem ser utilizados para treinar a rede.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./figs/geradados.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.5\textwidth]{./figs/geradados.png} % <- formatos PNG, JPG e PDF
 	\caption[Dois tipos de eventos marcados]{Dois tipos de eventos marcados}
 	\fonte{Autoria Própria}
 	\label{geradados}
@@ -545,7 +591,7 @@ A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela de Resultados com marcações diretamente no ECG]{Tabela de Resultados com marcações diretamente no ECG}
+	\caption[Tabela de Resultados com marcações no ECG]{Tabela de Resultados com marcações no ECG}
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
@@ -575,11 +621,11 @@ A curva ROC do processo utilizando eventos marcados diretamente no sinal de ECG 
 	\label{ROC1}
 \end{figure}
 
-A tabela \ref{tab:rawECG} mostra os resultados atingidos com a base de eventos gerada após o processo de extração de características. Do mesmo modo que a seção anterior, o conjunto de testes considera os primeiros 14 minutos do sinal de ECG do arquivo 105, correspondendo a 1182 ocorrências do complexo QRS. São apresentadas as quantidades de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
+A tabela \ref{tab:rawECG} mostra os resultados atingidos com a base de eventos gerada após o processo de extração de características (correlação). Do mesmo modo que a seção anterior, o conjunto de testes considera os primeiros 14 minutos do sinal de ECG do arquivo 105, correspondendo a 1182 ocorrências do complexo QRS. São apresentadas as quantidades de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela de Resultados com extração de características]{Tabela de Resultados com extração de características}
+	\caption[Tabela de Resultados após correlação]{Tabela de Resultados após correlação}
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
