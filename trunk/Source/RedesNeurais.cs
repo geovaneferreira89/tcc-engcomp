@@ -684,6 +684,9 @@ namespace AmbienteRPB
                     {
                         prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
                         prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1], dados[2]);
+
+                        if (prb.Annotations.FindByName("PontoAtual") != null)
+                            prb.Annotations.Remove(prb.Annotations.FindByName("PontoAtual"));
                         break;
                     }
                     case ("AddDadoKohonen"):
@@ -705,7 +708,9 @@ namespace AmbienteRPB
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                             }
                             //Mapa
-                            //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1]);
+                            prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(dados[0], dados[1], dados[4]);
+                           
+                            //Colore a região do evento  
                             PointF zero = new PointF(0,0);
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(zero, zero, true);
                             prb.ChartAreas["canal" + canal].CursorX.SelectionColor = Color.FromArgb(128, Color.Yellow);
@@ -713,8 +718,26 @@ namespace AmbienteRPB
                             prb.ChartAreas["canal" + canal].CursorX.IsUserSelectionEnabled = true;
                             PointF Padrao_Inicio = new PointF((float)prb.ChartAreas["canal" + canal].AxisX.ValueToPixelPosition(dados[2]), (float)prb.ChartAreas["canal" + canal].AxisY.ValueToPixelPosition(dados[2]));
                             PointF Padrao_Fim    = new PointF((float)prb.ChartAreas["canal" + canal].AxisX.ValueToPixelPosition(dados[3]), (float)prb.ChartAreas["canal" + canal].AxisY.ValueToPixelPosition(dados[3]));
-                            //Colore a região do evento
                             prb.ChartAreas["canal" + canal].CursorX.SetSelectionPixelPosition(Padrao_Inicio, Padrao_Fim, true);
+                            
+                            //Mostra onde foi plotado no mapa de kohonen
+                            if (prb.Annotations.FindByName("PontoAtual") != null)
+                                prb.Annotations.Remove(prb.Annotations.FindByName("PontoAtual"));
+                            RectangleAnnotation annotationRectangle = new RectangleAnnotation();
+                            annotationRectangle.Name = "PontoAtual";
+                            annotationRectangle.BackColor = Color.FromArgb(128, Color.Blue);
+                            annotationRectangle.AxisX = prb.ChartAreas["canal" + (CanalParaPlotar + 1)].AxisX;
+                            annotationRectangle.AxisY = prb.ChartAreas["canal" + (CanalParaPlotar + 1)].AxisY;
+                            annotationRectangle.AnchorX = dados[0];
+                            annotationRectangle.Y = dados[1] + 0.05;
+                            annotationRectangle.Height = 2;
+                            annotationRectangle.Width = 2; 
+                            annotationRectangle.LineColor = Color.Blue;
+                            annotationRectangle.Font = new Font("Arial", 10, FontStyle.Bold);
+                            annotationRectangle.AllowMoving = false;
+                            annotationRectangle.AllowAnchorMoving = false;
+                            annotationRectangle.AllowSelecting = false;
+                            prb.Annotations.Add(annotationRectangle);
                             break;
                      }
 
@@ -936,6 +959,7 @@ namespace AmbienteRPB
                     dados[1] = n.Y;
                     dados[2] = i * pulo;
                     dados[3] = VetorEvento.Count() + (i*pulo);
+                    dados[4] = SaidaFinal[n.X, n.Y];
                     Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, null, null);
                     send_SmS(1, saida, true);
                     Thread.Sleep(1);
