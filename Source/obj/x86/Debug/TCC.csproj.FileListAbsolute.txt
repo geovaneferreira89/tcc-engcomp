@@ -215,3 +215,36 @@ T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento
 \\psf\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.TrustInfo.xml
 \\psf\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
 \\psf\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.application
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\Marcações v3 - EEG105.txt
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_102.edf
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\ECG_105.edf
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Modelos EDF\EEG_1.edf
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.application
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.exe
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Reconhecimento Automatizado de Padrões EEG.pdb
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\BrainNet.NeuralFramework.dll
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NeuroLoopGainLibrary.dll
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NLog.dll
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\BrainNet.NeuralFramework.pdb
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\BrainNet.NeuralFramework.xml
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NeuroLoopGainLibrary.pdb
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NLog.pdb
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\NLog.xml
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\bin\Debug\pt-BR\Microsoft.QualityTools.Testing.Fakes.resources.dll
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csprojResolveAssemblyReference.cache
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormCarregar_EDF.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormEditorDeEventos.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormPrincipal.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormEditarNomePadrao.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.FormResultados.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\ReconhecimentoAutPadroesEEG.Form_Site.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.InfoEDF.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.Licenca.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\AmbienteRPB.MDIPrincipalForm.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\ReconhecimentoAutPadroesEEG.Properties.Resources.resources
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\TCC.csproj.GenerateResource.Cache
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.TrustInfo.xml
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.exe.manifest
+T:\Documents\Clouds\Dropbox\UTFPR\TCC - Code\Source\obj\x86\Debug\Reconhecimento Automatizado de Padrões EEG.application
