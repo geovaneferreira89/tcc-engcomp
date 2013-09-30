@@ -1,41 +1,41 @@
 \select@language {brazil}
-\contentsline {figure}{\numberline {1}{\ignorespaces Anatomia de um cora\c c\~ao}}{13}
-\contentsline {figure}{\numberline {2}{\ignorespaces Diagrama de blocos do cora\c c\~ao}}{13}
-\contentsline {figure}{\numberline {3}{\ignorespaces Fibras musculares card\IeC {\'\i }acas}}{14}
-\contentsline {figure}{\numberline {4}{\ignorespaces Deriva\c c\~oes card\IeC {\'\i }acas}}{17}
-\contentsline {figure}{\numberline {5}{\ignorespaces Ondas, segmentos e intervalos dos sinais de ECG}}{19}
-\contentsline {figure}{\numberline {6}{\ignorespaces Exemplo de aplica\c c\~ao da fun\c c\~ao correla\c c\~ao}}{20}
-\contentsline {figure}{\numberline {7}{\ignorespaces Estrutura de uma rede neural artificial}}{21}
-\contentsline {figure}{\numberline {8}{\ignorespaces Gr\'aficos das fun\c c\~oes de ativa\c c\~ao}}{22}
-\contentsline {figure}{\numberline {9}{\ignorespaces Rede neural do tipo Multilayer Perceptron}}{23}
-\contentsline {figure}{\numberline {10}{\ignorespaces Rela\c c\~ao entre o erro m\'edio quadrado e treinamento}}{23}
-\contentsline {figure}{\numberline {11}{\ignorespaces Estrutura de um Mapa de Kohonen}}{25}
-\contentsline {figure}{\numberline {12}{\ignorespaces Mapa de Kohonen inicializado}}{27}
-\contentsline {figure}{\numberline {13}{\ignorespaces Mapa de Kohonen ap\'os algoritmo}}{27}
-\contentsline {figure}{\numberline {14}{\ignorespaces Exemplo de sinal e padr\~ao de classifica\c c\~ao}}{29}
-\contentsline {figure}{\numberline {15}{\ignorespaces Gr\'aficos de Sensibilidade e Especificidade}}{30}
-\contentsline {figure}{\numberline {16}{\ignorespaces Curva ROC}}{31}
-\contentsline {figure}{\numberline {17}{\ignorespaces Parte da grava\c c\~ao 105 da base de ECG}}{34}
-\contentsline {figure}{\numberline {18}{\ignorespaces Tela de op\c c\~oes do Physiobank ATM}}{35}
-\contentsline {figure}{\numberline {19}{\ignorespaces Diagrama UML da Biblioteca BrainNet}}{36}
-\contentsline {figure}{\numberline {20}{\ignorespaces Fluxograma simples}}{38}
-\contentsline {figure}{\numberline {21}{\ignorespaces Fluxograma simples}}{39}
-\contentsline {figure}{\numberline {22}{\ignorespaces Fluxograma com extra\c c\~ao de caracter\IeC {\'\i }sticas}}{40}
-\contentsline {figure}{\numberline {23}{\ignorespaces Tela de sele\c c\~ao do sistema}}{41}
-\contentsline {figure}{\numberline {24}{\ignorespaces Tela de visualiza\c c\~ao do sinal no sistema}}{42}
-\contentsline {figure}{\numberline {25}{\ignorespaces Op\c c\~ao de marcar eventos}}{42}
-\contentsline {figure}{\numberline {26}{\ignorespaces Marca\c c\~oes de eventos}}{43}
-\contentsline {figure}{\numberline {27}{\ignorespaces Editor de marca\c c\~oes}}{44}
-\contentsline {figure}{\numberline {28}{\ignorespaces Tela da extra\c c\~ao de caracter\IeC {\'\i }sticas}}{45}
-\contentsline {figure}{\numberline {29}{\ignorespaces Fun\c c\~ao correla\c c\~ao no sistema}}{45}
-\contentsline {figure}{\numberline {30}{\ignorespaces Mapa inicializado com sinal}}{46}
-\contentsline {figure}{\numberline {31}{\ignorespaces Mapa produzido}}{47}
-\contentsline {figure}{\numberline {32}{\ignorespaces Tela de configura\c c\~ao do mapa de Kohonen}}{47}
-\contentsline {figure}{\numberline {33}{\ignorespaces Tela de resultados do mapa de Kohonen}}{48}
-\contentsline {figure}{\numberline {34}{\ignorespaces Tela de resultados da rede multicamadas}}{49}
-\contentsline {figure}{\numberline {35}{\ignorespaces L\'ogica da avalia\c c\~ao}}{50}
-\contentsline {figure}{\numberline {36}{\ignorespaces Diagrama de Classes do Sistema}}{52}
-\contentsline {figure}{\numberline {37}{\ignorespaces Dois tipos de eventos marcados}}{55}
-\contentsline {figure}{\numberline {38}{\ignorespaces Curva ROC dos resultados}}{58}
-\contentsline {figure}{\numberline {39}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{59}
+\contentsline {figure}{\numberline {1}{\ignorespaces Anatomia do cora\c c\~ao humano}}{14}
+\contentsline {figure}{\numberline {2}{\ignorespaces Diagrama de blocos do fluxo sangu\IeC {\'\i }neo}}{14}
+\contentsline {figure}{\numberline {3}{\ignorespaces Fibras musculares card\IeC {\'\i }acas}}{15}
+\contentsline {figure}{\numberline {4}{\ignorespaces Deriva\c c\~oes card\IeC {\'\i }acas}}{18}
+\contentsline {figure}{\numberline {5}{\ignorespaces Ondas, segmentos e intervalos dos sinais de ECG}}{20}
+\contentsline {figure}{\numberline {6}{\ignorespaces Exemplo de aplica\c c\~ao da fun\c c\~ao correla\c c\~ao}}{21}
+\contentsline {figure}{\numberline {7}{\ignorespaces Estrutura de um neur\^onio artificial}}{22}
+\contentsline {figure}{\numberline {8}{\ignorespaces Gr\'aficos de fun\c c\~oes de ativa\c c\~ao}}{23}
+\contentsline {figure}{\numberline {9}{\ignorespaces Topologia da rede neural Perceptron Multicamadas}}{24}
+\contentsline {figure}{\numberline {10}{\ignorespaces Rela\c c\~ao entre o erro m\'edio quadrado e treinamento}}{24}
+\contentsline {figure}{\numberline {11}{\ignorespaces Topologia da rede neural Mapa de Kohonen}}{26}
+\contentsline {figure}{\numberline {12}{\ignorespaces Mapa de Kohonen inicializado com cores aleat\'orias}}{28}
+\contentsline {figure}{\numberline {13}{\ignorespaces Mapa de Kohonen ap\'os o treinamento n\~ao supervisionado}}{28}
+\contentsline {figure}{\numberline {14}{\ignorespaces Exemplo de sinal de ECG e padr\~ao de classifica\c c\~ao considerando o n\IeC {\'\i }vel de decis\~ao}}{30}
+\contentsline {figure}{\numberline {15}{\ignorespaces Comportamento da Sensibilidade e da Especificidade em fun\c c\~ao do \textit {threshold}}}{31}
+\contentsline {figure}{\numberline {16}{\ignorespaces Estrutura e Representa\c c\~ao da Curva ROC}}{32}
+\contentsline {figure}{\numberline {17}{\ignorespaces Parte da grava\c c\~ao 105 da base de ECG}}{35}
+\contentsline {figure}{\numberline {18}{\ignorespaces Tela de op\c c\~oes do \textit {Physiobank} ATM}}{36}
+\contentsline {figure}{\numberline {19}{\ignorespaces Diagrama UML da Biblioteca \textit {BrainNet Library}}}{37}
+\contentsline {figure}{\numberline {20}{\ignorespaces Fluxograma do treinamento n\~ao supervisionado do mapa de Kohonen}}{39}
+\contentsline {figure}{\numberline {21}{\ignorespaces Fluxograma do treinamento supervisionado da rede Perceptron Multicamadas}}{40}
+\contentsline {figure}{\numberline {22}{\ignorespaces Fluxograma da extra\c c\~ao de caracter\IeC {\'\i }sticas via opera\c c\~ao de correla\c c\~ao e do treinamento supervisionado da rede Perceptron Multicamadas}}{41}
+\contentsline {figure}{\numberline {23}{\ignorespaces Tela de sele\c c\~ao de canais do sistema}}{42}
+\contentsline {figure}{\numberline {24}{\ignorespaces Tela de visualiza\c c\~ao do sinal de ECG no sistema}}{43}
+\contentsline {figure}{\numberline {25}{\ignorespaces Op\c c\~ao de marcar eventos no sinal de ECG}}{43}
+\contentsline {figure}{\numberline {26}{\ignorespaces Marca\c c\~oes de eventos no sinal de ECG}}{44}
+\contentsline {figure}{\numberline {27}{\ignorespaces Editor de marca\c c\~ao de evento}}{45}
+\contentsline {figure}{\numberline {28}{\ignorespaces Tela da extra\c c\~ao de caracter\IeC {\'\i }sticas via correla\c c\~ao}}{46}
+\contentsline {figure}{\numberline {29}{\ignorespaces Fun\c c\~ao correla\c c\~ao no sistema}}{46}
+\contentsline {figure}{\numberline {30}{\ignorespaces Exemplo de mapa de Kohonen inicializado aleatoriamente com o sinal de ECG}}{47}
+\contentsline {figure}{\numberline {31}{\ignorespaces Exemplo de mapa de Kohonen ap\'os o treinamento n\~ao supervisionado}}{48}
+\contentsline {figure}{\numberline {32}{\ignorespaces Tela de configura\c c\~ao do mapa de Kohonen}}{48}
+\contentsline {figure}{\numberline {33}{\ignorespaces Tela de resultados do mapa de Kohonen}}{49}
+\contentsline {figure}{\numberline {34}{\ignorespaces Tela de resultados da rede multicamadas}}{50}
+\contentsline {figure}{\numberline {35}{\ignorespaces Exemplo de avalia\c c\~ao de acertos e erros de classifica\c c\~ao}}{51}
+\contentsline {figure}{\numberline {36}{\ignorespaces Diagrama de Classes do Sistema}}{53}
+\contentsline {figure}{\numberline {37}{\ignorespaces Dois tipos de eventos marcados}}{56}
+\contentsline {figure}{\numberline {38}{\ignorespaces Curva ROC dos resultados}}{59}
+\contentsline {figure}{\numberline {39}{\ignorespaces Curva ROC do processo com correla\c c\~ao}}{60}
 \contentsline {figure}{\numberline {40}{\ignorespaces Gr\'afico da Quantidade de Horas Trabalhadas}}{64}

@@ -34,10 +34,9 @@ Dispon{\'\i}vel em:
 
 \bibitem[Fawcett 2006]{FAWCETT2006}
 \abntrefinfo{Fawcett}{FAWCETT}{2006}
-{FAWCETT, T. An introduction to roc analysis.
-\textbf{Pattern Recogn. Lett.}, Elsevier Science Inc., New York, NY, USA,
-  v.~27, n.~8, p. 861--874, jun. 2006.
-ISSN 0167-8655.
+{FAWCETT, T. \textbf{An introduction to ROC analysis}. New York, NY, USA:
+  Elsevier Science Inc., jun. 2006.
+861--874~p.
 Dispon{\'\i}vel em: $<$http://dx.doi.org/10.1016/j.patrec.2005.10.010$>$.}
 
 \bibitem[Gacek e Predycz 2011]{GACEK2011}
@@ -92,9 +91,9 @@ Dispon{\'\i}vel em:
 
 \bibitem[Moody e Mark 1990]{MOODY1990}
 \abntrefinfo{Moody e Mark}{MOODY; MARK}{1990}
-{MOODY, G.; MARK, R. The mit-bih arrhythmia database on cd-rom and software for
-  use with it. In:  \textbf{Computers in Cardiology 1990, Proceedings.} [S.l.:
-  s.n.], 1990. p. 185--188.}
+{MOODY, G.; MARK, R. \textbf{The MIT-BIH Arrhythmia Database on CD-ROM and
+  software for use with it}. 1990.
+185-188~p.}
 
 \bibitem[NeuroLoopGain 2012]{Neuroloop}
 \abntrefinfo{NeuroLoopGain}{NEUROLOOPGAIN}{2012}
@@ -113,7 +112,7 @@ Dispon{\'\i}vel em: $<$http://www.codeproject.com/info/cpol10.aspx$>$. Acesso
 {SARAIVA, A.~A.
 \textbf{Detec\c{c}\~ao do Complexo QRS atrav\'es de Morfologia Matem\'atica
   Multiescalar}.
-Disserta\c{c}\~ao (Mestrado) --- Programa de P\'os~--Gradua\c{c}\~ao em
+Disserta\c{c}\~ao (Mestrado) --- Programa de P\'os--Gradua\c{c}\~ao em
   Engenharia Biom\'edica ~-- UTFPR, 2012.}
 
 \bibitem[Smith 1997]{smith}
@@ -127,7 +126,7 @@ ISBN 0-9660176-3-3.}
 {SOVIERZOSKI, M.
 \textbf{Avalia\c{c}\~ao de Descritores Morfol\'ogicos na Identifica\c{c}\~ao de
   Eventos Epileptiformes}.
-Tese (Doutorado) --- Programa de P\'os~--Gradua\c{c}\~ao em Engenharia
+Tese (Doutorado) --- Programa de P\'os--Gradua\c{c}\~ao em Engenharia
   El\'etrica ~-- UFSC, 2009.}
 
 \bibitem[{The Apache Software Foundation} 2004]{Apache}

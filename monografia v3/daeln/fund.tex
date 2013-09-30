@@ -1,7 +1,7 @@
 \chapter{Fundamentação Teórica}
 \label{sec:Fund}
 
-O capítulo de Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções Fisiologia do Coração \ref{sec:Fisiologia}, Formação do Sinal de Eletrocardiografia \ref{sec:FormaSinal}, Exame de Eletrocardiografia \ref{sec:Exame}, Sistema de Derivações \ref{sec:SistemaDer} e Ondas, Segmentos e Intervalos \ref{sec:Ondas}. Em seguida, as seções Função Correlação \ref{sec:Correl} e Redes Neurais Artificiais \ref{sec:RNA} abordam a operação da correlação e redes neurais, respectivamente. A seção Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis} trata de assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção de Considerações \ref{sec:Consid}.
+A Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções \ref{sec:Fisiologia} Fisiologia do Coração, \ref{sec:FormaSinal} Formação do Sinal de Eletrocardiografia, \ref{sec:Exame} Exame de Eletrocardiografia, \ref{sec:SistemaDer} Sistema de Derivações e \ref{sec:Ondas} Ondas, Segmentos e Intervalos. Em seguida, as seções \ref{sec:Correl} Função Correlação e \ref{sec:RNA} Redes Neurais Artificiais abordam a operação da correlação e redes neurais, respectivamente. A seção \ref{sec:AvaliaSis} Avaliação de Desempenho de Sistemas Classificadores trata de assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção \ref{sec:Consid} Considerações.
 
 \section{Fisiologia do Coração}
 \label{sec:Fisiologia}
@@ -11,7 +11,7 @@ O coração humano possui paredes compostas por músculos cardíacos estriados, cham
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/heart.png} % <- formatos PNG, JPG e PDF
-		\caption[Anatomia de um coração]{Anatomia de um coração}
+		\caption[Anatomia do coração humano]{Anatomia do coração humano}
 	\fonte{\cite{MALMIVUO1995}}
 	\label{fig:heart}
 \end{figure}
@@ -25,12 +25,12 @@ A figura \ref{fig:coracao} mostra o diagrama de blocos do coração evidenciando o
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/coracao.png} % <- formatos PNG, JPG e PDF
-		\caption[Diagrama de blocos do coração]{Diagrama de blocos do coração}
+		\caption[Diagrama de blocos do fluxo sanguíneo]{Diagrama de blocos do fluxo sanguíneo}
 	\fonte{Autoria própria}
 	\label{fig:coracao}
 \end{figure}
 
-A fibra muscular que forma o coração é orientada em espiral. O fato das células musculares cardíacas permanecerem tangencialmente e radialmente, como mostra a figura ~\ref{fig:muscle}, e a resistência do músculo ser mais baixa em direção as fibras são importantes na área da eletrocardiografia, pois a atividade elétrica pode se propagar de uma célula para outra em qualquer direção. Como resultado disso, as formas de onda de ativação são bastante complexas \cite{MALMIVUO1995}.
+A fibra muscular que forma o coração é orientada em espiral. O fato das células musculares cardíacas permanecerem tangencialmente e radialmente, como mostra a figura ~\ref{fig:muscle}, e a resistência do músculo ser mais baixa em direção as fibras são importantes na área da eletrocardiografia, pois a atividade elétrica se propaga de uma célula para outra em qualquer direção. Como resultado disso, as formas de onda de ativação são bastante complexas \cite{MALMIVUO1995}.
 
 \begin{figure}[!htb]
 	\centering
@@ -99,7 +99,7 @@ Os possíveis artefatos em sinais biomédicos são os instrumentais, como os de ele
 \section{Sistema de Derivações}
 \label{sec:SistemaDer}
 
-O sistema de configuração mais comum em exames ambulatoriais de Eletrocardiografia (ECG) é o sistema 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
+A configuração mais comum em exames ambulatoriais de Eletrocardiografia (ECG) é o sistema 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
 
 \begin{itemize}
 	\item Derivações dos membros (\textit{Limb leads}): I, II, III;	 
@@ -117,7 +117,7 @@ As seis primeiras derivações, I, II, III, aV\textsubscript{R}, aV\textsubscript{
 	\label{fig:leads}
 \end{figure}
 
-Mais de 90\% da atividade elétrica cardíaca pode ser explicada com a medição de três componentes independentes. A princípio, duas das derivações límbicas I II III devem ser suficiente para descrever completamente o vetor elétrico cardíaco. A principal razão para que sejam gravadas as 12 derivações é porque enriquece o reconhecimento dos padrões. Esta combinação de derivações fornece ao medico a oportunidade de observar diversas projeções do vetor elétrico cardíaco, que consiste em um modo de visualizar o gerador de potencial elétrico do coração como um dipolo elétrico \cite{MALMIVUO1995}. 
+Mais de 90\% da atividade elétrica cardíaca pode ser explicada com a medição de três componentes independentes. A princípio, duas das derivações límbicas I II III devem ser suficiente para descrever completamente o vetor elétrico cardíaco. A principal razão para que sejam gravadas as 12 derivações é porque enriquece o reconhecimento dos padrões. Esta combinação de derivações fornece ao médico a oportunidade de observar diversas projeções do vetor elétrico cardíaco, que consiste em um modo de visualizar o gerador de potencial elétrico do coração como um dipolo elétrico \cite{MALMIVUO1995}. 
 
 \section{Ondas, Segmentos e Intervalos}
 \label{sec:Ondas}
@@ -130,11 +130,11 @@ Além das ondas, os elementos existentes na forma de onda do Eletrocardiografia (
 	\item Intervalos: o tempo entre dois segmentos de ondas adjacentes.
 \end{itemize}
 
-A onda P é a primeira deflexão do ECG ocorre durante a despolarização ventricular. É positiva na maioria das derivações, mesmo sendo pouco evidente. Sua amplitude não excede 0,15 mV e 0,25 mV nas derivações precordiais, e dura no máximo 0,12 segundos \cite{GACEK2011}.
+A onda P é a primeira deflexão do sinal de ECG e ocorre durante a despolarização ventricular. É positiva na maioria das derivações, mesmo sendo pouco evidente. Sua amplitude não excede 0,15 mV e 0,25 mV nas derivações precordiais, e dura no máximo 0,12 segundos \cite{GACEK2011}.
 
 A onda T, por sua vez, representa a repolarização ventricular, a restauração do repouso no potencial da membrana. As ondas T se diferenciam das ondas P, por seguirem o complexo QRS após cerca de 0,2 segundos. Após a onda T, ocorre a onda U, com a mesma polaridade da onda T que a precede. Ondas U invertidas podem aparecer na presença de hipertrofia do ventrículo esquerdo ou isquemia \cite{GACEK2011}.
 
-O segmento PQ expressa tempo decorrido entre a despolarização atrial e o começo da despolarização ventricular, durando entre 0,12 e 0,2 segundos. O intervalo ventricular ST-T coincide com a repolarização do músculo ventricular. O intervalo QT corresponde à duração do potencial de ação ventricular e da repolarização. O intervalo TP é o período em que os átrios e ventrículos estão na diástole. O intervalo RR corresponde um ciclo cardíaco e é utilizado para o cálculo da frequência cardíaca \cite{GACEK2011}.
+O segmento PQ expressa o tempo decorrido entre a despolarização atrial e o começo da despolarização ventricular, durando entre 0,12 e 0,2 segundos. O intervalo ventricular ST-T coincide com a repolarização do músculo ventricular. O intervalo QT corresponde à duração do potencial de ação ventricular e da repolarização. O intervalo TP é o período em que os átrios e ventrículos estão na diástole. O intervalo RR corresponde um ciclo cardíaco e é utilizado para o cálculo da frequência cardíaca \cite{GACEK2011}.
 
 A identificação do complexo QRS não apresenta grandes dificuldades, uma vez que possui forma de onda característica e amplitude dominante. Esta amplitude mede cerca de 1 mV em um coração normal, mas pode ser muito maior em uma hipertrofia ventricular. O complexo QRS é o maior grupo de ondas no ECG e corresponde à despolarização ventricular.  A primeira deflexão negativa é a onda Q. Seguida de uma deflexão positiva, a onda R, sendo finalizada com uma última deflexão negativa denominada de onda S, completando um complexo QRS \cite{GACEK2011}.
 
@@ -153,7 +153,7 @@ A duração normal do QRS fica entre 0,08 e 0,09 segundos. Durações maiores são ge
 
 O conceito de correlação surgiu na antiguidade onde se comparavam padrões fazendo-os deslizar um sobre o outro. E é deste modo que funciona a correlação. A função correlação permite detectar a presença de um sinal conhecido no ruído. Entre alguns exemplos de aplicação, é possível detectar a presença de um rosto em uma multidão, comparar impressões digitais ou padrões de vasos sanguíneos da retina para identificar pessoas, ou ainda determinar que arma disparou um projétil mesmo que ele esteja amassado ou parcialmente derretido. É utilizada também em radares, no sistema  \sigla{GPS}{\textit{Global Positioning System}} e na análise de \sigla{DNA}{\textit{Deoxyribonucleic Acid}} \cite{bloch2004l}. 
 
-A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre eles. Podem ser utilizados um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
+A função correlação cruzada utiliza dois conjuntos de dados, e calcula uma medida da semelhança entre eles. Podem ser utilizados um sinal recebido e um padrão armazenado. À medida que o padrão se desloca pelo sinal recebido, o produto de superposição é calculado e plotado para cada deslocamento. Quando atinge seu valor máximo, 1, há uma coincidência perfeita \cite{bloch2004l}. Um exemplo de aplicação da função correlação é ilustrada na figura ~\ref{fig:corre}.
 
 \begin{figure}[!htb]
 	\centering
@@ -163,7 +163,7 @@ A função correlação cruzada é utiliza dois conjuntos de dados, e calcula uma med
 	\label{fig:corre}
 \end{figure}
 
-No domínio discreto de dados a função correlação pode ser calculada na equação ~(\ref{eq:correlacao}), em que o índice \textit{r} refere-se ao sinal recebido e o índice \textit{a} se refere ao padrão armazenado. O fator de normalização \textit{K} é igual à soma dos quadrados dos valores do padrão armazenado \cite{bloch2004l}.
+No domínio discreto de dados a função correlação pode ser calculada pela equação ~(\ref{eq:correlacao}), onde o índice \textit{r} refere-se ao sinal recebido e o índice \textit{a} se refere ao padrão armazenado. O fator de normalização \textit{K} é igual à soma dos quadrados dos valores do padrão armazenado \cite{bloch2004l}.
 
 \begin{equation}
  R_{r,a} (\tau )= \frac{1}{K}\sum_{n=0}^{N-1} f_{r}(n)f_{s}(\tau + n)
@@ -188,7 +188,7 @@ Um sinal \textit{x\textsubscript{j}} na entrada da sinapse \textit{j} conectada 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/RN2.png} 
-		\caption[Estrutura de uma rede neural artificial]{Estrutura de uma rede neural artificial}
+		\caption[Estrutura de um neurônio artificial]{Estrutura de um neurônio artificial}
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:RN2}
 \end{figure}
@@ -206,7 +206,7 @@ A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./figs/limiares.png} 
-		\caption[Gráficos das funções de ativação]{Gráficos das funções de ativação}
+		\caption[Gráficos de funções de ativação]{Gráficos de funções de ativação}
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:limiares}
 \end{figure}
@@ -218,12 +218,12 @@ Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.9\textwidth]{./figs/RN4.png} 
-		\caption[Rede neural do tipo Multilayer Perceptron]{Rede neural do tipo Multilayer Perceptron}
+		\caption[Topologia da rede neural Perceptron Multicamadas]{Topologia da rede neural Perceptron Multicamadas}
 	\fonte{\cite{HAYKIN2011}}
 	\label{fig:RN4}
 \end{figure}
 
-Como mencionado anteriormente, os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado \textit{backpropagation}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
+Os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado de retropropagação \textit{(backpropagation)}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
 
 \subsection{Estratégia de Treinamento para Rede Multicamadas}
 
@@ -237,7 +237,7 @@ A rede multicamadas é treinada com o algoritmo \textit{backpropagation}, em está
 	\label{parada}
 \end{figure}
 
-É possível, portanto, acabar treinando a rede em excesso, se o treinamento não for interrompido no instante certo. Para identificar este instante, a cada período de treinamento, a rede é testada e o erro médio quadrado monitorado. A este procedimento dá-se o nome de método de treinamento de parada antecipada. O menor erro médio indica qual a melhor época de treinamento, com base nos testes \cite{HAYKIN2011}.
+É possível, portanto, treinar a rede em excesso, se o treinamento não for interrompido no instante certo. Para identificar este instante, a cada período de treinamento, a rede é testada e o erro médio quadrado monitorado. A este procedimento dá-se o nome de método de treinamento de parada antecipada. O menor erro médio indica qual a melhor época de treinamento, com base nos testes \cite{HAYKIN2011}.
 
 \subsection{Validação Cruzada}
 
@@ -261,7 +261,7 @@ Inicialmente no mapa, cada nó é conectado a todos os nós de entrada, mas não são
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.4\textwidth]{./figs/map1.png} 
-		\caption[Estrutura de um Mapa de Kohonen]{Estrutura de um Mapa de Kohonen}
+		\caption[Topologia da rede neural Mapa de Kohonen]{Topologia da rede neural Mapa de Kohonen}
 	\fonte{\cite{Guthi}}
 	\label{fig:map0}
 \end{figure}
@@ -269,7 +269,7 @@ Inicialmente no mapa, cada nó é conectado a todos os nós de entrada, mas não são
 As redes devem ser formadas por nós, sendo que cada um deles deverá possuir um vetor de pesos de dimensão n. Para que o algoritmo funcione adequadamente, os nós de entrada também deverão apresentar vetores de entrada com dimensão n. E, considerando que os neurônios não possuem nenhuma conexão com os neurônios em sua vizinhança, não podem conhecer o valor dos pesos deles. Para serem organizados, os dados passam pelo algortimo do Mapa de Kohonen. Este algoritmo que agrupa os padrões de entrada é descrito a seguir \cite{Guthi}.
 
 \begin{enumerate}
-	\item Os pesos de cada nó são inicializados com valores aleatórios;
+	\item Os pesos de cada nó são inicializados com valores aleatórios numa faixa reduzida;
 	\item Um vetor é escolhido \textit{(input vector)} aleatoriamente dos dados de entrada e apresentado a rede;
 	\item Cada nó da rede é analisado em busca do nó que apresenta pesos mais similares ao nó escolhido \textit{(input vector)}. Este nó é conhecido como \textit{Best Matching Unit} (BMU). O BMU é encontrado com o cálculo da distância dado pela equação ~(\ref{eq:bmu}), em que \textit{I} se refere ao vetor escolhido, \textit{W} ao vetor de pesos do nó e \textit{n} à dimensão do vetor. 
 	
@@ -310,22 +310,22 @@ Um exemplo clássico de implementação de Mapas de Kohonen é a clusterização de co
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.4\textwidth]{./figs/color1.png} 
-		\caption[Mapa de Kohonen inicializado]{Mapa de Kohonen inicializado}
+		\caption[Mapa de Kohonen inicializado com cores aleatórias]{Mapa de Kohonen inicializado com cores aleatórias}
 	\fonte{\cite{Guthi}}
 	\label{fig:color1}
 \end{figure}
 
-A aplicação do algoritmo do Mapa de Kohonen descrito anteriormente deve resultar no mapa mostrado pela figura \ref{fig:color2}. Percebe-se que as cores foram agrupadas de acordo com a semelhança entre elas.
+A aplicação do algoritmo do Mapa de Kohonen deve resultar no mapa mostrado pela figura \ref{fig:color2}. Percebe-se que as cores foram agrupadas de acordo com a semelhança entre elas.
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.4\textwidth]{./figs/color2.png} 
-		\caption[Mapa de Kohonen após algoritmo]{Mapa de Kohonen após algoritmo}
+		\caption[Mapa de Kohonen após o treinamento não supervisionado]{Mapa de Kohonen após o treinamento não supervisionado}
 	\fonte{\cite{Guthi}}
 	\label{fig:color2}
 \end{figure}
 
-\section{Avaliação de Sistemas Classificadores}
+\section{Avaliação de Desempenho de Sistemas Classificadores}
 \label{sec:AvaliaSis}
 
 Nesta seção vamos nos concentrar em formas de avaliar o desempenho de sistemas classificadores por meio das seções: Tabela de Contingência \ref{subsec:TabelaCont}, Sensibilidade e Especificidade \ref{subsec:SeEsP}, Curva ROC \ref{subsec:ROCCurva} e Outros Índices Estatísticos \ref{subsec:outros}.
@@ -333,7 +333,7 @@ Nesta seção vamos nos concentrar em formas de avaliar o desempenho de sistemas c
 \subsection{Tabela de Contingência}
 \label{subsec:TabelaCont}
 
-A tabela de contingência, também chamada de tabela de confusão, é descrita como uma ferramenta capaz de representar, dentro de uma população, os indivíduos doentes, indivíduos sadios, indivíduos com teste positivo e indivíduos com teste negativo \cite{massad2004}, como mostrado na tabela~\ref{tab:confusao}.
+A tabela de contingência, também denominada tabela de confusão, é descrita pela medicina e áreas da saúde como uma ferramenta capaz de representar, dentro de uma população, os indivíduos doentes, indivíduos sadios, indivíduos com teste positivo e indivíduos com teste negativo \cite{massad2004}, como mostrado na tabela~\ref{tab:confusao}.
 
 \begin{table}[!htb]
 	\centering
@@ -346,23 +346,23 @@ A tabela de contingência, também chamada de tabela de confusão, é descrita como 
 
 A partir da tabela de contingência, podem ser observados os seguintes índices: 
 \begin{itemize}
-	\item \sigla{VP}{Verdadeiro Positivo} (Verdadeiro positivo): doente com resultado positivo;  
-	\item \sigla{FP}{Falso positivo} (Falso positivo): sadio com resultado positivo;
-	\item \sigla{FN}{Falso negativo} (Falso negativo): doente com resultado negativo; 
-	\item \sigla{VN}{Verdadeiro negativo} (Verdadeiro negativo): sadio com resultado negativo.
+	\item \sigla{VP}{Verdadeiro Positivo} (Verdadeiro positivo): doente com resultado positivo no exame;  
+	\item \sigla{FP}{Falso positivo} (Falso positivo): sadio com resultado positivo no exame;
+	\item \sigla{FN}{Falso negativo} (Falso negativo): doente com resultado negativo no exame; 
+	\item \sigla{VN}{Verdadeiro negativo} (Verdadeiro negativo): sadio com resultado negativo no exame.
 \end{itemize}
 
-Como este projeto pretende obter a identificação do complexo QRS em exames de Eletrocardiografia (ECG), a etapa de testes trata como verdadeiro positivo o complexo QRS indicado como positivo, falso positivo como padrão diferente do complexo QRS indicado como positivo, falso negativo como um complexo QRS não identificado e verdadeiro negativo como um padrão diferente do complexo QRS não identificado pelo sistema \cite{SARAIVA2012}. A lógica desta avaliação é expressa pela figura ~\ref{fig:TesteDiag}.
+Como este projeto pretende obter a identificação do complexo QRS em exames de Eletrocardiografia (ECG), a etapa de testes trata como verdadeiro positivo o complexo QRS indicado como positivo, falso positivo como padrão diferente do complexo QRS indicado como positivo, falso negativo como um complexo QRS não identificado e verdadeiro negativo como um padrão diferente do complexo QRS não identificado \cite{SARAIVA2012}. A lógica desta avaliação é apresentada pela figura ~\ref{fig:TesteDiag}.
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./figs/TesteDiag.png} % <- formatos PNG, JPG e PDF
-		\caption[Exemplo de sinal e padrão de classificação]{Exemplo de sinal e padrão de classificação considerando o nível de decisão}
+		\caption[Exemplo de sinal de ECG e padrão de classificação considerando o nível de decisão]{Exemplo de sinal de ECG e padrão de classificação considerando o nível de decisão}
 	\fonte{\cite{SARAIVA2012}}
 	\label{fig:TesteDiag}
 \end{figure}
 
-Os índices da tabela de contingência são utilizados para o cálculo de outros índices, tais como sensibilidade, especificidade, eficiência e o índice DER.
+Os índices da tabela de contingência são utilizados para o cálculo de outros índices, tais como sensibilidade, especificidade, eficiência, índice DER, entre muitos outros.
 
 \subsection{Sensibilidade e Especificidade}
 \label{subsec:SeEsP}
@@ -386,7 +386,7 @@ A sensibilidade e especificidade costumam retornar diferentes valores de acordo 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/SensibEspec.png} % <- formatos PNG, JPG e PDF
-		\caption[Gráficos de Sensibilidade e Especificidade]{Gráficos de Sensibilidade e Especificidade}
+		\caption[Comportamento da Sensibilidade e da Especificidade em função do \textit{threshold}]{Comportamento da Sensibilidade e da Especificidade em função do \textit{threshold}}
 	\fonte{\cite{SARAIVA2012}}
 	\label{fig:SensibEspec}
 \end{figure}
@@ -394,14 +394,14 @@ A sensibilidade e especificidade costumam retornar diferentes valores de acordo 
 \subsection{Curva ROC}
 \label{subsec:ROCCurva}
 
-A Curva \sigla{ROC}{\textit{Receiving Operating Characteristic}} \textit{(Receiving Operating Characteristic)} é útil para visualização da performance de classificadores. Seu uso vem crescendo em pesquisas nas áreas de \textit{machine learning} e \textit{data mining} \cite{FAWCETT2006}. 
+A Curva \sigla{ROC}{\textit{Receiving Operating Characteristic}} \textit{(Receiving Operating Characteristic)} é útil para visualizar o desempenho de classificadores. Seu uso vem crescendo em pesquisas nas áreas de \textit{machine learning} e \textit{data mining} \cite{FAWCETT2006}. 
 
 Os valores de sensibilidade e especificidade são organizados em pares ordenados, e dispostos no primeiro quadrante de um plano cartesiano. Com algum método de interpolação, são interligados desde a origem (sensibilidade = 0 e especificidade = 1), até o extremo oposto do gráfico (sensibilidade = 1 e especificidade = 0), dando origem a curva ROC \cite{massad2004}, conforme ilustra a figura ~\ref{fig:ROC}. 
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.4\textwidth]{./figs/ROC.png} 
-		\caption[Curva ROC]{Curva ROC}
+		\caption[Estrutura e Representação da Curva ROC]{Estrutura e Representação da Curva ROC}
 	\fonte{\cite{SOVIERZOSKI2009}} 
 	\label{fig:ROC}
 \end{figure}
@@ -410,13 +410,13 @@ Cada ponto da curva ROC equivale a um valor diferente do limiar de decisão da re
 
 No eixo das ordenadas da curva ROC pode ser observada a fração dos verdadeiros positivos (sensibilidade). E no eixo das abcissas, a fração dos falsos positivos, correspondente ao complemento da especificidade (1 - especificidade) \cite{massad2004}.
 
-A linha tracejada representa um sistema classificador incapaz de discriminar, em outras palavras, um sistema que apresenta o mesmo percentual de verdadeiros positivos e de falsos positivos. Quanto mais afastada da linha tracejada estiver a curva ROC (de modo semelhante à figura ~\ref{fig:ROC}), melhor é o desempenho do sistema. O classificador ideal possui sensibilidade = 1 e especificidade = 1 \cite{Brown2006}. 
+A linha tracejada (diagonal secundária) representa um sistema classificador incapaz de discriminar, em outras palavras, um sistema que apresenta o mesmo percentual de verdadeiros positivos e de falsos positivos. Quanto mais afastada da linha tracejada estiver a curva ROC (de modo semelhante à figura ~\ref{fig:ROC}), melhor é o desempenho do sistema. O classificador ideal possui sensibilidade = 1 e especificidade = 1 \cite{Brown2006}. 
  
  
 \subsection{Outros Índices Estatísticos}
 \label{subsec:outros}
 
-Além de inúmeros outros métodos para medição do desempenho de sistemas classificadores, existem o índice DER e eficiência. 
+Além de inúmeros outros métodos para medição do desempenho de sistemas classificadores, existem o índice DER e a eficiência. 
 
 O índice \sigla{DER}{\textit{Detection Error Rate}} \textit{(Detection Error Rate)}, dado na equação (\ref{eq:DER}) \cite{Zhang2007}, relaciona o número de erros do sistema, soma dos falsos positivos e falsos negativos, com o número total de eventos do sistema.
 
@@ -425,7 +425,7 @@ DER = \frac{FP +FN}{\textrm{Total de eventos QRS}}
 \label{eq:DER}
 \end{equation}
 
-Eficiência ou \textit{accuracy} corresponde a capacidade de um sistema em identificar os verdadeiros doentes e sadios \cite{SOVIERZOSKI2009}. A fórmula para o cálculo da eficiência é dada na equação ~(\ref{eq:accuracy}).
+Eficiência \textit{(accuracy)} corresponde a capacidade de um sistema em identificar os verdadeiros doentes e sadios \cite{SOVIERZOSKI2009}. A fórmula para o cálculo da eficiência é dada na equação ~(\ref{eq:accuracy}).
 
 \begin{equation}
 accuracy = \frac{VP + VN}{VP + VN + FP + FN}
@@ -435,6 +435,6 @@ accuracy = \frac{VP + VN}{VP + VN + FP + FN}
 \section{Considerações}
 \label{sec:Consid}
 
-O capítulo de Fundamentação Teórica forneceu esclarecimento acerca de diversos conhecimentos necessários durante implementação do projeto. Entre eles, cabe destacar os conceitos abordados pelas seções Função Correlação \ref{sec:Correl}, Redes Neurais Artificiais \ref{sec:RNA} e Avaliação de Sistemas Classificadores \ref{sec:AvaliaSis}. O entendimento destes conceitos em particular é essencial para uma leitura proveitosa dos próximos capítulos desta monografia.
+O capítulo de Fundamentação Teórica forneceu esclarecimento acerca de diversos conhecimentos necessários durante a implementação do projeto. Entre eles, cabe destacar os conceitos abordados pelas seções \ref{sec:Correl} Função Correlação, \ref{sec:RNA} Redes Neurais Artificiais e \ref{sec:AvaliaSis} Avaliação de Sistemas Classificadores. O entendimento destes conceitos em particular é essencial para uma leitura proveitosa dos próximos capítulos desta monografia.
 
-O próximo capítulo, Materiais e Métodos \ref{sec:Materiais}, explica a maneira como todos estes conhecimentos foram aplicados de modo prático, e também os recursos utilizados ao longo do desenvolvimento deste projeto.
+O próximo capítulo, \ref{sec:Materiais} Materiais e Métodos, explica a maneira como todos estes conhecimentos foram aplicados de modo prático, e também os recursos utilizados ao longo do desenvolvimento deste projeto.
