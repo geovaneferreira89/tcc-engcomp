@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  30 SEP 2013 15:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.19)  30 SEP 2013 15:14
 entering extended mode
 **modelo_daeln.tex
 ("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.tex"
@@ -894,22 +894,30 @@ Package pdftex.def Info: ./figs/rocecg2.png used on input line 652.
 Cap\'{\i }tulo 5.
 [62
 
-] <./figs/horas.png, id=263, 375.65344pt x 407.27156pt>
-File: ./figs/horas.png Graphic file (type png)
+] <./figs/crono.png, id=263, 395.97937pt x 506.6428pt>
+File: ./figs/crono.png Graphic file (type png)
 
-<use ./figs/horas.png>
-Package pdftex.def Info: ./figs/horas.png used on input line 779.
+<use ./figs/crono.png>
+Package pdftex.def Info: ./figs/crono.png used on input line 741.
+(pdftex.def)             Requested size: 364.19667pt x 465.98561pt.
+ [63]
+<./figs/horas.png, id=267, 375.65344pt x 407.27156pt>
+File: ./figs/horas.png Graphic file (type png)
+ <use ./figs/horas.png>
+Package pdftex.def Info: ./figs/horas.png used on input line 785.
 (pdftex.def)             Requested size: 364.19667pt x 394.87892pt.
- [63] [64 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/horas.png>]
+
+[64 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/crono.png>] [65]
+[66 <C:/Users/Ge/Desktop/tcc2013/monografia v3/daeln/figs/horas.png>]
 Cap\'{\i }tulo 6.
 
-Overfull \hbox (4.08653pt too wide) in paragraph at lines 792--793
+Overfull \hbox (4.08653pt too wide) in paragraph at lines 798--799
 \OT1/ptm/m/n/12 ter[]sticas e \OT1/ptm/m/it/12 th-reshold \OT1/ptm/m/n/12 0,1)
 , res-pec-ti-va-mente. A efici[]encia apre-sen-tou o va-lor m[]nimo 0,94202285
 2
  []
 
-("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.bbl" [65
+("C:\Users\Ge\Desktop\tcc2013\monografia v3\daeln\modelo_daeln.bbl" [67
 
 ]
 Underfull \hbox (badness 4353) in paragraph at lines 20--27
@@ -953,7 +961,7 @@ $\OML/ztmcm/m/it/12 <$\OT1/ptm/m/n/12 http://www.amazedsaint.com/2008/01/neural
 -networks-part-iii-nxml-xml-based.html$\OML/ztmcm/m/it/12 >$\OT1/ptm/m/n/12 .
  []
 
-[66
+[68
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 100--103
@@ -969,7 +977,7 @@ CPOL) 1.02\OT1/ptm/m/n/12 . 2008. Dis-pon[]vel em:
 
 ) 
 AED: lastpage setting LastPage
-[67]
+[69]
 +-------------------------------------------------------------------+
 | Comentario, sugestao ou critica sobre o abnTeX? Entre em contato: |
 |                  http://abntex.codigolivre.org.br                 |
@@ -980,10 +988,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4306 strings out of 493921
- 61228 string characters out of 3144885
- 125704 words of memory out of 3000000
- 7378 multiletter control sequences out of 15000+200000
+ 4312 strings out of 493921
+ 61327 string characters out of 3144885
+ 125714 words of memory out of 3000000
+ 7383 multiletter control sequences out of 15000+200000
  43280 words of font info for 98 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,11n,43p,1897b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -997,9 +1005,9 @@ ming/MiKTeX/2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX
 ype1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on modelo_daeln.pdf (69 pages, 2276901 bytes).
+Output written on modelo_daeln.pdf (71 pages, 2436999 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
+ 319 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 
