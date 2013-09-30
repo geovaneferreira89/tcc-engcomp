@@ -7,17 +7,17 @@ I was expecting a `,' or a `}'---line 12 of file reflatex.bib
  :   urlaccessdate = {8 de novembro de 2012}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 93 of file reflatex.bib
+You're missing a field name---line 91 of file reflatex.bib
  : 
  : %note = "",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 142 of file reflatex.bib
+You're missing a field name---line 140 of file reflatex.bib
  :   
  :   %isbn={9788520414125},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 168 of file reflatex.bib
+You're missing a field name---line 166 of file reflatex.bib
  :    
  :    %URL = {http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0004-282X2006000200017&nrm=iso},
 (Error may have been on previous line)
