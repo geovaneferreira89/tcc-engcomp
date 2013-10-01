@@ -51,4 +51,4 @@
 \contentsline {section}{\numberline {5.4}Cronograma}{64}
 \contentsline {section}{\numberline {5.5}Horas de Trabalho}{65}
 \contentsline {chapter}{\numberline {6}Considera\c c\~oes Finais}{67}
-\contentsline {chapter}{REFER\^ENCIAS}{68}
+\contentsline {chapter}{REFER\^ENCIAS}{69}
