@@ -1285,8 +1285,10 @@ namespace AmbienteRPB
             }
         }
         //----------------------------------------------------------------------------
+        int threshold_MLP = 0;
         private int ContarQRSs(int threshold)
         {
+            threshold_MLP = threshold;
             bool iniciou = false;
             int inicio = 0;
             int Fim;
@@ -1425,6 +1427,11 @@ namespace AmbienteRPB
                 {
                     SMS_Box.Text = SMS_Box.Text + "\nFN " + i + ": " + avaliador.FN[i];
                 }*/
+                SMS_Box.Text = SMS_Box.Text + "\nThreshold: " + threshold_MLP;
+                float Sensibilidade  =  (float)avaliador.VP.Count() / (float)(avaliador.VP.Count() + avaliador.FN.Count());
+                float Especificidade =  (float)avaliador.VN.Count() / (float)(avaliador.VN.Count() + avaliador.FP.Count());
+                SMS_Box.Text = SMS_Box.Text + "\nSensibilidade: " + Convert.ToString(Sensibilidade);
+                SMS_Box.Text = SMS_Box.Text + "\nEspecificidade: " + Convert.ToString(Especificidade);
             }
 
         }
