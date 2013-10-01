@@ -27,8 +27,8 @@
 \documento{Trabalho de Conclusão de Curso} % tipo de documento
 \titulacao{Engenheiro} % [Técnico], [Tecn\'ologo] ou [Engenheiro]
 
-\titulo{Avaliação de Redes Neurais na Detecção de Complexo QRS em Sinais de Eletrocardiografia} % titulo do trabalho em portugues
-\title{Neural Networks Evaluation in QRS Complex Detection in Electrocardiographical Signals } % titulo do trabalho em ingles
+\titulo{Avaliação de Redes Neurais no Reconhecimento de Complexo QRS em Sinais de Eletrocardiografia} % titulo do trabalho em portugues
+\title{Neural Networks Evaluation in QRS Complex Classification in Electrocardiographical Signals } % titulo do trabalho em ingles
 
 \autor{Georgea Danielewicz \protect\\ Geovane Vinicius Ferreira} % autor do trabalho
 \cita{DANIELEWICZ, Georgea \protect e FERREIRA, Geovane Vinicius} % sobrenome (maiusculas), nome do autor do trabalho
@@ -85,7 +85,7 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 %resumo
 \begin{resumo}
 
-De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes corrompido por ruídos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de\sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização do sinal de ECG, marcação de eventos, extração de características, reconhecimento de padrões e avaliação de resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram calculadas as análises de sensibilidade e especificidade, permitindo a impressão de uma Curva ROC. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
+De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes corrompido por ruídos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de\sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização do sinal de ECG, marcação de eventos, extração de características, reconhecimento de padrões e avaliação de resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram realizadas as análises de sensibilidade e especificidade, permitindo a representação da Curva ROC do sistema classificador. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
 
 \end{resumo}
 
@@ -123,7 +123,7 @@ According to \cite{Zhang2007}, electrocardiographic recordings are considered  t
 
 Este capítulo aborda os recursos e metodologias utilizadas no desenvolvimento deste trabalho. O capítulo foi dividido em seções: \ref{sec:BD} Base de Dados de Sinais de Eletrocardiografia, \ref{sec:EDF} \textit{European Data Format}, \ref{sec:Bib} Bibliotecas Utilizadas, \ref{sec:MOD} Sistema, \ref{sec:UML} Modelagem \sigla{UML}{\textit{Unified Modeling Language}}, \ref{sec:Met-Testes} Metodologia de Testes e por fim, a seção \ref{sec:Cons-Des} Considerações.
 
-\section{Base de Dados de Sinais de Eletrocardiografia}
+\section{Base de Sinais de Eletrocardiografia}
 \label{sec:BD}
 
 De acordo com informações disponibilizadas pela Comissão Nacional de Ética em Pesquisa ~\cite{CONEP}, ``as pesquisas envolvendo apenas dados de domínio público que não identifiquem os participantes da pesquisa, ou apenas revisão bibliográfica, sem envolvimento de seres humanos, não necessitam aprovação por parte do Sistema CEP~--\sigla{CONEP}{Comissão Nacional de Ética em Pesquisa}.'' Por esta razão, a equipe optou por utilizar a base de dados pública \textit{MIT-BIH Arrhythmia Database}. 
@@ -135,7 +135,7 @@ Os dados correspondem à 48 gravações de sianis de ECG com duração de meia hora c
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./figs/105.png} % <- formatos PNG, JPG e PDF
-	\caption[Parte da gravação 105 da base de ECG]{Parte da gravação 105 da base de dados \textit{MIT-BIH Arrhythmia Database}}
+	\caption[Época do arquivo 105 da base de ECG da base de dados \textit{MIT-BIH Arrhythmia Database}]{Época do arquivo 105 da base de ECG da base de dados \textit{MIT-BIH Arrhythmia Database}}
 	\fonte{Autoria própria}
 	\label{105}
 \end{figure}
@@ -147,7 +147,7 @@ Uma equipe com dois cardiologistas realizou anotações dos batimentos em cada uma
 Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por apresentar maior dificuldade na detecção do complexo QRS ~\cite{SARAIVA2012}.
 
  
-\section{\textit{European Data Format}}
+\section{Padrão \textit{European Data Format}}
 \label{sec:EDF}
 
 A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \textit{European data format} (EDF), um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O \sigla{EDF}{\textit{European Data Format}} é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientificas \cite{Kemp20031755}.
@@ -172,14 +172,14 @@ Esta ferramenta foi utilizada para obtenção dos arquivos de sinal em formado EDF
 \label{sec:Bib}
 O projeto utilizou as bibliotecas \textit{NeuroLoopGain} e \textit{BrainNet Library} para trabalhar com arquivos em formato EDF e redes neurais artificiais respectivamente.
 
-\subsection{\textit{NeuroLoopGain}}
+\subsection{Biblioteca \textit{NeuroLoopGain}}
 
 A biblioteca \textit{NeuroLoopGain} \cite{Neuroloop} foi implementada para análise de arquivos em formato EDF.
 O texto da licença Apache 2.0 \cite{Apache} mostra que seu código é aplicável a distribuição pretendida do software: ``[ \dots] concede licença perpétua, mundial, não exclusiva, gratuita, isenta de \textit{royalties} e irrevogável para reproduzir, preparar Obras Derivadas, de exibição pública, execução pública, sublicenciamento e distribuição do Trabalho e tais Obras Derivadas, na forma de Código Fonte ou Objeto. ''
 
 Além disso, o texto da licença também atesta que: ``[ \dots] concede licença perpétua, mundial, não-exclusiva, gratuita, isenta de \textit{royalties} e irrevogável [\dots] de licença de patente para fazer, mandar fazer, usar, oferecer para venda, vender, importar e transferir o trabalho. ''
 
-\subsection{\textit{BrainNet Library}}
+\subsection{Biblioteca \textit{BrainNet Library}}
 
 A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação \sigla{XML}{\textit{eXtensible Markup Language}} \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (\sigla{CPOL}{\textit{The Code Project Open License}}) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
 
@@ -496,7 +496,7 @@ O sistema foi desenvolvido na linguagem C\#. Na classe Program é iniciado o sist
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela de classes do sistema]{Tabela de classes do sistema}
+	\caption[Classes do sistema]{Classes do sistema}
 	\label{Classes}
 	\begin{tabular}{l|l}
 	\hline
@@ -573,7 +573,7 @@ no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo compl
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela de Resultados Obtidos com Mapa de Kohonen]{Tabela de Resultados Obtidos com Mapa de Kohonen}
+	\caption[Resultados Obtidos com Mapa de Kohonen]{Resultados Obtidos com Mapa de Kohonen}
 	\label{tab:kohonen}
 		    \begin{tabular}{cccccccc}
 		    \hline
@@ -591,7 +591,7 @@ A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela de Resultados com marcações no ECG]{Tabela de Resultados com marcações no ECG}
+	\caption[Resultados com marcações no ECG]{Resultados com marcações no ECG}
 	\label{tab:rawECG}
 		    \begin{tabular}{ccccccccc}
 		    \hline
@@ -616,7 +616,7 @@ A curva ROC do processo utilizando eventos marcados diretamente no sinal de ECG 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/rocecg1.png} % <- formatos PNG, JPG e PDF
-	\caption[Curva ROC dos resultados]{Curva ROC dos resultados}
+	\caption[Curva ROC dos resultados da rede Perceptron multicamadas]{Curva ROC dos resultados da rede Perceptron multicamadas}
 	\fonte{Autoria própria}
 	\label{ROC1}
 \end{figure}
@@ -650,7 +650,7 @@ A curva ROC do processo utilizando a base gerada após a extração de característi
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./figs/rocecg2.png} % <- formatos PNG, JPG e PDF
-	\caption[Curva ROC do processo com correlação]{Curva ROC do processo com correlação}
+	\caption[Curva ROC dos resultados da rede Perceptron multicamadas com correlação]{Curva ROC dos resultados da rede Perceptron multicamadas com correlação}
 	\fonte{Autoria própria}
 	\label{ROC2}
 \end{figure}
@@ -668,7 +668,7 @@ Na tabela \ref{tab:correlacao}, podem ser observados resultados obtidos a partir
 
 \begin{table}[!htb]
 	\centering
-	\caption[Tabela Comparativa de métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de \cite{Zhang2007} acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
+		\caption[Comparação de Métodos]{Comparação dos métodos utilizados para detecção do QRS oriunda da tabela de \cite{Zhang2007} acrescido das quatro últimas linhas com resultados obtidos no trabalho de \cite{SARAIVA2012}}
 	\label{tab:correlacao}
 	\begin{tabular}{llllll}
 		\hline 
@@ -783,7 +783,7 @@ A figura ~\ref{horas} mostra o comparativo entre as horas esperadas e as horas r
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./figs/horas.png} % <- formatos PNG, JPG e PDF
-	\caption[Gráfico da Quantidade de Horas Trabalhadas]{Gráfico da Quantidade de Horas Trabalhadas}
+	\caption[Quantidade de Horas Trabalhadas]{Quantidade de Horas Trabalhadas}
 	\fonte{Autoria própria}
 	\label{horas}
 \end{figure}
