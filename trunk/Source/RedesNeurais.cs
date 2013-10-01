@@ -745,7 +745,7 @@ namespace AmbienteRPB
                     {
                         double offset = myArray[0];
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            for (int i = 0; i < (offset/2); i++)
+                            for (int i = 0; i < (offset); i++)
                                 prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                            for (int i = 0;  i < X_.Count; i++)
                             {
