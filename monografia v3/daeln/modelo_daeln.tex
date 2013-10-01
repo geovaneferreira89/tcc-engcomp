@@ -711,7 +711,7 @@ Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez
 
 Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria equipe realizar os testes, uma vez que a base de dados já possui marcações dos eventos, bastando apenas compará-las aos eventos identificados pelo sistema.
 
-Este capítulo apresenta as seções \ref{RecHardware} Recursos de Hardware, \ref{RecSoftware} Recursos de Software, Cronogramas \ref{Cronograma} e Horas de Trabalho \ref{Horas}.
+Este capítulo apresenta as seções \ref{RecHardware} Recursos de Hardware, \ref{RecSoftware} Recursos de Software, Análise de Riscos \ref{Riscos}, Cronogramas \ref{Cronograma} e Horas de Trabalho \ref{Horas}.
 
 \section{Recursos de Hardware}
 \label{RecHardware}
@@ -731,6 +731,49 @@ Os recursos de \textit{Software} utilizados neste projeto correspondem ao seguin
 
 Para obter gratuitamente a licença do ambiente de desevolvimento \textit{Visual Studio}, a equipe se associou ao programa \text{DreamSpark}, da Universidade Tecnológica Federal do Paraná. Os demais recursos utilizados são gratuitos.
 
+\section{Análise de Riscos}
+\label{Riscos}
+
+No início do projeto, durante a disciplina e Trabalho de Conclusão de Curso 1, a equipe elaborou uma análise de riscos, de modo a avaliar qualquer risco que pudesse vir a ocorrer. O impacto e a probabilidade de cada risco foram classificados como: baixo (1), médio/baixo (2), médio (3), médio/alto (4) ou alto (5). A tabela \ref{tab:riscos} mostra o impacto, probabilidade, e a ocorrência de cada risco.
+
+\begin{table}[!htb]
+	\centering
+	\caption[Análise de Riscos]{Análise de Riscos}
+	\label{tab:riscos}
+		    \begin{tabular}{l|c|c|c}
+		    \hline
+			Risco 										& Impacto  		 & Probabilidade   & Ocorreu \\ \hline
+		    \hline
+		    Desistência ou incapacitação de um   		& alto (5) 		 & média/baixa (2) & Não  \\ 
+		    dos membros da equipe						&          		 &	               &	  \\ \hline
+		    
+		    Falha de comunicação e integração  			& médio/alto (4) & média (3)	   & Não  \\ \hline
+		    entre a equipe 								&          		 &	               &	  \\ \hline
+		    
+		    Escolha da técnica inadequada de     		& alto (5) 		 & média (3)	   & Não  \\ 
+		    reconhecimento de padrão para sinais 		&      			 &	  			   &	  \\ \hline
+		    
+		    Utilização de tecnologias não eficientes    & médio/baixo (2)& baixa (1) 	   & Não  \\ 
+		    para o propósito esperado                   &	   			 &	  			   &      \\ \hline
+		    
+		    Modificação no escopo do projeto 			& médio (3)		 & média/baixa (2) & Sim  \\ \hline
+		    
+		    Análise do sistema realizada de modo 		& médio/alto (4) & média/baixa (2) & Não  \\ \hline
+		    inadequado									&	   			 &	  			   &      \\ \hline
+		    
+		    Resultado final com baixo desempenho 		& alto (5) 		 & média/baixa (2) & Não  \\ \hline
+		    
+		    Tempo de processamento muito elevado 		& médio (3)		 & baixa (1)	   & Não  \\ 
+		    para a etapa de reconhecimento de 			&	   			 &	  			   &	  \\
+		    padrões dos sinais							&	   			 &	  			   &	  \\
+		    
+		    \hline
+		    \end{tabular}
+		    \fonte{Autoria Própria}
+\end{table}
+
+Dentre todos os riscos avaliados e contingenciados, apenas um de fato ocorreu: a modificação no escopo do projeto. O escopo do projeto precisou ser modificado, adaptando o sistema a uma base de dados de sinais de Eletrocardiografia (ECG), no lugar da base de sinais eletroencefalográficos inicialmente planejada.
+
 \section{Cronograma}
 \label{Cronograma}
 
@@ -738,7 +781,7 @@ A figura \ref{crono} mostra o cronograma planejado pela equipe na disciplina de 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./figs/crono.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.9\textwidth]{./figs/crono.png} % <- formatos PNG, JPG e PDF
 	\caption[Cronograma Planejado em Trabalho de Conclusão de Curso 1]{Cronograma Planejado em Trabalho de Conclusão de Curso 1}
 	\fonte{Autoria própria}
 	\label{crono}
