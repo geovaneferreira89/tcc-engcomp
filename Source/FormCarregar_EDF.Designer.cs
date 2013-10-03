@@ -176,8 +176,6 @@
             // checkInverter
             // 
             this.checkInverter.AutoSize = true;
-            this.checkInverter.Checked = true;
-            this.checkInverter.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkInverter.Location = new System.Drawing.Point(8, 115);
             this.checkInverter.Name = "checkInverter";
             this.checkInverter.Size = new System.Drawing.Size(85, 17);
