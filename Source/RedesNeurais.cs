@@ -690,6 +690,12 @@ namespace AmbienteRPB
                             prb.Annotations.Remove(prb.Annotations.FindByName("PontoAtual"));
                         break;
                     }
+                    case ("OffsetKohonenDebug"):
+                    {
+                        for (int i = 0; i < (dados[0] / 2); i++)
+                            prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
+                        break;
+                    }
                     case ("AddDadoKohonen"):
                     {
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
@@ -700,11 +706,7 @@ namespace AmbienteRPB
                                 else if (dados[0] == 0 && dados[1] == 1)
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
                                 else if (dados[0] == 0 && dados[1] == 2)
-                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
-                                else if (dados[0] == 0 && dados[1] == 3)
-                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                                //else if (dados[0] == 0 && dados[1] == 4)
-                                //    prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
+                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(2);
                                 else
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                             }
@@ -746,7 +748,7 @@ namespace AmbienteRPB
                     {
                         double offset = myArray[0];
                             prb = _Grafico as System.Windows.Forms.DataVisualization.Charting.Chart;
-                            for (int i = 0; i < (offset); i++)
+                            for (int i = 0; i < (offset/2); i++)
                                 prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                            for (int i = 0;  i < X_.Count; i++)
                             {
@@ -757,13 +759,6 @@ namespace AmbienteRPB
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(5);
                                 else if (X_[i] == 0 && Y_[i] == 2)
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(3);
-                                /*else if (X_[i] == 0 && Y_[i] == 3)
-                                {
-                                    prb.Series["canal" + CanalParaPlotar].Points.AddY(1);
-                                    //prb.Series["canal" + (CanalParaPlotar + 1)].Points.AddXY(X_[i], Y_[i], 5);
-                                }*/
-                               //  else if (X_[i] == 0 && Y_[i] == 4)
-                               //      prb.Series["canal" + CanalParaPlotar].Points.AddY(0.5);
                                 else
                                     prb.Series["canal" + CanalParaPlotar].Points.AddY(0);
                             }
@@ -930,6 +925,13 @@ namespace AmbienteRPB
         private void DumpCoordinates_KHn()
         {
             double[] dados = new double[10];
+            //Caso debug, ajusta o offset do sinal
+            if (it_is_debug)
+            {
+                dados[0] = MenorTamanho;
+                Plotar("OffsetKohonenDebug", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, null, null);
+            }
+
             for (int i = 0; i < patterns.Count; i++)
             {
                 Neuron_KHn n = Winner_KHn(patterns[i]);
@@ -949,7 +951,7 @@ namespace AmbienteRPB
                     dados[0] = n.X;
                     dados[1] = n.Y;
                     dados[2] = i * pulo;
-                    dados[3] = VetorEvento.Count() + (i*pulo);
+                    dados[3] = MenorTamanho + (i*pulo);
                     dados[4] = SaidaFinal[n.X, n.Y];
                     Plotar("AddDadoKohonen", dados, CanalAtual, CanalParaPlotar, selecaoAtual, null, null, null);
                     send_SmS(1, saida, true);
