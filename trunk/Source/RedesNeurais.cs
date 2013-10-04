@@ -377,6 +377,7 @@ namespace AmbienteRPB
                             }
                         }
                         if (!PadraoDescatardo)
+                            if(entrada.Count == MenorTamanho)
                             helper.AddTrainingData(entrada, saida);
                         load_progress_bar(0, 1);
                     }
