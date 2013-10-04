@@ -623,6 +623,7 @@ namespace AmbienteRPB
         {
             if (SelecionaEventoDasLista())
             {
+                int eventoMenor = 0;
                 if (visivel == false)
                 {
                     gbxChart.Height = gbxChart.Height - SMS_Box.Height;
@@ -638,10 +639,20 @@ namespace AmbienteRPB
                 FormEditarNomePadrao FormDadosInput = new FormEditarNomePadrao();
                 FormDadosInput.opcao = 2;
                 FormDadosInput.Vetores = numeroLinhas;
-                FormDadosInput.TamVetores = 50;
+                for (int cont = 0; cont < ListaDeEventos[ID_PadraoAtual].NumeroEventos; cont++)
+                {
+                    int aux = (int)(ListaDeEventos[ID_PadraoAtual].GetValorFim(cont).X - ListaDeEventos[ID_PadraoAtual].GetValorInicio(cont).X);
+                    if (cont == 0 || MenorTamanho > aux)
+                    {
+                        MenorTamanho = aux;
+                        eventoMenor = cont;
+                    }
+                }
+                FormDadosInput.TamVetores = MenorTamanho;
                 FormDadosInput.ShowDialog();
                 if (FormDadosInput.opcao == 100)
                 {
+                    MenorTamanho = Convert.ToInt16(FormDadosInput.TamVetores);
                     //Dados sobre os charts, onde plotar
                     if (FormDadosInput.UsarCorrelacao == true)
                         CanalKohonen = CanalAtual + 1;
