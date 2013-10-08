@@ -1,7 +1,7 @@
 \chapter{Fundamentação Teórica}
 \label{sec:Fund}
 
-A Fundamentação Teórica tem como objetivo apresentar os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções \ref{sec:Fisiologia} Fisiologia do Coração, \ref{sec:FormaSinal} Formação do Sinal de Eletrocardiografia, \ref{sec:Exame} Exame de Eletrocardiografia, \ref{sec:SistemaDer} Sistema de Derivações e \ref{sec:Ondas} Ondas, Segmentos e Intervalos. Em seguida, as seções \ref{sec:Correl} Função Correlação e \ref{sec:RNA} Redes Neurais Artificiais abordam a operação da correlação e redes neurais, respectivamente. A seção \ref{sec:AvaliaSis} Avaliação de Desempenho de Sistemas Classificadores trata de assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção \ref{sec:Consid} Considerações.
+A Fundamentação Teórica apresenta os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções \ref{sec:Fisiologia} Fisiologia do Coração, \ref{sec:FormaSinal} Formação do Sinal de Eletrocardiografia, \ref{sec:Exame} Exame de Eletrocardiografia, \ref{sec:SistemaDer} Sistema de Derivações e \ref{sec:Ondas} Ondas, Segmentos e Intervalos. Em seguida, as seções \ref{sec:Correl} Função Correlação e \ref{sec:RNA} Redes Neurais Artificiais abordam a operação da correlação e redes neurais, respectivamente. A seção \ref{sec:AvaliaSis} Avaliação de Desempenho de Sistemas Classificadores trata de assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção \ref{sec:Consid} Considerações.
 
 \section{Fisiologia do Coração}
 \label{sec:Fisiologia}
@@ -170,7 +170,7 @@ No domínio discreto de dados a operação correlação pode ser calculada pela equaç
 \label{eq:correlacao}
 \end{equation}
 
-O padrão de sinal armazenado para comparação pode não ser realmente ao sinal que se pretende identificar, pode ser uma estimativa do sinal original, ou uma réplica. Pode ser utilizado um conjunto de padrões de sinais similares ao que se deseja buscar. É com base neste tipo de estimativas que operam astrônomos, peritos em criptografia e especialistas em supervisão eletrônica \cite{bloch2004l}.
+O padrão de sinal armazenado para comparação pode não ser realmente o sinal que se pretende identificar, pode ser uma estimativa do sinal original, ou uma réplica. Pode ser utilizado um conjunto de padrões de sinais similares ao que se deseja buscar. É com base neste tipo de estimativas que operam astrônomos, peritos em criptografia e especialistas em supervisão eletrônica \cite{bloch2004l}.
 
 \section{Redes Neurais Artificiais}
 \label{sec:RNA}
@@ -223,7 +223,7 @@ Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes 
 	\label{fig:RN4}
 \end{figure}
 
-Os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado de retropropagação \textit{(backpropagation)}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de frente para trás \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
+Os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado de retropropagação \textit{(backpropagation)}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de trás para frente \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
 
 \subsection{Estratégia de Treinamento para Rede Multicamadas}
 
@@ -435,6 +435,6 @@ accuracy = \frac{VP + VN}{VP + VN + FP + FN}
 \section{Considerações}
 \label{sec:Consid}
 
-O capítulo de Fundamentação Teórica forneceu esclarecimento acerca de diversos conhecimentos necessários durante a implementação do projeto. Entre eles, cabe destacar os conceitos abordados pelas seções \ref{sec:Correl} Função Correlação, \ref{sec:RNA} Redes Neurais Artificiais e \ref{sec:AvaliaSis} Avaliação de Sistemas Classificadores. O entendimento destes conceitos em particular é essencial para uma leitura proveitosa dos próximos capítulos desta monografia.
+O capítulo de Fundamentação Teórica forneceu esclarecimentos acerca de diversos conhecimentos necessários durante a implementação do projeto. Entre eles, cabe destacar os conceitos abordados pelas seções \ref{sec:Correl} Função Correlação, \ref{sec:RNA} Redes Neurais Artificiais e \ref{sec:AvaliaSis} Avaliação de Sistemas Classificadores. O entendimento destes conceitos em particular é essencial para uma leitura proveitosa dos próximos capítulos desta monografia.
 
 O próximo capítulo, \ref{sec:Materiais} Materiais e Métodos, explica a maneira como todos estes conhecimentos foram aplicados de modo prático, e também os recursos utilizados ao longo do desenvolvimento deste projeto.

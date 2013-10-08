@@ -85,7 +85,7 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 %resumo
 \begin{resumo}
 
-De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes corrompido por ruídos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de\sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização do sinal de ECG, marcação de eventos, extração de características, reconhecimento de padrões e avaliação de resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram realizadas as análises de sensibilidade e especificidade, permitindo a representação da Curva ROC do sistema classificador. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
+De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes com artefatos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de\sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: cinco módulos: visualização, marcação de eventos, extração de características, reconhecimento de padrões e avaliação dos resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram realizadas as análises de sensibilidade e especificidade, permitindo a representação da Curva ROC do sistema classificador. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
 
 \end{resumo}
 
@@ -181,7 +181,7 @@ Além disso, o texto da licença também atesta que: ``[ \dots] concede licença per
 
 \subsection{Biblioteca \textit{BrainNet Library}}
 
-A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Um parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação \sigla{XML}{\textit{eXtensible Markup Language}} \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (\sigla{CPOL}{\textit{The Code Project Open License}}) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
+A biblioteca \textit{BrainNet Library}, em sua maior parte desenvolvida na plataforma .NET seguindo os preceitos do paradigma de orientação à objetos, permite criar, treinar e executar redes neurais. Uma parte da biblioteca, chamada Neural XML, foi implementada em linguagem de programação \sigla{XML}{\textit{eXtensible Markup Language}} \cite{NN}.  Está sujeita aos termos da licença \textit{The Code Project Open License} (\sigla{CPOL}{\textit{The Code Project Open License}}) 1.02. De maneira geral, os termos da licença \cite{Code} atestam os seguintes pontos:
 
 \begin{itemize}
 	\item Código fonte e arquivos executáveis podem ser utilizados em aplicações comerciais;
@@ -295,7 +295,7 @@ O primeiro módulo do sistema a ser descrito é o módulo de visualização do sinal.
 
 Sobre a tela de seleção do sistema, é possível fazer a montagem dos sinais selecionados por meio do botão Montagem. Basicamente, são associados em pares, o primeiro e o segundo canais, terceiro e o quarto e assim por diante. Então é realizada a subtração. Esta funcionalidade deve ser configurada pelo médico, é muito utilizada para exibir na tela determinadas configurações de sinais de Eletroencefalografia (EEG). No entanto, esta funcionalidade não é utilizada na análise de sinais de Eletrocardiografia (ECG).
 
-A figura \ref{telaV} mostra a impressão no sinal na tela do sistema. Além dos sinais, a tela também apresenta opções para alterar a frequência e amplitude do sinal e opções para que o sinal possa ser visualizado em janelas de 5 ou 10 segundos.
+A figura \ref{telaV} mostra a impressão do sinal na tela do sistema. Além dos sinais, a tela também apresenta opções para alterar a frequência e amplitude do sinal e opções para que o sinal possa ser visualizado em janelas de 5 ou 10 segundos.
 
 \begin{figure}[!htb]
 	\centering
@@ -563,7 +563,7 @@ O próximo capítulo, \ref{sec:Resultados} Resultados Obtidos, pretende explorar o
 \chapter{Resultados Obtidos} % 3 a 4 páginas
 \label{sec:Resultados}
 
-Conforme foi explicado na subseção \ref{Vgeral} Visão Geral da seção \ref{sec:MOD} Sistema, o reconhecimento de padrões pode ser realizado de três maneiras distintas. A primeira delas utiliza Mapa de Kohonen, as outras duas utilizam redes neuras artificiais multicamadas. As redes multicamadas são treinadas com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características. Os resultados obtidos com cada tipo de reconhecimento são descritos nas seções \ref{sec:Testes0} Resultados com Mapa de Kohonen e \ref{sec:Testes1} Resultados com Rede Multicamadas, respectivamente. Este capítulo termina com a seção \ref{sec:TestesConsider} Considerações.
+Conforme foi apresentado na subseção \ref{Vgeral} Visão Geral da seção \ref{sec:MOD} Sistema, o reconhecimento de padrões pode ser realizado de três maneiras distintas. A primeira delas utiliza Mapa de Kohonen, as outras duas utilizam redes neuras artificiais multicamadas. As redes multicamadas são treinadas com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características. Os resultados obtidos com cada tipo de reconhecimento são descritos nas seções \ref{sec:Testes0} Resultados com Mapa de Kohonen e \ref{sec:Testes1} Resultados com Rede Multicamadas, respectivamente. Este capítulo termina com a seção \ref{sec:TestesConsider} Considerações.
 
 \section{Resultados com Mapa de Kohonen}
 \label{sec:Testes0}
@@ -615,7 +615,7 @@ A curva ROC do processo utilizando eventos marcados diretamente no sinal de ECG 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/rocecg1.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.5\textwidth]{./figs/rocecg1.png} % <- formatos PNG, JPG e PDF
 	\caption[Curva ROC dos resultados da rede Perceptron multicamadas]{Curva ROC dos resultados da rede Perceptron multicamadas}
 	\fonte{Autoria própria}
 	\label{ROC1}
@@ -649,16 +649,31 @@ A curva ROC do processo utilizando a base gerada após a extração de característi
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\textwidth]{./figs/rocecg2.png} % <- formatos PNG, JPG e PDF
+	\includegraphics[width=0.5\textwidth]{./figs/rocecg2.png} % <- formatos PNG, JPG e PDF
 	\caption[Curva ROC dos resultados da rede Perceptron multicamadas com correlação]{Curva ROC dos resultados da rede Perceptron multicamadas com correlação}
 	\fonte{Autoria própria}
 	\label{ROC2}
 \end{figure}
 
+\section{Comparativo}
+\label{sec:Comparativo}
+
+A figura \ref{ROC3} mostra as curvas ROC das três técnicas permitindo a comparação. Percebe-se que a técnica com melhor desempenho é o Mapa de Kohonen, pois o ponto que o representa é o que mais se aproxima do ponto em que a sensibilidade e a especificidade são iguais a um (sistema classificador ideal).
+
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./figs/comparar.png} % <- formatos PNG, JPG e PDF
+	\caption[Curvas ROC das três técnicas]{Curvas ROC das três técnicas}
+	\fonte{Autoria própria}
+	\label{ROC3}
+\end{figure}
+
+
 \section{Considerações}
 \label{sec:TestesConsider}
 
-Com base nós testes realizados, os três métodos de reconhecimento de padrões implementados podem ser considerados sistemas classificadores. A forma do gráfico da curva ROC da rede multicamadas, com ambas as bases de eventos, caracteriza o sistema como classificador, como foi explicado na subseção \ref{subsec:ROCCurva} Curva ROC. 
+Com base nos testes realizados, os três métodos de reconhecimento de padrões implementados podem ser considerados sistemas classificadores. A forma do gráfico da curva ROC da rede multicamadas, com ambas as bases de eventos, caracteriza o sistema como classificador, como foi explicado na subseção \ref{subsec:ROCCurva} Curva ROC. 
 
 O mesmo pode se afirmar por meio da observação dos dados estatísticos. Os valores da sensibilidade variaram entre 0,967005076 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1) e 0,995769882 (Mapa de Kohonen). Já os valores mínimo e máximo da especificidade variaram entre 0,915325995 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1) e 1 (rede multicamadas treinada com eventos marcados diretamente no sinal). E a eficiência apresentou como valor máximo 0,997460855 (Mapa de Kohonen) e valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1).
 
@@ -711,7 +726,7 @@ Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez
 
 Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria equipe realizar os testes, uma vez que a base de dados já possui marcações dos eventos, bastando apenas compará-las aos eventos identificados pelo sistema.
 
-Este capítulo apresenta as seções \ref{RecHardware} Recursos de Hardware, \ref{RecSoftware} Recursos de Software, \ref{Riscos} Análise de Riscos, \ref{Cronograma} Cronogramas e \ref{Horas} Horas de Trabalho.
+Este capítulo apresenta as seções \ref{RecHardware} Recursos de Hardware, \ref{RecSoftware} Recursos de Software, \ref{Riscos} Análise de Riscos, \ref{Cronograma} Cronograma,  \ref{Horas} Horas de Trabalho e \ref{GPConc} Considerações.
 
 \section{Recursos de Hardware}
 \label{RecHardware}
@@ -747,7 +762,7 @@ No início do projeto, durante a disciplina e Trabalho de Conclusão de Curso 1, a
 		    Desistência ou incapacitação de um   		& alto (5) 		 & média/baixa (2) & Não  \\ 
 		    dos membros da equipe						&          		 &	               &	  \\ \hline
 		    
-		    Falha de comunicação e integração  			& médio/alto (4) & média (3)	   & Não  \\ \hline
+		    Falha de comunicação e integração  			& médio/alto (4) & média (3)	   & Não  \\ 
 		    entre a equipe 								&          		 &	               &	  \\ \hline
 		    
 		    Escolha da técnica inadequada de     		& alto (5) 		 & média (3)	   & Não  \\ 
@@ -758,7 +773,7 @@ No início do projeto, durante a disciplina e Trabalho de Conclusão de Curso 1, a
 		    
 		    Modificação no escopo do projeto 			& médio (3)		 & média/baixa (2) & Sim  \\ \hline
 		    
-		    Análise do sistema realizada de modo 		& médio/alto (4) & média/baixa (2) & Não  \\ \hline
+		    Análise do sistema realizada de modo 		& médio/alto (4) & média/baixa (2) & Não  \\ 
 		    inadequado									&	   			 &	  			   &      \\ \hline
 		    
 		    Resultado final com baixo desempenho 		& alto (5) 		 & média/baixa (2) & Não  \\ \hline
@@ -830,6 +845,11 @@ A figura ~\ref{horas} mostra o comparativo entre as horas esperadas e as horas r
 	\fonte{Autoria própria}
 	\label{horas}
 \end{figure}
+
+\section{Considerações}
+\label{GPConc}
+
+Este capítulo apresentou os recursos de hardware e de software que foram utilizados no projeto. Foi apresentada também a análise de riscos, o cronograma e a quantidade de horas de trabalho envolvida no trabalho.
 
 %---------------------------------------------------------------
 
