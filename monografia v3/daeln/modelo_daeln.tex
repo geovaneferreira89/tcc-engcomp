@@ -34,7 +34,7 @@
 \cita{DANIELEWICZ, Georgea \protect e FERREIRA, Geovane Vinicius} % sobrenome (maiusculas), nome do autor do trabalho
 
 \palavraschave{eletrocardiografia, complexo QRS, análise de sinal, reconhecimento de padrões} % palavras-chave do trabalho
-\keywords{electrocardiography, QRS-complex, signal analysis, pattern classification} % palavras-chave do trabalho em ingles
+\keywords{electrocardiography, QRS-complex, signal analysis, pattern recognition} % palavras-chave do trabalho em ingles
 
 
 \comentario{\UTFPRdocumentodata\ apresentado ao \UTFPRdepartamentodata\ como requisito parcial para obtenção do grau de \UTFPRtitulacaodata\ no \UTFPRprogramadata\ da \ABNTinstituicaodata.}
@@ -85,14 +85,14 @@ Agradecemos de coração a todos os nossos familiares, pois sem eles esta realizaç
 %resumo
 \begin{resumo}
 
-De acordo com \cite{Zhang2007}, os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes com artefatos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de\sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: cinco módulos: visualização, marcação de eventos, extração de características, reconhecimento de padrões e avaliação dos resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram realizadas as análises de sensibilidade e especificidade, permitindo a representação da Curva ROC do sistema classificador. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
+Os exames eletrocardiográficos são considerados uma ferramenta bastante importante no diagnóstico de problemas cardíacos. Para avaliar adequadamente a situação de um coração, é necessário detectar corretamente o complexo QRS durante a análise do sinal de Eletrocardiografia (ECG), muitas vezes com artefatos. Este fato dificulta a rotina dos profissionais que analisam este tipo de exame. Em virtude disto, são necessárias ferramentas que busquem otimizar esta leitura e busca pelo padrão QRS. O objetivo deste projeto é desenvolver um sistema computacional para reconhecimento do complexo QRS em sinais de\sigla{ECG}{Eletrocardiografia}. A metodologia adotada foi composta pelas etapas de projeto, desenvolvimento e testes. As etapas de desenvolvimento e testes utilizaram uma base de dados de exames de ECG de domínio público. A etapa de testes foi realizada pela própria equipe, por meio de um módulo do sistema específico para este fim. O sistema desenvolvido é composto por cinco módulos: visualização, marcação de eventos, extração de características, reconhecimento de padrões e avaliação dos resultados. O módulo de extração de características aplica a função de correlação entre o padrão escolhido e o sinal de ECG, produzindo um novo sinal que funciona como entrada para o módulo de reconhecimento de padrões. Os eventos detectados por este módulo de reconhecimento são exibidos graficamente na tela. Por fim, o módulo de avaliação compara os resultados obtidos e os esperados, e os classifica como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. Com base nesta avaliação, foram realizadas as análises de sensibilidade e especificidade, permitindo a representação da Curva ROC do sistema classificador. Os resultados do projeto consistem, portanto, no próprio sistema e sua aplicação prática.
 
 \end{resumo}
 
 %abstract
 \begin{abstract}
 
-According to \cite{Zhang2007}, electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the electrocardiographic (ECG) signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools that improve the QRS-complex detection are required. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module compares the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
+Electrocardiographic recordings are considered  to be a highly important  tool in the diagnosis of cardiac disease. So as to make a proper evaluation of the heart condition, one must accurately detect the QRS-complex during the analysis of the electrocardiographic (ECG) signal, often corrupted by noise. Such fact hinders the routines of the professionals who analyze this type of medical recording. In consequence, tools that improve the QRS-complex detection are required. The aim of this project is the development of a computing system for QRS-complex identification in ECG signals. The methodology employed in this project comprises the stages of project, development and tests. The development and tests stages have used an ECG database available in the public domain. The tests stage was performed by the team responsible for this project by using a tool built in the system for this specific purpose. The system is composed of the following modules: ECG signal visualizing, event marking, characteristic extraction, pattern classification and results evaluation. The characteristic extraction module correlates a pattern and the ECG signal, producing a new signal, which works as input for the pattern classification module. The events detected by this pattern classification module are graphically exhibited on the computer screen. Finally, the evaluation module compares the results obtained from the system with the annotations from the database, and classify them as true positive, false positive, true negative or false negative. Based on this evaluation, both sensibility and specificity analysis were calculated, which allows the plot of a ROC graph. The achievements of this project, therefore, consist of the system itself and its practical usage. 
 
 \end{abstract}
 
@@ -130,7 +130,7 @@ De acordo com informações disponibilizadas pela Comissão Nacional de Ética em Pe
 
 A \textit{MIT-BIH Arrhythmia Database} foi desenvolvida pelo Beth Israel Hospital de Boston em parceria com o \sigla{MIT}{\textit{Massachusetts Institute of Technology}} durante uma pesquisa sobre arritmia e temas correlatos. Tem sido utilizada como um conjunto de dados padrão para testes e avaliação para sistemas detectores de arritmias e pesquisa em dinâmica cardíaca ~\cite{MOODY1990}.
 
-Os dados correspondem à 48 gravações de sianis de ECG com duração de meia hora cada uma. São apresentados dois sinais, \textit {modified limb lead II} (MLII) e \textit{lead} V1 (podendo ser ocasionalmente V2, V5 ou V4), ambos obtidos com os eletrodos colocados no peito. Esta é a configuração padrão utilizada pelo \textit{BIH Arrhythmia Laboratory}. Pode-se observar maior proeminência dos complexos QRS no sinal superior ~\cite{PhysioNet}. A figura ~\ref{105} mostra parte da gravação do exame 105.
+Os dados correspondem à 48 gravações de sinais de ECG com duração de meia hora cada uma. São apresentados dois sinais, \textit {modified limb lead II} (MLII) e \textit{lead} V1 (podendo ser ocasionalmente V2, V5 ou V4), ambos obtidos com os eletrodos colocados no peito. Esta é a configuração padrão utilizada pelo \textit{BIH Arrhythmia Laboratory}. Pode-se observar maior proeminência dos complexos QRS no sinal superior ~\cite{PhysioNet}. A figura ~\ref{105} mostra parte da gravação do exame 105.
 
 \begin{figure}[!htb]
 	\centering
@@ -150,7 +150,7 @@ Para a etapa de testes deste projeto, foi selecionado apenas o arquivo 105 por a
 \section{Padrão \textit{European Data Format}}
 \label{sec:EDF}
 
-A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi criado o \textit{European data format} (EDF), um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O \sigla{EDF}{\textit{European Data Format}} é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientificas \cite{Kemp20031755}.
+A existência de diferentes fabricantes de equipamentos para aquisição de sinais biomédicos implica em diferentes formatos de arquivo para salvar estes dados. Para solucionar este problema, foi elaborado o \textit{European data format} (EDF), um formato padrão para armazenamento de dados polissonográficos e eletroencefalográficos amplamente aceito. O \sigla{EDF}{\textit{European Data Format}} é o único formato digital que se tornou aceito tanto comercialmente nos equipamentos disponíveis como em pesquisas cientificas \cite{Kemp20031755}.
 
 Um arquivo EDF padrão consiste em um cabeçalho seguido dos dados amostrados. O cabeçalho identifica o paciente e especifica características técnicas do sinal gravado. Os dados apresentam épocas consecutivas, com duração fixa, a partir do sinal gravado \cite{Kemp20031755}.
 
@@ -241,9 +241,9 @@ Esta seção pretende fornecer um entendimento amplo do sistema desenvolvido a par
 \subsection{Visão Geral do Sistema}
 \label{Vgeral} 
 
-O sistema desenvolvido neste trabalho oferece duas técnicas diferentes para o reconhecimento de padrões: utilizando mapa de Kohonen e utilizando rede Perceptron Multicamadas . Esta subseção dará uma visão geral sobre o funcionamento delas.
+O sistema desenvolvido neste trabalho oferece duas técnicas diferentes para o reconhecimento de padrões: utilizando o mapa de Kohonen e utilizando a rede Perceptron multicamadas. Esta subseção apresenta uma visão geral do funcionamento das redes.
 
-A figura ~\ref{fluxo1} mostra o processo com a técnica de mapa de Kohonen.
+A figura ~\ref{fluxo1} mostra o processo com a técnica de mapa de Kohonen. Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, é feito o reconhecimento de padrões (Reconhecimento de Padrões), e os resultados são exibidos na tela . Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados).
 
 \begin{figure}[!htb]
 	\centering
@@ -253,9 +253,7 @@ A figura ~\ref{fluxo1} mostra o processo com a técnica de mapa de Kohonen.
 	\label{fluxo1}
 \end{figure}
 
-Primeiramente, o arquivo com o sinal de ECG é carregado na memória e exibido na tela (Visualização do sinal), em seguida, é feito o reconhecimento de padrões (Reconhecimento de Padrões), e os resultados são exibidos na tela . Um conjunto de marcações pertencente a base de dados (Marcações da base de dados) é utilizado como parâmetro de comparação com os resultados obtidos pelo sistema (Avaliação dos Resultados).
-
-Com a utilização da rede multicamadas, o treinamento pode ser realizado de suas maneiras. A primeira, e mais simples delas, utiliza diretamente o sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxoRNA1} mostra todo este processo.
+Com a utilização da rede Perceptron multicamadas, o treinamento pode ser realizado de suas maneiras. A primeira, e mais simples delas, utiliza diretamente o sinal de Eletrocardiografia (ECG). A figura ~\ref{fluxoRNA1} mostra todo este processo.
 
 \begin{figure}[!htb]
 	\centering
@@ -338,7 +336,7 @@ Após a realização de algumas marcações, o usuário pode editá-las por meio do Edi
 	\label{tela5}
 \end{figure}
 
-\subsection{Módulo de Extração de Características através de correlação}
+\subsection{Módulo de Extração de Características através da Correlação}
 \label{Mod3} 
 O módulo de extração de características produz um novo sinal, que pode ser utilizado como entrada do módulo de reconhecimento de padrões. A função correlação pode ser aplicada sucessivas vezes em um evento salvo (do tipo que se quer buscar, no caso o complexo QRS) e o sinal de Eletrocardiografia (ECG). O resultado pode ser observado na figura \ref{telaEC}, o primeiro sinal corresponde ao sinal original de ECG, e o segundo foi produzido pela extração de características. O acesso desta tela pode ser obtido ao selecionar Menu Ferramentas e Técnicas de Reconhecimento.
 
@@ -362,7 +360,7 @@ A extração de características é o processo pelo qual o sinal de Eletrocardiograf
 
 Como se pode perceber, os picos do sinal resultante correspondem aos instantes em que ocorrem o complexo QRS. Este novo sinal pode ser utilizado como entrada para o módulo de reconhecimento de padrões, a ser visto com mais detalhes na próxima seção.
 
-\subsection{Módulos de Reconhecimento de padrões}
+\subsection{Módulos de Reconhecimento de Padrões}
 \label{Mod4} 
 
 O módulo de reconhecimento de padrões oferece duas técnicas distintas: mapa de Kohonen e rede neural artificial Perceptron multicamadas. A rede neural Perceptron multicamadas pode ser treinada com dois tipos de dados diferentes: eventos marcados diretamente no sinal de Eletrocardiografia (ECG), ou eventos marcados no sinal resultante da extração de características (aplicação da correlação). A próxima subseção descreve o processo com a utilização do mapa de Kohonen. A subseção seguinte descreve o reconhecimento de padrões utilizando a rede Perceptron multicamadas.
@@ -376,7 +374,7 @@ O Mapa de Kohonen foi utilizado com o objetivo de identificar ocorrências do com
 
 O mapa é inicializado com fragmentos, ou janelas, obtidos do sinal. Inicialmente, foram realizados testes percorrendo o sinal todo e captando fragmentos deslocando o sinal ponto por ponto. Contudo, isso gerava fragmentos redundantes e aumentava o tempo de duração da etapa de reconhecimento de padrões. Em vista disso, foi decidido deslocar o sinal de cinco em cinco amostras para obtenção de cada janela. Outro aspecto relevante é que para particionar o sinal de ECG sem extração de características, são usadas 50 amostras. No particionamento do sinal de ECG após a extração de características é necessário utilizar 200 amostras.
 
-A figura \ref{classi2} mostra um exemplo simplificado de como seria uma mapa inicializado. As estrelas azuis representam nós onde existem fragmentos com o complexo QRS, e as bolas vermelhas representam fragmentos de sinal que não apresentam esta forma de onda.
+A figura \ref{classi1} mostra um exemplo simplificado de como seria uma mapa inicializado. As estrelas azuis representam nós onde existem fragmentos com o complexo QRS, e as bolas vermelhas representam fragmentos de sinal que não apresentam esta forma de onda.
 
 \begin{figure}[!htb]
 	\centering
@@ -424,11 +422,11 @@ A figura \ref{rec1} mostra a tela em que são exibidos os resultados após a execu
 \subsection{Módulo de Reconhecimento de Padrões com Rede Perceptron Multicamadas} 
 \label{RecMLP}
 
-A rede neural artificial foi implementada com três camadas. A camada de entrada, uma camada escondida e a camada de saída. Devido ao fato de o sinal apresentar 250 amostras por segundo, e o tamanho médio de um complexo QRS no sinal ser de 50 amostras, na camada de entrada numero de neurônios é 50. No entanto, este valor pode ser alterado, conforme as necessidades do usuário.
+A rede neural artificial foi implementada com três camadas. A camada de entrada, uma camada escondida e a camada de saída. Devido ao fato de o sinal apresentar 250 amostras por segundo, e o tamanho médio de um complexo QRS no sinal ser de 50 amostras, na camada de entrada o número de neurônios é 50. No entanto, este valor pode ser alterado, conforme as necessidades do usuário.
 
 Também foi utilizado o ajuste de referência do editor de eventos. Para que as janelas de sinal apresentadas corretamente à rede, e não deslocadas, evitando erros no treinamento.
  
-Na segunda camada da rede, foi utilizada a raiz do número de neurônios da camada de entrada. Ou seja, acima da raiz de 50. Este valor é alterado conforme se altera o tamanho da camada de entrada. A topologia da rede, portanto, pode ser representada como 50:8:1.
+Na segunda camada da rede, foi utilizada a raiz do número de neurônios da camada de entrada. Ou seja, o número inteiro superior a raiz de 50. Este valor é alterado conforme se altera o tamanho da camada de entrada. A topologia da rede, portanto, pode ser representada como 50:8:1.
 
 Finalmente, a última camada têm somente uma saída, que varia de 0 a 1. A equação  ~(\ref{eq:sigmo}) define a função de \textit{threshold} utilizada.
 
@@ -437,12 +435,11 @@ Finalmente, a última camada têm somente uma saída, que varia de 0 a 1. A equação
 \label{eq:sigmo}
 \end{equation}
 
-Outro fator que influenciou a análise, foram os pesos aleatórios iniciais, que variam entre -0.2 e +0.2. Estas são portanto, as configurações da rede neural multicamadas deste projeto.
+Outro fator que influenciou a análise, foram os pesos aleatórios iniciais, que variam entre -0,2 e +0,2. Estas são portanto, as configurações da rede neural multicamadas deste projeto.
 
-A mesma rede multicamadas foi treinada com dois conjuntos de dados distintos. O primeiro formado por eventos marcados diretamente no sinal. Os testes para a rede treinada com este conjunto de dados são feitos com sinal de ECG original.
+A mesma rede Perceptron multicamadas foi treinada com dois conjuntos de dados distintos.O primeiro conjunto de dados foi formado por eventos marcados diretamente no sinal. Os testes para a rede treinada com este conjunto de dados são feitos com sinal de ECG original.
 
-O segundo utiliza eventos marcados no sinal resultante da extração de características por correlação. Obviamente, a rede treinada com este conjunto de dados, também realiza o reconhecimento de padrões no sinal resultante da extração de características.
-Mais informações sobre estes conjuntos de dados se encontram na subseção \ref{geradados} Geração de Dados de Treinamento.
+O segundo conjunto de dados utiliza eventos marcados no sinal resultante da extração de características por correlação. Obviamente, a rede treinada com este conjunto de dados, também realiza o reconhecimento de padrões no sinal resultante da extração de características. Mais informações sobre estes conjuntos de dados se encontram na subseção \ref{sec:geradados} Geração de Dados de Treinamento.
 
 Na figura \ref{redemlpresulta} pode ser visualizada a tela de resultados após a conclusão do treinamento da rede e do processo de reconhecimento de padrões.
 
@@ -454,7 +451,7 @@ Na figura \ref{redemlpresulta} pode ser visualizada a tela de resultados após a 
 	\label{redemlpresulta}
 \end{figure}
 
-Na tela de resultados das técnicas de reconhecimento, após a utilização da rede multicamadas ou mapa de Kohonen, caso o usuário feche a tela, o aplicativo pergunta se deseja salvar os resultados. Em caso afirmativo, estes dados são salvos em um arquivo no mesmo diretório e com mesmo nome do arquivo do sinal (.edf), porém com uma extensão, e ficam disponíveis para uso futuro. Caso o usuário deseje visualizar os dados salvos na tela principal é necessário em Ferramentas e Resultados e automaticamente os resultados são carregados. Da mesma forma quando o arquivo do sinal é aberto o aplicativo verifica se já existe algum arquivo com resultados já salvo, e verifica se o usuário deseja carregá-los na tela.
+Na tela de resultados das técnicas de reconhecimento, após a utilização da rede Perceptron multicamadas ou mapa de Kohonen, caso o usuário feche a tela, o aplicativo pergunta se deseja salvar os resultados. Em caso afirmativo, estes dados são salvos em um arquivo no mesmo diretório e com mesmo nome do arquivo do sinal (.edf), porém com uma extensão, e ficam disponíveis para uso futuro. Caso o usuário deseje visualizar os dados salvos na tela principal é necessário em Ferramentas e Resultados e automaticamente os resultados são carregados. Da mesma forma quando o arquivo do sinal é aberto o aplicativo verifica se já existe algum arquivo com resultados já salvo, e verifica se o usuário deseja carregá-los na tela.
 
 \subsection{Módulo de Avaliação de Desempenho das Redes Neurais}
 \label{Mod5} 
@@ -527,10 +524,10 @@ O sistema foi desenvolvido na linguagem C\#. Na classe Program é iniciado o sist
 
 \section{Metodologia de Testes}
 \label{sec:Met-Testes}
-Esta seção visa explicar a metodologia utilizada na etapa de testes. É composta por apenas uma seção: \ref{geradados} Geração dos Dados de Treinamento.
+Esta seção apresenta a metodologia utilizada na etapa de testes. É composta por apenas uma seção: Geração dos Dados de Treinamento.
 
 \subsection{Geração dos Dados de Treinamento}
-\label{geradados}
+\label{sec:geradados}
 
 Para determinar se de fato ocorre um complexo QRS no sinal, foram tomadas como referência as marcações de complexo QRS provenientes da base de dados \textit{MIT-BIH Arrhythmia Database}. O arquivo de texto contendo as marcações do sinal de Eletrocardiografia (ECG) 105, apresenta 2691 eventos. Destes 2691 eventos, apenas 2572 são relevantes para os testes neste projeto, que correspondem às marcações  de \textit{Normal beat} (2526 ocorrências), \textit{Premature ventricular contraction} (41 ocorrências) e \textit{Unclassifiable beat} (5 ocorrências).
 
@@ -555,7 +552,7 @@ A figura \ref{geradados} mostra os dois tipos de eventos marcados que podem ser 
 
 Ao fim deste capítulo de Materiais e Métodos, espera-se que o leitor tenha compreendido como opera o sistema de acordo com as duas metodologias descritas: utilizando sinal de Eletrocardiografia (ECG) puro ou sinal após extração de características.
 
-O sistema foi explicado sob diferentes ângulos, desde a análise dos componentes básicos como bibliotecas e formato de arquivo utilizados, até uma análise global, envolvendo diagramas de blocos, apresentação de telas do sistema e Modelagem UML.
+O sistema foi explicado por diferentes abordagens, desde a análise dos componentes básicos como bibliotecas e formato de arquivo utilizados, até uma análise global, envolvendo diagramas de blocos, apresentação de telas do sistema e Modelagem UML.
 
 O próximo capítulo, \ref{sec:Resultados} Resultados Obtidos, pretende explorar o desempenho do sistema, conforme a metodologia de avaliação apresentada neste capítulo, na seção \ref{Mod5} Módulo de Avaliação de Desempenho das Redes Neurais.
 
@@ -563,13 +560,13 @@ O próximo capítulo, \ref{sec:Resultados} Resultados Obtidos, pretende explorar o
 \chapter{Resultados Obtidos} % 3 a 4 páginas
 \label{sec:Resultados}
 
-Conforme foi apresentado na subseção \ref{Vgeral} Visão Geral da seção \ref{sec:MOD} Sistema, o reconhecimento de padrões pode ser realizado de três maneiras distintas. A primeira delas utiliza Mapa de Kohonen, as outras duas utilizam redes neuras artificiais multicamadas. As redes multicamadas são treinadas com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características. Os resultados obtidos com cada tipo de reconhecimento são descritos nas seções \ref{sec:Testes0} Resultados com Mapa de Kohonen e \ref{sec:Testes1} Resultados com Rede Multicamadas, respectivamente. Este capítulo termina com a seção \ref{sec:TestesConsider} Considerações.
+Conforme foi apresentado na subseção \ref{Vgeral} Visão Geral da seção \ref{sec:MOD} Sistema, o reconhecimento de padrões pode ser realizado de três maneiras distintas. A primeira delas utiliza o Mapa de Kohonen, as outras duas utilizam redes neuras artificiais multicamadas. As redes multicamadas são treinadas com dois conjuntos de dados diferentes: marcações feitas diretamente no sinal de Eletrocardiografia (ECG), e marcações feitas no sinal resultante do processo de extração de características. Os resultados obtidos com cada tipo de reconhecimento são descritos nas seções \ref{sec:Testes0} Resultados com Mapa de Kohonen e \ref{sec:Testes1} Resultados com Rede Multicamadas, respectivamente. Este capítulo finaliza com a seção \ref{sec:TestesConsider} Considerações.
 
 \section{Resultados com Mapa de Kohonen}
 \label{sec:Testes0}
 
 Os testes realizados utilizando Mapa de Kohonen para reconhecimento de padrões obtiveram os resultados apresentados na tabela \ref{tab:kohonen}. De acordo com as marcações provenientes da base de dados, há 1182 ocorrências do complexo QRS 
-no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo complexo QRS se concentraram nas regiões do mapa em que a coordenada \textit{x} tem o valor 0 e a coordenada \textit{y} varia de 0 a 2. O coeficiente de aprendizado foi configurado com o valor 0.0001.
+no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo complexo QRS se concentraram nas regiões do mapa em que a coordenada \textit{x} tem o valor 0 e a coordenada \textit{y} varia de 0 a 2. O coeficiente de aprendizado foi configurado com o valor 0,0001.
 
 \begin{table}[!htb]
 	\centering
@@ -579,34 +576,34 @@ no fragmento do sinal analisado. Como visto anteriormente, eventos do tipo compl
 		    \hline
 		    VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
 		    \hline
-		    1177  & 1180  & 1  & 5  & 0,995769882 & 0,99915326 & 0,997460855 & 0,002332815 \\ \hline
+		    1177  & 1180  & 1  & 5  & 0,9957 & 0,9991& 0,9974& 0,0023 \\ \hline
 		    \end{tabular}
 		    \fonte{Autoria Própria}
 \end{table}
 
-\section{Resultados com Rede Multicamadas}
+\section{Resultados com Rede Perceptron Multicamadas}
 \label{sec:Testes1}
 
-A tabela \ref{tab:rawECG} mostra os resultados obtidos com uma rede MLP treinada com eventos marcados diretamente no sinal de ECG. Os dados analisados correspondem aos 14 primeiros minutos do sinal do arquivo 105, o que equivale a 1182 ocorrências do complexo QRS. Na tabela são apresentados os totais de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
+A tabela \ref{tab:rawECG1} mostra os resultados obtidos com uma rede MLP treinada com eventos marcados diretamente no sinal de ECG. Os dados analisados correspondem aos 14 primeiros minutos do sinal do arquivo 105, o que equivale a 1182 ocorrências do complexo QRS. Na tabela são apresentados os totais de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos obtidos pela etapa de reconhecimento de padrões. E também os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) considerando a variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
 	\caption[Resultados com marcações no ECG]{Resultados com marcações no ECG}
-	\label{tab:rawECG}
+	\label{tab:rawECG1}
 		    \begin{tabular}{ccccccccc}
 		    \hline
 		    \textit{Threshold} & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
 		    \hline
-		    1     & 1171  & 1181 & 0  	& 11 	& 0,990693739	& 1 		   & 0,9953	& 0,0042  \\ 
-		    0,9   & 1173  & 1181 & 0  	& 9  	& 0,992385787	& 1            & 0,9961	& 0,0034  \\ 
-		    0,8   & 1175  & 1181 & 0  	& 7  	& 0,994077834 	& 1            & 0,9970	& 0,0027  \\ 
-		    0,7   & 1176  & 1181 & 0  	& 6  	& 0,994923858	& 1            & 0,9974	& 0,0023  \\ 
-		    0,6   & 1176  & 1180 & 1  	& 6  	& 0,994923858	& 0,99915326   & 0,9970	& 0,0027  \\ 
-		    0,5   & 1176  & 1180 & 1  	& 6  	& 0,994923858	& 0,99915326   & 0,9970	& 0,0027  \\
-		    0,4   & 1176  & 1180 & 1  	& 6  	& 0,994923858	& 0,99915326   & 0,9970	& 0,0027  \\
-		    0,3   & 1177  & 1179 & 2  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
-		    0,2   & 1177  & 1179 & 3  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\
-		    0,1   & 1177  & 1179 & 3  	& 5  	& 0,995769882	& 0,99830652   & 0,9970	& 0,0027  \\ \hline
+		    1     & 1171  & 1181 & 0  	& 11 	& 0,9906	& 1 	   & 0,9953	& 0,0042  \\ 
+		    0,9   & 1173  & 1181 & 0  	& 9  	& 0,9923	& 1        & 0,9961	& 0,0034  \\ 
+		    0,8   & 1175  & 1181 & 0  	& 7  	& 0,9940 	& 1        & 0,9970	& 0,0027  \\ 
+		    0,7   & 1176  & 1181 & 0  	& 6  	& 0,9949	& 1        & 0,9974	& 0,0023  \\ 
+		    0,6   & 1176  & 1180 & 1  	& 6  	& 0,9949	& 0,9991   & 0,9970	& 0,0027  \\ 
+		    0,5   & 1176  & 1180 & 1  	& 6  	& 0,9949	& 0,9991   & 0,9970	& 0,0027  \\
+		    0,4   & 1176  & 1180 & 1  	& 6  	& 0,9949	& 0,9991   & 0,9970	& 0,0027  \\
+		    0,3   & 1177  & 1179 & 2  	& 5  	& 0,9957	& 0,9983   & 0,9970	& 0,0027  \\
+		    0,2   & 1177  & 1179 & 3  	& 5  	& 0,9957	& 0,9983   & 0,9970	& 0,0027  \\
+		    0,1   & 1177  & 1179 & 3  	& 5  	& 0,9957	& 0,9983   & 0,9970	& 0,0027  \\ \hline
 		    \end{tabular}
 		    \fonte{Autoria Própria}
 \end{table}
@@ -621,26 +618,26 @@ A curva ROC do processo utilizando eventos marcados diretamente no sinal de ECG 
 	\label{ROC1}
 \end{figure}
 
-A tabela \ref{tab:rawECG} mostra os resultados obtidos com a base de eventos gerada após o processo de extração de características (correlação). Do mesmo modo que a seção anterior, o conjunto de testes considera os primeiros 14 minutos do sinal de ECG do arquivo 105, correspondendo a 1182 ocorrências do complexo QRS. São apresentadas as quantidades de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
+A tabela \ref{tab:rawECG2} mostra os resultados obtidos com a base de eventos gerada após o processo de extração de características (correlação). Do mesmo modo que a seção anterior, o conjunto de testes considera os primeiros 14 minutos do sinal de ECG do arquivo 105, correspondendo a 1182 ocorrências do complexo QRS. São apresentadas as quantidades de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos, e os índices estatísticos sensibilidade, especificidade, eficiência e \textit{Detection Error Rate} (DER) obtidos com variação do \textit{threshold}.
 
 \begin{table}[!htb]
 	\centering
 	\caption[Tabela de Resultados após correlação]{Tabela de Resultados após correlação}
-	\label{tab:rawECG}
+	\label{tab:rawECG2}
 		    \begin{tabular}{ccccccccc}
 		    \hline
 			\textit{Threshold} & VP & VN & FP & FN & Sensibilidade & Especificidade & Eficiência & DER \\ \hline
 		    \hline
-		    1         & 1143 & 1095 & 86 & 39  & 0,967005076 & 0,927180356 & 0,947101143 & 0,0486\\ 
-		    0,9       & 1143 & 1093 & 88 & 39  & 0,967005076 & 0,925486876 & 0,946254761 & 0,0493\\ 
-		    0,8       & 1144 & 1089 & 92 & 38  & 0,9678511   & 0,922099915 & 0,944985188 & 0,0505\\ 
-		    0,7       & 1144 & 1089 & 92 & 38  & 0,9678511   & 0,922099915 & 0,944985188 & 0,0505\\ 
-		    0,6       & 1144 & 1084 & 97 & 38  & 0,9678511   & 0,922099915 & 0,942869234 & 0,0524\\ 
-		    0,5       & 1144 & 1084 & 97 & 38  & 0,9678511   & 0,922099915 & 0,942869234 & 0,0524\\ 
-		    0,4       & 1145 & 1083 & 98 & 37  & 0,968697124 & 0,917019475 & 0,942869234 & 0,0524\\ 
-		    0,3       & 1145 & 1082 & 99 & 37  & 0,968697124 & 0,916172735 & 0,942446043 & 0,0528\\ 
-		    0,2       & 1145 & 1081 & 100 & 37 & 0,968697124 & 0,915325995 & 0,942022852 & 0,0532\\ 
-		    0,1       & 1145 & 1081 & 100 & 37 & 0,968697124 & 0,915325995 & 0,942022852 & 0,0532\\ \hline
+		    1         & 1143 & 1095 & 86 & 39  & 0,9670 & 0,9271 & 0,9471 & 0,0486\\ 
+		    0,9       & 1143 & 1093 & 88 & 39  & 0,9670 & 0,9254 & 0,9462 & 0,0493\\ 
+		    0,8       & 1144 & 1089 & 92 & 38  & 0,9678 & 0,9220 & 0,9449 & 0,0505\\ 
+		    0,7       & 1144 & 1089 & 92 & 38  & 0,9678 & 0,9220 & 0,9449 & 0,0505\\ 
+		    0,6       & 1144 & 1084 & 97 & 38  & 0,9678 & 0,9220 & 0,9428 & 0,0524\\ 
+		    0,5       & 1144 & 1084 & 97 & 38  & 0,9678 & 0,9220 & 0,9428 & 0,0524\\ 
+		    0,4       & 1145 & 1083 & 98 & 37  & 0,9686 & 0,9170 & 0,9428 & 0,0524\\ 
+		    0,3       & 1145 & 1082 & 99 & 37  & 0,9686 & 0,9161 & 0,9424 & 0,0528\\ 
+		    0,2       & 1145 & 1081 & 100 & 37 & 0,9686 & 0,9153 & 0,9420 & 0,0532\\ 
+		    0,1       & 1145 & 1081 & 100 & 37 & 0,9686 & 0,9153 & 0,9420 & 0,0532\\ \hline
 		    \end{tabular}
 		    \fonte{Autoria Própria}
 \end{table}
@@ -655,16 +652,16 @@ A curva ROC do processo utilizando a base gerada após a extração de característi
 	\label{ROC2}
 \end{figure}
 
-\section{Comparativo}
+\section{Comparativo de Desempenho das Redes}
 \label{sec:Comparativo}
 
-A figura \ref{ROC3} mostra as curvas ROC das três técnicas permitindo a comparação. Percebe-se que a técnica com melhor desempenho é o Mapa de Kohonen, pois o ponto que o representa é o que mais se aproxima do ponto em que a sensibilidade e a especificidade são iguais a um (sistema classificador ideal).
+A figura \ref{ROC3} mostra um detalhe da curva ROC com a sobreposição do desempenho das três técnicas avaliadas, permitindo uma comparação de desempenho entre os algoritmos, visto que foi utilizado o mesmo conjunto de sinais. Percebe-se que a técnica com melhor desempenho é o Mapa de Kohonen, pois o ponto que o representa é o que mais se aproxima do ponto em que a sensibilidade e a especificidade são iguais a um (sistema classificador ideal). A rede MLP com sinal de ECG apresentou resultados comparáveis ao Mapa de Kohonen. E a rede MLP com extração de características via correlação apresentou um desempenho muito inferior, comparado com as outras duas implementações.
 
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./figs/comparar.png} % <- formatos PNG, JPG e PDF
-	\caption[Curvas ROC das três técnicas]{Curvas ROC das três técnicas}
+	\caption[Detalhe da curva ROC com a sobreposição dos desempenhos dos algoritmos avaliados]{Detalhe da curva ROC com a sobreposição dos desempenhos dos algoritmos avaliados}
 	\fonte{Autoria própria}
 	\label{ROC3}
 \end{figure}
@@ -673,11 +670,11 @@ A figura \ref{ROC3} mostra as curvas ROC das três técnicas permitindo a comparaç
 \section{Considerações}
 \label{sec:TestesConsider}
 
-Com base nos testes realizados, os três métodos de reconhecimento de padrões implementados podem ser considerados sistemas classificadores. A forma do gráfico da curva ROC da rede multicamadas, com ambas as bases de eventos, caracteriza o sistema como classificador, como foi explicado na subseção \ref{subsec:ROCCurva} Curva ROC. 
+Com base nos testes realizados, os três métodos de reconhecimento de padrões implementados podem ser considerados sistemas classificadores. A forma do gráfico da curva ROC da rede Perceptron multicamadas, com ambas as bases de eventos, caracteriza o sistema como classificador, como foi explicado na subseção \ref{subsec:ROCCurva} Curva ROC. 
 
-O mesmo pode se afirmar por meio da observação dos dados estatísticos. Os valores da sensibilidade variaram entre 0,967005076 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1) e 0,995769882 (Mapa de Kohonen). Já os valores mínimo e máximo da especificidade variaram entre 0,915325995 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1) e 1 (rede multicamadas treinada com eventos marcados diretamente no sinal). E a eficiência apresentou como valor máximo 0,997460855 (Mapa de Kohonen) e valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1).
+O mesmo pode se afirmar por meio da observação dos dados estatísticos. Os valores da sensibilidade variaram entre 0,9670 (rede Perceptron multicamadas treinada com extração de características e \textit{threshold} 0,1) e 0,9957 (Mapa de Kohonen). Já os valores mínimo e máximo da especificidade variaram entre 0,9153 (rede Perceptron multicamadas treinada com extração de características e \textit{threshold} 0,1) e 1 (rede Perceptron multicamadas treinada com eventos marcados diretamente no sinal). E a eficiência apresentou como valor máximo 0,9974 (Mapa de Kohonen) e valor mínimo 0,9420 (rede Perceptron multicamadas treinada com extração de características e \textit{threshold} 0,1).
 
-Os resultados obtidos com a utilização do Mapa de Kohonen superaram em muito qualquer expectativa, dada a facilidade de sua implementação e o fato de realizar aprendizado não supervisionado. Em relação a rede multicamadas, o Mapa de Kohonen mostrou melhor desempenho, ao menos para o fragmento do sinal testado. Nas poucas partes em que o sinal apresentou muito ruído, a rede multicamadas foi mais eficiente.
+Os resultados obtidos com a utilização do Mapa de Kohonen superaram em muito qualquer expectativa, dada a facilidade de sua implementação e o fato de realizar aprendizado não supervisionado. Em relação a rede Perceptron multicamadas, o Mapa de Kohonen mostrou melhor desempenho, ao menos para o fragmento do sinal testado. Nas poucas partes em que o sinal apresentou muito ruído, a rede Perceptron multicamadas foi mais eficiente.
 
 Na tabela \ref{tab:correlacao}, podem ser observados resultados obtidos a partir da aplicação de diferentes métodos na mesma base de dados utilizada neste trabalho. E possibilita a comparação dos valores observados do índice \textit{Detection Error Rate} (DER) entre eles.
 
@@ -714,17 +711,17 @@ Na tabela \ref{tab:correlacao}, podem ser observados resultados obtidos a partir
 
 Cabe destacar, no entanto, que os resultados apresentados na tabela \ref{tab:correlacao} são relativos ao uso do sinal inteiro, em que as marcações da base de dados acusam entre 2572 e 2690 ocorrências do complexo QRS. Enquanto este projeto realizou testes com metade do mesmo sinal, apresentando 1182 ocorrências do complexo QRS.
 
-No entanto, o menor valor do índice \textit{Detection Error Rate} (DER) obtido pelos outros trabalhos foi 0,5 (filtro adaptativo e rede neural). E o presente trabalho teve como valor mínimo do índice DER 0,002332815 (aplicação do Mapa de Kohonen), valor inferior ao obtido por qualquer dos outros trabalhos. O valor máximo do índice DER observado nos testes deste projeto foi 0,053265941 (rede multicamadas com extração de características e \textit{threshold} 0,1).
+No entanto, o menor valor do índice \textit{Detection Error Rate} (DER) obtido pelos outros trabalhos foi 0,5 (filtro adaptativo e rede neural). E o presente trabalho teve como valor mínimo do índice DER 0,0023 (aplicação do Mapa de Kohonen), valor inferior ao obtido por qualquer dos outros trabalhos. O valor máximo do índice DER observado nos testes deste projeto foi 0,0532 (rede Perceptron multicamadas com extração de características e \textit{threshold} 0,1).
+
+Este capítulo apresentou os resultados de avaliação de desempenho de três técnicas de redes neurais utilizadas como classificador para o reconhecimento do complexo QRS no sinal de ECG. A comparação de desempenho pode ser realizada diretamente entre as técnicas devido ao uso do mesmo conjunto de sinais. Devido ao uso de parte do arquivo 105, os resultados obtidos neste trabalho não podem ser comparados com os resultados apresentados na literatura e listados na tabela \ref{tab:correlacao}. 
+
+O próximo capítulo apresenta os resultados da gestão do trabalho.
 
 %-------------------------------------------------------------------------------
 \chapter{Gestão do Projeto} % 1 página
 \label{sec:Gestao}
 
-Inicialmente, este projeto pretendia utilizar uma base de dados de exames de Eletroencefalografia (EEG), obtida em um Hospital, mediante autorização do Comitê de Ética da Instituição. A metodologia de testes seria realizada por um médico neurologista, que avaliaria os resultados do sistema, classificando-os como verdadeiro positivo, verdadeiro negativo, falso positivo ou falso negativo. 
-
-Contudo, dada a limitação de tempo para a conclusão deste trabalho, e a escassez de bases de dados de \sigla{EEG}{Eletroencefalografia} públicas adequadas (o que dispenderia menor tempo, por não necessitar de autorização do Comitê de Ética), a equipe alterou o escopo do projeto, passando a utilizar uma base de dados pública de Eletrocardiografia (ECG).
-
-Esta mudança trouxe alguns benefícios, dentre eles a possibilidade de a própria equipe realizar os testes, uma vez que a base de dados já possui marcações dos eventos, bastando apenas compará-las aos eventos identificados pelo sistema.
+O uso do banco de sinais de ECG desenvolvido pelo MIT-BIH possibilitou um série de facilidades: disponibilidade livre na internet, sem custos, não há a necessidade do projeto para o comitê de ética em pesquisa com seres humanos, acrescido da disponibilidade das marcações dos complexos QRS executadas por especialistas em cardiologia. Este banco de sinais com as marcações disponíveis na internet também economizou tempo em contactar um especialista para efetuar as marcações.
 
 Este capítulo apresenta as seções \ref{RecHardware} Recursos de Hardware, \ref{RecSoftware} Recursos de Software, \ref{Riscos} Análise de Riscos, \ref{Cronograma} Cronograma,  \ref{Horas} Horas de Trabalho e \ref{GPConc} Considerações.
 
@@ -787,7 +784,7 @@ No início do projeto, durante a disciplina e Trabalho de Conclusão de Curso 1, a
 		    \fonte{Autoria Própria}
 \end{table}
 
-Dentre todos os riscos avaliados e contingenciados, apenas um de fato ocorreu: a modificação no escopo do projeto. O escopo do projeto precisou ser modificado, adaptando o sistema a uma base de dados de sinais de Eletrocardiografia (ECG), no lugar da base de sinais eletroencefalográficos inicialmente planejada.
+Dentre todos os riscos avaliados e contingenciados, apenas um deles de fato ocorreu: a modificação no escopo do projeto. O escopo do projeto precisou ser modificado, adaptando o sistema a uma base de dados de sinais de Eletrocardiografia (ECG), no lugar da base de sinais eletroencefalográficos inicialmente planejada.
 
 \section{Cronograma}
 \label{Cronograma}
@@ -849,31 +846,30 @@ A figura ~\ref{horas} mostra o comparativo entre as horas esperadas e as horas r
 \section{Considerações}
 \label{GPConc}
 
-Este capítulo apresentou os recursos de hardware e de software que foram utilizados no projeto. Foi apresentada também a análise de riscos, o cronograma e a quantidade de horas de trabalho envolvida no trabalho.
+Este capítulo apresentou os recursos de hardware e de software que foram utilizados no projeto. Foram apresentadas também as principais análises de gestão de projetos, destacando-se a análise de riscos, o cronograma e a quantidade de horas de trabalho envolvida no trabalho.
 
 %---------------------------------------------------------------
 
 \chapter{Considerações Finais} % 1 página
 \label{sec:CFinais}
 
-Os objetivos inicialmente definidos foram alcançados plenamente. O projeto concluiu o desenvolvimento de um sistema computacional, capaz de visualizar sinais de ECG armazenados em arquivos digitais, apresentando ainda as funcionalidades de marcar e salvar eventos do sinal, e reconhecer padrões.  Além disso, foi implementada uma técnica a mais do que inicialmente planejado. Ao todo, o sistema apresenta três técnicas diferentes para o reconhecimento de padrões: mapa de Kohonen, rede multicamadas treinada com eventos marcados diretamente no sinal e rede multicamadas treinada com eventos obtidos após a extração de características por meio da correlação.
+Os objetivos inicialmente definidos foram alcançados plenamente. O projeto concluiu o desenvolvimento de um sistema computacional, capaz de visualizar sinais de ECG armazenados em arquivos digitais, apresentando ainda as funcionalidades de marcar e salvar eventos do sinal, e reconhecer padrões.  Além disso, foi implementada uma técnica a mais do que inicialmente planejado. Ao todo, o sistema apresenta três técnicas diferentes para o reconhecimento de padrões: mapa de Kohonen, rede Perceptron multicamadas treinada com eventos marcados diretamente no sinal e rede Perceptron multicamadas treinada com eventos obtidos após a extração de características por meio da correlação.
 
-Cada uma das técnicas de reconhecimento de padrões implementada foi testada com o mesmo arquivo de sinal. A rede neural mapa de Kohonen apresentou os valores 0,995769882, 0,99915326 e 0,997460855 para sensibilidade, especificidade e eficiência.
+Cada uma das técnicas de reconhecimento de padrões implementada foi testada com o mesmo arquivo de sinal. A rede neural mapa de Kohonen apresentou os valores 0,9957, 0,9991 e 0,9974 para sensibilidade, especificidade e eficiência.
 
-A rede neural Perceptron multicamadas foi testada com o \textit{threshold} (limiar de decisão) variando de 0,1 a 1, e os valores máximos alcançados para sensibilidade, especificidade e eficiência foram 0,995769882, 1 e 0,9970. Os valores mínimos de sensibilidade, especificidade e eficiência foram 0,990693739, 0,99830652 e 0,9953. Nos testes com a rede Perceptron multicamadas com extração de características, a sensibilidade variou de 0,967005076 (valor mínimo) a 0,968697124 (valor máximo). A especificidade variou de 0,915325995 a 0,927180356, e a eficiência de 0,942022852 a 0,947101143.
+A rede neural Perceptron multicamadas na topologia 50:8:1 foi testada com o \textit{threshold} (limiar de decisão) variando de 0,1 a 1, e os valores máximos alcançados para sensibilidade, especificidade e eficiência foram 0,9957, 1 e 0,9970. Os valores mínimos de sensibilidade, especificidade e eficiência foram 0,9906, 0,9983 e 0,9953. Nos testes com a rede Perceptron multicamadas com extração de características, a sensibilidade variou de 0,9670 (valor mínimo) a 0,9686 (valor máximo). A especificidade variou de 0,9153 a 0,9271, e a eficiência de 0,9420 a 0,9471.
 
-Todas as técnicas apresentaram valores acima de 0,91 para os índices estatísticos de eficiência, especificidade e sensibilidade. Os valores mínimos da sensibilidade e da especificidade, considerando todas as técnicas, foram 0,967005076 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1) e 0,915325995 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1), respectivamente. A eficiência apresentou o valor mínimo 0,942022852 (rede multicamadas treinada com extração de características e \textit{threshold} 0,1).
+Todas as técnicas apresentaram valores acima de 0,91 para os índices estatísticos de especificidade, sensibilidade e eficiência. Os valores mínimos da sensibilidade e da especificidade, considerando todas as técnicas, foram 0,9670 (rede Perceptron multicamadas treinada com extração de características e \textit{threshold} 0,1) e 0,9153 (rede Perceptron multicamadas treinada com extração de características e \textit{threshold} 0,1), respectivamente. A eficiência apresentou o valor mínimo 0,9420 (rede Perceptron multicamadas treinada com extração de características e \textit{threshold} 0,1).
+
+Neste trabalho acadêmico, foi utilizado parte dos sinais normalmente utilizados como \textit{benchmark} de algoritmos de reconhecimento de padrões. Foram utilizados os primeiros 14 minutos de sinal de um arquivo de 30 minutos. Os valores de desempenho alcançados com estas técnicas devem-se as épocas de sinais utilizadas. A justificativa para obter resultados de desempenho superiores ao apresentado pela literatura é justamente o uso de parte do arquivo de sinais.
 
 Em relação a utilização da base de dados obtida com extração de características, esperava-se que os testes apresentassem melhores resultados. Todavia, o Mapa de Kohonen mostrou-se extremamente eficiente como sistema classificador.
 
-O desenvolvimento deste trabalho dispendeu 655 horas, que foram dedicadas tanto ao estudo da fundamentação teórica, quanto ao desenvolvimento do projeto propriamente dito. A principal dificuldade encontrada foi devido à necessidade de modificação do escopo do projeto. Em virtude do prazo para a conclusão do sistema, a equipe e o professor orientador decidiram trocar a base de sinais eletroencefalográficos a ser utilizada inicialmente por uma base de sinais eletrocardiográficos, pelo fato de ser pública e possuir marcações dos eventos que se pretendia detectar.
+O desenvolvimento deste trabalho dispendeu 655 horas, que foram dedicadas tanto ao estudo da fundamentação teórica, quanto ao desenvolvimento do projeto propriamente dito. A principal dificuldade encontrada foi devido à necessidade de modificação do escopo do projeto.
 
 Esta questão relativa à adoção de uma nova base de dados e adequação do sistema atrasou o desenvolvimento do projeto em torno de três meses. Contudo, após a tomada de decisão que levou a esta reestruturação, os módulos de reconhecimento de padrões e de avaliação do sistema, a etapa de testes e o relatório puderam ser concluídos durante os meses de julho, agosto e setembro de 2013.
 
 Como trabalhos futuros, propõe-se o uso de outras bases de dados contendo outros tipos de sinal, como sinais de Eletroencefalografia (EEG), por exemplo. Seria interessante observar o comportamento dos métodos de reconhecimento implementados atuando sobre outros tipos de dados, com formas de onda menos definidas.
-
-
-
 
 
 %------------------ Referencias --------------------

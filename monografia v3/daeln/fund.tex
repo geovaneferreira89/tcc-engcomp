@@ -1,7 +1,7 @@
 \chapter{Fundamentação Teórica}
 \label{sec:Fund}
 
-A Fundamentação Teórica apresenta os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções \ref{sec:Fisiologia} Fisiologia do Coração, \ref{sec:FormaSinal} Formação do Sinal de Eletrocardiografia, \ref{sec:Exame} Exame de Eletrocardiografia, \ref{sec:SistemaDer} Sistema de Derivações e \ref{sec:Ondas} Ondas, Segmentos e Intervalos. Em seguida, as seções \ref{sec:Correl} Função Correlação e \ref{sec:RNA} Redes Neurais Artificiais abordam a operação da correlação e redes neurais, respectivamente. A seção \ref{sec:AvaliaSis} Avaliação de Desempenho de Sistemas Classificadores trata de assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção \ref{sec:Consid} Considerações.
+A Fundamentação Teórica apresenta os conceitos envolvidos no desenvolvimento do projeto. Inicialmente, serão abordados temas relativos ao coração humano e à geração do sinal de Eletrocardiografia (ECG), englobando as seções \ref{sec:Fisiologia} Fisiologia do Coração, \ref{sec:FormaSinal} Formação do Sinal de Eletrocardiografia, \ref{sec:Exame} Exame de Eletrocardiografia, \ref{sec:SistemaDer} Sistema de Derivações e \ref{sec:Ondas} Ondas, Segmentos e Intervalos. Em seguida, as seções \ref{sec:Correl} Função Correlação e \ref{sec:RNA} Redes Neurais Artificiais abordam a operação da correlação e redes neurais, respectivamente. A seção \ref{sec:AvaliaSis} Avaliação de Desempenho de Sistemas Classificadores aborda os assuntos relativos à análise dos resultados do sistema. E o capítulo é finalizado com  a seção \ref{sec:Consid} Considerações.
 
 \section{Fisiologia do Coração}
 \label{sec:Fisiologia}
@@ -52,7 +52,7 @@ Estas mudanças no potencial elétrico durante os processos de despolarização e re
 \section{Exame de Eletrocardiografia}
 \label{sec:Exame}
 
-Dentre as vantagens dos exames de Eletrocardiografia (ECG), podem ser citadas seu baixo custo, facilidade de implementação, o fato de ser um procedimento não invasivo e a obtenção imediata dos resultados \cite{GACEK2011}.
+Dentre as vantagens dos exames de Eletrocardiografia (ECG), podem ser citadas seu baixo custo, facilidade de execução, o fato de ser um procedimento não invasivo e a obtenção imediata dos resultados \cite{GACEK2011}.
 
 Os exames de ECG podem auxiliar em diagnósticos cardiológicos tais como \cite{MALMIVUO1995}:
 
@@ -99,7 +99,7 @@ Os possíveis artefatos em sinais biomédicos são os instrumentais, como os de ele
 \section{Sistema de Derivações}
 \label{sec:SistemaDer}
 
-A configuração mais comum em exames ambulatoriais de Eletrocardiografia (ECG) é o sistema 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
+A configuração mais comum em exames ambulatoriais de Eletrocardiografia (ECG) é o sistema de 12 derivações, que consiste nas seguintes derivações \cite{MALMIVUO1995}:
 
 \begin{itemize}
 	\item Derivações dos membros (\textit{Limb leads}): I, II, III;	 
@@ -138,7 +138,7 @@ O segmento PQ expressa o tempo decorrido entre a despolarização atrial e o começ
 
 A identificação do complexo QRS não apresenta grandes dificuldades, uma vez que possui forma de onda característica e amplitude dominante. Esta amplitude mede cerca de 1 mV em um coração normal, mas pode ser muito maior em uma hipertrofia ventricular. O complexo QRS é o maior grupo de ondas no ECG e corresponde à despolarização ventricular.  A primeira deflexão negativa é a onda Q. Seguida de uma deflexão positiva, a onda R, sendo finalizada com uma última deflexão negativa denominada de onda S, completando um complexo QRS \cite{GACEK2011}.
 
-A duração normal do QRS fica entre 0,08 e 0,09 segundos. Durações maiores são geralmente devidas à despolarização assíncrona dos dois ventrículos. Isto ocorre em casos de bloqueio atrioventricular de primeiro grau, síndromes de pré-excitação ou contração ventricular prematura. Nestas situações, um ventrículo é despolarizado mais cedo que o outro, fazendo com que o complexo QRS apresente uma onda R seguida de outra onda R. Estas ondas correspondem à despolarização dos dois ventrículos \cite{GACEK2011}. A figura ~\ref{fig:QRS} mostra as formas de onda características de um ciclo cardíaco.
+A duração normal do QRS fica é de 0,08 a 0,09 segundos. Durações maiores são geralmente devidas à despolarização assíncrona dos dois ventrículos. Isto ocorre em casos de bloqueio atrioventricular de primeiro grau, síndromes de pré-excitação ou contração ventricular prematura. Nestas situações, um ventrículo é despolarizado mais cedo que o outro, fazendo com que o complexo QRS apresente uma onda R seguida de outra onda R. Estas ondas correspondem à despolarização dos dois ventrículos \cite{GACEK2011}. A figura ~\ref{fig:QRS} mostra as formas de onda características de um ciclo cardíaco.
 
 \begin{figure}[!htb]
 	\centering
@@ -175,11 +175,11 @@ O padrão de sinal armazenado para comparação pode não ser realmente o sinal que 
 \section{Redes Neurais Artificiais}
 \label{sec:RNA}
 
-O cérebro humano funciona de modo completamente diferente dos computadores digitais convencionais. O cérebro pode ser considerado um computador extremamente complexo, não linear com paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
+O cérebro humano funciona de modo completamente diferente dos computadores digitais. O cérebro pode ser considerado um computador extremamente complexo, não linear com paralelismo. As unidades básicas que constituem o cérebro, chamadas neurônios, têm a capacidade de organizarem-se para desempenhar tarefas tais como reconhecimento de padrões, percepção e controle motor \cite{HAYKIN2011}.
 
 De certa forma, as redes neurais artificiais foram criadas para realizar atividades mimetizando o cérebro humano. As redes neurais artificiais são modelos matemáticos que podem ser implementadas com componentes eletrônicos ou simuladas em software \cite{HAYKIN2011}.
 
-As unidades básicas de processamento de uma rede neural artificial são chamadas de neurônios, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
+A unidade básica de processamento de uma rede neural artificial é chamada de neurônio, analogamente ao cérebro humano. Os neurônios formam entre si grandes conexões caracterizadas por pesos sinápticos \cite{HAYKIN2011}. 
 
 As redes neurais artificiais passam por um processo de aprendizado, também conhecido como algoritmo de aprendizado. Neste processo, são modificados os pesos sinápticos dos neurônios de maneira ordenada visando alcançar um determinado estado objetivo \cite{HAYKIN2011}.
 
@@ -201,7 +201,7 @@ A função de ativação que limita a saída de um neurônio pode ser de três tipos bá
 	\item Função Sigmóide.
 \end{itemize}
 
-A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de ativação.
+A figura ~\ref{fig:limiares} representa os gráficos de três tipos de função de ativação.
 
 \begin{figure}[!htb]
 	\centering
@@ -213,7 +213,7 @@ A figura ~\ref{fig:limiares} representa os gráficos dos três tipos de função de 
 
 \subsection{Rede Neural Perceptron Multicamadas}
 
-Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes Perceptron Multicamadas (\textit{Multilayer Perceptron} ~-- \sigla{MLP}{\textit{Multilayer Perceptron}}). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
+Dentre os tipos de redes neurais artificiais existentes, destacam-se as redes Perceptron Multicamadas (\textit{Multilayer Perceptron} ~-- \sigla{MLP}{\textit{Multilayer Perceptron}}). Estas redes são formadas por uma camada de entrada, uma ou mais camadas de nós intermediárias escondidas e um camada de nós de saída. A figura ~\ref{fig:RN4} mostra a estrutura de uma rede neural com múltiplas camadas \cite{HAYKIN2011}.
 
 \begin{figure}[!htb]
 	\centering
@@ -225,9 +225,9 @@ Dentre os tipos de redes neurais artificiais existentes, cabe destacar as redes 
 
 Os neurônios formam conexões representadas pelos pesos sinápticos e ao processo de modificação destes pesos dá-se o nome de algoritmo de aprendizado. As redes Perceptron multicamadas podem ser treinadas por meio do algoritmo de aprendizado de retropropagação \textit{(backpropagation)}. Em termos gerais, um sinal de erro é originado na saída da rede, e propagado de trás para frente \textit{(backwards)} de camada em camada, relacionando os dados de entrada e saída \cite{HAYKIN2011}.
 
-\subsection{Estratégia de Treinamento para Rede Multicamadas}
+\subsection{Estratégia de Treinamento para Rede Perceptron Multicamadas}
 
-A rede multicamadas é treinada com o algoritmo \textit{backpropagation}, em estágios, produzindo funções de mapeamento complexas. Observa-se que o erro médio quadrático diminui com o aumento do número de épocas durante um treinamento. No início apresenta um valor elevado, diminui rapidamente, e então começa a diminuir lentamente até o valor do mínimo local na superfície de erro \cite{HAYKIN2011}. A figura \ref{parada} mostra a relação entre o erro médio quadrático e as épocas de treinamento.
+A rede Perceptron multicamadas é treinada com o algoritmo \textit{backpropagation}, em estágios, produzindo funções de mapeamento complexas. Observa-se que o erro médio quadrático diminui com o aumento do número de épocas durante um treinamento. No início apresenta um valor elevado, diminui rapidamente, e então começa a diminuir lentamente até o valor do mínimo local na superfície de erro \cite{HAYKIN2011}. A figura \ref{parada} mostra a relação entre o erro médio quadrático e as épocas de treinamento.
 
 \begin{figure}[!htb]
 	\centering
@@ -252,7 +252,7 @@ Além destas duas divisões, o conjunto de dados de treinamento pode ser dividido 
 
 \subsection{Rede Neural Mapa de Kohonen}
 
-Existe um tipo especial de redes neurais artificiais auto organizáveis conhecidas como Mapas Auto Organizáveis ou Mapas de Kohonen. Nos Mapas de Kohonen, os neurônios, ou nós, são dispostos em nós em uma estrutura bidimensional e passam por um processo de aprendizado competitivo utilizando padrões de entrada.  Os neurônios são então ordenados uns em relação aos outros. O Mapa de Kohonen forma, portanto, um mapa topográfico dos padrões de entrada, no qual as coordenadas dos neurônios indicam características dos padrões de entrada \cite{HAYKIN2011}.
+Existe um tipo especial de rede neural artificial auto-organizável conhecida como Mapa Auto-Organizável ou Mapa de Kohonen. No Mapa de Kohonen, os neurônios, ou nós, são dispostos em nós em uma estrutura bidimensional e passam por um processo de aprendizado competitivo utilizando padrões de entrada.  Os neurônios são então ordenados uns em relação aos outros. O Mapa de Kohonen forma, portanto, um mapa topográfico dos padrões de entrada, no qual as coordenadas dos neurônios indicam características dos padrões de entrada \cite{HAYKIN2011}.
 
 Cabe explicitar que o aprendizado dos Mapas de Kohonen é do tipo não supervisionado, isso significa que não é necessário um conjunto de dados de treinamento para que a rede aprenda a classificar padrões \cite{Guthi}.
 
@@ -266,7 +266,7 @@ Inicialmente no mapa, cada nó é conectado a todos os nós de entrada, mas não são
 	\label{fig:map0}
 \end{figure}
 
-As redes devem ser formadas por nós, sendo que cada um deles deverá possuir um vetor de pesos de dimensão n. Para que o algoritmo funcione adequadamente, os nós de entrada também deverão apresentar vetores de entrada com dimensão n. E, considerando que os neurônios não possuem nenhuma conexão com os neurônios em sua vizinhança, não podem conhecer o valor dos pesos deles. Para serem organizados, os dados passam pelo algortimo do Mapa de Kohonen. Este algoritmo que agrupa os padrões de entrada é descrito a seguir \cite{Guthi}.
+As redes devem ser formadas por nós, sendo que cada um deles deverá possuir um vetor de pesos de dimensão n. Para que o algoritmo funcione adequadamente, os nós de entrada também deverão apresentar vetores de entrada com dimensão n. Considerando que os neurônios não possuem nenhuma conexão com os neurônios em sua vizinhança, não podem conhecer o valor dos pesos deles. Para serem organizados, os dados passam pelo algortimo do Mapa de Kohonen. Este algoritmo que agrupa os padrões de entrada é descrito a seguir \cite{Guthi}.
 
 \begin{enumerate}
 	\item Os pesos de cada nó são inicializados com valores aleatórios numa faixa reduzida;
@@ -305,7 +305,7 @@ As redes devem ser formadas por nós, sendo que cada um deles deverá possuir um v
 	\item Repetir o passo 2 por N iterações.
 \end{enumerate}
 
-Um exemplo clássico de implementação de Mapas de Kohonen é a clusterização de cores. A figura \ref{fig:color1} mostra uma rede inicializada com um conjunto de dados. Cada pixel é um nó da rede e os vetores de peso são representados pela tripla (R,G,B), que caracteriza a cor do nó.
+Um exemplo clássico de implementação de Mapa de Kohonen é a clusterização de cores. A figura \ref{fig:color1} mostra uma rede inicializada com um conjunto de dados. Cada pixel é um nó da rede e os vetores de peso são representados pela tripla (R,G,B), que caracteriza a cor do nó.
 
 \begin{figure}[!htb]
 	\centering
@@ -328,7 +328,7 @@ A aplicação do algoritmo do Mapa de Kohonen deve resultar no mapa mostrado pela 
 \section{Avaliação de Desempenho de Sistemas Classificadores}
 \label{sec:AvaliaSis}
 
-Nesta seção vamos nos concentrar em formas de avaliar o desempenho de sistemas classificadores por meio das seções: \ref{subsec:TabelaCont} Tabela de Contingência, \ref{subsec:SeEsP} Sensibilidade e Especificidade, \ref{subsec:ROCCurva} Curva ROC e \ref{subsec:outros} Outros Índices Estatísticos.
+Nesta seção são apresentadas as formas de avaliação de desempenho de sistemas classificadores por meio das seções: \ref{subsec:TabelaCont} Tabela de Contingência, \ref{subsec:SeEsP} Sensibilidade e Especificidade, \ref{subsec:ROCCurva} Curva ROC e \ref{subsec:outros} Outros Índices Estatísticos.
 
 \subsection{Tabela de Contingência}
 \label{subsec:TabelaCont}
