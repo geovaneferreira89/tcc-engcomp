@@ -8,11 +8,11 @@
 \contentsline {section}{\numberline {2.2}Forma\c c\~ao do Sinal de Eletrocardiografia}{15}
 \contentsline {section}{\numberline {2.3}Exame de Eletrocardiografia}{16}
 \contentsline {section}{\numberline {2.4}Sistema de Deriva\c c\~oes}{17}
-\contentsline {section}{\numberline {2.5}Ondas, Segmentos e Intervalos}{19}
+\contentsline {section}{\numberline {2.5}Ondas, Segmentos e Intervalos}{18}
 \contentsline {section}{\numberline {2.6}Opera\c c\~ao Correla\c c\~ao}{20}
 \contentsline {section}{\numberline {2.7}Redes Neurais Artificiais}{21}
 \contentsline {subsection}{\numberline {2.7.1}Rede Neural Perceptron Multicamadas}{23}
-\contentsline {subsection}{\numberline {2.7.2}Estrat\'egia de Treinamento para Rede Multicamadas}{24}
+\contentsline {subsection}{\numberline {2.7.2}Estrat\'egia de Treinamento para Rede Perceptron Multicamadas}{24}
 \contentsline {subsection}{\numberline {2.7.3}Valida\c c\~ao Cruzada}{25}
 \contentsline {subsection}{\numberline {2.7.4}Rede Neural Mapa de Kohonen}{25}
 \contentsline {section}{\numberline {2.8}Avalia\c c\~ao de Desempenho de Sistemas Classificadores}{28}
@@ -31,8 +31,8 @@
 \contentsline {subsection}{\numberline {3.4.1}Vis\~ao Geral do Sistema}{38}
 \contentsline {subsection}{\numberline {3.4.2}M\'odulo de Visualiza\c c\~ao do Sinal}{41}
 \contentsline {subsection}{\numberline {3.4.3}M\'odulo de Marca\c c\~ao de Eventos}{43}
-\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas atrav\'es de correla\c c\~ao}{45}
-\contentsline {subsection}{\numberline {3.4.5}M\'odulos de Reconhecimento de padr\~oes}{46}
+\contentsline {subsection}{\numberline {3.4.4}M\'odulo de Extra\c c\~ao de Caracter\IeC {\'\i }sticas atrav\'es da Correla\c c\~ao}{45}
+\contentsline {subsection}{\numberline {3.4.5}M\'odulos de Reconhecimento de Padr\~oes}{46}
 \contentsline {subsection}{\numberline {3.4.6}M\'odulo de Reconhecimento de Padr\~oes com Mapa de Kohonen}{47}
 \contentsline {subsection}{\numberline {3.4.7}M\'odulo de Reconhecimento de Padr\~oes com Rede Perceptron Multicamadas}{49}
 \contentsline {subsection}{\numberline {3.4.8}M\'odulo de Avalia\c c\~ao de Desempenho das Redes Neurais}{51}
@@ -42,15 +42,15 @@
 \contentsline {section}{\numberline {3.7}Considera\c c\~oes}{56}
 \contentsline {chapter}{\numberline {4}Resultados Obtidos}{57}
 \contentsline {section}{\numberline {4.1}Resultados com Mapa de Kohonen}{57}
-\contentsline {section}{\numberline {4.2}Resultados com Rede Multicamadas}{57}
-\contentsline {section}{\numberline {4.3}Comparativo}{60}
+\contentsline {section}{\numberline {4.2}Resultados com Rede Perceptron Multicamadas}{57}
+\contentsline {section}{\numberline {4.3}Comparativo de Desempenho das Redes}{60}
 \contentsline {section}{\numberline {4.4}Considera\c c\~oes}{60}
-\contentsline {chapter}{\numberline {5}Gest\~ao do Projeto}{62}
-\contentsline {section}{\numberline {5.1}Recursos de Hardware}{62}
-\contentsline {section}{\numberline {5.2}Recursos de Software}{62}
-\contentsline {section}{\numberline {5.3}An\'alise de Riscos}{63}
+\contentsline {chapter}{\numberline {5}Gest\~ao do Projeto}{63}
+\contentsline {section}{\numberline {5.1}Recursos de Hardware}{63}
+\contentsline {section}{\numberline {5.2}Recursos de Software}{63}
+\contentsline {section}{\numberline {5.3}An\'alise de Riscos}{64}
 \contentsline {section}{\numberline {5.4}Cronograma}{64}
-\contentsline {section}{\numberline {5.5}Horas de Trabalho}{65}
-\contentsline {section}{\numberline {5.6}Considera\c c\~oes}{66}
-\contentsline {chapter}{\numberline {6}Considera\c c\~oes Finais}{67}
-\contentsline {chapter}{REFER\^ENCIAS}{69}
+\contentsline {section}{\numberline {5.5}Horas de Trabalho}{66}
+\contentsline {section}{\numberline {5.6}Considera\c c\~oes}{67}
+\contentsline {chapter}{\numberline {6}Considera\c c\~oes Finais}{68}
+\contentsline {chapter}{REFER\^ENCIAS}{70}
